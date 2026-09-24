@@ -123,7 +123,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 @keyframes drift1 { to { transform: translate(14vmax, 10vmax) scale(3.96); } }
 @keyframes drift2 { to { transform: translate(-12vmax, 14vmax) scale(3.24); } }
 @keyframes drift3 { to { transform: translate(10vmax, -12vmax) scale(4.14); } }
-body.paused .blob { animation-play-state: paused; }
+.bg.paused .blob { animation-play-state: paused; }
 .bg::after {
   content: ""; position: absolute; inset: -50%; opacity: calc(var(--grain-op) * .45);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .25 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -397,7 +397,7 @@ body.paused .blob { animation-play-state: paused; }
 .c-tag { margin: 10px 0 0; font: italic 500 17px/1.35 var(--font-d); color: var(--primary-fill); }
 :root[data-theme="dark"] .c-tag { color: var(--primary); }
 .c-match { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
-.mring { position: relative; width: 74px; height: 74px; flex: none; }
+.mring { position: relative; width: 74px; height: 74px; flex: none; contain: strict; }   /* a számláló frissítése ne rendezze újra a kártyát */
 .mring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
 .mring circle { fill: none; stroke-width: 7; }
 .mring .bgc { stroke: var(--dot-off); }
@@ -761,6 +761,19 @@ body.paused .blob { animation-play-state: paused; }
 
 /* A kártya bezáró gombja fölött görög a tartalom: tömör háttér + finom árnyék, hogy ne látsszon át */
 .card .close { background: var(--solid); box-shadow: 0 0 0 1px var(--line), var(--shadow-sm); }
+
+/* Telefon, kártyanyitás: a kör alakú kinyílás alatt ne fusson más drága munka.
+   – nincs képernyőnyi háttérelmosás a takarón (a kártya úgyis a képernyő 92 %-át fedi);
+   – a tartalom lépcsőzetes beúszása elmarad (a kinyílás maga a mozgás);
+   – a hajtás alatti részek a kinyílás alatt ki sem rajzolódnak (content-visibility: hidden), csak a végén.
+     (Az „auto” nem elég: az csak egy képkockával későbbre tolja a munkát – épp a kinyílás elejére.) */
+@media (max-width: 899px) {
+  .scrim { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; will-change: opacity; }   /* saját rétegen marad: a beúszás végén nincs rétegrend-átszámolás */
+  .card.morph .rv { animation: none; }
+  .card.lazy .c-desc, .card.lazy .c-cols, .card.lazy .c-sec, .card.lazy .c-grid, .card.lazy .c-note { content-visibility: hidden; contain-intrinsic-size: auto 260px; }
+}
+/* láthatatlan bemelegítő kártya (warmCard) */
+.card.warm .rv { animation: none; }
 </style>
 </head>
 <body>
@@ -986,7 +999,7 @@ const store = {
 const S = {
   f: { meret: new Set(), szor: new Set(), szerep: new Set(), fci: new Set(), energia: null, t: new Set() },
   quiz: null,                 // { answers:[], crit:[] }
-  mode: null,                 // 'rank' | 'strict' | null (platform-alapértelmezés)
+  mode: null,                 // 'rank' | 'strict' | null (= alapértelmezés: Csak találatok)
   view: 'felho', groupBy: 'meret', q: '',
   fav: new Set(store.get('fav', [])),
   cmp: store.get('cmp', []).filter(id => BY_ID.has(id)),
@@ -997,7 +1010,8 @@ const S = {
   crit: [],
 };
 S.fav.forEach(id => { if (!BY_ID.has(id)) S.fav.delete(id); });
-const modeOf = () => S.mode || (S.mobile ? 'strict' : 'rank');
+// alapértelmezés mindkét platformon: Csak találatok (a Rangsor egy kattintással bekapcsolható)
+const modeOf = () => S.mode || 'strict';
 const RM = () => mqRM.matches || S.rmUser;
 
 /* Egyszerű eseménybusz */
@@ -1385,7 +1399,7 @@ function computeTargets() {
   const obsA = OBS.reduce((a, q) => a + Math.max(0, Math.min(q.r, LR.r) - Math.max(q.l, LR.l)) * Math.max(0, Math.min(q.b, LR.b) - Math.max(q.t, LR.t)), 0);
   const A = Math.max(LR.w * LR.h - obsA, 20000);
   const sum = vis.reduce((a, o) => a + o.ns * o.ns, 0) || 1;
-  const r0 = clamp(Math.sqrt(rho * A / (Math.PI * sum)) * fill, S.mobile ? 14 : 16, S.mobile ? 86 : 110);
+  const r0 = clamp(Math.sqrt(rho * A / (Math.PI * sum)) * fill, S.mobile ? 14 : 16, S.mobile ? 86 : 88);
   const rMax = Math.min(LR.w, LR.h) * .3;
   for (const o of B) o.nrt = Math.min(r0 * o.ns, rMax);
   if (S.view === 'csoport') layoutGroups(vis);
@@ -1512,6 +1526,35 @@ function layoutMap() {
     o.mx = LR.l + px + fx * (LR.w - px * 1.5);
     o.my = LR.t + py + fy * (LR.h - py * 2.2);
   }
+  // Sok hasonló (nagy, energikus) fajta célpontja szinte egybeesik: a rugó egy pontba húzná őket, az
+  // ütközés széttolná – ettől rángatóztak kis kijelzőn. Ezért a célpontokat előre szétterítjük
+  // („méhraj”), a fizikával azonos távolsággal: nyugalomban így nincs mi ellen dolgozniuk.
+  const vis = B.filter(o => o.nvis), gap = S.mobile ? 4 : 6;
+  for (let it = 0; it < 90; it++) {
+    let moved = false;
+    for (let i = 0; i < vis.length; i++) {
+      const a = vis[i];
+      for (let j = i + 1; j < vis.length; j++) {
+        const c = vis[j], min = (a.nrt + c.nrt) * 1.09 + gap;
+        let dx = c.mx - a.mx, dy = c.my - a.my;
+        if (dx > min || dx < -min || dy > min || dy < -min) continue;
+        const d2 = dx * dx + dy * dy;
+        if (d2 >= min * min) continue;
+        let d = Math.sqrt(d2);
+        if (d < .01) { dx = Math.cos(i * 2.4 + j); dy = Math.sin(i * 2.4 + j); d = 1; }   // egybeeső pontok
+        const push = (min - d) / 2 / d;
+        a.mx -= dx * push; a.my -= dy * push;
+        c.mx += dx * push; c.my += dy * push;
+        moved = true;
+      }
+    }
+    for (const o of vis) {
+      const R = o.nrt * 1.09;
+      o.mx = clamp(o.mx, LR.l + R, Math.max(LR.l + R, LR.r - R));
+      o.my = clamp(o.my, LR.t + R, Math.max(LR.t + R, LR.b - R));
+    }
+    if (!moved) break;
+  }
 }
 function drawMap() {
   const svg = $('#mapLayer');
@@ -1622,7 +1665,7 @@ function enter(o) {
 let stepN = 0;
 function anchor(o) {
   if (S.view === 'csoport' && o.grp) return [o.grp.x, o.grp.y, .024, .024];
-  if (S.view === 'terkep') return [o.mx, o.my, .06, .06];
+  if (S.view === 'terkep') return [o.mx, o.my, .03, .03];      // lágyabb rugó: nyugodtabb térkép
   // ellipszis alakú vonzás: a felhő a színpad arányát veszi fel (kx = ky · (h/w)²)
   const m = o.b.m, asp = clamp(LR.h / LR.w, .3, 1.6), a2 = asp * asp;
   if (m == null) return [LR.cx, LR.cy, .0024 * a2, .0024];
@@ -1830,19 +1873,21 @@ function drawUnder(t) {
     const a = o.op;
     if (o.glowV > .01 && a > .05) {
       const br = rm ? 0 : (1 - Math.cos(t * .0021 + o.ph)) / 2;       // 3 mp-es „lélegzés”
-      const R = o.rr * 1.76 * (1 + .12 * br);
+      // a glória kilógása kis buborékoknál arányos, nagyoknál legfeljebb ~22 px (ne folyjanak össze)
+      const R = o.rr + Math.min(o.rr * .435, 22) * (1 + .3 * br);
       const g = ux.createRadialGradient(o.rx, o.ry, o.rr * .6, o.rx, o.ry, R);
       g.addColorStop(0, col(.42 * o.glowV * a * (1 - .35 * br)));
-      g.addColorStop(.72, col(0));
+      g.addColorStop(1, col(0));
       ux.fillStyle = g;
       ux.beginPath(); ux.arc(o.rx, o.ry, R, 0, 6.2832); ux.fill();
     }
     if (o.ringV > .004 && a > .05) {
       ux.globalAlpha = a;
       ux.strokeStyle = col(1);
-      ux.lineWidth = o.rr * .1;
+      const lw = Math.min(o.rr * .1, 6);                              // nagy buborékon se legyen vaskos
+      ux.lineWidth = lw;
       ux.beginPath();
-      ux.arc(o.rx, o.ry, o.rr * 1.1625, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * Math.min(o.ringV, 1));
+      ux.arc(o.rx, o.ry, o.rr * 1.1 + lw / 2 + 1, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * Math.min(o.ringV, 1));
       ux.stroke();
       ux.globalAlpha = 1;
     }
@@ -1988,6 +2033,7 @@ function intro() {
 /* ---------- Fő ciklus ---------- */
 let lastT = now(), acc = 0;
 let paused = false;
+const bgEl = $('.bg');
 function frame(t) {
   requestAnimationFrame(frame);
   const dt = Math.min(t - lastT, 100);
@@ -1995,7 +2041,7 @@ function frame(t) {
   // Ha a fajtakártya (vagy mobilon egy takaró lap) nyitva van, a felhő megáll: nem fut a fizika,
   // nem mozognak a rétegek, így a háttér-elmosásnak sem kell képkockánként újraszámolnia.
   const p = !cardEl.hidden || (S.mobile && !scrimEl.hidden) || S.view === 'lista';
-  if (p !== paused) { paused = p; document.body.classList.toggle('paused', p); }
+  if (p !== paused) { paused = p; bgEl.classList.toggle('paused', p); }   // csak a háttér: ne az egész dokumentum stílusa számolódjon újra
   if (!paused) {
     acc += dt;
     for (const o of B) if (o.pend && t >= o.pend.at) commit(o, o.pend);
@@ -2368,7 +2414,7 @@ $('#mobViews').addEventListener('click', e => { const b = e.target.closest('[dat
 $('#groupSeg').addEventListener('click', e => { const b = e.target.closest('[data-g]'); if (b) { S.groupBy = b.dataset.g; refresh(); } });
 function setMode(m) {
   S.mode = m;
-  store.set('mode', m);
+  store.set('mode2', m);
   refresh({ x: LR.cx, y: LR.t });
 }
 $('#modeSeg').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) setMode(b.dataset.mode); });
@@ -2504,7 +2550,8 @@ qInput.addEventListener('keydown', e => {
 /* ---------- Bemutató (coach mark) ---------- */
 const COACH = [
   { t: () => stage, h: 'Szia, itt a Pacsi! 🐾', p: () => `Ez itt ${TOTAL} kutyafajta egy felhőben. ${S.mobile ? 'Koppints' : 'Vidd az egeret'} egy buborékra, és megtudod, ki az.` },
-  { t: () => S.mobile ? $('#dock') : $('#panel'), h: 'Szűrj, és figyeld!', p: () => S.mobile ? 'Kapcsolj be egy szűrőt: ami nem illik hozzád, kirepül.' : 'Kapcsolj be egy szűrőt, és nézd, ki ugrik előre!' },
+  { t: () => S.mobile ? $('#dock') : $('#panel'), h: 'Szűrj, és figyeld!', p: () => modeOf() === 'rank' ? 'Kapcsolj be egy szűrőt, és nézd, ki ugrik előre!'
+    : S.mobile ? 'Kapcsolj be egy szűrőt: ami nem illik hozzád, kirepül.' : 'Kapcsolj be egy szűrőt: ami nem illik hozzád, eltűnik, a többi megnő.' },
   { t: () => S.mobile ? $('[data-tab="kviz"]') : $('#quizBtn'), h: 'Nem tudod, hol kezdd?', p: () => 'A Párkereső kvíz 10 kérdés, kb. 1 perc – és élőben formálja a felhőt.' },
 ];
 function coach(i = 0) {
@@ -2624,13 +2671,21 @@ function cardHTML(b) {
   </div>`;
 }
 
-function animateCardIn() {
+function animateCardIn(after = 0) {
+  // Nyitáskor (after) a kör alakú kinyílás végén indulnak: közben ne kelljen képkockánként újrarajzolni a kártyát.
+  // A számláló csak valódi változáskor ír – korábban az indulása előtt is minden képkockában „0%”-ot írt,
+  // ami a teljes kártya újrarendezését váltotta ki a kinyílás alatt (ettől akadt meg telefonon).
   const ring = $('.mring .fg', cardEl), cnt = $('.mring b', cardEl);
-  if (ring) requestAnimationFrame(() => { ring.style.strokeDashoffset = 100 - ring.dataset.pct; });
+  if (ring) setTimeout(() => requestAnimationFrame(() => { ring.style.strokeDashoffset = 100 - ring.dataset.pct; }), after);
   if (cnt) {
-    const target = +cnt.dataset.count, t0 = now() + 250;
-    const tick = t => { const p = clamp((t - t0) / 1000, 0, 1), e = 1 - Math.pow(1 - p, 3); cnt.textContent = Math.round(target * e) + '%'; if (p < 1) requestAnimationFrame(tick); };
-    requestAnimationFrame(tick);
+    const target = +cnt.dataset.count, t0 = now() + 250 + after;
+    const tick = t => {
+      if (!cnt.isConnected) return;
+      const p = clamp((t - t0) / 1000, 0, 1), e = 1 - Math.pow(1 - p, 3), v = Math.round(target * e) + '%';
+      if (cnt.textContent !== v) cnt.textContent = v;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    setTimeout(() => requestAnimationFrame(tick), 250 + after);
   }
 }
 
@@ -2644,6 +2699,7 @@ function openCard(id, { push = true, dir = 0 } = {}) {
   if (!cardOrder.includes(id)) cardOrder.unshift(id);
   cardEl.innerHTML = cardHTML(b);
   cardEl.style.setProperty('--bgc', b.bg);
+  cardEl.classList.toggle('morph', !already && S.mobile && !RM());   // mobil kinyílás: lásd .card.morph a CSS-ben
   if (already) {
     cardEl.classList.remove('swap', 'left');
     void cardEl.offsetWidth;
@@ -2655,7 +2711,7 @@ function openCard(id, { push = true, dir = 0 } = {}) {
     cardEl.hidden = false;
     $('#cardPrev').hidden = $('#cardNext').hidden = S.mobile;
     morphIn(OB_ID.get(id));
-    animateCardIn();
+    animateCardIn(RM() ? 0 : 350);
     lastFocus = document.activeElement;
     setTimeout(() => { const c = $('.close', cardEl); c && c.focus({ preventScroll: true }); }, 60);
   }
@@ -2672,23 +2728,52 @@ function morphIn(o) {
     cardEl.animate([{ opacity: 0, transform: base + 'translateY(40px)' }, { opacity: 1, transform: base || 'none' }], { duration: 320, easing: 'cubic-bezier(.22,1,.36,1)' });
     return;
   }
+  // mobilon a hajtás alatti részek csak a kinyílás végén rajzolódnak ki (lásd .card.lazy a CSS-ben)
+  if (S.mobile) cardEl.classList.add('lazy');
   const cq = cardEl.getBoundingClientRect();
   const bx = SR.left + o.rx - cq.left, by = SR.top + o.ry - cq.top, br = o.r;
   const far = Math.hypot(Math.max(bx, cq.width - bx), Math.max(by, cq.height - by));
   cardEl.animate([{ clipPath: `circle(${br}px at ${bx}px ${by}px)` }, { clipPath: `circle(${far}px at ${bx}px ${by}px)` }],
-    { duration: 560, easing: 'cubic-bezier(.3,.9,.25,1)' });
+    { duration: 560, easing: 'cubic-bezier(.3,.9,.25,1)' }).onfinish = () => { cardEl.classList.remove('lazy'); o.el.style.visibility = ''; };
   const pic = $('#cPic', cardEl), pq = pic.getBoundingClientRect();
   const s = (br * 2) / pq.width;
   const dx = SR.left + o.rx - (pq.left + pq.width / 2), dy = SR.top + o.ry - (pq.top + pq.height / 2);
   pic.animate([{ transform: `translate(${dx}px,${dy}px) scale(${s})` }, { transform: 'none' }], { duration: 620, easing: 'cubic-bezier(.3,1.25,.4,1)' });
+  // a buborék a kinyílás végén (onfinish) látszik újra – közben a rétegrend átszámolása megakasztaná a kinyílást
   o.el.style.visibility = 'hidden';
-  setTimeout(() => { o.el.style.visibility = ''; }, 400);
 }
+/* Bemelegítés: az első kártyanyitáskor a böngésző új betűváltozatokat tölt be és formáz – telefonon ez több
+   száz ms lehet, és a kinyílást akasztja meg. Ezt a felhő beállása után, üresjáratban, darabokban előre
+   elvégezzük egy láthatatlan kártyán (a közös feliratok – Energia, Gyerekbarát… – így már formázva vannak). */
+function warmCard() {
+  if (!cardEl.hidden) return;
+  const idle = f => (window.requestIdleCallback ? requestIdleCallback(f, { timeout: 1200 }) : setTimeout(f, 50));
+  try { ['800 30px Fraunces', '500 17px Fraunces', '700 22px Fraunces', '500 15px Manrope', '700 13px Manrope'].forEach(f => document.fonts.load(f, 'őűŐŰ')); } catch (e) { /* régi böngésző */ }
+  const tpl = document.createElement('template');
+  tpl.innerHTML = cardHTML(BREEDS[0]).replace(/ id="[^"]*"/g, '');
+  const parts = [...(tpl.content.querySelector('.card-scroll') || tpl.content).children];
+  const box = document.createElement('div'), sc = document.createElement('div');
+  box.className = 'card warm';
+  box.setAttribute('aria-hidden', 'true');
+  box.style.cssText = 'visibility:hidden;pointer-events:none;left:-200vw;right:auto;top:0;bottom:auto;transform:none';
+  sc.className = 'card-scroll';
+  box.appendChild(sc);
+  document.body.appendChild(box);
+  const next = () => {
+    if (!parts.length || !cardEl.hidden) { box.remove(); return; }
+    sc.appendChild(parts.shift());
+    void box.offsetHeight;          // elrendezés és szövegformázás most, üresjáratban – nem koppintáskor
+    idle(next);
+  };
+  idle(next);
+}
+
 function closeCard({ fromPop = false } = {}) {
   if (cardEl.hidden || cardBusy) return;
   cardBusy = true;
   const o = OB_ID.get(S.card);
   S.card = null;
+  if (o) o.el.style.visibility = '';                 // ha a kinyílás vége előtt zárják be
   const done = () => {
     cardEl.hidden = true; scrimEl.hidden = true; cardBusy = false;
     $('#cardPrev').hidden = $('#cardNext').hidden = true;
@@ -3139,7 +3224,8 @@ $$('[data-drawer]').forEach(b => b.addEventListener('click', () => { const t = b
 function init() {
   applyTheme();
   document.documentElement.classList.toggle('rm', RM());
-  S.mode = store.get('mode', null);
+  // „mode2”: az alapértelmezés Csak találatokra váltott, a korábban elmentett választást egyszer nullázzuk
+  S.mode = store.get('mode2', null);
   const h = decodeHash();
   if (h.quiz) S.quiz = { answers: h.quiz, crit: quizCrit(h.quiz), done: true };
   stage.classList.toggle('mobile', S.mobile);
@@ -3155,6 +3241,7 @@ function init() {
   intro();
   requestAnimationFrame(t => { lastT = t; frame(t); });
   setTimeout(initRoving, 1600);
+  setTimeout(warmCard, 3200);         // a felhő beállása után: első kártyanyitás gyorsítása
   if (h.card) setTimeout(() => openCard(h.card, { push: false }), 1300);
   else if (h.kviz) { syncHash(); setTimeout(() => openDrawer('kviz'), 1300); }
   store.set('visits', store.get('visits', 0) + 1);

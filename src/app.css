@@ -100,7 +100,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 @keyframes drift1 { to { transform: translate(14vmax, 10vmax) scale(3.96); } }
 @keyframes drift2 { to { transform: translate(-12vmax, 14vmax) scale(3.24); } }
 @keyframes drift3 { to { transform: translate(10vmax, -12vmax) scale(4.14); } }
-body.paused .blob { animation-play-state: paused; }
+.bg.paused .blob { animation-play-state: paused; }
 .bg::after {
   content: ""; position: absolute; inset: -50%; opacity: calc(var(--grain-op) * .45);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .25 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -374,7 +374,7 @@ body.paused .blob { animation-play-state: paused; }
 .c-tag { margin: 10px 0 0; font: italic 500 17px/1.35 var(--font-d); color: var(--primary-fill); }
 :root[data-theme="dark"] .c-tag { color: var(--primary); }
 .c-match { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
-.mring { position: relative; width: 74px; height: 74px; flex: none; }
+.mring { position: relative; width: 74px; height: 74px; flex: none; contain: strict; }   /* a számláló frissítése ne rendezze újra a kártyát */
 .mring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
 .mring circle { fill: none; stroke-width: 7; }
 .mring .bgc { stroke: var(--dot-off); }
@@ -738,3 +738,16 @@ body.paused .blob { animation-play-state: paused; }
 
 /* A kártya bezáró gombja fölött görög a tartalom: tömör háttér + finom árnyék, hogy ne látsszon át */
 .card .close { background: var(--solid); box-shadow: 0 0 0 1px var(--line), var(--shadow-sm); }
+
+/* Telefon, kártyanyitás: a kör alakú kinyílás alatt ne fusson más drága munka.
+   – nincs képernyőnyi háttérelmosás a takarón (a kártya úgyis a képernyő 92 %-át fedi);
+   – a tartalom lépcsőzetes beúszása elmarad (a kinyílás maga a mozgás);
+   – a hajtás alatti részek a kinyílás alatt ki sem rajzolódnak (content-visibility: hidden), csak a végén.
+     (Az „auto” nem elég: az csak egy képkockával későbbre tolja a munkát – épp a kinyílás elejére.) */
+@media (max-width: 899px) {
+  .scrim { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; will-change: opacity; }   /* saját rétegen marad: a beúszás végén nincs rétegrend-átszámolás */
+  .card.morph .rv { animation: none; }
+  .card.lazy .c-desc, .card.lazy .c-cols, .card.lazy .c-sec, .card.lazy .c-grid, .card.lazy .c-note { content-visibility: hidden; contain-intrinsic-size: auto 260px; }
+}
+/* láthatatlan bemelegítő kártya (warmCard) */
+.card.warm .rv { animation: none; }

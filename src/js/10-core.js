@@ -60,7 +60,7 @@ const store = {
 const S = {
   f: { meret: new Set(), szor: new Set(), szerep: new Set(), fci: new Set(), energia: null, t: new Set() },
   quiz: null,                 // { answers:[], crit:[] }
-  mode: null,                 // 'rank' | 'strict' | null (platform-alapértelmezés)
+  mode: null,                 // 'rank' | 'strict' | null (= alapértelmezés: Csak találatok)
   view: 'felho', groupBy: 'meret', q: '',
   fav: new Set(store.get('fav', [])),
   cmp: store.get('cmp', []).filter(id => BY_ID.has(id)),
@@ -71,7 +71,8 @@ const S = {
   crit: [],
 };
 S.fav.forEach(id => { if (!BY_ID.has(id)) S.fav.delete(id); });
-const modeOf = () => S.mode || (S.mobile ? 'strict' : 'rank');
+// alapértelmezés mindkét platformon: Csak találatok (a Rangsor egy kattintással bekapcsolható)
+const modeOf = () => S.mode || 'strict';
 const RM = () => mqRM.matches || S.rmUser;
 
 /* Egyszerű eseménybusz */

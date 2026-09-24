@@ -72,13 +72,21 @@ function cardHTML(b) {
   </div>`;
 }
 
-function animateCardIn() {
+function animateCardIn(after = 0) {
+  // Nyitáskor (after) a kör alakú kinyílás végén indulnak: közben ne kelljen képkockánként újrarajzolni a kártyát.
+  // A számláló csak valódi változáskor ír – korábban az indulása előtt is minden képkockában „0%”-ot írt,
+  // ami a teljes kártya újrarendezését váltotta ki a kinyílás alatt (ettől akadt meg telefonon).
   const ring = $('.mring .fg', cardEl), cnt = $('.mring b', cardEl);
-  if (ring) requestAnimationFrame(() => { ring.style.strokeDashoffset = 100 - ring.dataset.pct; });
+  if (ring) setTimeout(() => requestAnimationFrame(() => { ring.style.strokeDashoffset = 100 - ring.dataset.pct; }), after);
   if (cnt) {
-    const target = +cnt.dataset.count, t0 = now() + 250;
-    const tick = t => { const p = clamp((t - t0) / 1000, 0, 1), e = 1 - Math.pow(1 - p, 3); cnt.textContent = Math.round(target * e) + '%'; if (p < 1) requestAnimationFrame(tick); };
-    requestAnimationFrame(tick);
+    const target = +cnt.dataset.count, t0 = now() + 250 + after;
+    const tick = t => {
+      if (!cnt.isConnected) return;
+      const p = clamp((t - t0) / 1000, 0, 1), e = 1 - Math.pow(1 - p, 3), v = Math.round(target * e) + '%';
+      if (cnt.textContent !== v) cnt.textContent = v;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    setTimeout(() => requestAnimationFrame(tick), 250 + after);
   }
 }
 
@@ -92,6 +100,7 @@ function openCard(id, { push = true, dir = 0 } = {}) {
   if (!cardOrder.includes(id)) cardOrder.unshift(id);
   cardEl.innerHTML = cardHTML(b);
   cardEl.style.setProperty('--bgc', b.bg);
+  cardEl.classList.toggle('morph', !already && S.mobile && !RM());   // mobil kinyílás: lásd .card.morph a CSS-ben
   if (already) {
     cardEl.classList.remove('swap', 'left');
     void cardEl.offsetWidth;
@@ -103,7 +112,7 @@ function openCard(id, { push = true, dir = 0 } = {}) {
     cardEl.hidden = false;
     $('#cardPrev').hidden = $('#cardNext').hidden = S.mobile;
     morphIn(OB_ID.get(id));
-    animateCardIn();
+    animateCardIn(RM() ? 0 : 350);
     lastFocus = document.activeElement;
     setTimeout(() => { const c = $('.close', cardEl); c && c.focus({ preventScroll: true }); }, 60);
   }
@@ -120,23 +129,52 @@ function morphIn(o) {
     cardEl.animate([{ opacity: 0, transform: base + 'translateY(40px)' }, { opacity: 1, transform: base || 'none' }], { duration: 320, easing: 'cubic-bezier(.22,1,.36,1)' });
     return;
   }
+  // mobilon a hajtás alatti részek csak a kinyílás végén rajzolódnak ki (lásd .card.lazy a CSS-ben)
+  if (S.mobile) cardEl.classList.add('lazy');
   const cq = cardEl.getBoundingClientRect();
   const bx = SR.left + o.rx - cq.left, by = SR.top + o.ry - cq.top, br = o.r;
   const far = Math.hypot(Math.max(bx, cq.width - bx), Math.max(by, cq.height - by));
   cardEl.animate([{ clipPath: `circle(${br}px at ${bx}px ${by}px)` }, { clipPath: `circle(${far}px at ${bx}px ${by}px)` }],
-    { duration: 560, easing: 'cubic-bezier(.3,.9,.25,1)' });
+    { duration: 560, easing: 'cubic-bezier(.3,.9,.25,1)' }).onfinish = () => { cardEl.classList.remove('lazy'); o.el.style.visibility = ''; };
   const pic = $('#cPic', cardEl), pq = pic.getBoundingClientRect();
   const s = (br * 2) / pq.width;
   const dx = SR.left + o.rx - (pq.left + pq.width / 2), dy = SR.top + o.ry - (pq.top + pq.height / 2);
   pic.animate([{ transform: `translate(${dx}px,${dy}px) scale(${s})` }, { transform: 'none' }], { duration: 620, easing: 'cubic-bezier(.3,1.25,.4,1)' });
+  // a buborék a kinyílás végén (onfinish) látszik újra – közben a rétegrend átszámolása megakasztaná a kinyílást
   o.el.style.visibility = 'hidden';
-  setTimeout(() => { o.el.style.visibility = ''; }, 400);
 }
+/* Bemelegítés: az első kártyanyitáskor a böngésző új betűváltozatokat tölt be és formáz – telefonon ez több
+   száz ms lehet, és a kinyílást akasztja meg. Ezt a felhő beállása után, üresjáratban, darabokban előre
+   elvégezzük egy láthatatlan kártyán (a közös feliratok – Energia, Gyerekbarát… – így már formázva vannak). */
+function warmCard() {
+  if (!cardEl.hidden) return;
+  const idle = f => (window.requestIdleCallback ? requestIdleCallback(f, { timeout: 1200 }) : setTimeout(f, 50));
+  try { ['800 30px Fraunces', '500 17px Fraunces', '700 22px Fraunces', '500 15px Manrope', '700 13px Manrope'].forEach(f => document.fonts.load(f, 'őűŐŰ')); } catch (e) { /* régi böngésző */ }
+  const tpl = document.createElement('template');
+  tpl.innerHTML = cardHTML(BREEDS[0]).replace(/ id="[^"]*"/g, '');
+  const parts = [...(tpl.content.querySelector('.card-scroll') || tpl.content).children];
+  const box = document.createElement('div'), sc = document.createElement('div');
+  box.className = 'card warm';
+  box.setAttribute('aria-hidden', 'true');
+  box.style.cssText = 'visibility:hidden;pointer-events:none;left:-200vw;right:auto;top:0;bottom:auto;transform:none';
+  sc.className = 'card-scroll';
+  box.appendChild(sc);
+  document.body.appendChild(box);
+  const next = () => {
+    if (!parts.length || !cardEl.hidden) { box.remove(); return; }
+    sc.appendChild(parts.shift());
+    void box.offsetHeight;          // elrendezés és szövegformázás most, üresjáratban – nem koppintáskor
+    idle(next);
+  };
+  idle(next);
+}
+
 function closeCard({ fromPop = false } = {}) {
   if (cardEl.hidden || cardBusy) return;
   cardBusy = true;
   const o = OB_ID.get(S.card);
   S.card = null;
+  if (o) o.el.style.visibility = '';                 // ha a kinyílás vége előtt zárják be
   const done = () => {
     cardEl.hidden = true; scrimEl.hidden = true; cardBusy = false;
     $('#cardPrev').hidden = $('#cardNext').hidden = true;

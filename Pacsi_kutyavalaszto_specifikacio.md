@@ -67,7 +67,7 @@ A vázlat alapötletei maradnak: kör alakú portrék, hoverre név, kattintásr
 
 | # | Javaslat | Miért jobb |
 |---|---|---|
-| 1 | **Két szűrési mód: „Rangsor” (puha) és „Csak találatok” (szigorú)** – mindkét platformon elérhető. Laptopon a Rangsor, mobilon a Csak találatok az alapértelmezett. | Laptopon a „mélység” megmutatja a *majdnem* jó fajtákat is (a döntés nem fekete-fehér). Mobilon a kirepülés helyet szabadít fel. A felhasználó bármikor átválthat. |
+| 1 | **Két szűrési mód: „Rangsor” (puha) és „Csak találatok” (szigorú)** – mindkét platformon elérhető. Mindkét platformon a Csak találatok az alapértelmezett (2026-09-24-i döntés, korábban laptopon a Rangsor volt). | A Csak találatok azonnal szűkíti a kört, mobilon a kirepülés helyet is szabadít fel. A Rangsor „mélysége” a *majdnem* jó fajtákat is megmutatja (a döntés nem fekete-fehér). A felhasználó bármikor átválthat. |
 | 2 | **Folytonos illeszkedési pontszám (0–100%)**, nem csak igen/nem | A buborék mérete, mélysége és gyűrűje finoman skálázódik. A kártyán megjelenik, *miért* ennyi. |
 | 3 | **Hullámeffekt**: a szűrőre kattintáskor a reakció a szűrőpanel felől végigfut a felhőn | A felhasználó látja az ok-okozati kapcsolatot („ezt én csináltam”). Ez a legerősebb „wow”-pillanat. |
 | 4 | **Kirepült-számláló felhő (mobil)**: a kirepülő buborékok egy „↑ 42” jelvénybe érkeznek | A buborékok nem tűnnek el a semmibe: látszik, hová mentek, és egy koppintással visszanézhetők. |
@@ -140,8 +140,8 @@ Felhő (mind a 60) ──► szűrő be ──► hullám + előreugrás / kirep
 ### 5.3 Szűrési módok
 | Mód | Viselkedés | Alapértelmezett |
 |---|---|---|
-| **Rangsor** (puha) | Mind a 60 fajta a képernyőn marad. Az illeszkedés határozza meg a méretet, a mélységet és a pozíciót. | **Laptop** |
-| **Csak találatok** (szigorú) | Ami egy szűrőnek sem felel meg, eltávozik (laptopon „hátra zuhan és elhalványul”, mobilon **felfelé kirepül**). A maradék megnő. | **Mobil** |
+| **Rangsor** (puha) | Mind a 60 fajta a képernyőn marad. Az illeszkedés határozza meg a méretet, a mélységet és a pozíciót. | – (választható) |
+| **Csak találatok** (szigorú) | Ami egy szűrőnek sem felel meg, eltávozik (laptopon „hátra zuhan és elhalványul”, mobilon **felfelé kirepül**). A maradék megnő. | **Laptop és mobil** |
 
 Váltás: laptopon a számláló alatti kapcsoló, mobilon hosszan nyomva a számláló pillen, vagy a Beállításokban.
 
@@ -1436,5 +1436,41 @@ Valódi telefonos visszajelzés: a telepített PWA betöltésekor és animáció
 - **Koppintás és hosszú nyomás:** változatlanul működnek (a kavarás 9 px elmozdulás után indul). Húzás után nem nyílik kártya, és érintéskor a buborék kicsit „benyomódik”.
 - **Érintéskezelés:** a színpadon `touch-action: none`, a lista továbbra is görgethető.
 - **Mérés:** egy húzás a 124 buborékból 84-et mozdított el 15 px-nél többel (legfeljebb kb. 110 px-rel), és 3 másodperc alatt újra összeállt a felhő.
+
+### 26.7 Alapértelmezett szűrési mód: Csak találatok (2026-09-24)
+- **Döntés:** a megrendelő kérésére laptopon is a „Csak találatok” az alapértelmezett mód, mobilon eddig is az volt. A „Rangsor” a kapcsolóval, a Beállításokban és az üres találati állapot „Rangsor mód” gombjával érhető el.
+- **Mentett választás:** a kézi választás új kulcson tárolódik (`pacsi:mode2`), így a korábban elmentett (jellemzően „Rangsor”) beállítás egyszer nullázódik, és mindenki az új alapértelmezéssel indul.
+- **Bemutató:** a második lépés szövege a módot követi (laptopon: „ami nem illik hozzád, eltűnik, a többi megnő”).
+- **Megosztott linkek:** az `m=` paraméter nélküli linkek ezentúl Csak találatok módban nyílnak.
+- **Kevés találat asztalon:** a buborékok legfeljebb kb. 210 px-esre nőnek (eddig kb. 275 px). Nagy buborékon a narancs gyűrű vastagsága legfeljebb 6 px, a ragyogás kilógása legfeljebb kb. 22 px, így nem folynak össze.
+
+### 26.8 Térkép és kártyanyitás simítása (2026-09-24)
+**Térkép:** sok nagy, energikus fajta célpontja szinte egybeesett, és kis kijelzőn a rugó és az ütközés folyamatosan egymás ellen dolgozott.
+
+| 360 px széles kijelző | Előtte | Utána |
+|---|---|---|
+| Átlagos elmozdulás képkockánként | 1,5 px | 0,03 px |
+| Rezgő (sokszor irányt váltó) buborék | 29 db | 0 db |
+
+- A célpontokat a `layoutMap` előre szétteríti („méhraj”), a fizikával azonos távolsággal.
+- A térkép rugóereje fele akkora (0,06 → 0,03).
+
+**Kártyanyitás (mobil):** a mérés 412 × 915 px-en, 2,625-ös eszközaránnyal, 4×-es CPU-lassítással készült.
+- **Okok:**
+  - a százalékszámláló a nyitástól kezdve minden képkockában újraírta a szöveget (a teljes kártyát újrarendezte);
+  - a hajtás alatti részek elrendezése és az első betűformázás a kinyílás elejére esett;
+  - a takaró beúszásának végén és a buborék visszakapcsolásakor újraszámolódott a rétegrend.
+- **Javítás:**
+  - a számláló és a gyűrű a kinyílás után indul, és csak valódi változáskor ír (`.mring { contain: strict }`);
+  - mobilon a hajtás alatti részek `content-visibility: hidden` alatt várnak (`.card.lazy`), és a kinyílás végén jelennek meg;
+  - üresjáratban egy láthatatlan kártya előre bemelegíti a betűváltozatokat (`warmCard`);
+  - a takaró nem elmosott, és saját rétegen marad;
+  - a buborék a kinyílás végén válik újra láthatóvá;
+  - mobilon elmarad a lépcsőzetes beúszás.
+
+| Kártyanyitás (4× lassítás) | Előtte | Utána |
+|---|---|---|
+| Koppintás → első képkocka blokk | 1,0–1,6 s | 0,14–0,19 s |
+| Kinyílás alatti leghosszabb feladat | 150–300 ms | kb. 50–65 ms |
 
 *pacsi 🐾 – mert a jó döntés is egy kézfogással kezdődik.*

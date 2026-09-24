@@ -256,7 +256,7 @@ $('#mobViews').addEventListener('click', e => { const b = e.target.closest('[dat
 $('#groupSeg').addEventListener('click', e => { const b = e.target.closest('[data-g]'); if (b) { S.groupBy = b.dataset.g; refresh(); } });
 function setMode(m) {
   S.mode = m;
-  store.set('mode', m);
+  store.set('mode2', m);
   refresh({ x: LR.cx, y: LR.t });
 }
 $('#modeSeg').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) setMode(b.dataset.mode); });
@@ -392,7 +392,8 @@ qInput.addEventListener('keydown', e => {
 /* ---------- Bemutató (coach mark) ---------- */
 const COACH = [
   { t: () => stage, h: 'Szia, itt a Pacsi! 🐾', p: () => `Ez itt ${TOTAL} kutyafajta egy felhőben. ${S.mobile ? 'Koppints' : 'Vidd az egeret'} egy buborékra, és megtudod, ki az.` },
-  { t: () => S.mobile ? $('#dock') : $('#panel'), h: 'Szűrj, és figyeld!', p: () => S.mobile ? 'Kapcsolj be egy szűrőt: ami nem illik hozzád, kirepül.' : 'Kapcsolj be egy szűrőt, és nézd, ki ugrik előre!' },
+  { t: () => S.mobile ? $('#dock') : $('#panel'), h: 'Szűrj, és figyeld!', p: () => modeOf() === 'rank' ? 'Kapcsolj be egy szűrőt, és nézd, ki ugrik előre!'
+    : S.mobile ? 'Kapcsolj be egy szűrőt: ami nem illik hozzád, kirepül.' : 'Kapcsolj be egy szűrőt: ami nem illik hozzád, eltűnik, a többi megnő.' },
   { t: () => S.mobile ? $('[data-tab="kviz"]') : $('#quizBtn'), h: 'Nem tudod, hol kezdd?', p: () => 'A Párkereső kvíz 10 kérdés, kb. 1 perc – és élőben formálja a felhőt.' },
 ];
 function coach(i = 0) {

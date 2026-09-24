@@ -128,7 +128,7 @@ function computeTargets() {
   const obsA = OBS.reduce((a, q) => a + Math.max(0, Math.min(q.r, LR.r) - Math.max(q.l, LR.l)) * Math.max(0, Math.min(q.b, LR.b) - Math.max(q.t, LR.t)), 0);
   const A = Math.max(LR.w * LR.h - obsA, 20000);
   const sum = vis.reduce((a, o) => a + o.ns * o.ns, 0) || 1;
-  const r0 = clamp(Math.sqrt(rho * A / (Math.PI * sum)) * fill, S.mobile ? 14 : 16, S.mobile ? 86 : 110);
+  const r0 = clamp(Math.sqrt(rho * A / (Math.PI * sum)) * fill, S.mobile ? 14 : 16, S.mobile ? 86 : 88);
   const rMax = Math.min(LR.w, LR.h) * .3;
   for (const o of B) o.nrt = Math.min(r0 * o.ns, rMax);
   if (S.view === 'csoport') layoutGroups(vis);
@@ -255,6 +255,35 @@ function layoutMap() {
     o.mx = LR.l + px + fx * (LR.w - px * 1.5);
     o.my = LR.t + py + fy * (LR.h - py * 2.2);
   }
+  // Sok hasonló (nagy, energikus) fajta célpontja szinte egybeesik: a rugó egy pontba húzná őket, az
+  // ütközés széttolná – ettől rángatóztak kis kijelzőn. Ezért a célpontokat előre szétterítjük
+  // („méhraj”), a fizikával azonos távolsággal: nyugalomban így nincs mi ellen dolgozniuk.
+  const vis = B.filter(o => o.nvis), gap = S.mobile ? 4 : 6;
+  for (let it = 0; it < 90; it++) {
+    let moved = false;
+    for (let i = 0; i < vis.length; i++) {
+      const a = vis[i];
+      for (let j = i + 1; j < vis.length; j++) {
+        const c = vis[j], min = (a.nrt + c.nrt) * 1.09 + gap;
+        let dx = c.mx - a.mx, dy = c.my - a.my;
+        if (dx > min || dx < -min || dy > min || dy < -min) continue;
+        const d2 = dx * dx + dy * dy;
+        if (d2 >= min * min) continue;
+        let d = Math.sqrt(d2);
+        if (d < .01) { dx = Math.cos(i * 2.4 + j); dy = Math.sin(i * 2.4 + j); d = 1; }   // egybeeső pontok
+        const push = (min - d) / 2 / d;
+        a.mx -= dx * push; a.my -= dy * push;
+        c.mx += dx * push; c.my += dy * push;
+        moved = true;
+      }
+    }
+    for (const o of vis) {
+      const R = o.nrt * 1.09;
+      o.mx = clamp(o.mx, LR.l + R, Math.max(LR.l + R, LR.r - R));
+      o.my = clamp(o.my, LR.t + R, Math.max(LR.t + R, LR.b - R));
+    }
+    if (!moved) break;
+  }
 }
 function drawMap() {
   const svg = $('#mapLayer');
@@ -365,7 +394,7 @@ function enter(o) {
 let stepN = 0;
 function anchor(o) {
   if (S.view === 'csoport' && o.grp) return [o.grp.x, o.grp.y, .024, .024];
-  if (S.view === 'terkep') return [o.mx, o.my, .06, .06];
+  if (S.view === 'terkep') return [o.mx, o.my, .03, .03];      // lágyabb rugó: nyugodtabb térkép
   // ellipszis alakú vonzás: a felhő a színpad arányát veszi fel (kx = ky · (h/w)²)
   const m = o.b.m, asp = clamp(LR.h / LR.w, .3, 1.6), a2 = asp * asp;
   if (m == null) return [LR.cx, LR.cy, .0024 * a2, .0024];
@@ -573,19 +602,21 @@ function drawUnder(t) {
     const a = o.op;
     if (o.glowV > .01 && a > .05) {
       const br = rm ? 0 : (1 - Math.cos(t * .0021 + o.ph)) / 2;       // 3 mp-es „lélegzés”
-      const R = o.rr * 1.76 * (1 + .12 * br);
+      // a glória kilógása kis buborékoknál arányos, nagyoknál legfeljebb ~22 px (ne folyjanak össze)
+      const R = o.rr + Math.min(o.rr * .435, 22) * (1 + .3 * br);
       const g = ux.createRadialGradient(o.rx, o.ry, o.rr * .6, o.rx, o.ry, R);
       g.addColorStop(0, col(.42 * o.glowV * a * (1 - .35 * br)));
-      g.addColorStop(.72, col(0));
+      g.addColorStop(1, col(0));
       ux.fillStyle = g;
       ux.beginPath(); ux.arc(o.rx, o.ry, R, 0, 6.2832); ux.fill();
     }
     if (o.ringV > .004 && a > .05) {
       ux.globalAlpha = a;
       ux.strokeStyle = col(1);
-      ux.lineWidth = o.rr * .1;
+      const lw = Math.min(o.rr * .1, 6);                              // nagy buborékon se legyen vaskos
+      ux.lineWidth = lw;
       ux.beginPath();
-      ux.arc(o.rx, o.ry, o.rr * 1.1625, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * Math.min(o.ringV, 1));
+      ux.arc(o.rx, o.ry, o.rr * 1.1 + lw / 2 + 1, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * Math.min(o.ringV, 1));
       ux.stroke();
       ux.globalAlpha = 1;
     }
@@ -731,6 +762,7 @@ function intro() {
 /* ---------- Fő ciklus ---------- */
 let lastT = now(), acc = 0;
 let paused = false;
+const bgEl = $('.bg');
 function frame(t) {
   requestAnimationFrame(frame);
   const dt = Math.min(t - lastT, 100);
@@ -738,7 +770,7 @@ function frame(t) {
   // Ha a fajtakártya (vagy mobilon egy takaró lap) nyitva van, a felhő megáll: nem fut a fizika,
   // nem mozognak a rétegek, így a háttér-elmosásnak sem kell képkockánként újraszámolnia.
   const p = !cardEl.hidden || (S.mobile && !scrimEl.hidden) || S.view === 'lista';
-  if (p !== paused) { paused = p; document.body.classList.toggle('paused', p); }
+  if (p !== paused) { paused = p; bgEl.classList.toggle('paused', p); }   // csak a háttér: ne az egész dokumentum stílusa számolódjon újra
   if (!paused) {
     acc += dt;
     for (const o of B) if (o.pend && t >= o.pend.at) commit(o, o.pend);

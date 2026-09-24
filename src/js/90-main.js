@@ -4,7 +4,8 @@
 function init() {
   applyTheme();
   document.documentElement.classList.toggle('rm', RM());
-  S.mode = store.get('mode', null);
+  // „mode2”: az alapértelmezés Csak találatokra váltott, a korábban elmentett választást egyszer nullázzuk
+  S.mode = store.get('mode2', null);
   const h = decodeHash();
   if (h.quiz) S.quiz = { answers: h.quiz, crit: quizCrit(h.quiz), done: true };
   stage.classList.toggle('mobile', S.mobile);
@@ -20,6 +21,7 @@ function init() {
   intro();
   requestAnimationFrame(t => { lastT = t; frame(t); });
   setTimeout(initRoving, 1600);
+  setTimeout(warmCard, 3200);         // a felhő beállása után: első kártyanyitás gyorsítása
   if (h.card) setTimeout(() => openCard(h.card, { push: false }), 1300);
   else if (h.kviz) { syncHash(); setTimeout(() => openDrawer('kviz'), 1300); }
   store.set('visits', store.get('visits', 0) + 1);
