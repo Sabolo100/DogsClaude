@@ -118,6 +118,7 @@ function decodeHash() {
     if (g) S.groupBy = g;
   }
   if (p.get('b') && BY_ID.has(p.get('b'))) out.card = p.get('b');
+  if (p.has('kviz')) out.kviz = true;   // PWA-gyorsparancs: „Párkereső kvíz”
   return out;
 }
 let hashTimer = 0;

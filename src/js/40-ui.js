@@ -245,6 +245,8 @@ function setView(v) {
   S.view = v;
   $('#listView').hidden = v !== 'lista';
   bubblesEl.style.visibility = v === 'lista' ? 'hidden' : '';
+  stage.classList.toggle('list', v === 'lista');
+  if (v === 'lista') clearUnder();
   if (wasList && !RM()) for (const o of B) { o.r = .5; }
   refresh(null, { instant: false });
   if (!RM() && v !== 'lista') for (const o of B) if (o.st === 'in') { o.vx += rand(-6, 6); o.vy += rand(-6, 6); }
@@ -266,8 +268,11 @@ $('#flyCloud').addEventListener('click', () => openDrawer('kirepultek'));
 function renderList() {
   const box = $('#listView');
   if (S.view !== 'lista') { box.innerHTML = ''; return; }
-  if (!S.mobile) box.style.paddingTop = Math.max(150, $('#hud').getBoundingClientRect().bottom - stage.getBoundingClientRect().top + 16) + 'px';
-  else box.style.paddingTop = '';
+  // A lista a számláló / szűrő-pillek ALATT kezdődik (nem csak alá van tolva), így görgetéskor
+  // a kártyák nem csúsznak be a fejléc mögé.
+  const hudBottom = $(S.mobile ? '#mobHud' : '#hud').getBoundingClientRect().bottom;
+  box.style.top = Math.max(0, Math.round(hudBottom - stage.getBoundingClientRect().top + (S.mobile ? 6 : 10))) + 'px';
+  box.style.paddingTop = '8px';
   const active = S.crit.length > 0;
   const arr = [...BREEDS].sort((a, b) => active ? (b.ok - a.ok) || (b.m - a.m) : (b.nep - a.nep) || COLL.compare(a.nev, b.nev));
   box.innerHTML = arr.map((b, i) => `<button class="lcard${active && !b.ok ? ' out' : ''}" data-id="${b.id}" style="${picStyle(b)};animation-delay:${Math.min(i, 30) * 18}ms">

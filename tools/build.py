@@ -97,7 +97,7 @@ def main():
             {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
             {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
         ],
-        "shortcuts": [{"name": "Párkereső kvíz", "url": "./#v=felho"}],
+        "shortcuts": [{"name": "Párkereső kvíz", "url": "./#kviz"}],
     }
     (pwa / "manifest.webmanifest").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     head = ('<link rel="manifest" href="manifest.webmanifest">\n'
@@ -106,7 +106,12 @@ def main():
     (pwa / "index.html").write_text(index, encoding="utf-8")
     files = ["./", "index.html", "manifest.webmanifest", "img/sprite-thumbs.webp"] + \
             [f"img/portrek/{i}.webp" for i in ids] + [f"icons/{p.name}" for p in (pwa / "icons").iterdir()]
-    version = hashlib.sha1(index.encode("utf-8")).hexdigest()[:10]
+    # a verzió minden előre gyorsítótárazott fájlból számolódik – egy képcsere is frissítést indít
+    digest = hashlib.sha1()
+    for f in files[1:]:
+        digest.update(f.encode("utf-8"))
+        digest.update((pwa / f).read_bytes())
+    version = digest.hexdigest()[:10]
     sw = (SRC / "sw.js").read_text(encoding="utf-8").replace("__VERSION__", version).replace("__FILES__", json.dumps(files))
     (pwa / "sw.js").write_text(sw, encoding="utf-8")
 

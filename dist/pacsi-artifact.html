@@ -719,6 +719,9 @@ body.paused .blob { animation-play-state: paused; }
 .lcard { background: color-mix(in srgb, var(--solid) 88%, transparent); }
 @media (max-width: 899px) { .dock { background: color-mix(in srgb, var(--solid) 92%, transparent); } .panel { background: var(--solid); } }
 
+/* Lista nézetben a felhő rétegei (gyűrűvászon, csoportfoltok, térkép) nem látszanak */
+.stage.list .under, .stage.list .groups, .stage.list .maplayer { visibility: hidden; }
+
 .app { height: 100%; }
 @media (max-width: 899px) { .app { grid-template-rows: 58px 1fr auto auto; } .topbar { padding-top: 0; } .tabbar { padding-bottom: 6px; } }</style>
 
@@ -1002,6 +1005,7 @@ function decodeHash() {
     if (g) S.groupBy = g;
   }
   if (p.get('b') && BY_ID.has(p.get('b'))) out.card = p.get('b');
+  if (p.has('kviz')) out.kviz = true;   // PWA-gyorsparancs: „Párkereső kvíz”
   return out;
 }
 let hashTimer = 0;
@@ -1702,6 +1706,16 @@ function render(t) {
   drawUnder(t);
 }
 
+/* Lista nézetbe váltáskor a vászon azonnal üres legyen: a felhő ott megáll, és a félig
+   átlátszó („kiesett”) listakártyák mögött különben átlátszana az utolsó képkocka. */
+function clearUnder() {
+  ux.setTransform(1, 0, 0, 1, 0, 0);
+  ux.clearRect(0, 0, underC.width, underC.height);
+  for (const o of B) { o.ringV = 0; o.glowV = 0; }
+  PULSES.length = 0;
+  underDirty = false;
+}
+
 /* ---------- Alsó vászon: illeszkedési gyűrű, glória, pulzus ----------
    Mind a 124 buborék díszítése egyetlen vásznon rajzolódik; a buborékrétegeket így sosem kell
    újrarajzolni, csak mozgatni (transform) és halványítani (opacity). */
@@ -2212,6 +2226,8 @@ function setView(v) {
   S.view = v;
   $('#listView').hidden = v !== 'lista';
   bubblesEl.style.visibility = v === 'lista' ? 'hidden' : '';
+  stage.classList.toggle('list', v === 'lista');
+  if (v === 'lista') clearUnder();
   if (wasList && !RM()) for (const o of B) { o.r = .5; }
   refresh(null, { instant: false });
   if (!RM() && v !== 'lista') for (const o of B) if (o.st === 'in') { o.vx += rand(-6, 6); o.vy += rand(-6, 6); }
@@ -2233,8 +2249,11 @@ $('#flyCloud').addEventListener('click', () => openDrawer('kirepultek'));
 function renderList() {
   const box = $('#listView');
   if (S.view !== 'lista') { box.innerHTML = ''; return; }
-  if (!S.mobile) box.style.paddingTop = Math.max(150, $('#hud').getBoundingClientRect().bottom - stage.getBoundingClientRect().top + 16) + 'px';
-  else box.style.paddingTop = '';
+  // A lista a számláló / szűrő-pillek ALATT kezdődik (nem csak alá van tolva), így görgetéskor
+  // a kártyák nem csúsznak be a fejléc mögé.
+  const hudBottom = $(S.mobile ? '#mobHud' : '#hud').getBoundingClientRect().bottom;
+  box.style.top = Math.max(0, Math.round(hudBottom - stage.getBoundingClientRect().top + (S.mobile ? 6 : 10))) + 'px';
+  box.style.paddingTop = '8px';
   const active = S.crit.length > 0;
   const arr = [...BREEDS].sort((a, b) => active ? (b.ok - a.ok) || (b.m - a.m) : (b.nep - a.nep) || COLL.compare(a.nev, b.nev));
   box.innerHTML = arr.map((b, i) => `<button class="lcard${active && !b.ok ? ' out' : ''}" data-id="${b.id}" style="${picStyle(b)};animation-delay:${Math.min(i, 30) * 18}ms">
@@ -2993,6 +3012,7 @@ function init() {
   renderFilters();
   $('#listView').hidden = S.view !== 'lista';
   bubblesEl.style.visibility = S.view === 'lista' ? 'hidden' : '';
+  stage.classList.toggle('list', S.view === 'lista');
   markFav();
   updateBadges();
   fxResize();
@@ -3002,8 +3022,9 @@ function init() {
   requestAnimationFrame(t => { lastT = t; frame(t); });
   setTimeout(initRoving, 1600);
   if (h.card) setTimeout(() => openCard(h.card, { push: false }), 1300);
+  else if (h.kviz) { syncHash(); setTimeout(() => openDrawer('kviz'), 1300); }
   store.set('visits', store.get('visits', 0) + 1);
-  if (!store.get('coach', 0) && !h.card && !/[?&]nocoach/.test(location.search)) setTimeout(() => { if (!S.card && !S.drawer) coach(0); }, 2600);
+  if (!store.get('coach', 0) && !h.card && !h.kviz && !/[?&]nocoach/.test(location.search)) setTimeout(() => { if (!S.card && !S.drawer) coach(0); }, 2600);
   else setTimeout(() => maybeInstall(), 5000);
   if ('serviceWorker' in navigator && window.PACSI_PWA && location.protocol.startsWith('http')) {
     navigator.serviceWorker.register('sw.js').then(reg => {

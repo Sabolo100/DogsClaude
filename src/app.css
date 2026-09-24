@@ -714,3 +714,6 @@ body.paused .blob { animation-play-state: paused; }
 .drawer { background: var(--solid); }
 .lcard { background: color-mix(in srgb, var(--solid) 88%, transparent); }
 @media (max-width: 899px) { .dock { background: color-mix(in srgb, var(--solid) 92%, transparent); } .panel { background: var(--solid); } }
+
+/* Lista nézetben a felhő rétegei (gyűrűvászon, csoportfoltok, térkép) nem látszanak */
+.stage.list .under, .stage.list .groups, .stage.list .maplayer { visibility: hidden; }

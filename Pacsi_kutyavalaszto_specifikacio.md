@@ -1336,6 +1336,7 @@ A képek AI-generált **koncepciótervek** (OpenAI `gpt-image-2`; laptop 2560 ×
 
 ### 26.1 Elkészült
 - **Kiszállítás:** `dist/pacsi.html` (egyfájlos, 6,3 MB, `file://`-ként is fut) és `dist/pwa/` (manifest, service worker 137 előre gyorsítótárazott fájllal, ikonok, teljesen offline).
+- **Élő PWA:** <https://sabolo100.github.io/DogsClaude/>. GitHub Pages, a `.github/workflows/pages.yml` minden `main`-re pusholt `dist/pwa/` változás után automatikusan közzéteszi. A service worker verziója az összes előre gyorsítótárazott fájl tartalmából számolódik, így egy képcsere is frissítést indít. A manifest „Párkereső kvíz” gyorsparancsa (`#kviz`) közvetlenül a kvízt nyitja.
 - **Fajtafelhő, 124 fajta:** saját rugós fizika (ütközés, ellipszis alakú vonzás, akadálykerülés a HUD körül, adaptív kitöltés). Élő lebegés, egérkövető mélységi parallax.
 - **Szűrés:** 17 szűrő; élő előnézeti számok; aktív szűrő-pillek; Rangsor és Csak találatok mód.
 - **Animációk:** hullámeffekt a szűrőtől, előreugrás túllövéssel, mélységi szintek (elmosás, telítettség), pulzusgyűrű a 100%-os egyezésnél. Mobilon kirepülés a „↑ N” felhőjelvénybe szikranyommal, a kiesettek visszahullanak.

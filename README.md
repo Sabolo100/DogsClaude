@@ -4,12 +4,20 @@
 
 124 népszerű, Európában tartott kutyafajta egy élő, interaktív felhőben. Szűrj, figyeld, ki ugrik előre (vagy repül ki), hasonlíts össze, töltsd ki a Párkereső kvízt.
 
+### ▶ Élő verzió: **<https://sabolo100.github.io/DogsClaude/>**
+
+Telepítés appként (az első megnyitás után offline is működik):
+
+- **Android (Chrome):** nyisd meg a linket → ⋮ menü → *Alkalmazás telepítése* / *Hozzáadás a kezdőképernyőhöz*
+- **iPhone / iPad (Safari):** nyisd meg a linket → Megosztás gomb → *Főképernyőhöz adás*
+- **Laptop (Chrome, Edge):** a címsor jobb szélén a telepítés ikon → *Telepítés*
+
 ## Használat
 
 | Mit | Hogyan |
 |---|---|
 | **Egyfájlos verzió** | Nyisd meg a `dist/pacsi.html` fájlt dupla kattintással. Minden benne van (adatok, 128 portré), offline is működik. Az egyetlen külső elem a Google Fonts: offline a rendszer betűtípusai lépnek helyette. |
-| **PWA (telepíthető app)** | Töltsd fel a `dist/pwa/` mappa tartalmát bármilyen statikus tárhelyre (GitHub Pages, Netlify, Cloudflare Pages). HTTPS-en telepíthető, és az első betöltés után teljesen offline működik. |
+| **PWA (telepíthető app)** | A `dist/pwa/` mappát a `.github/workflows/pages.yml` munkafolyamat minden `main`-re pusholt változás után automatikusan kiteszi GitHub Pagesre (lásd fent). Bármilyen más statikus tárhelyen is működik (Netlify, Cloudflare Pages): HTTPS-en telepíthető, és az első betöltés után teljesen offline megy. |
 | **Helyi kipróbálás** | `python -m http.server 8765 --directory dist`, majd <http://localhost:8765/pacsi.html> vagy <http://localhost:8765/pwa/> |
 
 Az app állapota a URL-ben tárolódik, így linkkel megosztható. Például:
@@ -22,6 +30,8 @@ python tools/build.py
 ```
 
 Ez futtatja az adatépítőt (`tools/build_data.py`), összefűzi a `src/` fájlokat, beágyazza a képeket, és legyártja a `dist/pacsi.html` fájlt és a `dist/pwa/` mappát (manifest, service worker, ikonok).
+
+**Élesítés:** build után commit + push a `main` ágra. A Pages-munkafolyamat pár percen belül kiteszi az új `dist/pwa/` tartalmat. A service worker verziója a tartalomból számolódik, ezért a már telepített appok a következő megnyitáskor „Új verzió érhető el” értesítést kapnak.
 
 ## Projektstruktúra
 

@@ -11,6 +11,7 @@ function init() {
   renderFilters();
   $('#listView').hidden = S.view !== 'lista';
   bubblesEl.style.visibility = S.view === 'lista' ? 'hidden' : '';
+  stage.classList.toggle('list', S.view === 'lista');
   markFav();
   updateBadges();
   fxResize();
@@ -20,8 +21,9 @@ function init() {
   requestAnimationFrame(t => { lastT = t; frame(t); });
   setTimeout(initRoving, 1600);
   if (h.card) setTimeout(() => openCard(h.card, { push: false }), 1300);
+  else if (h.kviz) { syncHash(); setTimeout(() => openDrawer('kviz'), 1300); }
   store.set('visits', store.get('visits', 0) + 1);
-  if (!store.get('coach', 0) && !h.card && !/[?&]nocoach/.test(location.search)) setTimeout(() => { if (!S.card && !S.drawer) coach(0); }, 2600);
+  if (!store.get('coach', 0) && !h.card && !h.kviz && !/[?&]nocoach/.test(location.search)) setTimeout(() => { if (!S.card && !S.drawer) coach(0); }, 2600);
   else setTimeout(() => maybeInstall(), 5000);
   if ('serviceWorker' in navigator && window.PACSI_PWA && location.protocol.startsWith('http')) {
     navigator.serviceWorker.register('sw.js').then(reg => {

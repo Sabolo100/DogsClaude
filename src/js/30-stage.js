@@ -488,6 +488,16 @@ function render(t) {
   drawUnder(t);
 }
 
+/* Lista nézetbe váltáskor a vászon azonnal üres legyen: a felhő ott megáll, és a félig
+   átlátszó („kiesett”) listakártyák mögött különben átlátszana az utolsó képkocka. */
+function clearUnder() {
+  ux.setTransform(1, 0, 0, 1, 0, 0);
+  ux.clearRect(0, 0, underC.width, underC.height);
+  for (const o of B) { o.ringV = 0; o.glowV = 0; }
+  PULSES.length = 0;
+  underDirty = false;
+}
+
 /* ---------- Alsó vászon: illeszkedési gyűrű, glória, pulzus ----------
    Mind a 124 buborék díszítése egyetlen vásznon rajzolódik; a buborékrétegeket így sosem kell
    újrarajzolni, csak mozgatni (transform) és halványítani (opacity). */
