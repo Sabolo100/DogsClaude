@@ -1432,7 +1432,7 @@ Valódi telefonos visszajelzés: a telepített PWA betöltésekor és animáció
   - az ujj útja szakaszként hat, így gyors húzásnál sem ugrik át buborékokat;
   - a taszítás a sebességgel nő;
   - a megkavart buborékok egy ideig lazábban csillapodnak.
-- **Látvány:** az ujj nyomán halványuló hullámkörök jelennek meg az alsó vásznon.
+- **Látvány:** az ujj nyomán halványuló hullámkörök jelennek meg a buborékok fölötti részecskevásznon, így a sűrű felhőben is látszanak.
 - **Koppintás és hosszú nyomás:** változatlanul működnek (a kavarás 9 px elmozdulás után indul). Húzás után nem nyílik kártya, és érintéskor a buborék kicsit „benyomódik”.
 - **Érintéskezelés:** a színpadon `touch-action: none`, a lista továbbra is görgethető.
 - **Mérés:** egy húzás a 124 buborékból 84-et mozdított el 15 px-nél többel (legfeljebb kb. 110 px-rel), és 3 másodperc alatt újra összeállt a felhő.

@@ -556,7 +556,7 @@ function clearUnder() {
 function drawUnder(t) {
   const active = S.crit.length > 0 && S.view !== 'lista';
   const rm = RM();
-  let work = PULSES.length > 0 || RIPPLES.length > 0;
+  let work = PULSES.length > 0;
   if (!work) for (const o of B) if (o.ringV > .004 || o.glowV > .01 || (active && o.ringT > 0 && o.st !== 'gone')) { work = true; break; }
   if (!work && !underDirty) return;
   ux.setTransform(underDpr, 0, 0, underDpr, 0, 0);
@@ -598,16 +598,6 @@ function drawUnder(t) {
     ux.strokeStyle = col(.9 * (1 - e) * o.op);
     ux.lineWidth = o.rr * .075 * sc;
     ux.beginPath(); ux.arc(o.rx, o.ry, o.rr * 1.04 * sc, 0, 6.2832); ux.stroke();
-  }
-  // kavarás hullámai: az ujj nyomán táguló, halványuló körök
-  for (let i = RIPPLES.length - 1; i >= 0; i--) {
-    const q = RIPPLES[i], u = (t - q.t0) / 760;
-    if (u >= 1) { RIPPLES.splice(i, 1); continue; }
-    if (u < 0) continue;
-    const e = 1 - Math.pow(1 - u, 3);
-    ux.strokeStyle = col(.55 * (1 - u));
-    ux.lineWidth = 3 * (1 - u) + .8;
-    ux.beginPath(); ux.arc(q.x, q.y, 12 + 70 * e, 0, 6.2832); ux.stroke();
   }
 }
 
@@ -668,9 +658,19 @@ function drawHeart(x, y, s) {
   fxx.fill();
 }
 function fxStep() {
-  if (!FX.length) { if (fxc.dataset.dirty) { fxx.clearRect(0, 0, innerWidth, innerHeight); delete fxc.dataset.dirty; } return; }
+  if (!FX.length && !RIPPLES.length) { if (fxc.dataset.dirty) { fxx.clearRect(0, 0, innerWidth, innerHeight); delete fxc.dataset.dirty; } return; }
   fxc.dataset.dirty = 1;
   fxx.clearRect(0, 0, innerWidth, innerHeight);
+  // kavarás hullámai: az ujj nyomán táguló, halványuló körök – a buborékok fölött, hogy a sűrű felhőben is látsszanak
+  const tn = now(), [cr, cg, cb] = ringRGB;
+  for (let i = RIPPLES.length - 1; i >= 0; i--) {
+    const q = RIPPLES[i], u = (tn - q.t0) / 900;
+    if (u >= 1) { RIPPLES.splice(i, 1); continue; }
+    const e = 1 - Math.pow(1 - Math.max(u, 0), 3);
+    fxx.strokeStyle = `rgba(${cr},${cg},${cb},${(.62 * (1 - u)).toFixed(3)})`;
+    fxx.lineWidth = 3.6 * (1 - u) + 1;
+    fxx.beginPath(); fxx.arc(SR.left + q.x, SR.top + q.y, 12 + 70 * e, 0, 6.2832); fxx.stroke();
+  }
   FX = FX.filter(p => {
     p.life++;
     p.vy += p.g; p.vx *= .985; p.x += p.vx; p.y += p.vy;

@@ -261,7 +261,7 @@ body.paused .blob { animation-play-state: paused; }
   box-shadow: 0 0 0 var(--ring) var(--bubble-ring), 0 var(--sh-y) var(--sh-b) var(--sh-c), 0 0 0 calc(var(--s) * .0625) var(--rc, transparent);
 }
 :root[data-theme="dark"] .b .face { --sh-c: rgba(0, 0, 0, calc(var(--sh, .16) * 2.4)); }
-/* illeszkedési gyűrű, glória, pulzus, kavarás-hullám: közös vászon a buborékok alatt (lásd drawUnder) */
+/* illeszkedési gyűrű, glória, pulzus: közös vászon a buborékok alatt (lásd drawUnder) */
 .under { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
 .b .fav-b, .b .cmp-b { position: absolute; width: calc(var(--s) * .275); height: calc(var(--s) * .275); border-radius: 50%; display: grid; place-items: center; color: #fff; box-shadow: 0 0 0 calc(var(--s) * .031) var(--bubble-ring); transform: scale(0); transition: transform .45s var(--ease-spring); }
 .b .fav-b { right: calc(var(--s) * -.025); top: calc(var(--s) * -.025); background: var(--primary-fill); }
