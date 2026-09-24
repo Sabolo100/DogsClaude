@@ -33,6 +33,21 @@ Ez futtatja az adatépítőt (`tools/build_data.py`), összefűzi a `src/` fájl
 
 **Élesítés:** build után commit + push a `main` ágra. A Pages-munkafolyamat pár percen belül kiteszi az új `dist/pwa/` tartalmat. A service worker verziója a tartalomból számolódik, ezért a már telepített appok a következő megnyitáskor „Új verzió érhető el” értesítést kapnak.
 
+## Verziózás
+
+- **Hol van a verzió:** a verziószám a `VERSION` fájlban van (pl. `1.4.0`), a változásokat a [`CHANGELOG.md`](CHANGELOG.md) sorolja fel.
+- **Minden kiadásnál:**
+  1. Növeld a `VERSION`-t.
+  2. Írj egy bejegyzést a `CHANGELOG.md`-be.
+  3. Futtasd a `python tools/build.py`-t.
+  4. Commit és push.
+- **Build-azonosító:** a build a forrásból rövid azonosítót is számol.
+- **Hol látszik:**
+  - mobilon a Tippek panel névjegykártyáján;
+  - asztalon a bal oldali panel alján;
+  - a böngésző konzoljában;
+  - a service worker gyorsítótárának nevében (`pacsi-1.4.0-…`).
+
 ## Projektstruktúra
 
 ```

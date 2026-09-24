@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">
 <title>Pacsi by DarwinAI</title>
 <meta name="author" content="DarwinAI – www.darwinai.hu">
 <meta name="application-name" content="Pacsi by DarwinAI">
@@ -688,7 +688,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .tog[aria-pressed="true"] .chip-n { visibility: hidden; }
 .c-sub .ic, .tip .hu { border-radius: 3px; }
 @media (max-width: 899px) {
-  .stage.mobile { overflow: visible; z-index: 9; }
+  /* függőlegesen látszik ami kilóg (a kirepülő buborékok), vízszintesen nem: egy kilógó elem miatt az
+     Android Chrome „kicsinyítené” az oldalt, és eltolódna minden (pl. a kártya bezáró ✕-e kilógott) */
+  .stage.mobile { overflow: visible; overflow-x: clip; z-index: 9; }
   .topbar { z-index: 8; }
   .flycloud { z-index: 2; }
   .maplayer .quad { font-size: 17px; }
@@ -774,6 +776,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 }
 /* láthatatlan bemelegítő kártya (warmCard) */
 .card.warm .rv { animation: none; }
+
+/* Verziószám (VERSION + build-azonosító): asztali panel lábléce, Tippek → névjegykártya */
+.ver { display: block; margin-top: 6px; text-align: center; font: 600 11px/1.3 var(--font-u); color: var(--ink-3); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.credit-card .ver { text-align: left; margin: 6px 0 0; }
 </style>
 </head>
 <body>
@@ -824,6 +830,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     <div class="panel-foot">
       <button class="cta" id="quizBtn"><svg class="ic"><use href="#i-sparkle"/></svg>Párkereső kvíz</button>
       <a class="credit" href="https://www.darwinai.hu" target="_blank" rel="noopener">Fejlesztette: <b>DarwinAI</b> · www.darwinai.hu ↗</a>
+      <span class="ver" data-ver></span>
     </div>
   </aside>
 
@@ -937,6 +944,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 <script>window.PACSI_PWA=true;</script>
 <script>(() => {
 'use strict';
+const APP_VERSION = "1.4.0", APP_BUILD = "86f3b60";
 /* ==========================================================================
    Alapok: segédfüggvények, adatok, állapot, tárolás, URL-állapot
    ========================================================================== */
@@ -983,6 +991,16 @@ document.documentElement.style.setProperty('--sp-size', `800% ${SP_ROWS * 100}%`
 
 const PORTRAIT_URL = {};
 const portrait = id => IMG[id] ? (PORTRAIT_URL[id] || (PORTRAIT_URL[id] = toBlobURL(IMG[id]))) : `img/portrek/${id}.webp`;
+/* A portrét már a buborék megérintésekor (asztalon rámutatáskor) dekódoljuk: különben a kártya első
+   képkockáiban üres színes kör látszik a helyén, és a kép csak a kinyílás közben ugrik be. */
+const DECODED = new Set();
+function predecode(id) {
+  if (DECODED.has(id)) return;
+  DECODED.add(id);
+  const im = new Image();
+  im.src = portrait(id);
+  if (im.decode) im.decode().catch(() => {});
+}
 const spritePos = b => `${(b.sprite % 8) / 7 * 100}% ${Math.floor(b.sprite / 8) / (SP_ROWS - 1) * 100}%`;
 const picStyle = b => `--bgc:${b.bg};--pos:${spritePos(b)}`;
 
@@ -1282,7 +1300,7 @@ let LR = { l: 0, t: 0, r: 100, b: 100, w: 100, h: 100, cx: 50, cy: 50 };
 let OBS = [];
 let fill = 1;
 const mouse = { tx: 0, ty: 0, px: 0, py: 0, x: 0, y: 0, in: false };
-let hovered = null, focusedO = null, hoverTimer = 0;
+let hovered = null, focusedO = null, hoverTimer = 0, tipW = 180;
 let groupsLayout = [];
 let flownShown = 0;
 let FLY = null;   // a felhőjelvény helye – mérésenként egyszer számolva (ne kényszerítsünk elrendezést buborékonként)
@@ -1911,6 +1929,7 @@ function setHover(o) {
   hovered = o;
   if (!o) { tipEl.classList.remove('on'); return; }
   o.hk = S.mobile ? 1 : 1.18;
+  predecode(o.b.id);
   const b = o.b, k = filterCount();
   let badge = '';
   if (S.crit.length) {
@@ -1919,15 +1938,17 @@ function setHover(o) {
       : `<span class="m ${b.ok ? '' : 'part'}">${Math.round(b.m * 100)}%</span>`;
   }
   tipEl.innerHTML = `<span class="tip-in">${b.hu ? ic('flag', 'ic hu') : ''}${esc(b.nev)}${badge}</span>`;
+  tipW = tipEl.firstChild.offsetWidth || 180;
   placeTip(o);
   requestAnimationFrame(() => tipEl.classList.add('on'));
 }
 function placeTip(o) {
   // transformmal pozicionálunk (nem left/top), így képkockánként nincs elrendezés-számolás
-  const R = o.r * 1.1;
+  // a címke tényleges szélessége szerint marad a színpadon belül (hosszú fajtanévnél se lógjon ki)
+  const R = o.r * 1.1, hw = tipW / 2 + 8;
   let y = o.ry + R + 10;
   if (y + 44 > SR.height) y = o.ry - R - 52;
-  tipEl.style.transform = `translate3d(${clamp(o.rx, 90, SR.width - 90).toFixed(1)}px,${y.toFixed(1)}px,0)`;
+  tipEl.style.transform = `translate3d(${clamp(o.rx, hw, Math.max(hw, SR.width - hw)).toFixed(1)}px,${y.toFixed(1)}px,0)`;
 }
 
 /* ---------- Részecskék (vászon) ---------- */
@@ -2075,6 +2096,7 @@ const unpress = () => { if (pressed) { pressed.hk = 1; pressed = null; } };
 bubblesEl.addEventListener('pointerdown', e => {
   const o = BY_EL.get(e.target.closest('.b'));
   lpFired = false;
+  if (o) predecode(o.b.id);
   if (!o || e.pointerType === 'mouse') return;
   if (!RM()) { pressed = o; o.hk = .9; }
   lpTimer = setTimeout(() => { lpFired = true; haptic([10, 30, 10]); toggleFav(o.b.id, o.el); }, 520);
@@ -2107,7 +2129,9 @@ bubblesEl.addEventListener('keydown', e => {
   } else if (e.key === 'f' || e.key === 'F') toggleFav(o.b.id, o.el);
   else if (e.key === 'c' || e.key === 'C') toggleCmp(o.b.id, o.el);
 });
-bubblesEl.addEventListener('focusin', e => { const o = BY_EL.get(e.target.closest('.b')); if (o) setHover(o); });
+// fókuszra csak billentyűzetes navigációnál jelenik meg a névcímke – koppintásra nem: a jobb szélen egy hosszú
+// név kilógott a képből, amitől az Android Chrome „kicsinyítette” az oldalt (eltolódott kártya, kilógó ✕)
+bubblesEl.addEventListener('focusin', e => { const o = BY_EL.get(e.target.closest('.b')); if (o && e.target.matches(':focus-visible')) setHover(o); });
 bubblesEl.addEventListener('focusout', () => { if (hovered && document.activeElement !== hovered.el) setHover(null); });
 function focusBubble(o) {
   if (focusedO) focusedO.el.tabIndex = -1;
@@ -2719,9 +2743,36 @@ function openCard(id, { push = true, dir = 0 } = {}) {
 }
 let lastFocus = null;
 
+/* Kör alakú vágás (clip-path) képkockánként, requestAnimationFrame-mel. A böngészőre bízott (WAAPI)
+   clip-path animációt az Android Chrome a grafikus szálon futtathatja, és ott telefonon néha rossz helyről
+   indult (bal felülről), vagy a kártya jobb felső sarka – a bezáró ✕ – levágva maradt. Így a kör mindig a
+   buborékból indul, az órája az első kirajzolt képkockától jár, és a végén a vágás biztosan lekerül. */
+let clipRaf = 0, clipR = 0;
+const easeOut = p => 1 - Math.pow(1 - p, 4);   // ≈ cubic-bezier(.3,.9,.25,1)
+const easeIn = p => p * p * p;                  // ≈ cubic-bezier(.55,0,.8,.4)
+function clipCircle(el, x, y, r0, r1, dur, ease, { op1 = 1, done } = {}) {
+  cancelAnimationFrame(clipRaf);
+  const at = `px at ${x.toFixed(1)}px ${y.toFixed(1)}px)`;
+  el.style.clipPath = `circle(${r0.toFixed(1)}${at}`;
+  clipR = r0;
+  let t0 = 0;
+  const tick = t => {
+    if (!t0) t0 = t;
+    const p = Math.min(1, (t - t0) / dur), e = ease(p);
+    clipR = r0 + (r1 - r0) * e;
+    el.style.clipPath = `circle(${clipR.toFixed(1)}${at}`;
+    if (op1 !== 1) el.style.opacity = (1 + (op1 - 1) * e).toFixed(3);
+    if (p < 1) { clipRaf = requestAnimationFrame(tick); return; }
+    el.style.clipPath = ''; el.style.opacity = ''; clipRaf = 0;
+    if (done) done();
+  };
+  clipRaf = requestAnimationFrame(tick);
+}
+
 /* Buborék → kártya: FLIP a portrén + kör alakú kinyílás */
 function morphIn(o) {
-  cardEl.style.clipPath = '';
+  cancelAnimationFrame(clipRaf); clipRaf = 0;
+  cardEl.style.clipPath = ''; cardEl.style.opacity = '';
   cardEl.style.transition = '';
   if (RM() || !o || o.st === 'gone' || S.view === 'lista') {
     const base = S.mobile ? '' : 'translate(-50%,-50%) ';
@@ -2733,8 +2784,7 @@ function morphIn(o) {
   const cq = cardEl.getBoundingClientRect();
   const bx = SR.left + o.rx - cq.left, by = SR.top + o.ry - cq.top, br = o.r;
   const far = Math.hypot(Math.max(bx, cq.width - bx), Math.max(by, cq.height - by));
-  cardEl.animate([{ clipPath: `circle(${br}px at ${bx}px ${by}px)` }, { clipPath: `circle(${far}px at ${bx}px ${by}px)` }],
-    { duration: 560, easing: 'cubic-bezier(.3,.9,.25,1)' }).onfinish = () => { cardEl.classList.remove('lazy'); o.el.style.visibility = ''; };
+  clipCircle(cardEl, bx, by, br, far, 560, easeOut, { done: () => { cardEl.classList.remove('lazy'); o.el.style.visibility = ''; } });
   const pic = $('#cPic', cardEl), pq = pic.getBoundingClientRect();
   const s = (br * 2) / pq.width;
   const dx = SR.left + o.rx - (pq.left + pq.width / 2), dy = SR.top + o.ry - (pq.top + pq.height / 2);
@@ -2787,8 +2837,8 @@ function closeCard({ fromPop = false } = {}) {
     const cq = cardEl.getBoundingClientRect();
     const bx = SR.left + o.rx - cq.left, by = SR.top + o.ry - cq.top;
     const far = Math.hypot(Math.max(bx, cq.width - bx), Math.max(by, cq.height - by));
-    cardEl.animate([{ clipPath: `circle(${far}px at ${bx}px ${by}px)` }, { clipPath: `circle(${Math.max(o.r, 8)}px at ${bx}px ${by}px)`, opacity: .6 }],
-      { duration: 380, easing: 'cubic-bezier(.55,0,.8,.4)' }).onfinish = done;
+    // ha még tart a kinyílás, onnan zsugorodunk, ahol épp tart (nincs ugrás)
+    clipCircle(cardEl, bx, by, clipRaf ? clipR : far, Math.max(o.r, 8), 380, easeIn, { op1: .6, done });
   }
   if (!fromPop) syncHash();
 }
@@ -3187,7 +3237,7 @@ function tipsView() {
       <div class="setrow">Alapértelmezett mód: ${modeOf() === 'strict' ? 'Csak találatok' : 'Rangsor'} <button class="link" data-set="mode">Váltás</button></div>
       <div class="setrow">Bemutató újra <button class="link" data-set="coach">Indítás</button></div></div>
     <div class="tipcard"><h4>ℹ️ A Pacsiról</h4><p>A jellemzők a fajtákra jellemző átlagot írják le; az egyes kutyák ettől eltérhetnek. A portrék saját, mesterséges intelligenciával készült illusztrációk. Az app nem gyűjt adatot: a kedvencek csak ezen az eszközön tárolódnak.</p></div>
-    <div class="tipcard credit-card"><span class="mark">D</span><div><h4 style="margin:0 0 2px">Pacsi by DarwinAI</h4><p>A Pacsit a <b>DarwinAI</b> tervezte és fejlesztette.<br><a href="https://www.darwinai.hu" target="_blank" rel="noopener">www.darwinai.hu ↗</a></p></div></div>
+    <div class="tipcard credit-card"><span class="mark">D</span><div><h4 style="margin:0 0 2px">Pacsi by DarwinAI</h4><p>A Pacsit a <b>DarwinAI</b> tervezte és fejlesztette.<br><a href="https://www.darwinai.hu" target="_blank" rel="noopener">www.darwinai.hu ↗</a></p><p class="ver">Verzió: v${APP_VERSION} · build ${APP_BUILD}</p></div></div>
   </div>`, ''];
 }
 function setting(k, el) {
@@ -3222,6 +3272,9 @@ $$('[data-drawer]').forEach(b => b.addEventListener('click', () => { const t = b
    Indítás, globális események, PWA
    ========================================================================== */
 function init() {
+  // verziószám a felületen (asztali panel lábléce) és a konzolban – a Tippek névjegykártyáján is látszik
+  $$('[data-ver]').forEach(e => { e.textContent = `v${APP_VERSION} · build ${APP_BUILD}`; });
+  console.info(`Pacsi v${APP_VERSION} (build ${APP_BUILD})`);
   applyTheme();
   document.documentElement.classList.toggle('rm', RM());
   // „mode2”: az alapértelmezés Csak találatokra váltott, a korábban elmentett választást egyszer nullázzuk

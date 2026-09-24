@@ -2,6 +2,9 @@
    Indítás, globális események, PWA
    ========================================================================== */
 function init() {
+  // verziószám a felületen (asztali panel lábléce) és a konzolban – a Tippek névjegykártyáján is látszik
+  $$('[data-ver]').forEach(e => { e.textContent = `v${APP_VERSION} · build ${APP_BUILD}`; });
+  console.info(`Pacsi v${APP_VERSION} (build ${APP_BUILD})`);
   applyTheme();
   document.documentElement.classList.toggle('rm', RM());
   // „mode2”: az alapértelmezés Csak találatokra váltott, a korábban elmentett választást egyszer nullázzuk

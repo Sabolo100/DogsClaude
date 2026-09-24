@@ -11,7 +11,7 @@ let LR = { l: 0, t: 0, r: 100, b: 100, w: 100, h: 100, cx: 50, cy: 50 };
 let OBS = [];
 let fill = 1;
 const mouse = { tx: 0, ty: 0, px: 0, py: 0, x: 0, y: 0, in: false };
-let hovered = null, focusedO = null, hoverTimer = 0;
+let hovered = null, focusedO = null, hoverTimer = 0, tipW = 180;
 let groupsLayout = [];
 let flownShown = 0;
 let FLY = null;   // a felhőjelvény helye – mérésenként egyszer számolva (ne kényszerítsünk elrendezést buborékonként)
@@ -640,6 +640,7 @@ function setHover(o) {
   hovered = o;
   if (!o) { tipEl.classList.remove('on'); return; }
   o.hk = S.mobile ? 1 : 1.18;
+  predecode(o.b.id);
   const b = o.b, k = filterCount();
   let badge = '';
   if (S.crit.length) {
@@ -648,15 +649,17 @@ function setHover(o) {
       : `<span class="m ${b.ok ? '' : 'part'}">${Math.round(b.m * 100)}%</span>`;
   }
   tipEl.innerHTML = `<span class="tip-in">${b.hu ? ic('flag', 'ic hu') : ''}${esc(b.nev)}${badge}</span>`;
+  tipW = tipEl.firstChild.offsetWidth || 180;
   placeTip(o);
   requestAnimationFrame(() => tipEl.classList.add('on'));
 }
 function placeTip(o) {
   // transformmal pozicionálunk (nem left/top), így képkockánként nincs elrendezés-számolás
-  const R = o.r * 1.1;
+  // a címke tényleges szélessége szerint marad a színpadon belül (hosszú fajtanévnél se lógjon ki)
+  const R = o.r * 1.1, hw = tipW / 2 + 8;
   let y = o.ry + R + 10;
   if (y + 44 > SR.height) y = o.ry - R - 52;
-  tipEl.style.transform = `translate3d(${clamp(o.rx, 90, SR.width - 90).toFixed(1)}px,${y.toFixed(1)}px,0)`;
+  tipEl.style.transform = `translate3d(${clamp(o.rx, hw, Math.max(hw, SR.width - hw)).toFixed(1)}px,${y.toFixed(1)}px,0)`;
 }
 
 /* ---------- Részecskék (vászon) ---------- */
@@ -804,6 +807,7 @@ const unpress = () => { if (pressed) { pressed.hk = 1; pressed = null; } };
 bubblesEl.addEventListener('pointerdown', e => {
   const o = BY_EL.get(e.target.closest('.b'));
   lpFired = false;
+  if (o) predecode(o.b.id);
   if (!o || e.pointerType === 'mouse') return;
   if (!RM()) { pressed = o; o.hk = .9; }
   lpTimer = setTimeout(() => { lpFired = true; haptic([10, 30, 10]); toggleFav(o.b.id, o.el); }, 520);
@@ -836,7 +840,9 @@ bubblesEl.addEventListener('keydown', e => {
   } else if (e.key === 'f' || e.key === 'F') toggleFav(o.b.id, o.el);
   else if (e.key === 'c' || e.key === 'C') toggleCmp(o.b.id, o.el);
 });
-bubblesEl.addEventListener('focusin', e => { const o = BY_EL.get(e.target.closest('.b')); if (o) setHover(o); });
+// fókuszra csak billentyűzetes navigációnál jelenik meg a névcímke – koppintásra nem: a jobb szélen egy hosszú
+// név kilógott a képből, amitől az Android Chrome „kicsinyítette” az oldalt (eltolódott kártya, kilógó ✕)
+bubblesEl.addEventListener('focusin', e => { const o = BY_EL.get(e.target.closest('.b')); if (o && e.target.matches(':focus-visible')) setHover(o); });
 bubblesEl.addEventListener('focusout', () => { if (hovered && document.activeElement !== hovered.el) setHover(null); });
 function focusBubble(o) {
   if (focusedO) focusedO.el.tabIndex = -1;

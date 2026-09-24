@@ -120,9 +120,36 @@ function openCard(id, { push = true, dir = 0 } = {}) {
 }
 let lastFocus = null;
 
+/* Kör alakú vágás (clip-path) képkockánként, requestAnimationFrame-mel. A böngészőre bízott (WAAPI)
+   clip-path animációt az Android Chrome a grafikus szálon futtathatja, és ott telefonon néha rossz helyről
+   indult (bal felülről), vagy a kártya jobb felső sarka – a bezáró ✕ – levágva maradt. Így a kör mindig a
+   buborékból indul, az órája az első kirajzolt képkockától jár, és a végén a vágás biztosan lekerül. */
+let clipRaf = 0, clipR = 0;
+const easeOut = p => 1 - Math.pow(1 - p, 4);   // ≈ cubic-bezier(.3,.9,.25,1)
+const easeIn = p => p * p * p;                  // ≈ cubic-bezier(.55,0,.8,.4)
+function clipCircle(el, x, y, r0, r1, dur, ease, { op1 = 1, done } = {}) {
+  cancelAnimationFrame(clipRaf);
+  const at = `px at ${x.toFixed(1)}px ${y.toFixed(1)}px)`;
+  el.style.clipPath = `circle(${r0.toFixed(1)}${at}`;
+  clipR = r0;
+  let t0 = 0;
+  const tick = t => {
+    if (!t0) t0 = t;
+    const p = Math.min(1, (t - t0) / dur), e = ease(p);
+    clipR = r0 + (r1 - r0) * e;
+    el.style.clipPath = `circle(${clipR.toFixed(1)}${at}`;
+    if (op1 !== 1) el.style.opacity = (1 + (op1 - 1) * e).toFixed(3);
+    if (p < 1) { clipRaf = requestAnimationFrame(tick); return; }
+    el.style.clipPath = ''; el.style.opacity = ''; clipRaf = 0;
+    if (done) done();
+  };
+  clipRaf = requestAnimationFrame(tick);
+}
+
 /* Buborék → kártya: FLIP a portrén + kör alakú kinyílás */
 function morphIn(o) {
-  cardEl.style.clipPath = '';
+  cancelAnimationFrame(clipRaf); clipRaf = 0;
+  cardEl.style.clipPath = ''; cardEl.style.opacity = '';
   cardEl.style.transition = '';
   if (RM() || !o || o.st === 'gone' || S.view === 'lista') {
     const base = S.mobile ? '' : 'translate(-50%,-50%) ';
@@ -134,8 +161,7 @@ function morphIn(o) {
   const cq = cardEl.getBoundingClientRect();
   const bx = SR.left + o.rx - cq.left, by = SR.top + o.ry - cq.top, br = o.r;
   const far = Math.hypot(Math.max(bx, cq.width - bx), Math.max(by, cq.height - by));
-  cardEl.animate([{ clipPath: `circle(${br}px at ${bx}px ${by}px)` }, { clipPath: `circle(${far}px at ${bx}px ${by}px)` }],
-    { duration: 560, easing: 'cubic-bezier(.3,.9,.25,1)' }).onfinish = () => { cardEl.classList.remove('lazy'); o.el.style.visibility = ''; };
+  clipCircle(cardEl, bx, by, br, far, 560, easeOut, { done: () => { cardEl.classList.remove('lazy'); o.el.style.visibility = ''; } });
   const pic = $('#cPic', cardEl), pq = pic.getBoundingClientRect();
   const s = (br * 2) / pq.width;
   const dx = SR.left + o.rx - (pq.left + pq.width / 2), dy = SR.top + o.ry - (pq.top + pq.height / 2);
@@ -188,8 +214,8 @@ function closeCard({ fromPop = false } = {}) {
     const cq = cardEl.getBoundingClientRect();
     const bx = SR.left + o.rx - cq.left, by = SR.top + o.ry - cq.top;
     const far = Math.hypot(Math.max(bx, cq.width - bx), Math.max(by, cq.height - by));
-    cardEl.animate([{ clipPath: `circle(${far}px at ${bx}px ${by}px)` }, { clipPath: `circle(${Math.max(o.r, 8)}px at ${bx}px ${by}px)`, opacity: .6 }],
-      { duration: 380, easing: 'cubic-bezier(.55,0,.8,.4)' }).onfinish = done;
+    // ha még tart a kinyílás, onnan zsugorodunk, ahol épp tart (nincs ugrás)
+    clipCircle(cardEl, bx, by, clipRaf ? clipR : far, Math.max(o.r, 8), 380, easeIn, { op1: .6, done });
   }
   if (!fromPop) syncHash();
 }

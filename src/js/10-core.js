@@ -44,6 +44,16 @@ document.documentElement.style.setProperty('--sp-size', `800% ${SP_ROWS * 100}%`
 
 const PORTRAIT_URL = {};
 const portrait = id => IMG[id] ? (PORTRAIT_URL[id] || (PORTRAIT_URL[id] = toBlobURL(IMG[id]))) : `img/portrek/${id}.webp`;
+/* A portrét már a buborék megérintésekor (asztalon rámutatáskor) dekódoljuk: különben a kártya első
+   képkockáiban üres színes kör látszik a helyén, és a kép csak a kinyílás közben ugrik be. */
+const DECODED = new Set();
+function predecode(id) {
+  if (DECODED.has(id)) return;
+  DECODED.add(id);
+  const im = new Image();
+  im.src = portrait(id);
+  if (im.decode) im.decode().catch(() => {});
+}
 const spritePos = b => `${(b.sprite % 8) / 7 * 100}% ${Math.floor(b.sprite / 8) / (SP_ROWS - 1) * 100}%`;
 const picStyle = b => `--bgc:${b.bg};--pos:${spritePos(b)}`;
 

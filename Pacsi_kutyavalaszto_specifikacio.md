@@ -1473,4 +1473,25 @@ Valódi telefonos visszajelzés: a telepített PWA betöltésekor és animáció
 | Koppintás → első képkocka blokk | 1,0–1,6 s | 0,14–0,19 s |
 | Kinyílás alatti leghosszabb feladat | 150–300 ms | kb. 50–65 ms |
 
+### 26.9 Verziózás (2026-09-24, v1.4.0)
+- **Verziószám:** szemantikus, a `VERSION` fájlban. A `tools/build.py` mellé build-azonosítót számol (a CSS, JS és adat tartalmának 7 jegyű hash-e), és mindkettőt `APP_VERSION` és `APP_BUILD` konstansként beégeti mindhárom kimenetbe.
+- **Megjelenés:** mobilon a Tippek → névjegykártyán, asztalon a szűrőpanel alján, és a konzolban is. A service worker gyorsítótárának neve `pacsi-<verzió>-<tartalom-hash>`.
+- **Változásnapló:** `CHANGELOG.md`, verziónként a commit-azonosítókkal.
+
+### 26.10 Kártyanyitás telefonon: eltolódó kártya, kilógó ✕ (2026-09-24, v1.4.0)
+- **Tünet (Galaxy S21+):**
+  - a kinyílás hol a buborékból, hol bal felülről indult;
+  - néha akadt;
+  - jobb alsó kutyánál a bezáró ✕ nem látszott.
+- **Ok (mérve, 384 × 854 CSS px, 2,8125×):**
+  - Koppintáskor a fókusz megjelenítette a buborék névcímkéjét.
+  - A jobb szélen egy hosszú név (pl. „Amerikai staffordshire terrier”) kilógott a képből.
+  - Emiatt az Android Chrome kiszélesítette a nézetet (384 → 414 px). A kártya eltolódott (a felső széle 68 → 136 px), a ✕ jobb széle 403 px-re, vagyis a képen kívülre került. A következő nyitásra a hiba magától elmúlt, ezért tűnt rapszodikusnak.
+- **Javítás:**
+  - A névcímke fókuszra csak billentyűzetes navigációnál jelenik meg (`:focus-visible`), és a tényleges szélessége szerint a színpadon belül marad.
+  - Mobilon a színpad vízszintesen vág (`overflow-x: clip`).
+  - A viewport `minimum-scale=1`.
+  - A kör alakú kinyílás és bezárás `requestAnimationFrame`-mel fut, nem a böngészőre bízott `clip-path` animációval, így telefonon sem kerülhet a grafikus szálra. Az órája az első kirajzolt képkockától jár, és a végén a vágás biztosan lekerül.
+  - A portré a buborék megérintésekor előre dekódolódik (`predecode`).
+
 *pacsi 🐾 – mert a jó döntés is egy kézfogással kezdődik.*

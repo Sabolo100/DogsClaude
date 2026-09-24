@@ -53,9 +53,14 @@ def main():
     ids = [b["id"] for b in data["breeds"]] + [s["id"] for s in data["spares"]]
     html = (SRC / "index.html").read_text(encoding="utf-8")
     css = (SRC / "app.css").read_text(encoding="utf-8")
-    js = "\n".join(p.read_text(encoding="utf-8") for p in sorted((SRC / "js").glob("*.js")))
-    js = "(() => {\n'use strict';\n" + js + "\n})();"
+    js_src = "\n".join(p.read_text(encoding="utf-8") for p in sorted((SRC / "js").glob("*.js")))
     data_json = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    # Verzió: szemantikus verziószám a VERSION fájlból + build-azonosító (a forrás tartalmának rövid hash-e).
+    # Mindkettő látszik az appban (Tippek → névjegy, asztali panel lábléce), így ellenőrizhető, melyik verzió fut.
+    app_ver = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+    build_id = hashlib.sha1((css + js_src + data_json).encode("utf-8")).hexdigest()[:7]
+    js = ("(() => {\n'use strict';\n" + f"const APP_VERSION = {json.dumps(app_ver)}, APP_BUILD = {json.dumps(build_id)};\n"
+          + js_src + "\n})();")
 
     def assemble(img_script, head, favicon):
         out = html.replace("/*INLINE_CSS*/", css).replace("/*INLINE_JS*/", js.replace("</script", "<\\/script"))
@@ -112,7 +117,7 @@ def main():
         digest.update(f.encode("utf-8"))
         digest.update((pwa / f).read_bytes())
     version = digest.hexdigest()[:10]
-    sw = (SRC / "sw.js").read_text(encoding="utf-8").replace("__VERSION__", version).replace("__FILES__", json.dumps(files))
+    sw = (SRC / "sw.js").read_text(encoding="utf-8").replace("__VERSION__", f"{app_ver}-{version}").replace("__FILES__", json.dumps(files))
     (pwa / "sw.js").write_text(sw, encoding="utf-8")
 
     # 3) claude.ai artifact: a publikáló maga adja a doctype/head/body vázat, ezért csak a törzs kell,
@@ -128,6 +133,7 @@ def main():
     (DIST / "pacsi-artifact.html").write_text(artifact, encoding="utf-8")
 
     size = lambda p: f"{p.stat().st_size / 1024 / 1024:.2f} MB"
+    print(f"Pacsi v{app_ver} (build {build_id})")
     print(f"dist/pacsi.html  {size(DIST / 'pacsi.html')}")
     print(f"dist/pacsi-artifact.html  {size(DIST / 'pacsi-artifact.html')}")
     total = sum(p.stat().st_size for p in pwa.rglob('*') if p.is_file())
