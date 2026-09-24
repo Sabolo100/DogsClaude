@@ -349,7 +349,8 @@ function applyTheme() {
   if (S.theme !== 'auto') r.dataset.theme = S.theme;
   const dark = isDark();
   $('#themeBtn use').setAttribute('href', dark ? '#i-sun' : '#i-moon');
-  $$('meta[name="theme-color"]').forEach(m => m.setAttribute('content', dark ? '#14121A' : '#FBF6EE'));
+  // a media-feltételt elhagyjuk: kézi témánál is a látható téma színe kerüljön a státuszsávba
+  $$('meta[name="theme-color"]').forEach(m => { m.removeAttribute('media'); m.setAttribute('content', dark ? '#14121A' : '#FBF6EE'); });
 }
 function toggleTheme(e) {
   S.theme = isDark() ? 'light' : 'dark';
@@ -418,8 +419,10 @@ function coach(i = 0) {
 let installEvt = null;
 addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; });
 const standalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-function maybeInstall(reason) {
+function maybeInstall(reason, tries = 0) {
   if (ARTIFACT || standalone() || store.get('installAsked', 0) > 1) return;
+  // nyitott fajtakártya (vagy nem a kvíz végén nyitott fiók) fölé ne ugorjon fel – később újrapróbáljuk
+  if ((!cardEl.hidden || (S.drawer && reason !== 'quiz')) && tries < 6) { setTimeout(() => maybeInstall(reason, tries + 1), 8000); return; }
   const visits = store.get('visits', 0);
   if (reason !== 'quiz' && visits < 2) return;
   if (installEvt) {

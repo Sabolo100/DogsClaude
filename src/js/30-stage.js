@@ -2,7 +2,7 @@
    Színpad: buborékok, fizika, nézetek, effektek
    ========================================================================== */
 const stage = $('#stage'), bubblesEl = $('#bubbles'), tipEl = $('#tip');
-const R0 = 80;                                   // a buborék-elem alapsugara (160 px) – a méretet scale adja
+const BASE0 = S.mobile ? 24 : 40;                // a buborék-elem kezdő natív sugara – a pillanatnyi méretet scale adja (lásd fitBase)
 const DEPTH = { back: -1, mid: -.35, '': 0, front: .5, top: 1 };
 const ZI = { back: 1, mid: 2, '': 3, front: 4, top: 5 };
 const FX_COLORS = ['#FF6B3D', '#FFC845', '#17756E', '#A58BFF', '#7ED6B1', '#FF8FA3', '#5AB0F0'];
@@ -24,7 +24,7 @@ const B = BREEDS.map(b => {
   el.tabIndex = -1;
   el.setAttribute('role', 'listitem');
   el.setAttribute('aria-label', b.nev);
-  el.style.cssText = picStyle(b);
+  el.style.cssText = `${picStyle(b)};--s:${BASE0 * 2}px`;
   // A gyűrű, a glória és a pulzus nem DOM-elem, hanem a közös alsó vásznon rajzolódik (drawUnder) –
   // így szűréskor nem kell 124 réteget képkockánként újrarajzolni.
   el.innerHTML = `<span class="face"></span><span class="fav-b">${ic('heart-f')}</span><span class="cmp-b">${ic('compare')}</span>`;
@@ -33,9 +33,21 @@ const B = BREEDS.map(b => {
     b, el,
     x: 0, y: 0, vx: 0, vy: 0, r: 0, rv: 0, rt: 0, hk: 1, jy: 0, jv: 0, rx: 0, ry: 0, rr: 0,
     ph: rand(0, 6.283), st: 'in', tier: '', vis: true, pend: null, op: 1, fly: null, grp: null, mx: 0, my: 0,
-    opT: 1, opC: 1, ringT: 0, ringV: 0, glowV: 0, dim: false,
+    opT: 1, opC: 1, ringT: 0, ringV: 0, glowV: 0, dim: false, base: BASE0, stirN: -99,
   };
 });
+/* A buborék-elem natív mérete a célméretéhez igazodik. A böngésző a will-change: transform rétegeket
+   natív méretükben rajzolja (kicsinyítve sem kisebbet), így a natív méretnek a képernyőn látotthoz
+   kell közel lennie – különben telefonon elfogy a grafikus memória. Csak ±20 %-on túli célváltozásnál
+   méretezünk át (akkor a réteg újrarajzolódik); desktopon ráhagyással, hogy a hover-nagyítás is éles maradjon. */
+function fitBase(o) {
+  if (!o.rt || (o.st !== 'in' && o.st !== 'drop')) return;
+  const want = Math.max(8, o.rt * (S.mobile ? 1.08 : 1.22));
+  if (want > o.base * 1.2 || want < o.base * .8) {
+    o.base = Math.round(want);
+    o.el.style.setProperty('--s', `${o.base * 2}px`);
+  }
+}
 const PULSES = [];
 const underC = $('#under'), ux = underC.getContext('2d');
 let underDpr = 1, underDirty = false, ringRGB = [255, 107, 61];
@@ -212,12 +224,13 @@ function drawGroups() {
     if (!blob) {
       blob = document.createElement('div'); blob.className = 'gblob'; blob.dataset.k = g.key; box.appendChild(blob);
       lab = document.createElement('div'); lab.className = 'glabel'; lab.dataset.k = g.key; box.appendChild(lab);
-      blob.style.transform = `translate(${g.x - 200}px,${g.y - 200}px) scale(.2)`;
+      blob.style.transform = `translate(${g.x - 80}px,${g.y - 80}px) scale(.5)`;
     }
-    // fix 400 px-es elem, a méretet scale adja → csak transform animálódik (nincs újrarajzolás)
+    // fix 160 px-es elem, a méretet scale adja → csak transform animálódik (nincs újrarajzolás);
+    // kicsi natív méret, mert animáció közben a böngésző legalább natív méretben rajzolja a réteget
     const D = g.R * 2 + 36;
     blob.style.setProperty('--gc', g.color);
-    blob.style.transform = `translate(${g.x - 200}px,${g.y - 200}px) scale(${(D / 400).toFixed(3)})`;
+    blob.style.transform = `translate(${g.x - 80}px,${g.y - 80}px) scale(${(D / 160).toFixed(3)})`;
     lab.style.setProperty('--gc', g.color);
     lab.innerHTML = `${esc(g.label)}<b>${g.n}</b>`;
     lab.style.transform = `translate(${g.x}px,${g.y - g.R - 14}px) translate(-50%,-100%)`;
@@ -384,10 +397,12 @@ function step() {
       const dx = o.x - mouse.x, dy = o.y - mouse.y, d = Math.hypot(dx, dy) || 1, R = o.r + 70;
       if (d < R) { const f = (R - d) / R * .9; o.vx += dx / d * f; o.vy += dy / d * f; }
     }
-    const damp = o.st === 'drop' ? .99 : .8;
+    // a megkavart buborékok egy ideig lazábban csillapodnak: tovább siklanak, mint a vízen
+    const damp = o.st === 'drop' ? .99 : stepN - o.stirN < 40 ? .87 : .8;
     o.vx *= damp; o.vy *= damp;
     o.x += o.vx; o.y += o.vy;
   }
+  if (stir.on && !rm) stirForce(act);
   const gap = S.mobile ? 4 : 6;
   for (let it = 0; it < 2; it++) {
     for (let i = 0; i < act.length; i++) {
@@ -440,12 +455,48 @@ function step() {
   }
 }
 
+/* ---------- Ujjal kavarás (érintőképernyő) ----------
+   Ha az ujj a felhőn húzódik, a buborékok kitérnek előle és a mozgás irányába sodródnak – mint a vízbe
+   húzott kéz nyomán. A koppintás és a hosszú nyomás változatlan: a kavarás néhány pixelnyi elmozdulás
+   után indul. Az ujj útját szakaszként kezeljük, így gyors húzásnál sem ugrik át buborékokat. */
+const stir = { id: null, on: false, x: 0, y: 0, px: 0, py: 0, sx: 0, sy: 0, trail: 0, block: 0 };
+const RIPPLES = [];
+function ripple(x, y) {
+  if (RIPPLES.length >= 12) RIPPLES.shift();
+  RIPPLES.push({ x, y, t0: now() });
+}
+function stirForce(act) {
+  const ax = stir.px, ay = stir.py, bx = stir.x, by = stir.y;
+  stir.px = bx; stir.py = by;
+  const mx = bx - ax, my = by - ay, len2 = mx * mx + my * my;
+  const sp = Math.min(Math.sqrt(len2), 40);          // ujjsebesség, px / lépés
+  const reach = S.mobile ? 62 : 76;                   // hatótáv a buborék szélétől
+  for (const o of act) {
+    const u = len2 ? clamp(((o.x - ax) * mx + (o.y - ay) * my) / len2, 0, 1) : 1;
+    let dx = o.x - (ax + mx * u), dy = o.y - (ay + my * u);
+    const d = Math.hypot(dx, dy) || .01, R = o.r + reach;
+    if (d >= R) continue;
+    const f = 1 - d / R, f2 = f * f;
+    dx /= d; dy /= d;
+    const push = f2 * (1.5 + sp * .13);               // kitérés az ujj elől (gyorsabb húzásnál erősebb)
+    o.vx += dx * push + mx * f2 * .24;                // + sodrás az ujj irányába
+    o.vy += dy * push + my * f2 * .24;
+    const v = Math.hypot(o.vx, o.vy);
+    if (v > 24) { o.vx *= 24 / v; o.vy *= 24 / v; }
+    o.stirN = stepN;
+  }
+  stir.trail += sp;
+  if (stir.trail > 38) { stir.trail = 0; ripple(bx, by); }
+}
+
 /* ---------- Rajzolás ---------- */
 function render(t) {
   const rm = RM();
   if (!S.mobile && !rm) { mouse.px += (mouse.tx - mouse.px) * .06; mouse.py += (mouse.ty - mouse.py) * .06; }
   for (const o of B) {
     if (o.st === 'gone') continue;
+    fitBase(o);
+    const R0 = o.base;
     let x = o.x, y = o.y + o.jy, s = o.r / R0, rot = 0, op = 1;
     // simított mélységi átlátszóság (keresésnél a nem találatok erősen halványak)
     o.opC += ((o.dim ? .14 : o.opT) - o.opC) * (rm ? 1 : .12);
@@ -495,6 +546,7 @@ function clearUnder() {
   ux.clearRect(0, 0, underC.width, underC.height);
   for (const o of B) { o.ringV = 0; o.glowV = 0; }
   PULSES.length = 0;
+  RIPPLES.length = 0;
   underDirty = false;
 }
 
@@ -504,7 +556,7 @@ function clearUnder() {
 function drawUnder(t) {
   const active = S.crit.length > 0 && S.view !== 'lista';
   const rm = RM();
-  let work = PULSES.length > 0;
+  let work = PULSES.length > 0 || RIPPLES.length > 0;
   if (!work) for (const o of B) if (o.ringV > .004 || o.glowV > .01 || (active && o.ringT > 0 && o.st !== 'gone')) { work = true; break; }
   if (!work && !underDirty) return;
   ux.setTransform(underDpr, 0, 0, underDpr, 0, 0);
@@ -546,6 +598,16 @@ function drawUnder(t) {
     ux.strokeStyle = col(.9 * (1 - e) * o.op);
     ux.lineWidth = o.rr * .075 * sc;
     ux.beginPath(); ux.arc(o.rx, o.ry, o.rr * 1.04 * sc, 0, 6.2832); ux.stroke();
+  }
+  // kavarás hullámai: az ujj nyomán táguló, halványuló körök
+  for (let i = RIPPLES.length - 1; i >= 0; i--) {
+    const q = RIPPLES[i], u = (t - q.t0) / 760;
+    if (u >= 1) { RIPPLES.splice(i, 1); continue; }
+    if (u < 0) continue;
+    const e = 1 - Math.pow(1 - u, 3);
+    ux.strokeStyle = col(.55 * (1 - u));
+    ux.lineWidth = 3 * (1 - u) + .8;
+    ux.beginPath(); ux.arc(q.x, q.y, 12 + 70 * e, 0, 6.2832); ux.stroke();
   }
 }
 
@@ -704,16 +766,20 @@ bubblesEl.addEventListener('pointerout', e => {
   const from = e.target.closest('.b');
   if (from && !from.contains(e.relatedTarget)) { clearTimeout(hoverTimer); if (hovered && hovered.el === from) setHover(null); }
 });
-let lpTimer = 0, lpFired = false;
+let lpTimer = 0, lpFired = false, pressed = null;
+// érintésre a buborék kicsit „benyomódik”, elengedéskor visszarugózik
+const unpress = () => { if (pressed) { pressed.hk = 1; pressed = null; } };
 bubblesEl.addEventListener('pointerdown', e => {
   const o = BY_EL.get(e.target.closest('.b'));
   lpFired = false;
   if (!o || e.pointerType === 'mouse') return;
+  if (!RM()) { pressed = o; o.hk = .9; }
   lpTimer = setTimeout(() => { lpFired = true; haptic([10, 30, 10]); toggleFav(o.b.id, o.el); }, 520);
 });
-['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => bubblesEl.addEventListener(ev, () => clearTimeout(lpTimer)));
+['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => bubblesEl.addEventListener(ev, () => { clearTimeout(lpTimer); unpress(); }));
 bubblesEl.addEventListener('click', e => {
   const o = BY_EL.get(e.target.closest('.b'));
+  if (now() < stir.block) return;               // kavarás után felengedett ujj ne nyisson kártyát
   if (!o || lpFired) { lpFired = false; return; }
   if (focusedO && focusedO !== o) focusedO.el.tabIndex = -1;
   focusedO = o; o.el.tabIndex = 0;
@@ -760,3 +826,29 @@ stage.addEventListener('pointermove', e => {
   mouse.ty = clamp((mouse.y - SR.height / 2) / (SR.height / 2), -1, 1);
 });
 stage.addEventListener('pointerleave', () => { mouse.in = false; mouse.tx = mouse.ty = 0; });
+
+/* Kavarás: ujj vagy toll a felhőn (a HUD-gombokon, a listán és a felhőjelvényen nem) – lásd stirForce */
+stage.addEventListener('pointerdown', e => {
+  if (e.pointerType === 'mouse' || stir.id !== null || paused || RM() || S.view === 'lista') return;
+  if (e.target !== stage && !e.target.closest('.b, .bubbles')) return;
+  const x = e.clientX - SR.left, y = e.clientY - SR.top;
+  Object.assign(stir, { id: e.pointerId, on: false, x, y, px: x, py: y, sx: x, sy: y, trail: 0 });
+});
+stage.addEventListener('pointermove', e => {
+  if (e.pointerId !== stir.id) return;
+  stir.x = e.clientX - SR.left; stir.y = e.clientY - SR.top;
+  if (!stir.on && Math.hypot(stir.x - stir.sx, stir.y - stir.sy) > 9) {
+    stir.on = true;
+    clearTimeout(lpTimer);                        // kavarás közben nincs hosszú nyomásos kedvencelés
+    unpress();
+    if (hovered) setHover(null);                  // pl. kártyazárás után a fókusz miatt kint maradt név
+    ripple(stir.sx, stir.sy);
+  }
+});
+const endStir = e => {
+  if (e.pointerId !== stir.id) return;
+  if (stir.on) stir.block = now() + 400;
+  stir.id = null; stir.on = false;
+};
+stage.addEventListener('pointerup', endStir);
+stage.addEventListener('pointercancel', endStir);

@@ -1402,4 +1402,39 @@ Felhasználói visszajelzés alapján az egyfájlos verzió szűréskor több m�
    - a tooltip és a csoportfoltok csak `transform`-mal mozognak;
    - a felhőjelvény helye mérésenként egyszer számolódik.
 
+### 26.6 Mobil grafikus memória, kavarás, sötét mód (2026-09-24)
+Valódi telefonos visszajelzés: a telepített PWA betöltésekor és animáció közben villogott vagy eltűnt a felső sáv, néha az alsó szűrősor is. Sötét módban a „Kedvenc” gomb felirata alig látszott.
+
+**Ok (mérve):** headless Chromium, 412 × 915 CSS px, 2,625-ös eszközarány (tipikus Android), a kompozitor pillanatképeiből. A böngésző a `will-change: transform` rétegeket natív méretükben rajzolja, kicsinyítve sem kisebbet. A fix 160 px-es, kicsire skálázott buborékelem így telefonon 688 × 689 pixeles, kb. 4 MB-os réteg volt, 124-szer. Az Android Chrome csempememória-kerete legfeljebb 256 MB, e fölött rétegeket dob el (villogás).
+
+| Mérés (mobil, 2,625×) | Előtte | Utána |
+|---|---|---|
+| Grafikus csempememória csúcs, intró | 464,9 MB | 36,6 MB |
+| Szigorú szűrés, majd törlés (124 buborék visszahullik) | – | 44,5 MB |
+| Egy buborék rétege | 688 × 689 px, ~4 MB | ~185 × 185 px, ~0,14 MB |
+| Asztali, 1,25×, rangsor szűrőkkel | – | 51,4 MB |
+
+**Javítás:**
+1. **Buborékok:** a buborékelem natív átmérője (`--s`) a célméretéhez igazodik (`fitBase`: mobilon 1,08×, asztalon 1,22× ráhagyással, ±20 %-os hiszterézissel). A pillanatnyi méretet továbbra is `scale` adja, a keret, az árnyék és a jelvények az `--s` arányában vannak megadva.
+2. **Háttér:** telefonon a háttérfoltok állnak (három mozgó, képernyőnyi réteg kb. 30 MB volt). A csoportfolt natív elemmérete 400 helyett 160 px.
+3. **Sötét mód:**
+   - a körvonalas gombok sötét szabálya nem vonatkozik a kitöltött és a szellem gombra;
+   - a kitöltött felületek narancsa mélyebb (`#E2572D`), a fehér felirat kontrasztja 3,2:1-ről 3,7:1-re nő;
+   - az (invertált, világos) értesítés gombja sötét narancs.
+4. **Státuszsáv:** a `theme-color` metacímkék témaváltáskor elhagyják a `media` feltételt, így kézi témánál is a látható téma színe kerül a státuszsávba.
+5. **Apróságok:**
+   - a telepítési ajánlat nem ugrik fel nyitott fajtakártya fölé;
+   - a kártya bezáró gombja tömör hátterű (nem látszik át alatta a görgetett tartalom).
+
+**Új: ujjal kavarás (érintőképernyő):**
+- **Hatás:** ha az ujj a felhőn húzódik, a buborékok kitérnek előle, és a mozgás irányába sodródnak.
+- **Fizika:**
+  - az ujj útja szakaszként hat, így gyors húzásnál sem ugrik át buborékokat;
+  - a taszítás a sebességgel nő;
+  - a megkavart buborékok egy ideig lazábban csillapodnak.
+- **Látvány:** az ujj nyomán halványuló hullámkörök jelennek meg az alsó vásznon.
+- **Koppintás és hosszú nyomás:** változatlanul működnek (a kavarás 9 px elmozdulás után indul). Húzás után nem nyílik kártya, és érintéskor a buborék kicsit „benyomódik”.
+- **Érintéskezelés:** a színpadon `touch-action: none`, a lista továbbra is görgethető.
+- **Mérés:** egy húzás a 124 buborékból 84-et mozdított el 15 px-nél többel (legfeljebb kb. 110 px-rel), és 3 másodperc alatt újra összeállt a felhő.
+
 *pacsi 🐾 – mert a jó döntés is egy kézfogással kezdődik.*

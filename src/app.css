@@ -37,7 +37,7 @@
   --line: rgba(244, 239, 232, .12);
   --line-2: rgba(244, 239, 232, .07);
   --ink: #F4EFE8; --ink-2: #B4ABA2; --ink-3: #7F776F;
-  --primary: #FF7F55; --primary-fill: #F0643A;
+  --primary: #FF7F55; --primary-fill: #E2572D;
   --teal: #3CC2B4; --ok: #5BD69A; --warn: #FFB45C;
   --chip: rgba(44, 40, 56, .8);
   --dot-off: #3A3546;
@@ -59,7 +59,7 @@
     --line: rgba(244, 239, 232, .12);
     --line-2: rgba(244, 239, 232, .07);
     --ink: #F4EFE8; --ink-2: #B4ABA2; --ink-3: #7F776F;
-    --primary: #FF7F55; --primary-fill: #F0643A;
+    --primary: #FF7F55; --primary-fill: #E2572D;
     --teal: #3CC2B4; --ok: #5BD69A; --warn: #FFB45C;
     --chip: rgba(44, 40, 56, .8);
     --dot-off: #3A3546;
@@ -245,29 +245,34 @@ body.paused .blob { animation-play-state: paused; }
 @keyframes achipIn { from { opacity: 0; transform: translateY(-6px) scale(.8); } }
 
 /* ---------- Buborékok ---------- */
+/* A buborék-elem natív átmérője (--s) a célméretéhez igazodik (JS: fitBase), a pillanatnyi méretet
+   scale adja. A böngésző a will-change: transform rétegeket natív méretükben rajzolja: egy fix
+   160 px-es, kicsire skálázott elem telefonon ~4 MB grafikus memória lenne buborékonként (124-gyel
+   ~465 MB – ettől villogott mobilon a felső sáv). Ezért minden belső méret az --s arányában van. */
 .b {
-  --s: 160px;
+  --s: 80px;
   position: absolute; left: 0; top: 0; width: var(--s); height: var(--s); padding: 0; border: 0; background: none;
-  border-radius: 50%; transform-origin: 50% 50%; will-change: transform; z-index: 2; contain: layout style;
+  border-radius: 50%; transform-origin: 50% 50%; will-change: transform; z-index: 2; contain: layout style; touch-action: none;
 }
 .b .face {
+  --ring: calc(var(--s) * .044); --sh-y: calc(var(--s) * .075); --sh-b: calc(var(--s) * .19); --sh-c: rgba(90, 50, 20, var(--sh, .16));
   position: absolute; inset: 0; border-radius: 50%;
   background-color: var(--bgc); background-image: var(--sprite); background-size: var(--sp-size); background-position: var(--pos);
-  box-shadow: 0 0 0 7px var(--bubble-ring), 0 12px 30px rgba(90, 50, 20, var(--sh, .16)), 0 0 0 10px var(--rc, transparent);
+  box-shadow: 0 0 0 var(--ring) var(--bubble-ring), 0 var(--sh-y) var(--sh-b) var(--sh-c), 0 0 0 calc(var(--s) * .0625) var(--rc, transparent);
 }
-:root[data-theme="dark"] .b .face { box-shadow: 0 0 0 7px var(--bubble-ring), 0 12px 34px rgba(0, 0, 0, calc(var(--sh, .16) * 2.4)), 0 0 0 10px var(--rc, transparent); }
-/* illeszkedési gyűrű, glória, pulzus: közös vászon a buborékok alatt (lásd drawUnder) */
+:root[data-theme="dark"] .b .face { --sh-c: rgba(0, 0, 0, calc(var(--sh, .16) * 2.4)); }
+/* illeszkedési gyűrű, glória, pulzus, kavarás-hullám: közös vászon a buborékok alatt (lásd drawUnder) */
 .under { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-.b .fav-b, .b .cmp-b { position: absolute; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: #fff; box-shadow: 0 0 0 5px var(--bubble-ring); transform: scale(0); transition: transform .45s var(--ease-spring); }
-.b .fav-b { right: -4px; top: -4px; background: var(--primary-fill); }
-.b .cmp-b { left: -4px; top: -4px; background: var(--teal); }
-.b .fav-b .ic, .b .cmp-b .ic { width: 24px; height: 24px; }
+.b .fav-b, .b .cmp-b { position: absolute; width: calc(var(--s) * .275); height: calc(var(--s) * .275); border-radius: 50%; display: grid; place-items: center; color: #fff; box-shadow: 0 0 0 calc(var(--s) * .031) var(--bubble-ring); transform: scale(0); transition: transform .45s var(--ease-spring); }
+.b .fav-b { right: calc(var(--s) * -.025); top: calc(var(--s) * -.025); background: var(--primary-fill); }
+.b .cmp-b { left: calc(var(--s) * -.025); top: calc(var(--s) * -.025); background: var(--teal); }
+.b .fav-b .ic, .b .cmp-b .ic { width: calc(var(--s) * .15); height: calc(var(--s) * .15); }
 .b.fav .fav-b, .b.cmp .cmp-b { transform: scale(1); }
-.b[data-tier="back"] .face { filter: saturate(.22) blur(2.5px); --sh: .05; }
+.b[data-tier="back"] .face { filter: saturate(.22) blur(calc(var(--s) * .016)); --sh: .05; }
 .b[data-tier="mid"] .face { filter: saturate(.75); --sh: .12; }
 .b[data-tier="front"] .face { --sh: .22; }
 .b[data-tier="top"] .face { --sh: .3; }
-.b.dim .face { filter: saturate(0) blur(1px); }
+.b.dim .face { filter: saturate(0) blur(calc(var(--s) * .006)); }
 .b.spot .face { --rc: var(--teal); }
 .b.gone { visibility: hidden; }
 .b:focus-visible { outline: none; }
@@ -288,7 +293,7 @@ body.paused .blob { animation-play-state: paused; }
 
 /* ---------- Csoportok & térkép ---------- */
 .groups { position: absolute; inset: 0; pointer-events: none; }
-.gblob { position: absolute; left: 0; top: 0; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--gc) 30%, transparent), color-mix(in srgb, var(--gc) 12%, transparent) 70%, transparent); width: 400px; height: 400px; transform-origin: 50% 50%; transition: transform .9s var(--ease-spring), opacity .5s; opacity: 0; }
+.gblob { position: absolute; left: 0; top: 0; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--gc) 30%, transparent), color-mix(in srgb, var(--gc) 12%, transparent) 70%, transparent); width: 160px; height: 160px; transform-origin: 50% 50%; transition: transform .9s var(--ease-spring), opacity .5s; opacity: 0; }
 .gblob.on { opacity: 1; }
 .glabel { position: absolute; left: 0; top: 0; transform: translate(-50%, -100%); padding: 6px 12px; border-radius: 999px; background: var(--solid); box-shadow: var(--shadow-sm); font: 750 13.5px var(--font-u); white-space: nowrap; transition: transform .9s var(--ease-spring), opacity .5s; opacity: 0; z-index: 20; }
 .glabel.on { opacity: 1; }
@@ -332,7 +337,7 @@ body.paused .blob { animation-play-state: paused; }
 .tray .mini .x { position: absolute; top: -5px; right: -5px; width: 20px; height: 20px; border-radius: 50%; background: var(--primary-fill); color: #fff; display: grid; place-items: center; }
 .tray .mini .x .ic { width: 12px; height: 12px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 46px; padding: 0 20px; border-radius: 999px; border: 1.5px solid var(--primary-fill); background: transparent; color: var(--primary-fill); font: 750 15px var(--font-u); transition: transform .25s var(--ease-spring), background .2s, color .2s; white-space: nowrap; }
-:root[data-theme="dark"] .btn { color: var(--primary); border-color: var(--primary); }
+:root[data-theme="dark"] .btn:not(.fill):not(.ghost) { color: var(--primary); border-color: var(--primary); }
 .btn:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--primary) 10%, transparent); }
 .btn:active { transform: scale(.95); }
 .btn.fill { background: var(--primary-fill); color: #fff; border-color: transparent; box-shadow: 0 8px 20px color-mix(in srgb, var(--primary) 35%, transparent); }
@@ -496,6 +501,7 @@ body.paused .blob { animation-play-state: paused; }
 .toast { position: fixed; left: 50%; bottom: 28px; z-index: 80; transform: translate(-50%, 30px); opacity: 0; pointer-events: none; padding: 12px 18px; border-radius: 999px; background: var(--ink); color: var(--bg); font-weight: 700; font-size: 14px; box-shadow: var(--shadow); transition: transform .45s var(--ease-spring), opacity .3s; display: flex; gap: 10px; align-items: center; }
 .toast.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
 .toast button { border: 0; background: none; color: var(--primary-2); font-weight: 800; padding: 0; }
+:root[data-theme="dark"] .toast button { color: #C4471F; }
 .coach { position: fixed; z-index: 70; width: 300px; padding: 18px 18px 14px; border-radius: 22px; background: var(--solid); box-shadow: var(--shadow-lg); animation: coachIn .5s var(--ease-spring) both; }
 @keyframes coachIn { from { opacity: 0; transform: translateY(12px) scale(.94); } }
 .coach h4 { margin: 0 0 6px; font: 700 19px var(--font-d); }
@@ -553,7 +559,7 @@ body.paused .blob { animation-play-state: paused; }
   .panel-body { padding: 4px 18px 12px; }
   .panel-foot { display: none; }
 
-  .stage.mobile .b .face { box-shadow: 0 0 0 8px var(--bubble-ring), 0 10px 24px rgba(90, 50, 20, var(--sh, .16)); }
+  .stage.mobile .b .face { --ring: calc(var(--s) * .05); --sh-y: calc(var(--s) * .0625); --sh-b: calc(var(--s) * .15); }
   .mob-hud { position: absolute; left: 12px; right: 12px; top: 6px; z-index: 6; justify-content: space-between; align-items: center; gap: 8px; }
   .mob-hud .seg button { padding: 6px 10px; font-size: 12.5px; }
   .mob-hud .seg button .ic { width: 16px; height: 16px; }
@@ -683,12 +689,13 @@ body.paused .blob { animation-play-state: paused; }
 /* Rendszerszintű sötét mód: ugyanazok a finomhangolások, mint a kézi sötét témánál */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .bg::after { opacity: .12; }
-  :root:not([data-theme="light"]) .b .face { box-shadow: 0 0 0 7px var(--bubble-ring), 0 12px 34px rgba(0, 0, 0, calc(var(--sh, .16) * 2.4)), 0 0 0 10px var(--rc, transparent); }
-  :root:not([data-theme="light"]) .btn { color: var(--primary); border-color: var(--primary); }
+  :root:not([data-theme="light"]) .b .face { --sh-c: rgba(0, 0, 0, calc(var(--sh, .16) * 2.4)); }
+  :root:not([data-theme="light"]) .btn:not(.fill):not(.ghost) { color: var(--primary); border-color: var(--primary); }
   :root:not([data-theme="light"]) .c-tag { color: var(--primary); }
   :root:not([data-theme="light"]) .ichip { background: var(--surface-2); }
   :root:not([data-theme="light"]) .c-fun { background: color-mix(in srgb, var(--primary-2) 12%, var(--solid)); }
   :root:not([data-theme="light"]) .tabbar button.on { color: var(--primary); }
+  :root:not([data-theme="light"]) .toast button { color: #C4471F; }
 }
 
 /* ---------- Márka: Pacsi by DarwinAI ---------- */
@@ -717,3 +724,17 @@ body.paused .blob { animation-play-state: paused; }
 
 /* Lista nézetben a felhő rétegei (gyűrűvászon, csoportfoltok, térkép) nem látszanak */
 .stage.list .under, .stage.list .groups, .stage.list .maplayer { visibility: hidden; }
+
+/* Érintés: a felhőn az ujj „kavarja” a buborékokat (JS: stir) – a böngésző ne görgessen/nagyítson itt.
+   A lista saját görgetője függőlegesen továbbra is görgethető. */
+.stage { touch-action: none; }
+.stage .listview { touch-action: pan-y; }
+
+/* Telefonon a háttérfoltok állnak: három mozgó, képernyőnyi réteg ~30 MB grafikus memória lenne,
+   és a mobil keret (~256 MB) túllépésekor a böngésző rétegeket dob el (villogó felső sáv). */
+@media (max-width: 899px) {
+  .blob { animation: none; will-change: auto; }
+}
+
+/* A kártya bezáró gombja fölött görög a tartalom: tömör háttér + finom árnyék, hogy ne látsszon át */
+.card .close { background: var(--solid); box-shadow: 0 0 0 1px var(--line), var(--shadow-sm); }

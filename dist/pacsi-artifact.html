@@ -41,7 +41,7 @@
   --line: rgba(244, 239, 232, .12);
   --line-2: rgba(244, 239, 232, .07);
   --ink: #F4EFE8; --ink-2: #B4ABA2; --ink-3: #7F776F;
-  --primary: #FF7F55; --primary-fill: #F0643A;
+  --primary: #FF7F55; --primary-fill: #E2572D;
   --teal: #3CC2B4; --ok: #5BD69A; --warn: #FFB45C;
   --chip: rgba(44, 40, 56, .8);
   --dot-off: #3A3546;
@@ -63,7 +63,7 @@
     --line: rgba(244, 239, 232, .12);
     --line-2: rgba(244, 239, 232, .07);
     --ink: #F4EFE8; --ink-2: #B4ABA2; --ink-3: #7F776F;
-    --primary: #FF7F55; --primary-fill: #F0643A;
+    --primary: #FF7F55; --primary-fill: #E2572D;
     --teal: #3CC2B4; --ok: #5BD69A; --warn: #FFB45C;
     --chip: rgba(44, 40, 56, .8);
     --dot-off: #3A3546;
@@ -249,29 +249,34 @@ body.paused .blob { animation-play-state: paused; }
 @keyframes achipIn { from { opacity: 0; transform: translateY(-6px) scale(.8); } }
 
 /* ---------- Buborékok ---------- */
+/* A buborék-elem natív átmérője (--s) a célméretéhez igazodik (JS: fitBase), a pillanatnyi méretet
+   scale adja. A böngésző a will-change: transform rétegeket natív méretükben rajzolja: egy fix
+   160 px-es, kicsire skálázott elem telefonon ~4 MB grafikus memória lenne buborékonként (124-gyel
+   ~465 MB – ettől villogott mobilon a felső sáv). Ezért minden belső méret az --s arányában van. */
 .b {
-  --s: 160px;
+  --s: 80px;
   position: absolute; left: 0; top: 0; width: var(--s); height: var(--s); padding: 0; border: 0; background: none;
-  border-radius: 50%; transform-origin: 50% 50%; will-change: transform; z-index: 2; contain: layout style;
+  border-radius: 50%; transform-origin: 50% 50%; will-change: transform; z-index: 2; contain: layout style; touch-action: none;
 }
 .b .face {
+  --ring: calc(var(--s) * .044); --sh-y: calc(var(--s) * .075); --sh-b: calc(var(--s) * .19); --sh-c: rgba(90, 50, 20, var(--sh, .16));
   position: absolute; inset: 0; border-radius: 50%;
   background-color: var(--bgc); background-image: var(--sprite); background-size: var(--sp-size); background-position: var(--pos);
-  box-shadow: 0 0 0 7px var(--bubble-ring), 0 12px 30px rgba(90, 50, 20, var(--sh, .16)), 0 0 0 10px var(--rc, transparent);
+  box-shadow: 0 0 0 var(--ring) var(--bubble-ring), 0 var(--sh-y) var(--sh-b) var(--sh-c), 0 0 0 calc(var(--s) * .0625) var(--rc, transparent);
 }
-:root[data-theme="dark"] .b .face { box-shadow: 0 0 0 7px var(--bubble-ring), 0 12px 34px rgba(0, 0, 0, calc(var(--sh, .16) * 2.4)), 0 0 0 10px var(--rc, transparent); }
-/* illeszkedési gyűrű, glória, pulzus: közös vászon a buborékok alatt (lásd drawUnder) */
+:root[data-theme="dark"] .b .face { --sh-c: rgba(0, 0, 0, calc(var(--sh, .16) * 2.4)); }
+/* illeszkedési gyűrű, glória, pulzus, kavarás-hullám: közös vászon a buborékok alatt (lásd drawUnder) */
 .under { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-.b .fav-b, .b .cmp-b { position: absolute; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: #fff; box-shadow: 0 0 0 5px var(--bubble-ring); transform: scale(0); transition: transform .45s var(--ease-spring); }
-.b .fav-b { right: -4px; top: -4px; background: var(--primary-fill); }
-.b .cmp-b { left: -4px; top: -4px; background: var(--teal); }
-.b .fav-b .ic, .b .cmp-b .ic { width: 24px; height: 24px; }
+.b .fav-b, .b .cmp-b { position: absolute; width: calc(var(--s) * .275); height: calc(var(--s) * .275); border-radius: 50%; display: grid; place-items: center; color: #fff; box-shadow: 0 0 0 calc(var(--s) * .031) var(--bubble-ring); transform: scale(0); transition: transform .45s var(--ease-spring); }
+.b .fav-b { right: calc(var(--s) * -.025); top: calc(var(--s) * -.025); background: var(--primary-fill); }
+.b .cmp-b { left: calc(var(--s) * -.025); top: calc(var(--s) * -.025); background: var(--teal); }
+.b .fav-b .ic, .b .cmp-b .ic { width: calc(var(--s) * .15); height: calc(var(--s) * .15); }
 .b.fav .fav-b, .b.cmp .cmp-b { transform: scale(1); }
-.b[data-tier="back"] .face { filter: saturate(.22) blur(2.5px); --sh: .05; }
+.b[data-tier="back"] .face { filter: saturate(.22) blur(calc(var(--s) * .016)); --sh: .05; }
 .b[data-tier="mid"] .face { filter: saturate(.75); --sh: .12; }
 .b[data-tier="front"] .face { --sh: .22; }
 .b[data-tier="top"] .face { --sh: .3; }
-.b.dim .face { filter: saturate(0) blur(1px); }
+.b.dim .face { filter: saturate(0) blur(calc(var(--s) * .006)); }
 .b.spot .face { --rc: var(--teal); }
 .b.gone { visibility: hidden; }
 .b:focus-visible { outline: none; }
@@ -292,7 +297,7 @@ body.paused .blob { animation-play-state: paused; }
 
 /* ---------- Csoportok & térkép ---------- */
 .groups { position: absolute; inset: 0; pointer-events: none; }
-.gblob { position: absolute; left: 0; top: 0; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--gc) 30%, transparent), color-mix(in srgb, var(--gc) 12%, transparent) 70%, transparent); width: 400px; height: 400px; transform-origin: 50% 50%; transition: transform .9s var(--ease-spring), opacity .5s; opacity: 0; }
+.gblob { position: absolute; left: 0; top: 0; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--gc) 30%, transparent), color-mix(in srgb, var(--gc) 12%, transparent) 70%, transparent); width: 160px; height: 160px; transform-origin: 50% 50%; transition: transform .9s var(--ease-spring), opacity .5s; opacity: 0; }
 .gblob.on { opacity: 1; }
 .glabel { position: absolute; left: 0; top: 0; transform: translate(-50%, -100%); padding: 6px 12px; border-radius: 999px; background: var(--solid); box-shadow: var(--shadow-sm); font: 750 13.5px var(--font-u); white-space: nowrap; transition: transform .9s var(--ease-spring), opacity .5s; opacity: 0; z-index: 20; }
 .glabel.on { opacity: 1; }
@@ -336,7 +341,7 @@ body.paused .blob { animation-play-state: paused; }
 .tray .mini .x { position: absolute; top: -5px; right: -5px; width: 20px; height: 20px; border-radius: 50%; background: var(--primary-fill); color: #fff; display: grid; place-items: center; }
 .tray .mini .x .ic { width: 12px; height: 12px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 46px; padding: 0 20px; border-radius: 999px; border: 1.5px solid var(--primary-fill); background: transparent; color: var(--primary-fill); font: 750 15px var(--font-u); transition: transform .25s var(--ease-spring), background .2s, color .2s; white-space: nowrap; }
-:root[data-theme="dark"] .btn { color: var(--primary); border-color: var(--primary); }
+:root[data-theme="dark"] .btn:not(.fill):not(.ghost) { color: var(--primary); border-color: var(--primary); }
 .btn:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--primary) 10%, transparent); }
 .btn:active { transform: scale(.95); }
 .btn.fill { background: var(--primary-fill); color: #fff; border-color: transparent; box-shadow: 0 8px 20px color-mix(in srgb, var(--primary) 35%, transparent); }
@@ -500,6 +505,7 @@ body.paused .blob { animation-play-state: paused; }
 .toast { position: fixed; left: 50%; bottom: 28px; z-index: 80; transform: translate(-50%, 30px); opacity: 0; pointer-events: none; padding: 12px 18px; border-radius: 999px; background: var(--ink); color: var(--bg); font-weight: 700; font-size: 14px; box-shadow: var(--shadow); transition: transform .45s var(--ease-spring), opacity .3s; display: flex; gap: 10px; align-items: center; }
 .toast.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
 .toast button { border: 0; background: none; color: var(--primary-2); font-weight: 800; padding: 0; }
+:root[data-theme="dark"] .toast button { color: #C4471F; }
 .coach { position: fixed; z-index: 70; width: 300px; padding: 18px 18px 14px; border-radius: 22px; background: var(--solid); box-shadow: var(--shadow-lg); animation: coachIn .5s var(--ease-spring) both; }
 @keyframes coachIn { from { opacity: 0; transform: translateY(12px) scale(.94); } }
 .coach h4 { margin: 0 0 6px; font: 700 19px var(--font-d); }
@@ -557,7 +563,7 @@ body.paused .blob { animation-play-state: paused; }
   .panel-body { padding: 4px 18px 12px; }
   .panel-foot { display: none; }
 
-  .stage.mobile .b .face { box-shadow: 0 0 0 8px var(--bubble-ring), 0 10px 24px rgba(90, 50, 20, var(--sh, .16)); }
+  .stage.mobile .b .face { --ring: calc(var(--s) * .05); --sh-y: calc(var(--s) * .0625); --sh-b: calc(var(--s) * .15); }
   .mob-hud { position: absolute; left: 12px; right: 12px; top: 6px; z-index: 6; justify-content: space-between; align-items: center; gap: 8px; }
   .mob-hud .seg button { padding: 6px 10px; font-size: 12.5px; }
   .mob-hud .seg button .ic { width: 16px; height: 16px; }
@@ -687,12 +693,13 @@ body.paused .blob { animation-play-state: paused; }
 /* Rendszerszintű sötét mód: ugyanazok a finomhangolások, mint a kézi sötét témánál */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .bg::after { opacity: .12; }
-  :root:not([data-theme="light"]) .b .face { box-shadow: 0 0 0 7px var(--bubble-ring), 0 12px 34px rgba(0, 0, 0, calc(var(--sh, .16) * 2.4)), 0 0 0 10px var(--rc, transparent); }
-  :root:not([data-theme="light"]) .btn { color: var(--primary); border-color: var(--primary); }
+  :root:not([data-theme="light"]) .b .face { --sh-c: rgba(0, 0, 0, calc(var(--sh, .16) * 2.4)); }
+  :root:not([data-theme="light"]) .btn:not(.fill):not(.ghost) { color: var(--primary); border-color: var(--primary); }
   :root:not([data-theme="light"]) .c-tag { color: var(--primary); }
   :root:not([data-theme="light"]) .ichip { background: var(--surface-2); }
   :root:not([data-theme="light"]) .c-fun { background: color-mix(in srgb, var(--primary-2) 12%, var(--solid)); }
   :root:not([data-theme="light"]) .tabbar button.on { color: var(--primary); }
+  :root:not([data-theme="light"]) .toast button { color: #C4471F; }
 }
 
 /* ---------- Márka: Pacsi by DarwinAI ---------- */
@@ -721,6 +728,20 @@ body.paused .blob { animation-play-state: paused; }
 
 /* Lista nézetben a felhő rétegei (gyűrűvászon, csoportfoltok, térkép) nem látszanak */
 .stage.list .under, .stage.list .groups, .stage.list .maplayer { visibility: hidden; }
+
+/* Érintés: a felhőn az ujj „kavarja” a buborékokat (JS: stir) – a böngésző ne görgessen/nagyítson itt.
+   A lista saját görgetője függőlegesen továbbra is görgethető. */
+.stage { touch-action: none; }
+.stage .listview { touch-action: pan-y; }
+
+/* Telefonon a háttérfoltok állnak: három mozgó, képernyőnyi réteg ~30 MB grafikus memória lenne,
+   és a mobil keret (~256 MB) túllépésekor a böngésző rétegeket dob el (villogó felső sáv). */
+@media (max-width: 899px) {
+  .blob { animation: none; will-change: auto; }
+}
+
+/* A kártya bezáró gombja fölött görög a tartalom: tömör háttér + finom árnyék, hogy ne látsszon át */
+.card .close { background: var(--solid); box-shadow: 0 0 0 1px var(--line), var(--shadow-sm); }
 
 .app { height: 100%; }
 @media (max-width: 899px) { .app { grid-template-rows: 58px 1fr auto auto; } .topbar { padding-top: 0; } .tabbar { padding-bottom: 6px; } }</style>
@@ -1220,7 +1241,7 @@ function quizCrit(answers) {
    Színpad: buborékok, fizika, nézetek, effektek
    ========================================================================== */
 const stage = $('#stage'), bubblesEl = $('#bubbles'), tipEl = $('#tip');
-const R0 = 80;                                   // a buborék-elem alapsugara (160 px) – a méretet scale adja
+const BASE0 = S.mobile ? 24 : 40;                // a buborék-elem kezdő natív sugara – a pillanatnyi méretet scale adja (lásd fitBase)
 const DEPTH = { back: -1, mid: -.35, '': 0, front: .5, top: 1 };
 const ZI = { back: 1, mid: 2, '': 3, front: 4, top: 5 };
 const FX_COLORS = ['#FF6B3D', '#FFC845', '#17756E', '#A58BFF', '#7ED6B1', '#FF8FA3', '#5AB0F0'];
@@ -1242,7 +1263,7 @@ const B = BREEDS.map(b => {
   el.tabIndex = -1;
   el.setAttribute('role', 'listitem');
   el.setAttribute('aria-label', b.nev);
-  el.style.cssText = picStyle(b);
+  el.style.cssText = `${picStyle(b)};--s:${BASE0 * 2}px`;
   // A gyűrű, a glória és a pulzus nem DOM-elem, hanem a közös alsó vásznon rajzolódik (drawUnder) –
   // így szűréskor nem kell 124 réteget képkockánként újrarajzolni.
   el.innerHTML = `<span class="face"></span><span class="fav-b">${ic('heart-f')}</span><span class="cmp-b">${ic('compare')}</span>`;
@@ -1251,9 +1272,21 @@ const B = BREEDS.map(b => {
     b, el,
     x: 0, y: 0, vx: 0, vy: 0, r: 0, rv: 0, rt: 0, hk: 1, jy: 0, jv: 0, rx: 0, ry: 0, rr: 0,
     ph: rand(0, 6.283), st: 'in', tier: '', vis: true, pend: null, op: 1, fly: null, grp: null, mx: 0, my: 0,
-    opT: 1, opC: 1, ringT: 0, ringV: 0, glowV: 0, dim: false,
+    opT: 1, opC: 1, ringT: 0, ringV: 0, glowV: 0, dim: false, base: BASE0, stirN: -99,
   };
 });
+/* A buborék-elem natív mérete a célméretéhez igazodik. A böngésző a will-change: transform rétegeket
+   natív méretükben rajzolja (kicsinyítve sem kisebbet), így a natív méretnek a képernyőn látotthoz
+   kell közel lennie – különben telefonon elfogy a grafikus memória. Csak ±20 %-on túli célváltozásnál
+   méretezünk át (akkor a réteg újrarajzolódik); desktopon ráhagyással, hogy a hover-nagyítás is éles maradjon. */
+function fitBase(o) {
+  if (!o.rt || (o.st !== 'in' && o.st !== 'drop')) return;
+  const want = Math.max(8, o.rt * (S.mobile ? 1.08 : 1.22));
+  if (want > o.base * 1.2 || want < o.base * .8) {
+    o.base = Math.round(want);
+    o.el.style.setProperty('--s', `${o.base * 2}px`);
+  }
+}
 const PULSES = [];
 const underC = $('#under'), ux = underC.getContext('2d');
 let underDpr = 1, underDirty = false, ringRGB = [255, 107, 61];
@@ -1430,12 +1463,13 @@ function drawGroups() {
     if (!blob) {
       blob = document.createElement('div'); blob.className = 'gblob'; blob.dataset.k = g.key; box.appendChild(blob);
       lab = document.createElement('div'); lab.className = 'glabel'; lab.dataset.k = g.key; box.appendChild(lab);
-      blob.style.transform = `translate(${g.x - 200}px,${g.y - 200}px) scale(.2)`;
+      blob.style.transform = `translate(${g.x - 80}px,${g.y - 80}px) scale(.5)`;
     }
-    // fix 400 px-es elem, a méretet scale adja → csak transform animálódik (nincs újrarajzolás)
+    // fix 160 px-es elem, a méretet scale adja → csak transform animálódik (nincs újrarajzolás);
+    // kicsi natív méret, mert animáció közben a böngésző legalább natív méretben rajzolja a réteget
     const D = g.R * 2 + 36;
     blob.style.setProperty('--gc', g.color);
-    blob.style.transform = `translate(${g.x - 200}px,${g.y - 200}px) scale(${(D / 400).toFixed(3)})`;
+    blob.style.transform = `translate(${g.x - 80}px,${g.y - 80}px) scale(${(D / 160).toFixed(3)})`;
     lab.style.setProperty('--gc', g.color);
     lab.innerHTML = `${esc(g.label)}<b>${g.n}</b>`;
     lab.style.transform = `translate(${g.x}px,${g.y - g.R - 14}px) translate(-50%,-100%)`;
@@ -1602,10 +1636,12 @@ function step() {
       const dx = o.x - mouse.x, dy = o.y - mouse.y, d = Math.hypot(dx, dy) || 1, R = o.r + 70;
       if (d < R) { const f = (R - d) / R * .9; o.vx += dx / d * f; o.vy += dy / d * f; }
     }
-    const damp = o.st === 'drop' ? .99 : .8;
+    // a megkavart buborékok egy ideig lazábban csillapodnak: tovább siklanak, mint a vízen
+    const damp = o.st === 'drop' ? .99 : stepN - o.stirN < 40 ? .87 : .8;
     o.vx *= damp; o.vy *= damp;
     o.x += o.vx; o.y += o.vy;
   }
+  if (stir.on && !rm) stirForce(act);
   const gap = S.mobile ? 4 : 6;
   for (let it = 0; it < 2; it++) {
     for (let i = 0; i < act.length; i++) {
@@ -1658,12 +1694,48 @@ function step() {
   }
 }
 
+/* ---------- Ujjal kavarás (érintőképernyő) ----------
+   Ha az ujj a felhőn húzódik, a buborékok kitérnek előle és a mozgás irányába sodródnak – mint a vízbe
+   húzott kéz nyomán. A koppintás és a hosszú nyomás változatlan: a kavarás néhány pixelnyi elmozdulás
+   után indul. Az ujj útját szakaszként kezeljük, így gyors húzásnál sem ugrik át buborékokat. */
+const stir = { id: null, on: false, x: 0, y: 0, px: 0, py: 0, sx: 0, sy: 0, trail: 0, block: 0 };
+const RIPPLES = [];
+function ripple(x, y) {
+  if (RIPPLES.length >= 12) RIPPLES.shift();
+  RIPPLES.push({ x, y, t0: now() });
+}
+function stirForce(act) {
+  const ax = stir.px, ay = stir.py, bx = stir.x, by = stir.y;
+  stir.px = bx; stir.py = by;
+  const mx = bx - ax, my = by - ay, len2 = mx * mx + my * my;
+  const sp = Math.min(Math.sqrt(len2), 40);          // ujjsebesség, px / lépés
+  const reach = S.mobile ? 62 : 76;                   // hatótáv a buborék szélétől
+  for (const o of act) {
+    const u = len2 ? clamp(((o.x - ax) * mx + (o.y - ay) * my) / len2, 0, 1) : 1;
+    let dx = o.x - (ax + mx * u), dy = o.y - (ay + my * u);
+    const d = Math.hypot(dx, dy) || .01, R = o.r + reach;
+    if (d >= R) continue;
+    const f = 1 - d / R, f2 = f * f;
+    dx /= d; dy /= d;
+    const push = f2 * (1.5 + sp * .13);               // kitérés az ujj elől (gyorsabb húzásnál erősebb)
+    o.vx += dx * push + mx * f2 * .24;                // + sodrás az ujj irányába
+    o.vy += dy * push + my * f2 * .24;
+    const v = Math.hypot(o.vx, o.vy);
+    if (v > 24) { o.vx *= 24 / v; o.vy *= 24 / v; }
+    o.stirN = stepN;
+  }
+  stir.trail += sp;
+  if (stir.trail > 38) { stir.trail = 0; ripple(bx, by); }
+}
+
 /* ---------- Rajzolás ---------- */
 function render(t) {
   const rm = RM();
   if (!S.mobile && !rm) { mouse.px += (mouse.tx - mouse.px) * .06; mouse.py += (mouse.ty - mouse.py) * .06; }
   for (const o of B) {
     if (o.st === 'gone') continue;
+    fitBase(o);
+    const R0 = o.base;
     let x = o.x, y = o.y + o.jy, s = o.r / R0, rot = 0, op = 1;
     // simított mélységi átlátszóság (keresésnél a nem találatok erősen halványak)
     o.opC += ((o.dim ? .14 : o.opT) - o.opC) * (rm ? 1 : .12);
@@ -1713,6 +1785,7 @@ function clearUnder() {
   ux.clearRect(0, 0, underC.width, underC.height);
   for (const o of B) { o.ringV = 0; o.glowV = 0; }
   PULSES.length = 0;
+  RIPPLES.length = 0;
   underDirty = false;
 }
 
@@ -1722,7 +1795,7 @@ function clearUnder() {
 function drawUnder(t) {
   const active = S.crit.length > 0 && S.view !== 'lista';
   const rm = RM();
-  let work = PULSES.length > 0;
+  let work = PULSES.length > 0 || RIPPLES.length > 0;
   if (!work) for (const o of B) if (o.ringV > .004 || o.glowV > .01 || (active && o.ringT > 0 && o.st !== 'gone')) { work = true; break; }
   if (!work && !underDirty) return;
   ux.setTransform(underDpr, 0, 0, underDpr, 0, 0);
@@ -1764,6 +1837,16 @@ function drawUnder(t) {
     ux.strokeStyle = col(.9 * (1 - e) * o.op);
     ux.lineWidth = o.rr * .075 * sc;
     ux.beginPath(); ux.arc(o.rx, o.ry, o.rr * 1.04 * sc, 0, 6.2832); ux.stroke();
+  }
+  // kavarás hullámai: az ujj nyomán táguló, halványuló körök
+  for (let i = RIPPLES.length - 1; i >= 0; i--) {
+    const q = RIPPLES[i], u = (t - q.t0) / 760;
+    if (u >= 1) { RIPPLES.splice(i, 1); continue; }
+    if (u < 0) continue;
+    const e = 1 - Math.pow(1 - u, 3);
+    ux.strokeStyle = col(.55 * (1 - u));
+    ux.lineWidth = 3 * (1 - u) + .8;
+    ux.beginPath(); ux.arc(q.x, q.y, 12 + 70 * e, 0, 6.2832); ux.stroke();
   }
 }
 
@@ -1922,16 +2005,20 @@ bubblesEl.addEventListener('pointerout', e => {
   const from = e.target.closest('.b');
   if (from && !from.contains(e.relatedTarget)) { clearTimeout(hoverTimer); if (hovered && hovered.el === from) setHover(null); }
 });
-let lpTimer = 0, lpFired = false;
+let lpTimer = 0, lpFired = false, pressed = null;
+// érintésre a buborék kicsit „benyomódik”, elengedéskor visszarugózik
+const unpress = () => { if (pressed) { pressed.hk = 1; pressed = null; } };
 bubblesEl.addEventListener('pointerdown', e => {
   const o = BY_EL.get(e.target.closest('.b'));
   lpFired = false;
   if (!o || e.pointerType === 'mouse') return;
+  if (!RM()) { pressed = o; o.hk = .9; }
   lpTimer = setTimeout(() => { lpFired = true; haptic([10, 30, 10]); toggleFav(o.b.id, o.el); }, 520);
 });
-['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => bubblesEl.addEventListener(ev, () => clearTimeout(lpTimer)));
+['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => bubblesEl.addEventListener(ev, () => { clearTimeout(lpTimer); unpress(); }));
 bubblesEl.addEventListener('click', e => {
   const o = BY_EL.get(e.target.closest('.b'));
+  if (now() < stir.block) return;               // kavarás után felengedett ujj ne nyisson kártyát
   if (!o || lpFired) { lpFired = false; return; }
   if (focusedO && focusedO !== o) focusedO.el.tabIndex = -1;
   focusedO = o; o.el.tabIndex = 0;
@@ -1978,6 +2065,32 @@ stage.addEventListener('pointermove', e => {
   mouse.ty = clamp((mouse.y - SR.height / 2) / (SR.height / 2), -1, 1);
 });
 stage.addEventListener('pointerleave', () => { mouse.in = false; mouse.tx = mouse.ty = 0; });
+
+/* Kavarás: ujj vagy toll a felhőn (a HUD-gombokon, a listán és a felhőjelvényen nem) – lásd stirForce */
+stage.addEventListener('pointerdown', e => {
+  if (e.pointerType === 'mouse' || stir.id !== null || paused || RM() || S.view === 'lista') return;
+  if (e.target !== stage && !e.target.closest('.b, .bubbles')) return;
+  const x = e.clientX - SR.left, y = e.clientY - SR.top;
+  Object.assign(stir, { id: e.pointerId, on: false, x, y, px: x, py: y, sx: x, sy: y, trail: 0 });
+});
+stage.addEventListener('pointermove', e => {
+  if (e.pointerId !== stir.id) return;
+  stir.x = e.clientX - SR.left; stir.y = e.clientY - SR.top;
+  if (!stir.on && Math.hypot(stir.x - stir.sx, stir.y - stir.sy) > 9) {
+    stir.on = true;
+    clearTimeout(lpTimer);                        // kavarás közben nincs hosszú nyomásos kedvencelés
+    unpress();
+    if (hovered) setHover(null);                  // pl. kártyazárás után a fókusz miatt kint maradt név
+    ripple(stir.sx, stir.sy);
+  }
+});
+const endStir = e => {
+  if (e.pointerId !== stir.id) return;
+  if (stir.on) stir.block = now() + 400;
+  stir.id = null; stir.on = false;
+};
+stage.addEventListener('pointerup', endStir);
+stage.addEventListener('pointercancel', endStir);
 
 /* ==========================================================================
    Felület: szűrőpanel, dokk, HUD, lista, üres állapot, téma, bemutató
@@ -2330,7 +2443,8 @@ function applyTheme() {
   if (S.theme !== 'auto') r.dataset.theme = S.theme;
   const dark = isDark();
   $('#themeBtn use').setAttribute('href', dark ? '#i-sun' : '#i-moon');
-  $$('meta[name="theme-color"]').forEach(m => m.setAttribute('content', dark ? '#14121A' : '#FBF6EE'));
+  // a media-feltételt elhagyjuk: kézi témánál is a látható téma színe kerüljön a státuszsávba
+  $$('meta[name="theme-color"]').forEach(m => { m.removeAttribute('media'); m.setAttribute('content', dark ? '#14121A' : '#FBF6EE'); });
 }
 function toggleTheme(e) {
   S.theme = isDark() ? 'light' : 'dark';
@@ -2399,8 +2513,10 @@ function coach(i = 0) {
 let installEvt = null;
 addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; });
 const standalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-function maybeInstall(reason) {
+function maybeInstall(reason, tries = 0) {
   if (ARTIFACT || standalone() || store.get('installAsked', 0) > 1) return;
+  // nyitott fajtakártya (vagy nem a kvíz végén nyitott fiók) fölé ne ugorjon fel – később újrapróbáljuk
+  if ((!cardEl.hidden || (S.drawer && reason !== 'quiz')) && tries < 6) { setTimeout(() => maybeInstall(reason, tries + 1), 8000); return; }
   const visits = store.get('visits', 0);
   if (reason !== 'quiz' && visits < 2) return;
   if (installEvt) {
