@@ -1,0 +1,351 @@
+{
+  "nemet-juhaszkutya": {
+    "leiras": "A német juhászkutyát Max von Stephanitz alapozta meg 1899-ben, sokoldalú terelő- és munkakutyának szánva. Okos, hűséges és rendkívül tanulékony: a rendőrségtől a mentésen át a vakvezetésig szinte mindenhol megállja a helyét. A családjához szorosan kötődik, idegenekkel tartózkodó, ezért korai szocializációt és következetes nevelést igényel. Számolj vele, hogy egész évben bőven hullatja a szőrét, és feladat nélkül hamar unatkozni kezd.",
+    "kinekIgen": [
+      "Aktív, sportos gazdiknak",
+      "Akik szívesen tanítanak és kutyasportolnak",
+      "Kertes házban élő családoknak"
+    ],
+    "kinekNem": [
+      "Szőrhullást nehezen viselőknek",
+      "Kis lakásba, kevés mozgással",
+      "Napi sok órára egyedül hagyó gazdinak"
+    ],
+    "mozgas": "Napi 1,5–2 óra, mozgás és szellemi feladat is",
+    "egeszseg": [
+      "Csípőízületi diszplázia (szűrt szülők!)",
+      "Könyökdiszplázia",
+      "Degeneratív myelopathia",
+      "Gyomorcsavarodás"
+    ],
+    "erdekesseg": "A népszerű „Rex felügyelő” című osztrák krimisorozat négylábú főszereplője is német juhászkutya volt.",
+    "hasonlo": ["malinois", "dobermann", "rottweiler"],
+    "marmagassag": [55, 65],
+    "koltseg": 2
+  },
+  "malinois": {
+    "leiras": "A malinois a belga juhászkutya négy változatának egyike, nevét Mechelen (franciául Malines) városáról kapta. Rendkívül gyors, kitartó és munkamániás fajta, ma a rendőrségek és hadseregek egyik legkeresettebb kutyája világszerte. Egy jól lefoglalt malinois odaadó, együttműködő társ, de a napi séta kevés neki: rendszeres, komoly feladatot igényel. Unatkozva hamar feszült, romboló lehet, ezért elsősorban tapasztalt, kutyasportos gazdinak való.",
+    "kinekIgen": [
+      "Tapasztalt, kutyasportos gazdiknak",
+      "Akik napi több órát szánnak a kutyára",
+      "Nyomkövető vagy őrző-védő munkára készülőknek"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Nyugodt, otthonülő életmódhoz",
+      "Kisgyerekes, időszűkös családoknak"
+    ],
+    "mozgas": "Napi 2+ óra intenzív mozgás és rendszeres munka",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Könyökdiszplázia",
+      "Epilepszia"
+    ],
+    "erdekesseg": "Az amerikai Titkosszolgálat a Fehér Ház őrzésére is malinois-kat alkalmaz.",
+    "hasonlo": ["nemet-juhaszkutya", "dobermann", "mudi"],
+    "marmagassag": [56, 66],
+    "koltseg": 2
+  },
+  "border-collie": {
+    "leiras": "A border collie az angol–skót határvidék juhászainak munkakutyájaként alakult ki, és ma is a világ egyik legjobb terelője. Rendkívül okos, figyelmes és munkára éhes: villámgyorsan tanul, a kutyasportokban (agility, obedience, terelés) szinte verhetetlen. Ha nem kap elég szellemi és fizikai feladatot, magának talál – például autókat, biciklistákat vagy gyerekeket próbál terelni. Családban is jól érzi magát, de csak akkor, ha az életmód tényleg aktív.",
+    "kinekIgen": [
+      "Aktív, sportos gazdiknak",
+      "Agility- és kutyasport-rajongóknak",
+      "Tanyán vagy kertes házban élőknek"
+    ],
+    "kinekNem": [
+      "Kényelmes, otthonülő életmódhoz",
+      "Egész napra egyedül hagyó gazdinak",
+      "Első kutyásoknak, felkészülés nélkül"
+    ],
+    "mozgas": "Napi 2 óra mozgás, sok szellemi feladattal",
+    "egeszseg": [
+      "Collie-szem-anomália (CEA)",
+      "Csípőízületi diszplázia",
+      "Epilepszia"
+    ],
+    "erdekesseg": "Egy Chaser nevű amerikai border collie több mint ezer játékát tanulta meg név szerint felismerni, képességeit tudományos cikkben is dokumentálták.",
+    "hasonlo": ["ausztral-juhaszkutya", "shetlandi-juhaszkutya", "mudi"],
+    "marmagassag": [46, 56],
+    "koltseg": 2
+  },
+  "ausztral-juhaszkutya": {
+    "leiras": "Neve ellenére az ausztrál juhászkutya az Egyesült Államok nyugati farmjain alakult ki, és a 20. század közepén a rodeókon lett igazán ismert. Okos, lelkes és rendkívül tanulékony terelő, aki szorosan kötődik a családjához, idegenekkel eleinte tartózkodó lehet. Aktív gazdi mellett remek sport- és túratárs, de feladat nélkül hamar unatkozik, és terelni kezdheti a gyerekeket vagy más állatokat. Dús bundája bőven hullik, a heti többszöri kefélés elengedhetetlen.",
+    "kinekIgen": [
+      "Aktív családoknak, túrázóknak, futóknak",
+      "Kutyasportot kedvelő gazdiknak",
+      "Akik sok időt töltenek a szabadban"
+    ],
+    "kinekNem": [
+      "Mozgásszegény, városi lakáséletmódhoz",
+      "Szőrhullásra érzékeny háztartásba",
+      "Hosszú egyedülléttel járó napokhoz"
+    ],
+    "mozgas": "Napi 1,5–2 óra, futással és feladatokkal",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "MDR1-génhiba (gyógyszer-érzékenység)",
+      "Szembetegségek (pl. szürkehályog, CEA)",
+      "Epilepszia"
+    ],
+    "erdekesseg": "Gyakran két különböző színű – vagy egy szemen belül kétszínű – szemük van, ami a fajtánál teljesen elfogadott.",
+    "hasonlo": ["border-collie", "mudi", "shetlandi-juhaszkutya"],
+    "marmagassag": [46, 58],
+    "koltseg": 2
+  },
+  "shetlandi-juhaszkutya": {
+    "leiras": "A sheltie a skóciai Shetland-szigeteken alakult ki kis termetű terelőkutyaként, később a hosszú szőrű skót juhászkutyával (collie) is keresztezték. Szelíd, érzékeny és kiválóan tanítható, a gazdájához nagyon ragaszkodik, idegenekkel inkább visszafogott. Lakásban is jól tartható, ha megkapja a napi mozgást és a közös játékot. Számolj vele, hogy szívesen és sokat ugat, dús bundája pedig rendszeres kefélést kíván és bőven hullik.",
+    "kinekIgen": [
+      "Családoknak, nagyobb gyerekekkel is",
+      "Első kutyásoknak, akik szeretnek tanítani",
+      "Agility és obedience iránt érdeklődőknek"
+    ],
+    "kinekNem": [
+      "Vékony falú bérházba, zajérzékeny szomszédokkal",
+      "Akik nem szeretnek rendszeresen kefélni"
+    ],
+    "mozgas": "Napi 1 óra séta, játékkal és tanulással",
+    "egeszseg": [
+      "Collie-szem-anomália (CEA)",
+      "MDR1-génhiba (gyógyszer-érzékenység)",
+      "Pajzsmirigy-alulműködés"
+    ],
+    "erdekesseg": "Eredetileg „Shetland Collie” néven szerették volna elismertetni, de a collie-tenyésztők tiltakozása miatt végül a Shetland Sheepdog nevet kapta.",
+    "hasonlo": ["border-collie", "welsh-corgi-pembroke", "ausztral-juhaszkutya"],
+    "marmagassag": [33, 40],
+    "koltseg": 2
+  },
+  "welsh-corgi-pembroke": {
+    "leiras": "A pembroke corgi Wales délnyugati részén, Pembrokeshire-ben alakult ki szarvasmarhák terelésére: alacsony termete miatt könnyen kitért a rúgások elől. Vidám, bátor és okos kutya, igazi nagy egyéniség, aki szeret a középpontban lenni. Könnyen tanul, kezdő gazdinak is jó választás, de ösztönösen csipkedheti a futkározó gyerekek bokáját, és szívesen ugat. Hajlamos az elhízásra, ami a hosszú hátát is megterheli, ezért figyelj az adagokra.",
+    "kinekIgen": [
+      "Első kutyásoknak, akik szeretnek tanítani",
+      "Aktív egyedülállóknak és pároknak",
+      "Nagyobb gyerekes családoknak"
+    ],
+    "kinekNem": [
+      "Csendes, zajérzékeny környezetbe",
+      "Szőrhullást nehezen viselőknek",
+      "Egészen kicsi gyerekek mellé (bokacsipkedés)"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, játék és tanulás",
+    "egeszseg": [
+      "Porckorongsérv (IVDD)",
+      "Degeneratív myelopathia",
+      "Csípőízületi diszplázia",
+      "Elhízásra való hajlam"
+    ],
+    "erdekesseg": "II. Erzsébet brit királynő uralkodása alatt több mint harminc corgit tartott, ezért a fajtát sokan ma is „királyi kutyaként” ismerik.",
+    "hasonlo": ["shetlandi-juhaszkutya", "pumi", "tacsko"],
+    "marmagassag": [25, 30],
+    "koltseg": 1
+  },
+  "puli": {
+    "leiras": "A puli évszázadok óta a magyar juhászok terelőkutyája, a nyájak mellett a nagyobb termetű őrzőkutyák oldalán dolgozott. Fürge, élénk és rendkívül éber, a családjához odaadóan ragaszkodik, idegenekkel gyanakvó, és hangosan jelez. Zsinóros bundája kevés szőrt hullat, de gondos kezelést igényel: a zsinórokat kézzel kell szétválasztani, fürdés után pedig akár egy teljes napig is szárad. Okos, de önálló gondolkodású, ezért türelmes, következetes nevelést kíván.",
+    "kinekIgen": [
+      "Tapasztaltabb, aktív gazdiknak",
+      "Akik szívesen foglalkoznak a bunda ápolásával",
+      "Kutyasportot kedvelőknek (agility, terelés)"
+    ],
+    "kinekNem": [
+      "Akiknek nincs idejük a zsinórok ápolására",
+      "Csendes környezetet igénylőknek",
+      "Kutyával most ismerkedő első gazdiknak"
+    ],
+    "mozgas": "Napi 1–1,5 óra, sok játékkal és feladattal",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Térdkalácsficam",
+      "Bőrproblémák a nedves, ápolatlan zsinórok alatt"
+    ],
+    "erdekesseg": "Mark Zuckerbergnek, a Facebook alapítójának Beast nevű kutyája is puli.",
+    "hasonlo": ["komondor", "pumi", "mudi"],
+    "marmagassag": [36, 45],
+    "koltseg": 2
+  },
+  "pumi": {
+    "leiras": "A pumi a 17–18. században alakult ki Magyarországon, amikor az ősi puli nyugati, felálló fülű, terrier jellegű terelőkutyákkal keveredett. Élénk, bátor és rendkívül éber: mindent észrevesz, és mindenről hangosan beszámol. Villámgyorsan tanul, a kutyasportokban kiváló, a családjához nagyon kötődik, idegenekkel tartózkodó. Göndör bundája keveset hullik és könnyen kezelhető, ám napi mozgás és szellemi feladat nélkül a pörgős, hangos pumiból hamar túl sok lesz.",
+    "kinekIgen": [
+      "Aktív, sportos gazdiknak",
+      "Agility-t, kutyasportot kedvelőknek",
+      "Akik kevés szőrhullású kutyát keresnek"
+    ],
+    "kinekNem": [
+      "Zajérzékeny szomszédság mellé",
+      "Nyugodt, kényelmes életmódhoz"
+    ],
+    "mozgas": "Napi 1,5–2 óra, sok futással és feladattal",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Térdkalácsficam"
+    ],
+    "erdekesseg": "Az Amerikai Kennel Klub (AKC) 2016-ban ismerte el hivatalosan a pumit, azóta a tengerentúlon is egyre ismertebb.",
+    "hasonlo": ["puli", "mudi", "torpe-schnauzer"],
+    "marmagassag": [38, 47],
+    "koltseg": 1
+  },
+  "mudi": {
+    "leiras": "A mudi a 18–19. században, spontán módon alakult ki a magyar pásztorkutyák között. Rendkívül sokoldalú: terel, őriz, és a kutyasportokban (agility, flyball, obedience) is kiválóan teljesít. Okos, bátor és tanulékony, a családjához nagyon kötődik, a gyerekekkel is jól kijön, idegenekkel szemben viszont éber és hangos. Bundája könnyen ápolható, de a mudi pörgős munkakutya, akinek mindennapos mozgás és szellemi feladat kell.",
+    "kinekIgen": [
+      "Aktív, sportos családoknak",
+      "Agility- és kutyasport-rajongóknak",
+      "Akik könnyen ápolható bundát szeretnének"
+    ],
+    "kinekNem": [
+      "Mozgásszegény, otthonülő életmódhoz",
+      "Zajérzékeny, zsúfolt bérházba",
+      "Hosszú egyedülléttel járó napokhoz"
+    ],
+    "mozgas": "Napi 1,5–2 óra, mozgás és szellemi munka",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Könyökdiszplázia",
+      "Epilepszia"
+    ],
+    "erdekesseg": "Önálló fajtaként csak 1936-ban írta le dr. Fényes Dezső, addig a pulitól és a pumitól nem különítették el élesen.",
+    "hasonlo": ["pumi", "puli", "border-collie"],
+    "marmagassag": [38, 47],
+    "koltseg": 1
+  },
+  "komondor": {
+    "leiras": "A komondor évszázadok óta a magyar pásztorok nyájőrző kutyája: nem terelt, hanem a jószágot védte a farkasoktól és a tolvajoktól. Nyugodt, méltóságteljes és önálló, a rábízott család és terület őrzését komolyan veszi, idegenekkel szemben gyanakvó. Fehér, zsinóros bundája egyedülálló, de rengeteg gondoskodást kíván: a zsinórokat rendszeresen szét kell választani, fürdés után akár egy-két napig is szárad. Tapasztalt gazdit, tágas, bekerített udvart és korai, alapos szocializációt igényel.",
+    "kinekIgen": [
+      "Tapasztalt, nagytestű kutyához szokott gazdiknak",
+      "Tágas, jól bekerített udvarral rendelkezőknek",
+      "Akik elhivatottan vállalják a bundaápolást"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Lakásba, városi életmódhoz",
+      "Sok vendéggel járó, nyüzsgő háztartásba"
+    ],
+    "mozgas": "Napi 1 óra nyugodt séta, plusz udvari őrjárat",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Gyomorcsavarodás",
+      "Bőrproblémák a nedves, ápolatlan zsinórok alatt"
+    ],
+    "erdekesseg": "Fehér, zsinóros bundájával szinte beleolvad a birkanyájba, a vastag zsinórok pedig a ragadozók harapásától is védik.",
+    "hasonlo": ["kuvasz", "puli", "akita-inu"],
+    "marmagassag": [65, 80],
+    "koltseg": 3
+  },
+  "kuvasz": {
+    "leiras": "A kuvasz ősi magyar nyájőrző kutya, amely évszázadokon át a pásztorok jószágát védte a ragadozóktól. A családjához gyengéden kötődik, a gyerekekkel is türelmes lehet, idegenekkel szemben viszont tartózkodó, és bátran kiáll a „nyájáért”. Önálló döntésekre tenyésztették, ezért nem a vak engedelmesség jellemzi: türelmes, következetes nevelést és korai szocializációt igényel. Fehér, hullámos bundája bőven hullik, és egy felnőtt kuvasznak sok hely kell.",
+    "kinekIgen": [
+      "Tapasztalt, nagytestű kutyához szokott gazdiknak",
+      "Kertes házban, nagy bekerített udvarral élőknek",
+      "Akik megbízható házőrzőt keresnek"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Lakásba, városi életmódhoz",
+      "Szőrhullást nehezen viselőknek"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, plusz szabad mozgás az udvaron",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Ízületi porcbetegség (OCD)",
+      "Pajzsmirigy-alulműködés",
+      "Gyomorcsavarodás"
+    ],
+    "erdekesseg": "A második világháború után a fajta a kihalás szélére került, és néhány megmaradt kutyából kellett újjáépíteni.",
+    "hasonlo": ["komondor", "akita-inu", "nemet-juhaszkutya"],
+    "marmagassag": [66, 76],
+    "koltseg": 3
+  },
+  "rottweiler": {
+    "leiras": "A rottweiler a németországi Rottweil városáról kapta a nevét, ahol a mészárosok marhahajtó és kocsihúzó kutyaként használták. Nyugodt, magabiztos és rendkívül hűséges, a családját természetes módon védi, feleslegesen ritkán ugat. Jól tanítható és szívesen dolgozik, de nagy ereje miatt kölyökkortól következetes, pozitív nevelést és alapos szocializációt igényel. Egyes országokban a tartása engedélyhez kötött, ezért nézz utána a helyi szabályoknak.",
+    "kinekIgen": [
+      "Tapasztalt, magabiztos gazdiknak",
+      "Akik szívesen járnak kutyaiskolába",
+      "Kertes házban élő, aktív családoknak"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Kis lakásba, kevés mozgással",
+      "Akik egy erős kutyát fizikailag nem bírnak"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta és közös feladatok",
+    "egeszseg": [
+      "Csípő- és könyökdiszplázia",
+      "Csontdaganat (osteosarcoma)",
+      "Keresztszalag-szakadás",
+      "Aortaszűkület"
+    ],
+    "erdekesseg": "A 20. század elején Németországban hivatalosan is rendőrkutya-fajtaként ismerték el.",
+    "hasonlo": ["dobermann", "cane-corso", "nemet-juhaszkutya"],
+    "marmagassag": [56, 68],
+    "koltseg": 3
+  },
+  "dobermann": {
+    "leiras": "A fajtát Louis Dobermann, egy türingiai adószedő tenyésztette ki a 19. század végén, hogy megbízható kísérője és védelmezője legyen. Elegáns, energikus és rendkívül intelligens, gyorsan és szívesen tanul. A családjához nagyon ragaszkodik, keresi a közelséget, idegenekkel szemben éber. Rövid szőre könnyen ápolható, de hidegben fázik, sok mozgást igényel, és a fajtában gyakori szívizombetegség miatt rendszeres szívszűrés ajánlott.",
+    "kinekIgen": [
+      "Aktív, sportos gazdiknak",
+      "Akik szívesen tanítanak és kutyasportolnak",
+      "Családoknak, ahol a kutya bent élhet"
+    ],
+    "kinekNem": [
+      "Hideg, kinti tartáshoz",
+      "Hosszú egyedülléttel járó napokhoz",
+      "Első kutyásoknak, felkészülés nélkül"
+    ],
+    "mozgas": "Napi 1,5–2 óra, futással és feladatokkal",
+    "egeszseg": [
+      "Dilatatív kardiomiopátia (szívizom-tágulat)",
+      "Von Willebrand-betegség (véralvadási zavar)",
+      "Wobbler-szindróma",
+      "Csípőízületi diszplázia"
+    ],
+    "erdekesseg": "A második világháborúban az amerikai tengerészgyalogság egyik fő harci kutyája volt; a guami hadikutya-emlékmű szobra is egy dobermannt ábrázol.",
+    "hasonlo": ["nemet-juhaszkutya", "rottweiler", "weimari-vizsla"],
+    "marmagassag": [63, 72],
+    "koltseg": 2
+  },
+  "nemet-boxer": {
+    "leiras": "A német boxer a 19. század végén alakult ki Münchenben, az egykori Bullenbeisser („bikaharapó”) típusú kutyák utódjaként. Játékos, vidám és rendkívül türelmes a gyerekekkel, közben éber házőrző is. Lassan érik: sokszor hároméves koráig kölyökként viselkedik, ezért a lelkes ugrálást és a pórázhúzást korán érdemes kezelni. Rövid orra miatt a hőséget rosszul tűri, nyáron a mozgást a hűvösebb órákra kell időzíteni.",
+    "kinekIgen": [
+      "Aktív, gyerekes családoknak",
+      "Akik szeretik a játékos, bohókás kutyát",
+      "Rendszeres közös mozgást vállalóknak"
+    ],
+    "kinekNem": [
+      "Nyugodt, csendes életmódhoz",
+      "Forró, rosszul szellőző környezetbe",
+      "Hosszú egyedülléttel járó napokhoz"
+    ],
+    "mozgas": "Napi 1–1,5 óra, sok játékkal; nyáron a hűvös órákban",
+    "egeszseg": [
+      "Szívbetegségek (boxer-kardiomiopátia, aortaszűkület)",
+      "Daganatos betegségek (pl. hízósejtes daganat)",
+      "Csípőízületi diszplázia",
+      "Hőguta-érzékenység"
+    ],
+    "erdekesseg": "Az első világháborúban a boxereket futár-, teherhordó és őrkutyaként is alkalmazták.",
+    "hasonlo": ["staffordshire-bullterrier", "labrador-retriever", "dobermann"],
+    "marmagassag": [53, 63],
+    "koltseg": 2
+  },
+  "torpe-schnauzer": {
+    "leiras": "A törpe schnauzer a 19. század végén alakult ki Németországban, a közepes schnauzer kisebb fajtákkal való keresztezéséből, eredetileg a tanyák és istállók patkányfogójaként. Élénk, okos és vidám kutya, a családjához ragaszkodik, és kezdő gazdinak is jó választás. Lakásban kiválóan elvan, ám éber házőrzőként minden zajt hangosan jelez, ezért az ugatás kezelésére érdemes korán figyelni. Drótszőre kevés szőrt hullat, viszont rendszeres trimmelést és szakállápolást igényel.",
+    "kinekIgen": [
+      "Lakásban élő, első kutyásoknak",
+      "Gyerekes családoknak",
+      "Akik kevés szőrhullású kutyát keresnek"
+    ],
+    "kinekNem": [
+      "Zajérzékeny szomszédság mellé",
+      "Akik nem vállalják a rendszeres trimmelést"
+    ],
+    "mozgas": "Napi 1 óra séta, játékkal és orrmunkával",
+    "egeszseg": [
+      "Hasnyálmirigy-gyulladás",
+      "Magas vérzsírszint (hiperlipidémia)",
+      "Húgykőképződés",
+      "Szembetegségek (pl. szürkehályog, PRA)"
+    ],
+    "erdekesseg": "A schnauzer név a német „Schnauze” (pofa, orr) szóból ered, utalva a fajta jellegzetes, szakállas pofájára.",
+    "hasonlo": ["west-highland-white-terrier", "uszkar", "pumi"],
+    "marmagassag": [30, 35],
+    "koltseg": 2
+  }
+}

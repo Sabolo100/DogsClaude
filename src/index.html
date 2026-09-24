@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pacsi by DarwinAI</title>
+<meta name="author" content="DarwinAI – www.darwinai.hu">
+<meta name="application-name" content="Pacsi by DarwinAI">
+<meta name="description" content="124 népszerű kutyafajta egy élő felhőben. Szűrj, hasonlíts össze, és találd meg a hozzád illő kutyát.">
+<meta name="theme-color" content="#FBF6EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14121A" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pacsi">
+<meta property="og:title" content="Pacsi by DarwinAI">
+<meta property="og:description" content="124 népszerű kutyafajta egy élő, interaktív felhőben.">
+<!--PWA_HEAD-->
+<link rel="icon" href="/*FAVICON*/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..800,0..100&family=Manrope:wght@400..800&display=swap">
+<style>/*INLINE_CSS*/</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div>
+
+<div class="app" id="app">
+  <!-- Felső sáv (desktop) / app bar (mobil) -->
+  <header class="topbar">
+    <div class="brand">
+      <a class="logo" href="#" id="logo" aria-label="Pacsi – kezdőlap">
+        <span class="logo-word">Pacs<span class="logo-i">ı<svg class="logo-paw" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-paw"/></svg></span></span>
+      </a>
+      <a class="byline" href="https://www.darwinai.hu" target="_blank" rel="noopener" title="A Pacsit a DarwinAI fejlesztette – www.darwinai.hu">by <b>DarwinAI</b></a>
+    </div>
+    <label class="search" id="searchBox">
+      <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="q" type="search" placeholder="Keress fajtát… pl. vizsla" autocomplete="off" aria-label="Fajta keresése">
+      <kbd class="kbd">/</kbd>
+    </label>
+    <nav class="seg views" id="views" role="tablist" aria-label="Nézet">
+      <button role="tab" data-view="felho"><svg class="ic"><use href="#i-cloud"/></svg><span>Felhő</span></button>
+      <button role="tab" data-view="csoport"><svg class="ic"><use href="#i-groups"/></svg><span>Csoportok</span></button>
+      <button role="tab" data-view="terkep"><svg class="ic"><use href="#i-map"/></svg><span>Térkép</span></button>
+      <button role="tab" data-view="lista"><svg class="ic"><use href="#i-list"/></svg><span>Lista</span></button>
+    </nav>
+    <div class="tb-actions">
+      <span class="pill-count mob" id="mobCount" aria-hidden="true"><b>…</b> fajta</span>
+      <button class="flycloud mob" id="flyCloud" aria-label="Kirepült fajták" hidden><svg class="ic"><use href="#i-arrow-up"/></svg><b>0</b></button>
+      <button class="icbtn mob" id="mobSearchBtn" aria-label="Keresés"><svg class="ic"><use href="#i-search"/></svg></button>
+      <button class="icbtn desk" id="surpriseBtn" title="Meglepetés!" aria-label="Meglepetés fajta"><svg class="ic"><use href="#i-dice"/></svg></button>
+      <button class="icbtn desk" data-drawer="tippek" title="Gazdi-tudástár" aria-label="Gazdi-tudástár"><svg class="ic"><use href="#i-book"/></svg></button>
+      <button class="icbtn desk" data-drawer="osszevet" title="Összehasonlítás" aria-label="Összehasonlítás"><svg class="ic"><use href="#i-compare"/></svg><b class="badge" data-badge="cmp" hidden>0</b></button>
+      <button class="icbtn desk" data-drawer="kedvencek" title="Kedvencek" aria-label="Kedvencek"><svg class="ic"><use href="#i-heart"/></svg><b class="badge" data-badge="fav" hidden>0</b></button>
+      <button class="icbtn desk" id="themeBtn" title="Téma váltása" aria-label="Világos/sötét téma"><svg class="ic"><use href="#i-moon"/></svg></button>
+    </div>
+  </header>
+
+  <!-- Szűrőpanel (desktop oldalsáv, mobilon bottom sheet) -->
+  <aside class="panel" id="panel" aria-label="Szűrők">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <div class="panel-head">
+      <h2>Mit keresel?</h2>
+      <span class="badge-active" id="activeCount" hidden>0 aktív</span>
+      <button class="link" id="clearBtn" hidden>Törlés</button>
+      <button class="icbtn mob" id="panelClose" aria-label="Bezárás"><svg class="ic"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="panel-body" id="filters"></div>
+    <div class="panel-foot">
+      <button class="cta" id="quizBtn"><svg class="ic"><use href="#i-sparkle"/></svg>Párkereső kvíz</button>
+      <a class="credit" href="https://www.darwinai.hu" target="_blank" rel="noopener">Fejlesztette: <b>DarwinAI</b> · www.darwinai.hu ↗</a>
+    </div>
+  </aside>
+
+  <!-- Színpad -->
+  <main class="stage" id="stage" aria-label="Fajtafelhő">
+    <div class="hud" id="hud">
+      <div class="counter" aria-hidden="true">
+        <span class="odo" id="odo"></span>
+        <span class="of"><span id="ofTotal"></span> fajta <em id="ofLabel">vár rád</em></span>
+      </div>
+      <div class="hud-row">
+        <div class="seg small mode" id="modeSeg" role="radiogroup" aria-label="Szűrési mód">
+          <button role="radio" data-mode="rank">Rangsor</button>
+          <button role="radio" data-mode="strict">Csak találatok</button>
+        </div>
+        <div class="seg small groupby" id="groupSeg" hidden></div>
+      </div>
+      <div class="active-chips" id="activeChips"></div>
+    </div>
+    <div class="mob-hud" id="mobHud">
+      <div class="seg small" id="mobViews"></div>
+      <button class="pill mode-pill" id="mobMode"></button>
+    </div>
+    <div class="groups" id="groups" aria-hidden="true"></div>
+    <svg class="maplayer" id="mapLayer" aria-hidden="true"></svg>
+    <canvas class="under" id="under" aria-hidden="true"></canvas>
+    <div class="bubbles" id="bubbles" role="list"></div>
+    <div class="tip" id="tip" aria-hidden="true"></div>
+    <div class="empty" id="empty" hidden></div>
+    <div class="listview" id="listView" hidden></div>
+    <button class="pill clear-pill mob" id="mobClear" hidden></button>
+  </main>
+
+  <!-- Összehasonlító tálca (desktop) -->
+  <div class="tray" id="tray" hidden></div>
+
+  <!-- Mobil szűrődokk + tab bar -->
+  <div class="dock" id="dock" role="toolbar" aria-label="Gyorsszűrők"></div>
+  <nav class="tabbar" id="tabbar" aria-label="Fő navigáció">
+    <button data-tab="felfedez" class="on"><svg class="ic"><use href="#i-paw"/></svg><span>Felfedez</span></button>
+    <button data-tab="kviz"><svg class="ic"><use href="#i-sparkle"/></svg><span>Kvíz</span></button>
+    <button data-tab="kedvencek"><svg class="ic"><use href="#i-heart"/></svg><span>Kedvencek</span><b class="badge" data-badge="fav" hidden>0</b></button>
+    <button data-tab="osszevet"><svg class="ic"><use href="#i-compare"/></svg><span>Összevet</span><b class="badge" data-badge="cmp" hidden>0</b></button>
+    <button data-tab="tippek"><svg class="ic"><use href="#i-book"/></svg><span>Tippek</span></button>
+  </nav>
+</div>
+
+<!-- Rétegek -->
+<div class="scrim" id="scrim" hidden></div>
+<article class="card" id="card" role="dialog" aria-modal="true" aria-labelledby="cardTitle" hidden></article>
+<button class="card-nav prev" id="cardPrev" aria-label="Előző fajta" hidden><svg class="ic"><use href="#i-chev-l"/></svg></button>
+<button class="card-nav next" id="cardNext" aria-label="Következő fajta" hidden><svg class="ic"><use href="#i-chev-r"/></svg></button>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="false" hidden></aside>
+<div class="mob-search" id="mobSearch" hidden></div>
+<div class="coach" id="coach" hidden></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="sr-only" id="live" aria-live="polite"></div>
+<canvas class="fx" id="fx" aria-hidden="true"></canvas>
+
+<!-- Ikonkészlet -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-paw" viewBox="0 0 24 24"><ellipse cx="6" cy="9.5" rx="2.1" ry="2.7" fill="currentColor"/><ellipse cx="10" cy="5.6" rx="2.1" ry="2.8" fill="currentColor"/><ellipse cx="14.6" cy="5.6" rx="2.1" ry="2.8" fill="currentColor"/><ellipse cx="18.4" cy="9.6" rx="2.1" ry="2.7" fill="currentColor"/><path fill="currentColor" d="M12.3 11.2c2.6 0 5.6 3.4 5.6 6.2 0 2-1.5 2.9-3.2 2.9-1 0-1.7-.5-2.4-.5s-1.4.5-2.4.5c-1.7 0-3.2-.9-3.2-2.9 0-2.8 3-6.2 5.6-6.2z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></g></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="14" r="3.2"/><circle cx="14.5" cy="9" r="4.3"/><circle cx="16.5" cy="17" r="2.6"/><circle cx="5.5" cy="6.5" r="1.8"/></g></symbol>
+    <symbol id="i-groups" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7.5" r="4"/><circle cx="17.5" cy="8" r="3"/><circle cx="12" cy="17" r="4.2"/></g></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 3.5v16.5h16.5"/><circle cx="9" cy="14" r="1.8"/><circle cx="13.5" cy="8.5" r="2.4"/><circle cx="17.5" cy="14.5" r="1.4"/></g></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></g></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" d="M12 20s-7.5-4.6-7.5-10.1C4.5 7 6.6 5 9 5c1.4 0 2.4.7 3 1.7C12.6 5.7 13.6 5 15 5c2.4 0 4.5 2 4.5 4.9C19.5 15.4 12 20 12 20z"/></symbol>
+    <symbol id="i-heart-f" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20s-7.5-4.6-7.5-10.1C4.5 7 6.6 5 9 5c1.4 0 2.4.7 3 1.7C12.6 5.7 13.6 5 15 5c2.4 0 4.5 2 4.5 4.9C19.5 15.4 12 20 12 20z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" d="M19.5 14.6A7.8 7.8 0 0 1 9.4 4.5 7.8 7.8 0 1 0 19.5 14.6z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></symbol>
+    <symbol id="i-dice" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/></g><g fill="currentColor"><circle cx="8.3" cy="8.3" r="1.4"/><circle cx="15.7" cy="15.7" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="15.7" cy="8.3" r="1.4"/><circle cx="8.3" cy="15.7" r="1.4"/></g></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5.5C6.5 4.3 9.5 4.3 12 6c2.5-1.7 5.5-1.7 8-.5v13c-2.5-1.2-5.5-1.2-8 .5-2.5-1.7-5.5-1.7-8-.5z"/><path d="M12 6v13"/></g></symbol>
+    <symbol id="i-compare" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v17M7 20.5h10M5 7.5h14"/><path d="m5 7.5-2.8 6.5a3 3 0 0 0 5.6 0zM19 7.5l-2.8 6.5a3 3 0 0 0 5.6 0z"/></g></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path fill="currentColor" d="M10 2.5c.5 3.9 2.6 6 6.5 6.5-3.9.5-6 2.6-6.5 6.5-.5-3.9-2.6-6-6.5-6.5 3.9-.5 6-2.6 6.5-6.5zM17.5 13c.3 2.3 1.5 3.5 3.8 3.8-2.3.3-3.5 1.5-3.8 3.8-.3-2.3-1.5-3.5-3.8-3.8 2.3-.3 3.5-1.5 3.8-3.8z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24"><path fill="currentColor" d="M10.3 3.9a2 2 0 0 1 3.4 0l8 13.9a2 2 0 0 1-1.7 3H4a2 2 0 0 1-1.7-3zM11 9v5h2V9zm0 6.5V17.5h2v-2z"/></symbol>
+    <symbol id="i-chev-l" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M15 5 8 12l7 7"/></symbol>
+    <symbol id="i-chev-r" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-chev-d" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m5 9 7 7 7-7"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="m8.2 10.8 7.6-4.1M8.2 13.2l7.6 4.1"/></g></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></g></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="2.5" y="8" width="19" height="8" rx="2" transform="rotate(-35 12 12)"/><path d="m8.3 9.6 1.3 1.8M11.2 7.6l1.3 1.8M14.1 5.6l1.3 1.8" transform="rotate(0)"/></g></symbol>
+    <symbol id="i-coat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 20c-2-5 2-7 0-12M11 20c-2-5 2-7 0-12M16 20c-2-5 2-7 0-12M20.5 19c-1.5-4 1.5-6 0-10"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="m12 3.8 2.5 5.1 5.6.8-4 3.9 1 5.6-5.1-2.6-5 2.6 1-5.6-4.1-3.9 5.6-.8z"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M13.5 2.5 5 13.5h6l-1 8 8.5-11h-6z"/></symbol>
+    <symbol id="i-kid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12.5" r="7.5"/><circle cx="9.3" cy="11.5" r=".6" fill="currentColor"/><circle cx="14.7" cy="11.5" r=".6" fill="currentColor"/><path d="M9.5 15.3c1.4 1.2 3.6 1.2 5 0M10 5.3c.3-1.8 2.5-2.4 3.4-.9"/></g></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></g></symbol>
+    <symbol id="i-sprout" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5V11"/><path d="M12 11C12 7 9 5 4.5 5c0 4 2.8 6 7.5 6zM12 13.5c0-3.5 2.6-5.5 7.5-5.5 0 3.7-2.6 5.5-7.5 5.5z"/></g></symbol>
+    <symbol id="i-quiet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8 7.5 9.5 4.4-1.5 7.5-4.9 7.5-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10" stroke-linecap="round"/></g></symbol>
+    <symbol id="i-feather" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-7 0-12 5-13 13l-2.5 3.5"/><path d="M20 4c.5 6-3.5 11.5-11 12.5M9 12h6"/></g></symbol>
+    <symbol id="i-comb" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="5" rx="2"/><path d="M5.5 10v9M9 10v9M12.5 10v9M16 10v9M19.5 10v6"/></g></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 3.5s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M4 4l16 16"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2.5 9.5 12 5l9.5 4.5L12 14z"/><path d="M6.5 11.5v4.3c1.5 1.3 3.5 2 5.5 2s4-.7 5.5-2v-4.3M21.5 9.5v5" stroke-linecap="round"/></g></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10.1C4.5 7 6.6 5 9 5c1.4 0 2.4.7 3 1.7C12.6 5.7 13.6 5 15 5c2.4 0 4.5 2 4.5 4.9 0 1-.2 1.9-.6 2.7"/><path d="M13 13h2l1.5-2.5 2 5 1.5-2.5h2"/></g></symbol>
+    <symbol id="i-nose" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10.5c0-3 3-4.5 7-4.5s7 1.5 7 4.5c0 3.5-3.5 5.5-7 5.5s-7-2-7-5.5z"/><path d="M12 16v3M9 19.5c1 .8 5 .8 6 0M9.5 10.5h.01M14.5 10.5h.01" /></g></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="4.7" rx="1.2" fill="#CE2939"/><rect x="3" y="9.65" width="18" height="4.7" fill="#fff" stroke="rgba(0,0,0,.12)" stroke-width=".5"/><rect x="3" y="14.3" width="18" height="4.7" rx="1.2" fill="#477050"/></symbol>
+    <symbol id="i-fci" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8 7.5 9.5 4.4-1.5 7.5-4.9 7.5-9.5V6z"/></g><text x="12" y="14.6" text-anchor="middle" font-size="7.2" font-weight="800" fill="currentColor" font-family="sans-serif">FCI</text></symbol>
+    <symbol id="i-all" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></g></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></g></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14"/></symbol>
+    <symbol id="i-dog" viewBox="0 0 64 44"><path fill="currentColor" d="M50.5 4.2c-1.1-.4-2.3.1-3.1 1l-2.1 2.6c-.8-.2-1.6-.3-2.5-.3-2.4 0-4.4 1.1-5.7 2.8L35 13.5H14.5c-2.6 0-4.9-1.2-6.6-3.3l-1.3-1.6c-.6-.8-1.9-.6-2.2.4-.9 3.3.3 6.6 2.9 8.6-.4 1.4-.6 2.9-.6 4.4 0 3.7 1.5 7 3.9 9.4l-.9 8.2c-.1 1.1.7 2 1.8 2h2.3c.9 0 1.6-.6 1.8-1.5l1.5-6.4c1.6.5 3.3.8 5.1.8h9.4l2.2 6.3c.3.8 1 1.3 1.8 1.3h2.3c1.1 0 1.9-1 1.8-2.1l-.9-7.8c2.5-2.3 4.1-5.6 4.4-9.2l2.3-2.9h3.3c1.9 0 3.6-1.3 4.1-3.1l.3-1.2c.3-1.2-.3-2.4-1.4-2.9l-3.8-1.8.6-4.2c.2-1.2-.4-2.3-1.4-2.7z"/></symbol>
+  </defs>
+</svg>
+
+<script type="application/json" id="pacsi-data">/*INLINE_DATA*/</script>
+<!--INLINE_IMG-->
+<script>/*INLINE_JS*/</script>
+</body>
+</html>

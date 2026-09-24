@@ -1,0 +1,12 @@
+# Titkos kulcs – soha ne kerüljön verziókezelésbe
+OpenAI_API.txt
+*.key
+.env
+
+# Helyi eszköz- és gyorsítótár-fájlok
+.claude/
+__pycache__/
+*.pyc
+
+# Ideiglenes tesztfájlok
+dist/_arttest.html

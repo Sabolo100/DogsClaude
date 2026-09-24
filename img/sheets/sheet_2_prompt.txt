@@ -1,0 +1,25 @@
+A 4x4 grid of 16 separate square illustration tiles on a plain cream (#FBF6EE) canvas. The tiles are perfectly aligned in exactly 4 rows and 4 columns, all exactly the same size, separated by thin even cream gutters (about 2% of the image width) with the same cream margin around the outside. No borders, no frames, no text, no letters, no numbers, no labels anywhere in the image.
+
+Each tile is filled edge-to-edge with ONE flat solid pastel background color (given below) and shows ONE dog as a painterly gouache illustration portrait: head and upper chest, three-quarter view, friendly expression, centered. Consistent soft lighting from the upper left, subtle paper grain, visible soft brush strokes, warm premium children's-book-meets-editorial style. Breed-accurate coat color, coat texture, ear shape and head proportions. No collars or accessories unless stated, no humans, no text. The whole head including the ears must fit inside a centered circle covering about 80% of the tile - keep the tile corners and edges as clear background, because every tile will be cropped to a circle. Same scale and framing in every tile.
+
+Tiles in reading order (left to right, top to bottom):
+Row 1:
+  Tile 1: Great Dane - fawn coat with black mask, long rectangular head, NATURAL uncropped floppy ears, gentle expression. Tile background: flat sky blue #BFDDF7.
+  Tile 2: Bernese Mountain Dog - tricolor long silky coat: jet black with rust markings and a white blaze and white chest, gentle eyes. Tile background: flat butter yellow #FFE6A0.
+  Tile 3: Saint Bernard - red-and-white coat, white blaze, dark mask around the eyes, massive head, slightly droopy lips, kind eyes. Tile background: flat mint green #BDE8D3.
+  Tile 4: Newfoundland - solid black, massive head, thick long coat, small drop ears, very gentle sweet expression. Tile background: flat peach #FFCBA8.
+Row 2:
+  Tile 5: English Bulldog - white-and-fawn coat, wrinkled face, short muzzle drawn moderately (not exaggerated), rose ears, sweet grumpy expression. Tile background: flat lavender #D6CCFF.
+  Tile 6: Yorkshire Terrier - tiny dog with long silky steel-blue and golden-tan coat, tan face, small erect V-shaped ears, bright dark eyes. Tile background: flat rose pink #FFC8D6.
+  Tile 7: Jack Russell Terrier - mostly white smooth coat with tan patches on the head and ears, folded button ears, lively eager expression. Tile background: flat sky blue #BFDDF7.
+  Tile 8: West Highland White Terrier - pure white harsh coat trimmed into a round fluffy head, small erect pointed ears, dark eyes, black nose. Tile background: flat lavender #D6CCFF.
+Row 3:
+  Tile 9: Staffordshire Bull Terrier - dark brindle coat with a white chest, broad head, strong cheek muscles, small rose ears, wide happy smile. Tile background: flat butter yellow #FFE6A0.
+  Tile 10: American Staffordshire Terrier - blue-grey short coat with white chest, broad head, NATURAL uncropped rose ears, friendly confident expression. Tile background: flat peach #FFCBA8.
+  Tile 11: Dachshund - smooth short red coat, long muzzle, long floppy ears, bright curious eyes. Tile background: flat mint green #BDE8D3.
+  Tile 12: Siberian Husky - grey-and-white coat with the classic facial mask, striking ice-blue eyes, erect triangular ears. Tile background: flat rose pink #FFC8D6.
+Row 4:
+  Tile 13: Samoyed - pure white very fluffy thick coat, upturned 'Samoyed smile' with black lips, erect ears, dark eyes. Tile background: flat sky blue #BFDDF7.
+  Tile 14: Pomeranian - tiny dog with orange fluffy lion-like mane, small erect ears, fox-like face, bright eyes. Tile background: flat lavender #D6CCFF.
+  Tile 15: Shiba Inu - red coat with white urajiro markings on cheeks, muzzle and chest, small erect triangular ears, fox-like face. Tile background: flat sage green #D3E2C0.
+  Tile 16: Akita Inu (Japanese Akita) - red coat with white urajiro markings, broad bear-like head, small deep-set eyes, erect triangular ears, dignified. Tile background: flat sky blue #BFDDF7.

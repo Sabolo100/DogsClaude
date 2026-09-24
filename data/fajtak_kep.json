@@ -1,0 +1,1168 @@
+{
+ "paletta": {
+  "barack": "#FFCBA8",
+  "vaj": "#FFE6A0",
+  "menta": "#BDE8D3",
+  "egkek": "#BFDDF7",
+  "levendula": "#D6CCFF",
+  "rozsa": "#FFC8D6",
+  "zsalya": "#D3E2C0",
+  "homok": "#EFD9BA",
+  "korall": "#FFB9A0",
+  "pisztacia": "#DDEDB2"
+ },
+ "fajtak": [
+  {
+   "n": 1,
+   "id": "nemet-juhaszkutya",
+   "nev": "Német juhászkutya",
+   "en": "German Shepherd Dog",
+   "bg": "vaj",
+   "desc": "black-and-tan saddle coat, medium-length dense coat, large erect pointed ears, noble alert expression",
+   "slot": 1
+  },
+  {
+   "n": 2,
+   "id": "malinois",
+   "nev": "Belga juhászkutya (malinois)",
+   "en": "Belgian Malinois",
+   "bg": "egkek",
+   "desc": "short fawn coat with black mask and black-tipped erect triangular ears, lean athletic head",
+   "slot": 2
+  },
+  {
+   "n": 3,
+   "id": "border-collie",
+   "nev": "Border collie",
+   "en": "Border Collie",
+   "bg": "barack",
+   "desc": "black-and-white medium-length coat, white blaze and white collar, semi-erect ears with folded tips, intelligent eyes",
+   "slot": 3
+  },
+  {
+   "n": 4,
+   "id": "ausztral-juhaszkutya",
+   "nev": "Ausztrál juhászkutya",
+   "en": "Australian Shepherd",
+   "bg": "rozsa",
+   "desc": "blue merle coat with copper points and white blaze, one blue eye and one brown eye, folded triangular ears",
+   "slot": 4
+  },
+  {
+   "n": 5,
+   "id": "shetlandi-juhaszkutya",
+   "nev": "Shetlandi juhászkutya",
+   "en": "Shetland Sheepdog",
+   "bg": "levendula",
+   "desc": "sable-and-white long coat with a full white mane, small tipped ears, fine narrow head like a miniature collie",
+   "slot": 5
+  },
+  {
+   "n": 6,
+   "id": "welsh-corgi-pembroke",
+   "nev": "Welsh corgi pembroke",
+   "en": "Pembroke Welsh Corgi",
+   "bg": "menta",
+   "desc": "red-and-white coat, big erect pointed ears, fox-like face, happy open mouth",
+   "slot": 6
+  },
+  {
+   "n": 7,
+   "id": "puli",
+   "nev": "Puli",
+   "en": "Hungarian Puli",
+   "bg": "vaj",
+   "desc": "solid black dog completely covered in long natural corded dreadlocks, cords falling over the eyes, only the black nose and a hint of eyes visible",
+   "slot": 7
+  },
+  {
+   "n": 8,
+   "id": "pumi",
+   "nev": "Pumi",
+   "en": "Hungarian Pumi",
+   "bg": "korall",
+   "desc": "grey medium-length curly wavy coat forming curls, erect ears whose top third tips forward, long narrow muzzle, whimsical lively terrier-like expression",
+   "slot": 8
+  },
+  {
+   "n": 9,
+   "id": "mudi",
+   "nev": "Mudi",
+   "en": "Hungarian Mudi",
+   "bg": "homok",
+   "desc": "glossy black wavy-curly coat, short smooth hair on the face, erect pointed V-shaped ears, alert wedge-shaped fox-like head",
+   "slot": 9
+  },
+  {
+   "n": 10,
+   "id": "komondor",
+   "nev": "Komondor",
+   "en": "Hungarian Komondor",
+   "bg": "egkek",
+   "desc": "large dog with an ivory-white coat of long heavy felted cords covering the whole head and body, black nose peeking out",
+   "slot": 10
+  },
+  {
+   "n": 11,
+   "id": "kuvasz",
+   "nev": "Kuvasz",
+   "en": "Hungarian Kuvasz",
+   "bg": "levendula",
+   "desc": "large pure white dog with a medium-length wavy coat, V-shaped drop ears, dark almond eyes, black nose, noble calm head",
+   "slot": 11
+  },
+  {
+   "n": 12,
+   "id": "rottweiler",
+   "nev": "Rottweiler",
+   "en": "Rottweiler",
+   "bg": "pisztacia",
+   "desc": "black coat with rich mahogany markings on cheeks, muzzle and above the eyes, broad head, triangular drop ears",
+   "slot": 12
+  },
+  {
+   "n": 13,
+   "id": "dobermann",
+   "nev": "Dobermann",
+   "en": "Dobermann",
+   "bg": "barack",
+   "desc": "sleek short black-and-rust coat, NATURAL uncropped soft drop ears, elegant long head",
+   "slot": 13
+  },
+  {
+   "n": 14,
+   "id": "nemet-boxer",
+   "nev": "Német boxer",
+   "en": "Boxer",
+   "bg": "menta",
+   "desc": "fawn coat with white blaze and black mask, NATURAL uncropped drop ears, square short muzzle, playful expression",
+   "slot": 14
+  },
+  {
+   "n": 15,
+   "id": "torpe-schnauzer",
+   "nev": "Törpe schnauzer",
+   "en": "Miniature Schnauzer",
+   "bg": "rozsa",
+   "desc": "salt-and-pepper wiry coat, bushy eyebrows and long beard, natural folded ears",
+   "slot": 15
+  },
+  {
+   "n": 16,
+   "id": "cane-corso",
+   "nev": "Cane corso",
+   "en": "Cane Corso",
+   "bg": "vaj",
+   "desc": "blue-grey short coat, massive broad head, NATURAL uncropped drop ears, calm confident expression",
+   "slot": 16
+  },
+  {
+   "n": 17,
+   "id": "nemet-dog",
+   "nev": "Német dog",
+   "en": "Great Dane",
+   "bg": "egkek",
+   "desc": "fawn coat with black mask, long rectangular head, NATURAL uncropped floppy ears, gentle expression",
+   "slot": 17
+  },
+  {
+   "n": 18,
+   "id": "berni-pasztorkutya",
+   "nev": "Berni pásztorkutya",
+   "en": "Bernese Mountain Dog",
+   "bg": "vaj",
+   "desc": "tricolor long silky coat: jet black with rust markings and a white blaze and white chest, gentle eyes",
+   "slot": 18
+  },
+  {
+   "n": 19,
+   "id": "bernathegyi",
+   "nev": "Bernáthegyi",
+   "en": "Saint Bernard",
+   "bg": "menta",
+   "desc": "red-and-white coat, white blaze, dark mask around the eyes, massive head, slightly droopy lips, kind eyes",
+   "slot": 19
+  },
+  {
+   "n": 20,
+   "id": "uj-fundlandi",
+   "nev": "Új-fundlandi",
+   "en": "Newfoundland",
+   "bg": "barack",
+   "desc": "solid black, massive head, thick long coat, small drop ears, very gentle sweet expression",
+   "slot": 20
+  },
+  {
+   "n": 21,
+   "id": "angol-bulldog",
+   "nev": "Angol bulldog",
+   "en": "English Bulldog",
+   "bg": "levendula",
+   "desc": "white-and-fawn coat, wrinkled face, short muzzle drawn moderately (not exaggerated), rose ears, sweet grumpy expression",
+   "slot": 21
+  },
+  {
+   "n": 22,
+   "id": "yorkshire-terrier",
+   "nev": "Yorkshire terrier",
+   "en": "Yorkshire Terrier",
+   "bg": "rozsa",
+   "desc": "tiny dog with long silky steel-blue and golden-tan coat, tan face, small erect V-shaped ears, bright dark eyes",
+   "slot": 22
+  },
+  {
+   "n": 23,
+   "id": "jack-russell-terrier",
+   "nev": "Jack Russell terrier",
+   "en": "Jack Russell Terrier",
+   "bg": "egkek",
+   "desc": "mostly white smooth coat with tan patches on the head and ears, folded button ears, lively eager expression",
+   "slot": 23
+  },
+  {
+   "n": 24,
+   "id": "west-highland-white-terrier",
+   "nev": "West highland white terrier",
+   "en": "West Highland White Terrier",
+   "bg": "levendula",
+   "desc": "pure white harsh coat trimmed into a round fluffy head, small erect pointed ears, dark eyes, black nose",
+   "slot": 24
+  },
+  {
+   "n": 25,
+   "id": "staffordshire-bullterrier",
+   "nev": "Staffordshire bullterrier",
+   "en": "Staffordshire Bull Terrier",
+   "bg": "vaj",
+   "desc": "dark brindle coat with a white chest, broad head, strong cheek muscles, small rose ears, wide happy smile",
+   "slot": 25
+  },
+  {
+   "n": 26,
+   "id": "amerikai-staffordshire-terrier",
+   "nev": "Amerikai staffordshire terrier",
+   "en": "American Staffordshire Terrier",
+   "bg": "barack",
+   "desc": "blue-grey short coat with white chest, broad head, NATURAL uncropped rose ears, friendly confident expression",
+   "slot": 26
+  },
+  {
+   "n": 27,
+   "id": "tacsko",
+   "nev": "Tacskó",
+   "en": "Dachshund",
+   "bg": "menta",
+   "desc": "smooth short red coat, long muzzle, long floppy ears, bright curious eyes",
+   "slot": 27
+  },
+  {
+   "n": 28,
+   "id": "sziberiai-husky",
+   "nev": "Szibériai husky",
+   "en": "Siberian Husky",
+   "bg": "rozsa",
+   "desc": "grey-and-white coat with the classic facial mask, striking ice-blue eyes, erect triangular ears",
+   "slot": 28
+  },
+  {
+   "n": 29,
+   "id": "szamojed",
+   "nev": "Szamojéd",
+   "en": "Samoyed",
+   "bg": "egkek",
+   "desc": "pure white very fluffy thick coat, upturned 'Samoyed smile' with black lips, erect ears, dark eyes",
+   "slot": 29
+  },
+  {
+   "n": 30,
+   "id": "pomeraniai-torpespicc",
+   "nev": "Pomerániai törpespicc",
+   "en": "Pomeranian",
+   "bg": "levendula",
+   "desc": "tiny dog with orange fluffy lion-like mane, small erect ears, fox-like face, bright eyes",
+   "slot": 30
+  },
+  {
+   "n": 31,
+   "id": "shiba-inu",
+   "nev": "Shiba inu",
+   "en": "Shiba Inu",
+   "bg": "zsalya",
+   "desc": "red coat with white urajiro markings on cheeks, muzzle and chest, small erect triangular ears, fox-like face",
+   "slot": 31
+  },
+  {
+   "n": 32,
+   "id": "akita-inu",
+   "nev": "Akita inu",
+   "en": "Akita Inu (Japanese Akita)",
+   "bg": "egkek",
+   "desc": "red coat with white urajiro markings, broad bear-like head, small deep-set eyes, erect triangular ears, dignified",
+   "slot": 32
+  },
+  {
+   "n": 33,
+   "id": "beagle",
+   "nev": "Beagle",
+   "en": "Beagle",
+   "bg": "egkek",
+   "desc": "tricolor: tan head, white blaze and muzzle, black saddle, long soft floppy ears, pleading brown eyes",
+   "slot": 33
+  },
+  {
+   "n": 34,
+   "id": "dalmata",
+   "nev": "Dalmata",
+   "en": "Dalmatian",
+   "bg": "korall",
+   "desc": "white short coat with round black spots, spotted drop ears, friendly expression",
+   "slot": 34
+  },
+  {
+   "n": 35,
+   "id": "erdelyi-kopo",
+   "nev": "Erdélyi kopó",
+   "en": "Transylvanian Hound",
+   "bg": "vaj",
+   "desc": "black short coat with tan markings above the eyes and on the muzzle, small white chest mark, long lean head, medium drop ears",
+   "slot": 35
+  },
+  {
+   "n": 36,
+   "id": "basset-hound",
+   "nev": "Basset hound",
+   "en": "Basset Hound",
+   "bg": "menta",
+   "desc": "tricolor, very long droopy ears, droopy sad eyes, loose skin, calm expression",
+   "slot": 36
+  },
+  {
+   "n": 37,
+   "id": "rhodesiai-ridgeback",
+   "nev": "Rhodesiai ridgeback",
+   "en": "Rhodesian Ridgeback",
+   "bg": "levendula",
+   "desc": "light-to-red wheaten short coat, darker muzzle, drop ears, calm strong dignified head",
+   "slot": 37
+  },
+  {
+   "n": 38,
+   "id": "magyar-vizsla",
+   "nev": "Rövidszőrű magyar vizsla",
+   "en": "Hungarian Vizsla (short-haired)",
+   "bg": "menta",
+   "desc": "solid golden-rust short sleek coat, BROWN (rust-colored) nose, amber eyes, long silky drop ears, lean elegant head",
+   "slot": 38
+  },
+  {
+   "n": 39,
+   "id": "drotszoru-magyar-vizsla",
+   "nev": "Drótszőrű magyar vizsla",
+   "en": "Hungarian Wirehaired Vizsla",
+   "bg": "egkek",
+   "desc": "golden-rust wiry coat with a distinct beard and bushy eyebrows, BROWN nose, amber eyes, drop ears",
+   "slot": 39
+  },
+  {
+   "n": 40,
+   "id": "weimari-vizsla",
+   "nev": "Weimari vizsla",
+   "en": "Weimaraner",
+   "bg": "barack",
+   "desc": "silver-grey short coat, light amber eyes, long drop ears, elegant head",
+   "slot": 40
+  },
+  {
+   "n": 41,
+   "id": "rovidszoru-nemet-vizsla",
+   "nev": "Rövidszőrű német vizsla",
+   "en": "German Shorthaired Pointer",
+   "bg": "vaj",
+   "desc": "solid liver-brown head and ears, liver-and-white ticked body, brown nose, alert expression",
+   "slot": 41
+  },
+  {
+   "n": 42,
+   "id": "ir-szetter",
+   "nev": "Ír szetter",
+   "en": "Irish Red Setter",
+   "bg": "egkek",
+   "desc": "rich mahogany-red silky coat, long feathered ears, elegant long head, joyful expression",
+   "slot": 42
+  },
+  {
+   "n": 43,
+   "id": "labrador-retriever",
+   "nev": "Labrador retriever",
+   "en": "Labrador Retriever",
+   "bg": "levendula",
+   "desc": "yellow short dense coat, broad head, drop ears, kind brown eyes, happy open mouth",
+   "slot": 43
+  },
+  {
+   "n": 44,
+   "id": "golden-retriever",
+   "nev": "Golden retriever",
+   "en": "Golden Retriever",
+   "bg": "menta",
+   "desc": "rich golden feathered long coat, friendly smiling expression, drop ears",
+   "slot": 44
+  },
+  {
+   "n": 45,
+   "id": "angol-cocker-spaniel",
+   "nev": "Angol cocker spániel",
+   "en": "English Cocker Spaniel",
+   "bg": "rozsa",
+   "desc": "solid golden-red silky coat, long wavy feathered ears set low, soft eyes",
+   "slot": 45
+  },
+  {
+   "n": 46,
+   "id": "angol-springer-spaniel",
+   "nev": "Angol springer spániel",
+   "en": "English Springer Spaniel",
+   "bg": "pisztacia",
+   "desc": "liver-and-white coat, white blaze, feathered long ears, cheerful expression",
+   "slot": 46
+  },
+  {
+   "n": 47,
+   "id": "lagotto-romagnolo",
+   "nev": "Lagotto romagnolo",
+   "en": "Lagotto Romagnolo",
+   "bg": "vaj",
+   "desc": "chestnut-brown dense woolly tight curls covering head and drop ears, round head, curious eyes",
+   "slot": 47
+  },
+  {
+   "n": 48,
+   "id": "francia-bulldog",
+   "nev": "Francia bulldog",
+   "en": "French Bulldog",
+   "bg": "barack",
+   "desc": "dark brindle short coat, large erect bat ears, moderately short muzzle (not exaggerated), big round eyes",
+   "slot": 48
+  },
+  {
+   "n": 49,
+   "id": "mopsz",
+   "nev": "Mopsz",
+   "en": "Pug",
+   "bg": "egkek",
+   "desc": "fawn coat with black mask and black ears, forehead wrinkles, short muzzle drawn moderately, big dark eyes",
+   "slot": 49
+  },
+  {
+   "n": 50,
+   "id": "chihuahua",
+   "nev": "Chihuahua",
+   "en": "Chihuahua",
+   "bg": "levendula",
+   "desc": "tiny dog with smooth fawn-cream coat, apple-dome head, very large erect ears, big round eyes",
+   "slot": 50
+  },
+  {
+   "n": 51,
+   "id": "cavalier-king-charles-spaniel",
+   "nev": "Cavalier King Charles spániel",
+   "en": "Cavalier King Charles Spaniel",
+   "bg": "menta",
+   "desc": "Blenheim coat (rich chestnut and pearly white), long feathered chestnut ears, large dark gentle eyes",
+   "slot": 51
+  },
+  {
+   "n": 52,
+   "id": "shih-tzu",
+   "nev": "Shih tzu",
+   "en": "Shih Tzu",
+   "bg": "rozsa",
+   "desc": "gold-and-white long flowing coat, hair tied in a small top-knot (no bow), round face, short muzzle drawn moderately",
+   "slot": 52
+  },
+  {
+   "n": 53,
+   "id": "maltai-selyemkutya",
+   "nev": "Máltai selyemkutya",
+   "en": "Maltese",
+   "bg": "korall",
+   "desc": "tiny dog with pure white long silky straight coat, dark round eyes, black button nose",
+   "slot": 53
+  },
+  {
+   "n": 54,
+   "id": "bichon-frise",
+   "nev": "Bichon frisé",
+   "en": "Bichon Frise",
+   "bg": "egkek",
+   "desc": "white fluffy curly coat trimmed into a round powder-puff head, black eyes and nose, happy expression",
+   "slot": 54
+  },
+  {
+   "n": 55,
+   "id": "havanese",
+   "nev": "Havanese",
+   "en": "Havanese",
+   "bg": "levendula",
+   "desc": "cream-gold long silky wavy coat, drop ears, dark expressive eyes, cheerful",
+   "slot": 55
+  },
+  {
+   "n": 56,
+   "id": "uszkar",
+   "nev": "Uszkár",
+   "en": "Poodle",
+   "bg": "menta",
+   "desc": "apricot dense curly coat in a natural rounded teddy trim, long drop ears covered in curls, elegant muzzle",
+   "slot": 56
+  },
+  {
+   "n": 57,
+   "id": "boston-terrier",
+   "nev": "Boston terrier",
+   "en": "Boston Terrier",
+   "bg": "vaj",
+   "desc": "black-and-white tuxedo coat with white blaze, erect bat ears, short muzzle drawn moderately, big round eyes",
+   "slot": 57
+  },
+  {
+   "n": 58,
+   "id": "whippet",
+   "nev": "Whippet",
+   "en": "Whippet",
+   "bg": "rozsa",
+   "desc": "slim fawn-and-white short coat, long narrow head, small folded rose ears, gentle eyes",
+   "slot": 58
+  },
+  {
+   "n": 59,
+   "id": "magyar-agar",
+   "nev": "Magyar agár",
+   "en": "Hungarian Greyhound (Magyar Agár)",
+   "bg": "barack",
+   "desc": "grey-brindle short coat, long strong head, folded rose ears, calm dignified sighthound expression",
+   "slot": 59
+  },
+  {
+   "n": 60,
+   "id": "olasz-agar",
+   "nev": "Olasz agár",
+   "en": "Italian Greyhound",
+   "bg": "vaj",
+   "desc": "tiny delicate sighthound with slate-blue-grey short coat, white chest, folded rose ears, big eyes, fine long muzzle",
+   "slot": 60
+  },
+  {
+   "id": "kabala-pacsi",
+   "nev": "Pacsi (kabala)",
+   "en": "mascot",
+   "bg": "korall",
+   "desc": "an adorable cheerful mixed-breed puppy with cream and ginger fur, raising one front paw toward the viewer as if giving a high-five, wearing a small coral-orange bandana",
+   "slot": 61,
+   "spare": true
+  },
+  {
+   "id": "keverek",
+   "nev": "Keverék (menhelyi kutya)",
+   "en": "mixed breed",
+   "bg": "egkek",
+   "desc": "a lovable medium mixed-breed shelter dog, brown and white patches, one ear up and one ear down, hopeful friendly eyes",
+   "slot": 62,
+   "spare": true
+  },
+  {
+   "id": "alvo-kutya",
+   "nev": "Alvó kutya",
+   "en": "sleeping dog",
+   "bg": "levendula",
+   "desc": "a small tan-and-white mixed-breed puppy curled up asleep with eyes closed, peaceful, chin resting on its paws",
+   "slot": 63,
+   "spare": true
+  },
+  {
+   "id": "kerdo-kutya",
+   "nev": "Kérdő kutya",
+   "en": "curious dog",
+   "bg": "menta",
+   "desc": "a small white-and-tan terrier-mix dog tilting its head strongly to one side in curiosity, one ear flipped up, questioning look",
+   "slot": 64,
+   "spare": true
+  },
+  {
+   "n": 61,
+   "slot": 65,
+   "id": "tervueren",
+   "nev": "Belga juhászkutya (tervueren)",
+   "en": "Belgian Shepherd Tervueren",
+   "bg": "homok",
+   "desc": "fawn-mahogany long coat with black overlay and black mask, full ruff around the neck, erect triangular ears, elegant head"
+  },
+  {
+   "n": 62,
+   "slot": 66,
+   "id": "groenendael",
+   "nev": "Belga juhászkutya (groenendael)",
+   "en": "Belgian Shepherd Groenendael",
+   "bg": "zsalya",
+   "desc": "solid glossy black long coat with a full ruff, erect triangular ears, elegant alert head"
+  },
+  {
+   "n": 63,
+   "slot": 67,
+   "id": "collie",
+   "nev": "Collie (hosszú szőrű)",
+   "en": "Rough Collie",
+   "bg": "vaj",
+   "desc": "sable-and-white long coat with a magnificent white mane, long narrow wedge-shaped head, semi-erect tipped ears"
+  },
+  {
+   "n": 64,
+   "slot": 68,
+   "id": "bearded-collie",
+   "nev": "Bearded collie",
+   "en": "Bearded Collie",
+   "bg": "egkek",
+   "desc": "shaggy long grey-and-white coat, long beard, hair partly over the eyes, drop ears, cheerful"
+  },
+  {
+   "n": 65,
+   "slot": 69,
+   "id": "bobtail",
+   "nev": "Óangol juhászkutya (bobtail)",
+   "en": "Old English Sheepdog",
+   "bg": "egkek",
+   "desc": "huge shaggy grey-and-white coat, white fluffy head, hair covering the eyes, black nose"
+  },
+  {
+   "n": 66,
+   "slot": 70,
+   "id": "feher-svajci-juhaszkutya",
+   "nev": "Fehér svájci juhászkutya",
+   "en": "White Swiss Shepherd Dog",
+   "bg": "barack",
+   "desc": "pure white medium-length double coat, large erect ears, German-shepherd-like head, gentle expression"
+  },
+  {
+   "n": 67,
+   "slot": 71,
+   "id": "csehszlovak-farkaskutya",
+   "nev": "Csehszlovák farkaskutya",
+   "en": "Czechoslovakian Wolfdog",
+   "bg": "menta",
+   "desc": "wolf-like grey coat with a light mask, amber eyes, short erect triangular ears, wolf head"
+  },
+  {
+   "n": 68,
+   "slot": 72,
+   "id": "ausztral-pasztorkutya",
+   "nev": "Ausztrál pásztorkutya",
+   "en": "Australian Cattle Dog",
+   "bg": "rozsa",
+   "desc": "blue-speckled (blue heeler) short coat with tan points and a dark mask patch over one eye, erect pointed ears"
+  },
+  {
+   "n": 69,
+   "slot": 73,
+   "id": "torpe-pinscher",
+   "nev": "Törpe pinscher",
+   "en": "Miniature Pinscher",
+   "bg": "rozsa",
+   "desc": "tiny dog with sleek short black-and-rust coat, NATURAL erect ears, small elegant head, alert"
+  },
+  {
+   "n": 70,
+   "slot": 74,
+   "id": "orias-schnauzer",
+   "nev": "Óriás schnauzer",
+   "en": "Giant Schnauzer",
+   "bg": "levendula",
+   "desc": "solid black wiry coat, bushy eyebrows and long beard, NATURAL folded ears, big strong head"
+  },
+  {
+   "n": 71,
+   "slot": 75,
+   "id": "hovawart",
+   "nev": "Hovawart",
+   "en": "Hovawart",
+   "bg": "pisztacia",
+   "desc": "black-and-gold long slightly wavy coat, gold markings on muzzle and above the eyes, drop ears"
+  },
+  {
+   "n": 72,
+   "slot": 76,
+   "id": "leonbergi",
+   "nev": "Leonbergi",
+   "en": "Leonberger",
+   "bg": "korall",
+   "desc": "lion-like golden-red long coat with a thick mane, black mask, drop ears, gentle expression"
+  },
+  {
+   "n": 73,
+   "slot": 77,
+   "id": "pireneusi-hegyi-kutya",
+   "nev": "Pireneusi hegyi kutya",
+   "en": "Pyrenean Mountain Dog",
+   "bg": "korall",
+   "desc": "large pure white long coat, triangular drop ears, dark almond eyes, calm majestic head"
+  },
+  {
+   "n": 74,
+   "slot": 78,
+   "id": "bordeaux-i-dog",
+   "nev": "Bordeaux-i dog",
+   "en": "Dogue de Bordeaux",
+   "bg": "homok",
+   "desc": "mahogany-fawn short coat, massive broad wrinkled head, short muzzle drawn moderately, drop ears"
+  },
+  {
+   "n": 75,
+   "slot": 79,
+   "id": "napolyi-masztiff",
+   "nev": "Nápolyi masztiff",
+   "en": "Neapolitan Mastiff",
+   "bg": "zsalya",
+   "desc": "mouse-grey short coat, extremely loose skin with heavy folds on the head, NATURAL uncropped ears, droopy eyes"
+  },
+  {
+   "n": 76,
+   "slot": 80,
+   "id": "bullmasztiff",
+   "nev": "Bullmasztiff",
+   "en": "Bullmastiff",
+   "bg": "vaj",
+   "desc": "fawn short coat with black mask, broad wrinkled head, drop ears, calm"
+  },
+  {
+   "n": 77,
+   "slot": 81,
+   "id": "shar-pei",
+   "nev": "Shar pei",
+   "en": "Shar Pei",
+   "bg": "vaj",
+   "desc": "fawn-cream short bristly coat, deep wrinkles on the head, small folded ears, broad hippopotamus-shaped muzzle, small eyes"
+  },
+  {
+   "n": 78,
+   "slot": 82,
+   "id": "kaukazusi-juhaszkutya",
+   "nev": "Kaukázusi juhászkutya",
+   "en": "Caucasian Shepherd Dog",
+   "bg": "egkek",
+   "desc": "huge bear-like dog, thick grey-and-fawn long coat with a black mask, small NATURAL uncropped ears, massive head"
+  },
+  {
+   "n": 79,
+   "slot": 83,
+   "id": "kozep-azsiai-juhaszkutya",
+   "nev": "Közép-ázsiai juhászkutya",
+   "en": "Central Asian Shepherd Dog",
+   "bg": "barack",
+   "desc": "large white dog with fawn patches, short coat, massive broad head, small NATURAL uncropped ears"
+  },
+  {
+   "n": 80,
+   "slot": 84,
+   "id": "airedale-terrier",
+   "nev": "Airedale terrier",
+   "en": "Airedale Terrier",
+   "bg": "menta",
+   "desc": "black saddle and tan wiry coat, long flat head with beard, small V-shaped folded ears"
+  },
+  {
+   "n": 81,
+   "slot": 85,
+   "id": "welsh-terrier",
+   "nev": "Welsh terrier",
+   "en": "Welsh Terrier",
+   "bg": "menta",
+   "desc": "black-and-tan wiry coat with black saddle, rectangular head with beard, small V-shaped folded ears, smaller and chunkier than an Airedale"
+  },
+  {
+   "n": 82,
+   "slot": 86,
+   "id": "kerry-blue-terrier",
+   "nev": "Kerry blue terrier",
+   "en": "Kerry Blue Terrier",
+   "bg": "rozsa",
+   "desc": "soft wavy blue-grey coat, long head with beard and a fall of hair, small V-shaped folded ears"
+  },
+  {
+   "n": 83,
+   "slot": 87,
+   "id": "border-terrier",
+   "nev": "Border terrier",
+   "en": "Border Terrier",
+   "bg": "levendula",
+   "desc": "grizzle-and-tan short wiry coat, otter-like broad head, small V-shaped drop ears, dark muzzle"
+  },
+  {
+   "n": 84,
+   "slot": 88,
+   "id": "skot-terrier",
+   "nev": "Skót terrier",
+   "en": "Scottish Terrier",
+   "bg": "pisztacia",
+   "desc": "black wiry coat, long head with bushy eyebrows and beard, small erect pointed ears"
+  },
+  {
+   "n": 85,
+   "slot": 89,
+   "id": "cairn-terrier",
+   "nev": "Cairn terrier",
+   "en": "Cairn Terrier",
+   "bg": "pisztacia",
+   "desc": "wheaten-grizzle shaggy wiry coat, fox-like face, small erect pointed ears, bright eyes"
+  },
+  {
+   "n": 86,
+   "slot": 90,
+   "id": "bullterrier",
+   "nev": "Bullterrier",
+   "en": "Bull Terrier",
+   "bg": "korall",
+   "desc": "white short coat with a brindle patch over one eye, distinctive egg-shaped head with no stop, small erect ears, small triangular eyes"
+  },
+  {
+   "n": 87,
+   "slot": 91,
+   "id": "drotszoru-foxterrier",
+   "nev": "Drótszőrű foxterrier",
+   "en": "Wire Fox Terrier",
+   "bg": "homok",
+   "desc": "white wiry coat with tan head markings and a black saddle patch, long flat head with beard, small V-shaped folded ears"
+  },
+  {
+   "n": 88,
+   "slot": 92,
+   "id": "parson-russell-terrier",
+   "nev": "Parson Russell terrier",
+   "en": "Parson Russell Terrier",
+   "bg": "zsalya",
+   "desc": "rough-coated white terrier with a tan-and-white head, tan patches over both eyes and ears, folded button ears, longer legs"
+  },
+  {
+   "n": 89,
+   "slot": 93,
+   "id": "bedlington-terrier",
+   "nev": "Bedlington terrier",
+   "en": "Bedlington Terrier",
+   "bg": "zsalya",
+   "desc": "lamb-like soft curly light blue-grey coat, pear-shaped head with a topknot, low-set drop ears with tassels"
+  },
+  {
+   "n": 90,
+   "slot": 94,
+   "id": "ir-buzaszinu-terrier",
+   "nev": "Ír búzaszínű terrier",
+   "en": "Soft-coated Wheaten Terrier",
+   "bg": "vaj",
+   "desc": "soft silky wavy wheaten coat, hair falling over the eyes, beard, small folded ears"
+  },
+  {
+   "n": 91,
+   "slot": 95,
+   "id": "ir-terrier",
+   "nev": "Ír terrier",
+   "en": "Irish Terrier",
+   "bg": "egkek",
+   "desc": "solid red wiry coat, long head with a small beard, small V-shaped folded ears"
+  },
+  {
+   "n": 92,
+   "slot": 96,
+   "id": "nemet-vadaszterrier",
+   "nev": "Német vadászterrier",
+   "en": "German Hunting Terrier",
+   "bg": "barack",
+   "desc": "black-and-tan rough coat, tan eyebrows and muzzle, small V-shaped folded ears, determined expression"
+  },
+  {
+   "n": 93,
+   "slot": 97,
+   "id": "alaszkai-malamut",
+   "nev": "Alaszkai malamut",
+   "en": "Alaskan Malamute",
+   "bg": "barack",
+   "desc": "grey-and-white thick coat with a cap-like face mask, BROWN eyes, broad head, small erect ears"
+  },
+  {
+   "n": 94,
+   "slot": 98,
+   "id": "keeshond",
+   "nev": "Farkasspicc (keeshond)",
+   "en": "Keeshond (Wolfspitz)",
+   "bg": "menta",
+   "desc": "wolf-grey thick fluffy coat with a lion-like ruff, dark 'spectacle' markings around the eyes, small erect ears"
+  },
+  {
+   "n": 95,
+   "slot": 99,
+   "id": "japan-spicc",
+   "nev": "Japán spicc",
+   "en": "Japanese Spitz",
+   "bg": "rozsa",
+   "desc": "small pure white fluffy long coat, fox-like pointed face, small erect triangular ears, black eyes and nose"
+  },
+  {
+   "n": 96,
+   "slot": 100,
+   "id": "eurazsiai",
+   "nev": "Eurázsiai",
+   "en": "Eurasier",
+   "bg": "levendula",
+   "desc": "red-fawn medium-long coat with a darker mask, small erect triangular ears, broad bear-like head, calm"
+  },
+  {
+   "n": 97,
+   "slot": 101,
+   "id": "basenji",
+   "nev": "Basenji",
+   "en": "Basenji",
+   "bg": "levendula",
+   "desc": "red-and-white short sleek coat, wrinkled forehead, large erect pointed ears, almond eyes"
+  },
+  {
+   "n": 98,
+   "slot": 102,
+   "id": "csau-csau",
+   "nev": "Csau csau",
+   "en": "Chow Chow",
+   "bg": "pisztacia",
+   "desc": "red lion-like very fluffy coat with a full mane, small erect rounded ears, deep-set eyes, dignified expression"
+  },
+  {
+   "n": 99,
+   "slot": 103,
+   "id": "amerikai-akita",
+   "nev": "Amerikai akita",
+   "en": "American Akita",
+   "bg": "korall",
+   "desc": "pinto coat of white with large black and fawn patches, black mask, broad bear-like head, small erect ears"
+  },
+  {
+   "n": 100,
+   "slot": 104,
+   "id": "bloodhound",
+   "nev": "Bloodhound (Szent Hubertus-kopó)",
+   "en": "Bloodhound",
+   "bg": "homok",
+   "desc": "black-and-tan short coat, very long droopy ears, deep wrinkles and loose skin on the face, droopy eyes"
+  },
+  {
+   "n": 101,
+   "slot": 105,
+   "id": "bajor-hegyi-vereb",
+   "nev": "Bajor hegyi véreb",
+   "en": "Bavarian Mountain Scent Hound",
+   "bg": "homok",
+   "desc": "deep red short coat with a darker mask, medium drop ears, lean head, earnest expression"
+  },
+  {
+   "n": 102,
+   "slot": 106,
+   "id": "angol-szetter",
+   "nev": "Angol szetter",
+   "en": "English Setter",
+   "bg": "zsalya",
+   "desc": "white silky coat with blue belton speckles (fine black flecks), long feathered ears, gentle long head"
+  },
+  {
+   "n": 103,
+   "slot": 107,
+   "id": "angol-pointer",
+   "nev": "Angol pointer",
+   "en": "English Pointer",
+   "bg": "vaj",
+   "desc": "white short coat with liver-brown patches on the head and ears, slightly dished muzzle, thin drop ears"
+  },
+  {
+   "n": 104,
+   "slot": 108,
+   "id": "drotszoru-nemet-vizsla",
+   "nev": "Drótszőrű német vizsla",
+   "en": "German Wirehaired Pointer",
+   "bg": "egkek",
+   "desc": "liver-roan wiry coat, solid brown head with beard and bushy eyebrows, drop ears, brown nose"
+  },
+  {
+   "n": 105,
+   "slot": 109,
+   "id": "bretagne-i-spaniel",
+   "nev": "Bretagne-i spániel",
+   "en": "Brittany (Epagneul Breton)",
+   "bg": "egkek",
+   "desc": "orange-and-white medium coat, short high-set ears, lively expression, compact head"
+  },
+  {
+   "n": 106,
+   "slot": 110,
+   "id": "flat-coated-retriever",
+   "nev": "Flat coated retriever",
+   "en": "Flat-coated Retriever",
+   "bg": "barack",
+   "desc": "solid glossy black flat-lying coat, long head, feathered drop ears, happy expression"
+  },
+  {
+   "n": 107,
+   "slot": 111,
+   "id": "nova-scotia-retriever",
+   "nev": "Nova Scotia retriever",
+   "en": "Nova Scotia Duck Tolling Retriever",
+   "bg": "menta",
+   "desc": "red-orange medium coat with a white blaze and white chest, drop ears, fox-like lively expression"
+  },
+  {
+   "n": 108,
+   "slot": 112,
+   "id": "portugal-vizikutya",
+   "nev": "Portugál vízikutya",
+   "en": "Portuguese Water Dog",
+   "bg": "rozsa",
+   "desc": "black curly coat with a white chest, drop ears covered in curls, strong head"
+  },
+  {
+   "n": 109,
+   "slot": 113,
+   "id": "spanyol-vizikutya",
+   "nev": "Spanyol vízikutya",
+   "en": "Spanish Water Dog",
+   "bg": "rozsa",
+   "desc": "brown curly woolly coat forming tight curls, hair over the eyes, drop ears"
+  },
+  {
+   "n": 110,
+   "slot": 114,
+   "id": "amerikai-cocker-spaniel",
+   "nev": "Amerikai cocker spániel",
+   "en": "American Cocker Spaniel",
+   "bg": "levendula",
+   "desc": "buff light-golden long silky coat, rounded domed head with a short muzzle, long feathered ears, large round eyes"
+  },
+  {
+   "n": 111,
+   "slot": 115,
+   "id": "kooikerhondje",
+   "nev": "Kooikerhondje",
+   "en": "Kooikerhondje",
+   "bg": "pisztacia",
+   "desc": "orange-red and white medium coat, feathered ears with black tips like earrings, white blaze"
+  },
+  {
+   "n": 112,
+   "slot": 116,
+   "id": "lhasa-apso",
+   "nev": "Lhasa apso",
+   "en": "Lhasa Apso",
+   "bg": "korall",
+   "desc": "gold-and-cream long heavy straight coat, hair falling over the eyes, beard, drop ears"
+  },
+  {
+   "n": 113,
+   "slot": 117,
+   "id": "tibeti-terrier",
+   "nev": "Tibeti terrier",
+   "en": "Tibetan Terrier",
+   "bg": "korall",
+   "desc": "long shaggy coat, white with cream-gold patches, hair over the eyes, beard, feathered drop ears"
+  },
+  {
+   "n": 114,
+   "slot": 118,
+   "id": "pekingi-palotakutya",
+   "nev": "Pekingi palotakutya",
+   "en": "Pekingese",
+   "bg": "homok",
+   "desc": "small dog with long flowing red-fawn coat and a mane, black mask, flat face drawn moderately, feathered ears"
+  },
+  {
+   "n": 115,
+   "slot": 119,
+   "id": "papillon",
+   "nev": "Papillon (pillangókutya)",
+   "en": "Papillon",
+   "bg": "zsalya",
+   "desc": "tiny dog with white and black-tan silky coat, huge erect butterfly-wing ears with long fringes, white blaze"
+  },
+  {
+   "n": 116,
+   "slot": 120,
+   "id": "coton-de-tulear",
+   "nev": "Coton de Tuléar",
+   "en": "Coton de Tuléar",
+   "bg": "vaj",
+   "desc": "pure white long fluffy cotton-like coat, round dark eyes, black nose, drop ears"
+  },
+  {
+   "n": 117,
+   "slot": 121,
+   "id": "kinai-meztelen-kutya",
+   "nev": "Kínai meztelen kutya",
+   "en": "Chinese Crested Dog",
+   "bg": "vaj",
+   "desc": "tiny hairless dog with spotted pink-grey skin, long silky white crest of hair on the head, furry ear fringes"
+  },
+  {
+   "n": 118,
+   "slot": 122,
+   "id": "brusszeli-griffon",
+   "nev": "Brüsszeli griffon",
+   "en": "Brussels Griffon",
+   "bg": "egkek",
+   "desc": "small dog with red wiry coat, short bearded face with a human-like expression drawn moderately, large round eyes, small erect ears"
+  },
+  {
+   "n": 119,
+   "slot": 123,
+   "id": "angol-agar",
+   "nev": "Angol agár (greyhound)",
+   "en": "Greyhound",
+   "bg": "barack",
+   "desc": "black short coat with white chest and white blaze, long narrow elegant head, small folded rose ears, gentle eyes"
+  },
+  {
+   "n": 120,
+   "slot": 124,
+   "id": "ir-farkaskutya",
+   "nev": "Ír farkaskutya",
+   "en": "Irish Wolfhound",
+   "bg": "menta",
+   "desc": "very large grey rough wiry coat, long head with beard and bushy eyebrows, small folded rose ears, gentle eyes"
+  },
+  {
+   "n": 121,
+   "slot": 125,
+   "id": "barzoj",
+   "nev": "Barzoj (orosz agár)",
+   "en": "Borzoi",
+   "bg": "menta",
+   "desc": "white silky long coat with fawn-gold patches, extremely long narrow Roman-nosed head, small folded ears"
+  },
+  {
+   "n": 122,
+   "slot": 126,
+   "id": "afgan-agar",
+   "nev": "Afgán agár",
+   "en": "Afghan Hound",
+   "bg": "rozsa",
+   "desc": "cream-gold very long flowing silky coat with a black mask, long narrow head, topknot, long silky ear fringes"
+  },
+  {
+   "n": 123,
+   "slot": 127,
+   "id": "saluki",
+   "nev": "Saluki",
+   "en": "Saluki",
+   "bg": "levendula",
+   "desc": "cream short smooth coat with long silky feathered ears, long narrow elegant head, dark soulful eyes"
+  },
+  {
+   "n": 124,
+   "slot": 128,
+   "id": "spanyol-galgo",
+   "nev": "Spanyol galgó",
+   "en": "Galgo Español",
+   "bg": "pisztacia",
+   "desc": "red-brindle short coat, long narrow head, small folded rose ears, gentle melancholic eyes"
+  }
+ ]
+}

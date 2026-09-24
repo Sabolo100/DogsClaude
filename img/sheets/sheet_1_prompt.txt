@@ -1,0 +1,25 @@
+A 4x4 grid of 16 separate square illustration tiles on a plain cream (#FBF6EE) canvas. The tiles are perfectly aligned in exactly 4 rows and 4 columns, all exactly the same size, separated by thin even cream gutters (about 2% of the image width) with the same cream margin around the outside. No borders, no frames, no text, no letters, no numbers, no labels anywhere in the image.
+
+Each tile is filled edge-to-edge with ONE flat solid pastel background color (given below) and shows ONE dog as a painterly gouache illustration portrait: head and upper chest, three-quarter view, friendly expression, centered. Consistent soft lighting from the upper left, subtle paper grain, visible soft brush strokes, warm premium children's-book-meets-editorial style. Breed-accurate coat color, coat texture, ear shape and head proportions. No collars or accessories unless stated, no humans, no text. The whole head including the ears must fit inside a centered circle covering about 80% of the tile - keep the tile corners and edges as clear background, because every tile will be cropped to a circle. Same scale and framing in every tile.
+
+Tiles in reading order (left to right, top to bottom):
+Row 1:
+  Tile 1: German Shepherd Dog - black-and-tan saddle coat, medium-length dense coat, large erect pointed ears, noble alert expression. Tile background: flat butter yellow #FFE6A0.
+  Tile 2: Belgian Malinois - short fawn coat with black mask and black-tipped erect triangular ears, lean athletic head. Tile background: flat sky blue #BFDDF7.
+  Tile 3: Border Collie - black-and-white medium-length coat, white blaze and white collar, semi-erect ears with folded tips, intelligent eyes. Tile background: flat peach #FFCBA8.
+  Tile 4: Australian Shepherd - blue merle coat with copper points and white blaze, one blue eye and one brown eye, folded triangular ears. Tile background: flat rose pink #FFC8D6.
+Row 2:
+  Tile 5: Shetland Sheepdog - sable-and-white long coat with a full white mane, small tipped ears, fine narrow head like a miniature collie. Tile background: flat lavender #D6CCFF.
+  Tile 6: Pembroke Welsh Corgi - red-and-white coat, big erect pointed ears, fox-like face, happy open mouth. Tile background: flat mint green #BDE8D3.
+  Tile 7: Hungarian Puli - solid black dog completely covered in long natural corded dreadlocks, cords falling over the eyes, only the black nose and a hint of eyes visible. Tile background: flat butter yellow #FFE6A0.
+  Tile 8: Hungarian Pumi - grey medium-length curly wavy coat forming curls, erect ears whose top third tips forward, long narrow muzzle, whimsical lively terrier-like expression. Tile background: flat light coral #FFB9A0.
+Row 3:
+  Tile 9: Hungarian Mudi - glossy black wavy-curly coat, short smooth hair on the face, erect pointed V-shaped ears, alert wedge-shaped fox-like head. Tile background: flat sand beige #EFD9BA.
+  Tile 10: Hungarian Komondor - large dog with an ivory-white coat of long heavy felted cords covering the whole head and body, black nose peeking out. Tile background: flat sky blue #BFDDF7.
+  Tile 11: Hungarian Kuvasz - large pure white dog with a medium-length wavy coat, V-shaped drop ears, dark almond eyes, black nose, noble calm head. Tile background: flat lavender #D6CCFF.
+  Tile 12: Rottweiler - black coat with rich mahogany markings on cheeks, muzzle and above the eyes, broad head, triangular drop ears. Tile background: flat pistachio green #DDEDB2.
+Row 4:
+  Tile 13: Dobermann - sleek short black-and-rust coat, NATURAL uncropped soft drop ears, elegant long head. Tile background: flat peach #FFCBA8.
+  Tile 14: Boxer - fawn coat with white blaze and black mask, NATURAL uncropped drop ears, square short muzzle, playful expression. Tile background: flat mint green #BDE8D3.
+  Tile 15: Miniature Schnauzer - salt-and-pepper wiry coat, bushy eyebrows and long beard, natural folded ears. Tile background: flat rose pink #FFC8D6.
+  Tile 16: Cane Corso - blue-grey short coat, massive broad head, NATURAL uncropped drop ears, calm confident expression. Tile background: flat butter yellow #FFE6A0.

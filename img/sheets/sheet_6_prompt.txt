@@ -1,0 +1,25 @@
+A 4x4 grid of 16 separate square illustration tiles on a plain cream (#FBF6EE) canvas. The tiles are perfectly aligned in exactly 4 rows and 4 columns, all exactly the same size, separated by thin even cream gutters (about 2% of the image width) with the same cream margin around the outside. No borders, no frames, no text, no letters, no numbers, no labels anywhere in the image.
+
+Each tile is filled edge-to-edge with ONE flat solid pastel background color (given below) and shows ONE dog as a painterly gouache illustration portrait: head and upper chest, three-quarter view, friendly expression, centered. Consistent soft lighting from the upper left, subtle paper grain, visible soft brush strokes, warm premium children's-book-meets-editorial style. Breed-accurate coat color, coat texture, ear shape and head proportions. No collars or accessories unless stated, no humans, no text. The whole head including the ears must fit inside a centered circle covering about 80% of the tile - keep the tile corners and edges as clear background, because every tile will be cropped to a circle. Same scale and framing in every tile.
+
+Tiles in reading order (left to right, top to bottom):
+Row 1:
+  Tile 1: Shar Pei - fawn-cream short bristly coat, deep wrinkles on the head, small folded ears, broad hippopotamus-shaped muzzle, small eyes. Tile background: flat butter yellow #FFE6A0.
+  Tile 2: Caucasian Shepherd Dog - huge bear-like dog, thick grey-and-fawn long coat with a black mask, small NATURAL uncropped ears, massive head. Tile background: flat sky blue #BFDDF7.
+  Tile 3: Central Asian Shepherd Dog - large white dog with fawn patches, short coat, massive broad head, small NATURAL uncropped ears. Tile background: flat peach #FFCBA8.
+  Tile 4: Airedale Terrier - black saddle and tan wiry coat, long flat head with beard, small V-shaped folded ears. Tile background: flat mint green #BDE8D3.
+Row 2:
+  Tile 5: Welsh Terrier - black-and-tan wiry coat with black saddle, rectangular head with beard, small V-shaped folded ears, smaller and chunkier than an Airedale. Tile background: flat mint green #BDE8D3.
+  Tile 6: Kerry Blue Terrier - soft wavy blue-grey coat, long head with beard and a fall of hair, small V-shaped folded ears. Tile background: flat rose pink #FFC8D6.
+  Tile 7: Border Terrier - grizzle-and-tan short wiry coat, otter-like broad head, small V-shaped drop ears, dark muzzle. Tile background: flat lavender #D6CCFF.
+  Tile 8: Scottish Terrier - black wiry coat, long head with bushy eyebrows and beard, small erect pointed ears. Tile background: flat pistachio green #DDEDB2.
+Row 3:
+  Tile 9: Cairn Terrier - wheaten-grizzle shaggy wiry coat, fox-like face, small erect pointed ears, bright eyes. Tile background: flat pistachio green #DDEDB2.
+  Tile 10: Bull Terrier - white short coat with a brindle patch over one eye, distinctive egg-shaped head with no stop, small erect ears, small triangular eyes. Tile background: flat light coral #FFB9A0.
+  Tile 11: Wire Fox Terrier - white wiry coat with tan head markings and a black saddle patch, long flat head with beard, small V-shaped folded ears. Tile background: flat sand beige #EFD9BA.
+  Tile 12: Parson Russell Terrier - rough-coated white terrier with a tan-and-white head, tan patches over both eyes and ears, folded button ears, longer legs. Tile background: flat sage green #D3E2C0.
+Row 4:
+  Tile 13: Bedlington Terrier - lamb-like soft curly light blue-grey coat, pear-shaped head with a topknot, low-set drop ears with tassels. Tile background: flat sage green #D3E2C0.
+  Tile 14: Soft-coated Wheaten Terrier - soft silky wavy wheaten coat, hair falling over the eyes, beard, small folded ears. Tile background: flat butter yellow #FFE6A0.
+  Tile 15: Irish Terrier - solid red wiry coat, long head with a small beard, small V-shaped folded ears. Tile background: flat sky blue #BFDDF7.
+  Tile 16: German Hunting Terrier - black-and-tan rough coat, tan eyebrows and muzzle, small V-shaped folded ears, determined expression. Tile background: flat peach #FFCBA8.

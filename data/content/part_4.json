@@ -1,0 +1,167 @@
+{
+  "angol-springer-spaniel": {
+    "leiras": "Az angol springer spániel a brit vadászmezők klasszikus vadfelhajtó és apportírozó kutyája. Barátságos, vidám és nagyon ragaszkodó, a gyerekekkel is remekül kijön, és gyorsan, szívesen tanul. Energiája szinte kifogyhatatlan: a víz, a sár és a bozót az igazi terepe, ezért lógó fülét és hullámos bundáját rendszeresen ápolni kell. Kevés mozgás és foglalkozás mellett unatkozik és nyugtalan lesz, így kanapékutyának nem való.",
+    "kinekIgen": ["Aktív, sportos családoknak", "Túrázóknak, futóknak, vadászoknak", "Kutyasportot, keresőmunkát kedvelőknek"],
+    "kinekNem": ["Mozgásszegény, bezárt életmódhoz", "Hosszú órákra egyedül hagyó gazdinak", "Aki nem viseli a sáros, vizes kutyát"],
+    "mozgas": "Napi 2 óra, sok szabad futással és úszással",
+    "egeszseg": ["Csípőízületi diszplázia", "Progresszív retinaatrófia (PRA)", "Fülgyulladás (lógó fül)", "Foszfofruktokináz-hiány (PFK, génteszt elérhető)"],
+    "erdekesseg": "A neve az angol „spring” (felugraszt) igéből ered: az volt a dolga, hogy a bokorból felugrassza a vadat a vadász elé.",
+    "hasonlo": ["angol-cocker-spaniel", "labrador-retriever", "golden-retriever"],
+    "marmagassag": [48, 51],
+    "koltseg": 2
+  },
+  "lagotto-romagnolo": {
+    "leiras": "A lagotto romagnolo eredetileg vízi apportőr volt az észak-olasz Romagna mocsaraiban, ma pedig a szarvasgomba-keresés specialistája. Kiegyensúlyozott, barátságos és tanulékony, gyerekekkel is jól kijön, az orrmunka és a közös feladatok pedig boldoggá teszik. Göndör bundája kevés szőrt hullat, de rendszeres fésülést és néhány havonta nyírást igényel, különben összecsomósodik. Szimatolási és ásási kedve erős, ezért a kertben számíts egy-két gödörre.",
+    "kinekIgen": ["Aktív családoknak, gyerekekkel is", "Akik kevés szőrt hullató kutyát keresnek", "Orrmunkát, keresőjátékokat kedvelőknek"],
+    "kinekNem": ["Aki nem vállalja a rendszeres nyírást", "Tökéletes gyepet dédelgető kertészeknek", "Egész napra egyedül hagyó gazdinak"],
+    "mozgas": "Napi 1–1,5 óra, sok szimatolós játékkal",
+    "egeszseg": ["Csípőízületi diszplázia", "Juvenilis epilepszia (génteszt elérhető)", "Lagotto tárolási betegség (génteszt elérhető)", "Fülgyulladás"],
+    "erdekesseg": "Nevét a romagnai tájszólás „can lagòt”, azaz vízi kutya kifejezéséből kapta, mert eredetileg a Comacchiói-lagúnák mocsaraiból hozta vissza a vízimadarakat.",
+    "hasonlo": ["uszkar", "pumi", "angol-cocker-spaniel"],
+    "marmagassag": [41, 48],
+    "koltseg": 2
+  },
+  "francia-bulldog": {
+    "leiras": "A francia bulldog ősei a 19. században angol csipkeverőkkel kerültek Franciaországba, és Párizs utcáin lettek igazi sztárok. Vidám, ragaszkodó és kifejezetten csendes társ: keveset ugat (horkolni viszont tud), és kis lakásban is jól elvan. Mozgásigénye mérsékelt, de nem lusta, szeret játszani és bohóckodni. Lapos orra miatt gyakoriak a légzési nehézségek (brachycephal szindróma), a hőséget rosszul tűri, ezért csak egészségügyileg szűrt szülőktől válassz kölyköt.",
+    "kinekIgen": ["Városi, lakásban élő gazdiknak", "Kezdő gazdiknak, nyugodtabb családoknak", "Akik csendes, keveset ugató társat keresnek"],
+    "kinekNem": ["Futótársat vagy túrakutyát keresőknek", "Forró, légkondi nélküli otthonba", "Aki nem tud félretenni állatorvosi költségekre"],
+    "mozgas": "Napi 30–60 perc nyugodt séta, hőségben csak hűvösben",
+    "egeszseg": ["Brachycephal szindróma (légzési nehézség)", "Hőérzékenység, hőguta veszélye", "Gerincproblémák (csigolya-rendellenesség, porckorongsérv)", "Bőrredő-gyulladás, allergiák"],
+    "erdekesseg": "2022-ben az amerikai kennelklub (AKC) regisztrációi alapján a francia bulldog lett az USA legnépszerűbb fajtája, 31 év után letaszítva a trónról a labradort.",
+    "hasonlo": ["boston-terrier", "mopsz", "angol-bulldog"],
+    "marmagassag": [24, 35],
+    "koltseg": 3
+  },
+  "mopsz": {
+    "leiras": "A mopsz ősi kínai fajta, amelyet a 16–17. században holland kereskedők hoztak Európába, ahol hamar a királyi udvarok kedvence lett. Vidám, ragaszkodó kis komédiás, aki mindenhová követ, a gyerekekkel türelmes, az idegenekkel is barátságos. Kevés mozgással beéri, és lakásban is jól érzi magát, de meglepően sokat hullatja a szőrét. Lapos orra miatt gyakoriak a légzési nehézségek (brachycephal szindróma), a hőséget rosszul tűri, ezért csak egészségügyileg szűrt szülőktől válassz.",
+    "kinekIgen": ["Kezdő gazdiknak, városi lakásba", "Gyerekes családoknak és időseknek", "Akik egész nap társat szeretnének maguk mellett"],
+    "kinekNem": ["Futótársat vagy túrakutyát keresőknek", "Akit zavar a sok hulló szőr", "Forró, légkondi nélküli otthonba"],
+    "mozgas": "Napi 30–45 perc laza séta, hőségben rövidebb",
+    "egeszseg": ["Brachycephal szindróma (légzési nehézség)", "Szemsérülések, szaruhártya-fekély (kidülledő szem)", "Bőrredő-gyulladás", "Elhízásra való hajlam"],
+    "erdekesseg": "A fajta régi jelmondata a latin „multum in parvo”, vagyis „sok egy kicsiben”.",
+    "hasonlo": ["francia-bulldog", "boston-terrier", "cavalier-king-charles-spaniel"],
+    "marmagassag": [25, 33],
+    "koltseg": 3
+  },
+  "chihuahua": {
+    "leiras": "A chihuahua Mexikóból származik, és a világ legkisebb kutyafajtája – ám erről ő maga mit sem tud. Bátor, élénk és nagyon ragaszkodó, gyakran egyetlen emberhez kötődik igazán, az idegenekkel szemben pedig gyanakvó lehet. Apró mérete miatt szinte bárhová magaddal viheted, és a lakásban is bőven kimozogja magát. Hajlamos a sok ugatásra, törékeny csontjai miatt pedig kisgyerekes családba kevésbé ajánlott.",
+    "kinekIgen": ["Városi, kis lakásban élőknek", "Egyedülállóknak, időseknek, felnőtt pároknak", "Akik mindenhová vinnék a kutyájukat"],
+    "kinekNem": ["Kisgyerekes családoknak", "Ugatásra érzékeny szomszédok mellé", "Aki strapabíró túratársat keres"],
+    "mozgas": "Napi 20–40 perc séta és sok játék otthon",
+    "egeszseg": ["Térdkalács-ficam (patella luxatio)", "Fogászati problémák (fogkő, fogvesztés)", "Légcső-összeomlás (tracheakollapszus)", "Kölyökkori alacsony vércukorszint"],
+    "erdekesseg": "Nevét a mexikói Chihuahua államról kapta, és a Guinness-rekordok „legkisebb élő kutya” címét is többnyire chihuahuák viselték.",
+    "hasonlo": ["yorkshire-terrier", "pomeraniai-torpespicc", "maltai-selyemkutya"],
+    "marmagassag": [15, 23],
+    "koltseg": 1
+  },
+  "cavalier-king-charles-spaniel": {
+    "leiras": "A cavalier nevét II. Károly angol királyról kapta, aki rajongott a kis spánielekért. Szelíd, barátságos és rendkívül emberközpontú: gyerekekkel, idősekkel és más kutyákkal is jól kijön, házőrzőnek viszont egyáltalán nem való. Rugalmas társ, aki a kanapén és egy hosszabb sétán is egyformán boldog. Tudnod kell azonban, hogy a fajtában nagyon gyakori a mitrális billentyű-betegség (MVD) és a syringomyelia, ezért csak szív- és MRI-szűrt szülőktől válassz.",
+    "kinekIgen": ["Kezdő gazdiknak és gyerekes családoknak", "Időseknek, nyugodt városi otthonba", "Akik állandó, bújós társat szeretnének"],
+    "kinekNem": ["Házőrzőt keresőknek", "Hosszú órákra egyedül hagyó gazdinak", "Aki nem tud félretenni szívszűrésre, kezelésre"],
+    "mozgas": "Napi 45–60 perc séta, némi szabad futással",
+    "egeszseg": ["Mitrális billentyű-betegség (MVD) – szívszűrt szülők!", "Syringomyelia (SM) – MRI-szűrt szülők!", "Térdkalács-ficam", "Szembetegségek (pl. szürkehályog)"],
+    "erdekesseg": "A mai cavalier az 1920-as években született újra, amikor egy amerikai, Roswell Eldridge pénzdíjat ajánlott a Crufts kiállításon a régi festményekről ismert, hosszabb orrú spánielek visszatenyésztéséért.",
+    "hasonlo": ["angol-cocker-spaniel", "havanese", "bichon-frise"],
+    "marmagassag": [30, 33],
+    "koltseg": 2
+  },
+  "shih-tzu": {
+    "leiras": "A shih tzu Tibetből és a kínai császári udvarból származik, ahol évszázadokon át palotakutyaként kényeztették. Barátságos, kiegyensúlyozott és vidám társ, aki szívesebben választja az öledet, mint a hosszú túrát, és kezdő gazdinak is jó választás. Hosszú bundája kevés szőrt hullat, de napi fésülést vagy rendszeres nyírást kíván. Rövid orra miatt légzési nehézségek (brachycephal szindróma) előfordulhatnak, a hőséget rosszul bírja, ezért egészségügyileg szűrt szülőktől válassz.",
+    "kinekIgen": ["Kezdő gazdiknak, lakásba", "Időseknek és nyugodt családoknak", "Akik szívesen foglalkoznak a szőrápolással"],
+    "kinekNem": ["Aktív, sportos életmódhoz", "Aki nem szán időt vagy pénzt kozmetikára", "Forró, légkondi nélküli otthonba"],
+    "mozgas": "Napi 30–45 perc nyugodt séta és játék",
+    "egeszseg": ["Brachycephal szindróma (légzési nehézség)", "Szemproblémák (kidülledő szem, szaruhártya-sérülés)", "Térdkalács-ficam", "Fogászati problémák"],
+    "erdekesseg": "A neve kínaiul „oroszlánt” jelent, a körben szétálló arcszőrzete miatt pedig „krizantémarcú kutyának” is becézik.",
+    "hasonlo": ["maltai-selyemkutya", "havanese", "bichon-frise"],
+    "marmagassag": [20, 27],
+    "koltseg": 2
+  },
+  "maltai-selyemkutya": {
+    "leiras": "A máltai selyemkutya a Földközi-tenger vidékének évezredes múltú ölebe. Élénk, játékos és nagyon ragaszkodó, apró mérete ellenére bátor, a gazdája közelében érzi igazán jól magát, és éberen, hangosan jelzi, ha csengetnek. Hófehér, selymes bundája kevés szőrt hullat, de napi fésülést és rendszeres szemtisztítást igényel. Apró és törékeny, ezért a kisgyerekek durvább játékát nem viseli jól, és a hosszú egyedüllétet sem szereti.",
+    "kinekIgen": ["Kezdő gazdiknak, kis lakásba", "Időseknek és felnőtt családoknak", "Akik kevés szőrt hullató társat keresnek"],
+    "kinekNem": ["Kisgyerekes, pörgős családoknak", "Aki sokat van távol otthonról", "Aki nem szeretne naponta fésülni"],
+    "mozgas": "Napi 30–45 perc séta és sok játék",
+    "egeszseg": ["Térdkalács-ficam", "Fogászati problémák", "Könnyezés, könnycsatorna-problémák", "Portoszisztémás sönt (májsönt)"],
+    "erdekesseg": "Az egyik legrégebbi európai ölebfajta: hasonló kis fehér kutyákat már az ókori görögök és rómaiak is tartottak és ábrázoltak.",
+    "hasonlo": ["bichon-frise", "havanese", "yorkshire-terrier"],
+    "marmagassag": [20, 25],
+    "koltseg": 2
+  },
+  "bichon-frise": {
+    "leiras": "A bichon frisé a mediterrán ölebek leszármazottja, amely a reneszánsz kori francia királyi udvar kedvence volt. Vidám, szelíd és társaságkedvelő: gyerekekkel, idegenekkel és más állatokkal is jól kijön, így kezdő gazdinak is jó választás. Göndör bundája kevés szőrt hullat, de rendszeres fésülést és 4–6 hetente kozmetikust kíván, különben összecsomósodik. Nehezen viseli a hosszú egyedüllétet, és a szobatisztaság kialakítása nála több türelmet igényelhet.",
+    "kinekIgen": ["Kezdő gazdiknak és gyerekes családoknak", "Akik kevés szőrt hullató kutyát keresnek", "Városi lakásba, sok otthon töltött időhöz"],
+    "kinekNem": ["Aki egész nap távol van otthonról", "Aki nem vállalja a rendszeres kozmetikust"],
+    "mozgas": "Napi 30–60 perc séta és játék",
+    "egeszseg": ["Allergiák, bőrproblémák", "Térdkalács-ficam", "Húgyhólyagkő", "Szürkehályog"],
+    "erdekesseg": "A 19. században a palotákból az utcára került, és vásári mutatványosok, cirkuszok sztárja lett, mert könnyen tanul trükköket.",
+    "hasonlo": ["maltai-selyemkutya", "havanese", "uszkar"],
+    "marmagassag": [24, 30],
+    "koltseg": 2
+  },
+  "havanese": {
+    "leiras": "A havanese (havannai bichon) Kuba nemzeti kutyája, a spanyol hajósokkal érkezett bichonok leszármazottja. Vidám, játékos és rendkívül társaságkedvelő: imád a figyelem középpontjában lenni, gyerekekkel is jól kijön, és szívesen tanul trükköket. Hosszú, selymes bundája kevés szőrt hullat, de hetente többször fésülni kell, vagy rövidre nyírva tartani. Nagyon kötődik az emberéhez, ezért olyan otthonba való, ahol ritkán marad egyedül.",
+    "kinekIgen": ["Kezdő gazdiknak és gyerekes családoknak", "Városi lakásba, időseknek is", "Akik szívesen tanítanak trükköket"],
+    "kinekNem": ["Aki sokat van távol otthonról", "Aki nem szeretne rendszeresen fésülni"],
+    "mozgas": "Napi 30–60 perc séta és közös játék",
+    "egeszseg": ["Térdkalács-ficam", "Szemproblémák (szürkehályog, PRA)", "Legg–Calvé–Perthes-betegség (combfejelhalás)"],
+    "erdekesseg": "A kubai forradalom után a fajta szülőhazájában szinte eltűnt, és néhány, gazdáival az Egyesült Államokba került kutyából sikerült újraéleszteni.",
+    "hasonlo": ["bichon-frise", "maltai-selyemkutya", "shih-tzu"],
+    "marmagassag": [23, 27],
+    "koltseg": 2
+  },
+  "uszkar": {
+    "leiras": "Az uszkár eredetileg vízi apportírozó vadászkutya volt, ma négy méretben – toy, törpe, közép és óriás – él velünk. Rendkívül okos, gyorsan tanul, érzékeny és ragaszkodó, a kutyasportokban és a trükktanulásban igazi zseni. Göndör bundája kevés szőrt hullat, de 4–8 hetente nyírást és rendszeres fésülést igényel. Szellemi munka és elég mozgás nélkül unatkozik, a nagyobb méreteknek pedig több futás kell, mint amit az elegáns külső sejtet.",
+    "kinekIgen": ["Kezdő és tapasztalt gazdiknak egyaránt", "Akik kevés szőrt hullató kutyát keresnek", "Kutyasportot, trükktanulást kedvelőknek"],
+    "kinekNem": ["Aki nem vállalja a rendszeres kozmetikust", "Aki dísznek szánja, foglalkozás nélkül"],
+    "mozgas": "Mérettől függően napi 45 perc – 2 óra, sok fejtörővel",
+    "egeszseg": ["Progresszív retinaatrófia (PRA)", "Térdkalács-ficam (toy és törpe)", "Csípőízületi diszplázia, gyomorcsavarodás (óriás)", "Addison-kór, faggyúmirigy-gyulladás (óriás)"],
+    "erdekesseg": "Neve a német „pudeln” (pancsolni) szóból ered, a klasszikus bojtos nyírás pedig eredetileg praktikus volt: a vízben dolgozó kutya ízületeit és mellkasát védte a hidegtől.",
+    "hasonlo": ["lagotto-romagnolo", "bichon-frise", "havanese"],
+    "marmagassag": [24, 60],
+    "koltseg": 2
+  },
+  "boston-terrier": {
+    "leiras": "A Boston terrier a 19. század végén született Bostonban, angol bulldog és terrier ősökből. Vidám, barátságos és játékos, gyerekekkel is jól kijön, és viszonylag könnyen tanul. Keveset ugat, alkalmazkodó, és kis lakásban is elégedett, ha kap elég figyelmet. Rövid orra miatt azonban légzési nehézségek (brachycephal szindróma) előfordulhatnak, a hőséget rosszul tűri, nagy szemei pedig sérülékenyek – csak egészségügyileg szűrt szülőktől válassz.",
+    "kinekIgen": ["Kezdő gazdiknak, városi lakásba", "Gyerekes családoknak", "Akik vidám, de nem hangos társat keresnek"],
+    "kinekNem": ["Futótársat vagy túrakutyát keresőknek", "Forró, légkondi nélküli otthonba"],
+    "mozgas": "Napi 45–60 perc séta és játék, hőségben kevesebb",
+    "egeszseg": ["Brachycephal szindróma (légzési nehézség)", "Szemsérülések, szaruhártya-fekély", "Szürkehályog", "Térdkalács-ficam"],
+    "erdekesseg": "Szmokingra emlékeztető rajzolata és kedves modora miatt „amerikai úriembernek” becézik, és Massachusetts állam hivatalos kutyája.",
+    "hasonlo": ["francia-bulldog", "mopsz", "cavalier-king-charles-spaniel"],
+    "marmagassag": [38, 43],
+    "koltseg": 2
+  },
+  "whippet": {
+    "leiras": "A whippet angol agárfajta, amely közepes termete ellenére a leggyorsabb kutyák közé tartozik. Otthon csendes, szelíd, a gyerekekkel is kedves és kifejezetten bújós: a kanapén szívesen szundít, és ritkán ugat. Kint viszont villámgyors sprinter, akinek rendszeresen kell biztonságos, bekerített helyen szabadon futnia. Erős vadászösztöne miatt macskát, nyulat üldözhet, a behívása nem mindig megbízható, vékony bundája miatt pedig télen kabátra van szüksége.",
+    "kinekIgen": ["Nyugodt otthont és aktív sétákat kedvelőknek", "Városi lakásba is, ha van hol futnia", "Csendes, bújós társat keresőknek"],
+    "kinekNem": ["Kisállatos háztartásba (egyedi mérlegelés)", "Kinti, hideg tartáshoz", "Aki mindenhol póráz nélkül sétáltatna"],
+    "mozgas": "Napi kb. 1 óra séta, benne biztonságos sprintekkel",
+    "egeszseg": ["Bőrsérülések, szakadások (vékony bőr)", "Érzékenység egyes altatószerekre", "Szívbillentyű-betegség (idősebb korban)"],
+    "erdekesseg": "A 19. századi észak-angliai bányászok „szegény ember versenylovának” hívták, mert szabadidejükben versenyeken futtatták és nyúlra vadásztak vele.",
+    "hasonlo": ["olasz-agar", "magyar-agar", "magyar-vizsla"],
+    "marmagassag": [44, 51],
+    "koltseg": 1
+  },
+  "magyar-agar": {
+    "leiras": "A magyar agár ősi vadászkutyánk, amelyet évszázadokon át nyúl- és rókavadászatra használtak a Kárpát-medencében. Otthon nyugodt, csendes és ragaszkodó, a családjához hűséges, az idegenekkel inkább tartózkodó és éber. Kint fáradhatatlan futó, aki nemcsak sprintben, hanem hosszú távon is bírja a tempót, ezért rendszeresen kell biztonságos, bekerített terepen száguldania. Rövid szőre alig igényel ápolást, erős vadászösztöne miatt viszont kisállatokat üldözhet, és a behívása nem mindig megbízható.",
+    "kinekIgen": ["Futóknak, kerékpárosoknak, aktív gazdiknak", "Csendes, keveset ugató kutyát keresőknek", "A magyar fajták szerelmeseinek"],
+    "kinekNem": ["Macskás, kisállatos háztartásba", "Aki mindenhol póráz nélkül engedné", "Mozgásszegény életmódhoz"],
+    "mozgas": "Napi 1,5–2 óra, benne biztonságos szabad futással",
+    "egeszseg": ["Érzékenység egyes altatószerekre (agarakra jellemző)", "Izom- és bőrsérülések futás közben", "Gyomorcsavarodás (mély mellkas miatt)"],
+    "erdekesseg": "A hagyomány szerint ősei már a honfoglaló magyarokkal érkeztek a Kárpát-medencébe, így az egyik legrégebbi magyar kutyafajtaként tartják számon.",
+    "hasonlo": ["whippet", "olasz-agar", "magyar-vizsla"],
+    "marmagassag": [62, 70],
+    "koltseg": 2
+  },
+  "olasz-agar": {
+    "leiras": "Az olasz agár a legkisebb agárfajta, amely a reneszánsz kori olasz udvarokban lett igazi divatkutya. Szelíd, érzékeny és nagyon bújós, a gazdája közelségét keresi, és nem nagy ugatós. Vékony bundája és kevés testzsírja miatt fázós, télen pulóver kell rá, és a hideg, esős időt sem szereti. Törékeny lábcsontjai miatt a nagy ugrások veszélyesek lehetnek, a szobatisztaság kialakítása pedig türelmet kíván.",
+    "kinekIgen": ["Városi lakásba, nyugodt otthonba", "Felnőtt családoknak, időseknek", "Akik bújós, elegáns kis társat keresnek"],
+    "kinekNem": ["Kisgyerekes, pörgős családoknak", "Kinti tartáshoz, hideg lakásba", "Aki gyors szobatisztaságra számít"],
+    "mozgas": "Napi 45–60 perc séta, néha biztonságos sprinttel",
+    "egeszseg": ["Lábtörések (főleg fiatal korban)", "Fogászati problémák (fogkő, ínygyulladás)", "Térdkalács-ficam", "Érzékenység egyes altatószerekre"],
+    "erdekesseg": "Nagy Frigyes porosz király annyira szerette olasz agarait, hogy végül kívánsága szerint a sanssouci-i kastély teraszán, kutyái mellett temették el.",
+    "hasonlo": ["whippet", "chihuahua", "magyar-agar"],
+    "marmagassag": [32, 38],
+    "koltseg": 1
+  }
+}

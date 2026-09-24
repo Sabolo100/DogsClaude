@@ -1,0 +1,373 @@
+{
+  "shar-pei": {
+    "leiras": "Dél-Kínában évszázadokon át parasztgazdaságokat őrzött és vadászaton segédkezett, egy időben pedig viadalokra is használták. Nyugodt, tiszta és méltóságteljes kutya, a családjához hűségesen ragaszkodik, az idegenekkel viszont tartózkodó, és komolyan veszi a házőrzést. Keveset ugat, és lakásban is jól elvan, de önfejű, ezért korai szocializációt és türelmes, következetes nevelést igényel. Jellegzetes ráncai és szűk hallójárata miatt a bőre, a szeme és a füle rendszeres figyelmet kíván.",
+    "kinekIgen": [
+      "Tapasztalt, következetes gazdiknak",
+      "Nyugodt, felnőtt háztartásba, városi lakásba is",
+      "Aki független, tartózkodó társat keres"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Aki mindenkivel barátkozó kutyát szeretne",
+      "Akinek nem fér bele több állatorvosi költség"
+    ],
+    "mozgas": "Napi kb. 1 óra nyugodt séta és játék",
+    "egeszseg": [
+      "Shar pei-láz és amiloidózis (vesekárosodás)",
+      "Entropium (befelé forduló szemhéj)",
+      "Bőrredő-gyulladás, bőrfertőzések",
+      "Fülgyulladás (szűk hallójárat)"
+    ],
+    "erdekesseg": "Az 1970-es évekre annyira megritkult, hogy a Guinness Rekordok Könyve 1978-ban a világ legritkább kutyafajtájaként tartotta számon.",
+    "hasonlo": ["csau-csau", "akita-inu", "shiba-inu"],
+    "marmagassag": [44, 51],
+    "koltseg": 3
+  },
+  "kaukazusi-juhaszkutya": {
+    "leiras": "A Kaukázus hegyeiben és Dél-Oroszország sztyeppéin évszázadokon át farkasoktól és medvéktől védte a nyájakat és a portákat. Rendkívül bátor, önálló és területvédő: a családjához hűséges, az idegeneket viszont gyanakvással fogadja, és mély, hangos ugatással jelez, főleg éjjel. Nem engedelmességi kutya, hanem önállóan döntő őrző, ezért nagyon tapasztalt, magabiztos gazdit, alapos szocializációt és tágas, jól bekerített portát igényel. Egyes országokban a tartása engedélyhez kötött vagy korlátozott, ezért nézz utána a helyi szabályoknak.",
+    "kinekIgen": [
+      "Nagyon tapasztalt, magabiztos kutyásoknak",
+      "Nagy, jól bekerített portán, tanyán élőknek",
+      "Aki komoly, önálló birtokőrzőt keres"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Városba, lakásba, közeli szomszédok mellé",
+      "Sok vendéggel járó, kisgyerekes családba"
+    ],
+    "mozgas": "Napi kb. 1 óra séta, emellett tágas, bekerített terület",
+    "egeszseg": [
+      "Csípő- és könyökízületi diszplázia",
+      "Gyomorcsavarodás (felfúvódás)",
+      "Elhízás (terheli az ízületeket)"
+    ],
+    "erdekesseg": "Az FCI-nál Oroszország a fajta gondozója, mert tervszerű tenyésztése és egységes standardja a Szovjetunióban, az 1920-as évektől kezdve alakult ki.",
+    "hasonlo": ["kozep-azsiai-juhaszkutya", "pireneusi-hegyi-kutya", "komondor"],
+    "marmagassag": [64, 75],
+    "koltseg": 3
+  },
+  "kozep-azsiai-juhaszkutya": {
+    "leiras": "Közép-Ázsia pásztornépei évszázadokon át nyájak, karavánok és települések őrzésére tartották, jellemét a zord sztyeppei élet formálta. Nyugodt, kiegyensúlyozott és magabiztos, a családját és a területét rendíthetetlenül védi, az idegenekkel szemben azonban tartózkodó. Nagyon önálló, a feltétlen engedelmesség nem az erőssége, ezért csak tapasztalt, higgadt és következetes gazdinak való, korai szocializációval és tágas, biztonságosan bekerített portával. Egyes országokban a tartása engedélyhez kötött vagy korlátozott, ezért nézz utána a helyi szabályoknak.",
+    "kinekIgen": [
+      "Tapasztalt, higgadt, magabiztos gazdiknak",
+      "Nagy, bekerített birtokon, tanyán élőknek",
+      "Aki nyugodt, önálló őrzőt keres"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Lakásba vagy kis kertes házba",
+      "Gyakran vendégeskedő, kisgyerekes családba"
+    ],
+    "mozgas": "Napi kb. 1 óra séta, emellett tágas, bekerített kert",
+    "egeszseg": [
+      "Csípő- és könyökízületi diszplázia",
+      "Gyomorcsavarodás (felfúvódás)",
+      "Elhízás (terheli az ízületeket)"
+    ],
+    "erdekesseg": "Türkmenisztánban alabai néven nemzeti jelkép: 2020-ban aranyozott óriásszobrot emeltek neki a fővárosban, Asgabatban, és saját ünnepnapja is van.",
+    "hasonlo": ["kaukazusi-juhaszkutya", "kuvasz", "komondor"],
+    "marmagassag": [65, 78],
+    "koltseg": 3
+  },
+  "airedale-terrier": {
+    "leiras": "A 19. század közepén alakult ki az észak-angliai Aire folyó völgyében, ahol vidrára és patkányra vadásztak vele, később pedig rendőr- és katonakutyaként is bevált. A klasszikus terrierek közül ő a legnagyobb: okos, bátor és játékos, sokszor igazi bohóc, a családjához ragaszkodik, és éber házőrző is. Sok mozgást és szellemi feladatot igényel, és terrierhez illően önálló gondolatai vannak, így türelmes, következetes nevelés kell neki. Kevés szőrt hullat, de drótos szőrzetét évente többször trimmelni kell.",
+    "kinekIgen": [
+      "Aktív, sportos családoknak",
+      "Aki játékos, humoros társat keres",
+      "Kertes házban élő, mozgékony gazdiknak"
+    ],
+    "kinekNem": [
+      "Kis lakásba, kevés mozgással",
+      "Nyugis, otthonülős életmódhoz",
+      "Aki nem vállalja a rendszeres trimmelést"
+    ],
+    "mozgas": "Napi 1,5–2 óra, futással, játékkal és feladatokkal",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Pajzsmirigy-alulműködés",
+      "Bőrallergiák, bőrgyulladás"
+    ],
+    "erdekesseg": "Az első világháborúban a brit hadsereg hírvivő- és őrkutyaként is alkalmazta, és a lövészárkok között vitt üzeneteket.",
+    "hasonlo": ["welsh-terrier", "ir-terrier", "orias-schnauzer"],
+    "marmagassag": [56, 61],
+    "koltseg": 2
+  },
+  "welsh-terrier": {
+    "leiras": "Nagy-Britannia egyik legrégebbi terrierfajtája, Wales hegyvidéki gazdaságaiban rókára, borzra és vidrára vadásztak vele. Vidám, barátságos és kiegyensúlyozottabb sok terrierrokonánál, de kíváncsi, energikus, és szívesen ugat. Lakásban is jól megél, ha kap elég mozgást és közös játékot, a gyerekekkel pedig általában jól kijön. Kevés szőrt hullat, drótos bundáját viszont rendszeresen trimmelni kell, erős vadászösztöne miatt pedig kisállatok mellett és szabadon engedve óvatosnak kell lenni vele.",
+    "kinekIgen": [
+      "Lakásban élő, aktív gazdiknak",
+      "Játékos, nagyobb gyerekes családoknak",
+      "Aki vidám, strapabíró kis társat keres"
+    ],
+    "kinekNem": [
+      "Ha fontos a csend",
+      "Macska, nyúl vagy rágcsáló mellé",
+      "Aki nem vállalja a rendszeres trimmelést"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta és aktív játék",
+    "egeszseg": [
+      "Glaukóma (zöldhályog)",
+      "Primer lencseficam",
+      "Bőrallergiák"
+    ],
+    "erdekesseg": "John F. Kennedy elnök családjának Charlie nevű kutyája welsh terrier volt, és Pusinkával, Hruscsov ajándékával – a szovjet űrkutya, Sztrelka kölykével – közös almuk is született.",
+    "hasonlo": ["airedale-terrier", "drotszoru-foxterrier", "ir-terrier"],
+    "marmagassag": [36, 39],
+    "koltseg": 2
+  },
+  "kerry-blue-terrier": {
+    "leiras": "Írország délnyugati részén, Kerry megyében volt a gazdák mindenese: patkányt és vidrát fogott, jószágot terelt és házat őrzött. Élénk, okos és ragaszkodó kutya, a családjával játékos, az idegenekkel óvatos, és kiváló házőrző. Más kutyákkal szemben hajlamos lehet a rámenősségre, ezért korai szocializációt és következetes, tapasztalt kezet igényel. Puha, hullámos, kékesszürke szőrzete alig hullik, viszont gyakori fésülést és néhány hetente nyírást kíván.",
+    "kinekIgen": [
+      "Tapasztalt, következetes gazdiknak",
+      "Aki kevés szőrt hullató kutyát keres",
+      "Aktív családoknak, akik szívesen fésülnek"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Több kutyás háztartásba, felkészülés nélkül",
+      "Aki nem vállalja a rendszeres nyírást"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, játék és szellemi feladat",
+    "egeszseg": [
+      "Szemproblémák (entropium, szárazszem)",
+      "Kisagyi degeneráció (ritka, örökletes)",
+      "Bőrciszták, szőrtüsző-daganatok"
+    ],
+    "erdekesseg": "Michael Collins, az ír függetlenségi harc legendás alakja is kerry blue terriert tartott, és a fajtát Írország nemzeti kutyájává szerette volna tenni.",
+    "hasonlo": ["ir-buzaszinu-terrier", "ir-terrier", "airedale-terrier"],
+    "marmagassag": [44, 50],
+    "koltseg": 2
+  },
+  "border-terrier": {
+    "leiras": "Az angol–skót határvidéken (Border) tenyésztették rókavadászatra: elég kicsi ahhoz, hogy a kotorékba bebújjon, és elég hosszú lábú, hogy lépést tartson a vadászokkal. Kiegyensúlyozott, barátságos és szívós, a terrierek közül az egyik legkönnyebben kezelhető, a gyerekekkel is jól kijön. Szívesen tanul, és lakásban is elvan, ha kap elég mozgást, de erős vadászösztöne miatt kisállatok mellett és szabadon engedve résen kell lenni. Szeret ásni és felfedezni, ezért a kertet jól be kell keríteni.",
+    "kinekIgen": [
+      "Első kutyás, aktív gazdiknak",
+      "Gyerekes családoknak, lakásba is",
+      "Túrázóknak, kirándulóknak"
+    ],
+    "kinekNem": [
+      "Macska, nyúl vagy rágcsáló mellé",
+      "Rosszul bekerített kertbe – ás és szökik",
+      "Napi sok órás egyedülléthez"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, túra és szimatolós játék",
+    "egeszseg": [
+      "Görcsös mozgászavar (CECS)",
+      "Epilepszia",
+      "Pajzsmirigy-alulműködés"
+    ],
+    "erdekesseg": "A fajtastandard ma is előírja, hogy képes legyen „követni a lovat”, vagyis lépést tartani a lóháton vadászókkal.",
+    "hasonlo": ["cairn-terrier", "jack-russell-terrier", "west-highland-white-terrier"],
+    "marmagassag": [28, 40],
+    "koltseg": 1
+  },
+  "skot-terrier": {
+    "leiras": "A skót Felföldön rókák, borzok és rágcsálók vadászatára tenyésztették, korábban aberdeeni terrierként is ismerték. Méltóságteljes, bátor és önálló kis kutya, a családjához hűségesen ragaszkodik, az idegenekkel tartózkodó, és éber házőrző. Makacs, a durva bánásmódot nem tűri, ezért türelmes, következetes, jutalomra épülő nevelés kell neki. Drótos szőrzetét rendszeresen trimmelni kell, és a kisgyerekek nyüzsgését kevésbé tűri, mint sok más családi kutya.",
+    "kinekIgen": [
+      "Nyugodt, felnőtt háztartásba, lakásba is",
+      "Aki önálló, méltóságteljes kutyát szeret",
+      "Aki éber kis házőrzőt keres"
+    ],
+    "kinekNem": [
+      "Kisgyerekes, nyüzsgő családba",
+      "Aki szófogadó, engedelmes tanítványt vár",
+      "Aki nem vállalja a rendszeres trimmelést"
+    ],
+    "mozgas": "Napi kb. 1 óra séta, szimatolással és játékkal",
+    "egeszseg": [
+      "Skót görcs (scottie cramp, mozgászavar)",
+      "Von Willebrand-betegség (véralvadási zavar)",
+      "Húgyhólyagdaganat (az átlagosnál gyakoribb)",
+      "Állkapocs-csontbetegség (CMO)"
+    ],
+    "erdekesseg": "Franklin D. Roosevelt amerikai elnök elválaszthatatlan társa, Fala skót terrier volt – szobra ma is ott áll gazdája mellett a washingtoni Roosevelt-emlékműnél.",
+    "hasonlo": ["west-highland-white-terrier", "cairn-terrier", "torpe-schnauzer"],
+    "marmagassag": [25, 28],
+    "koltseg": 2
+  },
+  "cairn-terrier": {
+    "leiras": "A skót Felföldön és Skye szigetén a kőrakások (cairnek) között megbúvó rókák és rágcsálók vadászatára tartották, innen kapta a nevét is. Vidám, kíváncsi, bátor és barátságos kis kutya, igazi strapabíró kalandor, aki a gyerekekkel is jól kijön. Kezdő gazdi is boldogul vele, és lakásban is jól elvan, de szívesen ugat, és ha teheti, lelkesen ás. Bozontos, drótos szőrzete keveset hullik, alkalmankénti kefélés és évente néhány trimmelés elég neki.",
+    "kinekIgen": [
+      "Első kutyás gazdiknak",
+      "Gyerekes családoknak, lakásba is",
+      "Aktív, idősebb gazdiknak is"
+    ],
+    "kinekNem": [
+      "Ha fontos a csend",
+      "Nyúl, rágcsáló vagy más kisállat mellé",
+      "Aki félti a gondozott gyepét – szeret ásni"
+    ],
+    "mozgas": "Napi kb. 1 óra séta, játék és szimatolás",
+    "egeszseg": [
+      "Térdkalácsficam",
+      "Portoszisztémás sönt (májér-rendellenesség)",
+      "Szem-melanózis (másodlagos zöldhályog)"
+    ],
+    "erdekesseg": "Az Óz, a csodák csodája (1939) Totóját egy Terry nevű cairn terrier szuka játszotta, aki számos más filmben is szerepelt.",
+    "hasonlo": ["west-highland-white-terrier", "border-terrier", "skot-terrier"],
+    "marmagassag": [28, 31],
+    "koltseg": 1
+  },
+  "bullterrier": {
+    "leiras": "A 19. századi Angliában alakult ki bulldog- és terrierősökből, jellegzetes, tojás alakú fejét James Hinks tenyésztő tette a fajta védjegyévé. Játékos, vicces és rendkívül ragaszkodó, szinte mindig a gazdája közelében akar lenni, ugatni viszont keveset hallani. Erős, energikus és makacs, ezért következetes, türelmes nevelést, sok közös mozgást és korai szocializációt igényel, főleg más kutyák és kisállatok miatt. Egyes országokban a tartása engedélyhez kötött vagy korlátozott, ezért nézz utána a helyi szabályoknak.",
+    "kinekIgen": [
+      "Tapasztalt, következetes, humoros gazdiknak",
+      "Aktív családoknak, nagyobb gyerekekkel",
+      "Aki sok időt tölt a kutyájával"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Macska vagy más kisállat mellé",
+      "Napi sok órás egyedülléthez"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, játék és közös feladatok",
+    "egeszseg": [
+      "Veleszületett süketség (főleg fehér egyedeknél)",
+      "Örökletes vesebetegségek",
+      "Szívbillentyű-rendellenességek",
+      "Bőrallergiák"
+    ],
+    "erdekesseg": "George S. Patton amerikai tábornok hűséges kísérője a második világháborúban egy Willie nevű bullterrier volt.",
+    "hasonlo": ["staffordshire-bullterrier", "amerikai-staffordshire-terrier", "nemet-boxer"],
+    "marmagassag": [45, 56],
+    "koltseg": 2
+  },
+  "drotszoru-foxterrier": {
+    "leiras": "Angliában tenyésztették rókavadászatra: az volt a feladata, hogy a kotorékba bújt rókát kiugrassza a falka elé. Élénk, vakmerő, kíváncsi és játékos, rengeteg energiával és humorral, de önfejű, és szívesen ugat. Sok mozgást, játékot és következetes nevelést igényel, különben ásással, rágással vagy csaholással vezeti le a feszültséget. Kevés szőrt hullat, de drótos szőrzetét rendszeresen trimmelni kell, vadászösztöne miatt pedig kisállatok mellett óvatosnak kell lenni vele.",
+    "kinekIgen": [
+      "Aktív, sportos gazdiknak",
+      "Kutyasportot kedvelőknek",
+      "Aki a pörgős, humoros kutyákat szereti"
+    ],
+    "kinekNem": [
+      "Nyugalomra vágyó, első kutyás gazdiknak",
+      "Ha fontos a csend",
+      "Macska, nyúl vagy rágcsáló mellé"
+    ],
+    "mozgas": "Napi 1,5–2 óra aktív mozgás, sok játékkal és feladattal",
+    "egeszseg": [
+      "Primer lencseficam",
+      "Allergiás bőrgyulladás",
+      "Legg–Calvé–Perthes-kór (combfejelhalás)"
+    ],
+    "erdekesseg": "A New York-i Westminster kutyakiállításon minden más fajtánál többször nyerte el a fődíjat (Best in Show).",
+    "hasonlo": ["welsh-terrier", "parson-russell-terrier", "torpe-schnauzer"],
+    "marmagassag": [35, 39],
+    "koltseg": 2
+  },
+  "parson-russell-terrier": {
+    "leiras": "John Russell devoni lelkész 19. századi rókavadász terrierjeiből ered, a rövidebb lábú jack russelltől ma külön fajtaként tartják számon: hosszabb lábát a lovas vadászok követéséhez kapta. Okos, bátor, kitartó és elképesztően energikus kis sportoló, aki imád dolgozni és játszani. Ha nem kap elég mozgást és feladatot, ásással, ugatással és rágással szórakoztatja magát. Szőrzete kevés ápolást igényel, erős vadászösztöne miatt viszont kisállatok mellett és szabadon engedve óvatosnak kell lenni vele.",
+    "kinekIgen": [
+      "Nagyon aktív, sportos gazdiknak",
+      "Agility, flyball iránt érdeklődőknek",
+      "Futóknak, kirándulóknak"
+    ],
+    "kinekNem": [
+      "Nyugalomra vágyó, első kutyás gazdiknak",
+      "Macska, nyúl vagy rágcsáló mellé",
+      "Napi sok órás egyedülléthez"
+    ],
+    "mozgas": "Napi 1,5–2 óra aktív mozgás, futással és feladatokkal",
+    "egeszseg": [
+      "Primer lencseficam",
+      "Veleszületett süketség",
+      "Kisagyi ataxia (génteszttel szűrhető)",
+      "Térdkalácsficam"
+    ],
+    "erdekesseg": "A fajta ősanyja egy Trump nevű fehér-cser szuka volt, akit Russell tiszteletes még oxfordi diákként vett meg egy tejesembertől.",
+    "hasonlo": ["jack-russell-terrier", "drotszoru-foxterrier", "border-terrier"],
+    "marmagassag": [33, 36],
+    "koltseg": 1
+  },
+  "bedlington-terrier": {
+    "leiras": "Az észak-angliai Northumberland bányászvidékén, Bedlington környékén tartották patkány- és nyúlfogásra a 19. században. Bárányszerű külseje mögött valódi terrier lakik: otthon szelíd, ragaszkodó és nyugodt, a szabadban viszont gyors, kitartó és lelkes vadász. Lakásban is jól elvan, és a gyerekekkel általában kedves, ha megkapja a napi mozgást. Puha, göndör szőrzete kevés szőrt hullat, de rendszeres fésülést és néhány hetente nyírást kíván.",
+    "kinekIgen": [
+      "Lakásban élő, aktív gazdiknak",
+      "Aki kevés szőrt hullató kutyát keres",
+      "Gyerekes, nyugodt családoknak"
+    ],
+    "kinekNem": [
+      "Aki nem vállalja a rendszeres nyírást",
+      "Macska, nyúl vagy rágcsáló mellé",
+      "Aki bekerítetlen helyen engedné szabadon"
+    ],
+    "mozgas": "Napi kb. 1 óra séta, és ha lehet, bekerített helyen szabad vágta",
+    "egeszseg": [
+      "Réz-tárolási májbetegség (génteszttel szűrhető)",
+      "Retinadiszplázia",
+      "Pillaszőr-rendellenességek (disztichiázis)"
+    ],
+    "erdekesseg": "A kölykök sötét, fekete vagy barna szőrrel születnek, és csak felnőve világosodnak ki a jellegzetes, halvány kékes vagy homokszínű árnyalatra.",
+    "hasonlo": ["whippet", "kerry-blue-terrier", "ir-buzaszinu-terrier"],
+    "marmagassag": [38, 44],
+    "koltseg": 2
+  },
+  "ir-buzaszinu-terrier": {
+    "leiras": "Írországban régóta a kisgazdaságok mindenese volt: patkányt fogott, jószágot terelt és udvart őrzött. Vidám, barátságos és nagyon emberközpontú, a gyerekeket imádja, az érkezőket pedig híresen lelkesen, ugrálva üdvözli, ezt kölyökkorától érdemes kezelni. Házőrzőnek kevésbé való, mert szinte mindenkivel barátkozik, a nevelésében pedig türelem kell, mert terrierhez illően önfejű is tud lenni. Selymes szőrzete kevés szőrt hullat, de könnyen csomósodik, ezért szinte naponta fésülni kell.",
+    "kinekIgen": [
+      "Gyerekes, társasági családoknak",
+      "Aki kevés szőrt hullató kutyát keres",
+      "Aki szívesen fésül, kefél"
+    ],
+    "kinekNem": [
+      "Aki nem szán időt napi fésülésre",
+      "Aki visszafogott, csendes természetű kutyát szeretne",
+      "Aki házőrzőt keres"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, játék és futás",
+    "egeszseg": [
+      "Fehérjevesztő vesebetegség (PLN)",
+      "Fehérjevesztő bélbetegség (PLE)",
+      "Vese-diszplázia",
+      "Addison-kór"
+    ],
+    "erdekesseg": "Bár régóta dolgozott az ír gazdaságokban, az Ír Kennel Klub csak 1937-ben ismerte el hivatalosan önálló fajtaként.",
+    "hasonlo": ["kerry-blue-terrier", "tibeti-terrier", "lagotto-romagnolo"],
+    "marmagassag": [44, 48],
+    "koltseg": 2
+  },
+  "ir-terrier": {
+    "leiras": "Az egyik legrégebbi ír fajta: a gazdaságokban patkányfogóként, vadászkutyaként és házőrzőként dolgozott, az első világháborúban pedig hírvivőként is bizonyított. Bátor, vakmerő és hűséges, a családjával és a gyerekekkel kedves és játékos, az idegenekkel óvatos, és éber őrző. Más kutyákkal szemben hajlamos a kötekedésre, ezért korai szocializáció és következetes nevelés kell neki. Vörös, drótos szőrzete keveset hullik, heti kefélés és évente néhány trimmelés elég neki.",
+    "kinekIgen": [
+      "Aktív családoknak, gyerekekkel is",
+      "Tanulni kész, következetes gazdiknak",
+      "Aki bátor, éber társat keres"
+    ],
+    "kinekNem": [
+      "Több kutyás háztartásba, felkészülés nélkül",
+      "Macska, nyúl vagy rágcsáló mellé",
+      "Keveset mozgó, otthonülős gazdiknak"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, futás és játék",
+    "egeszseg": [
+      "Örökletes talppárna-bőrkeményedés (HFH, génteszttel szűrhető)",
+      "Cisztinuria (húgykőképződés)"
+    ],
+    "erdekesseg": "Jack London két regényének, a Jerry of the Islands és a Michael, Brother of Jerry című könyveknek a kutyahősei is ír terrierek.",
+    "hasonlo": ["airedale-terrier", "welsh-terrier", "kerry-blue-terrier"],
+    "marmagassag": [45, 48],
+    "koltseg": 2
+  },
+  "nemet-vadaszterrier": {
+    "leiras": "Az első világháború után német vadászok hozták létre, kizárólag a vadászteljesítményt szem előtt tartva, ma is kotorékvadászatra, vaddisznó felhajtására és vízi munkára használják. Rendkívül bátor, kitartó és szenvedélyes vadász, a gazdájához hűséges, az idegenekkel gyanakvó, és hangosan jelez. Kemény, energikus munkakutya, akinek napi komoly feladat kell, a vadászösztöne pedig szinte mindent felülír. Családi kedvencnek, kisgyerekek vagy kisállatok mellé nem ajánlott, igazán egy vadász gazdi mellett érzi jól magát.",
+    "kinekIgen": [
+      "Aktív vadászoknak",
+      "Nagyon tapasztalt, sportos kutyásoknak",
+      "Vidéken, nagy kertben élőknek"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Kisgyerekes családba",
+      "Macska vagy más kisállat mellé"
+    ],
+    "mozgas": "Napi 2 óra vagy több, lehetőleg vadászmunkával",
+    "egeszseg": [
+      "Primer lencseficam (génteszttel szűrhető)",
+      "Vadászat közbeni sérülések (harapás, vágás)"
+    ],
+    "erdekesseg": "A fajta alapját az a négy fekete-cser terrier adta, amelyet Lutz Heck állatkert-igazgató ajándékozott az egyik alapítónak, Walter Zangenbergnek.",
+    "hasonlo": ["jack-russell-terrier", "parson-russell-terrier", "tacsko"],
+    "marmagassag": [33, 40],
+    "koltseg": 1
+  }
+}

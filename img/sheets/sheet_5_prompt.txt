@@ -1,0 +1,25 @@
+A 4x4 grid of 16 separate square illustration tiles on a plain cream (#FBF6EE) canvas. The tiles are perfectly aligned in exactly 4 rows and 4 columns, all exactly the same size, separated by thin even cream gutters (about 2% of the image width) with the same cream margin around the outside. No borders, no frames, no text, no letters, no numbers, no labels anywhere in the image.
+
+Each tile is filled edge-to-edge with ONE flat solid pastel background color (given below) and shows ONE dog as a painterly gouache illustration portrait: head and upper chest, three-quarter view, friendly expression, centered. Consistent soft lighting from the upper left, subtle paper grain, visible soft brush strokes, warm premium children's-book-meets-editorial style. Breed-accurate coat color, coat texture, ear shape and head proportions. No collars or accessories unless stated, no humans, no text. The whole head including the ears must fit inside a centered circle covering about 80% of the tile - keep the tile corners and edges as clear background, because every tile will be cropped to a circle. Same scale and framing in every tile.
+
+Tiles in reading order (left to right, top to bottom):
+Row 1:
+  Tile 1: Belgian Shepherd Tervueren - fawn-mahogany long coat with black overlay and black mask, full ruff around the neck, erect triangular ears, elegant head. Tile background: flat sand beige #EFD9BA.
+  Tile 2: Belgian Shepherd Groenendael - solid glossy black long coat with a full ruff, erect triangular ears, elegant alert head. Tile background: flat sage green #D3E2C0.
+  Tile 3: Rough Collie - sable-and-white long coat with a magnificent white mane, long narrow wedge-shaped head, semi-erect tipped ears. Tile background: flat butter yellow #FFE6A0.
+  Tile 4: Bearded Collie - shaggy long grey-and-white coat, long beard, hair partly over the eyes, drop ears, cheerful. Tile background: flat sky blue #BFDDF7.
+Row 2:
+  Tile 5: Old English Sheepdog - huge shaggy grey-and-white coat, white fluffy head, hair covering the eyes, black nose. Tile background: flat sky blue #BFDDF7.
+  Tile 6: White Swiss Shepherd Dog - pure white medium-length double coat, large erect ears, German-shepherd-like head, gentle expression. Tile background: flat peach #FFCBA8.
+  Tile 7: Czechoslovakian Wolfdog - wolf-like grey coat with a light mask, amber eyes, short erect triangular ears, wolf head. Tile background: flat mint green #BDE8D3.
+  Tile 8: Australian Cattle Dog - blue-speckled (blue heeler) short coat with tan points and a dark mask patch over one eye, erect pointed ears. Tile background: flat rose pink #FFC8D6.
+Row 3:
+  Tile 9: Miniature Pinscher - tiny dog with sleek short black-and-rust coat, NATURAL erect ears, small elegant head, alert. Tile background: flat rose pink #FFC8D6.
+  Tile 10: Giant Schnauzer - solid black wiry coat, bushy eyebrows and long beard, NATURAL folded ears, big strong head. Tile background: flat lavender #D6CCFF.
+  Tile 11: Hovawart - black-and-gold long slightly wavy coat, gold markings on muzzle and above the eyes, drop ears. Tile background: flat pistachio green #DDEDB2.
+  Tile 12: Leonberger - lion-like golden-red long coat with a thick mane, black mask, drop ears, gentle expression. Tile background: flat light coral #FFB9A0.
+Row 4:
+  Tile 13: Pyrenean Mountain Dog - large pure white long coat, triangular drop ears, dark almond eyes, calm majestic head. Tile background: flat light coral #FFB9A0.
+  Tile 14: Dogue de Bordeaux - mahogany-fawn short coat, massive broad wrinkled head, short muzzle drawn moderately, drop ears. Tile background: flat sand beige #EFD9BA.
+  Tile 15: Neapolitan Mastiff - mouse-grey short coat, extremely loose skin with heavy folds on the head, NATURAL uncropped ears, droopy eyes. Tile background: flat sage green #D3E2C0.
+  Tile 16: Bullmastiff - fawn short coat with black mask, broad wrinkled head, drop ears, calm. Tile background: flat butter yellow #FFE6A0.

@@ -1,0 +1,25 @@
+A 4x4 grid of 16 separate square illustration tiles on a plain cream (#FBF6EE) canvas. The tiles are perfectly aligned in exactly 4 rows and 4 columns, all exactly the same size, separated by thin even cream gutters (about 2% of the image width) with the same cream margin around the outside. No borders, no frames, no text, no letters, no numbers, no labels anywhere in the image.
+
+Each tile is filled edge-to-edge with ONE flat solid pastel background color (given below) and shows ONE dog as a painterly gouache illustration portrait: head and upper chest, three-quarter view, friendly expression, centered. Consistent soft lighting from the upper left, subtle paper grain, visible soft brush strokes, warm premium children's-book-meets-editorial style. Breed-accurate coat color, coat texture, ear shape and head proportions. No collars or accessories unless stated, no humans, no text. The whole head including the ears must fit inside a centered circle covering about 80% of the tile - keep the tile corners and edges as clear background, because every tile will be cropped to a circle. Same scale and framing in every tile.
+
+Tiles in reading order (left to right, top to bottom):
+Row 1:
+  Tile 1: Spanish Water Dog - brown curly woolly coat forming tight curls, hair over the eyes, drop ears. Tile background: flat rose pink #FFC8D6.
+  Tile 2: American Cocker Spaniel - buff light-golden long silky coat, rounded domed head with a short muzzle, long feathered ears, large round eyes. Tile background: flat lavender #D6CCFF.
+  Tile 3: Kooikerhondje - orange-red and white medium coat, feathered ears with black tips like earrings, white blaze. Tile background: flat pistachio green #DDEDB2.
+  Tile 4: Lhasa Apso - gold-and-cream long heavy straight coat, hair falling over the eyes, beard, drop ears. Tile background: flat light coral #FFB9A0.
+Row 2:
+  Tile 5: Tibetan Terrier - long shaggy coat, white with cream-gold patches, hair over the eyes, beard, feathered drop ears. Tile background: flat light coral #FFB9A0.
+  Tile 6: Pekingese - small dog with long flowing red-fawn coat and a mane, black mask, flat face drawn moderately, feathered ears. Tile background: flat sand beige #EFD9BA.
+  Tile 7: Papillon - tiny dog with white and black-tan silky coat, huge erect butterfly-wing ears with long fringes, white blaze. Tile background: flat sage green #D3E2C0.
+  Tile 8: Coton de Tuléar - pure white long fluffy cotton-like coat, round dark eyes, black nose, drop ears. Tile background: flat butter yellow #FFE6A0.
+Row 3:
+  Tile 9: Chinese Crested Dog - tiny hairless dog with spotted pink-grey skin, long silky white crest of hair on the head, furry ear fringes. Tile background: flat butter yellow #FFE6A0.
+  Tile 10: Brussels Griffon - small dog with red wiry coat, short bearded face with a human-like expression drawn moderately, large round eyes, small erect ears. Tile background: flat sky blue #BFDDF7.
+  Tile 11: Greyhound - black short coat with white chest and white blaze, long narrow elegant head, small folded rose ears, gentle eyes. Tile background: flat peach #FFCBA8.
+  Tile 12: Irish Wolfhound - very large grey rough wiry coat, long head with beard and bushy eyebrows, small folded rose ears, gentle eyes. Tile background: flat mint green #BDE8D3.
+Row 4:
+  Tile 13: Borzoi - white silky long coat with fawn-gold patches, extremely long narrow Roman-nosed head, small folded ears. Tile background: flat mint green #BDE8D3.
+  Tile 14: Afghan Hound - cream-gold very long flowing silky coat with a black mask, long narrow head, topknot, long silky ear fringes. Tile background: flat rose pink #FFC8D6.
+  Tile 15: Saluki - cream short smooth coat with long silky feathered ears, long narrow elegant head, dark soulful eyes. Tile background: flat lavender #D6CCFF.
+  Tile 16: Galgo Español - red-brindle short coat, long narrow head, small folded rose ears, gentle melancholic eyes. Tile background: flat pistachio green #DDEDB2.

@@ -1,0 +1,378 @@
+{
+  "tervueren": {
+    "leiras": "A tervueren a 19. század végén Belgiumban alakult ki, nevét a Brüsszel melletti Tervuren községről kapta. Rendkívül figyelmes, okos és munkaszerető kutya, aki a gazdájához szorosan kötődik, idegenekkel eleinte tartózkodó, és éberen figyeli a környezetét. Gyorsan tanul, a kutyasportokban kiváló, de érzékeny lelkű, a durva bánásmódot rosszul viseli. Napi feladat és sok mozgás nélkül könnyen feszült, pörgős lesz, hosszú bundája pedig rendszeres kefélést kíván és bőven hullik.",
+    "kinekIgen": [
+      "Aktív, kutyasportos gazdiknak",
+      "Akik szívesen tanítanak és dolgoznak a kutyával",
+      "Kertes házban élő, sokat mozgó családoknak"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak, felkészülés nélkül",
+      "Kis lakásba, kevés mozgással",
+      "Napi sok órára egyedül hagyó gazdinak"
+    ],
+    "mozgas": "Napi 2 óra mozgás, sok szellemi feladattal",
+    "egeszseg": [
+      "Epilepszia",
+      "Csípő- és könyökízületi diszplázia",
+      "Szembetegségek (pl. PRA, szürkehályog)"
+    ],
+    "erdekesseg": "A belga juhászkutya négy változatát – malinois, tervueren, groenendael és laekenois – az FCI egyetlen fajtaként tartja nyilván: csak a szőrzetük hossza, szerkezete és színe különbözik.",
+    "hasonlo": ["groenendael", "malinois", "nemet-juhaszkutya"],
+    "marmagassag": [56, 66],
+    "koltseg": 2
+  },
+  "groenendael": {
+    "leiras": "A groenendael a belga juhászkutya fekete, hosszú szőrű változata, amely a 19. század végén alakult ki Brüsszel környékén. Éles eszű, rendkívül figyelmes és munkaszerető, a családjához szorosan kötődik, idegenekkel viszont tartózkodó, és megbízható házőrző. Gyorsan tanul, az agilityben, az obedience-ben és a nyomkövetésben is kiváló, de érzékeny, ezért kemény kéz helyett pozitív megerősítés illik hozzá. Feladat nélkül hamar feszült, ideges lesz, dús fekete bundája pedig bőven hullik.",
+    "kinekIgen": [
+      "Tapasztaltabb, aktív gazdiknak",
+      "Agility- és kutyasport-rajongóknak",
+      "Akik naponta sokat foglalkoznak a kutyával"
+    ],
+    "kinekNem": [
+      "Nyugodt, otthonülő életmódhoz",
+      "Kis lakásba, kert nélkül",
+      "Szőrhullást nehezen viselőknek"
+    ],
+    "mozgas": "Napi 2 óra, futással és közös munkával",
+    "egeszseg": [
+      "Epilepszia",
+      "Csípő- és könyökízületi diszplázia",
+      "Szembetegségek (pl. PRA, szürkehályog)",
+      "Pajzsmirigy-alulműködés"
+    ],
+    "erdekesseg": "Nevét a Brüsszel melletti Groenendael kastélyról kapta, ahol tulajdonosa, Nicolas Rose a 19. század végén célzottan a fekete, hosszú szőrű juhászkutyák tenyésztésébe kezdett.",
+    "hasonlo": ["tervueren", "malinois", "border-collie"],
+    "marmagassag": [56, 66],
+    "koltseg": 2
+  },
+  "collie": {
+    "leiras": "A hosszú szőrű collie a skót felföld juhászkutyáiból alakult ki, és Viktória királynő rajongása tette igazán divatossá a 19. században. Gyengéd, érzékeny és nagyon ragaszkodó fajta, a gyerekekkel türelmes, könnyen és szívesen tanul, ezért kezdő gazdinak is jó választás. Idegenekkel inkább visszafogott, de nem ellenséges. Számolj vele, hogy szívesen és sokat ugat, dús bundája pedig rendszeres, alapos kefélést kíván, és vedléskor rengeteg szőrt hullat.",
+    "kinekIgen": [
+      "Gyerekes családoknak",
+      "Első kutyásoknak, akik szívesen tanítanak",
+      "Akiket nem zavar a rendszeres kefélés"
+    ],
+    "kinekNem": [
+      "Ugatásra érzékeny szomszédság mellé",
+      "Szőrhullást nehezen viselőknek",
+      "Egész napra egyedül hagyó gazdinak"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, játékkal és tanulással",
+    "egeszseg": [
+      "Collie-szem-anomália (CEA)",
+      "MDR1-génhiba (gyógyszer-érzékenység)",
+      "Progresszív retina-atrófia (PRA)"
+    ],
+    "erdekesseg": "A filmbeli Lassie-t, bár nőstény kutya, először egy Pal nevű kan collie alakította, és a szerepet generációkon át az ő leszármazottai vitték tovább.",
+    "hasonlo": ["shetlandi-juhaszkutya", "bearded-collie", "border-collie"],
+    "marmagassag": [51, 61],
+    "koltseg": 2
+  },
+  "bearded-collie": {
+    "leiras": "A bearded collie Skócia hegyvidéki legelőin terelte a juhokat és a marhákat, bozontos bundája az esőt és a hideget is jól bírta. Vidám, pattogó energiájú, barátságos kutya, aki a család minden tagját imádja, és a gyerekekkel is remekül kijön. Okos és tanulékony, de van saját véleménye, ezért türelmes, játékos nevelés illik hozzá, és szívesen hallatja a hangját. Hosszú, dús bundája komoly vállalás: heti többszöri alapos kefélés nélkül hamar csomósodik.",
+    "kinekIgen": [
+      "Aktív, játékos, gyerekes családoknak",
+      "Akik szívesen foglalkoznak bundaápolással",
+      "Kutyasportot, túrázást kedvelőknek"
+    ],
+    "kinekNem": [
+      "Akinek nincs ideje rendszeres kefélésre",
+      "Mozgásszegény, otthonülő életmódhoz",
+      "Ugatásra érzékeny szomszédság mellé"
+    ],
+    "mozgas": "Napi 1,5–2 óra, sok szabad futással és játékkal",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Pajzsmirigy-alulműködés",
+      "Addison-kór (mellékvesekéreg-elégtelenség)"
+    ],
+    "erdekesseg": "A kölykök jellemzően sötétebb színnel születnek, bundájuk kamaszkorra kivilágosodik, majd felnőttkorban gyakran újra sötétebb árnyalatot kap.",
+    "hasonlo": ["bobtail", "collie", "border-collie"],
+    "marmagassag": [51, 56],
+    "koltseg": 2
+  },
+  "bobtail": {
+    "leiras": "Az óangol juhászkutya Angliában a marhák és juhok vásárra hajtásában segítette a gazdákat, ma viszont elsősorban kedves családi társ. Jókedvű, szelíd és türelmes, a gyerekekkel kifejezetten jól kijön, és gyakran igazi bohóc. Tanítható, de néha a saját feje után megy, ezért vidám, következetes nevelés illik hozzá. Bozontos bundája a legnagyobb vállalás: hetente több óra kefélést vagy rendszeres kutyakozmetikust igényel, bőven hullik, a meleget pedig rosszul tűri.",
+    "kinekIgen": [
+      "Gyerekes, vidám családoknak",
+      "Akik elhivatottan vállalják a bundaápolást",
+      "Kertes házban élőknek"
+    ],
+    "kinekNem": [
+      "Akinek nincs ideje vagy kerete bundaápolásra",
+      "Forró, légkondi nélküli otthonba",
+      "Szőrhullást nehezen viselőknek"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta és játék, kánikulában kímélve",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Szembetegségek (pl. szürkehályog, PRA)",
+      "Pajzsmirigy-alulműködés",
+      "MDR1-génhiba (gyógyszer-érzékenység)"
+    ],
+    "erdekesseg": "A Beatles „Martha My Dear” című dala Paul McCartney bobtailjáról, Martháról kapta a címét.",
+    "hasonlo": ["bearded-collie", "collie", "berni-pasztorkutya"],
+    "marmagassag": [56, 66],
+    "koltseg": 3
+  },
+  "feher-svajci-juhaszkutya": {
+    "leiras": "A fehér svájci juhászkutya a fehér színű német juhászkutyák leszármazottja, önálló fajtaként Svájcban ismerték el. Szelíd, barátságos és nagyon tanulékony, a családjához szorosan kötődik, a gyerekekkel türelmes, idegenekkel inkább tartózkodó, mint gyanakvó. Érzékeny lelkű, ezért a kedves, következetes nevelésre reagál a legjobban, és a kutyasportokban is szívesen részt vesz. Hófehér, dús bundája egész évben bőven hullik, vedléskor pedig szinte mindent beborít.",
+    "kinekIgen": [
+      "Aktív, gyerekes családoknak",
+      "Akik szelídebb juhászkutyát keresnek",
+      "Kutyasportot, túrázást kedvelőknek"
+    ],
+    "kinekNem": [
+      "Szőrhullásra érzékeny háztartásba",
+      "Kis lakásba, kevés mozgással",
+      "Hosszú egyedülléttel járó napokhoz"
+    ],
+    "mozgas": "Napi 1,5 óra mozgás, játékkal és tanulással",
+    "egeszseg": [
+      "Csípő- és könyökízületi diszplázia",
+      "MDR1-génhiba (gyógyszer-érzékenység)",
+      "Degeneratív myelopathia"
+    ],
+    "erdekesseg": "Mivel Németországban a 20. század első felében a fehér szín kizáró hibának számított a német juhászkutyánál, a fehér vonalak főleg az USA-ban és Kanadában maradtak fenn, és onnan kerültek vissza Európába.",
+    "hasonlo": ["nemet-juhaszkutya", "tervueren", "golden-retriever"],
+    "marmagassag": [53, 66],
+    "koltseg": 2
+  },
+  "csehszlovak-farkaskutya": {
+    "leiras": "Az 1950-es években Csehszlovákiában hozták létre német juhászkutyák és kárpáti farkasok keresztezésével, eredetileg határőrizeti szolgálatra. Gazdájához és családjához nagyon ragaszkodik, az egyedüllétet rosszul tűri, idegenekkel gyanakvó, és erős a vadászösztöne. Okos, de önálló gondolkodású: a klasszikus engedelmességi feladatokat csak türelmes, következetes munkával tanulja meg. Ritkán ugat, inkább vonyít, ügyes szökevény, ezért csak tapasztalt, sok időt rászánó gazdinak ajánlott.",
+    "kinekIgen": [
+      "Nagyon tapasztalt, türelmes kutyásoknak",
+      "Túrázóknak, futóknak, vidéki életmódhoz",
+      "Akik szinte egész nap otthon vannak"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Városi lakásba",
+      "Kisgyerekes vagy kisállatos háztartásba"
+    ],
+    "mozgas": "Napi 2+ óra, futással, túrázással és feladatokkal",
+    "egeszseg": [
+      "Csípőízületi diszplázia (szűrt szülők!)",
+      "Hipofízis eredetű törpenövés (génteszttel szűrhető)",
+      "Degeneratív myelopathia"
+    ],
+    "erdekesseg": "Az első farkas–kutya alom anyja egy Brita nevű kárpáti nőstény farkas, apja pedig egy Cézar nevű német juhászkutya volt.",
+    "hasonlo": ["nemet-juhaszkutya", "sziberiai-husky", "alaszkai-malamut"],
+    "marmagassag": [60, 70],
+    "koltseg": 2
+  },
+  "ausztral-pasztorkutya": {
+    "leiras": "Az ausztrál pásztorkutya a 19. századi Ausztráliában alakult ki: a marhahajtók kutyáit többek között dingóval keresztezték, hogy bírják a hőséget és a hosszú utakat. Kemény, kitartó és rendkívül munkabíró terelő, aki egy-két emberhez különösen kötődik, idegenekkel tartózkodó és éber. Okos és tanulékony, de önálló, ezért következetes nevelés és rendszeres feladat kell neki. Terelőösztönből hajlamos a sarkakat csipkedni, ami kisgyerekek mellett kellemetlen lehet.",
+    "kinekIgen": [
+      "Nagyon aktív, tapasztalt gazdiknak",
+      "Tanyán vagy nagy kertes házban élőknek",
+      "Futóknak, túrázóknak, kutyasportosoknak"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Lakásba, mozgásszegény életmódhoz",
+      "Kisgyerekes családba"
+    ],
+    "mozgas": "Napi 2 óra intenzív mozgás és rendszeres feladat",
+    "egeszseg": [
+      "Veleszületett süketség (BAER-hallásteszt)",
+      "Progresszív retina-atrófia (PRA)",
+      "Csípőízületi diszplázia",
+      "Elsődleges lencseficam (PLL)"
+    ],
+    "erdekesseg": "A Guinness-rekordok könyvében hosszú ideig egy Bluey nevű ausztrál pásztorkutya szerepelt a valaha élt legidősebb kutyaként: több mint 29 évet élt.",
+    "hasonlo": ["border-collie", "ausztral-juhaszkutya", "mudi"],
+    "marmagassag": [43, 51],
+    "koltseg": 1
+  },
+  "torpe-pinscher": {
+    "leiras": "A törpe pinscher régi német fajta, amely eredetileg istállókban és udvarokon patkányfogóként dolgozott. Élénk, bátor és kíváncsi kis kutya, igazi házőrző, aki minden neszre hangos ugatással reagál. Okos, de hajlamos a makacsságra és a szökésre, ezért következetes nevelés és biztonságos kerítés kell neki. Kisgyerekek mellé kevésbé ajánlott, mert törékeny, és a durva bánásmódot nem tűri; rövid szőre miatt télen könnyen fázik.",
+    "kinekIgen": [
+      "Városi, lakásban élő aktív gazdiknak",
+      "Felnőtt vagy nagyobb gyerekes háztartásba",
+      "Akik éber, vagány kis társat keresnek"
+    ],
+    "kinekNem": [
+      "Kisgyerekes családba",
+      "Ugatásra érzékeny szomszédság mellé",
+      "Hideg, kinti tartáshoz"
+    ],
+    "mozgas": "Napi 45–60 perc séta és élénk játék",
+    "egeszseg": [
+      "Térdkalácsficam (patellaluxáció)",
+      "Legg–Calvé–Perthes-kór (combfejelhalás)",
+      "Szembetegségek (pl. PRA)"
+    ],
+    "erdekesseg": "Bár sokan mini dobermannak hiszik, valójában ő a régebbi fajta: már a dobermann kitenyésztése előtt is létezett Németországban.",
+    "hasonlo": ["chihuahua", "torpe-schnauzer", "jack-russell-terrier"],
+    "marmagassag": [25, 30],
+    "koltseg": 1
+  },
+  "orias-schnauzer": {
+    "leiras": "Az óriás schnauzer Dél-Németországban, Bajorországban alakult ki marhahajtó és udvarőrző kutyaként, később rendőr- és szolgálati kutyaként vált ismertté. Okos, erős, rendkívül energikus és határozottan védelmező, a családjához hűséges, idegenekkel tartózkodó. Tanulékony, de domináns tud lenni, ezért tapasztalt, következetes gazdi és sok közös munka kell neki. Drótszőre alig hullik, viszont rendszeres trimmelést vagy nyírást igényel, a szakállát pedig evés után is érdemes tisztán tartani.",
+    "kinekIgen": [
+      "Nagyon tapasztalt, aktív gazdiknak",
+      "Kutyasportot vagy őrző-védő munkát kedvelőknek",
+      "Kertes házban élő, sokat mozgó családoknak"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Lakásba, mozgásszegény életmódhoz",
+      "Akinek nincs ideje rendszeres szőrápolásra"
+    ],
+    "mozgas": "Napi 2 óra mozgás, sok közös munkával",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Pajzsmirigy-alulműködés",
+      "Gyomorcsavarodás",
+      "Lábujjdaganat (laphámrák)"
+    ],
+    "erdekesseg": "A schnauzer név a német „Schnauze” (pofa, orr) szóból ered, és a fajta jellegzetes, szakállas pofájára utal.",
+    "hasonlo": ["dobermann", "nemet-juhaszkutya", "airedale-terrier"],
+    "marmagassag": [60, 70],
+    "koltseg": 3
+  },
+  "hovawart": {
+    "leiras": "A hovawartot a középkori német udvarőrző kutyák nyomán, az 1920-as években tenyésztették újra régi típusú parasztkutyákból. Magabiztos, hűséges és családcentrikus: otthon kedves, játékos társ, a házat és a családját viszont határozottan őrzi. Lassan érő fajta, és van saját feje, ezért türelmes, következetes nevelés és korai szocializáció kell neki. Erős őrzőösztöne miatt inkább tapasztaltabb gazdinak ajánlott, és kertes házban érzi magát a legjobban.",
+    "kinekIgen": [
+      "Tapasztaltabb, következetes gazdiknak",
+      "Kertes házban élő családoknak",
+      "Akik hűséges házőrzőt és társat keresnek"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak, felkészülés nélkül",
+      "Lakásba, kert nélküli életbe",
+      "Sok vendéggel járó, nyüzsgő háztartásba"
+    ],
+    "mozgas": "Napi 1,5–2 óra séta, futás és közös feladatok",
+    "egeszseg": [
+      "Csípőízületi diszplázia (szűrt szülők!)",
+      "Pajzsmirigy-alulműködés",
+      "Degeneratív myelopathia"
+    ],
+    "erdekesseg": "Neve a középfelnémet „hova” (udvar, tanya) és „wart” (őr) szavakból ered, jelentése tehát szó szerint „udvarőrző”.",
+    "hasonlo": ["nemet-juhaszkutya", "leonbergi", "berni-pasztorkutya"],
+    "marmagassag": [58, 70],
+    "koltseg": 2
+  },
+  "leonbergi": {
+    "leiras": "A leonbergi a 19. században született a németországi Leonberg városában, a hagyomány szerint újfundlandi, bernáthegyi és pireneusi hegyi kutya felhasználásával. Nyugodt, barátságos és türelmes óriás, aki a gyerekekkel kifejezetten gyengéd, és mindig a családja közelében szeret lenni. Tanulékony és szívesen úszik, de mérete miatt kölyökkorától fontos a jó pórázon járás és az alapengedelmesség. Számolj a nagyon bőséges szőrhullással, a nyáladzással, a magas fenntartási költséggel és a rövidebb, 8–10 éves várható élettartammal.",
+    "kinekIgen": [
+      "Nyugodt, gyerekes családoknak",
+      "Nagy, kertes házban élőknek",
+      "Akik szeretik a vizet és a túrázást"
+    ],
+    "kinekNem": [
+      "Akit zavar a sok szőr és a nyál",
+      "Kis lakásba, kert nélkül",
+      "Szűkös kutyás költségvetéshez"
+    ],
+    "mozgas": "Napi 1–1,5 óra nyugodt séta, kölyökkorban kímélve",
+    "egeszseg": [
+      "Csípő- és könyökízületi diszplázia",
+      "Leonbergi polineuropátia (génteszt elérhető)",
+      "Gyomorcsavarodás",
+      "Csontdaganat (osteosarcoma)"
+    ],
+    "erdekesseg": "A hagyomány szerint tenyésztője, Heinrich Essig olyan kutyát akart, amely Leonberg város címerének oroszlánjára hasonlít.",
+    "hasonlo": ["berni-pasztorkutya", "uj-fundlandi", "bernathegyi"],
+    "marmagassag": [65, 80],
+    "koltseg": 3
+  },
+  "pireneusi-hegyi-kutya": {
+    "leiras": "A pireneusi hegyi kutya évszázadokon át a Pireneusok pásztorainak nyájait védte a farkasoktól és a medvéktől, később a francia királyi udvarban is divatba jött. Nyugodt, szelíd és türelmes a családjával, idegenekkel és idegen állatokkal szemben viszont határozott őrző. Önálló döntésekre tenyésztették, ezért nem a vak engedelmesség jellemzi, és a behívást nehezen tanulja. Számolj vele, hogy főleg éjszaka sokat ugat, dús fehér bundája pedig bőven hullik.",
+    "kinekIgen": [
+      "Tapasztalt, nagytestű kutyához szokott gazdiknak",
+      "Tanyán, nagy bekerített telken élőknek",
+      "Akik nyáj- vagy birtokőrzőt keresnek"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Városi lakásba, közeli szomszédok mellé",
+      "Szőrhullást nehezen viselőknek"
+    ],
+    "mozgas": "Napi 1 óra nyugodt séta, plusz szabad mozgás a telken",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Gyomorcsavarodás",
+      "Csontdaganat (osteosarcoma)"
+    ],
+    "erdekesseg": "Hátsó lábain dupla farkaskarom (két extra ujj) található, amit a fajtastandard kifejezetten megkövetel.",
+    "hasonlo": ["kuvasz", "komondor", "leonbergi"],
+    "marmagassag": [65, 80],
+    "koltseg": 3
+  },
+  "bordeaux-i-dog": {
+    "leiras": "A bordeaux-i dog az egyik legrégebbi francia fajta, évszázadokon át birtokokat őrzött és nagyvadvadászaton segédkezett. Nyugodt, ragaszkodó és a családjához nagyon kötődő, idegenekkel tartózkodó, makacssága miatt pedig korai szocializáció és következetes nevelés kell neki. Fontos tudni, hogy várható élettartama mindössze 6–8 év, rövid orra miatt pedig a meleget és a megerőltetést rosszul tűri, könnyen kifullad. Egyes országokban a tartása engedélyhez kötött, ezért nézz utána a helyi szabályoknak.",
+    "kinekIgen": [
+      "Tapasztalt, nyugodt, magabiztos gazdiknak",
+      "Kertes házban élő, nyugodtabb családoknak",
+      "Akik vállalják a magasabb állatorvosi költséget"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Forró, légkondi nélküli otthonba",
+      "Akit zavar a nyáladzás"
+    ],
+    "mozgas": "Napi 2–3 nyugodt séta, hőségben csak hűvösben",
+    "egeszseg": [
+      "Szívbetegségek (pl. aortaszűkület, kardiomiopátia)",
+      "Légzési nehézség, hőérzékenység (rövid orr)",
+      "Csípő- és könyökízületi diszplázia",
+      "Gyomorcsavarodás"
+    ],
+    "erdekesseg": "A „Turner és a házikutya” (Turner & Hooch, 1989) című filmben Tom Hanks nyáladzós négylábú partnere, Hooch egy bordeaux-i dog volt.",
+    "hasonlo": ["bullmasztiff", "napolyi-masztiff", "cane-corso"],
+    "marmagassag": [58, 68],
+    "koltseg": 3
+  },
+  "napolyi-masztiff": {
+    "leiras": "A nápolyi masztiff az ókori római molosszerek leszármazottja, Dél-Olaszországban évszázadokon át birtokokat és gazdaságokat őrzött. Nyugodt, méltóságteljes és a családjához mélyen ragaszkodó, idegenekkel szemben viszont gyanakvó, és határozottan védi az otthonát. Hatalmas ereje és önállósága miatt csak nagyon tapasztalt, következetes gazdinak való, és egyes országokban a tartása engedélyhez kötött. Számolj az erős nyáladzással, a bőrredők rendszeres tisztításával, és azzal, hogy a meleget rosszul tűri.",
+    "kinekIgen": [
+      "Nagyon tapasztalt, óriás kutyához szokott gazdiknak",
+      "Tágas, jól bekerített kertes házba",
+      "Akik nyugodt, méltóságteljes őrzőt keresnek"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Akit zavar a nyál és a ráncápolás",
+      "Sportos, túrázó életmódhoz"
+    ],
+    "mozgas": "Napi 2–3 rövid, nyugodt séta, melegben kímélve",
+    "egeszseg": [
+      "Csípő- és könyökízületi diszplázia",
+      "Szemhéjproblémák (entropium, ektropium, cseresznyeszem)",
+      "Bőrredő-gyulladás",
+      "Gyomorcsavarodás"
+    ],
+    "erdekesseg": "A Harry Potter-filmekben Hagrid kutyáját, Agyart nápolyi masztiffok alakították.",
+    "hasonlo": ["bordeaux-i-dog", "bullmasztiff", "cane-corso"],
+    "marmagassag": [60, 75],
+    "koltseg": 3
+  },
+  "bullmasztiff": {
+    "leiras": "A bullmasztiffot a 19. századi Angliában tenyésztették ki masztiff és bulldog keresztezésével, hogy a vadőrök mellett csendben lefogja az orvvadászokat. Nyugodt, kiegyensúlyozott és nagyon ragaszkodó, a gyerekekkel általában türelmes, feleslegesen pedig szinte sosem ugat. Idegenekkel tartózkodó, magabiztos őrző, ezért korai szocializáció és következetes nevelés kell neki; egyes országokban a tartása engedélyhez kötött. Nagy ereje miatt a pórázon járást kölyökkortól tanítani kell, és számolj a nyáladzással is.",
+    "kinekIgen": [
+      "Tapasztalt, magabiztos gazdiknak",
+      "Nyugodt, kertes házban élő családoknak",
+      "Akik csendes, de éber őrzőt keresnek"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Futótársat kereső aktív gazdiknak",
+      "Akit zavar a nyáladzás"
+    ],
+    "mozgas": "Napi 1 óra nyugodt séta, melegben kímélve",
+    "egeszseg": [
+      "Csípő- és könyökízületi diszplázia",
+      "Gyomorcsavarodás",
+      "Nyirokdaganat (limfóma)",
+      "Entropium (befelé forduló szemhéj)"
+    ],
+    "erdekesseg": "Angliában régen „a vadőr éjszakai kutyájaként” (gamekeeper's night dog) emlegették, mert éjjel a vadőrrel együtt járta az erdőt az orvvadászok nyomában.",
+    "hasonlo": ["bordeaux-i-dog", "cane-corso", "rottweiler"],
+    "marmagassag": [61, 69],
+    "koltseg": 3
+  }
+}

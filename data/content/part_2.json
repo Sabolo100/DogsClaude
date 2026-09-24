@@ -1,0 +1,357 @@
+{
+  "cane-corso": {
+    "leiras": "Az ókori római molosszerek leszármazottja, Dél-Olaszországban évszázadokig birtokokat és jószágot őrzött, sőt nagyvadvadászaton is segédkezett. Nyugodt, magabiztos és rendkívül hűséges a családjához, az idegenekkel viszont tartózkodó, és komolyan veszi az őrző szerepét. Okosan és szívesen tanul, de korai, alapos szocializációt és következetes, nyugodt kezet igényel, ezért inkább tapasztalt gazdinak való. Egyes országokban a tartása engedélyhez kötött, ezért nézz utána a helyi szabályoknak.",
+    "kinekIgen": [
+      "Tapasztalt, magabiztos kutyás gazdiknak",
+      "Kertes házban élő, nyugodt családoknak",
+      "Aki elkötelezett őrző-védő társat keres"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Kis lakásba, kert nélküli életbe",
+      "Akit zavar a nyáladzás"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, játék és közös feladatok",
+    "egeszseg": [
+      "Csípő- és könyökízületi diszplázia",
+      "Gyomorcsavarodás (felfúvódás)",
+      "Szemhéj-rendellenességek (entropium, ektropium)"
+    ],
+    "erdekesseg": "A 20. század közepére szinte teljesen eltűnt, és csak az 1970-es években induló olasz mentőprogramnak köszönhetően maradt fenn.",
+    "hasonlo": ["rottweiler", "dobermann", "nemet-dog"],
+    "marmagassag": [60, 68],
+    "koltseg": 3
+  },
+  "nemet-dog": {
+    "leiras": "Bár angol neve (Great Dane) dán eredetet sugall, Németországban alakult ki, eredetileg vaddisznó-vadászatra és előkelő birtokok őrzésére. Óriási termete ellenére nyugodt, szelíd és kifejezetten ragaszkodó, szívesen dől neki a gazdájának, és a gyerekekkel is türelmes. Otthon meglepően csendes kanapélakó, de a helyigénye, az étvágya és a fenntartási költsége is óriási. Sajnos rövid életű fajta, ezért különösen fontos, hogy egészségügyileg szűrt szülők utódját válaszd.",
+    "kinekIgen": [
+      "Nyugodt, türelmes családoknak",
+      "Tágas, kertes otthonban élőknek",
+      "Akik a szelíd óriásokért rajonganak"
+    ],
+    "kinekNem": [
+      "Kis lakásba vagy kis autóhoz",
+      "Szűkös kutyás költségvetéshez",
+      "Akit zavar a nyáladzás"
+    ],
+    "mozgas": "Napi 1–1,5 óra nyugodt séta, kölyökkorban kímélő mozgással",
+    "egeszseg": [
+      "Gyomorcsavarodás (felfúvódás)",
+      "Szívizom-betegség (dilatatív kardiomiopátia)",
+      "Csípőízületi diszplázia",
+      "Csontdaganat (oszteoszarkóma)"
+    ],
+    "erdekesseg": "A Guinness-rekordok szerint minden idők legmagasabb kutyája, a 111,8 cm marmagasságú Zeus is német dog volt – ahogy Scooby-Doo, a rajzfilmhős is.",
+    "hasonlo": ["uj-fundlandi", "bernathegyi", "cane-corso"],
+    "marmagassag": [72, 90],
+    "koltseg": 3
+  },
+  "berni-pasztorkutya": {
+    "leiras": "A svájci Alpok gazdaságainak mindenese volt: kiskocsit húzott, jószágot terelt és udvart őrzött. Nyugodt, jóindulatú és végtelenül türelmes, a gyerekekkel különösen kedves, a családjától pedig nem szeret sokáig távol lenni. Szívesen tanul, és kezdő gazdi is boldogul vele, de vastag, háromszínű bundája bőven hullik, a kánikulát pedig nehezen viseli. Sajnos rövid életű fajta, és nála az átlagosnál gyakoribbak a daganatos betegségek.",
+    "kinekIgen": [
+      "Gyerekes családoknak, kertes házba",
+      "Hűvös időt, hosszú sétákat kedvelőknek",
+      "Felkészült, első nagykutyás gazdiknak"
+    ],
+    "kinekNem": [
+      "Akit zavar a sok kutyaszőr",
+      "Kis lakásba, sok lépcsővel",
+      "Napi sok órás egyedülléthez"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, nyáron a hűvös órákban",
+    "egeszseg": [
+      "Daganatos betegségek (pl. hisztiocitás szarkóma)",
+      "Csípő- és könyökízületi diszplázia",
+      "Gyomorcsavarodás (felfúvódás)"
+    ],
+    "erdekesseg": "Svájcban régen tejeskannákkal megrakott kiskocsik elé fogták, a kocsihúzás pedig ma is kedvelt kutyasport a fajta rajongói körében.",
+    "hasonlo": ["bernathegyi", "uj-fundlandi", "golden-retriever"],
+    "marmagassag": [58, 70],
+    "koltseg": 3
+  },
+  "bernathegyi": {
+    "leiras": "A svájci Nagy Szent Bernát-hágó menedékházának szerzetesei tartották, és generációkon át segített felkutatni a hóviharban eltévedt utazókat. Nyugodt, jóságos és türelmes óriás, aki a gyerekeket szinte a gondjaiba veszi. Kevés mozgással is beéri, de a súlya miatt már kölyökkorától fontos a jó pórázon járás és az alapengedelmesség. Számolj a nyáladzással, a bőséges szőrhullással és azzal, hogy a meleget nagyon rosszul tűri.",
+    "kinekIgen": [
+      "Nyugodt, gyerekes családoknak",
+      "Nagy, kertes házban élőknek",
+      "Akik a hűvös időt kedvelik"
+    ],
+    "kinekNem": [
+      "Akit zavar a nyál és a szőr",
+      "Kis lakásba vagy forró klímára",
+      "Szűkös kutyás költségvetéshez"
+    ],
+    "mozgas": "Napi kb. 1 óra nyugodt séta, kánikulában kevesebb",
+    "egeszseg": [
+      "Csípő- és könyökízületi diszplázia",
+      "Gyomorcsavarodás (felfúvódás)",
+      "Szemhéj-rendellenességek (entropium, ektropium)",
+      "Szívizom-betegség (dilatatív kardiomiopátia)"
+    ],
+    "erdekesseg": "Leghíresebb képviselője, Barry a hagyomány szerint több mint 40 embert mentett meg a 19. század elején; kitömött teste ma a berni Természettudományi Múzeumban látható.",
+    "hasonlo": ["uj-fundlandi", "berni-pasztorkutya", "nemet-dog"],
+    "marmagassag": [65, 90],
+    "koltseg": 3
+  },
+  "uj-fundlandi": {
+    "leiras": "Kanadában, Új-Fundland szigetén a halászok munkatársa volt: hálót húzott, terhet cipelt, és a vízbe esetteket is kimentette. Rendkívül szelíd, türelmes és kiegyensúlyozott, a gyerekekkel legendásan gyengéd, ugatni pedig ritkán hallani. Úszóhártyás lába és vízlepergető bundája miatt imád úszni, így a tópart a kedvenc terepe. Dús, kétrétegű szőrzete hetente több kefélést kíván, bőven hullik, és számolni kell a nyáladzással is.",
+    "kinekIgen": [
+      "Gyerekes, nyugodt családoknak",
+      "Víz közelében, kertes házban élőknek",
+      "Akik szívesen kefélnek, fésülnek"
+    ],
+    "kinekNem": [
+      "Akit zavar a nyál és a szőr",
+      "Kis lakásba vagy forró klímára",
+      "Aki éber házőrzőt keres"
+    ],
+    "mozgas": "Napi kb. 1 óra séta, legjobb, ha úszással",
+    "egeszseg": [
+      "Csípő- és könyökízületi diszplázia",
+      "Aortaszűkület (SAS, veleszületett szívbetegség)",
+      "Cisztinuria (húgykőképződés)",
+      "Gyomorcsavarodás (felfúvódás)"
+    ],
+    "erdekesseg": "Egy Seaman nevű új-fundlandi végigkísérte Lewis és Clark híres expedícióját (1804–1806) Észak-Amerikán át a Csendes-óceánig.",
+    "hasonlo": ["bernathegyi", "berni-pasztorkutya", "labrador-retriever"],
+    "marmagassag": [66, 71],
+    "koltseg": 3
+  },
+  "angol-bulldog": {
+    "leiras": "Ősét Angliában évszázadokon át bikák elleni viadalokra használták, de a mai bulldog ettől nagyon távol áll: nyugodt, kedves és ragaszkodó társ. A gyerekeket jól tűri, és a kanapé közelében érzi magát a legjobban. Makacs tud lenni, ezért türelemmel és jutalomfalattal érdemes nevelni. Lapos orra miatt gyakoriak nála a légzési nehézségek, a meleget és a megerőltetést rosszul viseli, ezért csak egészségügyileg szűrt szülőktől válassz.",
+    "kinekIgen": [
+      "Nyugodt, otthonülős gazdiknak",
+      "Városi lakásba, rövid sétákhoz",
+      "Türelmes, humoros családoknak"
+    ],
+    "kinekNem": [
+      "Futótársat kereső aktív gazdiknak",
+      "Forró, légkondi nélküli otthonba",
+      "Akinek nem fér bele sok állatorvosi költség"
+    ],
+    "mozgas": "Napi 2–3 rövid, nyugodt séta, melegben kímélve",
+    "egeszseg": [
+      "Brachycephal szindróma (légzési nehézségek)",
+      "Bőrredő-gyulladás",
+      "Csípőízületi diszplázia",
+      "Szemproblémák (pl. cseresznyeszem, entropium)"
+    ],
+    "erdekesseg": "A második világháborúban a brit kitartás jelképe lett, Winston Churchillt pedig gyakran hasonlították bulldoghoz.",
+    "hasonlo": ["francia-bulldog", "mopsz", "boston-terrier"],
+    "marmagassag": [31, 40],
+    "koltseg": 3
+  },
+  "yorkshire-terrier": {
+    "leiras": "A 19. századi Észak-Angliában, Yorkshire és Lancashire gyáraiban, bányáiban patkányfogó volt, csak később lett a szalonok kedvence. Apró teste nagy terrierlelket rejt: bátor, élénk, kíváncsi, a gazdájához nagyon ragaszkodó, és szívesen ugat mindenre, ami mozog. Kevés szőrt hullat, de hosszú, selymes szőrzete naponta fésülést vagy rendszeres rövidre nyírást kíván. Törékeny, így kisgyerek mellett felügyeletet igényel, és a fogai is rendszeres ápolásra szorulnak.",
+    "kinekIgen": [
+      "Városi, kis lakásban élőknek",
+      "Felnőtt vagy nagyobb gyerekes családoknak",
+      "Akik szívesen foglalkoznak bundaápolással"
+    ],
+    "kinekNem": [
+      "Ha fontos a csend – sokat ugat",
+      "Kisgyerekes, nyüzsgő családba",
+      "Akik nem szánnak időt fésülésre"
+    ],
+    "mozgas": "Napi 30–60 perc séta és játék",
+    "egeszseg": [
+      "Térdkalácsficam (patellaluxáció)",
+      "Fogkő, korai fogvesztés",
+      "Légcsőösszeesés (tracheakollapszus)",
+      "Portoszisztémás sönt (májér-rendellenesség)"
+    ],
+    "erdekesseg": "A második világháborúban Smoky nevű yorkie a Fülöp-szigeteken egy keskeny csövön átbújva húzott át távíróvezetéket, így a katonáknak nem kellett napokig tartó, kockázatos ásásba kezdeniük.",
+    "hasonlo": ["maltai-selyemkutya", "pomeraniai-torpespicc", "torpe-schnauzer"],
+    "marmagassag": [18, 23],
+    "koltseg": 2
+  },
+  "jack-russell-terrier": {
+    "leiras": "Nevét John „Jack” Russell angol lelkészről kapta, aki a 19. század elején rókavadászatra tenyésztette ezeket a fürge kis terriereket. Vidám, rámenős és elképesztően kitartó: ha nem kap feladatot, gyorsan talál magának, például kertásást vagy bútorrágást. Okos, de önfejű, ezért következetes és játékos nevelésre van szüksége, a kutyasportokban viszont igazi kis bajnok. Erős vadászösztöne miatt macskák, kisállatok mellett és szabadon engedve óvatosnak kell lenni vele.",
+    "kinekIgen": [
+      "Aktív, sportos gazdiknak",
+      "Kutyasportot (agility, flyball) kedvelőknek",
+      "Pörgős, nagyobb gyerekes családoknak"
+    ],
+    "kinekNem": [
+      "Nyugalomra vágyó, első kutyás gazdiknak",
+      "Macska, nyúl vagy rágcsáló mellé",
+      "Napi sok órás egyedülléthez"
+    ],
+    "mozgas": "Napi 1–1,5 óra aktív mozgás, sok játékkal és feladattal",
+    "egeszseg": [
+      "Térdkalácsficam",
+      "Primer lencseficam (szembetegség)",
+      "Veleszületett süketség",
+      "Legg–Calvé–Perthes-kór (combfejelhalás)"
+    ],
+    "erdekesseg": "Uggie, a The Artist – A némafilmes című Oscar-díjas film kutyasztárja is Jack Russell terrier volt.",
+    "hasonlo": ["tacsko", "west-highland-white-terrier", "beagle"],
+    "marmagassag": [25, 30],
+    "koltseg": 1
+  },
+  "west-highland-white-terrier": {
+    "leiras": "A skót Felföldön tenyésztették rókák és rágcsálók vadászatára, a sziklás terepen dolgozó kis terrierekből. Magabiztos, vidám és barátságos kis kutya, sok terrier-önállósággal és humorral, aki szívesen van a család középpontjában. Lakásban is jól elvan, és kezdő gazdi is boldogul vele, de szívesen ugat, a szabadban pedig kalandra vágyik. Érzékeny bőrű fajta: gyakori nála az allergiás bőrgyulladás, drótos szőrzetét pedig rendszeresen trimmelni kell.",
+    "kinekIgen": [
+      "Városi, lakásban élő gazdiknak",
+      "Első kutyás, játékos családoknak",
+      "Aktív, idősebb gazdiknak is"
+    ],
+    "kinekNem": [
+      "Ha fontos a csend",
+      "Nyúl, rágcsáló vagy más kisállat mellé",
+      "Aki nem vállalja a bőr- és szőrápolást"
+    ],
+    "mozgas": "Napi kb. 1 óra séta és játék",
+    "egeszseg": [
+      "Allergiás bőrgyulladás (atópia)",
+      "Tüdőfibrózis (idősebb korban)",
+      "Állkapocs-csontbetegség (CMO, kölyökkorban)"
+    ],
+    "erdekesseg": "Régen Poltalloch terriernek is hívták, a skót Malcolm család birtoka után, ahol a fehér színű vonalat tudatosan tenyésztették.",
+    "hasonlo": ["torpe-schnauzer", "jack-russell-terrier", "bichon-frise"],
+    "marmagassag": [25, 28],
+    "koltseg": 2
+  },
+  "staffordshire-bullterrier": {
+    "leiras": "A 19. századi Angliában, Staffordshire vidékén alakult ki, és hamar a munkáscsaládok kedvelt társa lett. Izmos, erős és bátor, közben rendkívül emberbarát, és híresen türelmes a gyerekekkel. Energikus, ezért sok közös játékra és mozgásra van szüksége, a fajtársaival viszont nem mindig jön ki, így a korai szocializáció fontos. Egyes országokban a tartása engedélyhez kötött vagy korlátozott, ezért nézz utána a helyi szabályoknak.",
+    "kinekIgen": [
+      "Aktív, gyerekes családoknak",
+      "Akik sok időt töltenek a kutyájukkal",
+      "Játékos, sportos városi gazdiknak"
+    ],
+    "kinekNem": [
+      "Napi sok órás egyedülléthez",
+      "Nyugodt, keveset mozgó kutyát keresőknek",
+      "Aki házőrzőt keres – mindenkivel barátkozik"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, futás és közös játék",
+    "egeszseg": [
+      "Örökletes szürkehályog (génteszttel szűrhető)",
+      "L2-HGA (anyagcsere-eredetű idegrendszeri betegség)",
+      "Bőrallergiák",
+      "Térdkalácsficam"
+    ],
+    "erdekesseg": "A brit Kennel Club fajtastandardja külön kiemeli, hogy a staffi különösen ragaszkodó a gyerekekhez.",
+    "hasonlo": ["amerikai-staffordshire-terrier", "nemet-boxer", "francia-bulldog"],
+    "marmagassag": [36, 41],
+    "koltseg": 2
+  },
+  "amerikai-staffordshire-terrier": {
+    "leiras": "Az Egyesült Államokban alakult ki a 19. században átvitt angol bulldog–terrier típusú kutyákból, és nagyobb, erősebb lett angol rokonánál. Erős, bátor és nagyon ragaszkodó, a családjával kedves, sokszor igazi bohóc, aki imád a gazdája közelében lenni. Tapasztalt, következetes gazdát és korai szocializációt igényel, mert más kutyákkal nem mindig jön ki jól. Egyes országokban a tartása engedélyköteles vagy korlátozott, ezért előre tájékozódj a helyi szabályokról.",
+    "kinekIgen": [
+      "Tapasztalt, következetes gazdiknak",
+      "Aktív, sportos családoknak",
+      "Akik szívesen járnak kutyaiskolába"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Több kutyás háztartásba, felkészülés nélkül",
+      "Napi sok órás egyedülléthez"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, futás és erőt igénylő játék",
+    "egeszseg": [
+      "Csípő- és könyökízületi diszplázia",
+      "Kisagyi ataxia (NCL-A, génteszttel szűrhető)",
+      "Bőrallergiák",
+      "Pajzsmirigy-alulműködés"
+    ],
+    "erdekesseg": "Az Amerikai Kennel Klub 1936-ban még „staffordshire terrier” néven ismerte el; mai nevét 1972-ben kapta, hogy megkülönböztessék a kisebb angol rokonától.",
+    "hasonlo": ["staffordshire-bullterrier", "nemet-boxer", "dobermann"],
+    "marmagassag": [43, 48],
+    "koltseg": 2
+  },
+  "tacsko": {
+    "leiras": "Németországban tenyésztették borz- és rókavadászatra: német neve (Dachshund) is „borzkutyát” jelent, rövid lába pedig a kotorékban segítette. Bátor, kíváncsi és nagyon ragaszkodó, de önfejű is, és hangos ugatással jelez mindent. Három szőrváltozatban (rövid, hosszú, drót) és több méretben létezik, így sokféle otthonba beilleszthető. Hosszú gerince miatt hajlamos a porckorongsérvre, ezért kerülni kell a sok lépcsőzést, az ugrálást és a túlsúlyt.",
+    "kinekIgen": [
+      "Lakásban élőknek, ha van lift",
+      "Türelmes, humoros gazdiknak",
+      "Felnőtt vagy nagyobb gyerekes családoknak"
+    ],
+    "kinekNem": [
+      "Ha fontos a csend",
+      "Lift nélküli, sok lépcsős otthonba",
+      "Aki gyors, szófogadó tanítványt vár"
+    ],
+    "mozgas": "Napi kb. 1 óra séta sok szimatolással, ugrálás nélkül",
+    "egeszseg": [
+      "Porckorongsérv (IVDD)",
+      "Elhízás (a gerincet is terheli)",
+      "Progresszív retina-atrófia (PRA)"
+    ],
+    "erdekesseg": "Az 1972-es müncheni olimpia kabalája, a csíkos Waldi egy tacskó volt – ő lett az első hivatalos olimpiai kabala.",
+    "hasonlo": ["basset-hound", "jack-russell-terrier", "welsh-corgi-pembroke"],
+    "marmagassag": [13, 25],
+    "koltseg": 2
+  },
+  "sziberiai-husky": {
+    "leiras": "Északkelet-Szibériában a csukcsok tenyésztették szánhúzásra, a 20. század elején került Alaszkába, és onnan terjedt el világszerte. Barátságos, vidám falkakutya, aki szinte mindenkivel jóban van, így őrzőnek egyáltalán nem alkalmas. Ritkán ugat, de annál szívesebben vonyít és „énekel”, hatalmas mozgásigénye mellett pedig igazi szökőművész, ezért magas, biztonságos kerítés kell neki. Önálló gondolkodású, a behívást nehezen tanulja, és évente kétszer tömegesen hullatja az aljszőrzetét.",
+    "kinekIgen": [
+      "Futóknak, kerékpárosoknak, szánsportolóknak",
+      "Hideg időt kedvelő, nagyon aktív gazdiknak",
+      "Tapasztalt, türelmes, humoros kutyásoknak"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Kis lakásba, kevés mozgással",
+      "Macskás vagy kisállatos háztartásba"
+    ],
+    "mozgas": "Napi 2 óra vagy több, lehetőleg futással, húzással",
+    "egeszseg": [
+      "Örökletes szürkehályog",
+      "Progresszív retina-atrófia (PRA)",
+      "Szaruhártya-disztrófia"
+    ],
+    "erdekesseg": "1925-ben szánhúzó kutyák stafétában vittek diftéria elleni szérumot a járvány sújtotta alaszkai Nome városába; a két leghíresebb vezérkutya, Balto és Togo is szibériai husky volt.",
+    "hasonlo": ["szamojed", "akita-inu", "ausztral-juhaszkutya"],
+    "marmagassag": [50, 60],
+    "koltseg": 2
+  },
+  "szamojed": {
+    "leiras": "Nevét a szibériai szamojéd népekről (köztük a nyenyecekről) kapta, akik rénszarvasterelésre, szánhúzásra és társnak tartották. Rendkívül barátságos, vidám és társasági lény: mindenkit barátjának tekint, ezért őrzőnek nem való, a gyerekeket viszont imádja. Beszédes kutya, szívesen ugat és „kommentál”, és ha unatkozik vagy sokat van egyedül, ezt hangosan jelzi. Hófehér, dús bundája bőségesen hullik, és rendszeres, alapos fésülést kíván, a nagy nyári hőséget pedig nehezen viseli.",
+    "kinekIgen": [
+      "Gyerekes, társasági családoknak",
+      "Hideg időt kedvelő, aktív gazdiknak",
+      "Akik szívesen fésülnek (és porszívóznak)"
+    ],
+    "kinekNem": [
+      "Akit zavar a sok szőr",
+      "Napi sok órás egyedülléthez",
+      "Aki házőrzőt keres"
+    ],
+    "mozgas": "Napi 1,5–2 óra séta, futás és játék, nyáron a hűvös órákban",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Örökletes vesebetegség (glomerulopátia)",
+      "Cukorbetegség",
+      "Szembetegségek (PRA, glaukóma)"
+    ],
+    "erdekesseg": "Genetikai vizsgálatok a szamojédot a legősibb kutyafajták közé sorolják, olyanok mellé, mint a szibériai husky vagy az akita.",
+    "hasonlo": ["sziberiai-husky", "pomeraniai-torpespicc", "golden-retriever"],
+    "marmagassag": [50, 60],
+    "koltseg": 2
+  },
+  "pomeraniai-torpespicc": {
+    "leiras": "A nagyobb német spiccek leszármazottja, nevét a Balti-tenger menti Pomerániáról kapta, apró méretét pedig nagyrészt a 19. századi Angliában nyerte el, Viktória királynő kedvenceként. Élénk, kíváncsi és magabiztos kis kutya, aki imádja a figyelmet, és hangos ugatással jelez minden neszt. Lakásban ideális, hűséges társ, de törékeny, ezért kisgyerekek mellé kevésbé ajánlott. Dús, kétrétegű bundája rendszeres kefélést igényel, és bőven hullik.",
+    "kinekIgen": [
+      "Városi, lakásban élő gazdiknak",
+      "Felnőtt háztartásba vagy nagyobb gyerekekhez",
+      "Első kutyás, figyelmes gazdiknak"
+    ],
+    "kinekNem": [
+      "Kisgyerekes családoknak",
+      "Ha fontos a csend",
+      "Akik nem szeretnek fésülni"
+    ],
+    "mozgas": "Napi 30–60 perc séta és lakásbeli játék",
+    "egeszseg": [
+      "Térdkalácsficam",
+      "Légcsőösszeesés (tracheakollapszus)",
+      "Alopecia X (szőrvesztés)",
+      "Fogkő, fogbetegségek"
+    ],
+    "erdekesseg": "A Titanic 1912-es katasztrófáját mindössze három kutya élte túl, közülük kettő pomerániai törpespicc volt.",
+    "hasonlo": ["yorkshire-terrier", "chihuahua", "maltai-selyemkutya"],
+    "marmagassag": [18, 22],
+    "koltseg": 2
+  }
+}

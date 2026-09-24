@@ -1,0 +1,25 @@
+A 4x4 grid of 16 separate square illustration tiles on a plain cream (#FBF6EE) canvas. The tiles are perfectly aligned in exactly 4 rows and 4 columns, all exactly the same size, separated by thin even cream gutters (about 2% of the image width) with the same cream margin around the outside. No borders, no frames, no text, no letters, no numbers, no labels anywhere in the image.
+
+Each tile is filled edge-to-edge with ONE flat solid pastel background color (given below) and shows ONE dog as a painterly gouache illustration portrait: head and upper chest, three-quarter view, friendly expression, centered. Consistent soft lighting from the upper left, subtle paper grain, visible soft brush strokes, warm premium children's-book-meets-editorial style. Breed-accurate coat color, coat texture, ear shape and head proportions. No collars or accessories unless stated, no humans, no text. The whole head including the ears must fit inside a centered circle covering about 80% of the tile - keep the tile corners and edges as clear background, because every tile will be cropped to a circle. Same scale and framing in every tile.
+
+Tiles in reading order (left to right, top to bottom):
+Row 1:
+  Tile 1: Alaskan Malamute - grey-and-white thick coat with a cap-like face mask, BROWN eyes, broad head, small erect ears. Tile background: flat peach #FFCBA8.
+  Tile 2: Keeshond (Wolfspitz) - wolf-grey thick fluffy coat with a lion-like ruff, dark 'spectacle' markings around the eyes, small erect ears. Tile background: flat mint green #BDE8D3.
+  Tile 3: Japanese Spitz - small pure white fluffy long coat, fox-like pointed face, small erect triangular ears, black eyes and nose. Tile background: flat rose pink #FFC8D6.
+  Tile 4: Eurasier - red-fawn medium-long coat with a darker mask, small erect triangular ears, broad bear-like head, calm. Tile background: flat lavender #D6CCFF.
+Row 2:
+  Tile 5: Basenji - red-and-white short sleek coat, wrinkled forehead, large erect pointed ears, almond eyes. Tile background: flat lavender #D6CCFF.
+  Tile 6: Chow Chow - red lion-like very fluffy coat with a full mane, small erect rounded ears, deep-set eyes, dignified expression. Tile background: flat pistachio green #DDEDB2.
+  Tile 7: American Akita - pinto coat of white with large black and fawn patches, black mask, broad bear-like head, small erect ears. Tile background: flat light coral #FFB9A0.
+  Tile 8: Bloodhound - black-and-tan short coat, very long droopy ears, deep wrinkles and loose skin on the face, droopy eyes. Tile background: flat sand beige #EFD9BA.
+Row 3:
+  Tile 9: Bavarian Mountain Scent Hound - deep red short coat with a darker mask, medium drop ears, lean head, earnest expression. Tile background: flat sand beige #EFD9BA.
+  Tile 10: English Setter - white silky coat with blue belton speckles (fine black flecks), long feathered ears, gentle long head. Tile background: flat sage green #D3E2C0.
+  Tile 11: English Pointer - white short coat with liver-brown patches on the head and ears, slightly dished muzzle, thin drop ears. Tile background: flat butter yellow #FFE6A0.
+  Tile 12: German Wirehaired Pointer - liver-roan wiry coat, solid brown head with beard and bushy eyebrows, drop ears, brown nose. Tile background: flat sky blue #BFDDF7.
+Row 4:
+  Tile 13: Brittany (Epagneul Breton) - orange-and-white medium coat, short high-set ears, lively expression, compact head. Tile background: flat sky blue #BFDDF7.
+  Tile 14: Flat-coated Retriever - solid glossy black flat-lying coat, long head, feathered drop ears, happy expression. Tile background: flat peach #FFCBA8.
+  Tile 15: Nova Scotia Duck Tolling Retriever - red-orange medium coat with a white blaze and white chest, drop ears, fox-like lively expression. Tile background: flat mint green #BDE8D3.
+  Tile 16: Portuguese Water Dog - black curly coat with a white chest, drop ears covered in curls, strong head. Tile background: flat rose pink #FFC8D6.

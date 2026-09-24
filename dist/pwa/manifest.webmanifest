@@ -1,0 +1,40 @@
+{
+ "name": "Pacsi by DarwinAI",
+ "short_name": "Pacsi",
+ "lang": "hu",
+ "description": "124 kutyafajta egy élő felhőben – szűrj, hasonlíts, találd meg a hozzád illőt.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#FBF6EE",
+ "theme_color": "#FBF6EE",
+ "categories": [
+  "lifestyle",
+  "education"
+ ],
+ "icons": [
+  {
+   "src": "icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "Párkereső kvíz",
+   "url": "./#v=felho"
+  }
+ ]
+}

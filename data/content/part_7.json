@@ -1,0 +1,490 @@
+{
+  "alaszkai-malamut": {
+    "leiras": "Az alaszkai malamut nevét az északnyugat-alaszkai malemiut inuitokról kapta, akik nehéz szánok vontatására és vadászatra tartották. Nem gyorsaságra, hanem erőre és kitartásra termett: barátságos, vidám, emberszerető kutya, aki mindenkit lelkesen üdvözöl, ezért őrzőnek nem alkalmas. Ritkán ugat, inkább „beszél” és vonyít, unatkozva pedig szívesen ás és rombol. Önálló, makacs természete és erős vadászösztöne miatt következetes nevelést igényel, bundája pedig évente kétszer tömegesen vedlik.",
+    "kinekIgen": [
+      "Tapasztalt, aktív, következetes gazdiknak",
+      "Hideg időt kedvelő túrázóknak, húzósportolóknak",
+      "Kertes házba, magas, biztonságos kerítéssel"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak, kis lakásba",
+      "Macskás vagy kisállatos háztartásba",
+      "Aki házőrzőt keres"
+    ],
+    "mozgas": "Napi 2 óra vagy több, húzással, túrával, hűvös időben",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Örökletes törpenövés (chondrodysplasia)",
+      "Polineuropátia (AMPN, DNS-teszt van rá)",
+      "Pajzsmirigy-alulműködés"
+    ],
+    "erdekesseg": "2010 óta az alaszkai malamut Alaszka hivatalos állami kutyája.",
+    "hasonlo": [
+      "sziberiai-husky",
+      "szamojed",
+      "csehszlovak-farkaskutya"
+    ],
+    "marmagassag": [
+      58,
+      64
+    ],
+    "koltseg": 2
+  },
+  "keeshond": {
+    "leiras": "A farkasspicc – holland nevén keeshond – a német spiccek legnagyobb változata, amely Hollandiában egykor a folyami uszályok és rakpartok éber őre volt. Barátságos, vidám és kifejezetten emberközpontú kutya: a gyerekekkel türelmes, a családját pedig mindenhová követi. Kiváló jelzőkutya, minden jövevényt hangosan bejelent, harapós őrzőnek viszont nem való. Dús, kettős bundája heti többszöri fésülést kíván, vedléskor bőven hullik, és a hosszú egyedüllétet sem viseli jól.",
+    "kinekIgen": [
+      "Gyerekes családoknak, első kutyásoknak is",
+      "Városi lakásba, rendszeres sétával",
+      "Akik szívesen fésülnek rendszeresen"
+    ],
+    "kinekNem": [
+      "Akit zavar a gyakori ugatás",
+      "Egész napra egyedül hagyó gazdiknak",
+      "Akit zavar a sok hullott szőr"
+    ],
+    "mozgas": "Napi 1 óra séta és játék",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Térdkalácsficam (patellaluxáció)",
+      "Mellékpajzsmirigy-túlműködés (DNS-teszt van rá)",
+      "Pajzsmirigy-alulműködés"
+    ],
+    "erdekesseg": "Holland nevét a hagyomány szerint a 18. századi hazafipárti vezető, Cornelis „Kees” de Gyselaer kutyájáról kapta, így a fajta egy időre a holland Hazafiak jelképe lett.",
+    "hasonlo": [
+      "pomeraniai-torpespicc",
+      "szamojed",
+      "eurazsiai"
+    ],
+    "marmagassag": [
+      43,
+      55
+    ],
+    "koltseg": 2
+  },
+  "japan-spicc": {
+    "leiras": "A japán spicc a 20. század első felében alakult ki Japánban, kifejezetten társasági kutyának. Vidám, okos és ragaszkodó, szívesen játszik a gyerekekkel, és a családjával mindenhová menne. Jól alkalmazkodik a városi lakáséletmódhoz, könnyen tanul, és a kutyasportokban is ügyes, az idegeneket azonban hanggal jelzi. Hófehér bundája meglepően könnyen tisztán tartható, vedléskor viszont bőven hullik, ezért a heti fésülés nem maradhat el.",
+    "kinekIgen": [
+      "Első kutyás gazdiknak",
+      "Városi lakásba, gyerekes családoknak is",
+      "Akik mindenhová vinnék magukkal a kutyát"
+    ],
+    "kinekNem": [
+      "Egész napra egyedül hagyó gazdiknak",
+      "Akit zavar a vedléskor hulló fehér szőr"
+    ],
+    "mozgas": "Napi 45–60 perc séta és játék",
+    "egeszseg": [
+      "Térdkalácsficam (patellaluxáció)",
+      "Erős könnyezés, könnyfolt a szem alatt"
+    ],
+    "erdekesseg": "Ősei fehér német spiccek voltak, amelyeket a 20. század elején vittek Japánba, így közeli rokona az európai spicceknek.",
+    "hasonlo": [
+      "pomeraniai-torpespicc",
+      "szamojed",
+      "keeshond"
+    ],
+    "marmagassag": [
+      30,
+      38
+    ],
+    "koltseg": 1
+  },
+  "eurazsiai": {
+    "leiras": "Az eurázsiai fiatal fajta: Németországban alakították ki az 1960-as években farkasspicc és csau csau, később szamojéd keresztezésével, kifejezetten családi kutyának. Nyugodt, kiegyensúlyozott és csendes, a családjához mélyen kötődik, az idegenekkel szemben tartózkodó, de nem agresszív. Érzékeny lélek, a durva bánásmódot és a kennelben tartást rosszul viseli, a gazdái közelében érzi jól magát. Dús bundája rendszeres fésülést kíván, vedléskor pedig bőven hullik.",
+    "kinekIgen": [
+      "Nyugodt, gyerekes családoknak",
+      "Első kutyásoknak, türelmes neveléssel",
+      "Akik sok időt töltenek otthon"
+    ],
+    "kinekNem": [
+      "Kennelbe vagy kinti tartásra",
+      "Aki mindenkivel barátkozó kutyát szeretne",
+      "Akit zavar a sok hullott szőr"
+    ],
+    "mozgas": "Napi 1–1,5 óra nyugodt séta",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Térdkalácsficam (patellaluxáció)",
+      "Pajzsmirigy-alulműködés",
+      "Szemhéjrendellenességek (entrópium, ektrópium)"
+    ],
+    "erdekesseg": "A csau csautól örökölt vonásként a nyelve lehet rózsaszín, kékesfekete vagy foltos is – a fajtaleírás mindhármat elfogadja.",
+    "hasonlo": [
+      "keeshond",
+      "csau-csau",
+      "szamojed"
+    ],
+    "marmagassag": [
+      48,
+      60
+    ],
+    "koltseg": 2
+  },
+  "basenji": {
+    "leiras": "A basenji Közép-Afrika, főként a Kongó-medence ősi vadászkutyája, ahol a vadat hálóba hajtotta. Nem ugat, hanem jellegzetes, jódlizó hangot hallat, és a macskához hasonlóan gondosan tisztálkodik, alig hullatja a szőrét. Okos, kíváncsi és önálló, a tanítást csak akkor veszi komolyan, ha érdemesnek tartja, erős vadászösztöne miatt pedig póráz nélkül könnyen elszökik. Ha unatkozik, rágással és rombolással szórakoztatja magát, ezért sok közös program és játék kell neki.",
+    "kinekIgen": [
+      "Tapasztalt, türelmes, humoros gazdiknak",
+      "Akik csendes, alig hullató kutyát keresnek",
+      "Városi lakásba is, sok mozgással"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Macskás vagy kisállatos háztartásba",
+      "Aki póráz nélkül sétáltatna"
+    ],
+    "mozgas": "Napi 1–1,5 óra, futással bekerített helyen",
+    "egeszseg": [
+      "Fanconi-szindróma (vesebetegség, DNS-teszt van rá)",
+      "Progresszív retina-atrófia (PRA)",
+      "Piruvát-kináz-hiány (vérszegénység, DNS-teszt van rá)",
+      "Pajzsmirigy-alulműködés"
+    ],
+    "erdekesseg": "A basenji szukák a farkasokhoz hasonlóan évente csak egyszer tüzelnek, a legtöbb kutyafajtánál megszokott kétszeri helyett.",
+    "hasonlo": [
+      "shiba-inu",
+      "whippet",
+      "saluki"
+    ],
+    "marmagassag": [
+      40,
+      43
+    ],
+    "koltseg": 1
+  },
+  "csau-csau": {
+    "leiras": "A csau csau Kína egyik legősibb kutyafajtája, amelyet évszázadokon át őrzésre, vadászatra és igavonásra is használtak. Méltóságteljes, független és tartózkodó: egy-két emberhez kötődik igazán, az idegeneket gyanakodva figyeli, és nem szereti a tolakodó ölelgetést. Otthon nyugodt és kifejezetten tiszta, így lakásban is jól elvan, a nyári hőséget viszont rosszul tűri. Dús bundája rendszeres, alapos fésülést igényel, korai szocializáció nélkül pedig túlzottan gyanakvóvá válhat.",
+    "kinekIgen": [
+      "Tapasztalt, nyugodt, következetes gazdiknak",
+      "Felnőttekből álló, csendes háztartásba",
+      "Akik tisztelik a kutya önállóságát"
+    ],
+    "kinekNem": [
+      "Kisgyerekes családoknak",
+      "Első kutyás gazdiknak",
+      "Aki ölelgethető, játékos kutyát keres"
+    ],
+    "mozgas": "Napi 45–60 perc nyugodt séta, nyáron a hűvös órákban",
+    "egeszseg": [
+      "Entrópium (befelé forduló szemhéj)",
+      "Csípő- és könyökízületi diszplázia",
+      "Pajzsmirigy-alulműködés",
+      "Hőségérzékenység"
+    ],
+    "erdekesseg": "Sigmund Freud kedvenc kutyája, Jofi csau csau volt, és gyakran a rendelőben feküdt a terápiás ülések alatt.",
+    "hasonlo": [
+      "shar-pei",
+      "akita-inu",
+      "eurazsiai"
+    ],
+    "marmagassag": [
+      46,
+      56
+    ],
+    "koltseg": 2
+  },
+  "amerikai-akita": {
+    "leiras": "Az amerikai akita a második világháború után az Egyesült Államokba került, nagyobb és erősebb testű japán akitákból alakult ki, és ma önálló fajtának számít. Magabiztos, méltóságteljes és csendes kutya, amely a családjához mélyen hűséges, a területét és az embereit pedig határozottan védi. Az idegenekkel tartózkodó, más kutyákkal – különösen azonos neműekkel – gyakran nem fér össze. Erős akarata miatt korai, alapos szocializációt és tapasztalt, következetes gazdit igényel.",
+    "kinekIgen": [
+      "Tapasztalt, magabiztos, következetes gazdiknak",
+      "Kertes házba, ahol van mit őriznie",
+      "Felnőttekből álló, nyugodt háztartásba"
+    ],
+    "kinekNem": [
+      "Első kutyásoknak",
+      "Kisgyerekes családoknak",
+      "Több kutyás vagy macskás háztartásba"
+    ],
+    "mozgas": "Napi 1–1,5 óra séta, többnyire pórázon",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Gyomorcsavarodás",
+      "Autoimmun betegségek (pl. faggyúmirigy-gyulladás)",
+      "Pajzsmirigy-alulműködés"
+    ],
+    "erdekesseg": "Az első akitát Helen Keller vitte az Egyesült Államokba 1937-ben, miután japán útja során ajándékba kapta.",
+    "hasonlo": [
+      "akita-inu",
+      "csau-csau",
+      "rottweiler"
+    ],
+    "marmagassag": [
+      61,
+      71
+    ],
+    "koltseg": 3
+  },
+  "bloodhound": {
+    "leiras": "A bloodhound őse a középkorban az ardenneki Saint-Hubert apátság szerzeteseinek kopója volt, innen ered a Szent Hubertus-kopó név is. Szelíd, türelmes és barátságos óriás, a gyerekekkel is kedves, őrzőnek viszont egyáltalán nem alkalmas. Ha szagot fog, minden mást elfelejt, ezért póráz nélkül nem engedhető el, és a nevelése sok türelmet kíván. Mélyen zengő hangja messzire hallatszik, erősen nyáladzik, lógó füleit pedig rendszeresen tisztítani kell.",
+    "kinekIgen": [
+      "Türelmes, nyugodt, humoros gazdiknak",
+      "Kertes házba, tágas, bekerített udvarral",
+      "Nyomkövetés, mantrailing iránt érdeklődőknek"
+    ],
+    "kinekNem": [
+      "Lakásba, érzékeny szomszédok mellé",
+      "Akit zavar a nyáladzás",
+      "Aki póráz nélkül behívható kutyát szeretne"
+    ],
+    "mozgas": "Napi 1,5–2 óra séta, sok szimatolással, pórázon",
+    "egeszseg": [
+      "Gyomorcsavarodás (a fajtában kiemelten gyakori)",
+      "Fülgyulladás",
+      "Szemhéjrendellenességek (entrópium, ektrópium)",
+      "Csípő- és könyökízületi diszplázia"
+    ],
+    "erdekesseg": "Az Egyesült Államokban a bloodhoundok szagnyom-követéssel szerzett eredményét bíróságon is elfogadták már bizonyítékként.",
+    "hasonlo": [
+      "basset-hound",
+      "bajor-hegyi-vereb",
+      "beagle"
+    ],
+    "marmagassag": [
+      58,
+      72
+    ],
+    "koltseg": 3
+  },
+  "bajor-hegyi-vereb": {
+    "leiras": "A bajor hegyi vérebet a 19. század végén tenyésztették ki Bajorországban, hogy a hegyvidéki vadászatokon a sebzett vad vérnyomát kövesse. Otthon nyugodt, visszafogott és a gazdájához erősen kötődő kutya, az idegenekkel szemben tartózkodó. Munkában rendkívül kitartó és céltudatos, igazi szakember, akinek rendszeres, orrmunkával járó feladat kell. Feladat nélkül, szűk környezetben unatkozik, ezért elsősorban vadászoknak vagy a nyomkövetést komolyan űző gazdiknak ajánlott.",
+    "kinekIgen": [
+      "Vadászoknak, vérebvezetőknek",
+      "Nyomkövetést, mantrailinget komolyan űzőknek",
+      "Vidéken, kertes házban élőknek"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Városi lakásba",
+      "Aki csak családi társat keres, feladat nélkül"
+    ],
+    "mozgas": "Napi 1,5–2 óra, rendszeres szimatmunkával",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Fülgyulladás (lógó fül miatt)"
+    ],
+    "erdekesseg": "Német neve, a Bayerischer Gebirgsschweißhund a vadásznyelvből ered: a „Schweiß” itt nem izzadságot, hanem a sebzett vad vérét jelenti.",
+    "hasonlo": [
+      "bloodhound",
+      "erdelyi-kopo",
+      "beagle"
+    ],
+    "marmagassag": [
+      44,
+      52
+    ],
+    "koltseg": 2
+  },
+  "angol-szetter": {
+    "leiras": "Az angol szetter a 19. századi Angliában nyerte el mai formáját madárvadász kutyaként, amely a megtalált vadat mozdulatlanná dermedve jelzi. Szelíd, barátságos és rendkívül kedves természetű, a gyerekekkel türelmes, az idegenekkel is nyitott, ezért őrzőnek nem való. Otthon nyugodt, a szabadban azonban fáradhatatlan, és lassan érik, sokáig kölyökszerűen szeleburdi marad. Érzékeny lélek, a kemény szót rosszul viseli, selymes bundáját pedig hetente többször fésülni kell.",
+    "kinekIgen": [
+      "Aktív családoknak, gyerekekkel is",
+      "Túrázóknak, futóknak, vadászoknak",
+      "Türelmes, szelíd kezű gazdiknak"
+    ],
+    "kinekNem": [
+      "Kis lakásba, kevés mozgással",
+      "Aki házőrzőt keres",
+      "Hosszú egyedülléttel járó életmódhoz"
+    ],
+    "mozgas": "Napi 1,5–2 óra, sok szabad futással",
+    "egeszseg": [
+      "Veleszületett süketség (hallásszűrt szülők!)",
+      "Csípő- és könyökízületi diszplázia",
+      "Pajzsmirigy-alulműködés",
+      "Bőrallergiák"
+    ],
+    "erdekesseg": "Jellegzetes, apró pöttyös mintázatát „beltonnak” nevezik – a szót a fajta egyik megalapítója, Edward Laverack alkotta egy northumberlandi falu nevéből.",
+    "hasonlo": [
+      "ir-szetter",
+      "golden-retriever",
+      "angol-springer-spaniel"
+    ],
+    "marmagassag": [
+      61,
+      68
+    ],
+    "koltseg": 2
+  },
+  "angol-pointer": {
+    "leiras": "Az angol pointer a 17–18. századi Angliában alakult ki, és nevét (angolul „mutató”) arról a klasszikus, mozdulatlan állásról kapta, amellyel a vadat jelzi. Sportos, fáradhatatlan és jó természetű kutya, a családjával kedves, a gyerekekkel türelmes, az idegenekkel sem gyanakvó. Otthon csak akkor nyugodt, ha naponta kiadósan kifuthatta magát, különben unatkozik és nyughatatlan. Rövid szőre alig igényel ápolást, de a hideget rosszul tűri, és erős vadászösztöne miatt a behívást külön gyakorolni kell.",
+    "kinekIgen": [
+      "Futóknak, kerékpárosoknak, vadászoknak",
+      "Aktív családoknak, nagyobb gyerekekkel",
+      "Kertes házban, vidéken élőknek"
+    ],
+    "kinekNem": [
+      "Első kutyás gazdiknak",
+      "Kényelmes, kevés mozgással járó életmódhoz",
+      "Egész napra egyedül hagyó gazdiknak"
+    ],
+    "mozgas": "Napi 2 óra vagy több, sok szabad futással",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Bőrallergiák",
+      "Pajzsmirigy-alulműködés"
+    ],
+    "erdekesseg": "A második világháborúban Judy, a brit haditengerészet pointer kabalakutyája japán hadifogságba került, ahol hivatalosan hadifogolyként is nyilvántartották – később Dickin-éremmel tüntették ki.",
+    "hasonlo": [
+      "rovidszoru-nemet-vizsla",
+      "magyar-vizsla",
+      "angol-szetter"
+    ],
+    "marmagassag": [
+      61,
+      69
+    ],
+    "koltseg": 2
+  },
+  "drotszoru-nemet-vizsla": {
+    "leiras": "A drótszőrű német vizsla a 19–20. század fordulóján született Németországban sokoldalú vadászkutyának: jelzi a vadat, apportíroz, nyomot követ, és vízben is dolgozik. Kemény, drótos szőre és szakálla minden időjárásban védi, így bozótban és hidegben is otthon van. Okos, kitartó és a családjához erősen kötődő kutya, az idegenekkel óvatosabb, mint rövidszőrű rokona, és éberen őrzi az otthonát. Napi több óra aktív munka vagy sport nélkül unatkozik, ezért kezdőknek és városi lakásba kevéssé ajánlott.",
+    "kinekIgen": [
+      "Vadászoknak és nagyon aktív családoknak",
+      "Futóknak, túrázóknak, kutyasportolóknak",
+      "Kertes házban, vidéken élőknek"
+    ],
+    "kinekNem": [
+      "Városi lakásba, kevés mozgással",
+      "Első kutyás gazdiknak",
+      "Aki nem tud napi több órát ráfordítani"
+    ],
+    "mozgas": "Napi 2 óra vagy több, futással, apportírozással",
+    "egeszseg": [
+      "Csípő- és könyökízületi diszplázia",
+      "Von Willebrand-betegség (véralvadási zavar)",
+      "Pajzsmirigy-alulműködés"
+    ],
+    "erdekesseg": "Az 1930-as években a drótszőrű magyar vizsla kitenyésztésében is szerepet kapott: a rövidszőrű magyar vizslát drótszőrű német vizslával keresztezték.",
+    "hasonlo": [
+      "drotszoru-magyar-vizsla",
+      "rovidszoru-nemet-vizsla",
+      "weimari-vizsla"
+    ],
+    "marmagassag": [
+      57,
+      68
+    ],
+    "koltseg": 2
+  },
+  "bretagne-i-spaniel": {
+    "leiras": "A bretagne-i spániel a franciaországi Bretagne-ból származik, és bár spánielnek hívják, valójában vizslaként dolgozik: megtalálja és állással jelzi a vadat. Kompakt, fürge és rendkívül lelkes kutya, a családjához erősen ragaszkodik, a gyerekekkel vidáman játszik, és más kutyákkal is jól kijön. Tanulékony és igyekszik megfelelni, de érzékeny, ezért a durva hangot nem viseli jól. Energiája szinte kifogyhatatlan: napi kiadós futás és feladat nélkül nyughatatlanná válik, ezért aktív, szabadtéri életmódhoz illik.",
+    "kinekIgen": [
+      "Aktív családoknak, gyerekekkel is",
+      "Futóknak, túrázóknak, kutyasportolóknak",
+      "Vadászoknak, akik kisebb vizslát keresnek"
+    ],
+    "kinekNem": [
+      "Kényelmes, kevés mozgással járó életmódhoz",
+      "Hosszú egyedülléttel járó munkarendhez",
+      "Aki házőrzőt keres"
+    ],
+    "mozgas": "Napi 1,5–2 óra, sok szabad futással",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Epilepszia",
+      "Pajzsmirigy-alulműködés"
+    ],
+    "erdekesseg": "Sok bretagne-i spániel természetesen rövid farokkal vagy teljesen farok nélkül születik.",
+    "hasonlo": [
+      "angol-springer-spaniel",
+      "magyar-vizsla",
+      "angol-szetter"
+    ],
+    "marmagassag": [
+      47,
+      51
+    ],
+    "koltseg": 1
+  },
+  "flat-coated-retriever": {
+    "leiras": "A flat coated retriever a 19. századi Angliában alakult ki vízi és szárazföldi apportírozó kutyának, nevét fényes, sima, fekete vagy májbarna bundájáról kapta. Vidám, barátságos és örökké optimista, a gyerekeket és más kutyákat is szereti, és idős koráig megőrzi kölyökös jókedvét. Tanulékony, de sokáig szeleburdi, és rengeteg mozgásra, közös programra van szüksége. Szomorú tény, hogy a fajtában gyakoriak a daganatos betegségek, ezért az élettartama rövidebb az átlagnál.",
+    "kinekIgen": [
+      "Aktív, gyerekes családoknak",
+      "Első kutyásoknak is, ha sokat mozognak",
+      "Úszást, apportírozást, túrázást kedvelőknek"
+    ],
+    "kinekNem": [
+      "Kényelmes, kevés mozgással járó életmódhoz",
+      "Aki nyugodt, gyorsan felnőtt kutyát vár",
+      "Aki házőrzőt keres"
+    ],
+    "mozgas": "Napi 2 óra, futással, úszással, apportírozással",
+    "egeszseg": [
+      "Daganatos betegségek (főleg hisztiocitás szarkóma)",
+      "Zöldhályog (glaukóma)",
+      "Térdkalácsficam (patellaluxáció)",
+      "Csípőízületi diszplázia"
+    ],
+    "erdekesseg": "A 19. század végén és a 20. század elején a brit vadőrök egyik legkedveltebb retrievere volt, mielőtt a labrador és a golden retriever háttérbe szorította.",
+    "hasonlo": [
+      "golden-retriever",
+      "labrador-retriever",
+      "nova-scotia-retriever"
+    ],
+    "marmagassag": [
+      56,
+      62
+    ],
+    "koltseg": 2
+  },
+  "nova-scotia-retriever": {
+    "leiras": "A Nova Scotia retriever a kanadai Új-Skócia partvidékéről származik, ahol a parton játszva, a rókához hasonlóan csalogatta lőtávolba a kíváncsi vadkacsákat, majd behozta a lőtt vadat. A retrieverek legkisebbike: élénk, okos és játékos, a családjához ragaszkodik, az idegenekkel kezdetben kissé tartózkodó. Izgalmában jellegzetes, éles, sikító hangot hallat, ami a szomszédokat is meglepheti. Rengeteg mozgást és szellemi feladatot igényel, unatkozva nyughatatlanná válik.",
+    "kinekIgen": [
+      "Aktív családoknak, kutyasportolóknak",
+      "Úszást, apportírozást kedvelő gazdiknak",
+      "Akik naponta közös feladatot tudnak adni"
+    ],
+    "kinekNem": [
+      "Kényelmes, kevés mozgással járó életmódhoz",
+      "Egész napra egyedül hagyó gazdiknak",
+      "Aki házőrzőt keres"
+    ],
+    "mozgas": "Napi 1,5–2 óra, futással, úszással, apportírozással",
+    "egeszseg": [
+      "Autoimmun betegségek (pl. Addison-kór)",
+      "Collie-szem-anomália (CEA, DNS-teszt van rá)",
+      "Progresszív retina-atrófia (PRA)",
+      "Csípőízületi diszplázia"
+    ],
+    "erdekesseg": "1995 óta a kanadai Új-Skócia tartomány hivatalos tartományi kutyája.",
+    "hasonlo": [
+      "kooikerhondje",
+      "golden-retriever",
+      "flat-coated-retriever"
+    ],
+    "marmagassag": [
+      45,
+      51
+    ],
+    "koltseg": 2
+  },
+  "portugal-vizikutya": {
+    "leiras": "A portugál vízikutya évszázadokon át az algarve-i halászok segítője volt: halakat terelt a hálóba, kiúszott az elveszett eszközökért, és üzeneteket vitt a hajók között. Kitűnő úszó, okos, tanulékony és rendkívül energikus kutya, amely a családjához erősen kötődik, és mindenben részt akar venni. Kevés szőrt hullat, göndör bundája viszont folyamatosan nő, ezért rendszeres fésülést és néhány hetente nyírást igényel. Napi kiadós mozgás és szellemi feladat nélkül unatkozik, és ezt rágással, rombolással jelzi.",
+    "kinekIgen": [
+      "Aktív családoknak, gyerekekkel is",
+      "Úszást, vízi sportokat kedvelőknek",
+      "Akiket zavar a hulló szőr"
+    ],
+    "kinekNem": [
+      "Kényelmes, kevés mozgással járó életmódhoz",
+      "Aki nem szán időt és pénzt kozmetikára",
+      "Egész napra egyedül hagyó gazdiknak"
+    ],
+    "mozgas": "Napi 1,5–2 óra, lehetőleg úszással",
+    "egeszseg": [
+      "Csípőízületi diszplázia",
+      "Progresszív retina-atrófia (PRA)",
+      "GM1-gangliozidózis (anyagcsere-betegség, DNS-teszt van rá)",
+      "Addison-kór"
+    ],
+    "erdekesseg": "Az Obama család két kutyája, Bo és Sunny is portugál vízikutya volt, és évekig a Fehér Házban éltek.",
+    "hasonlo": [
+      "spanyol-vizikutya",
+      "lagotto-romagnolo",
+      "uszkar"
+    ],
+    "marmagassag": [
+      43,
+      57
+    ],
+    "koltseg": 2
+  }
+}

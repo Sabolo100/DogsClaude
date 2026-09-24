@@ -1,0 +1,25 @@
+A 4x4 grid of 16 separate square illustration tiles on a plain cream (#FBF6EE) canvas. The tiles are perfectly aligned in exactly 4 rows and 4 columns, all exactly the same size, separated by thin even cream gutters (about 2% of the image width) with the same cream margin around the outside. No borders, no frames, no text, no letters, no numbers, no labels anywhere in the image.
+
+Each tile is filled edge-to-edge with ONE flat solid pastel background color (given below) and shows ONE dog as a painterly gouache illustration portrait: head and upper chest, three-quarter view, friendly expression, centered. Consistent soft lighting from the upper left, subtle paper grain, visible soft brush strokes, warm premium children's-book-meets-editorial style. Breed-accurate coat color, coat texture, ear shape and head proportions. No collars or accessories unless stated, no humans, no text. The whole head including the ears must fit inside a centered circle covering about 80% of the tile - keep the tile corners and edges as clear background, because every tile will be cropped to a circle. Same scale and framing in every tile.
+
+Tiles in reading order (left to right, top to bottom):
+Row 1:
+  Tile 1: Beagle - tricolor: tan head, white blaze and muzzle, black saddle, long soft floppy ears, pleading brown eyes. Tile background: flat sky blue #BFDDF7.
+  Tile 2: Dalmatian - white short coat with round black spots, spotted drop ears, friendly expression. Tile background: flat light coral #FFB9A0.
+  Tile 3: Transylvanian Hound - black short coat with tan markings above the eyes and on the muzzle, small white chest mark, long lean head, medium drop ears. Tile background: flat butter yellow #FFE6A0.
+  Tile 4: Basset Hound - tricolor, very long droopy ears, droopy sad eyes, loose skin, calm expression. Tile background: flat mint green #BDE8D3.
+Row 2:
+  Tile 5: Rhodesian Ridgeback - light-to-red wheaten short coat, darker muzzle, drop ears, calm strong dignified head. Tile background: flat lavender #D6CCFF.
+  Tile 6: Hungarian Vizsla (short-haired) - solid golden-rust short sleek coat, BROWN (rust-colored) nose, amber eyes, long silky drop ears, lean elegant head. Tile background: flat mint green #BDE8D3.
+  Tile 7: Hungarian Wirehaired Vizsla - golden-rust wiry coat with a distinct beard and bushy eyebrows, BROWN nose, amber eyes, drop ears. Tile background: flat sky blue #BFDDF7.
+  Tile 8: Weimaraner - silver-grey short coat, light amber eyes, long drop ears, elegant head. Tile background: flat peach #FFCBA8.
+Row 3:
+  Tile 9: German Shorthaired Pointer - solid liver-brown head and ears, liver-and-white ticked body, brown nose, alert expression. Tile background: flat butter yellow #FFE6A0.
+  Tile 10: Irish Red Setter - rich mahogany-red silky coat, long feathered ears, elegant long head, joyful expression. Tile background: flat sky blue #BFDDF7.
+  Tile 11: Labrador Retriever - yellow short dense coat, broad head, drop ears, kind brown eyes, happy open mouth. Tile background: flat lavender #D6CCFF.
+  Tile 12: Golden Retriever - rich golden feathered long coat, friendly smiling expression, drop ears. Tile background: flat mint green #BDE8D3.
+Row 4:
+  Tile 13: English Cocker Spaniel - solid golden-red silky coat, long wavy feathered ears set low, soft eyes. Tile background: flat rose pink #FFC8D6.
+  Tile 14: English Springer Spaniel - liver-and-white coat, white blaze, feathered long ears, cheerful expression. Tile background: flat pistachio green #DDEDB2.
+  Tile 15: Lagotto Romagnolo - chestnut-brown dense woolly tight curls covering head and drop ears, round head, curious eyes. Tile background: flat butter yellow #FFE6A0.
+  Tile 16: French Bulldog - dark brindle short coat, large erect bat ears, moderately short muzzle (not exaggerated), big round eyes. Tile background: flat peach #FFCBA8.

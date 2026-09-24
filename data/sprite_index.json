@@ -1,0 +1,642 @@
+{
+ "nemet-juhaszkutya": {
+  "i": 0,
+  "x": 0,
+  "y": 0
+ },
+ "malinois": {
+  "i": 1,
+  "x": 256,
+  "y": 0
+ },
+ "border-collie": {
+  "i": 2,
+  "x": 512,
+  "y": 0
+ },
+ "ausztral-juhaszkutya": {
+  "i": 3,
+  "x": 768,
+  "y": 0
+ },
+ "shetlandi-juhaszkutya": {
+  "i": 4,
+  "x": 1024,
+  "y": 0
+ },
+ "welsh-corgi-pembroke": {
+  "i": 5,
+  "x": 1280,
+  "y": 0
+ },
+ "puli": {
+  "i": 6,
+  "x": 1536,
+  "y": 0
+ },
+ "pumi": {
+  "i": 7,
+  "x": 1792,
+  "y": 0
+ },
+ "mudi": {
+  "i": 8,
+  "x": 0,
+  "y": 256
+ },
+ "komondor": {
+  "i": 9,
+  "x": 256,
+  "y": 256
+ },
+ "kuvasz": {
+  "i": 10,
+  "x": 512,
+  "y": 256
+ },
+ "rottweiler": {
+  "i": 11,
+  "x": 768,
+  "y": 256
+ },
+ "dobermann": {
+  "i": 12,
+  "x": 1024,
+  "y": 256
+ },
+ "nemet-boxer": {
+  "i": 13,
+  "x": 1280,
+  "y": 256
+ },
+ "torpe-schnauzer": {
+  "i": 14,
+  "x": 1536,
+  "y": 256
+ },
+ "cane-corso": {
+  "i": 15,
+  "x": 1792,
+  "y": 256
+ },
+ "nemet-dog": {
+  "i": 16,
+  "x": 0,
+  "y": 512
+ },
+ "berni-pasztorkutya": {
+  "i": 17,
+  "x": 256,
+  "y": 512
+ },
+ "bernathegyi": {
+  "i": 18,
+  "x": 512,
+  "y": 512
+ },
+ "uj-fundlandi": {
+  "i": 19,
+  "x": 768,
+  "y": 512
+ },
+ "angol-bulldog": {
+  "i": 20,
+  "x": 1024,
+  "y": 512
+ },
+ "yorkshire-terrier": {
+  "i": 21,
+  "x": 1280,
+  "y": 512
+ },
+ "jack-russell-terrier": {
+  "i": 22,
+  "x": 1536,
+  "y": 512
+ },
+ "west-highland-white-terrier": {
+  "i": 23,
+  "x": 1792,
+  "y": 512
+ },
+ "staffordshire-bullterrier": {
+  "i": 24,
+  "x": 0,
+  "y": 768
+ },
+ "amerikai-staffordshire-terrier": {
+  "i": 25,
+  "x": 256,
+  "y": 768
+ },
+ "tacsko": {
+  "i": 26,
+  "x": 512,
+  "y": 768
+ },
+ "sziberiai-husky": {
+  "i": 27,
+  "x": 768,
+  "y": 768
+ },
+ "szamojed": {
+  "i": 28,
+  "x": 1024,
+  "y": 768
+ },
+ "pomeraniai-torpespicc": {
+  "i": 29,
+  "x": 1280,
+  "y": 768
+ },
+ "shiba-inu": {
+  "i": 30,
+  "x": 1536,
+  "y": 768
+ },
+ "akita-inu": {
+  "i": 31,
+  "x": 1792,
+  "y": 768
+ },
+ "beagle": {
+  "i": 32,
+  "x": 0,
+  "y": 1024
+ },
+ "dalmata": {
+  "i": 33,
+  "x": 256,
+  "y": 1024
+ },
+ "erdelyi-kopo": {
+  "i": 34,
+  "x": 512,
+  "y": 1024
+ },
+ "basset-hound": {
+  "i": 35,
+  "x": 768,
+  "y": 1024
+ },
+ "rhodesiai-ridgeback": {
+  "i": 36,
+  "x": 1024,
+  "y": 1024
+ },
+ "magyar-vizsla": {
+  "i": 37,
+  "x": 1280,
+  "y": 1024
+ },
+ "drotszoru-magyar-vizsla": {
+  "i": 38,
+  "x": 1536,
+  "y": 1024
+ },
+ "weimari-vizsla": {
+  "i": 39,
+  "x": 1792,
+  "y": 1024
+ },
+ "rovidszoru-nemet-vizsla": {
+  "i": 40,
+  "x": 0,
+  "y": 1280
+ },
+ "ir-szetter": {
+  "i": 41,
+  "x": 256,
+  "y": 1280
+ },
+ "labrador-retriever": {
+  "i": 42,
+  "x": 512,
+  "y": 1280
+ },
+ "golden-retriever": {
+  "i": 43,
+  "x": 768,
+  "y": 1280
+ },
+ "angol-cocker-spaniel": {
+  "i": 44,
+  "x": 1024,
+  "y": 1280
+ },
+ "angol-springer-spaniel": {
+  "i": 45,
+  "x": 1280,
+  "y": 1280
+ },
+ "lagotto-romagnolo": {
+  "i": 46,
+  "x": 1536,
+  "y": 1280
+ },
+ "francia-bulldog": {
+  "i": 47,
+  "x": 1792,
+  "y": 1280
+ },
+ "mopsz": {
+  "i": 48,
+  "x": 0,
+  "y": 1536
+ },
+ "chihuahua": {
+  "i": 49,
+  "x": 256,
+  "y": 1536
+ },
+ "cavalier-king-charles-spaniel": {
+  "i": 50,
+  "x": 512,
+  "y": 1536
+ },
+ "shih-tzu": {
+  "i": 51,
+  "x": 768,
+  "y": 1536
+ },
+ "maltai-selyemkutya": {
+  "i": 52,
+  "x": 1024,
+  "y": 1536
+ },
+ "bichon-frise": {
+  "i": 53,
+  "x": 1280,
+  "y": 1536
+ },
+ "havanese": {
+  "i": 54,
+  "x": 1536,
+  "y": 1536
+ },
+ "uszkar": {
+  "i": 55,
+  "x": 1792,
+  "y": 1536
+ },
+ "boston-terrier": {
+  "i": 56,
+  "x": 0,
+  "y": 1792
+ },
+ "whippet": {
+  "i": 57,
+  "x": 256,
+  "y": 1792
+ },
+ "magyar-agar": {
+  "i": 58,
+  "x": 512,
+  "y": 1792
+ },
+ "olasz-agar": {
+  "i": 59,
+  "x": 768,
+  "y": 1792
+ },
+ "kabala-pacsi": {
+  "i": 60,
+  "x": 1024,
+  "y": 1792
+ },
+ "keverek": {
+  "i": 61,
+  "x": 1280,
+  "y": 1792
+ },
+ "alvo-kutya": {
+  "i": 62,
+  "x": 1536,
+  "y": 1792
+ },
+ "kerdo-kutya": {
+  "i": 63,
+  "x": 1792,
+  "y": 1792
+ },
+ "tervueren": {
+  "i": 64,
+  "x": 0,
+  "y": 2048
+ },
+ "groenendael": {
+  "i": 65,
+  "x": 256,
+  "y": 2048
+ },
+ "collie": {
+  "i": 66,
+  "x": 512,
+  "y": 2048
+ },
+ "bearded-collie": {
+  "i": 67,
+  "x": 768,
+  "y": 2048
+ },
+ "bobtail": {
+  "i": 68,
+  "x": 1024,
+  "y": 2048
+ },
+ "feher-svajci-juhaszkutya": {
+  "i": 69,
+  "x": 1280,
+  "y": 2048
+ },
+ "csehszlovak-farkaskutya": {
+  "i": 70,
+  "x": 1536,
+  "y": 2048
+ },
+ "ausztral-pasztorkutya": {
+  "i": 71,
+  "x": 1792,
+  "y": 2048
+ },
+ "torpe-pinscher": {
+  "i": 72,
+  "x": 0,
+  "y": 2304
+ },
+ "orias-schnauzer": {
+  "i": 73,
+  "x": 256,
+  "y": 2304
+ },
+ "hovawart": {
+  "i": 74,
+  "x": 512,
+  "y": 2304
+ },
+ "leonbergi": {
+  "i": 75,
+  "x": 768,
+  "y": 2304
+ },
+ "pireneusi-hegyi-kutya": {
+  "i": 76,
+  "x": 1024,
+  "y": 2304
+ },
+ "bordeaux-i-dog": {
+  "i": 77,
+  "x": 1280,
+  "y": 2304
+ },
+ "napolyi-masztiff": {
+  "i": 78,
+  "x": 1536,
+  "y": 2304
+ },
+ "bullmasztiff": {
+  "i": 79,
+  "x": 1792,
+  "y": 2304
+ },
+ "shar-pei": {
+  "i": 80,
+  "x": 0,
+  "y": 2560
+ },
+ "kaukazusi-juhaszkutya": {
+  "i": 81,
+  "x": 256,
+  "y": 2560
+ },
+ "kozep-azsiai-juhaszkutya": {
+  "i": 82,
+  "x": 512,
+  "y": 2560
+ },
+ "airedale-terrier": {
+  "i": 83,
+  "x": 768,
+  "y": 2560
+ },
+ "welsh-terrier": {
+  "i": 84,
+  "x": 1024,
+  "y": 2560
+ },
+ "kerry-blue-terrier": {
+  "i": 85,
+  "x": 1280,
+  "y": 2560
+ },
+ "border-terrier": {
+  "i": 86,
+  "x": 1536,
+  "y": 2560
+ },
+ "skot-terrier": {
+  "i": 87,
+  "x": 1792,
+  "y": 2560
+ },
+ "cairn-terrier": {
+  "i": 88,
+  "x": 0,
+  "y": 2816
+ },
+ "bullterrier": {
+  "i": 89,
+  "x": 256,
+  "y": 2816
+ },
+ "drotszoru-foxterrier": {
+  "i": 90,
+  "x": 512,
+  "y": 2816
+ },
+ "parson-russell-terrier": {
+  "i": 91,
+  "x": 768,
+  "y": 2816
+ },
+ "bedlington-terrier": {
+  "i": 92,
+  "x": 1024,
+  "y": 2816
+ },
+ "ir-buzaszinu-terrier": {
+  "i": 93,
+  "x": 1280,
+  "y": 2816
+ },
+ "ir-terrier": {
+  "i": 94,
+  "x": 1536,
+  "y": 2816
+ },
+ "nemet-vadaszterrier": {
+  "i": 95,
+  "x": 1792,
+  "y": 2816
+ },
+ "alaszkai-malamut": {
+  "i": 96,
+  "x": 0,
+  "y": 3072
+ },
+ "keeshond": {
+  "i": 97,
+  "x": 256,
+  "y": 3072
+ },
+ "japan-spicc": {
+  "i": 98,
+  "x": 512,
+  "y": 3072
+ },
+ "eurazsiai": {
+  "i": 99,
+  "x": 768,
+  "y": 3072
+ },
+ "basenji": {
+  "i": 100,
+  "x": 1024,
+  "y": 3072
+ },
+ "csau-csau": {
+  "i": 101,
+  "x": 1280,
+  "y": 3072
+ },
+ "amerikai-akita": {
+  "i": 102,
+  "x": 1536,
+  "y": 3072
+ },
+ "bloodhound": {
+  "i": 103,
+  "x": 1792,
+  "y": 3072
+ },
+ "bajor-hegyi-vereb": {
+  "i": 104,
+  "x": 0,
+  "y": 3328
+ },
+ "angol-szetter": {
+  "i": 105,
+  "x": 256,
+  "y": 3328
+ },
+ "angol-pointer": {
+  "i": 106,
+  "x": 512,
+  "y": 3328
+ },
+ "drotszoru-nemet-vizsla": {
+  "i": 107,
+  "x": 768,
+  "y": 3328
+ },
+ "bretagne-i-spaniel": {
+  "i": 108,
+  "x": 1024,
+  "y": 3328
+ },
+ "flat-coated-retriever": {
+  "i": 109,
+  "x": 1280,
+  "y": 3328
+ },
+ "nova-scotia-retriever": {
+  "i": 110,
+  "x": 1536,
+  "y": 3328
+ },
+ "portugal-vizikutya": {
+  "i": 111,
+  "x": 1792,
+  "y": 3328
+ },
+ "spanyol-vizikutya": {
+  "i": 112,
+  "x": 0,
+  "y": 3584
+ },
+ "amerikai-cocker-spaniel": {
+  "i": 113,
+  "x": 256,
+  "y": 3584
+ },
+ "kooikerhondje": {
+  "i": 114,
+  "x": 512,
+  "y": 3584
+ },
+ "lhasa-apso": {
+  "i": 115,
+  "x": 768,
+  "y": 3584
+ },
+ "tibeti-terrier": {
+  "i": 116,
+  "x": 1024,
+  "y": 3584
+ },
+ "pekingi-palotakutya": {
+  "i": 117,
+  "x": 1280,
+  "y": 3584
+ },
+ "papillon": {
+  "i": 118,
+  "x": 1536,
+  "y": 3584
+ },
+ "coton-de-tulear": {
+  "i": 119,
+  "x": 1792,
+  "y": 3584
+ },
+ "kinai-meztelen-kutya": {
+  "i": 120,
+  "x": 0,
+  "y": 3840
+ },
+ "brusszeli-griffon": {
+  "i": 121,
+  "x": 256,
+  "y": 3840
+ },
+ "angol-agar": {
+  "i": 122,
+  "x": 512,
+  "y": 3840
+ },
+ "ir-farkaskutya": {
+  "i": 123,
+  "x": 768,
+  "y": 3840
+ },
+ "barzoj": {
+  "i": 124,
+  "x": 1024,
+  "y": 3840
+ },
+ "afgan-agar": {
+  "i": 125,
+  "x": 1280,
+  "y": 3840
+ },
+ "saluki": {
+  "i": 126,
+  "x": 1536,
+  "y": 3840
+ },
+ "spanyol-galgo": {
+  "i": 127,
+  "x": 1792,
+  "y": 3840
+ }
+}
