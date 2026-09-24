@@ -4,6 +4,9 @@ A verziószám a `VERSION` fájlban van, szemantikus verziózással (FŐ.MELLÉK
 - **Mobilon:** a Tippek panel névjegykártyáján.
 - **Asztalon:** a bal oldali panel alján.
 
+## 1.4.1 – 2026-09-24
+- **Felhő nézet:** szűrés után (pl. csak „Gyerek”) a felhő közepe már nem kavarog. Az ütközés a lendületet is fékezi (a frissen megkavart buborékokat kivéve), és „Csak találatok” módban kisebb a középre húzás. A mérés szerint a középső rész mozgása képkockánként 1,3–2,5 px-ről kb. 0,03 px-re csökkent.
+
 ## 1.4.0 – 2026-09-24
 - **Verziózás:**
   - látható verziószám és build-azonosító az appban;

@@ -1494,4 +1494,21 @@ Valódi telefonos visszajelzés: a telepített PWA betöltésekor és animáció
   - A kör alakú kinyílás és bezárás `requestAnimationFrame`-mel fut, nem a böngészőre bízott `clip-path` animációval, így telefonon sem kerülhet a grafikus szálra. Az órája az első kirajzolt képkockától jár, és a végén a vágás biztosan lekerül.
   - A portré a buborék megérintésekor előre dekódolódik (`predecode`).
 
+### 26.11 Kavargó felhő szűrés után (2026-09-24, v1.4.1)
+- **Tünet:** telefonon, Felhő nézetben csak a „Gyerek” szűrővel (77 buborék) a felhő közepe folyamatosan kavargott. Szűrő nélkül nyugodt volt.
+- **Ok:**
+  - Az ütközés csak a helyzetet tolta szét, a sebességet nem. A középre húzó lendület így minden lépésben újra összenyomta a sűrű halmazt.
+  - „Csak találatok” módban ráadásul a középre húzás a találatok miatt kb. 4× erősebb volt, mint szűrő nélkül.
+- **Javítás:**
+  - Az egymással ütközésből adódó szétválasztás a sebességbe is beleszámít (a szél és a HUD-akadályok nem). Kivételt jelentenek a frissen megkavart buborékok: azok az ujj nyomán átszántanak a felhőn.
+  - „Csak találatok” módban a középre húzás 0,35-szörös.
+
+| „Gyerek” szűrő, középső körzet | Előtte | Utána |
+|---|---|---|
+| 360 px | 1,26 px/képkocka | 0,02–0,04 px/képkocka |
+| 384 px | 2,02 px/képkocka | kb. 0,03 px/képkocka |
+| 412 px | 2,46 px/képkocka | kb. 0,03 px/képkocka |
+
+Szűrő nélkül, a térképen és asztali rangsor módban változatlanul kb. 0,03–0,04 px/képkocka. A kavarás hatása megmaradt (egy húzás 105–122 buborékot mozdít el).
+
 *pacsi 🐾 – mert a jó döntés is egy kézfogással kezdődik.*

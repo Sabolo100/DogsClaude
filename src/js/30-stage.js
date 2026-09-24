@@ -403,7 +403,9 @@ function anchor(o) {
     const dx = (o.x - LR.cx) / LR.w, dy = (o.y - LR.cy) / LR.h, d = Math.hypot(dx, dy) || 1;
     return [LR.cx + dx / d * LR.w * .43, LR.cy + dy / d * LR.h * .43, .004, .004];
   }
-  const k = .0016 + .0075 * m;
+  // Csak találatok módban nem kell a jobbakat középre rendezni (az egyezést a méret mutatja): a gyengébb
+  // vonzás miatt a sűrű közép nem kavarog (az erős húzás és az ütközés egymás ellen dolgozott)
+  const k = (.0016 + .0075 * m) * (modeOf() === 'strict' ? .35 : 1);
   return [LR.cx, LR.cy, k * a2, k];
 }
 function step() {
@@ -433,6 +435,9 @@ function step() {
   }
   if (stir.on && !rm) stirForce(act);
   const gap = S.mobile ? 4 : 6;
+  // Az ütközés csak a helyet tolja szét; a sebességből ki kell venni a szétválasztással ellentétes részt,
+  // különben a befelé tartó lendület minden lépésben újra összenyomja a sűrű halmazt (kavargó közép).
+  for (const o of act) { o.cx0 = o.x; o.cy0 = o.y; }
   for (let it = 0; it < 2; it++) {
     for (let i = 0; i < act.length; i++) {
       const a = act[i];
@@ -450,6 +455,9 @@ function step() {
       }
     }
   }
+  // (csak az egymással ütközés számít; a frissen megkavart buborékokra nem – azok az ujj nyomán átszántanak
+  // a felhőn, szétnyitva azt; a szél és a HUD-akadályok saját visszapattanást kezelnek)
+  for (const o of act) if (stepN - o.stirN > 40) { o.vx += o.x - o.cx0; o.vy += o.y - o.cy0; }
   for (const o of act) {
     const R = o.r * 1.09;
     for (const q of OBS) {
@@ -470,7 +478,7 @@ function step() {
   }
   // Adaptív kitöltés: ha nyugalmi állapotban is sok az átfedés, kicsit kisebb buborékok
   // (animáció közben – hullám, kirepülés, növekedés – nem mérünk, mert az átfedés ott természetes)
-  const settled = () => act.every(o => !o.pend && Math.abs(o.rv) < .05 && Math.abs(o.vx) + Math.abs(o.vy) < .6) && !B.some(o => o.st === 'fly' || o.st === 'drop');
+  const settled = () => !stir.on && act.every(o => !o.pend && Math.abs(o.rv) < .05 && Math.abs(o.vx) + Math.abs(o.vy) < .6) && !B.some(o => o.st === 'fly' || o.st === 'drop');
   if (stepN % 45 === 0 && S.view !== 'terkep' && settled()) {
     let ov = 0, n = 0;
     for (let i = 0; i < act.length; i++) for (let j = i + 1; j < act.length; j++) {
