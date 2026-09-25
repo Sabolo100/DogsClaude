@@ -23,6 +23,12 @@ Telepítés appként (az első megnyitás után offline is működik):
 Az app állapota a URL-ben tárolódik, így linkkel megosztható. Például:
 `pacsi.html#f=meret:kicsi;gyerek;lakas&m=s&b=magyar-vizsla` (Kicsi + Gyerekbarát + Lakásba való szűrő, Csak találatok mód, nyitott vizsla-kártya).
 
+**Első látogatás:** először egy nyitó ablak mondja el, mire való az oldal. A „Kezdjük!” után egy 3 lépéses bemutató következik, amely reflektorfénnyel mutatja meg a felhőt, a szűrőket és a kvízt. Újra megnézhető:
+- a Tippek → „Bemutató újra” gombbal;
+- a cím végére írt `?bemutato` paraméterrel, pl. <https://sabolo100.github.io/DogsClaude/?bemutato>.
+
+A `?nocoach` paraméter kihagyja a bevezetést (képernyőképekhez és videókhoz).
+
 ## Build
 
 ```bash
@@ -61,6 +67,7 @@ src/sw.js                             service worker sablon
 img/sheets/                           a 8 generált 4×4-es portré-rácskép + promptjaik
 img/portrek/, img/thumbs/             szeletelt portrék (kártya / buborék)
 img/sprite-thumbs.webp                a buborékok közös sprite-ja
+img/nyito-pacsi.webp                  a nyitó ablak képe (tools/make_hero.py vágja a marketing „pacsi” kulcsképéből)
 tools/generate_sheets.py              portrégenerálás (OpenAI gpt-image-2)
 tools/slice_sheets.py                 rácsfelismerés + szeletelés
 tools/build_data.py, tools/build.py   adat- és alkalmazás-build

@@ -4,6 +4,18 @@ A verziószám a `VERSION` fájlban van, szemantikus verziózással (FŐ.MELLÉK
 - **Mobilon:** a Tippek panel névjegykártyáján.
 - **Asztalon:** a bal oldali panel alján.
 
+## 1.5.0 – 2026-09-25
+- **Új: nyitó ablak az első látogatáskor.** Mielőtt a szűrők és a felhő elé kerülsz, egy nagy, látványos ablak mondja el a lényeget: „Válaszd ki a neked való kutyafajtát, hogy mindketten azt kapjátok, amire vágytok.”
+  - A képernyő kb. felét takarja, körülötte látszik az app (a felhő közben kipattan mögötte).
+  - Nagy „pacsi” illusztráció óriás buborékban: az ember keze és a kabala mancsa összeér. Köré rajzolódik a korall illeszkedési gyűrű, lebegő fajtabuborékok veszik körül, és szívecskék pattannak ki.
+  - A „Kezdjük!” gomb (vagy Esc) zárja be, és utána indul a bemutató.
+- **A bemutató tippjei jól látszanak:**
+  - A kiemelt rész (felhő, szűrők, kvíz) reflektorfényt és lüktető korall gyűrűt kap, a képernyő többi része elsötétül. A kattintás átmegy rajta.
+  - A tippbuborék korall keretet kapott, és a Pacsi kabala „mondja”. Fölötte „Tipp 1/3” jelzés, minden lépésnél újra beugrik.
+  - Magától továbblép, ha megcsinálod, amit kér (buborékot nyitsz, szűrőt kapcsolsz, kvízt indítasz).
+  - Nyitott fajtakártya, szűrőlap vagy fiók fölé nem ugrik.
+- **Újraindítás:** Tippek → „Bemutató újra”, vagy a `?bemutato` URL-paraméter (telepített appban is). A `?nocoach` továbbra is kihagyja.
+
 ## 1.4.1 – 2026-09-24
 - **Felhő nézet:** szűrés után (pl. csak „Gyerek”) a felhő közepe már nem kavarog. Az ütközés a lendületet is fékezi (a frissen megkavart buborékokat kivéve), és „Csak találatok” módban kisebb a középre húzás. A mérés szerint a középső rész mozgása képkockánként 1,3–2,5 px-ről kb. 0,03 px-re csökkent.
 

@@ -28,8 +28,13 @@ function init() {
   if (h.card) setTimeout(() => openCard(h.card, { push: false }), 1300);
   else if (h.kviz) { syncHash(); setTimeout(() => openDrawer('kviz'), 1300); }
   store.set('visits', store.get('visits', 0) + 1);
-  if (!store.get('coach', 0) && !h.card && !h.kviz && !/[?&]nocoach/.test(location.search)) setTimeout(() => { if (!S.card && !S.drawer) coach(0); }, 2600);
-  else setTimeout(() => maybeInstall(), 5000);
+  // első látogatás: nyitó ablak (a felhő közben pattan ki mögötte), a „Kezdjük!” után a bemutató.
+  // ?bemutato: újra megmutatja (pl. telepített appban); ?nocoach: nincs bevezetés (marketing-felvételek)
+  const tour = /[?&]bemutato/.test(location.search);
+  if ((tour || !store.get('coach', 0)) && !h.card && !h.kviz && !/[?&]nocoach/.test(location.search)) {
+    preloadHero();
+    setTimeout(() => { if (!S.card && !S.drawer) startOnboarding(); }, 450);
+  } else setTimeout(() => maybeInstall(), 5000);
   if ('serviceWorker' in navigator && window.PACSI_PWA && location.protocol.startsWith('http')) {
     navigator.serviceWorker.register('sw.js').then(reg => {
       reg.addEventListener('updatefound', () => {
@@ -60,10 +65,11 @@ mqRM.addEventListener('change', () => document.documentElement.classList.toggle(
 
 /* Billentyűzet */
 addEventListener('keydown', e => {
+  if (WL.open) { if (e.key === 'Escape') closeWelcome(); return; }   // nyitó ablak: csak a „Kezdjük!” (vagy Esc) visz tovább
   const typing = /INPUT|TEXTAREA/.test(document.activeElement && document.activeElement.tagName);
   if (e.key === 'Escape') {
     if (!cardEl.hidden) return closeCard();
-    if (!$('#coach').hidden) return coach(COACH.length);
+    if (!coachEl.hidden) return endCoach();
     if (S.drawer) return closeDrawer();
     if ($('#panel').classList.contains('open')) return closePanelSheet();
     if (!$('#mobSearch').hidden) return closeMobSearch();

@@ -502,17 +502,157 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .toast.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
 .toast button { border: 0; background: none; color: var(--primary-2); font-weight: 800; padding: 0; }
 :root[data-theme="dark"] .toast button { color: #C4471F; }
-.coach { position: fixed; z-index: 70; width: 300px; padding: 18px 18px 14px; border-radius: 22px; background: var(--solid); box-shadow: var(--shadow-lg); animation: coachIn .5s var(--ease-spring) both; }
-@keyframes coachIn { from { opacity: 0; transform: translateY(12px) scale(.94); } }
-.coach h4 { margin: 0 0 6px; font: 700 19px var(--font-d); }
-.coach p { margin: 0 0 12px; font-size: 14px; color: var(--ink-2); }
-.coach .row { display: flex; justify-content: space-between; align-items: center; }
-.coach .dots3 { display: flex; gap: 5px; }
-.coach .dots3 i { width: 7px; height: 7px; border-radius: 50%; background: var(--dot-off); }
-.coach .dots3 i.on { background: var(--primary); }
-.coach::before { content: ""; position: absolute; width: 16px; height: 16px; background: var(--solid); transform: rotate(45deg); left: var(--ax, 30px); top: -7px; border-radius: 3px; }
-.coach.up::before { top: auto; bottom: -7px; }
-.coach.left::before { left: -7px; top: var(--ay, 30px); }
+/* Bemutató (coach mark): a tippbuborék korall kerettel, a kabalával; a célpont reflektorfényben (lásd 70-onboard.js) */
+.coach {
+  position: fixed; z-index: 70; width: 344px; padding: 20px 20px 16px; border-radius: 24px; background: var(--solid);
+  box-shadow: 0 0 0 2.5px var(--primary-fill), 0 0 0 9px color-mix(in srgb, var(--primary) 16%, transparent), var(--shadow-lg);
+  animation: coachIn .6s var(--ease-spring) both;
+}
+@keyframes coachIn { from { opacity: 0; transform: translateY(18px) scale(.86); } }
+.coach .co-pic {
+  position: absolute; left: -18px; top: -24px; width: 56px; height: 56px; border-radius: 50%; background: #FBF6EE center / cover;
+  box-shadow: 0 0 0 3.5px var(--bubble-ring), 0 0 0 6px var(--primary-fill), var(--shadow); animation: coPic .9s var(--ease-spring) .12s both;
+}
+@keyframes coPic { 0% { transform: scale(0) rotate(-40deg); } 55% { transform: scale(1.15) rotate(10deg); } 80% { transform: scale(.96) rotate(-4deg); } }
+.coach .co-step { display: block; margin: -4px 0 6px 36px; font: 800 11.5px/1 var(--font-u); letter-spacing: .12em; text-transform: uppercase; color: var(--primary-fill); }
+.coach h4 { margin: 0 0 6px; font: 700 21px/1.15 var(--font-d); font-variation-settings: "SOFT" 80; }
+.coach p { margin: 0 0 14px; font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+.coach .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.coach .dots3 { display: flex; gap: 6px; }
+.coach .dots3 i { width: 8px; height: 8px; border-radius: 50%; background: var(--dot-off); transition: width .3s var(--ease-spring); }
+.coach .dots3 i.was { background: color-mix(in srgb, var(--primary) 45%, var(--dot-off)); }
+.coach .dots3 i.on { width: 22px; border-radius: 4px; background: var(--primary-fill); }
+.coach .btn.fill { height: 40px; padding: 0 18px; }
+.coach::before {
+  content: ""; position: absolute; width: 18px; height: 18px; background: var(--solid); transform: rotate(45deg); border-radius: 4px 0 0 0;
+  left: var(--ax, 30px); top: -10.5px; border: 2.5px solid var(--primary-fill); border-right: 0; border-bottom: 0;
+}
+.coach.up::before { top: auto; bottom: -10.5px; border: 2.5px solid var(--primary-fill); border-left: 0; border-top: 0; border-radius: 0 0 4px 0; }
+.coach.left::before { left: -10.5px; top: var(--ay, 30px); border: 2.5px solid var(--primary-fill); border-top: 0; border-right: 0; border-radius: 0 0 0 4px; }
+:root[data-theme="dark"] .coach .co-step { color: var(--primary); }
+
+/* Reflektor: a célpont körül minden elsötétül (a hatalmas árnyék), a kattintás átmegy rajta.
+   A képernyőnyi, vágó tartó kell: nélküle a 200vmax-os árnyék miatt a reflektor telefonon egy kb.
+   3500 × 3500 CSS px-es kompozitor-réteg lenne (DPR 2,6-on több száz MB) – ettől villogott korábban a felület. */
+.coach-dim { position: fixed; inset: 0; z-index: 69; overflow: hidden; pointer-events: none; }
+.coach-spot {
+  --coach-dim: rgba(38, 24, 14, .36);
+  position: absolute; left: 0; top: 0; width: 0; height: 0; pointer-events: none; opacity: 0;
+  border-radius: 24px; box-shadow: 0 0 0 200vmax var(--coach-dim);
+  transition: left .55s var(--ease-out), top .55s var(--ease-out), width .55s var(--ease-out), height .55s var(--ease-out), border-radius .55s var(--ease-out), opacity .35s;
+}
+.coach-spot.on { opacity: 1; }
+.coach-spot::before, .coach-spot::after { content: ""; position: absolute; inset: -3px; border-radius: inherit; border: 3px solid var(--primary-fill); }
+.coach-spot::before { box-shadow: 0 0 0 5px color-mix(in srgb, var(--primary) 22%, transparent), 0 0 34px color-mix(in srgb, var(--primary) 50%, transparent); }
+.coach-spot::after { animation: spotPing 1.7s var(--ease-out) .5s infinite; }
+@keyframes spotPing { from { opacity: .95; transform: none; } to { opacity: 0; transform: scale(var(--sx, 1.04), var(--sy, 1.04)); } }
+:root[data-theme="dark"] .coach-spot { --coach-dim: rgba(0, 0, 0, .52); }
+
+/* ---------- Nyitó ablak (első látogatás, a bemutató előtt) ----------
+   A képernyő kb. felét takarja, körülötte látszik az app. Csak transform/opacity animálódik, és nincs
+   háttér-elmosás: alatta épp kipattan a felhő. A kép egy óriás „buborék”, ahogy a fajták a felhőben. */
+.welcome { --art: min(540px, 38vw, 66vh); position: fixed; inset: 0; z-index: 75; display: flex; padding: 24px; overflow-y: auto; overscroll-behavior: contain; }
+.wl-scrim { position: fixed; inset: 0; background: color-mix(in srgb, var(--bg) 46%, transparent); animation: fadeIn2 .45s both; }
+.welcome.out .wl-scrim { animation: fadeOut .38s both; }
+.wl {
+  --pad: clamp(26px, 4.8vh, 58px);
+  position: relative; margin: auto; width: min(1120px, 78vw, 100%); min-height: min(600px, 68vh);
+  display: flex; align-items: center; padding: var(--pad) var(--pad) var(--pad) calc(var(--pad) * 1.2);
+  border-radius: 40px; color: var(--ink);
+  background:
+    radial-gradient(48% 66% at 79% 46%, color-mix(in srgb, var(--primary) 17%, transparent), transparent 72%),
+    radial-gradient(38% 52% at 2% 104%, color-mix(in srgb, var(--blob2) 75%, transparent), transparent 70%),
+    radial-gradient(30% 36% at 36% -4%, color-mix(in srgb, var(--blob3) 70%, transparent), transparent 70%),
+    var(--solid);
+  box-shadow: 0 0 0 1px var(--line), var(--shadow-lg), 0 50px 140px color-mix(in srgb, var(--primary) 24%, transparent);
+  animation: wlIn .8s var(--ease-spring) .05s both;
+}
+/* telefonon kisebb árnyék: a beúszó doboz rétege az árnyékkal együtt rajzolódik (kevesebb grafikus memória) */
+@media (max-width: 899px) { .wl { box-shadow: 0 0 0 1px var(--line), 0 18px 44px rgba(90, 50, 20, .2), 0 30px 70px color-mix(in srgb, var(--primary) 18%, transparent); } }
+.welcome.out .wl { animation: wlOut .36s cubic-bezier(.5, 0, .75, 0) both; }
+@keyframes wlIn { from { opacity: 0; transform: translateY(46px) scale(.9); } }
+@keyframes wlOut { to { opacity: 0; transform: translateY(-20px) scale(.94); } }
+
+.wl-text { position: relative; z-index: 2; width: 50%; }
+.wl-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 clamp(14px, 2.4vh, 24px); padding: 7px 14px 7px 10px; border-radius: 999px; background: color-mix(in srgb, var(--primary) 13%, transparent); color: var(--primary-fill); font: 800 12.5px/1 var(--font-u); letter-spacing: .12em; text-transform: uppercase; animation: wlUp .6s var(--ease-out) .15s both; }
+.wl-eyebrow .ic { width: 16px; height: 16px; }
+.wl h1 { margin: 0; font: 800 clamp(30px, min(4.7vw, 7.6vh), 76px)/.98 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.03em; }
+.wl h1 > span { display: block; animation: wlUp .7s var(--ease-out) both; animation-delay: calc(.22s + var(--i) * .08s); }
+.wl h1 em { position: relative; font-style: italic; font-weight: 700; color: var(--primary-fill); white-space: nowrap; padding-right: .06em; }
+.wl-swash { position: absolute; left: -1%; bottom: -.03em; width: 102%; height: .24em; overflow: visible; z-index: -1; }
+.wl-swash path { fill: none; stroke: var(--primary-2); stroke-width: .15em; stroke-linecap: round; stroke-dasharray: 300; stroke-dashoffset: 300; animation: wlDraw .7s var(--ease-out) .85s forwards; }
+@keyframes wlDraw { to { stroke-dashoffset: 0; } }
+@keyframes wlUp { from { opacity: 0; transform: translateY(22px); } }
+.wl-lead { margin: clamp(12px, 2vh, 20px) 0 0; max-width: 15em; text-wrap: pretty; font: italic 500 clamp(19px, min(2.05vw, 3.4vh), 32px)/1.2 var(--font-d); font-variation-settings: "SOFT" 60; animation: wlUp .7s var(--ease-out) .5s both; }
+.wl-body { margin: clamp(10px, 1.8vh, 16px) 0 0; max-width: 27em; text-wrap: pretty; font: 600 clamp(14.5px, min(1.3vw, 2.2vh), 18px)/1.5 var(--font-u); color: var(--ink-2); animation: wlUp .7s var(--ease-out) .6s both; }
+.wl-cta { display: flex; align-items: center; gap: 18px; margin-top: clamp(18px, 3.6vh, 36px); flex-wrap: wrap; animation: wlUp .7s var(--ease-out) .7s both; }
+.wl .wl-go { width: auto; height: clamp(54px, 7.4vh, 64px); padding: 0 30px 0 36px; font-size: clamp(17px, 2.4vh, 20px); gap: 12px; }
+.wl .wl-go .ic { width: 24px; height: 24px; transition: transform .45s var(--ease-spring); }
+.wl .wl-go:hover .ic { transform: rotate(-18deg) scale(1.15); }
+.wl-go.nudge { animation: nudge .6s var(--ease-spring); }
+@keyframes nudge { 20% { transform: scale(1.07) rotate(-2deg); } 45% { transform: scale(1.05) rotate(2deg); } 70% { transform: scale(1.02) rotate(-1deg); } }
+.wl-cta small { display: inline-flex; align-items: center; gap: 6px; font: 700 13px var(--font-u); color: var(--ink-3); }
+.wl-cta small .ic { width: 15px; height: 15px; color: var(--primary-2); }
+
+/* A kép: óriás buborék fehér peremmel, köré rajzolódó „illeszkedési” gyűrűvel és lebegő kis fajtabuborékokkal */
+.wl-art { position: absolute; z-index: 1; right: calc(var(--pad) * .55); top: 50%; width: var(--art); aspect-ratio: 1; translate: 0 -57%; }
+.wl-glow { position: absolute; inset: -24%; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--primary-2) 34%, transparent), color-mix(in srgb, var(--primary) 12%, transparent) 62%, transparent); animation: fadeIn2 1.2s .3s both; }
+.wl-hero {
+  position: absolute; inset: 0; border-radius: 50%; background: #FBF6EE center / cover;
+  box-shadow: 0 0 0 calc(var(--art) * .024) var(--bubble-ring), 0 calc(var(--art) * .03) calc(var(--art) * .1) rgba(90, 50, 20, .15);
+  animation: wlPop .9s var(--ease-spring) .12s both;
+}
+:root[data-theme="dark"] .wl-hero { box-shadow: 0 0 0 calc(var(--art) * .024) var(--bubble-ring), 0 calc(var(--art) * .05) calc(var(--art) * .14) rgba(0, 0, 0, .5); }
+@keyframes wlPop { from { opacity: 0; scale: .55; } }
+.wl-ring { position: absolute; inset: -7%; width: 114%; height: 114%; rotate: -90deg; overflow: visible; pointer-events: none; }
+.wl-ring circle { fill: none; stroke: var(--primary-fill); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 305.4; stroke-dashoffset: 305.4; animation: wlRing 1.15s var(--ease-out) .55s forwards; }
+@keyframes wlRing { to { stroke-dashoffset: 0; } }
+.wl-b {
+  position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 1; border-radius: 50%;
+  background-color: var(--bgc); background-image: var(--sprite); background-size: var(--sp-size); background-position: var(--pos);
+  box-shadow: 0 0 0 4px var(--bubble-ring), var(--shadow);
+  animation: wlPop .7s var(--ease-spring) both, wlBob 5.5s ease-in-out infinite alternate;
+  animation-delay: calc(.38s + var(--i) * .07s), calc(var(--i) * -.9s);
+}
+@keyframes wlBob { from { translate: 0 -5px; } to { translate: 0 7px; } }
+.wl-match {
+  position: absolute; left: 0; bottom: 13%; display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px 9px 12px; border-radius: 999px;
+  background: var(--solid); box-shadow: 0 0 0 1px var(--line), var(--shadow); font: 700 14px var(--font-u); white-space: nowrap;
+  animation: wlPop .7s var(--ease-spring) 1.45s both;
+}
+.wl-match .ic { width: 17px; height: 17px; color: var(--primary-fill); }
+.wl-match b { font: 800 16px var(--font-d); color: var(--primary-fill); }
+
+/* Telefon (és álló tablet): egymás alatt – fent a kép, kilóg a doboz tetején; középre zárt szöveg */
+@media (max-width: 640px), (max-aspect-ratio: 4/5) {
+  .welcome { --art: min(300px, 52vw, 23vh); padding: calc(var(--art) * .3 + 14px) 14px 14px; }
+  .wl { flex-direction: column; min-height: 0; width: min(560px, 100%); padding: 0 20px 18px; text-align: center; border-radius: 34px;
+    background:
+      radial-gradient(70% 34% at 50% 8%, color-mix(in srgb, var(--primary) 16%, transparent), transparent 72%),
+      radial-gradient(60% 40% at 0% 104%, color-mix(in srgb, var(--blob2) 75%, transparent), transparent 70%),
+      var(--solid); }
+  .wl-art { position: relative; right: auto; top: auto; translate: none; flex: none; margin: calc(var(--art) * -.3) auto calc(var(--art) * .15); }
+  .wl-text { width: 100%; }
+  .wl-eyebrow { font-size: 11px; padding: 6px 12px 6px 9px; margin-bottom: 12px; }
+  .wl h1 { font-size: clamp(27px, min(8.8vw, 4.4vh), 50px); }
+  .wl-lead { margin: 10px auto 0; font-size: clamp(17px, min(4.8vw, 2.5vh), 23px); text-wrap: balance; }
+  .wl-body { margin: 8px auto 0; font-size: clamp(14px, 3.7vw, 16px); text-wrap: balance; }
+  .wl-cta { flex-direction: column; gap: 8px; margin-top: clamp(14px, 2.2vh, 22px); }
+  .wl .wl-go { width: 100%; height: 54px; }
+  .wl-match { font-size: 11.5px; padding: 5px 10px 5px 8px; bottom: 4%; left: -16%; }
+  .wl-match .ic { width: 14px; height: 14px; }
+  .wl-match b { font-size: 13px; }
+  .wl-b { box-shadow: 0 0 0 3px var(--bubble-ring), var(--shadow-sm); }
+}
+/* Csökkentett mozgás: a késleltetett elemek (aláhúzás, gyűrű, címke) is azonnal a helyükön legyenek */
+.rm .welcome *, .rm .coach, .rm .coach *, .rm .coach-spot::after { animation-delay: 0s !important; }
+/* Alacsony, fekvő kijelző (telefon fekve): kisebb kép, szűkebb margók */
+@media (max-height: 520px) and (min-aspect-ratio: 4/5) {
+  .welcome { padding: 10px; }
+  .wl { min-height: 0; border-radius: 28px; }
+  .wl-cta small { display: none; }
+  .wl-eyebrow { font-size: 10.5px; letter-spacing: .07em; margin-bottom: 10px; }
+}
 
 .fx { position: fixed; inset: 0; z-index: 90; pointer-events: none; width: 100vw; height: 100vh; }
 .flyclone { position: fixed; z-index: 95; border-radius: 50%; pointer-events: none; background-color: var(--bgc); background-image: var(--sprite); background-size: var(--sp-size); background-position: var(--pos); box-shadow: 0 0 0 3px #fff, var(--shadow); }
@@ -634,7 +774,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .toast { bottom: calc(160px + env(safe-area-inset-bottom)); }
   .mob-search { position: fixed; z-index: 65; left: 10px; right: 10px; top: calc(8px + env(safe-area-inset-top)); display: flex; gap: 8px; align-items: center; padding: 6px 6px 6px 14px; border-radius: 999px; background: var(--solid); box-shadow: var(--shadow); animation: achipIn .35s var(--ease-spring) both; }
   .mob-search input { flex: 1; border: 0; outline: none; background: none; font: 600 16px var(--font-u); color: var(--ink); min-width: 0; }
-  .coach { width: calc(100vw - 32px); left: 16px !important; }
+  .coach { width: calc(100vw - 32px); left: 16px !important; padding: 18px 18px 14px;
+    box-shadow: 0 0 0 2.5px var(--primary-fill), 0 0 0 8px color-mix(in srgb, var(--primary) 16%, transparent), 0 14px 36px rgba(40, 20, 8, .28); }   /* kisebb árnyék = kisebb réteg */
+  .coach h4 { font-size: 20px; }
+  .coach .co-pic { left: 14px; top: -30px; width: 50px; height: 50px; }
+  .coach .co-step { margin: 12px 0 6px 0; }
 }
 @keyframes sheetIn { from { transform: translateY(100%); } }
 @keyframes sheetOut { to { transform: translateY(100%); } }

@@ -58,7 +58,8 @@ def main():
     # Verzió: szemantikus verziószám a VERSION fájlból + build-azonosító (a forrás tartalmának rövid hash-e).
     # Mindkettő látszik az appban (Tippek → névjegy, asztali panel lábléce), így ellenőrizhető, melyik verzió fut.
     app_ver = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
-    build_id = hashlib.sha1((css + js_src + data_json).encode("utf-8")).hexdigest()[:7]
+    hero = ROOT / "img" / "nyito-pacsi.webp"   # a nyitó ablak képe (tools/make_hero.py)
+    build_id = hashlib.sha1((css + js_src + data_json).encode("utf-8") + hero.read_bytes()).hexdigest()[:7]
     js = ("(() => {\n'use strict';\n" + f"const APP_VERSION = {json.dumps(app_ver)}, APP_BUILD = {json.dumps(build_id)};\n"
           + js_src + "\n})();")
 
@@ -73,8 +74,9 @@ def main():
 
     # 1) Standalone
     imgs = {i: b64(ROOT / "img" / "portrek" / f"{i}.webp", "image/webp") for i in ids}
+    hero_js = ";window.PACSI_HERO=" + json.dumps(b64(hero, "image/webp"))
     img_script = ("<script>window.PACSI_SPRITE=" + json.dumps(b64(ROOT / "img" / "sprite-thumbs.webp", "image/webp")) +
-                  ";window.PACSI_IMG=" + json.dumps(imgs) + ";</script>")
+                  ";window.PACSI_IMG=" + json.dumps(imgs) + hero_js + ";</script>")
     standalone = assemble(img_script, "", fav_uri)
     (DIST / "pacsi.html").write_text(standalone, encoding="utf-8")
 
@@ -85,6 +87,7 @@ def main():
     (pwa / "img" / "portrek").mkdir(parents=True)
     (pwa / "icons").mkdir()
     shutil.copy(ROOT / "img" / "sprite-thumbs.webp", pwa / "img" / "sprite-thumbs.webp")
+    shutil.copy(hero, pwa / "img" / hero.name)
     for i in ids:
         shutil.copy(ROOT / "img" / "portrek" / f"{i}.webp", pwa / "img" / "portrek" / f"{i}.webp")
     (pwa / "icons" / "icon-192.png").write_bytes(png_bytes(make_icon(192)))
@@ -109,7 +112,7 @@ def main():
             '<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">')
     index = assemble("<script>window.PACSI_PWA=true;</script>", head, "icons/favicon-64.png")
     (pwa / "index.html").write_text(index, encoding="utf-8")
-    files = ["./", "index.html", "manifest.webmanifest", "img/sprite-thumbs.webp"] + \
+    files = ["./", "index.html", "manifest.webmanifest", "img/sprite-thumbs.webp", f"img/{hero.name}"] + \
             [f"img/portrek/{i}.webp" for i in ids] + [f"icons/{p.name}" for p in (pwa / "icons").iterdir()]
     # a verzió minden előre gyorsítótárazott fájlból számolódik – egy képcsere is frissítést indít
     digest = hashlib.sha1()
@@ -127,7 +130,7 @@ def main():
     art_css = (".app { height: 100%; }\n@media (max-width: 899px) { .app { grid-template-rows: 58px 1fr auto auto; } "
                ".topbar { padding-top: 0; } .tabbar { padding-bottom: 6px; } }")
     art_img = ("<script>window.PACSI_ARTIFACT=true;window.PACSI_SPRITE=" + json.dumps(b64(ROOT / "img" / "sprite-thumbs.webp", "image/webp")) +
-               ";window.PACSI_IMG=" + json.dumps(imgs) + ";</script>")
+               ";window.PACSI_IMG=" + json.dumps(imgs) + hero_js + ";</script>")
     body = body.replace("/*INLINE_JS*/", js.replace("</script", "<\\/script")).replace("/*INLINE_DATA*/", data_json).replace("<!--INLINE_IMG-->", art_img)
     artifact = f"<title>Pacsi by DarwinAI</title>\n{fonts}\n<style>{css}\n{art_css}</style>\n{body}"
     (DIST / "pacsi-artifact.html").write_text(artifact, encoding="utf-8")

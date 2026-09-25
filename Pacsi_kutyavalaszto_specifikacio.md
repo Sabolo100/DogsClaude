@@ -1009,7 +1009,13 @@ Csúszkák: méret (a fajtából előtöltve), eledel minősége, kozmetikus ig�
 Desktopon egy 🎲 gomb, mobilon a telefon megrázása. A felhő megremeg, és egy véletlen, **legalább 60%-ban illeszkedő** fajta ugrik elő. Kis szöveg: „Erre gondoltál már?”
 
 ### 14.8 Onboarding
-3 lépéses coach mark (első látogatáskor, átugorható, localStorage jegyzi):
+**Nyitó ablak (v1.5.0):** első látogatáskor a szűrők és a felhő előtt egy nagy, látványos ablak mondja el a lényeget, röviden és kikerülhetetlenül:
+- **Szöveg:** „Válaszd ki a *neked való* kutyafajtát, hogy mindketten azt kapjátok, amire vágytok.” Alatta: „Állítsd be a szűrőket, és nézd meg, melyik fajta illik hozzád.”
+- **Kép:** nagy illusztráció, a „pacsi” pillanat (az ember keze és a kabala mancsa összeér).
+- **Méret:** a képernyő kb. felét takarja, körülötte látszik az app.
+- **Bezárás:** a „Kezdjük!” gomb (vagy Esc) zárja be, utána indul a bemutató.
+
+3 lépéses coach mark (első látogatáskor, átugorható, localStorage jegyzi). A kiemelt rész reflektorfényt kap, a képernyő többi része elsötétül:
 1. „Ez itt 60 kutyafajta egy felhőben. Vidd fölé az egeret (koppints rá)!”
 2. „Kapcsolj be egy szűrőt, és figyeld, ki ugrik előre!”
 3. „Nem tudod, hol kezdd? A Párkereső kvíz 1 perc.”
@@ -1347,7 +1353,7 @@ A képek AI-generált **koncepciótervek** (OpenAI `gpt-image-2`; laptop 2560 ×
   - Kedvencek, összehasonlítás pókhálódiagrammal és táblázattal, Gazdi-tudástár beállításokkal, kirepült fajták listája.
   - Kereső szinonimákkal (pl. „dán dog” → Német dog), 🎲 Meglepetés (mobilon rázással is).
 - **Rendszerszintű funkciók:**
-  - Sötét mód körkörös felfedéssel, 3 lépéses bemutató, telepítési ajánlat.
+  - Sötét mód körkörös felfedéssel, nyitó ablak és 3 lépéses bemutató (lásd 26.12), telepítési ajánlat.
   - Megosztható URL-állapot, billentyűzetes térbeli navigáció, csökkentett mozgás mód.
 
 ### 26.2 Eltérések a specifikációtól
@@ -1510,5 +1516,24 @@ Valódi telefonos visszajelzés: a telepített PWA betöltésekor és animáció
 | 412 px | 2,46 px/képkocka | kb. 0,03 px/képkocka |
 
 Szűrő nélkül, a térképen és asztali rangsor módban változatlanul kb. 0,03–0,04 px/képkocka. A kavarás hatása megmaradt (egy húzás 105–122 buborékot mozdít el).
+
+### 26.12 Nyitó ablak és kiemelt bemutató (2026-09-25, v1.5.0)
+- **Kérés:** az első látogató azonnal a teljes szűrőpanelt és felhőt látta, a bemutató kis ablakai pedig alig tűntek fel.
+- **Nyitó ablak** (`src/js/70-onboard.js`, `#welcome`):
+  - Első látogatáskor 450 ms-mal a betöltés után ugrik fel, így mögötte látszik a felhő kipattanása.
+  - **Asztalon:** két hasáb. Balra a nagy szöveg (Fraunces 800, kb. 55–76 px), jobbra a kép, amely kilóg a doboz tetején. A doboz kb. 78vw × 68vh, a képernyő kb. felét takarja.
+  - **Telefonon és álló tableten:** egymás alatt, fent a kép, középre zárt szöveg.
+  - **A kép** óriás buborék, ahogy a fajták a felhőben: fehér perem, köré rajzolódó korall gyűrű, 7 lebegő fajtabuborék a sprite-ból, „100% illik hozzád” címke. A kéz és a mancs találkozásánál szívecskék pattannak ki.
+  - A képet a `tools/make_hero.py` vágja ki a marketing `kv_pacsi_highfive.png` kulcsképéből (`img/nyito-pacsi.webp`, 960 × 960, 64 KB). A standalone beágyazza, a PWA előre gyorsítótárazza.
+  - Modális: az app `inert`, a fókusz a „Kezdjük!” gombon marad. Mellékattintásra a gomb megbillen; Esc = „Kezdjük!”.
+- **Bemutató:**
+  - **Reflektor:** a célpont körül egy `box-shadow: 0 0 0 200vmax` réteg sötétít, `pointer-events: none`, így a kattintás átmegy rajta. A célpont körül lüktető korall gyűrű (csak transform/opacity).
+  - **Tippbuborék:** korall keret, a kabala portréja, „Tipp n/3” jelzés, minden lépésnél újra beugrik.
+  - **Automatikus továbblépés:** ha a látogató megteszi, amit a lépés kér (kártyát nyit, szűrőt kapcsol, kvízt nyit), a bemutató 1,5 s múlva, illetve a kártya vagy lap bezárásakor továbblép.
+  - Nyitott kártya, szűrőlap, fiók vagy kereső alatt a bemutató elbújik, utána visszajön.
+- **Mikor jelenik meg:**
+  - Csak első látogatáskor (`pacsi:coach` még nincs beállítva), és akkor sem, ha a link kártyát vagy kvízt nyit.
+  - `?bemutato`: újra megmutatja. `?nocoach`: kihagyja (marketing-felvételek). Tippek → „Bemutató újra”: nyitó ablak + bemutató.
+- **Csökkentett mozgás:** minden késleltetett elem azonnal a helyén van.
 
 *pacsi 🐾 – mert a jó döntés is egy kézfogással kezdődik.*

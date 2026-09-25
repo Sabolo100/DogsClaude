@@ -389,32 +389,7 @@ qInput.addEventListener('keydown', e => {
   if (e.key === 'Escape') { qInput.value = ''; applySearch(''); qInput.blur(); }
 });
 
-/* ---------- Bemutató (coach mark) ---------- */
-const COACH = [
-  { t: () => stage, h: 'Szia, itt a Pacsi! 🐾', p: () => `Ez itt ${TOTAL} kutyafajta egy felhőben. ${S.mobile ? 'Koppints' : 'Vidd az egeret'} egy buborékra, és megtudod, ki az.` },
-  { t: () => S.mobile ? $('#dock') : $('#panel'), h: 'Szűrj, és figyeld!', p: () => modeOf() === 'rank' ? 'Kapcsolj be egy szűrőt, és nézd, ki ugrik előre!'
-    : S.mobile ? 'Kapcsolj be egy szűrőt: ami nem illik hozzád, kirepül.' : 'Kapcsolj be egy szűrőt: ami nem illik hozzád, eltűnik, a többi megnő.' },
-  { t: () => S.mobile ? $('[data-tab="kviz"]') : $('#quizBtn'), h: 'Nem tudod, hol kezdd?', p: () => 'A Párkereső kvíz 10 kérdés, kb. 1 perc – és élőben formálja a felhőt.' },
-];
-function coach(i = 0) {
-  const box = $('#coach');
-  if (i >= COACH.length) { box.hidden = true; store.set('coach', 1); return; }
-  const c = COACH[i], tg = c.t();
-  box.hidden = false;
-  box.className = 'coach';
-  box.innerHTML = `<h4>${c.h}</h4><p>${c.p()}</p><div class="row"><span class="dots3">${COACH.map((_, j) => `<i class="${j === i ? 'on' : ''}"></i>`).join('')}</span>
-    <span><button class="link" data-skip>Kihagyom</button> <button class="btn fill" data-next style="height:38px;padding:0 16px">${i === COACH.length - 1 ? 'Kezdjük!' : 'Tovább'}</button></span></div>`;
-  const q = tg.getBoundingClientRect(), w = box.offsetWidth, h = box.offsetHeight;
-  let x, y;
-  if (i === 0) { x = q.left + q.width / 2 - w / 2; y = q.top + q.height / 2 + 60; box.style.setProperty('--ax', w / 2 - 8 + 'px'); }
-  else if (!S.mobile && i === 1) { x = q.right + 16; y = q.top + 120; box.classList.add('left'); box.style.setProperty('--ay', '30px'); }
-  else if (!S.mobile && i === 2) { x = q.right + 16; y = q.top + q.height / 2 - h / 2; box.classList.add('left'); box.style.setProperty('--ay', h / 2 - 8 + 'px'); }
-  else { x = 16; y = q.top - h - 14; box.classList.add('up'); box.style.setProperty('--ax', clamp(q.left + q.width / 2 - 16 - 8, 20, w - 30) + 'px'); }
-  box.style.left = clamp(x, 12, innerWidth - w - 12) + 'px';
-  box.style.top = clamp(y, 12, innerHeight - h - 12) + 'px';
-  $('[data-next]', box).onclick = () => coach(i + 1);
-  $('[data-skip]', box).onclick = () => coach(COACH.length);
-}
+/* A bemutató (nyitó ablak + coach mark) a 70-onboard.js-ben van. */
 
 /* ---------- Telepítési ajánlat (PWA) ---------- */
 let installEvt = null;

@@ -272,7 +272,7 @@ function setting(k, el) {
   if (k === 'theme') { toggleTheme(); el.setAttribute('aria-pressed', S.theme === 'dark'); }
   else if (k === 'rm') { S.rmUser = !S.rmUser; store.set('rm', S.rmUser); document.documentElement.classList.toggle('rm', RM()); el.setAttribute('aria-pressed', S.rmUser); }
   else if (k === 'mode') { setMode(modeOf() === 'strict' ? 'rank' : 'strict'); renderDrawer(); }
-  else if (k === 'coach') { closeDrawer(); setTimeout(() => coach(0), 400); }
+  else if (k === 'coach') { closeDrawer(); preloadHero(); setTimeout(startOnboarding, 400); }
 }
 
 /* ---------- Kirepült fajták (mobil) ---------- */
