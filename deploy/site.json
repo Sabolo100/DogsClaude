@@ -3,7 +3,7 @@
   "url": "https://pacsit.hu",
   "stat": {
     "endpoint": "https://stat.pacsit.hu/api/send",
-    "website": "",
+    "website": "54fc0966-6e5f-4ad6-b8c3-7ea5af9642e9",
     "hosts": ["pacsit.hu", "www.pacsit.hu"]
   }
 }

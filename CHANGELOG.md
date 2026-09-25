@@ -4,6 +4,9 @@ A verziószám a `VERSION` fájlban van, szemantikus verziózással (FŐ.MELLÉK
 - **Mobilon:** a Tippek panel névjegykártyáján.
 - **Asztalon:** a bal oldali panel alján.
 
+## 1.6.1 – 2026-09-25
+- **A névtelen statisztika bekapcsolva:** a stat.pacsit.hu (Umami) webhely-azonosítója bekerült a `deploy/site.json`-ba, így a pacsit.hu mostantól mér.
+
 ## 1.6.0 – 2026-09-25
 - **Saját domain: <https://pacsit.hu>.** A Hetzner-szerveren fut, a Coolify telepíti (`Dockerfile`, `deploy/nginx.conf`). HTTPS Let's Encrypttel, a www és a http a pacsit.hu-ra irányít. A GitHub Pages változat tükörként megmarad.
 - **Megosztás:** a fajta-, a kvíz- és a kedvenclista-megosztás mindig a pacsit.hu-ra mutat (eddig a www.darwinai.hu szerepelt). A kvíz eredményképén is a pacsit.hu áll.
