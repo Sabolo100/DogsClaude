@@ -1,0 +1,4 @@
+# A konténerbe csak a kiszolgált PWA és az nginx-beállítás kerül (gyors build, nincs benne forrás, kép-nyersanyag, titok)
+*
+!dist/pwa/**
+!deploy/nginx.conf
