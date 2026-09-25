@@ -4,6 +4,9 @@ A verziószám a `VERSION` fájlban van, szemantikus verziózással (FŐ.MELLÉK
 - **Mobilon:** a Tippek panel névjegykártyáján.
 - **Asztalon:** a bal oldali panel alján.
 
+## 1.7.1 – 2026-09-25
+- **Hírlevél:** új „Már csak egy lépés: nézd meg a postafiókodat!” oldal (`/hirlevel/megerosites.html`). A feliratkozó gomb után ide érkezik az olvasó, a megerősítés után pedig a köszönőoldalra.
+
 ## 1.7.0 – 2026-09-25
 - **Új: feliratkozó oldal a heti Pacsi-levélhez – <https://pacsit.hu/hirlevel/>.**
   - Az app arculatával: a Pacsi kabala, fajtaportrék, rövid bemutató arról, mit kap az olvasó, és egy mintalevél.

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pacsi-levél – heti kutyás levél</title>
+<title>Már csak egy lépés! – Pacsi-levél</title>
 <meta name="description" content="Csütörtökönként egy levél a Pacsitól: a hét fajtája, gazdi-tippek, egy kis fejtörő. Ingyenes, bármikor leiratkozhatsz.">
 <meta property="og:title" content="Pacsi-levél – heti kutyás levél">
 <meta property="og:description" content="A hét fajtája, gazdi-tippek, fejtörő – csütörtökönként, ingyen.">
 <meta property="og:image" content="https://pacsit.hu/og.jpg">
 <meta property="og:url" content="https://pacsit.hu/hirlevel/">
-<link rel="canonical" href="https://pacsit.hu/hirlevel/">
+<meta name="robots" content="noindex">
 <link rel="icon" href="../icons/favicon-64.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -105,106 +105,15 @@ footer a { color: var(--ink-2); }
 </head>
 <body>
 <div class="blobs" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="paw" viewBox="0 0 24 24"><ellipse cx="6" cy="9.5" rx="2.1" ry="2.7"/><ellipse cx="10" cy="5.6" rx="2.1" ry="2.8"/><ellipse cx="14.6" cy="5.6" rx="2.1" ry="2.8"/><ellipse cx="18.4" cy="9.6" rx="2.1" ry="2.7"/><path d="M12.3 11.2c2.6 0 5.6 3.4 5.6 6.2 0 2-1.5 2.9-3.2 2.9-1 0-1.7-.5-2.4-.5s-1.4.5-2.4.5c-1.7 0-3.2-.9-3.2-2.9 0-2.8 3-6.2 5.6-6.2z"/></symbol></defs></svg>
-
-<header><div class="wrap">
-  <a class="logo" href="../?utm_source=hirlevel-oldal"><span>Pacs<span class="i">ı<svg viewBox="0 0 24 24"><use href="#paw"/></svg></span></span><small>by DarwinAI</small></a>
-  <a class="back" href="../?utm_source=hirlevel-oldal">← Vissza a Pacsihoz</a>
-</div></header>
-
-<main class="wrap">
-  <div class="hero">
-    <div>
-      <div class="kicker">Pacsi-levél · csütörtökönként</div>
-      <h1>Egy pacsi hetente – <em>a postafiókodba.</em></h1>
-      <p class="lead">A hét fajtája, gazdi-tippek, egy kis fejtörő és a Pacsi újdonságai. Hetente egyszer, ingyen – és bármikor leiratkozhatsz egy kattintással.</p>
-      <div class="card">
-        <form id="f" novalidate method="post" action="https://arworks.us12.list-manage.com/subscribe/post?u=5b46aa73e432b62ec097663ca&amp;id=066364570f">
-          <label class="f" for="email"><span>E-mail-címed</span><input type="email" id="email" name="EMAIL" autocomplete="email" required placeholder="pl. anna@pelda.hu"></label>
-          <label class="f" for="fname"><span>Keresztneved <small>(nem kötelező – így szólítunk)</small></span><input type="text" id="fname" name="FNAME" autocomplete="given-name" placeholder="pl. Anna"></label>
-          <div class="hp" aria-hidden="true"><input type="text" name="b_5b46aa73e432b62ec097663ca_066364570f" tabindex="-1" value=""></div>
-          <label class="consent" for="ok"><input type="checkbox" id="ok" required><span>Kérem a Pacsi heti levelét. Elolvastam az <a href="#adatkezeles">adatkezelési tudnivalókat</a>, és bármikor leiratkozhatok.</span></label>
-          <button class="go" type="submit" id="go">Feliratkozom 🐾</button>
-          <div id="msg" role="status" aria-live="polite"></div>
-          <p class="fine">A gomb után a Mailchimp oldalára kerülsz („Már csak egy lépés!”), és kapsz egy megerősítő levelet – abban kattints a gombra, és kész.</p>
-        </form>
-      </div>
-    </div>
-    <div class="art" aria-hidden="true">
-      <div class="ring"></div>
-      <div class="big" style="background-image:url('../img/nyito-pacsi.webp')"></div>
-      <div class="b" style="width:22%;height:22%;left:-2%;top:6%;background-image:url('../img/portrek/magyar-vizsla.webp')"></div>
-      <div class="b" style="width:17%;height:17%;right:0;top:0;background-image:url('../img/portrek/puli.webp');animation-delay:-2s"></div>
-      <div class="b" style="width:19%;height:19%;right:-3%;bottom:14%;background-image:url('../img/portrek/golden-retriever.webp');animation-delay:-4s"></div>
-      <div class="b" style="width:15%;height:15%;left:4%;bottom:6%;background-image:url('../img/portrek/francia-bulldog.webp');animation-delay:-1s"></div>
-      <div class="tag" style="left:18%;bottom:-2%">✉️ csütörtök 10:00</div>
-    </div>
+<main class="wrap" style="min-height:80vh;display:grid;place-items:center;text-align:center">
+  <div style="max-width:560px">
+    <div class="art" style="max-width:220px;margin:0 auto" aria-hidden="true"><div class="ring"></div><div class="big" style="background-image:url('../img/nyito-pacsi.webp')"></div></div>
+    <div class="kicker" style="margin-top:22px">Pacsi-levél</div>
+    <h1>Már csak egy lépés: <em>nézd meg a postafiókodat!</em></h1>
+    <p class="lead" style="margin-inline:auto">Küldtünk egy megerősítő levelet. Kattints benne a gombra, és ezzel kész a feliratkozás – csütörtökön jövünk. 🐾</p>
+    <p class="fine" style="margin-top:18px">Nem jött meg pár perc alatt? Nézd meg a Promóciók vagy a Spam mappát is. Ha ott sincs, <a href="./">próbáld újra</a>, vagy írj nekünk: hello@pacsit.hu</p>
+    <p style="margin-top:26px"><a class="go" style="display:inline-block;text-decoration:none;font:800 17px/1 var(--font-u);color:#fff;border-radius:999px;padding:16px 26px;background:linear-gradient(100deg,#EE5A2C,#FF8A3D 60%,#FFB24A)" href="../?utm_source=hirlevel-megerosites">Addig is: irány a Pacsi</a></p>
   </div>
-
-  <section>
-    <div class="kicker">Mit kapsz?</div>
-    <h2>Rövid, kedves, hasznos – hetente egyszer</h2>
-    <div class="feat">
-      <div><span class="e">🐕</span><b>A hét fajtája</b><p>Egy fajta közelről: kinek illik, kinek nem, és egy érdekesség, amit biztosan nem tudtál.</p></div>
-      <div><span class="e">💡</span><b>Gazdi-tippek</b><p>Évszakhoz, ünnepekhez igazítva: őszi túra, esti séta, szilveszteri felkészülés.</p></div>
-      <div><span class="e">🧩</span><b>Tippelj!</b><p>Egy kis fejtörő minden héten – a megfejtés ott van a fajta kártyáján a Pacsiban.</p></div>
-      <div><span class="e">🤝</span><b>Semmi spam</b><p>Hetente egy levél, reklámzuhatag nélkül. Leiratkozni minden levél aljáról lehet.</p></div>
-    </div>
-  </section>
-
-  <section class="sample">
-    <div class="shot"><img src="minta.jpg" alt="Minta a Pacsi-levélből: fejléckép a Pacsi kabalával, cím és bevezető" width="560" height="1032" loading="lazy"></div>
-    <div>
-      <div class="kicker">Így néz ki</div>
-      <h2>Egy levél, amit tényleg jó megnyitni</h2>
-      <ul>
-        <li><span>✓</span>Szép illusztrációk a Pacsi stílusában, telefonon is kényelmesen olvasható.</li>
-        <li><span>✓</span>Minden fajtás link egyből a fajta kártyáját nyitja meg a Pacsiban.</li>
-        <li><span>✓</span>Ha továbbküldöd egy barátodnak, ő is fel tud iratkozni belőle.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="adatkezeles">
-    <div class="privacy">
-      <h3>Adatkezelési tudnivalók röviden</h3>
-      <p>A megadott e-mail-címet (és ha megadod, a keresztneved) kizárólag a Pacsi-levél küldésére használjuk, a hozzájárulásod alapján. Az adatkezelő az ARworks Kft. (1012 Budapest, Várfok utca 3-5.), a leveleket az Intuit Mailchimp küldi adatfeldolgozóként. A levelek megnyitását és a linkekre kattintást összesítve mérjük, hogy jobb leveleket írhassunk.</p>
-      <p>Bármikor leiratkozhatsz a levelek alján lévő linkkel, vagy ha írsz a <a href="mailto:hello@pacsit.hu">hello@pacsit.hu</a> címre. Kérheted az adataid törlését, helyesbítését, és panasszal fordulhatsz a NAIH-hoz (naih.hu).</p>
-    </div>
-  </section>
 </main>
-
-<footer class="wrap"><span>Pacsi by DarwinAI · <a href="../?utm_source=hirlevel-oldal">pacsit.hu</a></span><span>v1.7.1 · build 54462a6</span></footer>
-
-<script>
-(() => {
-  'use strict';
-  const $ = s => document.querySelector(s);
-  const f = $('#f'), msg = $('#msg'), go = $('#go');
-  const show = (t, ok) => { msg.className = 'msg ' + (ok ? 'ok' : 'err'); msg.textContent = t; };
-
-  /* névtelen statisztika (Umami, sütik nélkül) – mint az appban: csak a saját domainen, „ne kövess” jelzésnél nem */
-  const STAT = { endpoint: 'https://stat.pacsit.hu/api/send', website: '54fc0966-6e5f-4ad6-b8c3-7ea5af9642e9', hosts: ['pacsit.hu', 'www.pacsit.hu'] };
-  const statOk = () => STAT.website && !STAT.website.startsWith('__') && STAT.hosts.includes(location.hostname)
-    && navigator.doNotTrack !== '1' && !navigator.globalPrivacyControl && (() => { try { return localStorage.getItem('pacsi:nostat') !== 'true'; } catch (e) { return true; } })();
-  function stat(name, data) {
-    if (!statOk()) return;
-    const payload = { website: STAT.website, hostname: location.hostname, url: location.origin + location.pathname + location.search,
-      referrer: document.referrer, title: document.title, language: navigator.language, screen: `${screen.width}x${screen.height}`, tag: 'v1.7.1' };
-    if (name) { payload.name = name; if (data) payload.data = data; }
-    try { fetch(STAT.endpoint, { method: 'POST', keepalive: true, credentials: 'omit', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'event', payload }) }).catch(() => {}); } catch (e) { /* nem fontos */ }
-  }
-  stat();
-
-  f.addEventListener('submit', e => {
-    const email = $('#email').value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { e.preventDefault(); show('Add meg az e-mail-címedet.', false); $('#email').focus(); return; }
-    if (!$('#ok').checked) { e.preventDefault(); show('Pipáld be, hogy kéred a levelet.', false); $('#ok').focus(); return; }
-    stat('hirlevel-feliratkozas');
-    go.disabled = true; show('Pillanat…', true);   // a böngésző a Mailchimp megerősítő oldalára lép tovább
-  });
-  addEventListener('pageshow', () => { go.disabled = false; });   // visszalépéskor újra kattintható
-})();
-</script>
 </body>
 </html>
