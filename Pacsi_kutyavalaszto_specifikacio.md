@@ -1257,9 +1257,9 @@ Cél: **WCAG 2.2 AA**.
 - **Korlátozott fajták:** semleges tájékoztatás, országonként eltérő szabályok, „nézz utána” megfogalmazás. Tilos „veszélyes fajta” címkét használni.
 - **„Allergiabarát”** helyett **„allergiabarátabb / kevés szőrhullás”**: nincs 100%-ban hipoallergén kutya.
 - **Örökbefogadás** mint egyenrangú út; nincs tenyésztői reklám az MVP-ben.
-- **Adatvédelem (GDPR):** nincs regisztráció, nincs szerveroldali adat, nincs süti. A localStorage csak funkcionális célt szolgál. Analitika csak **sütimentes**, anonim megoldással (pl. Plausible/Umami) lehet, és csak a hosztolt változatban. **Nincs cookie-banner**, mert nincs rá szükség.
+- **Adatvédelem (GDPR):** nincs regisztráció, nincs szerveroldali adat, nincs süti. A localStorage csak funkcionális célt szolgál. Analitika csak **sütimentes**, anonim megoldással (pl. Plausible/Umami) lehet, és csak a hosztolt változatban. **Nincs cookie-banner**, mert nincs rá szükség. *(Megvalósítva v1.6.0: saját szerveren futó Umami, csak a pacsit.hu-n, kikapcsolható, DNT/GPC-tisztelettel – lásd 26.13.)*
 - **Képek:** saját generálású illusztrációk. A felhasználási feltételeket rögzíteni kell az Impresszumban.
-- **Márka:** a „pacsi” név és domain (pacsi.hu / pacsi.app) szabadságát indulás előtt ellenőrizni kell (védjegy, domain).
+- **Márka:** a „pacsi” név szabadságát (védjegy) indulás előtt ellenőrizni kell. *Domain (2026-09-25): a pacsi.hu foglalt volt, ezért **pacsit.hu** lett; a rendszer neve továbbra is Pacsi.*
 
 ---
 
@@ -1307,7 +1307,7 @@ Cél: **WCAG 2.2 AA**.
 4. **Árak:** szerepeljen-e konkrét kölyökár-sáv (változékony, vitatott), vagy csak költségszint (€–€€€)? *Javaslat: csak költségszint + havi fenntartási becslés.*
 5. **Hosztolás és domain:** GitHub Pages / Netlify + saját domain?
 6. **Szakmai lektor:** ki validálja a jellemző-pontszámokat (kinológus, állatorvos, fajtaklub)?
-7. **Analitika:** kell-e (sütimentes), vagy teljesen analitika nélkül induljunk?
+7. **Analitika:** kell-e (sütimentes), vagy teljesen analitika nélkül induljunk? → *Eldőlt (2026-09-25): kell, sütimentes Umami a saját szerveren (26.13).*
 
 ---
 
@@ -1535,5 +1535,22 @@ Szűrő nélkül, a térképen és asztali rangsor módban változatlanul kb. 0,
   - Csak első látogatáskor (`pacsi:coach` még nincs beállítva), és akkor sem, ha a link kártyát vagy kvízt nyit.
   - `?bemutato`: újra megmutatja. `?nocoach`: kihagyja (marketing-felvételek). Tippek → „Bemutató újra”: nyitó ablak + bemutató.
 - **Csökkentett mozgás:** minden késleltetett elem azonnal a helyén van.
+
+### 26.13 Saját domain, statisztika, linkelőnézet (2026-09-25, v1.6.0)
+- **Domain:** <https://pacsit.hu> (a pacsi.hu foglalt volt). A DNS a Hetzner-szerverre mutat, ott a Coolify futtatja:
+  - „Pacsi” projekt, `pacsi-web` alkalmazás a nyilvános repóból, `Dockerfile` (nginx:alpine + `dist/pwa`);
+  - HTTPS Let's Encrypttel; www → pacsit.hu és http → https átirányítás, állapotfigyelés.
+  - A GitHub Pages változat tükörként megmarad.
+- **nginx (`deploy/nginx.conf`):**
+  - A HTML, a service worker és a manifest `no-cache` (ETag); a képek 1 napig, az ikonok 1 hétig gyorsítótárazhatók. A service worker a telepítéskor `cache: 'reload'`-dal tölt, így ez nem akadályozza a frissítést.
+  - Gzip; ismeretlen útvonalról a kezdőlapra irányít.
+  - Rövid, követhető posztlinkek: `/f/<poszt>`, `/i`, `/t`, `/l/<poszt>`, `/y` → `/?utm_source=<platform>&utm_medium=social&utm_campaign=pacsi&utm_content=<poszt vagy bio>`.
+- **Statisztika (21. fejezet):** Umami a saját szerveren (`pacsi-stat` szolgáltatás, <https://stat.pacsit.hu>, saját PostgreSQL-lel), sütik és személyes adat nélkül.
+  - Az app nem tölt be külső szkriptet: az `src/js/15-stat.js` a hivatalos követőkóddal azonos formában küld az `/api/send` végpontra.
+  - Csak a `deploy/site.json`-ban megadott domaineken mér, és csak ha van webhely-azonosító.
+  - Kikapcsolható (Tippek → Beállítások → „Névtelen statisztika”), a DNT/GPC jelzést tiszteletben tartja, a keresést ékezet nélkül, legfeljebb 40 karakterrel rögzíti.
+  - Az események a 2. fejezet mérőszámait fedik le (szűrőhasználat, kártyanyitás, kvíz-befejezés, megosztás, PWA-telepítés); a teljes lista a README-ben van.
+- **Linkelőnézet:** kanonikus cím és og:image (a marketingkészlet `p_og` képe a pacsit.hu felirattal, 1200 × 630). Az og:title és az og:description a döntési kérdést teszi előre.
+- **Megosztások:** a fajta-, a kvíz- és a kedvenclista-megosztás mindig a pacsit.hu-ra mutat; a kvíz eredményképén a pacsit.hu áll.
 
 *pacsi 🐾 – mert a jó döntés is egy kézfogással kezdődik.*

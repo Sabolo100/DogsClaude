@@ -28,6 +28,7 @@ function init() {
   if (h.card) setTimeout(() => openCard(h.card, { push: false }), 1300);
   else if (h.kviz) { syncHash(); setTimeout(() => openDrawer('kviz'), 1300); }
   store.set('visits', store.get('visits', 0) + 1);
+  statStart();   // névtelen statisztika: megnyitás (csak a saját domainen, lásd 15-stat.js)
   // első látogatás: nyitó ablak (a felhő közben pattan ki mögötte), a „Kezdjük!” után a bemutató.
   // ?bemutato: újra megmutatja (pl. telepített appban); ?nocoach: nincs bevezetés (marketing-felvételek)
   const tour = /[?&]bemutato/.test(location.search);

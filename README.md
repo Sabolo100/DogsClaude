@@ -4,7 +4,9 @@
 
 124 népszerű, Európában tartott kutyafajta egy élő, interaktív felhőben. Szűrj, figyeld, ki ugrik előre (vagy repül ki), hasonlíts össze, töltsd ki a Párkereső kvízt.
 
-### ▶ Élő verzió: **<https://sabolo100.github.io/DogsClaude/>**
+### ▶ Élő verzió: **<https://pacsit.hu>**
+
+(Tükör, a korábbi cím: <https://sabolo100.github.io/DogsClaude/> – a GitHub Pages továbbra is frissül.)
 
 Telepítés appként (az első megnyitás után offline is működik):
 
@@ -17,7 +19,7 @@ Telepítés appként (az első megnyitás után offline is működik):
 | Mit | Hogyan |
 |---|---|
 | **Egyfájlos verzió** | Nyisd meg a `dist/pacsi.html` fájlt dupla kattintással. Minden benne van (adatok, 128 portré), offline is működik. Az egyetlen külső elem a Google Fonts: offline a rendszer betűtípusai lépnek helyette. |
-| **PWA (telepíthető app)** | A `dist/pwa/` mappát a `.github/workflows/pages.yml` munkafolyamat minden `main`-re pusholt változás után automatikusan kiteszi GitHub Pagesre (lásd fent). Bármilyen más statikus tárhelyen is működik (Netlify, Cloudflare Pages): HTTPS-en telepíthető, és az első betöltés után teljesen offline megy. |
+| **PWA (telepíthető app)** | A `dist/pwa/` mappa. Élesben a pacsit.hu szolgálja ki (lásd lent: *Élesítés*), tükörként a GitHub Pages is (`.github/workflows/pages.yml`, minden `main`-re pusholt `dist/pwa/` változás után). HTTPS-en telepíthető, az első betöltés után teljesen offline megy. |
 | **Helyi kipróbálás** | `python -m http.server 8765 --directory dist`, majd <http://localhost:8765/pacsi.html> vagy <http://localhost:8765/pwa/> |
 
 Az app állapota a URL-ben tárolódik, így linkkel megosztható. Például:
@@ -37,7 +39,36 @@ python tools/build.py
 
 Ez futtatja az adatépítőt (`tools/build_data.py`), összefűzi a `src/` fájlokat, beágyazza a képeket, és legyártja a `dist/pacsi.html` fájlt és a `dist/pwa/` mappát (manifest, service worker, ikonok).
 
-**Élesítés:** build után commit + push a `main` ágra. A Pages-munkafolyamat pár percen belül kiteszi az új `dist/pwa/` tartalmat. A service worker verziója a tartalomból számolódik, ezért a már telepített appok a következő megnyitáskor „Új verzió érhető el” értesítést kapnak.
+**Élesítés:**
+1. Build, majd commit és push a `main` ágra.
+2. **pacsit.hu (Hetzner, Coolify):** a Coolify „Pacsi” projektjében a `pacsi-web` alkalmazás a repóból épít (`Dockerfile`: nginx + `dist/pwa`, beállítás: `deploy/nginx.conf`). A push után a Coolify-ban a **Deploy** gombbal (vagy az API `GET /api/v1/deploy?uuid=<app>` hívásával) indul az új verzió. Nyilvános repóforrás miatt pushra magától nem települ.
+3. **Tükör (GitHub Pages):** a Pages-munkafolyamat pár percen belül magától kiteszi az új `dist/pwa/` tartalmat.
+
+A service worker verziója a tartalomból számolódik, ezért a már telepített appok a következő megnyitáskor „Új verzió érhető el” értesítést kapnak.
+
+**Rövid, követhető linkek** (nginx): `pacsit.hu/f/<poszt>` Facebook, `/i` Instagram, `/t` TikTok, `/l/<poszt>` LinkedIn, `/y` YouTube. Mind a `/?utm_source=<platform>&utm_medium=social&utm_campaign=pacsi&utm_content=<poszt vagy bio>` címre irányít.
+
+## Statisztika (névtelen, sütik nélkül)
+
+- **Eszköz:** Umami a saját szerveren (Coolify, „Pacsi” projekt, `pacsi-stat` szolgáltatás), a felülete: <https://stat.pacsit.hu>.
+- **Beállítás:** `deploy/site.json`: a végpont, a webhely-azonosító (`website`) és a domainek, ahol mérünk. Üres azonosítóval nem mér.
+- **Csak a pacsit.hu-n mér**, a Beállításokban kikapcsolható, és a böngésző „ne kövess” (DNT, GPC) jelzését is tiszteletben tartja. Külső szkriptet nem tölt be: az `src/js/15-stat.js` küldi az eseményeket.
+- **Események:**
+
+| Esemény | Tulajdonságok | Mit mutat |
+|---|---|---|
+| (megtekintés) | forrás, UTM | honnan jönnek |
+| `inditas` | mod (telepített app / böngésző), eszkoz, tema | megnyitás módja |
+| `kedvenc`, `kedvenc-torles` | fajta | a legkedveltebb fajták |
+| `kartya` | fajta | mely fajták érdeklik az embereket |
+| `szuro` | szuro (pl. „Méret: Kicsi”, „Gyerekbarát”) | milyen jellemzőkre szűrnek |
+| `kereses` | kifejezes, talalat, db | mit keresnek (és mit nem találnak) |
+| `kviz-indul`, `kviz-kesz` | tipus, elso | kvíz-befejezési arány, gazditípusok |
+| `osszevetes`, `megosztas`, `meglepetes` | fajtak / mit / fajta | összehasonlítás, megosztás |
+| `nezet`, `mod`, `bemutato` | nezet / mod / lepes | nézetek, mód, a bemutató tölcsére |
+| `telepites`, `telepites-ajanlat` | valasz | PWA-telepítés |
+
+- **Fejlesztéshez:** `localStorage.setItem('pacsi:statlog', 'true')`, ekkor az események a konzolba is kiíródnak.
 
 ## Verziózás
 
@@ -68,6 +99,9 @@ img/sheets/                           a 8 generált 4×4-es portré-rácskép + 
 img/portrek/, img/thumbs/             szeletelt portrék (kártya / buborék)
 img/sprite-thumbs.webp                a buborékok közös sprite-ja
 img/nyito-pacsi.webp                  a nyitó ablak képe (tools/make_hero.py vágja a marketing „pacsi” kulcsképéből)
+img/og.jpg                            linkelőnézeti kép (a marketingkészlet p_og terve: marketing/social/images/designs.js → og)
+deploy/site.json                      saját domain + a statisztika beállítása (a build olvassa)
+deploy/nginx.conf, Dockerfile         a pacsit.hu kiszolgálása (Coolify, Hetzner)
 tools/generate_sheets.py              portrégenerálás (OpenAI gpt-image-2)
 tools/slice_sheets.py                 rácsfelismerés + szeletelés
 tools/build_data.py, tools/build.py   adat- és alkalmazás-build

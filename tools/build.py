@@ -59,13 +59,32 @@ def main():
     # Mindkettő látszik az appban (Tippek → névjegy, asztali panel lábléce), így ellenőrizhető, melyik verzió fut.
     app_ver = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
     hero = ROOT / "img" / "nyito-pacsi.webp"   # a nyitó ablak képe (tools/make_hero.py)
-    build_id = hashlib.sha1((css + js_src + data_json).encode("utf-8") + hero.read_bytes()).hexdigest()[:7]
+    # Saját domain + névtelen statisztika (Umami) – egy helyen: deploy/site.json
+    site_raw = (ROOT / "deploy" / "site.json").read_text(encoding="utf-8")
+    site = json.loads(site_raw)
+    site_url = site["url"].rstrip("/")
+    build_id = hashlib.sha1((css + js_src + data_json + site_raw).encode("utf-8") + hero.read_bytes()).hexdigest()[:7]
+    site_js = json.dumps({"url": site_url, "stat": site.get("stat", {})}, ensure_ascii=False)
     js = ("(() => {\n'use strict';\n" + f"const APP_VERSION = {json.dumps(app_ver)}, APP_BUILD = {json.dumps(build_id)};\n"
-          + js_src + "\n})();")
+          + f"const SITE = {site_js};\n" + js_src + "\n})();")
+    # megosztási előnézet (Facebook, Messenger, LinkedIn…): kanonikus cím és kép a saját domainen
+    site_head = "\n".join([
+        f'<link rel="canonical" href="{site_url}/">',
+        f'<meta property="og:url" content="{site_url}/">',
+        '<meta property="og:type" content="website">',
+        '<meta property="og:site_name" content="Pacsi">',
+        '<meta property="og:locale" content="hu_HU">',
+        f'<meta property="og:image" content="{site_url}/og.jpg">',
+        '<meta property="og:image:width" content="1200">',
+        '<meta property="og:image:height" content="630">',
+        '<meta property="og:image:alt" content="Egy kéz pacsit ad a Pacsi kabalájának – Melyik kutya illik hozzád? 124 kutyafajta egy élő felhőben.">',
+        '<meta name="twitter:card" content="summary_large_image">',
+    ])
 
     def assemble(img_script, head, favicon):
         out = html.replace("/*INLINE_CSS*/", css).replace("/*INLINE_JS*/", js.replace("</script", "<\\/script"))
         out = out.replace("/*INLINE_DATA*/", data_json).replace("<!--INLINE_IMG-->", img_script)
+        out = out.replace("<!--SITE_HEAD-->", site_head)
         return out.replace("<!--PWA_HEAD-->", head).replace("/*FAVICON*/", favicon)
 
     DIST.mkdir(exist_ok=True)
@@ -88,6 +107,9 @@ def main():
     (pwa / "icons").mkdir()
     shutil.copy(ROOT / "img" / "sprite-thumbs.webp", pwa / "img" / "sprite-thumbs.webp")
     shutil.copy(hero, pwa / "img" / hero.name)
+    og = ROOT / "img" / "og.jpg"   # megosztási előnézet (tools/make_og.py) – offline nem kell, ezért nincs a precache-ben
+    if og.exists():
+        shutil.copy(og, pwa / "og.jpg")
     for i in ids:
         shutil.copy(ROOT / "img" / "portrek" / f"{i}.webp", pwa / "img" / "portrek" / f"{i}.webp")
     (pwa / "icons" / "icon-192.png").write_bytes(png_bytes(make_icon(192)))

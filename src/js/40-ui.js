@@ -48,6 +48,7 @@ function srcPoint(el) {
 function toggleFilter(k, v, el) {
   mutate(S.f, k, v);
   haptic(8);
+  if (isOn(k, v)) stat('szuro', { szuro: statFilter(k, v) });   // melyik jellemzőre szűrnek (csak bekapcsoláskor)
   refresh(srcPoint(el));
 }
 function updateFilterUI() {
@@ -243,6 +244,7 @@ function setView(v) {
   if (S.view === v) return;
   const wasList = S.view === 'lista';
   S.view = v;
+  stat('nezet', { nezet: { felho: 'Felhő', csoport: 'Csoportok', terkep: 'Térkép', lista: 'Lista' }[v] || v });
   $('#listView').hidden = v !== 'lista';
   bubblesEl.style.visibility = v === 'lista' ? 'hidden' : '';
   stage.classList.toggle('list', v === 'lista');
@@ -257,6 +259,7 @@ $('#groupSeg').addEventListener('click', e => { const b = e.target.closest('[dat
 function setMode(m) {
   S.mode = m;
   store.set('mode2', m);
+  stat('mod', { mod: m === 'strict' ? 'Csak találatok' : 'Rangsor' });
   refresh({ x: LR.cx, y: LR.t });
 }
 $('#modeSeg').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) setMode(b.dataset.mode); });
@@ -402,7 +405,10 @@ function maybeInstall(reason, tries = 0) {
   const visits = store.get('visits', 0);
   if (reason !== 'quiz' && visits < 2) return;
   if (installEvt) {
-    toast('Tedd ki a kezdőképernyőre – offline is működik!', { action: 'Telepítés', onAction: () => installEvt.prompt(), ms: 5000 });
+    toast('Tedd ki a kezdőképernyőre – offline is működik!', { action: 'Telepítés', ms: 5000, onAction: () => {
+      installEvt.prompt();
+      if (installEvt.userChoice) installEvt.userChoice.then(c => stat('telepites-ajanlat', { valasz: c.outcome === 'accepted' ? 'elfogadta' : 'elutasította' })).catch(() => {});
+    } });
     store.set('installAsked', store.get('installAsked', 0) + 1);
   } else if (/iPhone|iPad|iPod/.test(navigator.userAgent) && location.protocol.startsWith('http')) {
     toast('Tipp: Megosztás → „Főképernyőhöz adás” – és a Pacsi appként fut.', { ms: 6000 });

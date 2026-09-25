@@ -40,6 +40,7 @@ function welcomeHTML() {
 function openWelcome(then) {
   if (WL.open) return;
   WL.open = true; WL.then = then;
+  stat('bemutato', { lepes: 'nyitó ablak' });
   welcomeEl.innerHTML = welcomeHTML();
   welcomeEl.classList.remove('out');
   welcomeEl.hidden = false;
@@ -61,6 +62,7 @@ function openWelcome(then) {
 function closeWelcome() {
   if (!WL.open || WL.busy) return;
   WL.busy = true;
+  stat('bemutato', { lepes: 'Kezdjük' });
   const go = $('[data-go]', welcomeEl), q = go.getBoundingClientRect();
   spark(q.left + q.width / 2, q.top + q.height / 2, 26, { speed: 6, g: .1 });
   haptic(12);
@@ -105,10 +107,11 @@ let CO = null;   // { i, sig, done, hold, iv, adv, rect }
 const coachBlocked = () => WL.open || !cardEl.hidden || !!S.drawer || $('#panel').classList.contains('open') || !$('#mobSearch').hidden;
 
 function coach(i = 0) {
-  if (i >= COACH.length) return endCoach();
+  if (i >= COACH.length) return endCoach(true, 'vége');
   if (!CO) CO = { iv: setInterval(coachWatch, 200) };
   clearTimeout(CO.adv);
   Object.assign(CO, { i, sig: filterSig(), done: false, adv: 0, rect: '' });
+  if (CO.statI !== i) { CO.statI = i; stat('bemutato', { lepes: `tipp ${i + 1}` }); }   // újramegjelenítéskor nem számol újra
   if (coachBlocked()) { CO.hold = true; hideCoach(); return; }
   CO.hold = false;
   showCoach(i);
@@ -178,9 +181,10 @@ function coachWatch() {
   const q = c.t().getBoundingClientRect();
   if (`${q.left},${q.top},${q.width},${q.height}` !== CO.rect) placeCoach(CO.i);   // átméretezés, elforgatás
 }
-function endCoach(save = true) {
+function endCoach(save = true, how = 'kihagyva') {
   if (!CO) return;
   clearInterval(CO.iv); clearTimeout(CO.adv);
+  if (save) stat('bemutato', { lepes: how === 'vége' ? 'vége' : `kihagyva (tipp ${CO.i + 1})` });
   CO = null;
   coachEl.hidden = true;
   spotEl.classList.remove('on');

@@ -731,15 +731,16 @@ function fxStep() {
 function applySearch(q) {
   S.q = q;
   const nq = norm(q.trim());
-  const hits = [];
+  const hits = [], all = [];
   for (const o of B) {
     const b = o.b;
     const hit = !!nq && (norm(b.nev).includes(nq) || norm(b.en).includes(nq) || (b.syn || []).some(s => norm(s).includes(nq)));
     if (o.dim !== (!!nq && !hit)) { o.dim = !!nq && !hit; o.el.classList.toggle('dim', o.dim); }
     if (o.el.classList.contains('spot') !== hit) o.el.classList.toggle('spot', hit);
-    if (hit && o.vis) hits.push(o);
+    if (hit) { all.push(o); if (o.vis) hits.push(o); }
   }
   if (hits.length === 1 && !RM()) { hits[0].jv = -6; }
+  statSearch(q, all);   // a statisztikában a szűrőktől független találat számít (mire keresett)
   return hits;
 }
 
@@ -748,6 +749,7 @@ function surprise() {
   const pool = B.filter(o => o.vis && o.st === 'in' && (o.b.m == null || o.b.m >= .6));
   if (!pool.length) return;
   const pick = pool[Math.floor(Math.random() * pool.length)];
+  stat('meglepetes', { fajta: pick.b.nev });
   if (!RM()) for (const o of B) if (o.st === 'in') { o.vx += rand(-10, 10); o.vy += rand(-10, 10); }
   haptic(20);
   setTimeout(() => { pulse(pick); pick.jv = -9; }, 380);

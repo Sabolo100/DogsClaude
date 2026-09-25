@@ -95,6 +95,7 @@ function openCard(id, { push = true, dir = 0 } = {}) {
   if (!b) return;
   setHover(null);
   const already = !cardEl.hidden;
+  if (S.card !== id) stat('kartya', { fajta: b.nev });   // melyik fajták érdeklik az embereket
   S.card = id;
   cardOrder = orderList();
   if (!cardOrder.includes(id)) cardOrder.unshift(id);
@@ -285,6 +286,7 @@ function toggleFav(id, srcEl) {
   updateBadges(on ? 'fav' : null);
   if (on) { burstAt(srcEl, true); haptic([8, 30, 8]); }
   const b = BY_ID.get(id);
+  stat(on ? 'kedvenc' : 'kedvenc-torles', { fajta: b.nev });
   if (S.card === id) {
     const btn = $('[data-act="fav"]', cardEl);
     if (btn) { btn.classList.toggle('on', on); btn.innerHTML = `${ic(on ? 'heart-f' : 'heart')}<span>${on ? 'Kedvenc' : 'Kedvencekhez'}</span>`; }
@@ -333,10 +335,12 @@ function flyToTray(id, srcEl) {
 /* ---------- Megosztás ---------- */
 async function shareBreed(id) {
   const b = BY_ID.get(id);
-  const url = ARTIFACT ? '' : location.href.split('#')[0] + '#b=' + id;
+  stat('megosztas', { mit: b.nev });
+  // mindig a saját domainre mutat (helyi fájlból, tükörről vagy artifactból megosztva is)
+  const url = `${SITE.url}/#b=${id}`;
   const text = `${b.nev} – ${b.tagline}`;
   if (ARTIFACT) {
-    try { await navigator.clipboard.writeText(`${text} 🐾 (Pacsi by DarwinAI · www.darwinai.hu)`); toast('A fajta leírása a vágólapra került 📋'); }
+    try { await navigator.clipboard.writeText(`${text} 🐾 ${url}`); toast('A fajta leírása a vágólapra került 📋'); }
     catch (e) { toast(esc(text)); }
     return;
   }

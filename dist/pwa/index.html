@@ -13,8 +13,18 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Pacsi">
-<meta property="og:title" content="Pacsi by DarwinAI">
-<meta property="og:description" content="124 népszerű kutyafajta egy élő, interaktív felhőben.">
+<meta property="og:title" content="Pacsi – Melyik kutya illik hozzád?">
+<meta property="og:description" content="124 kutyafajta egy élő felhőben. Szűrj, hasonlíts, töltsd ki az 1 perces Párkereső kvízt – ingyen, regisztráció nélkül.">
+<link rel="canonical" href="https://pacsit.hu/">
+<meta property="og:url" content="https://pacsit.hu/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pacsi">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:image" content="https://pacsit.hu/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Egy kéz pacsit ad a Pacsi kabalájának – Melyik kutya illik hozzád? 124 kutyafajta egy élő felhőben.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="icons/favicon-64.png">
@@ -1090,7 +1100,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 <script>window.PACSI_PWA=true;</script>
 <script>(() => {
 'use strict';
-const APP_VERSION = "1.5.0", APP_BUILD = "e3b7af3";
+const APP_VERSION = "1.6.0", APP_BUILD = "23075ad";
+const SITE = {"url": "https://pacsit.hu", "stat": {"endpoint": "https://stat.pacsit.hu/api/send", "website": "", "hosts": ["pacsit.hu", "www.pacsit.hu"]}};
 /* ==========================================================================
    Alapok: segédfüggvények, adatok, állapot, tárolás, URL-állapot
    ========================================================================== */
@@ -1237,6 +1248,70 @@ function syncHash(push = false) {
   };
   push ? go() : (hashTimer = setTimeout(go, 250));
 }
+
+/* ==========================================================================
+   Névtelen statisztika – Umami a saját szerverünkön (stat.pacsit.hu), sütik és személyes adat nélkül
+   --------------------------------------------------------------------------
+   Csak a saját domainen él (SITE.stat.hosts), és csak ha van website-azonosító (deploy/site.json).
+   Nem küld semmit, ha a látogató kikapcsolta (Tippek → Beállítások), vagy a böngészője „ne kövess”
+   (Do Not Track / Global Privacy Control) jelzést ad. Külső szkriptet sem tölt be: az eseményeket
+   ugyanabban a formában küldi az Umami /api/send végpontjára, mint a hivatalos követőkód.
+   Fejlesztéshez: localStorage 'pacsi:statlog' = true → minden esemény a konzolba is kiíródik.
+   ========================================================================== */
+const STAT = SITE.stat || {};
+const statAllowed = () => !!STAT.website && !ARTIFACT && (STAT.hosts || []).includes(location.hostname) && !store.get('nostat', false)
+  && navigator.doNotTrack !== '1' && window.doNotTrack !== '1' && !navigator.globalPrivacyControl;
+// csak külső hivatkozó számít (a saját oldalon belüli nem)
+const STAT_REF = (() => { try { const r = document.referrer; return r && new URL(r).origin !== location.origin ? r : ''; } catch (e) { return ''; } })();
+let statCache = '', statOff = false;
+
+/* stat() = oldalmegtekintés (az UTM-paraméterek innen látszanak); stat('név', { tulajdonság: érték }) = esemény */
+function stat(name, data) {
+  if (store.get('statlog', false)) console.info('[stat]', name || 'oldalmegtekintés', data || '');
+  if (statOff || !statAllowed()) return;
+  const payload = {
+    website: STAT.website, hostname: location.hostname, url: location.origin + location.pathname + location.search,   // a # utáni rész (szűrők) nem kell
+    referrer: STAT_REF, title: document.title, language: navigator.language, screen: `${screen.width}x${screen.height}`, tag: `v${APP_VERSION}`,
+  };
+  if (name) { payload.name = name.slice(0, 50); if (data) payload.data = data; }
+  try {
+    fetch(STAT.endpoint, {
+      method: 'POST', keepalive: true, credentials: 'omit', body: JSON.stringify({ type: 'event', payload }),
+      headers: { 'Content-Type': 'application/json', ...(statCache ? { 'x-umami-cache': statCache } : {}) },
+    }).then(r => (r.ok ? r.json() : null)).then(r => { if (r) { statOff = !!r.disabled; statCache = r.cache || statCache; } }).catch(() => {});
+  } catch (e) { /* offline vagy tiltott: a statisztika nem fontosabb az appnál */ }
+}
+
+/* Olvasható szűrőnév a kimutatásokhoz (pl. „Méret: Kicsi”, „Gyerekbarát”) */
+function statFilter(k, v) {
+  if (k === 't') return (TBY[v] && TBY[v].l) || v;
+  if (k === 'meret') return 'Méret: ' + (SIZE_L[v] || v);
+  if (k === 'energia') return 'Energia: ' + ((ENERGY.find(e => e[0] === v) || [])[1] || v);
+  if (k === 'szor') return 'Szőr: ' + (COAT_L[v] || v);
+  if (k === 'szerep') return 'Szerep: ' + (ROLE_L[v] || v);
+  if (k === 'fci') return `FCI ${v}. ${FCI[v] || ''}`.trim();
+  return `${k}: ${v}`;
+}
+
+/* Keresés: gépelés után 1,5 mp szünettel egyszer, ékezet nélkül, legfeljebb 40 karakter */
+let statQTimer = 0, statQLast = '';
+function statSearch(q, hits) {
+  const nq = norm(q).trim().replace(/\s+/g, ' ').slice(0, 40);
+  if (nq.length < 2 || nq === statQLast) return;   // a kereső bezárása (üres keresés) nem törli a függő eseményt
+  clearTimeout(statQTimer);
+  statQTimer = setTimeout(() => {
+    statQLast = nq;
+    stat('kereses', { kifejezes: nq, talalat: hits[0] ? hits[0].b.nev : '–', db: hits.length });
+  }, 1500);
+}
+
+/* Indulás: oldalmegtekintés + hogyan használják (telepített app vagy böngésző, mobil vagy asztal) */
+function statStart() {
+  stat();
+  const app = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  stat('inditas', { mod: app ? 'telepített app' : 'böngésző', eszkoz: S.mobile ? 'mobil' : 'asztali', tema: isDark() ? 'sötét' : 'világos' });
+}
+addEventListener('appinstalled', () => stat('telepites', { mod: 'app' }));
 
 /* ==========================================================================
    Szűrők, pontozás, kvíz
@@ -2166,15 +2241,16 @@ function fxStep() {
 function applySearch(q) {
   S.q = q;
   const nq = norm(q.trim());
-  const hits = [];
+  const hits = [], all = [];
   for (const o of B) {
     const b = o.b;
     const hit = !!nq && (norm(b.nev).includes(nq) || norm(b.en).includes(nq) || (b.syn || []).some(s => norm(s).includes(nq)));
     if (o.dim !== (!!nq && !hit)) { o.dim = !!nq && !hit; o.el.classList.toggle('dim', o.dim); }
     if (o.el.classList.contains('spot') !== hit) o.el.classList.toggle('spot', hit);
-    if (hit && o.vis) hits.push(o);
+    if (hit) { all.push(o); if (o.vis) hits.push(o); }
   }
   if (hits.length === 1 && !RM()) { hits[0].jv = -6; }
+  statSearch(q, all);   // a statisztikában a szűrőktől független találat számít (mire keresett)
   return hits;
 }
 
@@ -2183,6 +2259,7 @@ function surprise() {
   const pool = B.filter(o => o.vis && o.st === 'in' && (o.b.m == null || o.b.m >= .6));
   if (!pool.length) return;
   const pick = pool[Math.floor(Math.random() * pool.length)];
+  stat('meglepetes', { fajta: pick.b.nev });
   if (!RM()) for (const o of B) if (o.st === 'in') { o.vx += rand(-10, 10); o.vy += rand(-10, 10); }
   haptic(20);
   setTimeout(() => { pulse(pick); pick.jv = -9; }, 380);
@@ -2384,6 +2461,7 @@ function srcPoint(el) {
 function toggleFilter(k, v, el) {
   mutate(S.f, k, v);
   haptic(8);
+  if (isOn(k, v)) stat('szuro', { szuro: statFilter(k, v) });   // melyik jellemzőre szűrnek (csak bekapcsoláskor)
   refresh(srcPoint(el));
 }
 function updateFilterUI() {
@@ -2579,6 +2657,7 @@ function setView(v) {
   if (S.view === v) return;
   const wasList = S.view === 'lista';
   S.view = v;
+  stat('nezet', { nezet: { felho: 'Felhő', csoport: 'Csoportok', terkep: 'Térkép', lista: 'Lista' }[v] || v });
   $('#listView').hidden = v !== 'lista';
   bubblesEl.style.visibility = v === 'lista' ? 'hidden' : '';
   stage.classList.toggle('list', v === 'lista');
@@ -2593,6 +2672,7 @@ $('#groupSeg').addEventListener('click', e => { const b = e.target.closest('[dat
 function setMode(m) {
   S.mode = m;
   store.set('mode2', m);
+  stat('mod', { mod: m === 'strict' ? 'Csak találatok' : 'Rangsor' });
   refresh({ x: LR.cx, y: LR.t });
 }
 $('#modeSeg').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) setMode(b.dataset.mode); });
@@ -2738,7 +2818,10 @@ function maybeInstall(reason, tries = 0) {
   const visits = store.get('visits', 0);
   if (reason !== 'quiz' && visits < 2) return;
   if (installEvt) {
-    toast('Tedd ki a kezdőképernyőre – offline is működik!', { action: 'Telepítés', onAction: () => installEvt.prompt(), ms: 5000 });
+    toast('Tedd ki a kezdőképernyőre – offline is működik!', { action: 'Telepítés', ms: 5000, onAction: () => {
+      installEvt.prompt();
+      if (installEvt.userChoice) installEvt.userChoice.then(c => stat('telepites-ajanlat', { valasz: c.outcome === 'accepted' ? 'elfogadta' : 'elutasította' })).catch(() => {});
+    } });
     store.set('installAsked', store.get('installAsked', 0) + 1);
   } else if (/iPhone|iPad|iPod/.test(navigator.userAgent) && location.protocol.startsWith('http')) {
     toast('Tipp: Megosztás → „Főképernyőhöz adás” – és a Pacsi appként fut.', { ms: 6000 });
@@ -2847,6 +2930,7 @@ function openCard(id, { push = true, dir = 0 } = {}) {
   if (!b) return;
   setHover(null);
   const already = !cardEl.hidden;
+  if (S.card !== id) stat('kartya', { fajta: b.nev });   // melyik fajták érdeklik az embereket
   S.card = id;
   cardOrder = orderList();
   if (!cardOrder.includes(id)) cardOrder.unshift(id);
@@ -3037,6 +3121,7 @@ function toggleFav(id, srcEl) {
   updateBadges(on ? 'fav' : null);
   if (on) { burstAt(srcEl, true); haptic([8, 30, 8]); }
   const b = BY_ID.get(id);
+  stat(on ? 'kedvenc' : 'kedvenc-torles', { fajta: b.nev });
   if (S.card === id) {
     const btn = $('[data-act="fav"]', cardEl);
     if (btn) { btn.classList.toggle('on', on); btn.innerHTML = `${ic(on ? 'heart-f' : 'heart')}<span>${on ? 'Kedvenc' : 'Kedvencekhez'}</span>`; }
@@ -3085,10 +3170,12 @@ function flyToTray(id, srcEl) {
 /* ---------- Megosztás ---------- */
 async function shareBreed(id) {
   const b = BY_ID.get(id);
-  const url = ARTIFACT ? '' : location.href.split('#')[0] + '#b=' + id;
+  stat('megosztas', { mit: b.nev });
+  // mindig a saját domainre mutat (helyi fájlból, tükörről vagy artifactból megosztva is)
+  const url = `${SITE.url}/#b=${id}`;
   const text = `${b.nev} – ${b.tagline}`;
   if (ARTIFACT) {
-    try { await navigator.clipboard.writeText(`${text} 🐾 (Pacsi by DarwinAI · www.darwinai.hu)`); toast('A fajta leírása a vágólapra került 📋'); }
+    try { await navigator.clipboard.writeText(`${text} 🐾 ${url}`); toast('A fajta leírása a vágólapra került 📋'); }
     catch (e) { toast(esc(text)); }
     return;
   }
@@ -3113,6 +3200,7 @@ function openDrawer(name) {
   if (name === 'kviz' && !(S.quiz && !S.quiz.done)) Q = { i: 0, answers: [] };
   if (name === 'kviz' && S.quiz && S.quiz.done) Q = { i: QUIZ.length, answers: S.quiz.answers.slice() };
   S.drawer = name;
+  if (name === 'osszevet' && S.cmp.length > 1) stat('osszevetes', { fajtak: S.cmp.map(id => BY_ID.get(id).nev).join(' · ') });
   drawerEl.hidden = false;
   drawerEl.classList.remove('out');
   drawerEl.classList.toggle('short', name === 'kviz');
@@ -3199,6 +3287,7 @@ function quizView() {
     <div class="qnav"><button class="link" data-qback ${Q.i ? '' : 'style="visibility:hidden"'}>← Vissza</button><span class="qnum">${S.quiz ? `${fitting} fajta illik eddig` : 'A felhő élőben reagál'}</span></div>`, ''];
 }
 function answer(j, el) {
+  if (Q.i === 0 && Q.answers[0] == null) stat('kviz-indul');   // elkezdte (az első válasszal) – a befejezési arányhoz
   Q.answers[Q.i] = j;
   el.classList.add('sel');
   haptic(8);
@@ -3206,7 +3295,11 @@ function answer(j, el) {
   refresh({ x: S.mobile ? LR.cx : LR.r, y: S.mobile ? LR.b : LR.cy });
   setTimeout(() => {
     Q.i++;
-    if (Q.i >= QUIZ.length) { S.quiz.done = true; syncHash(); setTimeout(() => maybeInstall('quiz'), 2500); }
+    if (Q.i >= QUIZ.length) {
+      S.quiz.done = true; syncHash(); setTimeout(() => maybeInstall('quiz'), 2500);
+      const top = topBreeds(1)[0];
+      stat('kviz-kesz', { tipus: OWNER_TYPES[ownerType(Q.answers)].n, elso: top ? top.nev : '–' });
+    }
     renderDrawer();
   }, 420);
 }
@@ -3225,6 +3318,7 @@ function quizResult() {
 const loadImg = src => new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = src; });
 async function shareQuiz() {
   const type = OWNER_TYPES[ownerType(S.quiz.answers)];
+  stat('megosztas', { mit: 'kvíz-eredmény' });
   const top = topBreeds(3);
   const W = 1080, H = 1350, c = document.createElement('canvas');
   c.width = W; c.height = H;
@@ -3260,8 +3354,10 @@ async function shareQuiz() {
     x.fillStyle = ink; x.font = `700 ${i ? 36 : 46}px Fraunces, Georgia, serif`;
     x.fillText(b.nev.length > 22 ? b.nev.slice(0, 21) + '…' : b.nev, cx, cy + r + (i ? 62 : 74));
   });
-  x.fillStyle = ink2; x.font = '600 28px Manrope, sans-serif'; x.fillText('Találd meg te is a hozzád illő kutyát – Pacsi by DarwinAI 🐾', W / 2, H - 84);
-  x.font = '700 24px Manrope, sans-serif'; x.fillStyle = '#EE5A2C'; x.fillText('www.darwinai.hu', W / 2, H - 44);
+  // a képet látók ide találnak el: a saját domain nagyobb és hangsúlyos, a fejlesztő alatta
+  x.fillStyle = ink2; x.font = '600 28px Manrope, sans-serif'; x.fillText('Találd meg te is a hozzád illő kutyát:', W / 2, H - 112);
+  x.font = '800 40px Manrope, sans-serif'; x.fillStyle = '#EE5A2C'; x.fillText(SITE.url.replace(/^https?:\/\//, ''), W / 2, H - 62);
+  x.font = '600 20px Manrope, sans-serif'; x.fillStyle = ink2; x.fillText('Pacsi by DarwinAI 🐾', W / 2, H - 26);
   const blob = await new Promise(r => c.toBlob(r, 'image/png'));
   if (ARTIFACT) {
     // az artifact-keret letiltja a letöltést és a Web Share-t: a képet itt mutatjuk meg, innen menthető
@@ -3273,7 +3369,7 @@ async function shareQuiz() {
   }
   const file = new File([blob], 'pacsi-eredmenyem.png', { type: 'image/png' });
   try {
-    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'Pacsi by DarwinAI', text: `${type.n} vagyok a Pacsin! 🐾 – Pacsi by DarwinAI, www.darwinai.hu` }); return; }
+    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'Pacsi by DarwinAI', text: `${type.n} vagyok a Pacsin! 🐾 Te milyen gazdi vagy? ${SITE.url}` }); return; }
   } catch (e) { if (e.name === 'AbortError') return; }
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob); a.download = 'pacsi-eredmenyem.png';
@@ -3298,8 +3394,9 @@ function favView() {
 }
 async function shareFavs() {
   const names = [...S.fav].map(id => BY_ID.get(id)?.nev).filter(Boolean);
-  const text = `A kedvenc kutyafajtáim a Pacsin: ${names.join(', ')} 🐾 – Pacsi by DarwinAI, www.darwinai.hu`;
-  const url = ARTIFACT ? '' : location.href.split('#')[0];
+  stat('megosztas', { mit: 'kedvencek', db: names.length });
+  const text = `A kedvenc kutyafajtáim a Pacsin: ${names.join(', ')} 🐾 Neked melyik illik? – Pacsi by DarwinAI`;
+  const url = `${SITE.url}/`;
   if (!ARTIFACT) try { if (navigator.share && location.protocol.startsWith('http')) { await navigator.share({ title: 'Pacsi by DarwinAI', text, url }); return; } } catch (e) { if (e.name === 'AbortError') return; }
   try { await navigator.clipboard.writeText(url ? `${text}\n${url}` : text); toast('Lista a vágólapra másolva'); } catch (e) { toast(esc(text)); }
 }
@@ -3363,15 +3460,18 @@ function tipsView() {
     <div class="tipcard"><h4>⚙️ Beállítások</h4>
       <div class="setrow">Sötét téma <button class="tog" data-set="theme" aria-pressed="${dark}" style="width:auto;padding:0"><span class="sw"></span></button></div>
       <div class="setrow">Kevesebb mozgás <button class="tog" data-set="rm" aria-pressed="${S.rmUser}" style="width:auto;padding:0"><span class="sw"></span></button></div>
+      <div class="setrow">Névtelen statisztika <button class="tog" data-set="stat" aria-pressed="${!store.get('nostat', false)}" style="width:auto;padding:0"><span class="sw"></span></button></div>
       <div class="setrow">Alapértelmezett mód: ${modeOf() === 'strict' ? 'Csak találatok' : 'Rangsor'} <button class="link" data-set="mode">Váltás</button></div>
       <div class="setrow">Bemutató újra <button class="link" data-set="coach">Indítás</button></div></div>
-    <div class="tipcard"><h4>ℹ️ A Pacsiról</h4><p>A jellemzők a fajtákra jellemző átlagot írják le; az egyes kutyák ettől eltérhetnek. A portrék saját, mesterséges intelligenciával készült illusztrációk. Az app nem gyűjt adatot: a kedvencek csak ezen az eszközön tárolódnak.</p></div>
+    <div class="tipcard"><h4>ℹ️ A Pacsiról</h4><p>A jellemzők a fajtákra jellemző átlagot írják le; az egyes kutyák ettől eltérhetnek. A portrék saját, mesterséges intelligenciával készült illusztrációk.</p>
+      <p style="margin-top:8px"><b>Adatvédelem:</b> nincs regisztráció, és nem gyűjtünk személyes adatot; a kedvencek csak ezen az eszközön tárolódnak. A ${esc(SITE.url.replace(/^https?:\/\//, ''))} névtelen, sütik nélküli látogatottsági statisztikát készít a saját szerverén (pl. mely fajták és szűrők a legnépszerűbbek) – ezt fent, a Beállításokban kikapcsolhatod.</p></div>
     <div class="tipcard credit-card"><span class="mark">D</span><div><h4 style="margin:0 0 2px">Pacsi by DarwinAI</h4><p>A Pacsit a <b>DarwinAI</b> tervezte és fejlesztette.<br><a href="https://www.darwinai.hu" target="_blank" rel="noopener">www.darwinai.hu ↗</a></p><p class="ver">Verzió: v${APP_VERSION} · build ${APP_BUILD}</p></div></div>
   </div>`, ''];
 }
 function setting(k, el) {
   if (k === 'theme') { toggleTheme(); el.setAttribute('aria-pressed', S.theme === 'dark'); }
   else if (k === 'rm') { S.rmUser = !S.rmUser; store.set('rm', S.rmUser); document.documentElement.classList.toggle('rm', RM()); el.setAttribute('aria-pressed', S.rmUser); }
+  else if (k === 'stat') { const off = !store.get('nostat', false); store.set('nostat', off); el.setAttribute('aria-pressed', !off); toast(off ? 'A névtelen statisztika kikapcsolva' : 'Köszönjük! A névtelen statisztika bekapcsolva'); }
   else if (k === 'mode') { setMode(modeOf() === 'strict' ? 'rank' : 'strict'); renderDrawer(); }
   else if (k === 'coach') { closeDrawer(); preloadHero(); setTimeout(startOnboarding, 400); }
 }
@@ -3439,6 +3539,7 @@ function welcomeHTML() {
 function openWelcome(then) {
   if (WL.open) return;
   WL.open = true; WL.then = then;
+  stat('bemutato', { lepes: 'nyitó ablak' });
   welcomeEl.innerHTML = welcomeHTML();
   welcomeEl.classList.remove('out');
   welcomeEl.hidden = false;
@@ -3460,6 +3561,7 @@ function openWelcome(then) {
 function closeWelcome() {
   if (!WL.open || WL.busy) return;
   WL.busy = true;
+  stat('bemutato', { lepes: 'Kezdjük' });
   const go = $('[data-go]', welcomeEl), q = go.getBoundingClientRect();
   spark(q.left + q.width / 2, q.top + q.height / 2, 26, { speed: 6, g: .1 });
   haptic(12);
@@ -3504,10 +3606,11 @@ let CO = null;   // { i, sig, done, hold, iv, adv, rect }
 const coachBlocked = () => WL.open || !cardEl.hidden || !!S.drawer || $('#panel').classList.contains('open') || !$('#mobSearch').hidden;
 
 function coach(i = 0) {
-  if (i >= COACH.length) return endCoach();
+  if (i >= COACH.length) return endCoach(true, 'vége');
   if (!CO) CO = { iv: setInterval(coachWatch, 200) };
   clearTimeout(CO.adv);
   Object.assign(CO, { i, sig: filterSig(), done: false, adv: 0, rect: '' });
+  if (CO.statI !== i) { CO.statI = i; stat('bemutato', { lepes: `tipp ${i + 1}` }); }   // újramegjelenítéskor nem számol újra
   if (coachBlocked()) { CO.hold = true; hideCoach(); return; }
   CO.hold = false;
   showCoach(i);
@@ -3577,9 +3680,10 @@ function coachWatch() {
   const q = c.t().getBoundingClientRect();
   if (`${q.left},${q.top},${q.width},${q.height}` !== CO.rect) placeCoach(CO.i);   // átméretezés, elforgatás
 }
-function endCoach(save = true) {
+function endCoach(save = true, how = 'kihagyva') {
   if (!CO) return;
   clearInterval(CO.iv); clearTimeout(CO.adv);
+  if (save) stat('bemutato', { lepes: how === 'vége' ? 'vége' : `kihagyva (tipp ${CO.i + 1})` });
   CO = null;
   coachEl.hidden = true;
   spotEl.classList.remove('on');
@@ -3617,6 +3721,7 @@ function init() {
   if (h.card) setTimeout(() => openCard(h.card, { push: false }), 1300);
   else if (h.kviz) { syncHash(); setTimeout(() => openDrawer('kviz'), 1300); }
   store.set('visits', store.get('visits', 0) + 1);
+  statStart();   // névtelen statisztika: megnyitás (csak a saját domainen, lásd 15-stat.js)
   // első látogatás: nyitó ablak (a felhő közben pattan ki mögötte), a „Kezdjük!” után a bemutató.
   // ?bemutato: újra megmutatja (pl. telepített appban); ?nocoach: nincs bevezetés (marketing-felvételek)
   const tour = /[?&]bemutato/.test(location.search);

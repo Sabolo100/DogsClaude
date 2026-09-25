@@ -1,0 +1,9 @@
+{
+  "_": "A Pacsi saját domainje és a névtelen statisztika (Umami, sütik nélkül) beállítása. A tools/build.py olvassa.",
+  "url": "https://pacsit.hu",
+  "stat": {
+    "endpoint": "https://stat.pacsit.hu/api/send",
+    "website": "",
+    "hosts": ["pacsit.hu", "www.pacsit.hu"]
+  }
+}

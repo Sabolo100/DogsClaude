@@ -4,6 +4,16 @@ A verziószám a `VERSION` fájlban van, szemantikus verziózással (FŐ.MELLÉK
 - **Mobilon:** a Tippek panel névjegykártyáján.
 - **Asztalon:** a bal oldali panel alján.
 
+## 1.6.0 – 2026-09-25
+- **Saját domain: <https://pacsit.hu>.** A Hetzner-szerveren fut, a Coolify telepíti (`Dockerfile`, `deploy/nginx.conf`). HTTPS Let's Encrypttel, a www és a http a pacsit.hu-ra irányít. A GitHub Pages változat tükörként megmarad.
+- **Megosztás:** a fajta-, a kvíz- és a kedvenclista-megosztás mindig a pacsit.hu-ra mutat (eddig a www.darwinai.hu szerepelt). A kvíz eredményképén is a pacsit.hu áll.
+- **Linkelőnézet:** Facebookon, Messengerben és LinkedInen a megosztott link képpel és leírással jelenik meg (og:image: a marketingkészlet képe a pacsit.hu felirattal). Kanonikus cím: pacsit.hu.
+- **Névtelen statisztika:** saját szerveren futó Umami (stat.pacsit.hu), sütik és személyes adat nélkül (a specifikáció 21. fejezete szerint).
+  - Méri a megnyitásokat (telepített app vagy böngésző) és a forrást (UTM).
+  - Méri az eseményeket: kedvenc fajták, megnyitott fajtakártyák, bekapcsolt szűrők, keresések, kvíz (indítás, befejezés, gazditípus), összehasonlítás, megosztás, nézet- és módváltás, bemutató-lépések.
+  - A Beállításokban kikapcsolható, és a böngésző „ne kövess” jelzését is tiszteletben tartja. Csak a pacsit.hu-n él.
+- **Rövid, követhető linkek a posztokhoz:** pl. `pacsit.hu/f/v1` → Facebook, v1 poszt (UTM-paraméterekkel).
+
 ## 1.5.0 – 2026-09-25
 - **Új: nyitó ablak az első látogatáskor.** Mielőtt a szűrők és a felhő elé kerülsz, egy nagy, látványos ablak mondja el a lényeget: „Válaszd ki a neked való kutyafajtát, hogy mindketten azt kapjátok, amire vágytok.”
   - A képernyő kb. felét takarja, körülötte látszik az app (a felhő közben kipattan mögötte).

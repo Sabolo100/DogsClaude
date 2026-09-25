@@ -12,6 +12,7 @@ function openDrawer(name) {
   if (name === 'kviz' && !(S.quiz && !S.quiz.done)) Q = { i: 0, answers: [] };
   if (name === 'kviz' && S.quiz && S.quiz.done) Q = { i: QUIZ.length, answers: S.quiz.answers.slice() };
   S.drawer = name;
+  if (name === 'osszevet' && S.cmp.length > 1) stat('osszevetes', { fajtak: S.cmp.map(id => BY_ID.get(id).nev).join(' · ') });
   drawerEl.hidden = false;
   drawerEl.classList.remove('out');
   drawerEl.classList.toggle('short', name === 'kviz');
@@ -98,6 +99,7 @@ function quizView() {
     <div class="qnav"><button class="link" data-qback ${Q.i ? '' : 'style="visibility:hidden"'}>← Vissza</button><span class="qnum">${S.quiz ? `${fitting} fajta illik eddig` : 'A felhő élőben reagál'}</span></div>`, ''];
 }
 function answer(j, el) {
+  if (Q.i === 0 && Q.answers[0] == null) stat('kviz-indul');   // elkezdte (az első válasszal) – a befejezési arányhoz
   Q.answers[Q.i] = j;
   el.classList.add('sel');
   haptic(8);
@@ -105,7 +107,11 @@ function answer(j, el) {
   refresh({ x: S.mobile ? LR.cx : LR.r, y: S.mobile ? LR.b : LR.cy });
   setTimeout(() => {
     Q.i++;
-    if (Q.i >= QUIZ.length) { S.quiz.done = true; syncHash(); setTimeout(() => maybeInstall('quiz'), 2500); }
+    if (Q.i >= QUIZ.length) {
+      S.quiz.done = true; syncHash(); setTimeout(() => maybeInstall('quiz'), 2500);
+      const top = topBreeds(1)[0];
+      stat('kviz-kesz', { tipus: OWNER_TYPES[ownerType(Q.answers)].n, elso: top ? top.nev : '–' });
+    }
     renderDrawer();
   }, 420);
 }
@@ -124,6 +130,7 @@ function quizResult() {
 const loadImg = src => new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = src; });
 async function shareQuiz() {
   const type = OWNER_TYPES[ownerType(S.quiz.answers)];
+  stat('megosztas', { mit: 'kvíz-eredmény' });
   const top = topBreeds(3);
   const W = 1080, H = 1350, c = document.createElement('canvas');
   c.width = W; c.height = H;
@@ -159,8 +166,10 @@ async function shareQuiz() {
     x.fillStyle = ink; x.font = `700 ${i ? 36 : 46}px Fraunces, Georgia, serif`;
     x.fillText(b.nev.length > 22 ? b.nev.slice(0, 21) + '…' : b.nev, cx, cy + r + (i ? 62 : 74));
   });
-  x.fillStyle = ink2; x.font = '600 28px Manrope, sans-serif'; x.fillText('Találd meg te is a hozzád illő kutyát – Pacsi by DarwinAI 🐾', W / 2, H - 84);
-  x.font = '700 24px Manrope, sans-serif'; x.fillStyle = '#EE5A2C'; x.fillText('www.darwinai.hu', W / 2, H - 44);
+  // a képet látók ide találnak el: a saját domain nagyobb és hangsúlyos, a fejlesztő alatta
+  x.fillStyle = ink2; x.font = '600 28px Manrope, sans-serif'; x.fillText('Találd meg te is a hozzád illő kutyát:', W / 2, H - 112);
+  x.font = '800 40px Manrope, sans-serif'; x.fillStyle = '#EE5A2C'; x.fillText(SITE.url.replace(/^https?:\/\//, ''), W / 2, H - 62);
+  x.font = '600 20px Manrope, sans-serif'; x.fillStyle = ink2; x.fillText('Pacsi by DarwinAI 🐾', W / 2, H - 26);
   const blob = await new Promise(r => c.toBlob(r, 'image/png'));
   if (ARTIFACT) {
     // az artifact-keret letiltja a letöltést és a Web Share-t: a képet itt mutatjuk meg, innen menthető
@@ -172,7 +181,7 @@ async function shareQuiz() {
   }
   const file = new File([blob], 'pacsi-eredmenyem.png', { type: 'image/png' });
   try {
-    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'Pacsi by DarwinAI', text: `${type.n} vagyok a Pacsin! 🐾 – Pacsi by DarwinAI, www.darwinai.hu` }); return; }
+    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'Pacsi by DarwinAI', text: `${type.n} vagyok a Pacsin! 🐾 Te milyen gazdi vagy? ${SITE.url}` }); return; }
   } catch (e) { if (e.name === 'AbortError') return; }
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob); a.download = 'pacsi-eredmenyem.png';
@@ -197,8 +206,9 @@ function favView() {
 }
 async function shareFavs() {
   const names = [...S.fav].map(id => BY_ID.get(id)?.nev).filter(Boolean);
-  const text = `A kedvenc kutyafajtáim a Pacsin: ${names.join(', ')} 🐾 – Pacsi by DarwinAI, www.darwinai.hu`;
-  const url = ARTIFACT ? '' : location.href.split('#')[0];
+  stat('megosztas', { mit: 'kedvencek', db: names.length });
+  const text = `A kedvenc kutyafajtáim a Pacsin: ${names.join(', ')} 🐾 Neked melyik illik? – Pacsi by DarwinAI`;
+  const url = `${SITE.url}/`;
   if (!ARTIFACT) try { if (navigator.share && location.protocol.startsWith('http')) { await navigator.share({ title: 'Pacsi by DarwinAI', text, url }); return; } } catch (e) { if (e.name === 'AbortError') return; }
   try { await navigator.clipboard.writeText(url ? `${text}\n${url}` : text); toast('Lista a vágólapra másolva'); } catch (e) { toast(esc(text)); }
 }
@@ -262,15 +272,18 @@ function tipsView() {
     <div class="tipcard"><h4>⚙️ Beállítások</h4>
       <div class="setrow">Sötét téma <button class="tog" data-set="theme" aria-pressed="${dark}" style="width:auto;padding:0"><span class="sw"></span></button></div>
       <div class="setrow">Kevesebb mozgás <button class="tog" data-set="rm" aria-pressed="${S.rmUser}" style="width:auto;padding:0"><span class="sw"></span></button></div>
+      <div class="setrow">Névtelen statisztika <button class="tog" data-set="stat" aria-pressed="${!store.get('nostat', false)}" style="width:auto;padding:0"><span class="sw"></span></button></div>
       <div class="setrow">Alapértelmezett mód: ${modeOf() === 'strict' ? 'Csak találatok' : 'Rangsor'} <button class="link" data-set="mode">Váltás</button></div>
       <div class="setrow">Bemutató újra <button class="link" data-set="coach">Indítás</button></div></div>
-    <div class="tipcard"><h4>ℹ️ A Pacsiról</h4><p>A jellemzők a fajtákra jellemző átlagot írják le; az egyes kutyák ettől eltérhetnek. A portrék saját, mesterséges intelligenciával készült illusztrációk. Az app nem gyűjt adatot: a kedvencek csak ezen az eszközön tárolódnak.</p></div>
+    <div class="tipcard"><h4>ℹ️ A Pacsiról</h4><p>A jellemzők a fajtákra jellemző átlagot írják le; az egyes kutyák ettől eltérhetnek. A portrék saját, mesterséges intelligenciával készült illusztrációk.</p>
+      <p style="margin-top:8px"><b>Adatvédelem:</b> nincs regisztráció, és nem gyűjtünk személyes adatot; a kedvencek csak ezen az eszközön tárolódnak. A ${esc(SITE.url.replace(/^https?:\/\//, ''))} névtelen, sütik nélküli látogatottsági statisztikát készít a saját szerverén (pl. mely fajták és szűrők a legnépszerűbbek) – ezt fent, a Beállításokban kikapcsolhatod.</p></div>
     <div class="tipcard credit-card"><span class="mark">D</span><div><h4 style="margin:0 0 2px">Pacsi by DarwinAI</h4><p>A Pacsit a <b>DarwinAI</b> tervezte és fejlesztette.<br><a href="https://www.darwinai.hu" target="_blank" rel="noopener">www.darwinai.hu ↗</a></p><p class="ver">Verzió: v${APP_VERSION} · build ${APP_BUILD}</p></div></div>
   </div>`, ''];
 }
 function setting(k, el) {
   if (k === 'theme') { toggleTheme(); el.setAttribute('aria-pressed', S.theme === 'dark'); }
   else if (k === 'rm') { S.rmUser = !S.rmUser; store.set('rm', S.rmUser); document.documentElement.classList.toggle('rm', RM()); el.setAttribute('aria-pressed', S.rmUser); }
+  else if (k === 'stat') { const off = !store.get('nostat', false); store.set('nostat', off); el.setAttribute('aria-pressed', !off); toast(off ? 'A névtelen statisztika kikapcsolva' : 'Köszönjük! A névtelen statisztika bekapcsolva'); }
   else if (k === 'mode') { setMode(modeOf() === 'strict' ? 'rank' : 'strict'); renderDrawer(); }
   else if (k === 'coach') { closeDrawer(); preloadHero(); setTimeout(startOnboarding, 400); }
 }
