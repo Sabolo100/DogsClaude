@@ -14,3 +14,13 @@ dist/_arttest.html
 
 # Marketing: ideiglenes render- és tesztfájlok
 marketing/tmp/
+
+# Mailchimp API-kulcs – soha ne kerüljön verziókezelésbe
+Mailchimp_API.txt
+
+# Marketing e-mail rendszer: kapcsolati adatbázis (személyes/üzleti elérhetőségek) és Mailchimp-állapot
+marketing/email/data/
+marketing/email/state/
+
+# Forward Email alias-jelszó (hello@pacsit.hu) – soha ne kerüljön verziókezelésbe
+ForwardEmail_hello.txt

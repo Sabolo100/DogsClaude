@@ -144,6 +144,16 @@ def main():
     version = digest.hexdigest()[:10]
     sw = (SRC / "sw.js").read_text(encoding="utf-8").replace("__VERSION__", f"{app_ver}-{version}").replace("__FILES__", json.dumps(files))
     (pwa / "sw.js").write_text(sw, encoding="utf-8")
+    # Hírlevél-feliratkozó oldal (pacsit.hu/hirlevel/) – külön statikus oldal, nincs a precache-ben
+    hl = pwa / "hirlevel"
+    hl.mkdir()
+    site_cfg = json.loads(site_raw)
+    for p in (SRC / "hirlevel").iterdir():
+        if p.suffix == ".html":
+            t = p.read_text(encoding="utf-8").replace("__VERSION__", app_ver).replace("__BUILD__", build_id)                 .replace("__STAT_WEBSITE__", (site_cfg.get("stat") or {}).get("website", ""))
+            (hl / p.name).write_text(t, encoding="utf-8")
+        else:
+            shutil.copy(p, hl / p.name)
 
     # 3) claude.ai artifact: a publikáló maga adja a doctype/head/body vázat, ezért csak a törzs kell,
     #    a <title> legelöl; a keret :root-padding-je miatt az app 100% magas, a safe-area-t nem duplázzuk

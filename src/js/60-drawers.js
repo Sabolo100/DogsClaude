@@ -269,6 +269,8 @@ function tipsView() {
       <li>Eledel (a mérettől függően ez a legnagyobb tétel)</li><li>Oltások, féreghajtás, parazita elleni védelem</li>
       <li>Kutyaiskola, felszerelés, fekhely</li><li>Kozmetikus a sokat ápolandó fajtáknál</li><li>Tartalék váratlan állatorvosi költségekre, vagy biztosítás</li></ul>
       <small>A fajtakártyák €–€€€ jelölése a relatív havi fenntartási költséget mutatja.</small></div>
+    <div class="tipcard"><h4>✉️ Heti kutyás levél</h4><p>Csütörtökönként a hét fajtája, gazdi-tippek és egy kis fejtörő – ingyen, bármikor leiratkozhatsz.</p>
+      <p style="margin-top:8px"><a href="${esc(SITE.url || 'https://pacsit.hu')}/hirlevel/?utm_source=app&utm_medium=tippek" target="_blank" rel="noopener">Feliratkozom ↗</a></p></div>
     <div class="tipcard"><h4>⚙️ Beállítások</h4>
       <div class="setrow">Sötét téma <button class="tog" data-set="theme" aria-pressed="${dark}" style="width:auto;padding:0"><span class="sw"></span></button></div>
       <div class="setrow">Kevesebb mozgás <button class="tog" data-set="rm" aria-pressed="${S.rmUser}" style="width:auto;padding:0"><span class="sw"></span></button></div>

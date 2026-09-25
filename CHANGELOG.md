@@ -4,6 +4,16 @@ A verziószám a `VERSION` fájlban van, szemantikus verziózással (FŐ.MELLÉK
 - **Mobilon:** a Tippek panel névjegykártyáján.
 - **Asztalon:** a bal oldali panel alján.
 
+## 1.7.0 – 2026-09-25
+- **Új: feliratkozó oldal a heti Pacsi-levélhez – <https://pacsit.hu/hirlevel/>.**
+  - Az app arculatával: a Pacsi kabala, fajtaportrék, rövid bemutató arról, mit kap az olvasó, és egy mintalevél.
+  - A feliratkozás a Mailchimpbe megy, dupla megerősítéssel: az oldal elhagyása nélkül kiírja, hogy „Már csak egy lépés!”.
+  - Az adatkezelési tudnivalók röviden az oldal alján.
+  - Névtelen statisztika: megtekintés és „hirlevel-feliratkozas” esemény, ugyanazokkal a szabályokkal, mint az appban.
+  - Köszönőoldal a megerősítés utánra: `/hirlevel/koszonjuk.html`.
+- **Tippek panel:** új „✉️ Heti kutyás levél” kártya, feliratkozó linkkel.
+- **Szerver:** az nginx kiszolgálja a `/hirlevel/` mappát.
+
 ## 1.6.1 – 2026-09-25
 - **A névtelen statisztika bekapcsolva:** a stat.pacsit.hu (Umami) webhely-azonosítója bekerült a `deploy/site.json`-ba, így a pacsit.hu mostantól mér.
 

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Köszönjük! – Pacsi-levél</title>
+<meta name="description" content="Csütörtökönként egy levél a Pacsitól: a hét fajtája, gazdi-tippek, egy kis fejtörő. Ingyenes, bármikor leiratkozhatsz.">
+<meta property="og:title" content="Pacsi-levél – heti kutyás levél">
+<meta property="og:description" content="A hét fajtája, gazdi-tippek, fejtörő – csütörtökönként, ingyen.">
+<meta property="og:image" content="https://pacsit.hu/og.jpg">
+<meta property="og:url" content="https://pacsit.hu/hirlevel/">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../icons/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,600..800,100;1,9..144,700..800,100&family=Manrope:wght@500..800&display=swap">
+<style>
+:root {
+  --bg: #FBF6EE; --bg-2: #F5EDE1; --solid: #FFFDF9; --ink: #1E1B18; --ink-2: #6B625A; --ink-3: #9A9088;
+  --line: rgba(30, 27, 24, .10); --primary: #EE5A2C; --primary-deep: #C8431C; --primary-soft: #FFE3D6;
+  --teal: #17756E; --teal-soft: #D5EFEA; --lav-soft: #ECE8FF; --sun-soft: #FFF1D0; --ok: #2E9E6A; --bad: #C23B2E;
+  --blob1: #FFD2B8; --blob2: #E2D6FF; --blob3: #C9EEDC;
+  --shadow: 0 1px 2px rgba(90, 50, 20, .05), 0 10px 30px rgba(90, 50, 20, .09);
+  --font-d: 'Fraunces', Georgia, serif; --font-u: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #14121A; --bg-2: #1A1722; --solid: #1D1A25; --ink: #F4EFE8; --ink-2: #B4ABA2; --ink-3: #7F776F; --line: rgba(244, 239, 232, .12);
+    --primary: #FF7F55; --primary-deep: #FF9A76; --primary-soft: #3A2226; --teal: #3CC2B4; --teal-soft: #173432; --lav-soft: #26213F; --sun-soft: #33291A;
+    --ok: #5BD69A; --bad: #FF8A7E; --blob1: #3A2226; --blob2: #26213F; --blob3: #173432; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35); color-scheme: dark; }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 500 16px/1.55 var(--font-u); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--primary); font-weight: 700; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
+.blobs { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.blobs i { position: absolute; border-radius: 50%; filter: blur(10px); opacity: .9; }
+.blobs .a { width: 60vmax; height: 60vmax; left: -22vmax; top: -24vmax; background: radial-gradient(closest-side, var(--blob1), transparent); }
+.blobs .b { width: 55vmax; height: 55vmax; right: -20vmax; top: 10vmax; background: radial-gradient(closest-side, var(--blob2), transparent); }
+.blobs .c { width: 50vmax; height: 50vmax; left: 10vmax; bottom: -30vmax; background: radial-gradient(closest-side, var(--blob3), transparent); }
+header { padding-block: 18px; }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.logo { font: 800 30px/1 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 72; letter-spacing: -.02em; color: var(--ink); text-decoration: none; display: inline-flex; align-items: baseline; gap: 8px; }
+.logo .i { position: relative; display: inline-block; }
+.logo .i svg { position: absolute; width: .5em; height: .5em; left: 50%; top: -.28em; transform: translateX(-50%) rotate(-12deg); fill: var(--primary); }
+.logo small { font: 700 12px/1 var(--font-u); color: var(--ink-2); }
+.back { font-size: 14px; text-decoration: none; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 40px; align-items: center; padding-block: 24px 40px; }
+.kicker { font: 800 12px/1 var(--font-u); letter-spacing: .14em; text-transform: uppercase; color: var(--primary); }
+h1 { font: 800 clamp(36px, 6vw, 60px)/1.02 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.03em; margin: 14px 0 0; text-wrap: balance; }
+h1 em { color: var(--primary); }
+.lead { color: var(--ink-2); font-size: 18px; margin: 16px 0 0; max-width: 34em; }
+.card { margin-top: 26px; background: var(--solid); border: 1px solid var(--line); border-radius: 24px; padding: 22px; box-shadow: var(--shadow); max-width: 480px; }
+.card form { display: grid; gap: 12px; }
+label.f { display: grid; gap: 6px; font-size: 14px; font-weight: 800; }
+label.f span small { font-weight: 600; color: var(--ink-3); }
+input[type=email], input[type=text] { width: 100%; font: 600 16px/1.3 var(--font-u); color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: 14px; padding: 13px 14px; }
+input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 22%, transparent); }
+.consent { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 13.5px; color: var(--ink-2); align-items: start; }
+.consent input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--primary); }
+button.go { font: 800 17px/1 var(--font-u); color: #fff; border: 0; border-radius: 999px; padding: 16px 26px; cursor: pointer;
+  background: linear-gradient(100deg, #EE5A2C, #FF8A3D 60%, #FFB24A); box-shadow: 0 10px 24px rgba(238, 90, 44, .32); justify-self: start; }
+button.go:hover { filter: brightness(1.05); }
+button.go[disabled] { opacity: .6; cursor: default; }
+.hp { position: absolute; left: -5000px; }
+.msg { font-size: 14.5px; font-weight: 700; border-radius: 14px; padding: 12px 14px; }
+.msg.ok { background: color-mix(in srgb, var(--ok) 14%, transparent); color: var(--ok); }
+.msg.err { background: color-mix(in srgb, var(--bad) 12%, transparent); color: var(--bad); }
+.fine { font-size: 12.5px; color: var(--ink-3); margin: 4px 0 0; }
+.art { position: relative; aspect-ratio: 1; max-width: 460px; justify-self: center; width: 100%; }
+.art .big { position: absolute; inset: 9%; border-radius: 50%; background: var(--solid) center/cover; box-shadow: 0 0 0 10px var(--solid), var(--shadow); }
+.art .ring { position: absolute; inset: 4%; border-radius: 50%; border: 5px solid var(--primary); opacity: .85; }
+.art .b { position: absolute; border-radius: 50%; background: #fff center/cover; box-shadow: 0 0 0 5px var(--solid), var(--shadow); animation: float 6s ease-in-out infinite; }
+.art .tag { position: absolute; background: var(--solid); border-radius: 999px; padding: 8px 14px; font: 800 14px/1 var(--font-u); box-shadow: var(--shadow); white-space: nowrap; }
+@keyframes float { 50% { transform: translateY(-8px); } }
+@media (prefers-reduced-motion: reduce) { .art .b { animation: none; } }
+section { padding-block: 34px; }
+h2 { font: 800 32px/1.1 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 96; letter-spacing: -.02em; margin: 8px 0 0; text-wrap: balance; }
+.feat { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.feat div { background: var(--solid); border: 1px solid var(--line); border-radius: 20px; padding: 18px; }
+.feat b { display: block; font: 800 18px/1.2 var(--font-d); margin: 10px 0 6px; }
+.feat p { margin: 0; font-size: 14px; color: var(--ink-2); }
+.feat .e { font-size: 28px; line-height: 1; }
+.sample { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+.sample .shot { justify-self: center; width: min(100%, 380px); border-radius: 26px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow);
+  max-height: 560px; -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent); }
+.sample .shot img { display: block; width: 100%; height: auto; }
+.sample ul { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.sample li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; color: var(--ink-2); }
+.sample li span { width: 24px; height: 24px; border-radius: 50%; background: var(--teal); color: #fff; display: grid; place-items: center; font: 800 13px/1 var(--font-u); }
+.privacy { background: var(--solid); border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; font-size: 13.5px; color: var(--ink-2); }
+.privacy h3 { font: 800 16px/1.2 var(--font-u); color: var(--ink); margin: 0 0 6px; }
+.privacy p { margin: 6px 0 0; }
+footer { padding-block: 26px 40px; font-size: 13px; color: var(--ink-3); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+footer a { color: var(--ink-2); }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; border-radius: 8px; }
+@media (max-width: 860px) {
+  .hero, .sample { grid-template-columns: 1fr; }
+  .art { max-width: 320px; order: -1; }
+  .feat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) { .feat { grid-template-columns: 1fr; } .card { padding: 18px; } }
+</style>
+</head>
+<body>
+<div class="blobs" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+<main class="wrap" style="min-height:80vh;display:grid;place-items:center;text-align:center">
+  <div style="max-width:560px">
+    <div class="art" style="max-width:220px;margin:0 auto" aria-hidden="true"><div class="ring"></div><div class="big" style="background-image:url('../img/nyito-pacsi.webp')"></div></div>
+    <div class="kicker" style="margin-top:22px">Pacsi-levél</div>
+    <h1>Köszönjük, <em>bent vagy a falkában!</em></h1>
+    <p class="lead" style="margin-inline:auto">Csütörtökönként jövünk a hét fajtájával, gazdi-tippekkel és egy kis fejtörővel. Addig is: nézz körül a Pacsiban.</p>
+    <p style="margin-top:26px"><a class="go" style="display:inline-block;text-decoration:none;font:800 17px/1 var(--font-u);color:#fff;border-radius:999px;padding:16px 26px;background:linear-gradient(100deg,#EE5A2C,#FF8A3D 60%,#FFB24A)" href="../?utm_source=hirlevel-koszonjuk">Irány a Pacsi 🐾</a></p>
+    <p class="fine" style="margin-top:18px">Tipp: tedd a hello@pacsit.hu címet a névjegyeid közé, hogy a levelek ne a Promóciók mappában landoljanak.</p>
+  </div>
+</main>
+</body>
+</html>

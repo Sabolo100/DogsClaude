@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pacsi-levél – heti kutyás levél</title>
+<meta name="description" content="Csütörtökönként egy levél a Pacsitól: a hét fajtája, gazdi-tippek, egy kis fejtörő. Ingyenes, bármikor leiratkozhatsz.">
+<meta property="og:title" content="Pacsi-levél – heti kutyás levél">
+<meta property="og:description" content="A hét fajtája, gazdi-tippek, fejtörő – csütörtökönként, ingyen.">
+<meta property="og:image" content="https://pacsit.hu/og.jpg">
+<meta property="og:url" content="https://pacsit.hu/hirlevel/">
+<link rel="canonical" href="https://pacsit.hu/hirlevel/">
+<link rel="icon" href="../icons/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,600..800,100;1,9..144,700..800,100&family=Manrope:wght@500..800&display=swap">
+<style>
+:root {
+  --bg: #FBF6EE; --bg-2: #F5EDE1; --solid: #FFFDF9; --ink: #1E1B18; --ink-2: #6B625A; --ink-3: #9A9088;
+  --line: rgba(30, 27, 24, .10); --primary: #EE5A2C; --primary-deep: #C8431C; --primary-soft: #FFE3D6;
+  --teal: #17756E; --teal-soft: #D5EFEA; --lav-soft: #ECE8FF; --sun-soft: #FFF1D0; --ok: #2E9E6A; --bad: #C23B2E;
+  --blob1: #FFD2B8; --blob2: #E2D6FF; --blob3: #C9EEDC;
+  --shadow: 0 1px 2px rgba(90, 50, 20, .05), 0 10px 30px rgba(90, 50, 20, .09);
+  --font-d: 'Fraunces', Georgia, serif; --font-u: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #14121A; --bg-2: #1A1722; --solid: #1D1A25; --ink: #F4EFE8; --ink-2: #B4ABA2; --ink-3: #7F776F; --line: rgba(244, 239, 232, .12);
+    --primary: #FF7F55; --primary-deep: #FF9A76; --primary-soft: #3A2226; --teal: #3CC2B4; --teal-soft: #173432; --lav-soft: #26213F; --sun-soft: #33291A;
+    --ok: #5BD69A; --bad: #FF8A7E; --blob1: #3A2226; --blob2: #26213F; --blob3: #173432; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35); color-scheme: dark; }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 500 16px/1.55 var(--font-u); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--primary); font-weight: 700; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
+.blobs { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.blobs i { position: absolute; border-radius: 50%; filter: blur(10px); opacity: .9; }
+.blobs .a { width: 60vmax; height: 60vmax; left: -22vmax; top: -24vmax; background: radial-gradient(closest-side, var(--blob1), transparent); }
+.blobs .b { width: 55vmax; height: 55vmax; right: -20vmax; top: 10vmax; background: radial-gradient(closest-side, var(--blob2), transparent); }
+.blobs .c { width: 50vmax; height: 50vmax; left: 10vmax; bottom: -30vmax; background: radial-gradient(closest-side, var(--blob3), transparent); }
+header { padding-block: 18px; }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.logo { font: 800 30px/1 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 72; letter-spacing: -.02em; color: var(--ink); text-decoration: none; display: inline-flex; align-items: baseline; gap: 8px; }
+.logo .i { position: relative; display: inline-block; }
+.logo .i svg { position: absolute; width: .5em; height: .5em; left: 50%; top: -.28em; transform: translateX(-50%) rotate(-12deg); fill: var(--primary); }
+.logo small { font: 700 12px/1 var(--font-u); color: var(--ink-2); }
+.back { font-size: 14px; text-decoration: none; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 40px; align-items: center; padding-block: 24px 40px; }
+.kicker { font: 800 12px/1 var(--font-u); letter-spacing: .14em; text-transform: uppercase; color: var(--primary); }
+h1 { font: 800 clamp(36px, 6vw, 60px)/1.02 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.03em; margin: 14px 0 0; text-wrap: balance; }
+h1 em { color: var(--primary); }
+.lead { color: var(--ink-2); font-size: 18px; margin: 16px 0 0; max-width: 34em; }
+.card { margin-top: 26px; background: var(--solid); border: 1px solid var(--line); border-radius: 24px; padding: 22px; box-shadow: var(--shadow); max-width: 480px; }
+.card form { display: grid; gap: 12px; }
+label.f { display: grid; gap: 6px; font-size: 14px; font-weight: 800; }
+label.f span small { font-weight: 600; color: var(--ink-3); }
+input[type=email], input[type=text] { width: 100%; font: 600 16px/1.3 var(--font-u); color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: 14px; padding: 13px 14px; }
+input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 22%, transparent); }
+.consent { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 13.5px; color: var(--ink-2); align-items: start; }
+.consent input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--primary); }
+button.go { font: 800 17px/1 var(--font-u); color: #fff; border: 0; border-radius: 999px; padding: 16px 26px; cursor: pointer;
+  background: linear-gradient(100deg, #EE5A2C, #FF8A3D 60%, #FFB24A); box-shadow: 0 10px 24px rgba(238, 90, 44, .32); justify-self: start; }
+button.go:hover { filter: brightness(1.05); }
+button.go[disabled] { opacity: .6; cursor: default; }
+.hp { position: absolute; left: -5000px; }
+.msg { font-size: 14.5px; font-weight: 700; border-radius: 14px; padding: 12px 14px; }
+.msg.ok { background: color-mix(in srgb, var(--ok) 14%, transparent); color: var(--ok); }
+.msg.err { background: color-mix(in srgb, var(--bad) 12%, transparent); color: var(--bad); }
+.fine { font-size: 12.5px; color: var(--ink-3); margin: 4px 0 0; }
+.art { position: relative; aspect-ratio: 1; max-width: 460px; justify-self: center; width: 100%; }
+.art .big { position: absolute; inset: 9%; border-radius: 50%; background: var(--solid) center/cover; box-shadow: 0 0 0 10px var(--solid), var(--shadow); }
+.art .ring { position: absolute; inset: 4%; border-radius: 50%; border: 5px solid var(--primary); opacity: .85; }
+.art .b { position: absolute; border-radius: 50%; background: #fff center/cover; box-shadow: 0 0 0 5px var(--solid), var(--shadow); animation: float 6s ease-in-out infinite; }
+.art .tag { position: absolute; background: var(--solid); border-radius: 999px; padding: 8px 14px; font: 800 14px/1 var(--font-u); box-shadow: var(--shadow); white-space: nowrap; }
+@keyframes float { 50% { transform: translateY(-8px); } }
+@media (prefers-reduced-motion: reduce) { .art .b { animation: none; } }
+section { padding-block: 34px; }
+h2 { font: 800 32px/1.1 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 96; letter-spacing: -.02em; margin: 8px 0 0; text-wrap: balance; }
+.feat { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.feat div { background: var(--solid); border: 1px solid var(--line); border-radius: 20px; padding: 18px; }
+.feat b { display: block; font: 800 18px/1.2 var(--font-d); margin: 10px 0 6px; }
+.feat p { margin: 0; font-size: 14px; color: var(--ink-2); }
+.feat .e { font-size: 28px; line-height: 1; }
+.sample { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+.sample .shot { justify-self: center; width: min(100%, 380px); border-radius: 26px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow);
+  max-height: 560px; -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent); }
+.sample .shot img { display: block; width: 100%; height: auto; }
+.sample ul { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.sample li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; color: var(--ink-2); }
+.sample li span { width: 24px; height: 24px; border-radius: 50%; background: var(--teal); color: #fff; display: grid; place-items: center; font: 800 13px/1 var(--font-u); }
+.privacy { background: var(--solid); border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; font-size: 13.5px; color: var(--ink-2); }
+.privacy h3 { font: 800 16px/1.2 var(--font-u); color: var(--ink); margin: 0 0 6px; }
+.privacy p { margin: 6px 0 0; }
+footer { padding-block: 26px 40px; font-size: 13px; color: var(--ink-3); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+footer a { color: var(--ink-2); }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; border-radius: 8px; }
+@media (max-width: 860px) {
+  .hero, .sample { grid-template-columns: 1fr; }
+  .art { max-width: 320px; order: -1; }
+  .feat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) { .feat { grid-template-columns: 1fr; } .card { padding: 18px; } }
+</style>
+</head>
+<body>
+<div class="blobs" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="paw" viewBox="0 0 24 24"><ellipse cx="6" cy="9.5" rx="2.1" ry="2.7"/><ellipse cx="10" cy="5.6" rx="2.1" ry="2.8"/><ellipse cx="14.6" cy="5.6" rx="2.1" ry="2.8"/><ellipse cx="18.4" cy="9.6" rx="2.1" ry="2.7"/><path d="M12.3 11.2c2.6 0 5.6 3.4 5.6 6.2 0 2-1.5 2.9-3.2 2.9-1 0-1.7-.5-2.4-.5s-1.4.5-2.4.5c-1.7 0-3.2-.9-3.2-2.9 0-2.8 3-6.2 5.6-6.2z"/></symbol></defs></svg>
+
+<header><div class="wrap">
+  <a class="logo" href="../?utm_source=hirlevel-oldal"><span>Pacs<span class="i">ı<svg viewBox="0 0 24 24"><use href="#paw"/></svg></span></span><small>by DarwinAI</small></a>
+  <a class="back" href="../?utm_source=hirlevel-oldal">← Vissza a Pacsihoz</a>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <div class="kicker">Pacsi-levél · csütörtökönként</div>
+      <h1>Egy pacsi hetente – <em>a postafiókodba.</em></h1>
+      <p class="lead">A hét fajtája, gazdi-tippek, egy kis fejtörő és a Pacsi újdonságai. Hetente egyszer, ingyen – és bármikor leiratkozhatsz egy kattintással.</p>
+      <div class="card">
+        <form id="f" novalidate method="post" action="https://arworks.us12.list-manage.com/subscribe/post?u=5b46aa73e432b62ec097663ca&amp;id=066364570f">
+          <label class="f" for="email"><span>E-mail-címed</span><input type="email" id="email" name="EMAIL" autocomplete="email" required placeholder="pl. anna@pelda.hu"></label>
+          <label class="f" for="fname"><span>Keresztneved <small>(nem kötelező – így szólítunk)</small></span><input type="text" id="fname" name="FNAME" autocomplete="given-name" placeholder="pl. Anna"></label>
+          <div class="hp" aria-hidden="true"><input type="text" name="b_5b46aa73e432b62ec097663ca_066364570f" tabindex="-1" value=""></div>
+          <label class="consent" for="ok"><input type="checkbox" id="ok" required><span>Kérem a Pacsi heti levelét. Elolvastam az <a href="#adatkezeles">adatkezelési tudnivalókat</a>, és bármikor leiratkozhatok.</span></label>
+          <button class="go" type="submit" id="go">Feliratkozom 🐾</button>
+          <div id="msg" role="status" aria-live="polite"></div>
+          <p class="fine">A gomb után a Mailchimp oldalára kerülsz („Már csak egy lépés!”), és kapsz egy megerősítő levelet – abban kattints a gombra, és kész.</p>
+        </form>
+      </div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <div class="ring"></div>
+      <div class="big" style="background-image:url('../img/nyito-pacsi.webp')"></div>
+      <div class="b" style="width:22%;height:22%;left:-2%;top:6%;background-image:url('../img/portrek/magyar-vizsla.webp')"></div>
+      <div class="b" style="width:17%;height:17%;right:0;top:0;background-image:url('../img/portrek/puli.webp');animation-delay:-2s"></div>
+      <div class="b" style="width:19%;height:19%;right:-3%;bottom:14%;background-image:url('../img/portrek/golden-retriever.webp');animation-delay:-4s"></div>
+      <div class="b" style="width:15%;height:15%;left:4%;bottom:6%;background-image:url('../img/portrek/francia-bulldog.webp');animation-delay:-1s"></div>
+      <div class="tag" style="left:18%;bottom:-2%">✉️ csütörtök 10:00</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="kicker">Mit kapsz?</div>
+    <h2>Rövid, kedves, hasznos – hetente egyszer</h2>
+    <div class="feat">
+      <div><span class="e">🐕</span><b>A hét fajtája</b><p>Egy fajta közelről: kinek illik, kinek nem, és egy érdekesség, amit biztosan nem tudtál.</p></div>
+      <div><span class="e">💡</span><b>Gazdi-tippek</b><p>Évszakhoz, ünnepekhez igazítva: őszi túra, esti séta, szilveszteri felkészülés.</p></div>
+      <div><span class="e">🧩</span><b>Tippelj!</b><p>Egy kis fejtörő minden héten – a megfejtés ott van a fajta kártyáján a Pacsiban.</p></div>
+      <div><span class="e">🤝</span><b>Semmi spam</b><p>Hetente egy levél, reklámzuhatag nélkül. Leiratkozni minden levél aljáról lehet.</p></div>
+    </div>
+  </section>
+
+  <section class="sample">
+    <div class="shot"><img src="minta.jpg" alt="Minta a Pacsi-levélből: fejléckép a Pacsi kabalával, cím és bevezető" width="560" height="1032" loading="lazy"></div>
+    <div>
+      <div class="kicker">Így néz ki</div>
+      <h2>Egy levél, amit tényleg jó megnyitni</h2>
+      <ul>
+        <li><span>✓</span>Szép illusztrációk a Pacsi stílusában, telefonon is kényelmesen olvasható.</li>
+        <li><span>✓</span>Minden fajtás link egyből a fajta kártyáját nyitja meg a Pacsiban.</li>
+        <li><span>✓</span>Ha továbbküldöd egy barátodnak, ő is fel tud iratkozni belőle.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="adatkezeles">
+    <div class="privacy">
+      <h3>Adatkezelési tudnivalók röviden</h3>
+      <p>A megadott e-mail-címet (és ha megadod, a keresztneved) kizárólag a Pacsi-levél küldésére használjuk, a hozzájárulásod alapján. Az adatkezelő az ARworks Kft. (1012 Budapest, Várfok utca 3-5.), a leveleket az Intuit Mailchimp küldi adatfeldolgozóként. A levelek megnyitását és a linkekre kattintást összesítve mérjük, hogy jobb leveleket írhassunk.</p>
+      <p>Bármikor leiratkozhatsz a levelek alján lévő linkkel, vagy ha írsz a <a href="mailto:hello@pacsit.hu">hello@pacsit.hu</a> címre. Kérheted az adataid törlését, helyesbítését, és panasszal fordulhatsz a NAIH-hoz (naih.hu).</p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap"><span>Pacsi by DarwinAI · <a href="../?utm_source=hirlevel-oldal">pacsit.hu</a></span><span>v__VERSION__ · build __BUILD__</span></footer>
+
+<script>
+(() => {
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const f = $('#f'), msg = $('#msg'), go = $('#go');
+  const show = (t, ok) => { msg.className = 'msg ' + (ok ? 'ok' : 'err'); msg.textContent = t; };
+
+  /* névtelen statisztika (Umami, sütik nélkül) – mint az appban: csak a saját domainen, „ne kövess” jelzésnél nem */
+  const STAT = { endpoint: 'https://stat.pacsit.hu/api/send', website: '__STAT_WEBSITE__', hosts: ['pacsit.hu', 'www.pacsit.hu'] };
+  const statOk = () => STAT.website && !STAT.website.startsWith('__') && STAT.hosts.includes(location.hostname)
+    && navigator.doNotTrack !== '1' && !navigator.globalPrivacyControl && (() => { try { return localStorage.getItem('pacsi:nostat') !== 'true'; } catch (e) { return true; } })();
+  function stat(name, data) {
+    if (!statOk()) return;
+    const payload = { website: STAT.website, hostname: location.hostname, url: location.origin + location.pathname + location.search,
+      referrer: document.referrer, title: document.title, language: navigator.language, screen: `${screen.width}x${screen.height}`, tag: 'v__VERSION__' };
+    if (name) { payload.name = name; if (data) payload.data = data; }
+    try { fetch(STAT.endpoint, { method: 'POST', keepalive: true, credentials: 'omit', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'event', payload }) }).catch(() => {}); } catch (e) { /* nem fontos */ }
+  }
+  stat();
+
+  f.addEventListener('submit', e => {
+    const email = $('#email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { e.preventDefault(); show('Add meg az e-mail-címedet.', false); $('#email').focus(); return; }
+    if (!$('#ok').checked) { e.preventDefault(); show('Pipáld be, hogy kéred a levelet.', false); $('#ok').focus(); return; }
+    stat('hirlevel-feliratkozas');
+    go.disabled = true; show('Pillanat…', true);   // a böngésző a Mailchimp megerősítő oldalára lép tovább
+  });
+  addEventListener('pageshow', () => { go.disabled = false; });   // visszalépéskor újra kattintható
+})();
+</script>
+</body>
+</html>
