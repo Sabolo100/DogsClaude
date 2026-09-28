@@ -64,6 +64,7 @@ A service worker verziója a tartalomból számolódik, ezért a már telepítet
 | `szuro` | szuro (pl. „Méret: Kicsi”, „Gyerekbarát”) | milyen jellemzőkre szűrnek |
 | `kereses` | kifejezes, talalat, db | mit keresnek (és mit nem találnak) |
 | `kviz-indul`, `kviz-kesz` | tipus, elso | kvíz-befejezési arány, gazditípusok |
+| `kviz-modositas` | kerdes, valasz | a kész kvíz mely válaszain módosítanak |
 | `osszevetes`, `megosztas`, `meglepetes` | fajtak / mit / fajta | összehasonlítás, megosztás |
 | `nezet`, `mod`, `bemutato` | nezet / mod / lepes | nézetek, mód, a bemutató tölcsére |
 | `telepites`, `telepites-ajanlat` | valasz | PWA-telepítés |

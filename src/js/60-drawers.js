@@ -20,6 +20,7 @@ function openDrawer(name) {
   renderDrawer();
   const needScrim = S.mobile && name !== 'kviz';
   if (needScrim) { scrimEl.hidden = false; scrimEl.classList.remove('out'); }
+  else if (!scrimEl.hidden && cardEl.hidden) scrimEl.hidden = true;   // pl. Tippek → Kvíz: a kvíz alatt a felhő látsszon
   updateTabs();
   relayout();
   setTimeout(() => { const f = $('.qopt, .d-body button, [data-dclose]', drawerEl); f && f.focus({ preventScroll: true }); }, 350);
@@ -48,7 +49,7 @@ function renderDrawer() {
   drawerEl.innerHTML = `<div class="handle" aria-hidden="true"></div>
     <div class="d-head"><h2>${TITLES[name]}</h2><button class="icbtn" data-dclose aria-label="Bezárás">${ic('x')}</button></div>
     <div class="d-body">${body}</div>${foot ? `<div class="d-foot">${foot}</div>` : ''}`;
-  if (name === 'kviz' && Q.i >= QUIZ.length && !RM()) {
+  if (name === 'kviz' && Q.i >= QUIZ.length && !Q.prev && !RM()) {   // egy válasz módosítása után nincs újabb tűzijáték
     const q = drawerEl.getBoundingClientRect();
     spark(q.left + q.width / 2, q.top + 120, 40, { speed: 8, g: .15 });
   }
@@ -59,10 +60,13 @@ drawerEl.addEventListener('click', e => {
   const opt = t.closest('.qopt');
   if (opt) return answer(+opt.dataset.a, opt);
   if (t.closest('[data-qback]')) { Q.i = Math.max(0, Q.i - 1); return renderDrawer(); }
-  if (t.closest('[data-qrestart]')) { Q = { i: 0, answers: [] }; S.quiz = null; refresh(); return renderDrawer(); }
+  if (t.closest('[data-qrestart]')) { clearTimeout(qTimer); Q = { i: 0, answers: [] }; S.quiz = null; refresh(); return renderDrawer(); }
   if (t.closest('[data-qcloud]')) { closeDrawer(); if (S.view === 'lista') setView('felho'); return; }
   if (t.closest('[data-qshare]')) return shareQuiz();
-  if (t.closest('[data-qresult]')) return renderDrawer();
+  if (t.closest('[data-qresult]')) return quizBack();
+  const qe = t.closest('[data-qedit]');
+  if (qe) return quizEdit(+qe.dataset.qedit);
+  if (t.closest('[data-tquiz]')) return openDrawer('kviz');
   const open = t.closest('[data-open]');
   if (open) return openCard(open.dataset.open);
   const unfav = t.closest('[data-unfav]');
@@ -87,25 +91,36 @@ drawerEl.addEventListener('click', e => {
   drawerEl.addEventListener('pointercancel', end);
 })();
 
-/* ---------- Kvíz ---------- */
+/* ---------- Kvíz ----------
+   A kész kvíz bármelyik válasza módosítható az eredmény „A válaszaid” listájából (Q.edit: a módosítás előtti
+   állapot). Visszatéréskor Q.prev őrzi az utolsó tényleges módosítás előtti állapotot: ebből mutatja az eredmény,
+   mi változott (gazditípus, helyezések, százalékok, kiesettek). */
+let qTimer = 0;
+const mPct = b => Math.round(b.m * 100);
+const focusIn = sel => { const f = $(sel, drawerEl); f && f.focus({ preventScroll: true }); };
 function quizView() {
   if (Q.i >= QUIZ.length) return quizResult();
-  const q = QUIZ[Q.i];
+  const q = QUIZ[Q.i], ed = Q.edit;
   const fitting = S.quiz ? BREEDS.filter(b => b.ok && b.m >= .55).length : TOTAL;
-  return [`<div class="qprog">${QUIZ.map((_, j) => `<i class="${j < Q.i || (j === Q.i && Q.answers[j] != null) ? 'on' : ''}"></i>`).join('')}</div>
-    <div class="qnum">${Q.i + 1}. kérdés / ${QUIZ.length}</div>
+  return [`<div class="qprog">${QUIZ.map((_, j) => `<i class="${ed || j < Q.i || (j === Q.i && Q.answers[j] != null) ? 'on' : ''}"></i>`).join('')}</div>
+    <div class="qnum">${Q.i + 1}. kérdés / ${QUIZ.length}${ed ? ' · módosítás' : ''}</div>
     <div class="qtext">${q.q}</div>
     <div class="qopts">${q.a.map((a, j) => `<button class="qopt${Q.answers[Q.i] === j ? ' sel' : ''}" data-a="${j}" style="--i:${j}"><span class="em">${a.e}</span><span>${a.t}</span></button>`).join('')}</div>
-    <div class="qnav"><button class="link" data-qback ${Q.i ? '' : 'style="visibility:hidden"'}>← Vissza</button><span class="qnum">${S.quiz ? `${fitting} fajta illik eddig` : 'A felhő élőben reagál'}</span></div>`, ''];
+    <div class="qnav">${ed ? '<button class="link" data-qresult>← Vissza az eredményhez</button>'
+      : `<button class="link" data-qback ${Q.i ? '' : 'style="visibility:hidden"'}>← Vissza</button><span class="qnum">${S.quiz ? `${fitting} fajta illik eddig` : 'A felhő élőben reagál'}</span>`}</div>`, ''];
 }
 function answer(j, el) {
   if (Q.i === 0 && Q.answers[0] == null) stat('kviz-indul');   // elkezdte (az első válasszal) – a befejezési arányhoz
   Q.answers[Q.i] = j;
-  el.classList.add('sel');
+  $$('.qopt', drawerEl).forEach(o => o.classList.toggle('sel', o === el));
   haptic(8);
-  S.quiz = { answers: Q.answers.slice(), crit: quizCrit(Q.answers), done: false };
+  const edit = !!Q.edit;
+  S.quiz = { answers: Q.answers.slice(), crit: quizCrit(Q.answers), done: edit };
   refresh({ x: S.mobile ? LR.cx : LR.r, y: S.mobile ? LR.b : LR.cy });
-  setTimeout(() => {
+  // gyors dupla koppintásnál se ugorjon át egy kérdést: az utolsó választás számít, és csak egyszer lépünk tovább
+  clearTimeout(qTimer);
+  qTimer = setTimeout(() => {
+    if (edit) return quizBack();
     Q.i++;
     if (Q.i >= QUIZ.length) {
       S.quiz.done = true; syncHash(); setTimeout(() => maybeInstall('quiz'), 2500);
@@ -115,13 +130,53 @@ function answer(j, el) {
     renderDrawer();
   }, 420);
 }
+function quizEdit(qi) {
+  Q.edit = { qi, was: Q.answers[qi], type: ownerType(Q.answers), top: topBreeds(5).map(b => b.id), pct: new Map(BREEDS.map(b => [b.id, mPct(b)])) };
+  Q.i = qi;
+  renderDrawer();
+  focusIn('.qopt.sel');
+}
+function quizBack() {
+  clearTimeout(qTimer);
+  const ed = Q.edit;
+  Q.edit = null;
+  Q.i = QUIZ.length;
+  if (ed && Q.answers[ed.qi] !== ed.was) {
+    Q.prev = ed;
+    stat('kviz-modositas', { kerdes: `${ed.qi + 1}. ${QUIZ[ed.qi].q}`, valasz: QUIZ[ed.qi].a[Q.answers[ed.qi]].t });
+  }
+  renderDrawer();
+  if (ed) focusIn(`[data-qedit="${ed.qi}"]`);
+}
 function topBreeds(n) { return [...BREEDS].sort((a, b) => (b.ok - a.ok) || (b.m - a.m)).slice(0, n); }
 function quizResult() {
-  const type = OWNER_TYPES[ownerType(Q.answers)];
+  const tk = ownerType(Q.answers), type = OWNER_TYPES[tk];
   const top = topBreeds(5);
-  return [`<div class="qres-type"><span class="emo">${type.e}</span><div class="qnum" style="margin-top:6px">A gazditípusod</div><h3>${type.n}</h3><p>${type.d}</p></div>
-    <h4 style="font:700 19px var(--font-d);margin:14px 0 4px">A te top 5 fajtád</h4>
-    <div class="qtop">${top.map((b, i) => `<button class="qrow" data-open="${b.id}" style="${picStyle(b)};--i:${i}"><span class="rk">${i + 1}</span><i class="pic"></i><span><h4>${esc(b.nev)}</h4><p>${esc(b.tagline)}</p></span><span class="pc">${Math.round(b.m * 100)}%</span></button>`).join('')}</div>
+  const P = Q.prev, newType = !!P && P.type !== tk;
+  const rows = top.map((b, i) => {
+    let tag = '', dp = '';
+    if (P) {
+      const r0 = P.top.indexOf(b.id), d = mPct(b) - P.pct.get(b.id);
+      tag = r0 < 0 ? '<span class="qd new">új</span>' : r0 > i ? `<span class="qd up">▲ ${r0 - i}</span>` : r0 < i ? `<span class="qd down">▼ ${i - r0}</span>` : '';
+      if (d) dp = `<small class="${d > 0 ? 'up' : 'down'}">${d > 0 ? '+' : '−'}${Math.abs(d)}</small>`;
+    }
+    return `<button class="qrow" data-open="${b.id}" style="${picStyle(b)};--i:${i}"><span class="rk">${i + 1}</span><i class="pic"></i><span><h4>${esc(b.nev)}${tag}</h4><p>${esc(b.tagline)}</p></span><span class="pc">${mPct(b)}%${dp}</span></button>`;
+  }).join('');
+  let chg = '';
+  if (P) {
+    const q = QUIZ[P.qi], a0 = q.a[P.was], a1 = q.a[Q.answers[P.qi]];
+    const out = P.top.filter(id => !top.some(b => b.id === id)).map(id => esc(BY_ID.get(id).nev));
+    const same = !newType && !out.length && top.every((b, i) => P.top[i] === b.id && mPct(b) === P.pct.get(b.id));
+    chg = `<div class="qchg"><b>✏️ ${P.qi + 1}. ${esc(q.q)}</b><span><s>${a0.e} ${esc(a0.t)}</s> → <b>${a1.e} ${esc(a1.t)}</b></span>
+      ${same ? '<small>A gazditípusod és a top 5 nem változott.</small>' : out.length ? `<small>Kiesett a top 5-ből: ${out.join(', ')}.</small>` : ''}</div>`;
+  }
+  return [`${chg}<div class="qres-type"><span class="emo">${type.e}</span><div class="qnum" style="margin-top:6px">A gazditípusod</div><h3>${type.n}${newType ? '<span class="qnew">új</span>' : ''}</h3>
+    ${newType ? `<p class="qwas">Eddig: ${OWNER_TYPES[P.type].e} ${OWNER_TYPES[P.type].n}</p>` : ''}<p>${type.d}</p></div>
+    <h4 class="qh">A te top 5 fajtád</h4>
+    <div class="qtop">${rows}</div>
+    <h4 class="qh">A válaszaid</h4>
+    <p class="qhint">${S.mobile ? 'Koppints' : 'Kattints'} egy válaszra, és módosítsd: a toplista és a felhő azonnal követi.</p>
+    <div class="qans">${QUIZ.map((q, qi) => { const a = q.a[Q.answers[qi]]; return a ? `<button class="qa${P && P.qi === qi ? ' just' : ''}" data-qedit="${qi}"><span class="qn">${qi + 1}</span><span><small>${esc(q.q)}</small><b>${a.e} ${esc(a.t)}</b></span>${ic('chev-r')}</button>` : ''; }).join('')}</div>
     <p class="c-note" style="margin-top:14px">A kvíz a válaszaidból súlyozott szempontokat képez – a felhőben is így rangsorolja a fajtákat.</p>`,
   `<button class="btn fill" data-qcloud style="flex:1">${ic('cloud')}Megnézem a felhőben</button><button class="btn round" data-qshare aria-label="Eredmény megosztása">${ic('share')}</button><button class="btn round ghost" data-qrestart aria-label="Újrakezdés" title="Újrakezdés">↺</button>`];
 }
@@ -216,12 +271,17 @@ async function shareFavs() {
 /* ---------- Összehasonlítás (radar + táblázat) ---------- */
 const RADAR = [['E', 'Energia'], ['Gy', 'Gyerekbarát'], ['I', 'Tanulékony'], ['U', 'Csendes', 1], ['H', 'Kevés hullás', 1], ['A', 'Kevés ápolás', 1]];
 const CMP_C = ['#FF6B3D', '#17756E', '#8A63D2'];
+/* Kivétel az összevetésből (a fiók alján) – mindig a benne lévő összes fajtára, akkor is, ha már csak egy maradt.
+   A gombon portré a fajta színével és a teljes név: az első szó („Rövidszőrű”, „Törpe”) nem volt egyértelmű,
+   és jellemzőnek tűnt. */
+const cmpOut = list => `<div class="cmp-xs" data-n="${list.length}">${list.map((b, j) =>
+  `<button class="cmp-x" data-tcmp="${b.id}" style="${picStyle(b)};--cc:${CMP_C[j]}" aria-label="${esc(b.nev)} kivétele az összevetésből"><i class="pic"><b class="x">${ic('x')}</b></i><span>${esc(b.nev)}</span></button>`).join('')}</div>`;
 function cmpView() {
   const list = S.cmp.map(id => BY_ID.get(id)).filter(Boolean);
   if (list.length < 2) {
     const s = SPARES['kerdo-kutya'];
     return [`<div class="dempty"><div class="pic" style="background-image:url('${portrait(s.id)}');background-color:${s.bg}"></div><h3>Kit hasonlítsunk össze?</h3>
-      <p>Tegyél legalább 2 fajtát az összevetésbe a kártyájukon az <b>Összehasonlít</b> gombbal (max. 3).${list.length ? `<br>Eddig: <b>${esc(list[0].nev)}</b>` : ''}</p></div>`, ''];
+      <p>Tegyél legalább 2 fajtát az összevetésbe a kártyájukon az <b>Összehasonlít</b> gombbal (max. 3).${list.length ? `<br>Eddig: <b>${esc(list[0].nev)}</b>` : ''}</p></div>`, list.length ? cmpOut(list) : ''];
   }
   const cx = 190, cy = 170, R = 118, n = RADAR.length;
   const pt = (i, v) => { const a = -Math.PI / 2 + i / n * Math.PI * 2; return [cx + Math.cos(a) * R * v, cy + Math.sin(a) * R * v]; };
@@ -246,21 +306,33 @@ function cmpView() {
     return `<tr><th>${l}</th>${list.map(b => `<td class="${score && score(b) === best && list.some(x => score(x) !== best) ? 'best' : ''}">${esc(f(b))}</td>`).join('')}</tr>`;
   }).join('')}</tbody></table>`;
   return [`<div class="cmp-heads">${list.map((b, j) => `<button class="cmp-h" data-open="${b.id}" style="${picStyle(b)};--cc:${CMP_C[j]};border:0;background:none;padding:0"><i class="pic"></i>${esc(b.nev)}</button>`).join('')}</div>
-    <svg class="radar" viewBox="0 0 380 340">${web}${spokes}${polys}${labels}</svg>${table}`,
-  list.map(b => `<button class="btn ghost" data-tcmp="${b.id}" style="flex:1;font-size:13px;padding:0 10px">${ic('x')}${esc(b.nev.split(' ')[0])}</button>`).join('')];
+    <svg class="radar" viewBox="0 0 380 340">${web}${spokes}${polys}${labels}</svg>${table}`, cmpOut(list)];
 }
 
 /* ---------- Tippek / Gazdi-tudástár + beállítások ---------- */
 function tipsView() {
   const dark = isDark();
   return [`<div class="tips">
+    <div class="tipcard"><h4>❤️ Válassz felelősen</h4>
+      <p>Hosszú évekre, sokszor 10–15 évre veszel magad mellé valakit, aki a családod tagja lesz. Ezért ne csak a külseje alapján dönts: nézd meg, illik-e az életmódodhoz, az otthonodhoz és a családodhoz. Ebben segít a Pacsi is, a szűrőkkel, a Párkereső kvízzel és az összehasonlítással.</p>
+      <p><button class="link" data-tquiz>Kitöltöm a Párkereső kvízt →</button></p></div>
+    <div class="tipcard"><h4>🧬 Mire tenyésztették?</h4>
+      <p>Nézd meg, mire tenyésztették és mire használták eredetileg a fajtát, amelyik tetszik, és gondold végig, ki tudod-e szolgálni az ösztöneit. A vadászkutya szimatolna és futna, a terelőkutya terelne, az őrzőkutya őrizne – akkor is, ha nálad nincs rá feladata.</p>
+      <p>Például a dalmata, a <i>101 kiskutya</i> sztárja, eredetileg lovas kocsik mellett futó kísérő- és őrzőkutya volt. Ma is rengeteg futás kell neki, megvan benne az őrző ösztön, és heves természete miatt kisgyerek mellé nem kifejezetten ajánlott.</p>
+      <small>A fajtakártyák leírásában is utánanézhetsz, honnan jön és mire használták a fajtát.</small></div>
     <div class="tipcard"><h4>✅ Mielőtt kutyát veszel</h4><ul>
       <li>Nézd meg a kölyök szüleit és a tartási körülményeket.</li>
       <li>Kérj törzskönyvet (FCI/MEOESZ) és a szülők egészségügyi szűréseit (pl. csípő, szem, szív).</li>
       <li>A kölyök legalább 8 hetes legyen, mikrochippel és oltási könyvvel.</li>
       <li>Kerüld az „olcsó, azonnal elvihető” hirdetéseket – gyakran szaporítótól származnak.</li>
       <li>Kérj írásos adásvételi szerződést.</li></ul></div>
-    <div class="tipcard"><h4>🏡 Gondolj az örökbefogadásra</h4><p>Rengeteg fajtatiszta kutya és keverék vár menhelyen vagy fajtamentő szervezetnél. Egy felnőtt kutya jellemét ráadásul már ismerni lehet.</p></div>
+    <div class="tipcard"><h4>🐶 Kölyökteszt: melyik kölyök illik hozzád?</h4>
+      <p>A fajtán belül is sokat számít, hogy az alomból melyik kölyök kerül hozzád: így kerülhet jó kutya jó helyre. A tenyésztők ezt kölyöktesztnek hívják. Már 6 hetes korban sokat elárul a kiskutya egyéniségéről, például:</p>
+      <ul><li>mennyire szereti az embereket,</li><li>fél-e a zajoktól,</li><li>könnyen vagy nehezen motiválható-e, és mivel (étel, játék, dicséret),</li><li>mennyire önálló és mennyire tanulékony.</li></ul>
+      <small>Kérdezd meg a tenyésztőt, végzett-e kölyöktesztet, és melyik kölyköt ajánlja a családodhoz.</small></div>
+    <div class="tipcard"><h4>🏡 Gondolj az örökbefogadásra</h4><p>Rengeteg fajtatiszta kutya és keverék vár menhelyen vagy fajtamentő szervezetnél. Egy felnőtt kutya jellemét ráadásul már ismerni lehet.</p>
+      <p><b>Mentett kutyánál még fontosabb egy szakértő, például egy kutyakiképző segítsége.</b> Laikus gazdaként nem mindig látod, milyen fizikai adottságai vagy betegségei vannak, és érte-e testi vagy lelki trauma. Pedig ezekkel számolnod kell a befogadás utáni szocializációban. Előfordulhat például, hogy a kutya:</p>
+      <ul><li>antiszociális más kutyákkal, háziállatokkal vagy emberekkel,</li><li>retteg az emberektől vagy más állatoktól,</li><li>nehezen motiválható, így nehezen képezhető.</li></ul></div>
     <div class="tipcard"><h4>📋 Kötelezettségek Magyarországon</h4><ul>
       <li>Mikrochip és nyilvántartásba vétel.</li><li>Évenkénti veszettség elleni oltás.</li><li>Az önkormányzati ebösszeírás.</li></ul>
       <small>Tájékoztató jellegű – ellenőrizd a hatályos jogszabályokat és a helyi rendeleteket.</small></div>

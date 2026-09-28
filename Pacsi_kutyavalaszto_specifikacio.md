@@ -978,6 +978,7 @@ r_i      = r0 · s_i
 **Eredményképernyő:**
 - **Gazditípus** (szórakoztató, megosztható): 🛋️ *Kanapé-kapitány* · 🏃 *Aktív kalandor* · 👨‍👩‍👧 *Családi karmester* · 🏙️ *Városi flâneur* · 🛡️ *Tanyasi őrangyal* · 🎓 *Kutyasuttogó* (tapasztalt, képző).
 - **Top 5 fajta** illeszkedési %-kal és 2–3 indoklással („✓ Csendes · ✓ Lakásba való · ⚠ Napi fésülés kell”).
+- **A válaszaid (v1.8.0):** mind a 10 válasz listában; bármelyik újra kiválasztható, a felhő élőben követi. Visszatéréskor az eredmény kiemeli, mi változott: a módosított válasz (régi → új), az új gazditípus, a helyezésváltozás (▲/▼, „új”), a %-változás és a top 5-ből kiesettek.
 - Gombok: „Megnézem a felhőben” (a kvíz szűrői Rangsor módban aktívak maradnak) · „Megosztom” · „Újra”.
 
 ### 14.2 Összehasonlítás (max. 3 fajta)
@@ -995,7 +996,7 @@ r_i      = r0 · s_i
 - Mobilon **Web Share API** fájlmegosztással (közvetlenül Instagram/Messenger/Viber), desktopon letöltés + link másolása.
 
 ### 14.5 Gazdi-tudástár („Tippek” fül)
-Rövid, illusztrált kártyák:
+Rövid, illusztrált kártyák (v1.8.0-tól az elején: **Válassz felelősen** – egy kutya hosszú évekre a család tagja, ebben segít a Pacsi, innen a kvíz is indítható; **Mire tenyésztették?** – az ösztönök kiszolgálása, példa: dalmata; a vásárlási lista után **Kölyökteszt** – az alomból a hozzád illő kölyök; az örökbefogadásnál **mentett kutya: szakértő segítsége**):
 1. **Mielőtt kutyát veszel – ellenőrzőlista:** törzskönyv (FCI/MEOESZ), a szülők megtekintése, egészségügyi szűrések (HD/ED, szem, szív), a kölyök legalább 8 hetes, mikrochip, oltási könyv/állatútlevél, adásvételi szerződés. A „szaporító” és a felelős tenyésztő közötti különbség.
 2. **Örökbefogadás:** sok fajtatiszta kutya és keverék vár menhelyen, illetve fajtamentő szervezeteknél. Szűrő-nézet: „Ezek a fajták gyakran keresnek új otthont”.
 3. **Kötelezettségek Magyarországon** (indulás előtt jogilag ellenőrizendő): mikrochip és regisztráció, kötelező veszettség elleni oltás, ebösszeírás.
@@ -1552,5 +1553,12 @@ Szűrő nélkül, a térképen és asztali rangsor módban változatlanul kb. 0,
   - Az események a 2. fejezet mérőszámait fedik le (szűrőhasználat, kártyanyitás, kvíz-befejezés, megosztás, PWA-telepítés); a teljes lista a README-ben van.
 - **Linkelőnézet:** kanonikus cím és og:image (a marketingkészlet `p_og` képe a pacsit.hu felirattal, 1200 × 630). Az og:title és az og:description a döntési kérdést teszi előre.
 - **Megosztások:** a fajta-, a kvíz- és a kedvenclista-megosztás mindig a pacsit.hu-ra mutat; a kvíz eredményképén a pacsit.hu áll.
+
+### 26.14 Tesztelői visszajelzés: javítások és bővítések (2026-09-28, v1.8.0)
+- **Keresés lista nézetben:** lista nézetben a buborékok rejtve vannak, ezért a kereső-reflektor (`applySearch`) ott a listát szűri (`listBreeds`), találat nélkül üzenetet mutat, és az Enter a lista első találatát nyitja meg.
+- **Összehasonlítás lábléce:** a kivevő gombokon portré a fajta színével és a teljes név (eddig csak az első szó); egy fajtánál is megmarad. 3 fajtánál a név a portré alá kerül.
+- **Kvíz:** a kész kvíz válaszai az eredmény „A válaszaid” listájából módosíthatók, utána kiemelve, mi változott (lásd 14.1). Új esemény: `kviz-modositas`.
+- **Gazdi-tudástár:** új kártyák (lásd 14.5). A dalmata-példa a fajtakártya adataival összhangban szerepel.
+- **Keskeny telefon:** 389 px alatt szűkebb belső margók a mobil fejlécben, 360 px alatt a nézetváltón csak ikonok – így a „Csak találatok” gomb 320 px-en sem törik két sorba.
 
 *pacsi 🐾 – mert a jó döntés is egy kézfogással kezdődik.*

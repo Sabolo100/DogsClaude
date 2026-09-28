@@ -728,19 +728,26 @@ function fxStep() {
 }
 
 /* ---------- Kereső-reflektor ---------- */
+// név, angol név vagy ismert másik név szerint, ékezet nélkül (nq: norm-olt keresőszó)
+const nameHit = (b, nq) => norm(b.nev).includes(nq) || norm(b.en).includes(nq) || (b.syn || []).some(s => norm(s).includes(nq));
 function applySearch(q) {
+  const changed = q !== S.q;
   S.q = q;
   const nq = norm(q.trim());
   const hits = [], all = [];
   for (const o of B) {
-    const b = o.b;
-    const hit = !!nq && (norm(b.nev).includes(nq) || norm(b.en).includes(nq) || (b.syn || []).some(s => norm(s).includes(nq)));
+    const hit = !!nq && nameHit(o.b, nq);
     if (o.dim !== (!!nq && !hit)) { o.dim = !!nq && !hit; o.el.classList.toggle('dim', o.dim); }
     if (o.el.classList.contains('spot') !== hit) o.el.classList.toggle('spot', hit);
     if (hit) { all.push(o); if (o.vis) hits.push(o); }
   }
-  if (hits.length === 1 && !RM()) { hits[0].jv = -6; }
   statSearch(q, all);   // a statisztikában a szűrőktől független találat számít (mire keresett)
+  // Lista nézetben nem látszanak a buborékok: ott a kereső magát a listát szűri, és az Enter a lista első találatát nyitja meg
+  if (S.view === 'lista') {
+    if (changed) renderList({ typing: true });
+    return nq ? listBreeds().map(b => OB_ID.get(b.id)) : [];
+  }
+  if (hits.length === 1 && !RM()) { hits[0].jv = -6; }
   return hits;
 }
 

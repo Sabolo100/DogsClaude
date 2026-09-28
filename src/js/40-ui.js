@@ -268,7 +268,13 @@ $('#mobClear').addEventListener('click', e => clearAll(srcPoint(e.currentTarget)
 $('#flyCloud').addEventListener('click', () => openDrawer('kirepultek'));
 
 /* ---------- Lista nézet ---------- */
-function renderList() {
+// A lista sorrendje; ha van keresőszó, csak a név szerinti találatok (lásd applySearch)
+function listBreeds() {
+  const active = S.crit.length > 0, nq = norm(S.q.trim());
+  return BREEDS.filter(b => !nq || nameHit(b, nq))
+    .sort((a, b) => active ? (b.ok - a.ok) || (b.m - a.m) : (b.nep - a.nep) || COLL.compare(a.nev, b.nev));
+}
+function renderList({ typing = false } = {}) {
   const box = $('#listView');
   if (S.view !== 'lista') { box.innerHTML = ''; return; }
   // A lista a számláló / szűrő-pillek ALATT kezdődik (nem csak alá van tolva), így görgetéskor
@@ -277,7 +283,16 @@ function renderList() {
   box.style.top = Math.max(0, Math.round(hudBottom - stage.getBoundingClientRect().top + (S.mobile ? 6 : 10))) + 'px';
   box.style.paddingTop = '8px';
   const active = S.crit.length > 0;
-  const arr = [...BREEDS].sort((a, b) => active ? (b.ok - a.ok) || (b.m - a.m) : (b.nep - a.nep) || COLL.compare(a.nev, b.nev));
+  const arr = listBreeds();
+  // gépelés közben nincs belépő animáció (különben minden leütésre felvillanna a lista), és a találatok az elejéről indulnak
+  box.classList.toggle('typing', typing);
+  if (typing) box.scrollTop = 0;
+  if (!arr.length) {
+    const kk = SPARES['kerdo-kutya'];
+    box.innerHTML = `<div class="dempty lempty"><div class="pic" style="background-image:url('${portrait(kk.id)}');background-color:${kk.bg}"></div>
+      <h3>Nincs ilyen nevű fajta</h3><p>Erre nincs találat: „${esc(S.q.trim())}”. Próbáld másképp, pl. <b>vizsla</b>, <b>terrier</b> vagy <b>juhász</b>.</p></div>`;
+    return;
+  }
   box.innerHTML = arr.map((b, i) => `<button class="lcard${active && !b.ok ? ' out' : ''}" data-id="${b.id}" style="${picStyle(b)};animation-delay:${Math.min(i, 30) * 18}ms">
     ${active ? `<span class="m">${Math.round(b.m * 100)}%</span>` : ''}<i class="pic"></i><h4>${esc(b.nev)}</h4><p>${esc(b.tagline)}</p></button>`).join('');
 }

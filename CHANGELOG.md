@@ -4,6 +4,30 @@ A verziószám a `VERSION` fájlban van, szemantikus verziózással (FŐ.MELLÉK
 - **Mobilon:** a Tippek panel névjegykártyáján.
 - **Asztalon:** a bal oldali panel alján.
 
+## 1.8.0 – 2026-09-28
+Egy androidos teszt visszajelzése alapján.
+- **Új: a Párkereső kvíz válaszai a végén is módosíthatók.** Eddig csak elölről lehetett kezdeni.
+  - Az eredmény alatt „A válaszaid” lista mutatja mind a 10 választ. Bármelyikre koppintva újra kiválaszthatod, a felhő közben élőben követi.
+  - Utána az eredmény megmutatja, mi változott: a módosított választ (régi → új), az új gazditípust, a toplistán a helyezésváltozást (▲/▼, „új”), a százalékok változását és azt, ki esett ki a top 5-ből.
+  - A megosztható link a módosított válaszokat viszi tovább.
+- **Gazdi-tudástár (Tippek), új kártyák:**
+  - „Válassz felelősen”: egy kutya hosszú évekre a családod tagja lesz; ebben segít a Pacsi (a kártyáról indítható a kvíz).
+  - „Mire tenyésztették?”: nézd meg, mire tenyésztették a fajtát, és ki tudod-e szolgálni az ösztöneit (példa: a dalmata).
+  - „Kölyökteszt”: az alomból is jól válassz; mit árul el a kölyökteszt már 6 hetes korban.
+  - Az örökbefogadási kártya kiegészült: mentett kutyánál még fontosabb egy szakértő (pl. kutyakiképző) segítsége, és hogy mire számíts a befogadás után.
+- **Keresés lista nézetben – javítva:** eddig lista nézetben a kereső semmit sem csinált (mobilon a jobb felső sarokban felugró, asztalon a felső sávban lévő).
+  - Gépelés közben szűri a listát név, angol név vagy ismert másik név szerint.
+  - Az Enter (mobilon a billentyűzet keresőgombja) megnyitja az első találat kártyáját.
+  - Ha nincs találat, ezt kiírja, és javasol keresőszót.
+- **Összehasonlítás – javítva:**
+  - A fiók alján a kivevő gombokon a fajta portréja látszik a színével (mint fent és a radaron) és a teljes neve. Eddig csak a név első szava látszott („Rövidszőrű”, két „Törpe”). Ez inkább jellemzőnek tűnt, és nem lehetett tudni, melyik kutyáról van szó.
+  - Ha csak egy fajta maradt az összevetésben, azt is ki lehet venni. Eddig ilyenkor eltűnt a gombja.
+- **Keskeny telefon (360 px és kisebb):** a „Csak találatok” gomb felirata már nem törik két sorba. 360 px alatt a nézetváltón csak az ikonok látszanak.
+- **Kisebb javítások:**
+  - A kvízben egy gyors dupla koppintás nem ugrik át kérdést.
+  - Ha mobilon egy másik lapról (pl. Tippek) váltasz a kvízre, a felhő nem marad elhomályosítva.
+- **Statisztika:** új `kviz-modositas` esemény (melyik kérdésnél, mire módosítanak).
+
 ## 1.7.1 – 2026-09-25
 - **Hírlevél:** új „Már csak egy lépés: nézd meg a postafiókodat!” oldal (`/hirlevel/megerosites.html`). A feliratkozó gomb után ide érkezik az olvasó, a megerősítés után pedig a köszönőoldalra.
 
