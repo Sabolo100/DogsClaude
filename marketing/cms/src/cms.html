@@ -1,0 +1,1678 @@
+<title>Pacsi Marketing Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..800,0..100;1,9..144,500..800,0..100&family=Manrope:wght@400..800&display=swap">
+<style>
+:root {
+  --bg: #FBF6EE; --bg-2: #F5EDE1; --surface: #FFFDF9; --raise: #FFFFFF;
+  --ink: #1E1B18; --ink-2: #6B625A; --ink-3: #9A9088;
+  --line: rgba(30, 27, 24, .10); --line-2: rgba(30, 27, 24, .06);
+  --primary: #EE5A2C; --primary-2: #FF8A3D; --primary-soft: #FFE3D6; --on-primary: #fff;
+  --teal: #17756E; --teal-soft: #D5EFEA; --ok: #2E9E6A; --ok-soft: #DDF3E6; --warn: #B8631A; --warn-soft: #FDECD6;
+  --idea: #7C6BD6; --idea-soft: #ECE8FF; --bad: #C23B2E; --bad-soft: #FBE3DF;
+  --pf-email: var(--teal);
+  --pf-tiktok: #111111; --pf-instagram: #D6336C; --pf-facebook: #1877F2; --pf-linkedin: #0A66C2; --pf-youtube: #FF0000;
+  --shadow: 0 1px 2px rgba(90, 50, 20, .06), 0 6px 20px rgba(90, 50, 20, .07);
+  --shadow-lg: 0 2px 6px rgba(90, 50, 20, .08), 0 24px 60px rgba(90, 50, 20, .18);
+  --font-d: 'Fraunces', ui-serif, Georgia, serif;
+  --font-u: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --r: 18px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14121A; --bg-2: #1A1722; --surface: #1D1A25; --raise: #25212F;
+    --ink: #F4EFE8; --ink-2: #B4ABA2; --ink-3: #7F776F;
+    --line: rgba(244, 239, 232, .12); --line-2: rgba(244, 239, 232, .07);
+    --primary: #FF7F55; --primary-2: #FFA05C; --primary-soft: #3A2226; --on-primary: #1A0D08;
+    --teal: #3CC2B4; --teal-soft: #173432; --ok: #5BD69A; --ok-soft: #173326; --warn: #FFB45C; --warn-soft: #3A2A16;
+    --idea: #A99BFF; --idea-soft: #26213F; --bad: #FF8A7E; --bad-soft: #3A1F22;
+    --pf-tiktok: #EDEDED; --pf-instagram: #FF5C8E; --pf-facebook: #4C9BFF; --pf-linkedin: #4DA3F0; --pf-youtube: #FF4D4D;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .3);
+    --shadow-lg: 0 4px 10px rgba(0, 0, 0, .35), 0 30px 80px rgba(0, 0, 0, .55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14121A; --bg-2: #1A1722; --surface: #1D1A25; --raise: #25212F;
+  --ink: #F4EFE8; --ink-2: #B4ABA2; --ink-3: #7F776F;
+  --line: rgba(244, 239, 232, .12); --line-2: rgba(244, 239, 232, .07);
+  --primary: #FF7F55; --primary-2: #FFA05C; --primary-soft: #3A2226; --on-primary: #1A0D08;
+  --teal: #3CC2B4; --teal-soft: #173432; --ok: #5BD69A; --ok-soft: #173326; --warn: #FFB45C; --warn-soft: #3A2A16;
+  --idea: #A99BFF; --idea-soft: #26213F; --bad: #FF8A7E; --bad-soft: #3A1F22;
+  --pf-tiktok: #EDEDED; --pf-instagram: #FF5C8E; --pf-facebook: #4C9BFF; --pf-linkedin: #4DA3F0; --pf-youtube: #FF4D4D;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .3);
+  --shadow-lg: 0 4px 10px rgba(0, 0, 0, .35), 0 30px 80px rgba(0, 0, 0, .55);
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 500 15px/1.5 var(--font-u); -webkit-font-smoothing: antialiased; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; border-radius: 8px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 20px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media (max-width: 600px) { .wrap { padding-inline: 16px; } }
+
+/* fejléc */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 18px; min-height: 64px; flex-wrap: wrap; padding-block: 8px; }
+.brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: var(--ink); }
+.logo { font: 800 28px/1 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 72; letter-spacing: -.02em; position: relative; }
+.logo .i { position: relative; display: inline-block; }
+.logo .i svg { position: absolute; width: .5em; height: .5em; left: 50%; top: -.28em; transform: translateX(-50%) rotate(-12deg); fill: var(--primary); }
+.brand small { font: 700 12px/1 var(--font-u); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.tabs { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--bg-2); border: 1px solid var(--line-2); overflow-x: auto; scrollbar-width: none; }
+.tabs button { border: 0; background: none; padding: 8px 16px; border-radius: 999px; font-weight: 700; color: var(--ink-2); white-space: nowrap; }
+.tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+.tstat { margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 12.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-3); display: inline-block; }
+.dot.on { background: var(--ok); } .dot.busy { background: var(--warn); }
+@media (max-width: 760px) { .tabs { order: 3; width: 100%; } .tstat .ver { display: none; } }
+
+main { padding-block: 26px 80px; }
+h1, h2, h3 { font-family: var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 96; letter-spacing: -.02em; line-height: 1.1; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; }
+h2 { font-size: 22px; font-weight: 800; }
+h3 { font-size: 18px; font-weight: 700; }
+.lead { color: var(--ink-2); max-width: 70ch; margin: 8px 0 0; }
+.kicker { font: 800 11.5px/1 var(--font-u); letter-spacing: .14em; text-transform: uppercase; color: var(--primary); }
+.sec { margin-top: 34px; }
+.sec-h { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.muted { color: var(--ink-2); }
+.small { font-size: 13px; }
+
+/* chip-ek, címkék */
+.pf { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 12.5px; white-space: nowrap; }
+.pf i { width: 9px; height: 9px; border-radius: 50%; background: var(--c); flex: none; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font: 700 12px/1.6 var(--font-u); white-space: nowrap; border: 1px solid transparent; }
+.st-tervezett { background: var(--bg-2); color: var(--ink-2); border-color: var(--line); }
+.st-kesz { background: var(--teal-soft); color: var(--teal); }
+.st-kiposztolva { background: var(--ok-soft); color: var(--ok); }
+.st-otlet { background: var(--idea-soft); color: var(--idea); border: 1px dashed color-mix(in srgb, var(--idea) 50%, transparent); }
+.kind { background: var(--primary-soft); color: var(--primary); }
+.btn, .seg button { font-family: var(--font-u); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); font-weight: 700; font-size: 14px; color: var(--ink); text-decoration: none; }
+.btn:hover { border-color: color-mix(in srgb, var(--primary) 45%, var(--line)); }
+.btn.fill { background: var(--primary); border-color: transparent; color: var(--on-primary); }
+.btn.fill:hover { filter: brightness(1.05); }
+.btn.sm { padding: 6px 11px; font-size: 13px; border-radius: 10px; }
+.btn.ghost { background: transparent; }
+.btn[disabled] { opacity: .5; cursor: default; }
+.ic { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* következő posztok */
+.next { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 900px) { .next { grid-template-columns: 1fr; } }
+.ncard { display: grid; grid-template-columns: 86px 1fr; gap: 14px; padding: 14px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line-2); box-shadow: var(--shadow); text-align: left; align-items: center; }
+.ncard .th { width: 86px; height: 86px; border-radius: 14px; background: var(--bg-2) center/cover; }
+.ncard .when { font: 800 13px/1.2 var(--font-u); font-variant-numeric: tabular-nums; }
+.ncard .t { font: 700 15px/1.3 var(--font-u); margin: 4px 0 6px; }
+.ncard .pfl { display: flex; gap: 4px 12px; flex-wrap: wrap; }
+.ncard.first { border-color: color-mix(in srgb, var(--primary) 40%, transparent); }
+
+/* naptár */
+.cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; background: var(--line); gap: 1px; }
+.cal .dh { background: var(--bg-2); padding: 8px 10px; font: 800 11px/1 var(--font-u); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.day { background: var(--surface); min-height: 124px; padding: 8px; display: flex; flex-direction: column; gap: 5px; }
+.day .dn { font: 800 13px/1 var(--font-u); color: var(--ink-3); font-variant-numeric: tabular-nums; display: flex; justify-content: space-between; }
+.day.today { background: color-mix(in srgb, var(--primary-soft) 55%, var(--surface)); }
+.day.today .dn { color: var(--primary); }
+.day.past { background: color-mix(in srgb, var(--surface) 70%, var(--bg)); }
+.day.out { background: var(--bg); }
+.day .ev { font-size: 11px; color: var(--primary); font-weight: 800; }
+.slot { display: flex; align-items: center; gap: 6px; width: 100%; padding: 5px 7px; border-radius: 9px; border: 1px solid var(--line-2); background: var(--raise); text-align: left; font: 600 12px/1.25 var(--font-u); color: var(--ink); min-width: 0; }
+.slot i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
+.slot .dots { display: inline-flex; gap: 3px; flex: none; }
+.slot b { font-weight: 800; font-variant-numeric: tabular-nums; flex: none; }
+.slot span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.slot.done { opacity: .6; } .slot.done span { text-decoration: line-through; }
+.slot.idea { border-style: dashed; border-color: color-mix(in srgb, var(--idea) 60%, transparent); background: var(--idea-soft); }
+.slot:hover { border-color: color-mix(in srgb, var(--primary) 50%, transparent); }
+.agenda { display: none; }
+@media (max-width: 820px) {
+  .cal { display: none; }
+  .agenda { display: flex; flex-direction: column; gap: 10px; }
+  .aday { background: var(--surface); border: 1px solid var(--line-2); border-radius: 16px; padding: 12px; }
+  .aday h3 { font: 800 14px/1.2 var(--font-u); margin-bottom: 8px; display: flex; gap: 8px; align-items: baseline; }
+  .aday .slot { padding: 9px 10px; font-size: 13.5px; margin-top: 6px; }
+}
+.legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; font-size: 12.5px; color: var(--ink-2); }
+
+/* tartalmak */
+.filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.fchip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 13px; font-weight: 700; font-size: 13px; color: var(--ink-2); }
+.fchip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.fsep { width: 1px; height: 22px; background: var(--line); margin: 0 4px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; margin-top: 18px; }
+.card { display: flex; flex-direction: column; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line-2); box-shadow: var(--shadow); overflow: hidden; text-align: left; padding: 0; color: var(--ink); }
+.card:hover { border-color: color-mix(in srgb, var(--primary) 40%, transparent); transform: translateY(-2px); transition: transform .2s, border-color .2s; }
+.card .th { position: relative; aspect-ratio: 4 / 5; background: var(--bg-2) center/contain no-repeat; border-bottom: 1px solid var(--line-2); }
+.card .th .play { position: absolute; left: 10px; bottom: 10px; width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,.6); display: grid; place-items: center; }
+.card .th .play svg { width: 18px; height: 18px; fill: #fff; margin-left: 2px; }
+.card .th .n { position: absolute; right: 10px; top: 10px; }
+.card .bd { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.card .t { font: 800 15px/1.3 var(--font-u); }
+.card .meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 12px; color: var(--ink-3); }
+.card .pfs { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+.empty { padding: 40px; text-align: center; color: var(--ink-2); border: 1px dashed var(--line); border-radius: var(--r); margin-top: 18px; }
+
+/* ötletek, útmutató */
+.ideas { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.icard { border-radius: var(--r); padding: 18px; background: var(--surface); border: 1px dashed color-mix(in srgb, var(--idea) 45%, transparent); display: flex; flex-direction: column; gap: 8px; }
+.icard .hook { font: italic 700 17px/1.3 var(--font-d); color: var(--primary); }
+.icard textarea { min-height: 60px; }
+.gtab { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); }
+.gtab th, .gtab td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line-2); vertical-align: top; font-size: 14px; }
+.gtab th { font: 800 11.5px/1.2 var(--font-u); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); background: var(--bg-2); }
+.tw { overflow-x: auto; border-radius: var(--r); }
+.steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.panel { background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--r); padding: 18px; box-shadow: var(--shadow); }
+.panel ol { margin: 10px 0 0; padding-left: 20px; } .panel li { margin: 6px 0; }
+.bio { display: grid; gap: 10px; }
+.bio .row { display: grid; grid-template-columns: 120px 1fr auto; gap: 12px; align-items: start; padding: 12px 14px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line-2); }
+.bio pre { margin: 0; white-space: pre-wrap; font: 500 14px/1.5 var(--font-u); }
+@media (max-width: 600px) { .bio .row { grid-template-columns: 1fr; } }
+
+/* részletek (oldalpanel) */
+.scrim { position: fixed; inset: 0; background: rgba(20, 14, 10, .38); z-index: 50; }
+.sheet { position: fixed; top: 0; right: 0; bottom: 0; width: min(980px, 100%); z-index: 51; background: var(--bg); box-shadow: var(--shadow-lg); display: flex; flex-direction: column; }
+.sheet .sh { display: flex; align-items: center; gap: 12px; padding: calc(12px + env(safe-area-inset-top, 0px)) 18px 12px; border-bottom: 1px solid var(--line); background: var(--surface); }
+.sheet .sh h2 { font-size: 20px; flex: 1; min-width: 0; }
+.sheet .sb { overflow: auto; padding: 18px; display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 22px; align-items: start; padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+@media (max-width: 820px) { .sheet .sb { grid-template-columns: 1fr; } }
+.pv { position: sticky; top: 0; display: flex; flex-direction: column; gap: 12px; }
+@media (max-width: 820px) { .pv { position: static; } }
+.pv .media { border-radius: 16px; overflow: hidden; background: var(--bg-2); border: 1px solid var(--line-2); }
+.pv video, .pv img { display: block; width: 100%; height: auto; max-height: 70vh; object-fit: contain; background: #000; }
+.pv img { background: var(--bg-2); }
+.strip { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
+.strip img { width: 86%; flex: none; scroll-snap-align: start; border-radius: 14px; border: 1px solid var(--line-2); }
+.dl { display: flex; flex-direction: column; gap: 8px; }
+.dl .btn { justify-content: space-between; }
+.dl .btn small { color: var(--ink-3); font-weight: 600; font-variant-numeric: tabular-nums; }
+.box { background: var(--surface); border: 1px solid var(--line-2); border-radius: 16px; padding: 16px; }
+.box + .box { margin-top: 14px; }
+.box h3 { margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.seg { display: inline-flex; padding: 3px; border-radius: 12px; background: var(--bg-2); border: 1px solid var(--line-2); gap: 2px; flex-wrap: wrap; }
+.seg button { border: 0; background: none; padding: 6px 12px; border-radius: 9px; font-weight: 700; font-size: 13px; color: var(--ink-2); display: inline-flex; gap: 6px; align-items: center; }
+.seg button[aria-pressed="true"], .seg button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+textarea, select, input[type="text"], input[type="search"], input[type="date"], input[type="time"] { width: 100%; border: 1px solid var(--line); background: var(--raise); border-radius: 12px; padding: 10px 12px; font-size: 14.5px; line-height: 1.5; }
+textarea { resize: vertical; min-height: 170px; }
+textarea:focus, input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 22%, transparent); }
+.row2 { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+.cnt { margin-left: auto; font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.cnt.over { color: var(--warn); font-weight: 800; }
+.tip { font-size: 12.5px; color: var(--ink-2); background: var(--bg-2); border-radius: 10px; padding: 8px 11px; margin-top: 10px; }
+.slots { display: flex; flex-direction: column; gap: 8px; }
+.srow { display: grid; grid-template-columns: 120px 1fr 110px auto; gap: 8px; align-items: center; }
+@media (max-width: 520px) { .srow { grid-template-columns: 1fr 1fr; } }
+.chk { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 13px; white-space: nowrap; }
+.chk input { width: 18px; height: 18px; accent-color: var(--ok); }
+.notes { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 13.5px; } .notes li { margin: 5px 0; }
+.alts { display: grid; gap: 10px; margin-top: 12px; }
+.alt { border: 1px solid var(--line); border-radius: 12px; padding: 12px; background: var(--raise); }
+.alt p { margin: 0 0 8px; white-space: pre-wrap; font-size: 14px; }
+.toast { position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 80; background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-weight: 700; box-shadow: var(--shadow-lg); }
+.foot { margin-top: 50px; padding-top: 18px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-3); }
+/* ---------- e-mail (eDM) ---------- */
+.ser { display: inline-flex; align-items: center; gap: 6px; font: 800 11px/1 var(--font-u); letter-spacing: .08em; text-transform: uppercase; color: var(--c); white-space: nowrap; }
+.ser i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
+.est-terv { background: var(--bg-2); color: var(--ink-2); border-color: var(--line); }
+.est-kesz { background: var(--teal-soft); color: var(--teal); }
+.est-jovahagyva { background: var(--ok-soft); color: var(--ok); }
+.est-piszkozat { background: var(--idea-soft); color: var(--idea); }
+.est-utemezve { background: var(--warn-soft); color: var(--warn); }
+.est-kikuldve { background: var(--ok-soft); color: var(--ok); font-weight: 800; }
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px; border-radius: 999px; font: 700 11.5px/1.6 var(--font-u); background: var(--bg-2); color: var(--ink-2); border: 1px solid var(--line); white-space: nowrap; }
+.badge.warn { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
+.badge.bad { background: var(--bad-soft); color: var(--bad); border-color: transparent; }
+.egrid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 900px) { .egrid { grid-template-columns: 1fr; } }
+.enext { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 18px; align-items: center; width: 100%; padding: 16px; border-radius: var(--r); background: var(--surface); border: 1px solid color-mix(in srgb, var(--primary) 35%, transparent); box-shadow: var(--shadow); text-align: left; color: var(--ink); }
+.enext .eth { width: 100%; aspect-ratio: 2 / 1; border-radius: 12px; background: var(--bg-2) center/cover; }
+.enext .when { font: 800 14px/1.3 var(--font-u); margin-top: 8px; font-variant-numeric: tabular-nums; }
+.enext .t { font: 800 19px/1.25 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 72; margin: 6px 0 10px; text-wrap: balance; }
+@media (max-width: 600px) { .enext { grid-template-columns: 1fr; } }
+.setup { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; font-size: 13.5px; }
+.setup li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; align-items: start; }
+.setup li > span:first-child { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font: 800 12px/1 var(--font-u); }
+.setup li.ok > span:first-child { background: var(--ok-soft); color: var(--ok); }
+.setup li.no > span:first-child { background: var(--warn-soft); color: var(--warn); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--line-2); border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+.tile b { font: 800 28px/1 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 72; font-variant-numeric: tabular-nums; color: var(--ink); }
+.tile span { font-size: 12.5px; color: var(--ink-2); font-weight: 700; }
+.elist { display: flex; flex-direction: column; gap: 10px; }
+.month-h { font: 800 12px/1 var(--font-u); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 14px 0 0; }
+.erow { display: grid; grid-template-columns: 116px 124px minmax(0, 1fr) auto; gap: 14px; align-items: center; width: 100%; padding: 12px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line-2); text-align: left; color: var(--ink); }
+.erow:hover { border-color: color-mix(in srgb, var(--primary) 40%, transparent); }
+.erow .ed { display: flex; flex-direction: column; gap: 2px; font-variant-numeric: tabular-nums; }
+.erow .ed b { font: 800 13px/1.25 var(--font-u); }
+.erow .ed span { font-size: 12.5px; color: var(--ink-2); }
+.erow .eth { width: 124px; aspect-ratio: 2 / 1; border-radius: 10px; background: var(--bg-2) center/cover; }
+.erow .eb { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.erow .meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.erow .es { font: 800 15px/1.3 var(--font-u); }
+.erow .ep { font-size: 13px; color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.erow .ex { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; font-size: 12px; color: var(--ink-3); text-align: right; }
+@media (max-width: 760px) {
+  .erow { grid-template-columns: 1fr; }
+  .erow .eth { width: 100%; }
+  .erow .ep { white-space: normal; }
+  .erow .ex { align-items: flex-start; text-align: left; }
+}
+.sheet.wide { width: min(1180px, 100%); }
+.sheet .sb.wide { grid-template-columns: minmax(0, 1fr) minmax(0, 370px); }
+@media (max-width: 1000px) { .sheet .sb.wide { grid-template-columns: 1fr; } }
+.pvbar { display: flex; gap: 8px 12px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.pvf { border-radius: 16px; border: 1px solid var(--line-2); background: #FBF6EE; overflow: hidden; }
+.pvf.dark { background: #14121A; }
+.pvf iframe { display: block; width: 100%; height: 1400px; border: 0; }
+.pvf.m { max-width: 390px; margin: 0 auto; }
+.etext { white-space: pre-wrap; font: 500 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--surface); border: 1px solid var(--line-2); border-radius: 16px; padding: 16px; margin: 0; overflow-wrap: anywhere; }
+.subjs { display: grid; gap: 8px; }
+.subj { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--raise); cursor: pointer; font-size: 14px; font-weight: 600; }
+.subj:has(input:checked) { border-color: color-mix(in srgb, var(--primary) 55%, transparent); background: color-mix(in srgb, var(--primary-soft) 40%, var(--raise)); }
+.subj input { margin-top: 3px; accent-color: var(--primary); flex: none; }
+.subj .n { margin-left: auto; font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 13.5px; }
+.checks li { display: grid; grid-template-columns: 70px 1fr; gap: 8px; align-items: start; }
+.kv-list { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 8px 12px; margin: 0; font-size: 14px; }
+.kv-list dt { color: var(--ink-2); font-weight: 700; }
+.kv-list dd { margin: 0; overflow-wrap: anywhere; }
+.kv-list a { color: var(--primary); font-weight: 700; }
+.warnbox { background: var(--warn-soft); color: var(--warn); }
+code { font: 600 .92em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 6px; padding: 1px 5px; }
+
+/* ---------- indítás ---------- */
+.prog { height: 10px; border-radius: 999px; background: var(--bg-2); border: 1px solid var(--line-2); overflow: hidden; margin-top: 14px; max-width: 520px; }
+.prog i { display: block; height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-2)); border-radius: 999px; }
+.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.pnav { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line-2); text-align: left; color: var(--ink); text-decoration: none; }
+.pnav b { font: 800 15px/1.2 var(--font-u); } .pnav span { font-size: 12.5px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.pnav.done { border-color: color-mix(in srgb, var(--ok) 45%, transparent); }
+.pcard { background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--r); padding: 18px 18px 8px; box-shadow: var(--shadow); scroll-margin-top: 90px; }
+.pcard + .pcard { margin-top: 16px; }
+.pcard > header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+.pcard > header h2 { font-size: 22px; }
+.steplist { list-style: none; margin: 0; padding: 0; }
+.steplist > li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; padding: 12px 0; border-top: 1px solid var(--line-2); }
+.steplist > li:first-child { border-top: 0; }
+.steplist input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--ok); }
+.steplist li.ok .sd { color: var(--ink-3); }
+.sd { font-size: 14.5px; line-height: 1.5; }
+.sc { margin-top: 8px; display: grid; gap: 8px; }
+.sc pre { margin: 0; white-space: pre-wrap; font: 600 14px/1.5 var(--font-u); padding: 10px 12px; border-radius: 12px; background: var(--raise); border: 1px dashed var(--line); overflow-wrap: anywhere; }
+.sc .row2 { margin-top: 0; }
+.sc .fthumb { width: 120px; max-width: 40%; border-radius: 10px; border: 1px solid var(--line-2); display: block; }
+/* ---------- kapcsolatok ---------- */
+.cbar { display: flex; gap: 8px 10px; flex-wrap: wrap; align-items: center; }
+.cbar input[type="search"] { flex: 1 1 240px; width: auto; }
+.cbar select { width: auto; max-width: 100%; }
+.ctab { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); }
+.ctab th { text-align: left; padding: 10px 12px; font: 800 11.5px/1.2 var(--font-u); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); background: var(--bg-2); border-bottom: 1px solid var(--line-2); }
+.ctab td { padding: 10px 12px; border-bottom: 1px solid var(--line-2); vertical-align: top; font-size: 14px; }
+.ctab tr.cr { cursor: pointer; }
+.ctab tr.cr:hover td, .ctab tr.cr:focus-visible td { background: color-mix(in srgb, var(--primary-soft) 38%, transparent); }
+.ctab .nm { font-weight: 800; }
+.ctab .cid { font: 700 12.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--ink-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ctab .sub { font-size: 12.5px; color: var(--ink-2); }
+.ctab .em { overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .ctab thead, .ctab .hide-s { display: none; }
+  .ctab tr.cr { display: grid; grid-template-columns: minmax(0, 1fr) auto; border-bottom: 1px solid var(--line-2); }
+  .ctab tr.cr td { border: 0; padding: 8px 12px 2px; }
+  .ctab tr.cr td.em { grid-column: 1 / -1; padding-top: 0; padding-bottom: 10px; }
+}
+.cs-uj { background: var(--bg-2); color: var(--ink-2); border-color: var(--line); }
+.cs-megkeresve, .cs-emlekeztetve { background: var(--idea-soft); color: var(--idea); }
+.cs-valaszolt { background: var(--teal-soft); color: var(--teal); }
+.cs-partner, .cs-feliratkozna, .cs-mailchimpben { background: var(--ok-soft); color: var(--ok); }
+.cs-nem { background: var(--bg-2); color: var(--ink-3); text-decoration: line-through; }
+.cs-hibas { background: var(--bad-soft); color: var(--bad); }
+.cseg { display: flex; flex-wrap: wrap; }
+.mailbox pre { white-space: pre-wrap; font: 500 14px/1.55 var(--font-u); margin: 0; padding: 12px 14px; border-radius: 12px; background: var(--raise); border: 1px solid var(--line-2); max-height: 420px; overflow: auto; }
+.mailbox .lbl { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin: 10px 0 4px; }
+.form-grid { display: grid; gap: 12px; }
+.form-grid label { font-size: 13px; font-weight: 700; color: var(--ink-2); display: grid; gap: 5px; }
+/* ---------- 1.4.0: fejléc (tíz fül), keresés, áttekintés, eredmények, arculat ---------- */
+[hidden] { display: none !important; }
+.tabs { order: 3; width: 100%; }
+.sbtn { margin-left: auto; }
+.sbtn + .tstat { margin-left: 0; }
+kbd { font: 700 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; padding: 3px 6px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg-2); color: var(--ink-2); }
+@media (max-width: 760px) { .sbtn kbd, .sbtn .sl, .dact kbd { display: none; } }
+.lnk { background: none; border: 0; padding: 0; color: var(--ink); font: inherit; font-weight: 700; text-align: left; cursor: pointer; }
+.lnk:hover { color: var(--primary); text-decoration: underline; }
+.dact { margin-top: 16px; }
+.dgrid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 960px) { .dgrid { grid-template-columns: 1fr; } }
+.alist { display: flex; flex-direction: column; gap: 8px; }
+.dayh { font: 800 11.5px/1 var(--font-u); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 10px 0 0; }
+.dayh:first-child { margin-top: 0; }
+.aitem { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; padding: 10px 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line-2); text-align: left; color: var(--ink); }
+.aitem:hover { border-color: color-mix(in srgb, var(--primary) 45%, transparent); }
+.aitem.late { border-color: color-mix(in srgb, var(--bad) 45%, transparent); background: color-mix(in srgb, var(--bad-soft) 45%, var(--surface)); }
+.aitem .aw { font: 800 13.5px/1.25 var(--font-u); font-variant-numeric: tabular-nums; }
+.aitem .aw small { display: block; font: 700 11.5px/1.3 var(--font-u); color: var(--ink-3); margin-top: 2px; }
+.aitem.late .aw small { color: var(--bad); }
+.aitem .ab { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.aitem .at { font: 700 14.5px/1.3 var(--font-u); }
+.aitem .am { display: flex; gap: 4px 10px; flex-wrap: wrap; align-items: center; }
+@media (max-width: 560px) { .aitem { grid-template-columns: 1fr; gap: 6px; } }
+.hlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.hrow { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 10px; align-items: start; width: 100%; padding: 9px 10px; border-radius: 12px; border: 1px solid var(--line-2); background: var(--raise); color: var(--ink); text-align: left; font-size: 13.5px; line-height: 1.45; }
+.hrow:not([disabled]):hover { border-color: color-mix(in srgb, var(--primary) 45%, transparent); }
+.hrow[disabled] { cursor: default; }
+.bars { display: flex; align-items: stretch; gap: 6px; height: 128px; margin-top: 14px; padding: 0 2px; border-bottom: 1px solid var(--line); }
+.bars .b { flex: 0 1 46px; min-width: 12px; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; }
+.bars .b em { font: 800 11px/1 var(--font-u); font-style: normal; color: var(--ink-2); text-align: center; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.bars .b i { display: block; background: var(--teal); }
+.bars .b i.bo { background: var(--bad); border-radius: 5px 5px 0 0; }
+.bars .b i:last-child { border-radius: 0; }
+.bars .b i.bo[style*="height:0%"] + i { border-radius: 5px 5px 0 0; }
+.blabels { display: flex; gap: 6px; padding: 5px 2px 0; }
+.blabels span { flex: 0 1 46px; min-width: 12px; text-align: center; font-size: 10.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; }
+.feed { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 13.5px; }
+.feed li { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 10px; align-items: baseline; }
+.feed time { color: var(--ink-3); font-weight: 700; font-size: 12px; font-variant-numeric: tabular-nums; }
+.feed .lnk { font-weight: 600; }
+.rtab input { width: 84px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--raise); font: 600 14px/1.3 var(--font-u); font-variant-numeric: tabular-nums; }
+.rtab input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 22%, transparent); }
+.rtab td { vertical-align: middle; }
+.rtab .sub { font-size: 12.5px; color: var(--ink-2); margin-top: 3px; }
+.funnel { display: grid; gap: 8px; }
+.funnel .fr { display: grid; grid-template-columns: 170px minmax(0, 1fr) 56px; gap: 10px; align-items: center; font-size: 13.5px; font-weight: 700; }
+.funnel .fb { height: 20px; border-radius: 7px; background: var(--c, var(--teal)); min-width: 3px; }
+.funnel .fr b { text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) { .funnel .fr { grid-template-columns: 1fr 56px; } .funnel .fb { grid-column: 1 / -1; grid-row: 2; } }
+.bio.bank .row { grid-template-columns: 200px minmax(0, 1fr) auto; }
+@media (max-width: 600px) { .bio.bank .row { grid-template-columns: 1fr; } }
+.bcol { display: grid; gap: 6px; justify-items: end; }
+@media (max-width: 600px) { .bcol { justify-items: start; } }
+.voice { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 700px) { .voice { grid-template-columns: 1fr; } }
+.voice ul { margin: 10px 0 0; padding-left: 20px; } .voice li { margin: 6px 0; }
+.voice .do li::marker { content: '✓  '; color: var(--ok); font-weight: 800; }
+.voice .dont li::marker { content: '✕  '; color: var(--bad); font-weight: 800; }
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+.sw { display: flex; flex-direction: column; border-radius: 14px; border: 1px solid var(--line-2); overflow: hidden; background: var(--surface); text-align: left; padding: 0; color: var(--ink); }
+.sw:hover { border-color: color-mix(in srgb, var(--primary) 45%, transparent); }
+.sw i { display: block; height: 60px; background: var(--c); border-bottom: 1px solid var(--line-2); }
+.sw > span { display: block; padding: 8px 10px 10px; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.sw b { display: block; font-size: 13.5px; }
+.logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+.lg { display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line-2); }
+.lg .th { aspect-ratio: 16 / 9; border-radius: 10px; background: var(--bg-2) center/contain no-repeat; border: 1px solid var(--line-2); }
+.utm { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 760px) { .utm { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .utm { grid-template-columns: 1fr; } }
+.utm label { font-size: 12.5px; font-weight: 700; color: var(--ink-2); display: grid; gap: 4px; }
+.utmout { margin-top: 12px; padding: 12px 14px; border-radius: 12px; background: var(--raise); border: 1px dashed var(--line); font: 600 13.5px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+.cmdk-scrim { position: fixed; inset: 0; background: rgba(20, 14, 10, .38); z-index: 90; }
+.cmdk { position: fixed; left: 50%; top: calc(9vh + env(safe-area-inset-top, 0px)); transform: translateX(-50%); width: min(680px, calc(100% - 32px)); max-height: 78vh; z-index: 91; display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-lg); overflow: hidden; }
+.cmdk input[type="search"] { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 16px 18px; font-size: 17px; background: var(--surface); }
+.cmdk input[type="search"]:focus { box-shadow: none; border-color: var(--line); }
+.cmdk .res { overflow: auto; padding: 6px 8px 8px; }
+.cmdk .grp { font: 800 11px/1 var(--font-u); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); padding: 12px 10px 6px; }
+.cmdk .hit { display: flex; gap: 12px; align-items: baseline; width: 100%; padding: 9px 10px; border: 0; border-radius: 10px; background: none; text-align: left; color: var(--ink); font-size: 14px; font-weight: 600; }
+.cmdk .hit span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cmdk .hit small { margin-left: auto; color: var(--ink-3); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cmdk .hit[aria-selected="true"], .cmdk .hit:hover { background: var(--primary-soft); }
+.cmdk .hint { display: flex; gap: 14px; flex-wrap: wrap; padding: 10px 14px; border-top: 1px solid var(--line-2); font-size: 12px; color: var(--ink-3); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="paw" viewBox="0 0 24 24"><ellipse cx="6" cy="9.5" rx="2.1" ry="2.7"/><ellipse cx="10" cy="5.6" rx="2.1" ry="2.8"/><ellipse cx="14.6" cy="5.6" rx="2.1" ry="2.8"/><ellipse cx="18.4" cy="9.6" rx="2.1" ry="2.7"/><path d="M12.3 11.2c2.6 0 5.6 3.4 5.6 6.2 0 2-1.5 2.9-3.2 2.9-1 0-1.7-.5-2.4-.5s-1.4.5-2.4.5c-1.7 0-3.2-.9-3.2-2.9 0-2.8 3-6.2 5.6-6.2z"/></symbol>
+</defs></svg>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#" id="home"><span class="logo">Pacs<span class="i">ı<svg viewBox="0 0 24 24"><use href="#paw"/></svg></span></span><small>Marketing Studio</small></a>
+  <nav class="tabs" role="tablist" aria-label="Nézetek">
+    <button role="tab" data-tab="attekintes" aria-selected="false">Áttekintés</button>
+    <button role="tab" data-tab="naptar" aria-selected="true">Naptár</button>
+    <button role="tab" data-tab="inditas" aria-selected="false">Indítás</button>
+    <button role="tab" data-tab="tartalmak" aria-selected="false">Tartalmak</button>
+    <button role="tab" data-tab="email" aria-selected="false">E-mail</button>
+    <button role="tab" data-tab="kapcsolatok" aria-selected="false">Kapcsolatok</button>
+    <button role="tab" data-tab="eredmenyek" aria-selected="false">Eredmények</button>
+    <button role="tab" data-tab="otletek" aria-selected="false">Következő videók</button>
+    <button role="tab" data-tab="arculat" aria-selected="false">Arculat</button>
+    <button role="tab" data-tab="utmutato" aria-selected="false">Útmutató</button>
+  </nav>
+  <button class="btn sm ghost sbtn" id="sopen" type="button" aria-label="Keresés (Ctrl+K)"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="sl">Keresés</span><kbd>Ctrl K</kbd></button>
+  <div class="tstat"><span id="saveState"><span class="dot"></span> betöltés…</span><span class="ver" id="verTop"></span></div>
+</div></header>
+
+<main class="wrap" id="main"></main>
+<div id="layer"></div>
+
+<script>
+window.CMS = /*CMS_DATA*/;
+</script>
+<script>
+(() => {
+'use strict';
+const D = window.CMS;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const PF = D.platforms, PFK = Object.keys(PF);
+const BY = Object.fromEntries(D.items.map(i => [i.id, i]));
+const pad = n => String(n).padStart(2, '0');
+const ymd = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const TODAY = ymd(new Date());
+const HU_DAY = ['vasárnap', 'hétfő', 'kedd', 'szerda', 'csütörtök', 'péntek', 'szombat'];
+const HU_MON = ['január', 'február', 'március', 'április', 'május', 'június', 'július', 'augusztus', 'szeptember', 'október', 'november', 'december'];
+const EVENTS = { '2026-10-04': 'Állatok világnapja', '2026-10-23': 'Nemzeti ünnep', '2026-10-31': 'Halloween', '2026-11-11': 'Márton-nap',
+  '2026-11-27': 'Black Friday', '2026-12-06': 'Mikulás', '2026-12-24': 'Szenteste', '2026-12-31': 'Szilveszter' };
+const ic = n => ({
+  dl: '<svg class="ic" viewBox="0 0 24 24"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>',
+  copy: '<svg class="ic" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>',
+  x: '<svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  spark: '<svg class="ic" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg>',
+  undo: '<svg class="ic" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>',
+  open: '<svg class="ic" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
+  play: '<svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg>',
+  search: '<svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
+  cal: '<svg class="ic" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
+}[n]);
+const fmtB = b => b > 1e6 ? (b / 1e6).toFixed(1).replace('.', ',') + ' MB' : Math.max(1, Math.round(b / 1e3)) + ' kB';
+const dateHu = d => { const x = new Date(d + 'T12:00:00'); return `${HU_MON[x.getMonth()].slice(0, 3)}. ${x.getDate()}., ${HU_DAY[x.getDay()]}`; };
+
+/* ---------------- állapot és tárolás ---------------- */
+const S = { tab: 'naptar', fk: 'all', fp: 'all', open: null, pf: null, edits: {}, ideas: {}, ro: false,
+  emails: {}, contacts: {}, setup: {}, eopen: null, copen: null, ef: 'all', pv: 'd', cc: 'all', cs: 'all', ck: 'all', cq: '', cp: false, cn: 60,
+  metrics: {}, hall: false, repv: false, utm: null };
+const LS = 'pacsi-cms:v1';
+const cap = { db: null, dl: null, sample: null, ready: false };
+const setSave = (txt, cls = '') => { $('#saveState').innerHTML = `<span class="dot ${cls}"></span> ${esc(txt)}`; };
+try { const raw = localStorage.getItem(LS); if (raw) { const j = JSON.parse(raw); S.edits = j.edits || {}; S.ideas = j.ideas || {}; S.emails = j.emails || {}; S.contacts = j.contacts || {}; S.setup = j.setup || {}; S.metrics = j.metrics || {}; } } catch (e) { /* privát ablak */ }
+const saveLocal = () => { try { localStorage.setItem(LS, JSON.stringify({ edits: S.edits, ideas: S.ideas, emails: S.emails, contacts: S.contacts, setup: S.setup, metrics: S.metrics })); } catch (e) { /* nem elérhető */ } };
+const STORE = { edits: () => S.edits, ideas: () => S.ideas, emails: () => S.emails, contacts: () => S.contacts, setup: () => S.setup, metrics: () => S.metrics };
+
+const pend = new Map(), chain = new Map(), dirty = new Set();   // késleltetett, dokumentumonként egymás utáni írások
+function persist(col, id) {
+  if (!cap.db) { saveLocal(); setSave('Mentve ezen az eszközön', 'on'); return; }
+  const key = col + '/' + id;
+  dirty.add(key);
+  clearTimeout(pend.get(key));
+  setSave('Mentés…', 'busy');
+  pend.set(key, setTimeout(() => {
+    const prev = chain.get(key) || Promise.resolve();
+    const next = prev.then(async () => {
+      const body = STORE[col]()[id] || {};
+      try {
+        await cap.db.doc(key).set({ ...JSON.parse(JSON.stringify(body)), updatedAt: new Date().toISOString() });
+        if (!pend.has(key)) dirty.delete(key);
+        setSave('Mentve – mindenki látja', 'on');
+      } catch (e) {
+        if (e && e.code === 'invalid_argument') { S.ro = true; setSave('Csak olvasható – nincs szerkesztési jogod'); }
+        else setSave('Nem sikerült menteni – próbáld újra');
+      }
+    });
+    chain.set(key, next);
+    pend.delete(key);
+  }, 700));
+}
+async function initCaps() {
+  const c = window.claude;
+  if (!c || !c.use) { setSave(`Helyi mód – ${location.protocol === 'file:' ? 'fájlból' : 'ezen az eszközön'} ment`, 'on'); return; }
+  const [db, dl, sm] = await Promise.all([c.use('db'), c.use('downloads'), c.use('sample')]);
+  cap.dl = dl; cap.sample = sm;
+  if (db) {
+    cap.db = db;
+    setSave('Szinkronizálva', 'on');
+    db.collection('edits').onSnapshot(snap => {
+      const e = {};
+      snap.docs.forEach(d => { e[d.id] = JSON.parse(JSON.stringify(d.data() || {})); });
+      for (const k of dirty) if (k.startsWith('edits/')) { const id = k.slice(6); if (S.edits[id]) e[id] = S.edits[id]; }
+      const changed = snap.docChanges().map(c => c.doc.id);
+      S.edits = e;
+      synced(changed.includes(S.open) && !dirty.has('edits/' + S.open));
+    }, () => setSave('A szinkron megszakadt – frissítsd az oldalt'));
+    db.collection('ideas').onSnapshot(snap => {
+      const e = {};
+      snap.docs.forEach(d => { e[d.id] = JSON.parse(JSON.stringify(d.data() || {})); });
+      for (const k of dirty) if (k.startsWith('ideas/')) { const id = k.slice(6); if (S.ideas[id]) e[id] = S.ideas[id]; }
+      S.ideas = e;
+      if (S.tab === 'otletek' || S.tab === 'attekintes') synced(false);
+    }, () => {});
+    const sub = (col, after) => db.collection(col).onSnapshot(snap => {
+      const e = {};
+      snap.docs.forEach(d => { e[d.id] = JSON.parse(JSON.stringify(d.data() || {})); });
+      for (const k of dirty) if (k.startsWith(col + '/')) { const id = k.slice(col.length + 1); if (STORE[col]()[id]) e[id] = STORE[col]()[id]; }
+      S[col] = e;
+      const a = document.activeElement, typing = !!a && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT');
+      after(snap.docChanges().map(x => x.doc.id), typing);
+    }, () => {});
+    // a nyitott panel csak akkor rajzolódik újra, ha máshol módosították, és épp nem gépelsz benne
+    sub('emails', (ch, typing) => {
+      if (S.eopen) { if (ch.includes(S.eopen) && !dirty.has('emails/' + S.eopen) && !typing) renderEmailSide(); }
+      else if (S.tab === 'email' || S.tab === 'naptar' || S.tab === 'attekintes' || S.tab === 'eredmenyek') synced(false);
+    });
+    sub('setup', () => { if (S.tab === 'inditas' || S.tab === 'attekintes') synced(false); });
+    sub('contacts', (ch, typing) => {
+      if (S.copen && S.copen !== '__new') { if (ch.includes(S.copen) && !dirty.has('contacts/' + S.copen) && !typing) openContact(S.copen, true); }
+      else if (S.tab === 'kapcsolatok' && !typing) refreshContacts();
+      else if ((S.tab === 'attekintes' || S.tab === 'eredmenyek') && !typing) synced(false);
+    });
+    sub('metrics', (ch, typing) => { if ((S.tab === 'eredmenyek' || S.tab === 'attekintes') && !typing) synced(false); });
+  } else setSave('Helyi mód – ezen az eszközön ment', 'on');
+  cap.ready = true;
+  if (S.open) openItem(S.open, true);
+}
+
+/* szerkesztett értékek (a content.json az alap, a tároló a felülírás) */
+const E = id => (S.edits[id] = S.edits[id] || {});
+const copyOf = (it, pf) => { const b = (it.copy || {})[pf] || { text: '', tags: '' }; const e = ((S.edits[it.id] || {}).copy || {})[pf] || {}; return { text: e.text ?? b.text, tags: e.tags ?? b.tags }; };
+const statusOf = it => (S.edits[it.id] || {}).status || it.status;
+const slotsOf = it => (it.slots || []).map((s, i) => ({ ...s, ...(((S.edits[it.id] || {}).slots || {})[i] || {}) }));
+
+/* minden idősáv (tartalom + ötlet), dátum szerint */
+function allSlots() {
+  const out = [];
+  for (const it of D.items) slotsOf(it).forEach((s, i) => out.push({ ...s, i, it }));
+  for (const o of D.ideas) out.push({ platform: 'tiktok', date: o.date, time: '19:00', idea: o, note: 'TikTok + Reels' });
+  if (EM) for (const e of EM.emails) if (e.date) out.push({ platform: 'email', date: e.date, time: e.time, email: e, done: eStatus(e) === 'kikuldve' });
+  return out.sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+}
+
+/* ---------------- nézetek ---------------- */
+function render() {
+  $$('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === S.tab));
+  $('#main').innerHTML = ({ attekintes: vDash, naptar: vCal, inditas: vSetup, tartalmak: vLib, email: vEmail, kapcsolatok: vContacts,
+    eredmenyek: vResults, otletek: vIdeas, arculat: vBrand, utmutato: vGuide })[S.tab]() + footer();
+}
+let rrT = 0;
+/* szinkron után a háttérnézet frissül; a nyitott panel csak akkor, ha azt máshol módosították
+   (így nem ugrik vissza a lejátszott videó, és nem vész el, amit éppen gépelsz) */
+function synced(reopen) {
+  clearTimeout(rrT);
+  rrT = setTimeout(() => {
+    const a = document.activeElement, typing = a && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT');
+    if (!(typing && !S.open)) render();
+    if (reopen && S.open && !typing) openItem(S.open, true);
+  }, 60);
+}
+const footer = () => `<div class="foot"><span>Pacsi Marketing Studio · v${esc(D.version)} · build ${esc(D.build)} · tartalom: ${esc(D.built)}</span><span>Pacsi by DarwinAI · <a href="${esc(D.site)}" target="_blank" rel="noopener" style="color:inherit">${esc(D.siteLabel)}</a></span></div>`;
+const pfChip = p => `<span class="pf" style="--c:var(--pf-${p})"><i></i>${esc(PF[p].name)}</span>`;
+const stPill = st => `<span class="pill st-${st}">${st === 'kiposztolva' ? '✓ ' : ''}${esc(D.statuses[st] || st)}</span>`;
+
+function groupSlots(sl) {
+  const g = new Map(), out = [];
+  for (const s of sl) {
+    if (s.idea || s.email) { out.push(s); continue; }
+    const k = s.date + '|' + s.it.id;
+    if (!g.has(k)) { const x = { date: s.date, time: s.time, it: s.it, pfs: [], done: true, notes: [] }; g.set(k, x); out.push(x); }
+    const x = g.get(k);
+    x.pfs.push(s.platform); x.done = x.done && !!s.done; if (s.time < x.time) x.time = s.time;
+    if (s.note) x.notes.push(s.note);
+  }
+  return out;
+}
+function vCal() {
+  const sl = allSlots();
+  const gs = groupSlots(sl);
+  const up = gs.filter(s => !s.idea && !s.email && !s.done && s.date >= TODAY).slice(0, 3);
+  const nextHtml = up.length ? up.map((s, k) => `<button class="ncard${k ? '' : ' first'}" data-open="${s.it.id}" data-pf="${s.pfs[0]}">
+      <span class="th" style="background-image:url('${s.it.thumb || ''}')"></span>
+      <span><span class="when">${esc(dateHu(s.date))} · ${esc(s.time)}</span><div class="t">${esc(s.it.title)}</div><span class="pfl">${[...new Set(s.pfs)].map(pfChip).join('')}</span></span></button>`).join('')
+    : '<div class="empty">Minden tervezett poszt kint van. 🎉 Nézd meg a Következő videók fület!</div>';
+  // naptárrács: az első idősáv hetének hétfőjétől az utolsó hét vasárnapjáig
+  const first = new Date(sl[0].date + 'T12:00:00'), last = new Date(sl[sl.length - 1].date + 'T12:00:00');
+  const start = new Date(first); start.setDate(first.getDate() - ((first.getDay() + 6) % 7));
+  const end = new Date(last); end.setDate(last.getDate() + (6 - (last.getDay() + 6) % 7));
+  const byDay = {};
+  gs.forEach(s => (byDay[s.date] = byDay[s.date] || []).push(s));
+  const slotBtn = s => s.email
+    ? `<button class="slot${s.done ? ' done' : ''}" data-email="${s.email.id}" style="--c:var(--pf-email)" title="E-mail: ${esc(eSubject(s.email))}"><i></i><b>${esc(s.time)}</b><span>✉ ${esc(s.email.title)}</span></button>`
+    : s.idea
+    ? `<button class="slot idea" data-idea="${s.idea.id}" style="--c:var(--idea)" title="Ötlet: ${esc(s.idea.title)}"><i></i><b>${esc(s.time)}</b><span>Ötlet: ${esc(s.idea.title)}</span></button>`
+    : `<button class="slot${s.done ? ' done' : ''}" data-open="${s.it.id}" data-pf="${s.pfs[0]}" title="${esc([...new Set(s.pfs)].map(p => PF[p].name).join(', '))} · ${esc(s.it.title)}"><span class="dots">${[...new Set(s.pfs)].map(p => `<i style="--c:var(--pf-${p})"></i>`).join('')}</span><b>${esc(s.time)}</b><span>${s.done ? '✓ ' : ''}${esc(s.it.title)}</span></button>`;
+  let cells = ['H', 'K', 'Sze', 'Cs', 'P', 'Szo', 'V'].map(d => `<div class="dh">${d}</div>`).join('');
+  let agenda = '';
+  for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+    const k = ymd(d), list = byDay[k] || [];
+    const cls = k === TODAY ? ' today' : k < TODAY ? ' past' : '';
+    cells += `<div class="day${cls}"><div class="dn"><span>${d.getMonth() + 1}. ${d.getDate()}.</span>${EVENTS[k] ? `<span class="ev">★</span>` : ''}</div>${EVENTS[k] ? `<div class="ev">${esc(EVENTS[k])}</div>` : ''}${list.map(slotBtn).join('')}</div>`;
+    if (list.length) agenda += `<div class="aday"><h3>${esc(dateHu(k))}${k === TODAY ? ' <span class="pill kind">ma</span>' : ''}${EVENTS[k] ? ` <span class="muted small">★ ${esc(EVENTS[k])}</span>` : ''}</h3>${list.map(slotBtn).join('')}</div>`;
+  }
+  const done = sl.filter(s => !s.idea && !s.email && s.done).length, total = sl.filter(s => !s.idea && !s.email).length;
+  return `<div class="kicker">Tartalomnaptár</div><h1 style="margin-top:8px">Mit posztolunk, és mikor?</h1>
+    <p class="lead">Kétnaponta új TikTok/Reels videó, hetente 3–4 kép- vagy karusszelposzt, heti egy LinkedIn-poszt – és csütörtökönként a Pacsi-levél (✉). Kattints egy bejegyzésre: letöltheted a fájlt, kimásolhatod és szerkesztheted a szöveget, és kiposztoltnak jelölheted.</p>
+    <section class="sec"><div class="sec-h"><h2>Következő posztok</h2><span class="muted small">${done} / ${total} idősáv kiposztolva</span></div><div class="next">${nextHtml}</div></section>
+    <section class="sec"><div class="sec-h"><h2>${esc(HU_MON[start.getMonth()])} – ${esc(HU_MON[end.getMonth()])}</h2><span class="muted small">Szaggatott keret: még elkészítendő videóötlet</span></div>
+      <div class="cal">${cells}</div><div class="agenda">${agenda}</div>
+      <div class="legend">${PFK.map(pfChip).join('')}<span class="pf" style="--c:var(--pf-email)"><i></i>E-mail</span><span class="pf" style="--c:var(--idea)"><i></i>Videóötlet</span></div></section>`;
+}
+
+function vLib() {
+  const kinds = [['all', 'Mind'], ...Object.entries(D.kinds).filter(([k]) => k !== 'otlet' && D.items.some(i => i.kind === k))];
+  let list = D.items.filter(i => (S.fk === 'all' || i.kind === S.fk) && (S.fp === 'all' || (i.copy && i.copy[S.fp]) || (i.slots || []).some(s => s.platform === S.fp)));
+  const cards = list.map(it => {
+    const st = statusOf(it), next = slotsOf(it).filter(s => !s.done).sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time))[0];
+    const pfs = [...new Set([...(it.slots || []).map(s => s.platform), ...Object.keys(it.copy || {})])];
+    const pages = (it.files || []).filter(f => f.role === 'page').length;
+    return `<button class="card" data-open="${it.id}">
+      <span class="th" style="background-image:url('${it.thumb || ''}');${it.ratio && it.ratio > 1.05 ? 'background-size:contain' : ''}">${it.kind === 'video' ? `<span class="play">${ic('play')}</span>` : ''}${pages ? `<span class="n pill st-tervezett">${pages} dia</span>` : ''}</span>
+      <span class="bd"><span class="meta"><span class="pill kind">${esc(D.kinds[it.kind])}</span>${stPill(st)}</span>
+      <span class="t">${esc(it.title)}</span><span class="meta">${esc(it.format || '')}${next ? ` · következő: ${esc(dateHu(next.date))}` : ''}</span>
+      <span class="pfs">${pfs.map(pfChip).join('')}</span></span></button>`;
+  }).join('');
+  return `<div class="kicker">Tartalmak</div><h1 style="margin-top:8px">Minden elkészült anyag</h1>
+    <p class="lead">${D.items.length} anyag: videók, posztképek, karusszel, storyk, hirdetések és profilképek. A kártyára kattintva letöltheted a fájlokat és a posztszövegeket.</p>
+    <div class="sec filters" role="toolbar" aria-label="Szűrők">${kinds.map(([k, l]) => `<button class="fchip" data-fk="${k}" aria-pressed="${S.fk === k}">${esc(l)}</button>`).join('')}
+      <span class="fsep"></span>${[['all', 'Minden platform'], ...PFK.map(p => [p, PF[p].name])].map(([k, l]) => `<button class="fchip" data-fp="${k}" aria-pressed="${S.fp === k}">${esc(l)}</button>`).join('')}
+      <button class="btn sm ghost" id="csv" style="margin-left:auto">${ic('dl')} Szövegek (CSV)</button></div>
+    ${cards ? `<div class="grid">${cards}</div>` : '<div class="empty">Ehhez a szűréshez nincs anyag.</div>'}`;
+}
+
+function vIdeas() {
+  return `<div class="kicker">Következő videók</div><h1 style="margin-top:8px">Ötletek a kétnapos ritmushoz</h1>
+    <p class="lead">Az első négy videó kész. Ezek a következő tervezett témák – jelöld meg, amelyiket kéred, és írj hozzá megjegyzést. A következő körben ezekből készülnek az új videók.</p>
+    <div class="sec ideas">${D.ideas.map(o => { const s = S.ideas[o.id] || {}; return `<article class="icard">
+      <div class="meta muted small" style="display:flex;gap:8px;align-items:center"><span class="pill st-otlet">Ötlet</span>${esc(dateHu(o.date))}</div>
+      <h3>${esc(o.title)}</h3><div class="hook">„${esc(o.hook)}”</div><p class="muted small" style="margin:0">${esc(o.brief)}</p>
+      <p class="small" style="margin:0"><b>Az appból:</b> ${esc(o.app)}</p>
+      <label class="chk"><input type="checkbox" data-want="${o.id}" ${s.want ? 'checked' : ''}> Ezt kérem 👍</label>
+      <label class="sr" for="ic-${o.id}">Megjegyzés</label><textarea id="ic-${o.id}" data-icom="${o.id}" placeholder="Megjegyzés (pl. más fajtával, rövidebben…)">${esc(s.comment || '')}</textarea></article>`; }).join('')}</div>`;
+}
+
+function vGuide() {
+  const g = D.guide;
+  const bioIt = BY.p_avatar;
+  return `<div class="kicker">Útmutató</div><h1 style="margin-top:8px">Hogyan posztolj a Pacsi nevében?</h1>
+    <p class="lead">A TikTok és az Instagram nehezen köthető be API-n keresztül, ezért a posztolás kézi: töltsd le a fájlt, másold ki a szöveget, és tedd ki az appban. Ez az oldal ehhez ad időpontot, méreteket és lépéseket.</p>
+    <section class="sec"><div class="sec-h"><h2>Mikor posztolj?</h2><span class="muted small">Kiinduló javaslat – 3–4 hét után a platform statisztikái alapján finomítsd.</span></div>
+      <div class="tw"><table class="gtab"><thead><tr><th>Platform</th><th>Legjobb idősáv</th><th>Miért</th></tr></thead><tbody>${g.times.map(t => `<tr><td>${pfChip(t.platform)}</td><td><b>${esc(t.when)}</b></td><td class="muted">${esc(t.why)}</td></tr>`).join('')}</tbody></table></div></section>
+    <section class="sec"><h2 style="margin-bottom:14px">Lépésről lépésre</h2><div class="steps">${g.howto.map(h => `<div class="panel"><h3>${esc(h.title)}</h3><ol>${h.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol></div>`).join('')}</div></section>
+    <section class="sec"><h2 style="margin-bottom:14px">Méretek és formátumok</h2>
+      <div class="tw"><table class="gtab"><thead><tr><th>Mire</th><th>Méret</th><th>Megjegyzés</th></tr></thead><tbody>${g.specs.map(s => `<tr><td><b>${esc(s.what)}</b></td><td style="font-variant-numeric:tabular-nums">${esc(s.size)}</td><td class="muted">${esc(s.note)}</td></tr>`).join('')}</tbody></table></div></section>
+    <section class="sec"><div class="sec-h"><h2>Profilszövegek (bio)</h2><span class="muted small">Link a bióba: ${esc(D.site)}</span></div>
+      <div class="bio">${PFK.filter(p => bioIt && bioIt.copy[p]).map(p => `<div class="row"><div>${pfChip(p)}</div><pre>${esc(copyOf(bioIt, p).text)}</pre><button class="btn sm" data-copytext="${esc(copyOf(bioIt, p).text)}">${ic('copy')} Másolás</button></div>`).join('')}</div></section>
+    <section class="sec"><h2 style="margin-bottom:14px">Platformszabályok</h2><div class="steps">${PFK.map(p => `<div class="panel">${pfChip(p)}<p class="muted small" style="margin:8px 0 0">${esc(PF[p].tip)}</p></div>`).join('')}</div></section>`;
+}
+
+/* ---------------- részletek ---------------- */
+function openItem(id, keep) {
+  const it = BY[id]; if (!it) return;
+  const scroll = keep && $('.sheet .sb') ? $('.sheet .sb').scrollTop : 0;
+  S.open = id;
+  const pfs = PFK.filter(p => it.copy && it.copy[p]);
+  if (!S.pf || !pfs.includes(S.pf)) S.pf = pfs[0] || null;
+  const st = statusOf(it);
+  const main = (it.files || []).find(f => f.role === 'main'), cover = (it.files || []).find(f => f.role === 'cover');
+  const pages = (it.files || []).filter(f => f.role === 'page');
+  let media = '';
+  if (it.kind === 'video' && main) media = `<div class="media"><video controls playsinline preload="metadata" poster="${esc(cover ? cover.url : '')}" src="${esc(main.url)}"></video></div>`;
+  else if (pages.length) media = `<div class="strip">${pages.map(f => `<img loading="lazy" src="${esc(f.url)}" alt="${esc(f.label)}">`).join('')}</div><div class="muted small">← Húzd oldalra a diákat (${pages.length} db)</div>`;
+  else if (main) media = `<div class="media"><img src="${esc(main.url)}" alt="${esc(it.alt || it.title)}"></div>`;
+  const files = (it.files || []).map((f, k) => `<button class="btn" data-dl="${k}">${ic('dl')}<span style="flex:1;text-align:left">${esc(f.label)}</span><small>${fmtB(f.bytes || 0)}</small></button>`).join('');
+  const c = S.pf ? copyOf(it, S.pf) : null;
+  const lim = S.pf ? PF[S.pf].limit : 0, full = c ? (c.text + (c.tags ? '\n\n' + c.tags : '')) : '';
+  const nTags = c ? (c.tags.match(/#[^\s#]+/g) || []).length : 0;
+  const edited = S.pf && (((S.edits[id] || {}).copy || {})[S.pf]);
+  const copyBox = S.pf ? `<div class="box"><h3>Posztszöveg <span class="seg" role="tablist">${pfs.map(p => `<button role="tab" data-pft="${p}" aria-selected="${p === S.pf}">${pfChip(p)}</button>`).join('')}</span></h3>
+      <label class="sr" for="tx">Szöveg</label><textarea id="tx" data-f="text" ${S.ro ? 'readonly' : ''}>${esc(c.text)}</textarea>
+      <label class="small muted" for="tg" style="display:block;margin-top:10px">Hashtagek</label><input type="text" id="tg" data-f="tags" value="${esc(c.tags)}" ${S.ro ? 'readonly' : ''}>
+      <div class="row2"><button class="btn fill sm" data-copy="all">${ic('copy')} Szöveg + hashtagek</button><button class="btn sm" data-copy="text">Csak a szöveg</button>
+        ${edited ? `<button class="btn sm ghost" data-reset>${ic('undo')} Eredeti</button>` : ''}
+        ${cap.sample && !S.ro ? `<button class="btn sm ghost" data-ai>${ic('spark')} Új változatok</button>` : ''}
+        <span class="cnt${full.length > lim ? ' over' : ''}" id="cnt">${full.length} / ${lim} karakter${S.pf === 'instagram' ? ` · ${nTags} hashtag` : ''}</span></div>
+      <div id="ai"></div>
+      <div class="tip">${esc(PF[S.pf].tip)}</div></div>` : '';
+  const extra = [
+    it.firstComment ? `<div class="box"><h3>Első komment <button class="btn sm" data-copytext="${esc(it.firstComment)}">${ic('copy')} Másolás</button></h3><p style="margin:0">${esc(it.firstComment)}</p></div>` : '',
+    it.alt ? `<div class="box"><h3>Alternatív szöveg (akadálymentesség) <button class="btn sm" data-copytext="${esc(it.alt)}">${ic('copy')} Másolás</button></h3><p class="muted" style="margin:0">${esc(it.alt)}</p></div>` : '',
+    it.notes && it.notes.length ? `<div class="box"><h3>Tippek ehhez a poszthoz</h3><ul class="notes">${it.notes.map(n => `<li>${esc(n)}</li>`).join('')}</ul></div>` : '',
+  ].join('');
+  const slots = slotsOf(it);
+  const slotBox = slots.length ? `<div class="box"><h3>Időzítés</h3><div class="slots">${slots.map((s, i) => `<div class="srow">${pfChip(s.platform)}
+      <label class="sr" for="sd${i}">Dátum</label><input type="date" id="sd${i}" data-si="${i}" data-sf="date" value="${esc(s.date)}" ${S.ro ? 'readonly' : ''}>
+      <label class="sr" for="st${i}">Időpont</label><input type="time" id="st${i}" data-si="${i}" data-sf="time" value="${esc(s.time)}" ${S.ro ? 'readonly' : ''}>
+      <label class="chk"><input type="checkbox" data-si="${i}" data-sf="done" ${s.done ? 'checked' : ''} ${S.ro ? 'disabled' : ''}> kint van</label></div>${s.note ? `<div class="muted small" style="margin:-4px 0 4px 2px">${esc(s.note)}</div>` : ''}`).join('')}</div></div>` : '';
+  $('#layer').innerHTML = `<div class="scrim" data-close></div><aside class="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle">
+    <div class="sh"><h2 id="shTitle">${esc(it.title)}</h2><span class="pill kind">${esc(D.kinds[it.kind])}</span><button class="btn sm ghost" data-close aria-label="Bezárás">${ic('x')}</button></div>
+    <div class="sb"><div class="pv">${media}<div class="muted small">${esc(it.sub || '')}<br>${esc(it.format || '')}</div>
+      <div class="dl">${files}</div>${cap.ready && !cap.dl && window.claude ? '<div class="tip">A letöltés ebben a nézetben nem érhető el – a gomb új lapon nyitja meg a fájlt (onnan menthető).</div>' : ''}</div>
+    <div><div class="box"><h3>Állapot <span class="seg">${['tervezett', 'kesz', 'kiposztolva'].map(k => `<button data-status="${k}" aria-pressed="${st === k}" ${S.ro ? 'disabled' : ''}>${esc(D.statuses[k])}</button>`).join('')}</span></h3>
+      <p class="muted small" style="margin:0">Tipp: posztolás után pipáld ki az idősávot lent – a naptárban áthúzva látszik.</p></div>
+      ${copyBox}${slotBox}${extra}</div></div></aside>`;
+  if (keep) $('.sheet .sb').scrollTop = scroll;
+  if (!keep) { document.body.style.overflow = 'hidden'; $('.sheet [data-close]').focus(); }
+  try { history.replaceState(null, '', '#' + id); } catch (e) { /* keret */ }
+}
+function closeItem() {
+  S.open = null; S.eopen = null; S.copen = null; $('#layer').innerHTML = ''; document.body.style.overflow = '';
+  try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* keret */ }
+  render();
+}
+
+/* ---------------- műveletek ---------------- */
+let toastT = 0;
+function toast(t) { let el = $('.toast'); if (!el) { el = document.createElement('div'); el.className = 'toast'; el.setAttribute('role', 'status'); document.body.appendChild(el); } el.textContent = t; clearTimeout(toastT); toastT = setTimeout(() => el.remove(), 2200); }
+async function copyText(t) {
+  try { await navigator.clipboard.writeText(t); toast('Kimásolva ✓'); }
+  catch (e) {
+    const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+    let ok = false; try { ok = document.execCommand('copy'); } catch (e2) { /* régi böngésző */ }
+    ta.remove(); toast(ok ? 'Kimásolva ✓' : 'Jelöld ki és másold ki kézzel');
+  }
+}
+async function download(f) {
+  if (!f.url) { toast('Ez a fájl még nincs feltöltve'); return; }
+  if (cap.dl) {
+    toast('Letöltés előkészítése…');
+    try {
+      const blob = await (await fetch(f.url)).blob();
+      await cap.dl.save({ filename: f.name, data: blob });
+      toast('Letöltve ✓');
+    } catch (e) { if (!e || e.code !== 'declined') toast(e && e.code === 'too_large' ? 'Túl nagy fájl ehhez a nézethez' : 'A letöltés nem sikerült'); }
+    return;
+  }
+  if (window.claude) { window.open(f.url, '_blank', 'noopener'); return; }
+  const a = document.createElement('a'); a.href = f.url; a.download = f.name; document.body.appendChild(a); a.click(); a.remove();
+}
+function csv() {
+  const rows = [['azonosító', 'cím', 'típus', 'platform', 'dátum', 'időpont', 'szöveg', 'hashtagek', 'alternatív szöveg']];
+  for (const it of D.items) for (const p of PFK) {
+    if (!it.copy || !it.copy[p]) continue;
+    const c = copyOf(it, p), s = slotsOf(it).find(x => x.platform === p) || {};
+    rows.push([it.id, it.title, D.kinds[it.kind], PF[p].name, s.date || '', s.time || '', c.text, c.tags, it.alt || '']);
+  }
+  const body = '﻿' + rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(';')).join('\r\n');
+  const f = new Blob([body], { type: 'text/csv' });
+  if (cap.dl) { cap.dl.save({ filename: 'pacsi_posztszovegek.csv', data: f }).then(() => toast('Letöltve ✓'), e => { if (!e || e.code !== 'declined') toast('A letöltés nem sikerült'); }); return; }
+  if (window.claude) { toast('A letöltés itt nem érhető el'); return; }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(f); a.download = 'pacsi_posztszovegek.csv'; a.click();
+}
+async function aiVariants(it) {
+  const box = $('#ai'); if (!box || !cap.sample) return;
+  const pf = S.pf, cur = copyOf(it, pf);
+  box.innerHTML = `<div class="alts"><div class="alt"><p class="muted">Claude gondolkodik…</p></div></div>`;
+  const rule = { instagram: 'A link nem kattintható: írd, hogy „link a bióban”.', tiktok: 'A link nem kattintható: „link a bióban”. Legfeljebb 5 hashtag.', facebook: `A link mehet a szövegbe: ${D.site}`, linkedin: 'Szakmai hangnem; a link az első kommentbe kerül.' }[pf];
+  const prompt = `Te a Pacsi közösségimédia-szövegírója vagy. A Pacsi ingyenes, magyar nyelvű kutyafajta-választó web és telepíthető app (124 fajta egy élő felhőben, szűrők, Párkereső kvíz, összehasonlítás, felelős gazdi tippek; fejlesztő: DarwinAI).
+Hangnem: tegező, meleg, humoros, de nem infantilis; rövid mondatok; a komoly témákban egyenes és kedves. Soha ne ígérj „tökéletes kutyát”, és ne állíts olyat, ami a lenti szövegben nincs benne.
+Platform: ${PF[pf].name} (legfeljebb ${PF[pf].limit} karakter). ${rule}
+Poszt: ${it.title} – ${it.sub || ''}
+Jelenlegi szöveg:
+${cur.text}
+Jelenlegi hashtagek: ${cur.tags || '(nincs)'}
+Írj 3 eltérő változatot (más nyitómondat, más szerkezet). Csak JSON-t adj vissza: {"variants":[{"text":"…","tags":"#…"}]}`;
+  try {
+    const r = await cap.sample.json(prompt, { modelTier: 'default' });
+    const vs = (r && r.variants) || [];
+    box.innerHTML = `<div class="alts">${vs.map((v, k) => `<div class="alt"><p>${esc(v.text)}</p><p class="muted small">${esc(v.tags || '')}</p><button class="btn sm" data-use="${k}">Ezt használom</button></div>`).join('') || '<div class="alt"><p class="muted">Nem jött változat – próbáld újra.</p></div>'}</div>`;
+    box._vs = vs;
+  } catch (e) {
+    box.innerHTML = e && e.code === 'not_granted' ? '' : `<div class="alts"><div class="alt"><p class="muted">${e && e.code === 'rate_limited' ? 'Most túl sok kérés ment el – próbáld újra egy perc múlva.' : 'Nem sikerült változatot kérni.'}</p></div></div>`;
+  }
+}
+
+/* ================= Indítás (közösségi profilok) ================= */
+const SU = D.setup || [];
+const suDone = (pid, i) => !!((S.setup[pid] || {}).done || {})[i];
+function vSetup() {
+  if (!SU.length) return '<div class="empty">Az indítási útmutató hiányzik (content/setup_plan.py).</div>';
+  const tot = SU.reduce((n, p) => n + p.steps.length, 0), done = SU.reduce((n, p) => n + p.steps.filter((_, i) => suDone(p.id, i)).length, 0);
+  const nav = SU.map(p => { const d = p.steps.filter((_, i) => suDone(p.id, i)).length;
+    return `<a class="pnav${d === p.steps.length ? ' done' : ''}" href="#su-${p.id}" data-sunav="${p.id}"><b>${p.icon} ${esc(p.name)}</b><span>${esc(p.day)} · ${esc(p.time)} · ${d}/${p.steps.length}${d === p.steps.length ? ' ✓' : ''}</span></a>`; }).join('');
+  const fileBtn = f => { const it = BY[f[0]], fl = it && (it.files || [])[f[1]];
+    if (!fl) return '';
+    return `<div class="row2">${it.thumb ? `<img class="fthumb" src="${it.thumb}" alt="">` : ''}<button class="btn sm fill" data-sudl="${esc(f[0])}:${f[1]}">${ic('dl')} ${esc(it.title)} · ${esc(fl.label)}</button></div>`; };
+  const cards = SU.map(p => `<section class="pcard" id="su-${p.id}"><header><h2>${p.icon} ${esc(p.name)}</h2><span class="muted small">${esc(p.day)} · kb. ${esc(p.time)}</span></header>
+    <ol class="steplist">${p.steps.map((st, i) => { const ok = suDone(p.id, i);
+      return `<li class="${ok ? 'ok' : ''}"><input type="checkbox" data-su="${p.id}:${i}" ${ok ? 'checked' : ''} ${S.ro ? 'disabled' : ''} aria-label="Kész"><div><div class="sd">${mdi(st.do)}</div>
+        ${st.copy || st.file || st.link ? `<div class="sc">${st.copy ? `<pre>${esc(st.copy)}</pre><div class="row2"><button class="btn sm" data-copytext="${esc(st.copy)}">${ic('copy')} Másolás</button>${st.limit ? `<span class="muted small">${[...st.copy].length} / ${st.limit} karakter</span>` : ''}</div>` : ''}
+          ${st.file ? fileBtn(st.file) : ''}${st.link ? `<div class="row2"><a class="btn sm ghost" href="${esc(st.link)}" target="_blank" rel="noopener">${ic('open')} ${esc(st.link.replace(/^https?:\/\//, ''))}</a></div>` : ''}</div>` : ''}</div></li>`; }).join('')}</ol></section>`).join('');
+  return `<div class="kicker">Indítás</div><h1 style="margin-top:8px">Közösségi profilok – lépésről lépésre</h1>
+    <p class="lead">Két nap alatt végig lehet menni rajta: az 1. napon Facebook, Instagram, TikTok, a 2. napon YouTube és LinkedIn. Minden kép letölthető, minden szöveg egy kattintással másolható. Pipáld ki, amit megcsináltál; a pipák elmentődnek, és Claude is látja.</p>
+    <div class="prog" aria-label="Haladás"><i style="width:${Math.round(done / tot * 100)}%"></i></div><p class="muted small">${done} / ${tot} lépés kész</p>
+    <section class="sec"><div class="pgrid">${nav}</div></section>
+    <section class="sec">${cards}</section>`;
+}
+
+/* ================= E-mail (eDM) ================= */
+const EM = D.email || null;
+const EBY = EM ? Object.fromEntries(EM.emails.map(e => [e.id, e])) : {};
+const CT = D.contacts || null;
+const BN = D.breedNames || {};
+const IMGB = D.emailImg || '';
+const eimg = n => `${IMGB}/${n}`;
+const EST = EM ? EM.statuses : {};
+const mdi = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`(.+?)`/g, '<code>$1</code>');
+const eOv = e => S.emails[e.id] || {};
+const eDoc = id => (S.emails[id] = S.emails[id] || {});
+function eStatus(e) {
+  const m = e.mc || {};
+  if (m.status === 'sent' || m.status === 'sending') return 'kikuldve';
+  if (m.status === 'schedule') return 'utemezve';
+  if (m.campaign_id) return 'piszkozat';
+  if (eOv(e).approved) return 'jovahagyva';
+  return e.status;
+}
+const eSubject = e => eOv(e).subject || e.subject;
+const serChip = s => { const x = (EM && EM.series[s]) || { name: s, color: 'var(--primary)' }; return `<span class="ser" style="--c:${x.color}"><i></i>${esc(x.name)}</span>`; };
+const ePill = st => `<span class="pill est-${st}">${st === 'kikuldve' ? '✓ ' : ''}${esc(EST[st] || st)}</span>`;
+const eWhen = e => e.date ? `${dateHu(e.date)} · ${e.time}` : e.delay;
+const eErr = e => (e.checks || []).filter(c => c[0] === 'hiba').length;
+const segShort = { all: 'minden feliratkozó', partner: 'partnerek', journey: 'új feliratkozók' };
+const byWhen = (a, b) => (a.date + a.time).localeCompare(b.date + b.time);
+
+function vEmail() {
+  if (!EM) return `<div class="empty">Az e-mail modul adatai hiányoznak. Futtasd: <code>python marketing/tools/email_build.py</code>, majd a CMS buildjét.</div>`;
+  const mc = EM.mailchimp || {}, all = EM.emails;
+  const list = all.filter(e => S.ef === 'all' || e.series === S.ef);
+  const dated = list.filter(e => e.date).sort(byWhen), journey = list.filter(e => !e.date);
+  const next = all.filter(e => e.date && e.date >= TODAY && eStatus(e) !== 'kikuldve').sort(byWhen)[0];
+  const cnt = st => all.filter(e => eStatus(e) === st).length;
+  const setup = [[!!mc.connected, mc.connected
+      ? `Mailchimp összekötve: <b>${esc((mc.list || {}).name || '')}</b>${mc.audience ? ` · ${esc(mc.audience.member_count ?? 0)} feliratkozó` : ''}${mc.synced ? ` <span class="muted">(frissítve: ${esc(mc.synced.replace('T', ' ').slice(0, 16))})</span>` : ''}`
+      : 'Mailchimp: még nincs összekötve. A kulccsal Claude létrehozza a közönséget, a mezőket és a „partner” címkét.'],
+    ...(EM.configMissing || []).map(m => [false, esc(m)])];
+  const row = e => {
+    const st = eStatus(e), err = eErr(e), ov = eOv(e), rep = (e.mc || {}).report;
+    return `<button class="erow" data-email="${e.id}">
+      <span class="ed">${e.date ? `<b>${esc(dateHu(e.date))}</b><span>${esc(e.time)} · ${esc(e.id)}</span>` : `<b>${esc(e.delay)}</b><span>${esc(e.id)}</span>`}</span>
+      <span class="eth" style="background-image:url('${eimg(e.hero)}')"></span>
+      <span class="eb"><span class="meta">${serChip(e.series)}${ePill(st)}${ov.comment ? '<span class="badge">megjegyzés</span>' : ''}${err ? `<span class="badge bad">${err} teendő</span>` : ''}</span>
+        <span class="es">${esc(eSubject(e))}</span><span class="ep">${esc(e.preheader)}</span></span>
+      <span class="ex"><span>${esc(segShort[e.segment] || '')}</span>${rep ? `<span>megnyitás ${Math.round((rep.open_rate || 0) * 100)}% · kattintás ${Math.round((rep.click_rate || 0) * 100)}%</span>` : ''}</span></button>`;
+  };
+  let months = '', cur = '';
+  for (const e of dated) { const m = e.date.slice(0, 7); if (m !== cur) { cur = m; months += `<h3 class="month-h">${esc(HU_MON[+m.slice(5) - 1])}</h3>`; } months += row(e); }
+  const nextHtml = next ? `<button class="enext" data-email="${next.id}"><span class="eth" style="background-image:url('${eimg(next.hero)}')"></span>
+      <span><span class="kicker">Következő levél</span><div class="when">${esc(eWhen(next))}</div><div class="t">${esc(eSubject(next))}</div><span class="meta" style="display:flex;gap:8px;flex-wrap:wrap">${serChip(next.series)}${ePill(eStatus(next))}</span></span></button>`
+    : '<div class="empty">Nincs több tervezett levél.</div>';
+  const mode = { draft: 'csak piszkozat (a kiküldés kézi)', schedule: 'ütemezés a Mailchimpben', 'send-due': 'automatikus kiküldés időzítővel' }[EM.config.mode] || EM.config.mode;
+  const filt = [['all', 'Mind'], ...Object.entries(EM.series).map(([k, v]) => [k, v.name])];
+  return `<div class="kicker">Hírlevél · Mailchimp</div><h1 style="margin-top:8px">Pacsi-levél: kampányterv év végéig</h1>
+    <p class="lead">Indulás október 1-jén 3 levéllel, utána <b>csütörtökönként 10:00-kor</b> heti levél, mellette havi partnerlevél és egy háromrészes üdvözlő sorozat az új feliratkozóknak. Minden levél a közösségi posztokkal azonos témára épül. Nyisd meg bármelyiket: előnézet, tárgysorváltozatok, jóváhagyás.</p>
+    <section class="sec egrid"><div style="display:grid;gap:16px">${nextHtml}
+      <div class="tiles">${[['terv', 'Terv'], ['kesz', 'Kész'], ['jovahagyva', 'Jóváhagyva'], ['piszkozat', 'Mailchimpben'], ['kikuldve', 'Kiküldve']].map(([k, l]) => `<div class="tile"><b>${cnt(k)}</b><span>${l}</span></div>`).join('')}</div></div>
+      <div class="panel"><h3>Beállítás</h3><ul class="setup">${setup.map(([ok, t]) => `<li class="${ok ? 'ok' : 'no'}"><span>${ok ? '✓' : '!'}</span><span>${t}</span></li>`).join('')}</ul>
+        <p class="muted small" style="margin:12px 0 0">Kiküldés: <b>${esc(mode)}</b></p></div></section>
+    <section class="sec"><div class="sec-h"><h2>Levelek</h2><div class="filters" role="toolbar" aria-label="Sorozat">${filt.map(([k, l]) => `<button class="fchip" data-ef="${k}" aria-pressed="${S.ef === k}">${esc(l)}</button>`).join('')}</div></div>
+      <div class="elist">${months}${journey.length ? `<h3 class="month-h">Üdvözlő sorozat · feliratkozás után</h3>${journey.map(row).join('')}` : ''}</div>
+      ${!months && !journey.length ? '<div class="empty">Ehhez a szűréshez nincs levél.</div>' : ''}</section>
+    <section class="sec"><h2 style="margin-bottom:14px">Hogyan működik?</h2><div class="steps">${EM.guide.map(g => `<div class="panel"><h3>${esc(g.title)}</h3><ol>${g.steps.map(x => `<li>${mdi(x)}</li>`).join('')}</ol></div>`).join('')}</div></section>
+    <p class="muted small">Levelek: v${esc(EM.version)} · build ${esc(EM.build)}</p>`;
+}
+
+function pvHtml(e) {
+  const modes = [['d', 'Asztali'], ['m', 'Mobil'], ['dark', 'Sötét mód'], ['txt', 'Sima szöveg']];
+  const bar = `<div class="pvbar"><span class="seg" role="tablist" aria-label="Előnézet">${modes.map(([k, l]) => `<button role="tab" data-pv="${k}" aria-selected="${S.pv === k}">${l}</button>`).join('')}</span>
+    <span class="muted small">Mintanévvel (Anna). A Mailchimpben a valódi név és a leiratkozó link kerül a helyére.</span></div>`;
+  if (S.pv === 'txt') return bar + `<pre class="etext">${esc(e.text)}</pre>`;
+  let html = e.html.split('{{IMG}}').join(IMGB);
+  if (S.pv === 'dark') html = html.replace('</head>', `<style>${EM.darkCss}</style></head>`);
+  return bar + `<div class="pvf${S.pv === 'm' ? ' m' : ''}${S.pv === 'dark' ? ' dark' : ''}"><iframe id="epv" title="A levél előnézete" srcdoc="${esc(html)}"></iframe></div>`;
+}
+function fitPreview() {
+  const f = $('#epv'); if (!f) return;
+  const fit = () => { try { const h = f.contentDocument.documentElement.scrollHeight; if (h > 200) f.style.height = (h + 4) + 'px'; } catch (x) { /* keret */ } };
+  f.addEventListener('load', fit);
+  setTimeout(fit, 400); setTimeout(fit, 1500);
+}
+function renderPreview() { const w = $('#epvwrap'); if (!w) return; w.innerHTML = pvHtml(EBY[S.eopen]); fitPreview(); }
+
+function emailSide(e) {
+  const st = eStatus(e), ov = eOv(e), subs = [e.subject, ...(e.subjectAlt || [])], cur = eSubject(e), m = e.mc || {};
+  const dc = ((EM.mailchimp || {}).account || {}).dc;
+  const checks = (e.checks || []).length ? `<ul class="checks">${e.checks.map(([k, t]) => `<li><span class="badge ${k === 'hiba' ? 'bad' : k === 'figyelem' ? 'warn' : ''}">${esc(k)}</span><span>${esc(t)}</span></li>`).join('')}</ul>` : '<p class="muted small" style="margin:0">✓ Nincs teendő: minden kép 1200×1200 px alatt van, a méret rendben.</p>';
+  const soc = (e.social || []).filter(id => BY[id]);
+  const mcBox = m.campaign_id
+    ? `<p style="margin:0">Állapot: <b>${esc(EST[st] || m.status)}</b>${m.pushed ? ` · feltöltve: ${esc(m.pushed.replace('T', ' ').slice(0, 16))}` : ''}</p>
+       ${m.report ? `<p class="muted small">Kiküldve: ${esc(m.report.sent ?? '')} · megnyitás ${Math.round((m.report.open_rate || 0) * 100)}% · kattintás ${Math.round((m.report.click_rate || 0) * 100)}% · leiratkozás ${esc(m.report.unsubscribed ?? 0)}</p>` : ''}
+       ${dc && m.web_id ? `<div class="row2"><a class="btn sm" href="https://${esc(dc)}.admin.mailchimp.com/campaigns/edit?id=${esc(m.web_id)}" target="_blank" rel="noopener">${ic('open')} Megnyitás a Mailchimpben</a></div>` : ''}`
+    : `<p class="muted small" style="margin:0">${e.segment === 'journey'
+        ? 'Az üdvözlő levelek sablonként kerülnek a Mailchimpbe; a Customer Journey-t ott kell összekötni (lásd: Hogyan működik?).'
+        : 'Még nincs a Mailchimpben. Jóváhagyás után írd meg Claude-nak: „Töltsd fel a jóváhagyott leveleket piszkozatként a Mailchimpbe.”'}</p>`;
+  return `<div class="box"><h3>Állapot ${ePill(st)}</h3>
+      <div class="row2" style="margin-top:0">${ov.approved
+        ? `<button class="btn sm" data-eapprove="0" ${S.ro ? 'disabled' : ''}>${ic('undo')} Jóváhagyás visszavonása</button><span class="muted small">jóváhagyva: ${esc(ov.approvedAt || '')}</span>`
+        : `<button class="btn fill sm" data-eapprove="1" ${S.ro ? 'disabled' : ''}>✓ Jóváhagyom</button>`}</div>
+      ${e.todo ? `<div class="tip warnbox">Kitöltendő: ${esc(e.todo)}</div>` : ''}
+      <label class="small muted" for="ecom" style="display:block;margin-top:12px">Megjegyzés (Claude is látja)</label>
+      <textarea id="ecom" data-ecom="${e.id}" style="min-height:84px" placeholder="Pl. a bevezető legyen rövidebb, más fajta legyen a hét fajtája…" ${S.ro ? 'readonly' : ''}>${esc(ov.comment || '')}</textarea></div>
+    <div class="box"><h3>Tárgysor</h3><div class="subjs" role="radiogroup" aria-label="Tárgysor">${subs.map((x, k) => `<label class="subj"><input type="radio" name="esubj" data-esubj="${k}" ${x === cur ? 'checked' : ''} ${S.ro ? 'disabled' : ''}><span>${esc(x)}</span><span class="n">${[...x].length}</span></label>`).join('')}</div>
+      <p class="muted small" style="margin:8px 0 0">A kiválasztott tárgysor megy a Mailchimpbe. 50 karakter alatt telefonon sem vágódik le.</p>
+      <h3 style="margin-top:14px">Előnézeti szöveg <button class="btn sm" data-copytext="${esc(e.preheader)}">${ic('copy')} Másolás</button></h3><p class="muted" style="margin:0">${esc(e.preheader)}</p></div>
+    <div class="box"><h3>Küldés</h3><dl class="kv-list"><dt>Időpont</dt><dd>${esc(eWhen(e))}</dd><dt>Címzettek</dt><dd>${esc(EM.segments[e.segment] || e.segment)}</dd><dt>Sorozat</dt><dd>${serChip(e.series)}</dd><dt>Téma</dt><dd>${esc(e.theme || '')}</dd></dl></div>
+    ${soc.length || (e.socialPlan || []).length ? `<div class="box"><h3>Közösségi kapcsolódás</h3>
+      ${soc.length ? `<div class="row2" style="margin-top:0">${soc.map(id => `<button class="btn sm" data-open="${id}">${esc(BY[id].title)}</button>`).join('')}</div>` : ''}
+      ${(e.socialPlan || []).length ? `<p class="small muted" style="margin:10px 0 4px">Javasolt posztok ehhez a héthez:</p><ul class="notes">${e.socialPlan.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}</div>` : ''}
+    <div class="box"><h3>Ellenőrzés</h3>${checks}<p class="muted small" style="margin:10px 0 0">${Math.round(e.bytes / 1024)} kB (a Gmail 102 kB fölött vág) · ${e.images.length} kép · build ${esc(e.build)}</p></div>
+    <div class="box"><h3>Mailchimp</h3>${mcBox}</div>`;
+}
+function renderEmailSide() { const x = $('#eside'); const e = EBY[S.eopen]; if (x && e) x.innerHTML = emailSide(e); }
+function openEmail(id) {
+  const e = EBY[id]; if (!e) return;
+  S.eopen = id; S.open = null; S.copen = null;
+  $('#layer').innerHTML = `<div class="scrim" data-close></div><aside class="sheet wide" role="dialog" aria-modal="true" aria-labelledby="shTitle">
+    <div class="sh"><h2 id="shTitle">${esc(e.id)} · ${esc(e.title)}</h2>${serChip(e.series)}<button class="btn sm ghost" data-close aria-label="Bezárás">${ic('x')}</button></div>
+    <div class="sb wide"><div id="epvwrap">${pvHtml(e)}</div><div id="eside">${emailSide(e)}</div></div></aside>`;
+  fitPreview();
+  document.body.style.overflow = 'hidden'; $('.sheet [data-close]').focus();
+  try { history.replaceState(null, '', '#' + id); } catch (x) { /* keret */ }
+}
+
+/* ================= Kapcsolatok ================= */
+const CS = () => (EM && EM.contactStatuses) || { uj: 'Új' };
+const cOv = c => S.contacts[c.id] || {};
+const cDoc = id => (S.contacts[id] = S.contacts[id] || {});
+const cStatus = c => cOv(c).status || c.status || 'uj';
+const cId = c => (c.eids || [])[0] || c.id;   // az első e-mail-cím állandó azonosítója (PK0001…)
+const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (x) { return u; } };
+const daysSince = d => Math.floor((Date.now() - Date.parse(d + 'T12:00:00')) / 864e5);
+const slugify = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40);
+function contactsAll() {
+  const base = CT ? CT.contacts : [];
+  const added = Object.entries(S.contacts).filter(([, v]) => v && v.added).map(([id, v]) => ({
+    id, name: v.name || '(névtelen)', category: v.category || 'kozossegek', type: v.type || 'kézi felvétel', emails: v.emails || [], website: v.website || '',
+    phone: v.phone || '', city: v.city || '', county: v.county || '', contact_person: '', person: false, breeds: [], note: v.note0 || '',
+    source_url: 'kézi felvétel', found: v.created || '', added: true, status: 'uj' }));
+  return base.concat(added);
+}
+function cFilter(list) {
+  const q = S.cq.trim().toLowerCase();
+  return list.filter(c => (S.cc === 'all' || c.category === S.cc) && (S.cs === 'all' || cStatus(c) === S.cs) && (S.ck === 'all' || c.county === S.ck)
+    && (!S.cp || !c.person)
+    && (!q || [...(c.eids || []), c.name, c.city, c.county, c.type, ...(c.emails || []), c.note, cOv(c).note, ...(c.breeds || []).map(b => BN[b] || b)].join(' ').toLowerCase().includes(q)));
+}
+function contactRows() {
+  const list = cFilter(contactsAll()), st = CS(), cats = CT.categories;
+  const rows = list.slice(0, S.cn).map(c => {
+    const s = cStatus(c), em = c.emails || [];
+    return `<tr class="cr" data-contact="${esc(c.id)}" tabindex="0"><td class="cid">${esc(cId(c))}</td><td><div class="nm">${esc(c.name)}</div><div class="sub">${esc(c.type || '')}${(c.breeds || []).length ? ' · ' + esc(c.breeds.slice(0, 3).map(b => BN[b] || b).join(', ')) : ''}</div></td>
+      <td class="hide-s">${esc(cats[c.category] || c.category)}</td><td class="hide-s">${esc(c.city || '')}${c.county && c.county !== c.city ? `<div class="sub">${esc(c.county)}</div>` : ''}</td>
+      <td class="em">${em.length ? esc(em[0]) + (em.length > 1 ? ` <span class="sub">+${em.length - 1}</span>` : '') : '<span class="sub">csak űrlap</span>'}${c.person ? ' <span class="badge warn">magánszemély</span>' : ''}</td>
+      <td><span class="pill cs-${s}">${esc(st[s] || s)}</span></td></tr>`;
+  }).join('');
+  return `<div class="tw" style="margin-top:14px"><table class="ctab"><thead><tr><th>ID</th><th>Szervezet</th><th class="hide-s">Kategória</th><th class="hide-s">Hely</th><th>E-mail</th><th>Állapot</th></tr></thead>
+      <tbody>${rows || '<tr><td colspan="6"><div class="empty" style="margin:0">Nincs találat ezekkel a szűrőkkel.</div></td></tr>'}</tbody></table></div>
+    <div class="row2" style="justify-content:space-between"><span class="muted small">${list.length} találat${list.length > S.cn ? `, ebből ${S.cn} látszik` : ''}</span>
+      <span style="display:flex;gap:8px;flex-wrap:wrap">${list.length > S.cn ? `<button class="btn sm" data-cmore>Továbbiak (${Math.min(100, list.length - S.cn)})</button>` : ''}<button class="btn sm ghost" data-ccsv>${ic('dl')} CSV (${list.length})</button></span></div>`;
+}
+function refreshContacts() { const x = $('#clist'); if (x) x.innerHTML = contactRows(); else if (S.tab === 'kapcsolatok' && !S.copen) render(); }
+function vContacts() {
+  if (!CT) return `<div class="empty">A kapcsolati adatbázis hiányzik. Futtasd: <code>python marketing/tools/contacts.py</code>, majd a CMS buildjét.</div>`;
+  const all = contactsAll(), st = CS(), cats = CT.categories;
+  const n = f => all.filter(f).length;
+  const tiles = [['Szervezet', all.length], ['E-mail-címmel', n(c => (c.emails || []).length)], ['Megkeresve', n(c => ['megkeresve', 'emlekeztetve'].includes(cStatus(c)))],
+    ['Válaszolt', n(c => cStatus(c) === 'valaszolt')], ['Partner', n(c => cStatus(c) === 'partner')], ['Kéri a hírlevelet', n(c => ['feliratkozna', 'mailchimpben'].includes(cStatus(c)))]];
+  const counties = [...new Set(all.map(c => c.county).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'hu'));
+  return `<div class="kicker">Partneradatbázis</div><h1 style="margin-top:8px">Kapcsolatok</h1>
+    <p class="lead">${all.length} kutyás szervezet és vállalkozás nyilvánosan közzétett elérhetősége, mindegyik forrásoldallal. Innen <b>egyenként, személyre szabott levél</b> megy a saját postafiókodból – a sablon kész, a küldést neked kell elvégezned. A Mailchimp-hírlevélbe csak az kerül, aki kéri.</p>
+    <section class="sec"><div class="tiles">${tiles.map(([l, v]) => `<div class="tile"><b>${v}</b><span>${esc(l)}</span></div>`).join('')}</div></section>
+    <section class="sec"><div class="filters" role="toolbar" aria-label="Kategóriák"><button class="fchip" data-cc="all" aria-pressed="${S.cc === 'all'}">Mind · ${all.length}</button>${Object.entries(cats).map(([k, l]) => `<button class="fchip" data-cc="${k}" aria-pressed="${S.cc === k}">${esc(l)} · ${n(c => c.category === k)}</button>`).join('')}</div>
+      <div class="cbar" style="margin-top:12px">
+        <label class="sr" for="cq">Keresés</label><input type="search" id="cq" placeholder="Keresés: ID (PK0042), név, város, fajta, e-mail…" value="${esc(S.cq)}">
+        <label class="sr" for="cs">Állapot</label><select id="cs"><option value="all">Minden állapot</option>${Object.entries(st).map(([k, l]) => `<option value="${k}" ${S.cs === k ? 'selected' : ''}>${esc(l)} (${n(c => cStatus(c) === k)})</option>`).join('')}</select>
+        <label class="sr" for="ck">Megye</label><select id="ck"><option value="all">Minden megye</option>${counties.map(k => `<option value="${esc(k)}" ${S.ck === k ? 'selected' : ''}>${esc(k)}</option>`).join('')}</select>
+        <label class="chk"><input type="checkbox" id="cp" ${S.cp ? 'checked' : ''}> magánszemélyek nélkül</label>
+        <button class="btn sm" data-cnew style="margin-left:auto">+ Új kapcsolat</button>
+      </div>
+      <div id="clist">${contactRows()}</div>
+      <p class="muted small">Adatbázis: ${esc((CT.built || '').replace('T', ' ').slice(0, 16))} · ${esc(CT.uniqueEmails)} egyedi cím · „Hibás cím”: a domain nem fogad levelet. „Magánszemély”: reklámcélú levél csak előzetes hozzájárulással küldhető (Grt. 6. §).</p></section>`;
+}
+
+function az(w) { return /^[aáeéiíoóöőuúüű]/i.test(w) ? 'Az' : 'A'; }
+function lowFirst(w) { return w.length > 1 && w[1] === w[1].toLowerCase() ? w[0].toLowerCase() + w.slice(1) : w; }
+function outreach(c) {
+  const t = (EM && (EM.outreach[c.category] || EM.outreach.kozossegek)) || { subject: '', body: '' };
+  const breed = (c.breeds || [])[0], fajta = breed ? (BN[breed] || breed) : '';
+  const cfg = EM.config;
+  const link = `${D.site}?utm_source=partner&utm_medium=email&utm_campaign=megkereses&utm_content=${encodeURIComponent(cId(c))}` + (breed ? `#b=${breed}` : '');
+  const vars = {
+    nev: c.name, fajta, varos: c.city || '', fajta_vagy_nev: fajta || c.name, fajta_link: link,
+    fajta_mondat: breed ? `${az(fajta)} ${lowFirst(fajta)} is szerepel benne, itt a kártyája: ${link}` : `Itt kipróbálható: ${link}`,
+    feliratkozas: cfg.links.signup || '[feliratkozó link – a Mailchimp beállítása után kerül ide]',
+    pitch: cfg.links.pitch + (c.category === 'cegek' ? '#p-' + c.name.replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '') : ''),
+    alairas: [cfg.sender.signature_name || '[név]', cfg.sender.signature_role, 'Pacsi · https://pacsit.hu'].filter(Boolean).join('\n'), site: D.site,
+  };
+  const fill = x => x.replace(/\{(\w+)\}/g, (m, k) => vars[k] ?? m);
+  return { subject: fill(t.subject), body: fill(t.body), label: t.label || '' };
+}
+function openContact(id, keep) {
+  const c = contactsAll().find(x => x.id === id); if (!c) return;
+  const scroll = keep && $('.sheet .sb') ? $('.sheet .sb').scrollTop : 0;
+  S.copen = id; S.open = null; S.eopen = null;
+  const ov = cOv(c), s = cStatus(c), st = CS(), o = outreach(c);
+  const email = (c.emails || [])[0] || '';
+  const mailto = email ? `mailto:${email}?subject=${encodeURIComponent(o.subject)}&body=${encodeURIComponent(o.body)}` : '';
+  const fu = EM.followup, fuSubj = fu.subject.replace('{targy}', o.subject), fuBody = fu.body.replace('{nev}', c.name).replace('{alairas}', [EM.config.sender.signature_name || '[név]', EM.config.sender.signature_role].filter(Boolean).join('\n'));
+  const due = s === 'megkeresve' && ov.sent && daysSince(ov.sent) >= 7;
+  const track = `${D.site}?utm_source=partner&utm_medium=referral&utm_campaign=${encodeURIComponent(c.category)}&utm_content=${encodeURIComponent(cId(c))}`;
+  const link = u => /^https?:/.test(u || '') ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(host(u))}</a>` : esc(u || '');
+  $('#layer').innerHTML = `<div class="scrim" data-close></div><aside class="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle">
+    <div class="sh"><h2 id="shTitle">${esc(c.name)}</h2><button class="btn sm" data-copytext="${esc(cId(c))}" title="Azonosító másolása">${esc(cId(c))}</button><span class="pill cs-${s}">${esc(st[s] || s)}</span><button class="btn sm ghost" data-close aria-label="Bezárás">${ic('x')}</button></div>
+    <div class="sb"><div class="pv" style="gap:14px">
+      <div class="box"><h3>Elérhetőség</h3><dl class="kv-list">
+        <dt>E-mail</dt><dd>${(c.emails || []).map((x, k) => `<div class="row2" style="margin:0 0 4px"><span class="badge">${esc((c.eids || [])[k] || '')}</span><span>${esc(x)}</span>${(c.mx_bad || []).includes(x) ? '<span class="badge bad">nem fogad levelet</span>' : ''}<button class="btn sm" data-copytext="${esc(x)}" aria-label="Cím másolása">${ic('copy')}</button></div>`).join('') || '<span class="muted">nincs – csak űrlap</span>'}</dd>
+        ${c.contact_form ? `<dt>Űrlap</dt><dd>${link(c.contact_form)}</dd>` : ''}
+        ${c.website ? `<dt>Weboldal</dt><dd>${link(c.website)}</dd>` : ''}
+        ${c.phone ? `<dt>Telefon</dt><dd>${esc(c.phone)}</dd>` : ''}
+        <dt>Hely</dt><dd>${esc([c.city, c.county].filter(Boolean).join(', ') || '–')}</dd>
+        ${c.contact_person ? `<dt>Kapcsolattartó</dt><dd>${esc(c.contact_person)}</dd>` : ''}
+        ${(c.breeds || []).length ? `<dt>Fajták</dt><dd>${esc(c.breeds.map(b => BN[b] || b).join(', '))}</dd>` : ''}
+        <dt>Kategória</dt><dd>${esc(CT.categories[c.category] || c.category)}${c.type ? ' · ' + esc(c.type) : ''}</dd>
+        ${c.note ? `<dt>Leírás</dt><dd>${esc(c.note)}</dd>` : ''}
+        <dt>Forrás</dt><dd>${link(c.source_url)}${c.found ? ` · ${esc(c.found)}` : ''}</dd></dl>
+        ${c.person ? '<div class="tip warnbox">Magánszemélynek tűnő cím. Reklámcélú levél csak előzetes, kifejezett hozzájárulással küldhető (Grt. 6. §) – inkább személyesen vagy a fajtaklubon keresztül keresd.</div>' : ''}</div>
+      <div class="box"><h3>Állapot</h3><div class="seg cseg" role="group" aria-label="Állapot">${Object.entries(st).map(([k, l]) => `<button data-cset="${k}" aria-pressed="${s === k}" ${S.ro ? 'disabled' : ''}>${esc(l)}</button>`).join('')}</div>
+        <p class="muted small" style="margin:10px 0 0">${ov.sent ? `Megkeresve: ${esc(ov.sent)}` : 'Még nem kerested meg.'}${ov.updated ? ` · módosítva: ${esc(ov.updated)}` : ''}</p>
+        <label class="small muted" for="cnote" style="display:block;margin-top:10px">Jegyzet</label>
+        <textarea id="cnote" data-cnote="${esc(c.id)}" style="min-height:80px" placeholder="Pl. válaszolt, a klubújságban megjelenik decemberben…" ${S.ro ? 'readonly' : ''}>${esc(ov.note || '')}</textarea></div></div>
+    <div>
+      <div class="box mailbox"><h3>Személyre szabott levél <span class="badge">${esc(o.label)}</span></h3>
+        <div class="lbl">Címzett</div><div><b>${esc(email || '–')}</b></div>
+        <div class="lbl">Tárgy</div><div><b>${esc(o.subject)}</b></div>
+        <div class="lbl">Szöveg</div><pre>${esc(o.body)}</pre>
+        <div class="row2"><button class="btn fill sm" data-copytext="${esc(o.body)}">${ic('copy')} Szöveg</button><button class="btn sm" data-copytext="${esc(o.subject)}">${ic('copy')} Tárgy</button>${email ? `<button class="btn sm" data-copytext="${esc(email)}">${ic('copy')} Cím</button><a class="btn sm" href="${esc(mailto)}">${ic('open')} Levelezőben</a>` : ''}</div>
+        <div class="row2"><button class="btn sm" data-cset="megkeresve" ${S.ro ? 'disabled' : ''}>✓ Elküldtem – megkeresve</button></div>
+        <div class="tip">Egyenként, a saját postafiókodból küldd. A „Levelezőben” gomb nem minden nézetben nyílik meg; a másolás mindig működik.</div></div>
+      ${due ? `<div class="box"><h3>Emlékeztető (${daysSince(ov.sent)} napja nincs válasz)</h3><div class="lbl" style="font-size:12px;font-weight:800;color:var(--ink-3)">Tárgy</div><p style="margin:4px 0 8px"><b>${esc(fuSubj)}</b></p><pre style="white-space:pre-wrap;font:500 14px/1.55 var(--font-u);margin:0">${esc(fuBody)}</pre>
+        <div class="row2"><button class="btn sm" data-copytext="${esc(fuBody)}">${ic('copy')} Szöveg</button><button class="btn sm" data-cset="emlekeztetve" ${S.ro ? 'disabled' : ''}>✓ Elküldtem</button></div></div>` : ''}
+      <div class="box"><h3>Saját követhető link <button class="btn sm" data-copytext="${esc(track)}">${ic('copy')} Másolás</button></h3><p class="muted small" style="margin:0;overflow-wrap:anywhere">${esc(track)}</p>
+        <p class="muted small" style="margin:8px 0 0">Ha a partner ezzel a linkkel ajánlja a Pacsit, a stat.pacsit.hu-n látszik, hány látogatót hozott.</p></div>
+    </div></div></aside>`;
+  if (keep) $('.sheet .sb').scrollTop = scroll;
+  else { document.body.style.overflow = 'hidden'; $('.sheet [data-close]').focus(); }
+  try { history.replaceState(null, '', '#k-' + id); } catch (x) { /* keret */ }
+}
+function openNewContact() {
+  S.copen = '__new'; S.open = null; S.eopen = null;
+  $('#layer').innerHTML = `<div class="scrim" data-close></div><aside class="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle">
+    <div class="sh"><h2 id="shTitle">Új kapcsolat</h2><button class="btn sm ghost" data-close aria-label="Bezárás">${ic('x')}</button></div>
+    <div class="sb" style="display:block"><form id="cform" class="form-grid" style="max-width:560px">
+      <label for="nf-name">Név<input type="text" id="nf-name" required></label>
+      <label for="nf-cat">Kategória<select id="nf-cat">${Object.entries(CT.categories).map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select></label>
+      <label for="nf-email">E-mail<input type="text" id="nf-email" inputmode="email" autocomplete="off"></label>
+      <label for="nf-web">Weboldal<input type="text" id="nf-web" autocomplete="off"></label>
+      <label for="nf-city">Város<input type="text" id="nf-city"></label>
+      <label for="nf-note">Megjegyzés<textarea id="nf-note" style="min-height:80px"></textarea></label>
+      <div class="row2"><button class="btn fill" type="submit" ${S.ro ? 'disabled' : ''}>Mentés</button><button class="btn ghost" type="button" data-close>Mégse</button></div>
+      <p class="muted small" style="margin:0">A kézzel felvett kapcsolat a közös tárolóba kerül, Claude is látja.</p></form></div></aside>`;
+  document.body.style.overflow = 'hidden'; $('#nf-name').focus();
+}
+function saveCsv(rows, name) {
+  const body = '\ufeff' + rows.map(r => r.map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(';')).join('\r\n');
+  const f = new Blob([body], { type: 'text/csv' });
+  if (cap.dl) { cap.dl.save({ filename: name, data: f }).then(() => toast('Letöltve ✓'), e => { if (!e || e.code !== 'declined') toast('A letöltés nem sikerült'); }); return; }
+  if (window.claude) { toast('A letöltés itt nem érhető el'); return; }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(f); a.download = name; a.click();
+}
+function contactsCsv() {
+  const rows = [['ID', 'e-mail', 'e-mail sorszáma', 'szervezet', 'szervezet-azonosító', 'kategória', 'további kategóriák', 'típus', 'fajták', 'fajta-azonosítók',
+    'weboldal', 'kapcsolati űrlap', 'telefon', 'város', 'megye', 'kapcsolattartó', 'magánszemély', 'ingyenes levelező', 'domain fogad levelet',
+    'állapot', 'megkeresve', 'módosítva', 'jegyzet', 'megjegyzés', 'forrás', 'gyűjtve', 'szervezet összes e-mailje']];
+  const FREE = /@(gmail|googlemail|freemail|citromail|yahoo|hotmail|outlook|live|msn|icloud|me|vipmail|index|t-online|chello|upcmail|invitel|t-email|gmx|mail|aol|proton|protonmail)\./i;
+  for (const c of cFilter(contactsAll())) {
+    const ov = cOv(c), all = c.emails || [], ems = all.length ? all : [''];
+    ems.forEach((e, k) => { const mx = (c.mx || {})[e];
+      rows.push([(c.eids || [])[k] || c.id, e, e ? `${k + 1}/${all.length}` : '', c.name, c.id, CT.categories[c.category] || c.category,
+        (c.also || []).map(x => CT.categories[x] || x).join(', '), c.type || '', (c.breeds || []).map(b => BN[b] || b).join(', '), (c.breeds || []).join(', '),
+        c.website || '', c.contact_form || '', c.phone || '', c.city || '', c.county || '', c.contact_person || '', c.person ? 'igen' : '',
+        FREE.test(e) ? 'igen' : '', !e ? '' : mx === true ? 'igen' : mx === false ? 'nem' : '?', CS()[cStatus(c)] || cStatus(c),
+        ov.sent || '', ov.updated || '', ov.note || '', c.note || '', c.source_url || '', c.found || '', all.join(', ')]); });
+  }
+  saveCsv(rows, 'pacsi_kapcsolatok.csv');
+}
+
+/* ================= 1.4.0: Áttekintés, Eredmények, Arculat, keresés, naptárexport, heti jelentés ================= */
+const INS = D.insights || null, BRD = D.brand || null;
+const addDays = (d, n) => { const x = new Date(d + 'T12:00:00'); x.setDate(x.getDate() + n); return ymd(x); };
+const dShort = d => { const x = new Date(d + 'T12:00:00'); return `${HU_MON[x.getMonth()].slice(0, 3)}. ${x.getDate()}.`; };
+const agoHu = iso => {
+  const s = (Date.now() - Date.parse(iso)) / 1000;
+  if (!isFinite(s)) return '';
+  if (s < 90) return 'most';
+  if (s < 3600) return `${Math.round(s / 60)} perce`;
+  if (s < 86400) return `${Math.round(s / 3600)} órája`;
+  if (s < 172800) return 'tegnap';
+  return dShort(iso.slice(0, 10));
+};
+const LVL = { hiba: 'bad', figyelem: 'warn', info: '' };
+const REACHED = ['megkeresve', 'emlekeztetve', 'valaszolt', 'partner', 'feliratkozna', 'mailchimpben', 'nem'];
+const REPLIED = ['valaszolt', 'partner', 'feliratkozna', 'mailchimpben', 'nem'];
+const pctHu = x => x == null || !isFinite(x) ? '–' : (x * 100).toFixed(1).replace('.', ',') + '%';
+const numHu = n => Number(n || 0).toLocaleString('hu-HU');
+const setupProgress = () => ({ tot: SU.reduce((n, p) => n + p.steps.length, 0), done: SU.reduce((n, p) => n + p.steps.filter((_, i) => suDone(p.id, i)).length, 0) });
+function saveBlob(blob, name) {
+  if (cap.dl) { cap.dl.save({ filename: name, data: blob }).then(() => toast('Letöltve ✓'), e => { if (!e || e.code !== 'declined') toast('A letöltés nem sikerült'); }); return; }
+  if (window.claude) { toast('A letöltés itt nem érhető el'); return; }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove();
+}
+
+/* közösségi idősávok naponként és tartalmanként összevonva, a slot-sorszámokkal (a naptárexport állandó azonosítójához) */
+function postGroups() {
+  const g = new Map();
+  for (const s of allSlots()) {
+    if (s.idea || s.email) continue;
+    const k = s.date + '|' + s.it.id;
+    if (!g.has(k)) g.set(k, { date: s.date, time: s.time, it: s.it, pfs: [], idx: [], done: true, notes: [] });
+    const x = g.get(k);
+    x.pfs.push(s.platform); x.idx.push(s.i); x.done = x.done && !!s.done; if (s.time < x.time) x.time = s.time;
+    if (s.note) x.notes.push(s.note);
+  }
+  return [...g.values()].sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+}
+
+/* ---------- Áttekintés ---------- */
+function agendaRows() {
+  const end = addDays(TODAY, 7), from = addDays(TODAY, -14), rows = [];
+  for (const g of postGroups()) if (!g.done && g.date >= from && g.date <= end) rows.push({ k: 'post', date: g.date, time: g.time, g, late: g.date < TODAY });
+  if (EM) for (const e of EM.emails) if (e.date && e.date >= from && e.date <= end && eStatus(e) !== 'kikuldve') rows.push({ k: 'email', date: e.date, time: e.time, e, late: e.date < TODAY });
+  for (const o of D.ideas) if (o.date >= TODAY && o.date <= end) rows.push({ k: 'idea', date: o.date, time: '19:00', o, late: false });
+  return rows.sort((a, b) => (+b.late - +a.late) || (a.date + a.time).localeCompare(b.date + b.time));
+}
+function agendaItem(r) {
+  if (r.k === 'post') {
+    const g = r.g, pfs = [...new Set(g.pfs)];
+    return `<button class="aitem${r.late ? ' late' : ''}" data-open="${g.it.id}" data-pf="${pfs[0]}"><span class="aw">${esc(g.time)}<small>${r.late ? 'lekésett · ' + esc(dShort(g.date)) : esc(D.kinds[g.it.kind] || '')}</small></span>
+      <span class="ab"><span class="at">${esc(g.it.title)}</span><span class="am">${pfs.map(pfChip).join('')}${g.notes.length ? `<span class="muted small">${esc([...new Set(g.notes)].join(' · '))}</span>` : ''}</span></span>${stPill(statusOf(g.it))}</button>`;
+  }
+  if (r.k === 'email') {
+    const e = r.e;
+    return `<button class="aitem${r.late ? ' late' : ''}" data-email="${e.id}"><span class="aw">${esc(e.time || '')}<small>${r.late ? 'lekésett · ' + esc(dShort(e.date)) : 'hírlevél'}</small></span>
+      <span class="ab"><span class="at">✉ ${esc(eSubject(e))}</span><span class="am">${serChip(e.series)}<span class="muted small">${esc(e.id)}</span></span></span>${ePill(eStatus(e))}</button>`;
+  }
+  const o = r.o, want = (S.ideas[o.id] || {}).want;
+  return `<button class="aitem" data-idea="${o.id}"><span class="aw">${esc(r.time)}<small>videóötlet</small></span>
+    <span class="ab"><span class="at">${esc(o.title)}</span><span class="am"><span class="muted small">${want ? 'kérve 👍 – el kell készíteni' : 'még nincs döntés: kéred?'}</span></span></span><span class="pill st-otlet">Ötlet</span></button>`;
+}
+function agendaHtml(rows) {
+  if (!rows.length) return '<div class="empty" style="margin-top:0">A következő 7 napra nincs teendő a naptárban. 🎉</div>';
+  let out = '', cur = null;
+  for (const r of rows) {
+    const k = r.late ? 'late' : r.date;
+    if (k !== cur) {
+      cur = k;
+      out += `<div class="dayh">${r.late ? 'Lekésett – még nincs kint' : r.date === TODAY ? 'Ma · ' + esc(dateHu(r.date)) : r.date === addDays(TODAY, 1) ? 'Holnap · ' + esc(dateHu(r.date)) : esc(dateHu(r.date))}</div>`;
+    }
+    out += agendaItem(r);
+  }
+  return `<div class="alist">${out}</div>`;
+}
+/* teendők: a build ellenőrzései (INS.health) + ami csak itt, a tároló állapotából látszik */
+function warnings() {
+  const w = [];
+  const late = postGroups().filter(g => !g.done && g.date < TODAY);
+  if (late.length) w.push({ lvl: 'hiba', area: 'naptár', text: `${late.length} lekésett idősáv (${late.slice(0, 3).map(g => g.it.title).join(', ')}${late.length > 3 ? '…' : ''}). Ha kint van, pipáld ki; ha nem, posztold ki, vagy tedd át másik napra.`, go: late.length === 1 ? 'item:' + late[0].it.id : 'tab:naptar' });
+  if (EM) for (const e of EM.emails) {
+    if (e.date && e.date >= TODAY && e.date <= addDays(TODAY, 7) && ['terv', 'kesz'].includes(eStatus(e)))
+      w.push({ lvl: 'figyelem', area: 'e-mail', text: `${e.id} (${dShort(e.date)} ${e.time}) még nincs jóváhagyva: „${eSubject(e)}”`, go: 'email:' + e.id });
+  }
+  if (CT) {
+    const due = contactsAll().filter(c => cStatus(c) === 'megkeresve' && cOv(c).sent && daysSince(cOv(c).sent) >= 7);
+    if (due.length) w.push({ lvl: 'figyelem', area: 'kapcsolat', text: `${due.length} partnernél esedékes az emlékeztető (legalább 7 napja nincs válasz).`, go: due.length === 1 ? 'contact:' + due[0].id : 'tab:kapcsolatok' });
+  }
+  for (const it of D.items) for (const p of Object.keys(((S.edits[it.id] || {}).copy) || {})) {
+    if (!PF[p]) continue;
+    const c = copyOf(it, p), n = (c.text + (c.tags ? '\n\n' + c.tags : '')).length;
+    if (n > PF[p].limit) w.push({ lvl: 'hiba', area: 'tartalom', text: `${it.title}: az átírt ${PF[p].name}-szöveg ${n} karakter (a korlát ${PF[p].limit}).`, go: 'item:' + it.id });
+  }
+  for (const o of D.ideas) if (o.date >= TODAY && o.date <= addDays(TODAY, 7) && !(S.ideas[o.id] || {}).want)
+    w.push({ lvl: 'info', area: 'ötlet', text: `Videóötlet (${dShort(o.date)}): „${o.title}” – kéred? Jelöld meg a Következő videók fülön.`, go: 'idea:' + o.id });
+  if (SU.length) { const p = setupProgress(); if (p.done < p.tot) w.push({ lvl: 'info', area: 'indítás', text: `A profilok indításából ${p.tot - p.done} lépés van hátra (${p.done}/${p.tot} kész).`, go: 'tab:inditas' }); }
+  const AREA = { tartalom: 'tartalom', email: 'e-mail', beallitas: 'beállítás', kikuldes: 'kiküldés', link: 'link', inditas: 'indítás' };
+  for (const x of (INS && INS.health) || []) w.push({ lvl: x.lvl, area: AREA[x.area] || x.area, text: x.text, go: x.ref ? `${x.ref.t}:${x.ref.id}` : '' });
+  const o = { hiba: 0, figyelem: 1, info: 2 };
+  return w.sort((a, b) => o[a.lvl] - o[b.lvl]);
+}
+function warnHtml(list) {
+  if (!list.length) return '<p class="muted small" style="margin:0">✓ Nincs teendő és nincs figyelmeztetés.</p>';
+  const show = S.hall ? list : list.slice(0, 8);
+  return `<ul class="hlist">${show.map(x => `<li><button class="hrow" ${x.go ? `data-go="${esc(x.go)}"` : 'disabled'}><span><span class="badge ${LVL[x.lvl]}">${esc(x.lvl)}</span><span class="muted small" style="display:block;margin-top:4px">${esc(x.area)}</span></span><span>${esc(x.text)}</span></button></li>`).join('')}</ul>
+    ${list.length > 8 ? `<div class="row2"><button class="btn sm ghost" data-hall>${S.hall ? 'Kevesebb' : `Mind a ${list.length} megjelenítése`}</button></div>` : ''}`;
+}
+function outreachHtml() {
+  const o = INS && INS.outreach;
+  if (!o) return '<p class="muted small" style="margin:0">Még nincs kiküldési napló.</p>';
+  const days = o.days.slice(-10), max = Math.max(1, ...days.map(d => d.sent));
+  const rate = o.rate || 0, rc = rate > o.limit ? 'bad' : rate > o.limit * .6 ? 'warn' : '';
+  const h = v => `${Math.round(v / max * 85)}%`;
+  const cats = Object.entries(o.byCategory || {}).sort((a, b) => b[1] - a[1]);
+  return `<div class="row2" style="margin-top:0">${o.paused ? '<span class="pill cs-hibas">Szünetel</span>' : '<span class="pill st-kiposztolva">Nem szünetel</span>'}
+      <span class="badge ${rc}">visszapattanás: ${pctHu(rate)} (${o.bounced}/${o.sent})</span>${o.remaining != null ? `<span class="badge">hátra: ${numHu(o.remaining)} szervezet</span>` : ''}</div>
+    ${o.paused && o.pauseReason ? `<div class="tip warnbox">${esc(o.pauseReason)}</div>` : ''}
+    ${days.length ? `<div class="bars" role="img" aria-label="Elküldött és visszapattant partnerlevelek naponként">${days.map(d => `<div class="b" title="${esc(d.date)}: ${d.sent} elküldve, ebből ${d.bounced} visszapattant"><em>${d.sent}</em><i class="bo" style="height:${h(d.bounced)}"></i><i style="height:${h(d.sent - d.bounced)}"></i></div>`).join('')}</div>
+    <div class="blabels">${days.map(d => `<span>${esc(dShort(d.date))}</span>`).join('')}</div>
+    <div class="legend" style="margin-top:8px"><span class="pf" style="--c:var(--teal)"><i></i>kézbesítve</span><span class="pf" style="--c:var(--bad)"><i></i>visszapattant</span>${o.dailyCap ? `<span>napi felső határ: ${o.dailyCap}</span>` : ''}</div>` : ''}
+    ${cats.length ? `<p class="small" style="margin:12px 0 0"><b>Hátralévő sor:</b> ${cats.map(([k, n]) => `${esc((CT && CT.categories[k]) || k)} ${n}`).join(' · ')}</p>` : ''}
+    ${o.bounces.length ? `<details style="margin-top:10px"><summary class="small" style="cursor:pointer;font-weight:700">Visszapattant címek (${o.bounces.length})</summary><ul class="notes">${o.bounces.map(b => `<li><b>${esc(b.pid)}</b> · ${esc(b.org)} · ${esc(b.email)}${b.error ? ` – <span class="muted">${esc(b.error.slice(0, 90))}</span>` : ''}</li>`).join('')}</ul></details>` : ''}
+    <p class="muted small" style="margin:10px 0 0">A kiküldés állapota a CMS buildjekor: ${esc((INS.generated || '').replace('T', ' ').slice(0, 16))}.</p>`;
+}
+function feedHtml() {
+  const ev = [], cmap = CT ? new Map(contactsAll().map(c => [c.id, c])) : new Map();
+  const add = (at, text, go) => { if (at) ev.push({ at, text, go }); };
+  for (const [id, d] of Object.entries(S.edits)) if (BY[id]) add(d.updatedAt, `${BY[id].title} – ${[d.copy && 'szöveg', d.status && (D.statuses[d.status] || d.status), d.slots && 'időzítés'].filter(Boolean).join(', ') || 'módosítva'}`, 'item:' + id);
+  for (const [id, d] of Object.entries(S.emails)) if (EBY[id]) add(d.updatedAt, `Levél ${id} – ${d.approved ? 'jóváhagyva' : d.comment ? 'megjegyzés' : 'módosítva'}`, 'email:' + id);
+  for (const [id, d] of Object.entries(S.contacts)) { const c = cmap.get(id); add(d.updatedAt, `${c ? `${c.name} (${cId(c)})` : id} – ${CS()[d.status] || d.status || 'jegyzet'}`, 'contact:' + id); }
+  for (const [id, d] of Object.entries(S.setup)) { const p = SU.find(x => x.id === id); if (p) add(d.updatedAt, `Indítás · ${p.name}: ${Object.keys(d.done || {}).length}/${p.steps.length} lépés`, 'tab:inditas'); }
+  for (const [id, d] of Object.entries(S.ideas)) { const o = D.ideas.find(x => x.id === id); if (o) add(d.updatedAt, `Ötlet · ${o.title}${d.want ? ' – kérve 👍' : ''}`, 'idea:' + id); }
+  for (const [id, d] of Object.entries(S.metrics)) if (BY[id]) add(d.updatedAt, `Eredmény rögzítve · ${BY[id].title}`, 'tab:eredmenyek');
+  const top = ev.sort((a, b) => b.at.localeCompare(a.at)).slice(0, 12);
+  if (!top.length) return `<p class="muted small" style="margin:0">${cap.db ? 'Még nincs változás a közös tárolóban.' : 'A változásnapló a claude.ai-s, közös tárolós változatban látszik.'}</p>`;
+  return `<ul class="feed">${top.map(x => `<li><time datetime="${esc(x.at)}">${esc(agoHu(x.at))}</time><button class="lnk" data-go="${esc(x.go)}">${esc(x.text)}</button></li>`).join('')}</ul>`;
+}
+function vDash() {
+  const rows = agendaRows(), w = warnings();
+  const sl = allSlots().filter(s => !s.idea && !s.email), doneN = sl.filter(s => s.done).length;
+  const dated = EM ? EM.emails.filter(e => e.date) : [];
+  const appr = dated.filter(e => ['jovahagyva', 'piszkozat', 'utemezve', 'kikuldve'].includes(eStatus(e))).length;
+  const all = CT ? contactsAll() : [];
+  const replied = all.filter(c => REPLIED.includes(cStatus(c))).length;
+  const sp = setupProgress(), o = INS && INS.outreach;
+  const late = rows.filter(r => r.late).length, due7 = rows.filter(r => !r.late && r.k !== 'idea').length;
+  const nH = w.filter(x => x.lvl === 'hiba').length, nF = w.filter(x => x.lvl === 'figyelem').length;
+  const tiles = [[`${doneN}/${sl.length}`, 'idősáv kiposztolva'], [due7, 'esedékes 7 napon belül'], [`${appr}/${dated.length}`, 'levél jóváhagyva'],
+    [o ? o.sent : all.filter(c => REACHED.includes(cStatus(c))).length, 'partnerlevél elküldve'], [replied, 'partner válaszolt'], [sp.tot ? Math.round(sp.done / sp.tot * 100) + '%' : '–', 'profilindítás kész']];
+  const ics = icsText();
+  return `<div class="kicker">Áttekintés</div><h1 style="margin-top:8px">Mi a helyzet ma?</h1>
+    <p class="lead">${esc(dateHu(TODAY))}. A következő 7 napban ${due7} poszt és levél esedékes${late ? `, ${late} lekésett` : ''}. Teendők: ${nH} hiba, ${nF} figyelmeztetés. Minden sorra kattintva ott folytathatod, ahol dolgod van.</p>
+    <div class="row2 dact"><button class="btn sm fill" data-ics>${ic('cal')} Naptár letöltése (.ics) · ${ics.n} esemény</button><button class="btn sm" data-rep>${ic('copy')} Heti jelentés másolása</button>
+      <button class="btn sm ghost" data-repv aria-expanded="${S.repv}">${S.repv ? 'Jelentés elrejtése' : 'Jelentés előnézete'}</button><button class="btn sm ghost" data-search>${ic('search')} Keresés <kbd>Ctrl K</kbd></button></div>
+    ${S.repv ? `<pre class="etext" style="margin-top:14px">${esc(weeklyReport())}</pre>` : ''}
+    <section class="sec"><div class="tiles">${tiles.map(([v, l]) => `<div class="tile"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join('')}</div></section>
+    <section class="sec dgrid"><div><div class="sec-h"><h2>Ma és a következő 7 nap</h2><span class="muted small">Kattints: fájl, szöveg, jóváhagyás</span></div>${agendaHtml(rows)}</div>
+      <div class="panel"><h3 style="margin-bottom:10px">Teendők és figyelmeztetések</h3>${warnHtml(w)}</div></section>
+    <section class="sec dgrid"><div class="panel"><h3 style="margin-bottom:10px">Partnermegkeresések</h3>${outreachHtml()}</div>
+      <div class="panel"><h3 style="margin-bottom:10px">Legutóbbi változások</h3>${feedHtml()}</div></section>`;
+}
+
+/* ---------- heti jelentés (másolható szöveg: e-mailbe, csevegőbe) ---------- */
+function weeklyReport() {
+  const from = addDays(TODAY, -6), next = addDays(TODAY, 7), L = [];
+  const pfs = g => [...new Set(g.pfs)].map(p => PF[p].name).join(', ');
+  const pg = postGroups();
+  const posted = pg.filter(g => g.done && g.date >= from && g.date <= TODAY), late = pg.filter(g => !g.done && g.date < TODAY);
+  const up = pg.filter(g => !g.done && g.date >= TODAY && g.date <= next);
+  L.push(`${(BRD && BRD.name) || 'Marketing'} – heti összefoglaló (${dShort(from)} – ${dShort(TODAY)})`, '');
+  L.push('KIPOSZTOLVA', ...(posted.length ? posted.map(g => `- ${dShort(g.date)} ${g.time} · ${g.it.title} (${pfs(g)})`) : ['- ezen a héten még semmi']));
+  if (late.length) L.push('', 'LEKÉSETT (még nincs kint)', ...late.map(g => `- ${dShort(g.date)} · ${g.it.title} (${pfs(g)})`));
+  if (EM) {
+    const sent = EM.emails.filter(e => e.date && e.date >= from && e.date <= TODAY && eStatus(e) === 'kikuldve');
+    const nx = EM.emails.filter(e => e.date && e.date > TODAY && e.date <= next);
+    L.push('', 'HÍRLEVÉL', ...(sent.length ? sent.map(e => { const r = (e.mc || {}).report; return `- kiküldve: ${e.id} „${eSubject(e)}”${r ? ` – megnyitás ${Math.round((r.open_rate || 0) * 100)}%, kattintás ${Math.round((r.click_rate || 0) * 100)}%` : ''}`; }) : ['- ezen a héten nem ment levél']),
+      ...nx.map(e => `- jön: ${dShort(e.date)} ${e.time} · ${e.id} „${eSubject(e)}” (${EST[eStatus(e)] || eStatus(e)})`));
+  }
+  const o = INS && INS.outreach;
+  if (o || CT) {
+    const wk = o ? o.days.filter(d => d.date >= from && d.date <= TODAY) : [];
+    const s = wk.reduce((n, d) => n + d.sent, 0), b = wk.reduce((n, d) => n + d.bounced, 0);
+    const all = CT ? contactsAll() : [];
+    const rep = all.filter(c => REPLIED.includes(cStatus(c)) && (cOv(c).updated || '') >= from).length;
+    L.push('', 'PARTNERMEGKERESÉSEK', `- a héten elküldve: ${s} · visszapattant: ${b}${s ? ` (${Math.round(b / s * 100)}%)` : ''} · válasz: ${rep}`,
+      `- összesen: ${o ? o.sent : 0} elküldve · partner: ${all.filter(c => cStatus(c) === 'partner').length}${o && o.paused ? ' · a kiküldés most szünetel' : ''}`);
+  }
+  if (SU.length) { const p = setupProgress(); L.push('', 'PROFILINDÍTÁS', `- ${p.done}/${p.tot} lépés kész`); }
+  const ideas = D.ideas.filter(x => x.date >= TODAY && x.date <= next);
+  L.push('', 'JÖVŐ HÉT', ...(up.length ? up.map(g => `- ${dShort(g.date)} ${g.time} · ${g.it.title} (${pfs(g)})`) : ['- nincs tervezett poszt']),
+    ...ideas.map(x => `- ${dShort(x.date)} · videóötlet: ${x.title}${(S.ideas[x.id] || {}).want ? ' (kérve)' : ''}`));
+  const w = warnings().filter(x => x.lvl !== 'info').slice(0, 6);
+  if (w.length) L.push('', 'TEENDŐK', ...w.map(x => `- ${x.text}`));
+  L.push('', `(${D.siteLabel} · Marketing Studio v${D.version} · build ${D.build})`);
+  return L.join('\n');
+}
+
+/* ---------- naptárexport (iCalendar): Google Naptár, Outlook, Apple Naptár ---------- */
+function icsText() {
+  const ie = s => String(s ?? '').replace(/\\/g, '\\\\').replace(/\r?\n/g, '\\n').replace(/([,;])/g, '\\$1');
+  const enc = new TextEncoder();
+  const fold = l => { const out = []; let cur = ''; for (const ch of l) { if (enc.encode(cur + ch).length > 74) { out.push(cur); cur = ' ' + ch; } else cur += ch; } out.push(cur); return out.join('\r\n'); };
+  const dt = (d, t) => d.replace(/-/g, '') + 'T' + (t || '10:00').replace(':', '') + '00';
+  const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+  const url = BRD && BRD.cmsUrl, ev = [];
+  const add = (uid, d, t, mins, sum, desc, alarm) => ev.push(['BEGIN:VEVENT', `UID:${uid}@pacsi-cms`, `DTSTAMP:${stamp}`, `DTSTART;TZID=Europe/Budapest:${dt(d, t)}`, `DURATION:PT${mins}M`,
+    `SUMMARY:${ie(sum)}`, `DESCRIPTION:${ie(desc)}`, ...(url ? [`URL:${url}`] : []), ...(alarm ? ['BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${ie(sum)}`, 'TRIGGER:-PT15M', 'END:VALARM'] : []), 'END:VEVENT']);
+  for (const g of postGroups()) {
+    const pfs = [...new Set(g.pfs)];
+    add(`post-${g.it.id}-s${Math.min(...g.idx)}`, g.date, g.time, 20, `${g.done ? '✓ ' : ''}${pfs.map(p => PF[p].name).join(' + ')}: ${g.it.title}`,
+      [g.it.sub || '', ...[...new Set(g.notes)], `Fájl és szöveg: ${url ? url + '#' + g.it.id : 'CMS → Tartalmak'}`].filter(Boolean).join('\n'), !g.done);
+  }
+  if (EM) for (const e of EM.emails) if (e.date) {
+    const st = eStatus(e);
+    add(`email-${e.id}`, e.date, e.time, 15, `${st === 'kikuldve' ? '✓ ' : ''}✉ ${e.id}: ${eSubject(e)}`, `Hírlevél · ${EST[st] || st} · ${EM.segments[e.segment] || e.segment}${url ? `\n${url}#${e.id}` : ''}`, st !== 'kikuldve');
+  }
+  for (const o of D.ideas) add(`idea-${o.id}`, o.date, '19:00', 30, `Videóötlet: ${o.title}`, `${o.brief}\n${o.hook}`, false);
+  const tz = ['BEGIN:VTIMEZONE', 'TZID:Europe/Budapest', 'BEGIN:DAYLIGHT', 'TZOFFSETFROM:+0100', 'TZOFFSETTO:+0200', 'TZNAME:CEST', 'DTSTART:19700329T020000', 'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU', 'END:DAYLIGHT',
+    'BEGIN:STANDARD', 'TZOFFSETFROM:+0200', 'TZOFFSETTO:+0100', 'TZNAME:CET', 'DTSTART:19701025T030000', 'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU', 'END:STANDARD', 'END:VTIMEZONE'];
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//DarwinAI//Pacsi Marketing Studio//HU', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+    `X-WR-CALNAME:${ie(((BRD && BRD.name) || 'Marketing') + ' – tartalomnaptár')}`, 'X-WR-TIMEZONE:Europe/Budapest', ...tz, ...ev.flat(), 'END:VCALENDAR'];
+  return { text: lines.map(fold).join('\r\n') + '\r\n', n: ev.length };
+}
+
+/* ---------- Eredmények ---------- */
+const MF = [['reach', 'Elérés'], ['likes', 'Reakció'], ['comments', 'Komment'], ['shares', 'Megosztás'], ['saves', 'Mentés'], ['clicks', 'Kattintás']];
+const mOf = (id, i) => ((((S.metrics[id] || {}).s) || {})[i]) || {};
+const erOf = m => m && +m.reach ? ((+m.likes || 0) + (+m.comments || 0) + (+m.shares || 0) + (+m.saves || 0)) / +m.reach : null;
+function published() {
+  const out = [];
+  for (const it of D.items) slotsOf(it).forEach((s, i) => { if (s.done) out.push({ it, s, i }); });
+  return out.sort((a, b) => (b.s.date + b.s.time).localeCompare(a.s.date + a.s.time));
+}
+function vResults() {
+  const rows = published(), meas = rows.filter(r => +mOf(r.it.id, r.i).reach > 0);
+  const reach = meas.reduce((n, r) => n + (+mOf(r.it.id, r.i).reach || 0), 0);
+  const ers = meas.map(r => erOf(mOf(r.it.id, r.i)));
+  const avg = ers.length ? ers.reduce((a, b) => a + b, 0) / ers.length : null;
+  const byPf = {};
+  for (const r of meas) {
+    const m = mOf(r.it.id, r.i), x = (byPf[r.s.platform] = byPf[r.s.platform] || { n: 0, reach: 0, eng: 0, clicks: 0 });
+    x.n++; x.reach += +m.reach || 0; x.eng += (+m.likes || 0) + (+m.comments || 0) + (+m.shares || 0) + (+m.saves || 0); x.clicks += +m.clicks || 0;
+  }
+  const top = meas.slice().sort((a, b) => erOf(mOf(b.it.id, b.i)) - erOf(mOf(a.it.id, a.i))).slice(0, 5);
+  const sentE = EM ? EM.emails.filter(e => (e.mc || {}).report) : [];
+  const openAvg = sentE.length ? sentE.reduce((n, e) => n + (e.mc.report.open_rate || 0), 0) / sentE.length : null;
+  const all = CT ? contactsAll() : [], o = INS && INS.outreach, cnt = f => all.filter(f).length;
+  const reached = cnt(c => REACHED.includes(cStatus(c))), replied = cnt(c => REPLIED.includes(cStatus(c)));
+  const sent = o ? o.sent : reached;
+  const funnel = [['Elküldött partnerlevél', sent, 'var(--teal)'], ['Visszapattant', o ? o.bounced : cnt(c => cStatus(c) === 'hibas'), 'var(--bad)'],
+    ['Válaszolt', replied, 'var(--idea)'], ['Kéri a hírlevelet', cnt(c => ['feliratkozna', 'mailchimpben'].includes(cStatus(c))), 'var(--ok)'], ['Partner', cnt(c => cStatus(c) === 'partner'), 'var(--primary)']];
+  const fmax = Math.max(1, ...funnel.map(f => f[1]));
+  const tiles = [[rows.length, 'kiposztolt idősáv'], [`${meas.length}/${rows.length}`, 'eredmény rögzítve'], [numHu(reach), 'összes elérés'], [pctHu(avg), 'átlagos aktivitás'],
+    [pctHu(openAvg), 'hírlevél-megnyitás'], [sent ? pctHu(replied / sent) : '–', 'partner-válaszarány']];
+  const table = rows.length ? `<div class="tw"><table class="gtab rtab"><thead><tr><th>Dátum</th><th>Tartalom</th>${MF.map(([, l]) => `<th>${l}</th>`).join('')}<th>Aktivitás</th></tr></thead><tbody>${rows.map(r => {
+      const m = mOf(r.it.id, r.i), key = `${r.it.id}:${r.i}`;
+      return `<tr><td style="white-space:nowrap;font-variant-numeric:tabular-nums"><b>${esc(dShort(r.s.date))}</b><div class="sub">${esc(r.s.time)}</div></td>
+        <td><button class="lnk" data-open="${r.it.id}" data-pf="${r.s.platform}">${esc(r.it.title)}</button><div class="sub">${pfChip(r.s.platform)}${r.s.note ? ' · ' + esc(r.s.note) : ''}</div></td>
+        ${MF.map(([k, l]) => `<td><label class="sr" for="m-${r.it.id}-${r.i}-${k}">${l}</label><input type="number" min="0" step="1" inputmode="numeric" id="m-${r.it.id}-${r.i}-${k}" data-met="${key}:${k}" value="${m[k] ?? ''}" ${S.ro ? 'readonly' : ''}></td>`).join('')}
+        <td style="font-weight:800;font-variant-numeric:tabular-nums" data-er="${key}">${pctHu(erOf(m))}</td></tr>`;
+    }).join('')}</tbody></table></div>`
+    : '<div class="empty" style="margin-top:0">Még nincs kiposztoltnak jelölt idősáv. Posztolás után a tartalom adatlapján pipáld ki a „kint van” jelölőt – utána itt rögzítheted az eredményét.</div>';
+  return `<div class="kicker">Eredmények</div><h1 style="margin-top:8px">Mi működik?</h1>
+    <p class="lead">A kiposztolt tartalmak eredménye, a hírlevelek megnyitása és a partnermegkeresések tölcsére egy helyen. A közösségi számokat 2–3 nappal a posztolás után írd be a platform statisztikájából – így látszik, melyik téma és formátum hozza a legtöbbet.</p>
+    <section class="sec"><div class="tiles">${tiles.map(([v, l]) => `<div class="tile"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join('')}</div></section>
+    ${meas.length ? `<section class="sec dgrid"><div class="panel"><h3 style="margin-bottom:10px">Platformonként</h3><div class="tw"><table class="gtab"><thead><tr><th>Platform</th><th>Poszt</th><th>Elérés</th><th>Aktivitás</th><th>Kattintás</th></tr></thead><tbody>${Object.entries(byPf).sort((a, b) => b[1].reach - a[1].reach).map(([p, x]) => `<tr><td>${pfChip(p)}</td><td>${x.n}</td><td>${numHu(x.reach)}</td><td>${pctHu(x.reach ? x.eng / x.reach : null)}</td><td>${numHu(x.clicks)}</td></tr>`).join('')}</tbody></table></div></div>
+      <div class="panel"><h3 style="margin-bottom:10px">Legjobb posztok (aktivitás)</h3><ol class="notes">${top.map(r => `<li><button class="lnk" data-open="${r.it.id}" data-pf="${r.s.platform}">${esc(r.it.title)}</button> · ${esc(PF[r.s.platform] ? PF[r.s.platform].name : r.s.platform)} · <b>${pctHu(erOf(mOf(r.it.id, r.i)))}</b> · ${numHu(mOf(r.it.id, r.i).reach)} elérés</li>`).join('')}</ol></div></section>` : ''}
+    <section class="sec"><div class="sec-h"><h2>Kiposztolt tartalmak</h2><span class="muted small">Aktivitás = (reakció + komment + megosztás + mentés) / elérés</span></div>${table}
+      <div class="tip">Honnan vedd a számokat? TikTok: TikTok Studio → Elemzések · Facebook és Instagram: Meta Business Suite → Statisztika · LinkedIn: az oldal Elemzések menüje · YouTube: YouTube Studio → Elemzések. A látogatók forrása (utm_source, utm_content): stat.pacsit.hu.</div></section>
+    <section class="sec dgrid"><div class="panel"><h3 style="margin-bottom:10px">Hírlevelek</h3>${sentE.length ? `<div class="tw"><table class="gtab"><thead><tr><th>Levél</th><th>Kiküldve</th><th>Megnyitás</th><th>Kattintás</th><th>Leiratkozás</th></tr></thead><tbody>${sentE.map(e => { const r = e.mc.report; return `<tr><td><button class="lnk" data-email="${e.id}">${esc(e.id)}</button><div class="sub">${esc(eSubject(e))}</div></td><td>${numHu(r.sent)}</td><td>${pctHu(r.open_rate || 0)}</td><td>${pctHu(r.click_rate || 0)}</td><td>${numHu(r.unsubscribed)}</td></tr>`; }).join('')}</tbody></table></div>` : '<p class="muted small" style="margin:0">Az első kiküldés után itt jelennek meg a Mailchimp számai (megnyitás, kattintás, leiratkozás).</p>'}</div>
+      <div class="panel"><h3 style="margin-bottom:12px">Partnermegkeresések tölcsére</h3><div class="funnel">${funnel.map(([l, v, c]) => `<div class="fr"><span>${esc(l)}</span><span class="fb" style="--c:${c};width:${Math.max(1, v / fmax * 100)}%"></span><b>${numHu(v)}</b></div>`).join('')}</div>
+        <p class="muted small" style="margin:12px 0 0">A válaszokat a Kapcsolatok fülön, a partner adatlapján jelöld (Válaszolt, Partner, Kéri a hírlevelet).</p></div></section>`;
+}
+
+/* ---------- Arculat és eszközök (szövegbank, hangnem, színek, betűk, logók, linkek, UTM-linképítő) ---------- */
+const utmSlug = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9_.\-]/g, '');
+function utmInit() {
+  if (S.utm || !BRD) return;
+  const p = BRD.utm.presets[0];
+  S.utm = { preset: p.id, url: BRD.utm.url, source: p.source, medium: p.medium, campaign: p.campaign, content: p.content };
+}
+function applyPreset(id) { const p = BRD.utm.presets.find(x => x.id === id); if (p) Object.assign(S.utm, { preset: id, source: p.source, medium: p.medium, campaign: p.campaign, content: p.content }); }
+function utmUrl() {
+  const u = S.utm, raw = (u.url || D.site).trim(), hi = raw.indexOf('#'), base = hi >= 0 ? raw.slice(0, hi) : raw, hash = hi >= 0 ? raw.slice(hi) : '';
+  const q = ['source', 'medium', 'campaign', 'content'].filter(k => utmSlug(u[k])).map(k => `utm_${k}=${encodeURIComponent(utmSlug(u[k]))}`).join('&');
+  return base + (q ? (base.includes('?') ? '&' : '?') + q : '') + hash;
+}
+/* a közösségi rövid link (pacsit.hu/f/<id>) csak akkor egyenértékű, ha a paraméterek pontosan a szerver szabályát követik */
+function utmShort() {
+  const u = S.utm, p = BRD.utm.presets.find(x => x.id === u.preset);
+  if (!p || !p.short || utmSlug(u.source) !== p.source || utmSlug(u.medium) !== 'social' || utmSlug(u.campaign) !== 'pacsi' || (u.url || D.site).trim().replace(/\/$/, '') !== D.site.replace(/\/$/, '')) return '';
+  const c = utmSlug(u.content);    // a poszt nélküli rövid link (pacsit.hu/f) a szerveren utm_content=bio lesz
+  if (!c || !/^[a-z0-9_-]{1,40}$/.test(c)) return '';   // a szerver (nginx) csak ilyen azonosítót fogad el
+  return D.site + p.short + (c !== 'bio' ? '/' + c : '');
+}
+function utmRefresh() {
+  const url = utmUrl(), sh = utmShort();
+  const a = $('#utmout'); if (a) a.textContent = url;
+  const c = $('#utmcopy'); if (c) c.dataset.copytext = url;
+  const r = $('.utmrow'); if (r) r.hidden = !sh;
+  const b = $('#utmshort'); if (b) b.textContent = sh;
+  const bc = $('#utmscopy'); if (bc) bc.dataset.copytext = sh;
+  const n = $('#utmnote'); if (n) n.hidden = !['source', 'medium', 'campaign', 'content'].some(k => (S.utm[k] || '').trim() && utmSlug(S.utm[k]) !== S.utm[k].trim());
+}
+function vBrand() {
+  if (!BRD) return '<div class="empty">Az arculati csomag hiányzik (content/brand.py).</div>';
+  utmInit();
+  const u = S.utm;
+  const row = (label, sub, text, extra) => `<div class="row"><div><b>${esc(label)}</b>${sub ? `<div class="muted small">${esc(sub)}</div>` : ''}</div><pre>${esc(text)}</pre><div class="bcol"><button class="btn sm" data-copytext="${esc(text)}">${ic('copy')} Másolás</button>${extra || ''}</div></div>`;
+  const logos = BRD.logos.map(id => BY[id]).filter(Boolean), sh = utmShort();
+  return `<div class="kicker">Arculat és eszközök</div><h1 style="margin-top:8px">Egy hangon, egy arccal</h1>
+    <p class="lead">Minden, ami a következetes kommunikációhoz kell: kész bemutatkozó szövegek, hashtag-készletek, hangnem, színek, betűk, logók és linkek, plusz egy linképítő, hogy minden link mérhető legyen. A szövegek a forrásfájlokból jönnek, ezért mindig az aktuális változatot látod.</p>
+    <section class="sec"><div class="sec-h"><h2>Szövegbank</h2><span class="muted small">${BRD.texts.length} kész szöveg, karakterszámmal</span></div>
+      <div class="bio bank">${BRD.texts.map(t => row(t.label, t.where, t.text, `<span class="muted small">${[...t.text].length}${t.limit ? ' / ' + t.limit : ''} karakter</span>`)).join('')}</div></section>
+    <section class="sec"><h2 style="margin-bottom:14px">Hashtag-készletek</h2><div class="bio bank">${BRD.hashtags.filter(x => x.tags).map(x => row(x.label, x.note, x.tags, `<span class="muted small">${(x.tags.match(/#[^\s#]+/g) || []).length} hashtag</span>`)).join('')}</div></section>
+    <section class="sec"><h2>Hangnem</h2><p class="lead" style="margin:6px 0 14px">${esc(BRD.voice.summary)}</p>
+      <div class="voice"><div class="panel"><h3>Így írunk</h3><ul class="do">${BRD.voice.do.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div><div class="panel"><h3>Ezt kerüljük</h3><ul class="dont">${BRD.voice.dont.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></div></section>
+    <section class="sec"><div class="sec-h"><h2>Színek</h2><span class="muted small">Kattints egy színre: kimásolja a kódját</span></div>
+      <div class="swatches">${BRD.colors.map(c => `<button class="sw" data-copytext="${esc(c.hex)}" style="--c:${esc(c.hex)}"><i></i><span><b>${esc(c.name)}</b>${esc(c.hex)}<br><span class="muted">${esc(c.use)}</span></span></button>`).join('')}</div></section>
+    <section class="sec"><h2 style="margin-bottom:14px">Betűk</h2><div class="steps">${BRD.fonts.map(f => `<div class="panel"><div style="font:800 30px/1.1 '${esc(f.name)}', ${esc(f.fallback)}">${esc(f.name)}</div><p class="muted small" style="margin:8px 0 12px">${esc(f.use)}<br>Tartalék: ${esc(f.fallback)}</p><a class="btn sm ghost" href="${esc(f.link)}" target="_blank" rel="noopener">${ic('open')} Google Fonts</a></div>`).join('')}</div></section>
+    ${logos.length ? `<section class="sec"><h2 style="margin-bottom:14px">Logó, profilképek, borítók</h2><div class="logos">${logos.map(it => `<div class="lg"><span class="th" style="background-image:url('${it.thumb || ''}')"></span><b class="small">${esc(it.title)}</b><span class="muted small">${esc(it.format || '')}</span>${(it.files || []).map((f, k) => `<button class="btn sm" data-bdl="${esc(it.id)}:${k}">${ic('dl')} ${esc(f.label)}</button>`).join('')}</div>`).join('')}</div></section>` : ''}
+    <section class="sec"><h2 style="margin-bottom:14px">Linkek</h2><div class="panel"><dl class="kv-list">${BRD.links.filter(l => l.url).map(l => `<dt>${esc(l.label)}</dt><dd><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.url.replace(/^https?:\/\//, ''))}</a> <button class="btn sm ghost" data-copytext="${esc(l.url)}" aria-label="Link másolása">${ic('copy')}</button></dd>`).join('')}</dl>
+      <p class="small" style="margin:16px 0 8px"><b>Rövid, követhető linkek.</b> A szerver UTM-paraméterekre irányít, így a statisztika látja a platformot és a posztot.</p>
+      <div class="tw"><table class="gtab"><thead><tr><th>Platform</th><th>Bio / profil</th><th>Poszt</th></tr></thead><tbody>${BRD.shortLinks.map(s => `<tr><td>${PF[s.platform] ? pfChip(s.platform) : esc(s.platform)}</td><td><code>${esc(s.url.replace(/^https?:\/\//, ''))}</code></td><td><code>${esc(s.post.replace(/^https?:\/\//, ''))}</code></td></tr>`).join('')}</tbody></table></div></div></section>
+    <section class="sec"><div class="sec-h"><h2>UTM-linképítő</h2><span class="muted small">Minden linkből látszik a statisztikában, honnan jött a látogató</span></div>
+      <div class="panel"><div class="utm">
+        <label>Előbeállítás<select id="utmp">${BRD.utm.presets.map(p => `<option value="${esc(p.id)}" ${u.preset === p.id ? 'selected' : ''}>${esc(p.label)}</option>`).join('')}</select></label>
+        <label>Cél-URL<input type="text" data-utm="url" value="${esc(u.url)}" spellcheck="false"></label>
+        <label>utm_source (honnan)<input type="text" data-utm="source" value="${esc(u.source)}" spellcheck="false"></label>
+        <label>utm_medium (csatorna)<input type="text" data-utm="medium" value="${esc(u.medium)}" spellcheck="false"></label>
+        <label>utm_campaign (kampány)<input type="text" data-utm="campaign" value="${esc(u.campaign)}" spellcheck="false"></label>
+        <label>utm_content (tartalom-ID)<input type="text" data-utm="content" value="${esc(u.content)}" placeholder="pl. v1, W03, PK0042" spellcheck="false"></label></div>
+        <div class="utmout" id="utmout">${esc(utmUrl())}</div>
+        <div class="row2"><button class="btn sm fill" id="utmcopy" data-copytext="${esc(utmUrl())}">${ic('copy')} Link másolása</button><span class="muted small" id="utmnote" hidden>Kisbetűvel, ékezet és szóköz nélkül írtam át: így egységes a statisztika.</span></div>
+        <div class="utmrow row2" ${sh ? '' : 'hidden'}><span class="small"><b>Rövid link ugyanerre:</b> <code id="utmshort">${esc(sh)}</code></span><button class="btn sm" id="utmscopy" data-copytext="${esc(sh)}">${ic('copy')} Rövid link</button></div>
+        <ul class="notes" style="margin-top:14px">${BRD.utm.rules.map(r => `<li>${esc(r)}</li>`).join('')}</ul></div></section>`;
+}
+
+/* ---------- globális keresés (Ctrl+K vagy /) ---------- */
+const norm = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+function searchIndex() {
+  const x = [];
+  const tabs = [['attekintes', 'Áttekintés'], ['naptar', 'Naptár'], ['inditas', 'Indítás'], ['tartalmak', 'Tartalmak'], ['email', 'E-mail'], ['kapcsolatok', 'Kapcsolatok'],
+    ['eredmenyek', 'Eredmények'], ['otletek', 'Következő videók'], ['arculat', 'Arculat'], ['utmutato', 'Útmutató']];
+  for (const [k, l] of tabs) x.push({ g: 'Fülek', t: l, s: 'fül', h: norm(l + ' ' + k), go: 'tab:' + k });
+  for (const it of D.items) x.push({ g: 'Tartalmak', t: it.title, s: `${D.kinds[it.kind] || ''} · ${it.id}`, h: norm([it.id, it.title, it.sub, ...Object.values(it.copy || {}).map(c => c.text + ' ' + c.tags)].join(' ')), go: 'item:' + it.id });
+  if (EM) for (const e of EM.emails) x.push({ g: 'Levelek', t: `${e.id} · ${eSubject(e)}`, s: e.date ? dShort(e.date) : (e.delay || ''), h: norm([e.id, e.title, e.subject, ...(e.subjectAlt || []), e.preheader, e.theme].join(' ')), go: 'email:' + e.id });
+  if (CT) for (const c of contactsAll()) x.push({ g: 'Kapcsolatok', t: c.name, s: `${cId(c)}${c.city ? ' · ' + c.city : ''}`, h: norm([...(c.eids || []), c.name, c.city, c.county, c.type, ...(c.emails || []), ...(c.breeds || []).map(b => BN[b] || b)].join(' ')), go: 'contact:' + c.id });
+  for (const o of D.ideas) x.push({ g: 'Ötletek', t: o.title, s: dShort(o.date), h: norm([o.title, o.hook, o.brief].join(' ')), go: 'idea:' + o.id });
+  for (const p of SU) p.steps.forEach((st, i) => x.push({ g: 'Indítás', t: `${p.name}: ${st.do.replace(/\*\*|`/g, '')}`, s: `${i + 1}. lépés`, h: norm(`${p.name} ${st.do} ${st.copy || ''}`), go: 'setup:' + p.id }));
+  if (BRD) for (const t of BRD.texts) x.push({ g: 'Arculat', t: t.label, s: 'szövegbank', h: norm(t.label + ' ' + t.text), go: 'tab:arculat' });
+  return x;
+}
+let SIDX = null;
+function openSearch() {
+  if ($('#cmdk')) return;
+  const w = document.createElement('div');
+  w.id = 'cmdk';
+  w.innerHTML = `<div class="cmdk-scrim"></div><div class="cmdk" role="dialog" aria-modal="true" aria-label="Keresés"><label class="sr" for="cmdq">Keresés</label>
+    <input type="search" id="cmdq" placeholder="Keresés: tartalom, levél, kapcsolat (PK0042), ötlet, lépés…" autocomplete="off" spellcheck="false">
+    <div class="res" id="cmdr" role="listbox" aria-label="Találatok"></div><div class="hint"><span><kbd>↑</kbd> <kbd>↓</kbd> választás</span><span><kbd>Enter</kbd> megnyitás</span><span><kbd>Esc</kbd> bezárás</span></div></div>`;
+  document.body.appendChild(w);
+  SIDX = searchIndex();
+  searchRender('');
+  $('#cmdq').focus();
+}
+function closeSearch() { const w = $('#cmdk'); if (w) w.remove(); SIDX = null; }
+function searchRender(q) {
+  const n = norm(q.trim()), toks = n.split(/\s+/).filter(Boolean), idx = SIDX || searchIndex();
+  const hits = !toks.length ? idx.filter(x => x.g === 'Fülek')
+    : idx.filter(x => toks.every(t => x.h.includes(t))).map(x => ({ x, r: norm(x.t).startsWith(n) ? 0 : norm(x.t).includes(n) ? 1 : 2 })).sort((a, b) => a.r - b.r).map(y => y.x);
+  let html = '', k = 0;
+  for (const g of ['Fülek', 'Tartalmak', 'Levelek', 'Kapcsolatok', 'Ötletek', 'Indítás', 'Arculat']) {
+    const list = hits.filter(x => x.g === g).slice(0, g === 'Kapcsolatok' ? 8 : g === 'Fülek' && !toks.length ? 10 : 6);
+    if (!list.length) continue;
+    html += `<div class="grp">${esc(g)}</div>` + list.map(x => `<button class="hit" role="option" data-hit="${esc(x.go)}" aria-selected="${k++ === 0}"><span>${esc(x.t)}</span><small>${esc(x.s || '')}</small></button>`).join('');
+  }
+  $('#cmdr').innerHTML = html || `<div class="empty" style="margin:8px">Nincs találat erre: „${esc(q)}”</div>`;
+}
+function moveSel(d) {
+  const all = $$('#cmdr [data-hit]'); if (!all.length) return;
+  let i = all.findIndex(x => x.getAttribute('aria-selected') === 'true');
+  if (i >= 0) all[i].setAttribute('aria-selected', 'false');
+  i = (i + d + all.length) % all.length;
+  all[i].setAttribute('aria-selected', 'true'); all[i].scrollIntoView({ block: 'nearest' });
+}
+/* ugrás: item:<id> · email:<id> · contact:<id> · idea:<id> · setup:<platform> · tab:<fül> */
+function go(target) {
+  const i = target.indexOf(':'), k = target.slice(0, i), id = target.slice(i + 1);
+  closeSearch();
+  if (k === 'item' && BY[id]) { S.eopen = null; S.copen = null; openItem(id); return; }
+  if (k === 'email' && EBY[id]) { openEmail(id); return; }
+  if (k === 'contact' && CT) { openContact(id); return; }
+  if (S.open || S.eopen || S.copen) closeItem();
+  if (k === 'idea') { S.tab = 'otletek'; render(); setTimeout(() => { const el = $(`[data-want="${id}"]`); if (el) el.closest('.icard').scrollIntoView({ block: 'center', behavior: 'smooth' }); }, 30); return; }
+  if (k === 'setup') { S.tab = 'inditas'; render(); setTimeout(() => { const el = document.getElementById('su-' + id); if (el) el.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, 30); return; }
+  if (k === 'tab') { S.tab = id; render(); window.scrollTo(0, 0); }
+}
+
+/* az új elemek eseményei – a meglévő kezelők előtt regisztrálva (a keresőablak Esc-je ne zárja be a mögötte nyitott panelt) */
+document.addEventListener('click', e => {
+  const t = e.target;
+  if (t.closest('#sopen') || t.closest('[data-search]')) { openSearch(); return; }
+  const hit = t.closest('[data-hit]'); if (hit) { go(hit.dataset.hit); return; }
+  if (t.closest('.cmdk-scrim')) { closeSearch(); return; }
+  const g = t.closest('[data-go]'); if (g) { go(g.dataset.go); return; }
+  if (t.closest('[data-ics]')) { saveBlob(new Blob([icsText().text], { type: 'text/calendar' }), 'pacsi_naptar.ics'); return; }
+  if (t.closest('[data-rep]')) { copyText(weeklyReport()); return; }
+  if (t.closest('[data-repv]')) { S.repv = !S.repv; render(); return; }
+  if (t.closest('[data-hall]')) { S.hall = !S.hall; render(); return; }
+  const bdl = t.closest('[data-bdl]'); if (bdl) { const [iid, k] = bdl.dataset.bdl.split(':'); const it = BY[iid]; if (it && it.files[+k]) download(it.files[+k]); }
+});
+document.addEventListener('keydown', e => {
+  if ($('#cmdk')) {
+    if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); closeSearch(); return; }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); moveSel(e.key === 'ArrowDown' ? 1 : -1); return; }
+    if (e.key === 'Enter') { const a = $('#cmdr [data-hit][aria-selected="true"]'); if (a) { e.preventDefault(); go(a.dataset.hit); } }
+    return;
+  }
+  const tag = (e.target && e.target.tagName) || '', typing = /^(INPUT|TEXTAREA|SELECT)$/.test(tag) || (e.target && e.target.isContentEditable);
+  if ((e.key === 'k' || e.key === 'K') && (e.ctrlKey || e.metaKey)) { e.preventDefault(); openSearch(); return; }
+  if (e.key === '/' && !typing && !e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); openSearch(); }
+});
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.id === 'cmdq') { searchRender(t.value); return; }
+  if (t.dataset.utm && S.utm) { S.utm[t.dataset.utm] = t.value; utmRefresh(); return; }
+  if (t.dataset.met && !S.ro) {
+    const [id, i, k] = t.dataset.met.split(':');
+    const d = (S.metrics[id] = S.metrics[id] || {}); d.s = d.s || {};
+    const x = (d.s[i] = d.s[i] || {});
+    if (t.value === '') delete x[k]; else x[k] = Math.max(0, Math.round(+t.value) || 0);
+    x.at = TODAY;
+    persist('metrics', id);
+    const el = document.querySelector(`[data-er="${id}:${i}"]`); if (el) el.textContent = pctHu(erOf(x));
+  }
+});
+document.addEventListener('change', e => { if (e.target.id === 'utmp' && S.utm) { applyPreset(e.target.value); render(); } });
+
+/* ---------------- események ---------------- */
+document.addEventListener('click', e => {
+  const t = e.target;
+  const tab = t.closest('.tabs [data-tab]'); if (tab) { S.tab = tab.dataset.tab; render(); window.scrollTo(0, 0); return; }
+  if (t.closest('#home')) { e.preventDefault(); S.tab = 'naptar'; render(); return; }
+  const op = t.closest('[data-open]'); if (op) { if (op.dataset.pf) S.pf = op.dataset.pf; openItem(op.dataset.open); return; }
+  const idea = t.closest('[data-idea]'); if (idea) { S.tab = 'otletek'; render(); setTimeout(() => { const el = $(`[data-want="${idea.dataset.idea}"]`); el && el.closest('.icard').scrollIntoView({ block: 'center', behavior: 'smooth' }); }, 30); return; }
+  if (t.closest('[data-close]')) { closeItem(); return; }
+  const fk = t.closest('[data-fk]'); if (fk) { S.fk = fk.dataset.fk; render(); return; }
+  const fp = t.closest('[data-fp]'); if (fp) { S.fp = fp.dataset.fp; render(); return; }
+  if (t.closest('#csv')) { csv(); return; }
+  const ct = t.closest('[data-copytext]'); if (ct) { copyText(ct.dataset.copytext); return; }
+  const sdl = t.closest('[data-sudl]'); if (sdl) { const [iid, k] = sdl.dataset.sudl.split(':'); const it = BY[iid]; if (it && it.files[+k]) download(it.files[+k]); return; }
+  const snv = t.closest('[data-sunav]'); if (snv) { e.preventDefault(); const el = document.getElementById('su-' + snv.dataset.sunav); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+  const em = t.closest('[data-email]'); if (em) { openEmail(em.dataset.email); return; }
+  const efb = t.closest('[data-ef]'); if (efb) { S.ef = efb.dataset.ef; render(); return; }
+  const ctr = t.closest('[data-contact]'); if (ctr) { openContact(ctr.dataset.contact); return; }
+  const ccb = t.closest('[data-cc]'); if (ccb) { S.cc = ccb.dataset.cc; S.cn = 60; render(); return; }
+  if (t.closest('[data-cmore]')) { S.cn += 100; refreshContacts(); return; }
+  if (t.closest('[data-cnew]')) { openNewContact(); return; }
+  if (t.closest('[data-ccsv]')) { contactsCsv(); return; }
+  const pvb = t.closest('[data-pv]'); if (pvb && S.eopen) { S.pv = pvb.dataset.pv; renderPreview(); return; }
+  const apb = t.closest('[data-eapprove]'); if (apb && S.eopen && !S.ro) {
+    const d = eDoc(S.eopen); d.approved = apb.dataset.eapprove === '1';
+    d.approvedAt = d.approved ? new Date().toISOString().slice(0, 16).replace('T', ' ') : '';
+    persist('emails', S.eopen); renderEmailSide(); toast(d.approved ? 'Jóváhagyva ✓' : 'Jóváhagyás visszavonva'); return;
+  }
+  const csb = t.closest('[data-cset]'); if (csb && S.copen && S.copen !== '__new' && !S.ro) {
+    const d = cDoc(S.copen); d.status = csb.dataset.cset; d.updated = TODAY;
+    if (d.status === 'megkeresve' && !d.sent) d.sent = TODAY;
+    persist('contacts', S.copen); openContact(S.copen, true); toast('Állapot: ' + (CS()[d.status] || d.status)); return;
+  }
+  const it = S.open && BY[S.open];
+  if (!it) return;
+  const pft = t.closest('[data-pft]'); if (pft) { S.pf = pft.dataset.pft; openItem(it.id, true); return; }
+  const dl = t.closest('[data-dl]'); if (dl) { download(it.files[+dl.dataset.dl]); return; }
+  const cp = t.closest('[data-copy]'); if (cp) { const c = copyOf(it, S.pf); copyText(cp.dataset.copy === 'all' && c.tags ? `${c.text}\n\n${c.tags}` : c.text); return; }
+  const stb = t.closest('[data-status]'); if (stb && !S.ro) { E(it.id).status = stb.dataset.status; persist('edits', it.id); openItem(it.id, true); return; }
+  if (t.closest('[data-reset]')) { const ed = E(it.id); if (ed.copy) { delete ed.copy[S.pf]; persist('edits', it.id); } openItem(it.id, true); return; }
+  if (t.closest('[data-ai]')) { aiVariants(it); return; }
+  const use = t.closest('[data-use]'); if (use) { const v = ($('#ai') || {})._vs?.[+use.dataset.use]; if (v) { const ed = E(it.id); ed.copy = ed.copy || {}; ed.copy[S.pf] = { text: v.text, tags: v.tags || copyOf(it, S.pf).tags }; persist('edits', it.id); openItem(it.id, true); toast('Átvéve – elmentve ✓'); } }
+});
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.dataset.icom) { (S.ideas[t.dataset.icom] = S.ideas[t.dataset.icom] || {}).comment = t.value; persist('ideas', t.dataset.icom); return; }
+  if (t.id === 'cq') { S.cq = t.value; S.cn = 60; refreshContacts(); return; }
+  if (t.dataset.ecom && !S.ro) { eDoc(t.dataset.ecom).comment = t.value; persist('emails', t.dataset.ecom); return; }
+  if (t.dataset.cnote && !S.ro) { const d = cDoc(t.dataset.cnote); d.note = t.value; d.updated = TODAY; persist('contacts', t.dataset.cnote); return; }
+  const it = S.open && BY[S.open]; if (!it || S.ro) return;
+  if (t.dataset.f) {
+    const ed = E(it.id); ed.copy = ed.copy || {};
+    const cur = copyOf(it, S.pf);
+    ed.copy[S.pf] = { ...cur, [t.dataset.f]: t.value };
+    persist('edits', it.id);
+    const c = copyOf(it, S.pf), full = c.text + (c.tags ? '\n\n' + c.tags : ''), lim = PF[S.pf].limit;
+    const n = (c.tags.match(/#[^\s#]+/g) || []).length, el = $('#cnt');
+    if (el) { el.textContent = `${full.length} / ${lim} karakter${S.pf === 'instagram' ? ` · ${n} hashtag` : ''}`; el.classList.toggle('over', full.length > lim); }
+  }
+});
+document.addEventListener('change', e => {
+  const t = e.target;
+  if (t.id === 'cs' || t.id === 'ck') { S[t.id] = t.value; S.cn = 60; refreshContacts(); return; }
+  if (t.id === 'cp') { S.cp = t.checked; S.cn = 60; refreshContacts(); return; }
+  if (t.dataset.su && !S.ro) {
+    const [pid, i] = t.dataset.su.split(':'); const d = (S.setup[pid] = S.setup[pid] || {}); d.done = d.done || {};
+    if (t.checked) d.done[i] = true; else delete d.done[i];
+    persist('setup', pid); const y = window.scrollY; render(); window.scrollTo(0, y); return;
+  }
+  if (t.dataset.esubj != null && S.eopen && !S.ro) {
+    const e = EBY[S.eopen], subs = [e.subject, ...(e.subjectAlt || [])];
+    eDoc(S.eopen).subject = subs[+t.dataset.esubj]; persist('emails', S.eopen); toast('Tárgysor kiválasztva ✓'); return;
+  }
+  if (t.dataset.want) { (S.ideas[t.dataset.want] = S.ideas[t.dataset.want] || {}).want = t.checked; persist('ideas', t.dataset.want); toast(t.checked ? 'Megjelölve ✓' : 'Jelölés levéve'); return; }
+  const it = S.open && BY[S.open]; if (!it || S.ro || t.dataset.si == null) return;
+  const ed = E(it.id); ed.slots = ed.slots || {};
+  const i = +t.dataset.si; ed.slots[i] = ed.slots[i] || {};
+  ed.slots[i][t.dataset.sf] = t.type === 'checkbox' ? t.checked : t.value;
+  persist('edits', it.id);
+  if (t.type === 'checkbox') toast(t.checked ? 'Kint van ✓' : 'Visszavonva');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && (S.open || S.eopen || S.copen)) closeItem();
+  const tr = e.target.closest && e.target.closest('tr[data-contact]');
+  if (tr && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openContact(tr.dataset.contact); }
+});
+document.addEventListener('submit', e => {
+  if (e.target.id !== 'cform') return;
+  e.preventDefault();
+  if (S.ro) return;
+  const v = id => ($('#' + id).value || '').trim();
+  if (!v('nf-name')) { toast('Add meg a nevet'); return; }
+  const id = 'kezi-' + Date.now().toString(36);
+  const mail = v('nf-email').toLowerCase();
+  S.contacts[id] = { added: true, name: v('nf-name'), category: $('#nf-cat').value, emails: mail ? [mail] : [], website: v('nf-web'), city: v('nf-city'),
+    note0: v('nf-note'), status: 'uj', created: TODAY, updated: TODAY };
+  persist('contacts', id);
+  toast('Elmentve ✓');
+  S.tab = 'kapcsolatok'; render(); openContact(id);
+});
+
+$('#verTop').textContent = `v${D.version} · ${D.build}`;
+const h = location.hash.slice(1);
+if (['attekintes', 'inditas', 'tartalmak', 'email', 'kapcsolatok', 'eredmenyek', 'otletek', 'arculat', 'utmutato'].includes(h)) S.tab = h;
+if (EBY[h]) S.tab = 'email';
+if (h.startsWith('k-')) S.tab = 'kapcsolatok';
+render();
+if (h && BY[h]) openItem(h);
+else if (EBY[h]) openEmail(h);
+else if (h.startsWith('k-') && CT) openContact(h.slice(2));
+initCaps();
+})();
+</script>

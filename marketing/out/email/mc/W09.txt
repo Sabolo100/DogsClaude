@@ -1,0 +1,57 @@
+Pacsi-levél · 9. szám · 2026. december 10.
+
+PACSI-LEVÉL · 9. SZÁM
+KUTYÁT KARÁCSONYRA? ELŐBB OLVASD EL EZT.
+Egy kutya 10–15 évre szóló döntés, nem meglepetés. Ha a családotok tényleg készen áll, a karácsony gyönyörű kezdet lehet – de csak akkor.
+→ Töltsük ki együtt a kvízt: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w09&utm_content=hero#kviz
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Az állatvédők minden évben arra kérik a családokat, hogy ne meglepetésként ajándékozzanak kutyát – mert az átgondolatlan döntés sokszor a menhelyen végződik. Pár kérdés előre sok fájdalmat megspórol.
+
+MIELŐTT BECSOMAGOLNÁD
+7 kérdés, amire a családnak igennel kell felelnie
+  - Mindenki szeretné, és tudja, hogy 10–15 évre szól?
+  - Megvan, ki sétáltat reggel és este – esőben, hóban is?
+  - Kinek a dolga a tanítás, a kozmetika, az állatorvos?
+  - Belefér a havi költség (táp, orvos, biztosítás, panzió)?
+  - Megvan, hol lesz nyaraláskor és betegség esetén?
+  - Illik a fajta a családhoz (energia, méret, ugatás, szőrhullás)?
+  - Tudjátok, honnan hozzátok (felelős tenyésztő vagy menhely)?
+Ha bármelyikre „talán” a válasz, adjatok magatoknak még egy kis időt – a jó kutya megéri a várakozást.
+
+JOBB ÖTLET, HA MÉG NEM BIZTOS
+Ajándékozz készülődést
+  - Egy közös menhelylátogatás vagy önkéntes nap – ismerkedésnek tökéletes.
+  - Egy kutyás könyv vagy tanfolyam (például kölyökiskola-utalvány) a leendő gazdinak.
+  - A Pacsi kvíze közösen, a karácsonyfa alatt – és beszéljétek meg, mit mutat.
+  - Kutyás kellékek egy „ígéret” kártyával: a kutya tavasszal jön, amikor mindenki készen áll.
+
+A HÉT FAJTÁJA
+Golden retriever – Napsugár négy lábon: türelmes, kedves, és imád hordani.
+A gyerekekkel is kiváló, és első kutyának is jó választás. Napi másfél óra mozgás és sok hulló szőr viszont jár a csomaghoz.
+Kinek ajánlott? Első kutyás családoknak is · Gyerekes családoknak, akár kisgyerekkel
+→ A kártyája: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w09&utm_content=het-fajtaja#b=golden-retriever
+
+A MÚLT HETI FEJTÖRŐ MEGFEJTÉSE
+1925-ben a husky-staféta diftéria elleni szérumot vitt a járvány sújtotta Nome városába. A két leghíresebb vezérkutya, Balto és Togo is szibériai husky volt.
+
+TIPPELJ!
+Melyik fajta nagy, lapos mancsai működnek hótalpként?
+  A) Tibeti terrier: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w09&utm_content=tippelj#b=tibeti-terrier
+  B) Szamojéd: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w09&utm_content=tippelj#b=szamojed
+  C) Bernáthegyi: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w09&utm_content=tippelj#b=bernathegyi
+Kattints a tippedre: a fajta kártyáján, az Érdekesség rovatban ott a válasz. A megfejtés a következő levélben is jön.
+
+Ismersz valakit, aki kutyát ajándékozna?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Nálatok is volt „kutya a fa alatt”? Írd meg, hogyan sikerült!
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

@@ -1,0 +1,45 @@
+Pacsi-levél · 11. szám · 2026. december 22.
+
+PACSI-LEVÉL · 11. SZÁM
+BOLDOG ÜNNEPEKET A FALKÁTÓL!
+Köszönjük, hogy idén velünk tartottál. Az ünnepek előtt egy utolsó, könnyű levél: az év kedvencei és egy fejtörő a fa alá.
+→ Nyisd meg a Pacsit: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w11&utm_content=hero
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Szeptember végén indult a Pacsi, azóta sokan szűrtek, kvízeztek és gyűjtöttek kedvenc fajtákat. Megnéztük, melyik fajtákat jelölték meg a legtöbben kedvencnek.
+
+A PACSI-KÖZÖSSÉG KEDVENC FAJTÁI
+A névtelen statisztika szerint ezeket a fajtákat jelöltétek a legtöbbször kedvencnek.
+  - Rövidszőrű magyar vizsla: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w11&utm_content=kedvencek-2026#b=magyar-vizsla
+  - Golden retriever: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w11&utm_content=kedvencek-2026#b=golden-retriever
+  - Border collie: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w11&utm_content=kedvencek-2026#b=border-collie
+  - Francia bulldog: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w11&utm_content=kedvencek-2026#b=francia-bulldog
+  - Labrador retriever: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w11&utm_content=kedvencek-2026#b=labrador-retriever
+  - Puli: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w11&utm_content=kedvencek-2026#b=puli
+
+A MÚLT HETI FEJTÖRŐ MEGFEJTÉSE
+A labradorok közül sokan hordozzák a POMC gén egy hibás változatát, ami fokozza az éhségérzetet – ezért olyan falánkok. Az ünnepi asztal alatt különösen figyelj rájuk!
+
+TIPPELJ!
+Melyik fajtából kapott ajándékba egy kutyát Viktória királynő 1860-ban?
+  A) Pekingi palotakutya: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w11&utm_content=tippelj#b=pekingi-palotakutya
+  B) Mopsz: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w11&utm_content=tippelj#b=mopsz
+  C) Máltai selyemkutya: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w11&utm_content=tippelj#b=maltai-selyemkutya
+Kattints a tippedre: a fajta kártyáján, az Érdekesség rovatban ott a válasz. A megfejtés a következő levélben is jön.
+
+KÖSZÖNJÜK
+Köszönjük mindenkinek, aki kipróbálta a Pacsit, továbbküldte a leveleinket vagy visszajelzést adott – sokat tanultunk belőle.
+
+Ajándék, ami nem kerül semmibe
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Boldog, nyugodt ünnepeket kívánunk – neked és a falkádnak!
+a Pacsi csapata
+U.i. A következő levél december 30-án jön, egy szilveszteri gyorslistával.
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

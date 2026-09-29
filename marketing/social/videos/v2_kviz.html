@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><title>V2 – Milyen gazdi vagy?</title>
+<link rel="stylesheet" href="../shared/brand.css">
+<link rel="stylesheet" href="../shared/video.css">
+<style>
+  #head { top: 760px; }
+  #head .hd { font-size: 172px; }
+  #kick { position: absolute; left: 0; right: 0; top: 650px; text-align: center; z-index: 21; }
+  .tile { position: absolute; left: 0; top: 0; width: 210px; height: 210px; margin: -105px 0 0 -105px; border-radius: 50%; background: #fff; display: grid; place-items: center;
+    font-size: 104px; line-height: 1; box-shadow: 0 16px 40px rgba(90, 50, 20, .16); z-index: 12; }
+  .tile b { position: absolute; top: 222px; left: 50%; transform: translateX(-50%); white-space: nowrap; font: 800 30px/1 var(--font-u); color: var(--ink); }
+</style></head>
+<body>
+<div id="c" class="canvas grain">
+  <div class="layer" id="tiles"></div>
+  <div id="kick"><span class="kick">10 kérdés · 1 perc</span></div>
+  <div class="big" id="head"><div class="hd">Milyen<br><span class="it">gazdi</span><br>vagy?</div></div>
+  <div class="layer" id="stage" style="z-index:15"></div>
+  <div class="cap" id="c1"><span class="sticker">10 gyors kérdés… 🤔</span></div>
+  <div class="cap" id="c2"><span class="sticker hot">⏩ Tekerjünk előre!</span></div>
+  <div class="cap" id="c3" style="top:260px"><span class="sticker">Én <b style="color:var(--primary-fill)">Városi flâneur</b><br>lettem! 🏙️</span></div>
+  <div class="cap" id="c4" style="top:260px"><span class="sticker">+ a top 5 fajtám 🐾</span></div>
+</div>
+<script src="../shared/comp.js"></script>
+<script src="../shared/kit.js"></script>
+<script src="../shared/fx.js"></script>
+<script src="../shared/phone.js"></script>
+<script>
+const { E, prog, lerp, clamp } = Comp;
+const $ = s => document.querySelector(s);
+let phone, finger, bg, end, words, tiles = [];
+const TYPES = [['🛋️', 'Kanapé-kapitány'], ['🏃', 'Aktív kalandor'], ['👨‍👩‍👧', 'Családi karmester'], ['🏙️', 'Városi flâneur'], ['🛡️', 'Tanyasi őrangyal'], ['🎓', 'Kutyasuttogó']];
+const PW = 418, S0 = 1.62;
+const base = { x: 540 - PW * S0 / 2, y: 470, s: S0 };
+const at = (s, ax, ay, fx = 540, fy = 1000) => ({ s, x: fx - (14 + ax) * s, y: fy - (14 + ay) * s });
+const Z = at(2.05, 195, 470, 540, 1030);
+const cam = FX.track([
+  [2.45, { ...base, y: 1980 }],
+  [3.25, base, E.outQuint],
+  [4.25, base],
+  [4.95, Z, E.ioQuint],
+  [11.45, Z],
+  [12.1, at(2.2, 195, 380, 540, 1000), E.ioQuint],
+  [13.3, at(2.2, 195, 380, 540, 1000)],
+  [14.1, at(2.2, 195, 560, 540, 1000), E.ioQuint],
+  [15.7, at(2.2, 195, 560, 540, 1000)],
+]);
+const ANS = [1, 1, 0, 0, 1, 0, 1, 0, 1, 1];
+const TAPS = [5.35, 6.35, 7.35, 7.95, 8.45, 8.95, 9.45, 9.95, 10.45, 10.95];
+
+Comp.start({ duration: 20.4, preroll: 1.6 }, async () => {
+  await K.init();
+  bg = FX.blobs($('#c'), ['#E2D6FF', '#FFD2B8', '#C9EEDC']);
+  phone = new Phone($('#stage'));
+  finger = new Finger($('#c'));
+  tiles = TYPES.map(([e, n]) => { const d = document.createElement('div'); d.className = 'tile'; d.innerHTML = `${e}<b>${n}</b>`; $('#tiles').appendChild(d); return d; });
+  words = FX.words($('#head .hd'));
+  end = FX.endCard($('#c'), { t0: 15.9, ask: 'Te mi lettél? Írd meg! 👇', line: 'Töltsd ki te is a Párkereső kvízt!', cta: 'Kvíz indítása', url: 'Link a bióban · ' + K.site });
+  await phone.load();
+  plan();
+});
+
+function plan() {
+  finger.move(0, 760, 1780, .01);
+  finger.show(3.3, 1).show(11.35, 0).show(12.9, 1).show(14.3, 0);
+  tapIn(phone, finger, 3.95, '[data-tab="kviz"]');
+  TAPS.forEach((tt, i) => tapIn(phone, finger, tt, () => phone.$(`.qopt[data-a="${ANS[i]}"]`), { lead: i < 3 ? .6 : .38 }));
+  // görgetés az eredménylistához: az ujj felfelé húz, a lap tartalma gördül
+  finger.move(13.0, 700, 1500, .25);
+  finger.move(13.35, 700, 1050, .8);
+}
+Comp.each(t => {
+  bg(t);
+  FX.popWords(words, t, .15, { stagger: .09, out: 2.35, dy: 80 });
+  const k = $('#kick'); k.style.opacity = (prog(t, .05, .4) * (1 - prog(t, 2.3, 2.6))).toFixed(3);
+  tiles.forEach((d, i) => {
+    const p = prog(t, .25 + i * .08, .85 + i * .08), sp = E.spring(p, 5, 4);
+    const ang = -Math.PI / 2 + i * Math.PI / 3 + t * .55;
+    const out = prog(t, 2.3, 2.85, E.inC);
+    const R = lerp(150, 430, sp) * (1 - out * .9);
+    d.style.transform = `translate(${540 + Math.cos(ang) * R * .9}px, ${930 + Math.sin(ang) * R * 1.45}px) scale(${lerp(.3, 1, sp) * (1 - out)})`;
+    d.style.opacity = (clamp(p * 3) * (1 - out)).toFixed(3);
+  });
+  const c = cam(t);
+  phone.el.style.transformOrigin = '0 0';
+  phone.el.style.transform = `translate(${c.x}px,${c.y}px) scale(${c.s})`;
+  // eredménylista görgetése
+  const body = phone.doc && phone.doc.querySelector('.drawer .d-body');
+  if (body && t > 13.3 && t < 15.5) body.scrollTop = 260 * E.ioC(prog(t, 13.4, 14.3));
+  FX.pop($('#c1'), t, 4.4, 7.05, { rot: -2 });
+  FX.pop($('#c2'), t, 7.35, 11.05, { rot: 2 });
+  FX.pop($('#c3'), t, 11.7, 13.3, { rot: -2 });
+  FX.pop($('#c4'), t, 13.5, 15.6, { rot: 2 });
+  finger.render(t);
+  end(t);
+});
+</script>
+</body></html>

@@ -1,0 +1,54 @@
+Pacsi-levél · 3. szám · 2026. október 29.
+
+PACSI-LEVÉL · 3. SZÁM
+JELMEZ TALÁN, CSOKI SOHA.
+Szombaton Halloween. A tökös mécses hangulatos, a hot dog jelmez vicces – az édességes tál viszont a kutyának komoly veszély.
+→ A hét fajtája: a tacskó: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w03&utm_content=hero#b=tacsko
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Október végén a boltok polcai tele vannak édességgel, a lépcsőházak tökös mécsessel. Összeszedtük, hogyan lesz a Halloween a kutyádnak is buli – és nem állatorvosi ügyelet.
+
+VIGYÁZAT!
+Ezek ne kerüljenek a kutya közelébe
+  - Csokoládé – a benne lévő teobromin mérgező a kutyáknak, az étcsoki a legveszélyesebb.
+  - Xilit (nyírfacukor) – sok cukormentes rágóban és édességben van; kis mennyiségben is életveszélyes.
+  - Mazsola és szőlő – veseelégtelenséget okozhat.
+  - Csomagolás, pálcika, mécses – lenyelve elzáródást, a láng égési sérülést okozhat.
+Ha a kutyád mégis evett valamit ezek közül, ne várd meg a tüneteket: hívd az állatorvost vagy egy 0–24 órás ügyeletet.
+
+JELMEZ VAGY NEM JELMEZ?
+A jó jelmez olyan, amit észre sem vesz
+  - Ne takarja el a szemét, fülét, orrát, és ne szorítsa a nyakát.
+  - Legyen laza és könnyen levehető – ha vakarja, vagy nem fekszik le tőle, vedd le.
+  - Egy színes kendő vagy egy vicces nyakörv a fotón ugyanolyan jól mutat.
+  - Ha a csengetés és a jelmezes gyerekek felzaklatják, legyen egy csendes szoba, ahová elvonulhat.
+
+A HÉT FAJTÁJA
+Tacskó – Hosszú test, nagy bátorság – a borzvadász, aki a kanapét is uralja.
+Bátor, humoros, és imád szimatolni. Lakásban is jól elvan, ha van lift – a sok lépcső és az ugrálás ugyanis nem tesz jót a hátának.
+Kinek ajánlott? Lakásban élőknek, ha van lift · Türelmes, humoros gazdiknak
+→ A kártyája: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w03&utm_content=het-fajtaja#b=tacsko
+
+A MÚLT HETI FEJTÖRŐ MEGFEJTÉSE
+A basenji szukái a farkasokhoz hasonlóan évente csak egyszer tüzelnek. (Bónusz: a basenji nem ugat, hanem jódlizik.)
+
+TIPPELJ!
+Melyik fajtának kékesfekete a nyelve?
+  A) Csau csau: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w03&utm_content=tippelj#b=csau-csau
+  B) Mopsz: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w03&utm_content=tippelj#b=mopsz
+  C) Szamojéd: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w03&utm_content=tippelj#b=szamojed
+Kattints a tippedre: a fajta kártyáján, az Érdekesség rovatban ott a válasz. A megfejtés a következő levélben is jön.
+
+Ismersz valakit, aki kutyát szeretne?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Van jelmezes kutyafotód? Küldd el válaszban! 🎃
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

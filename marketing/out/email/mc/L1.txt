@@ -1,0 +1,37 @@
+Pacsi · indulás · 2026. október 1.
+
+ÚJ · INGYENES · 124 KUTYAFAJTA
+ADJ EGY PACSIT A HOZZÁD ILLŐ KUTYÁNAK!
+A Pacsi ingyenes, magyar kutyafajta-választó. 124 fajta lebeg egy élő felhőben, és minden szűrődre reagál: ami nem illik hozzád, kirepül, ami igen, előrejön.
+→ Kipróbálom: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l1&utm_content=hero
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Kutyát választani izgalmas – és könnyű elrontani. Sokan a legcukibb kölyökfotó alapján döntenek, aztán kiderül, hogy a kis gombócból napi két óra futásra vágyó sportoló lesz egy harmadik emeleti lakásban.
+Ezért csináltuk a Pacsit. Nem mondja meg, melyik „a te kutyád”, de megmutatja, melyik fajta illik az életedhez – és azt is, miért.
+
+124 kutyafajta · 10 kvízkérdés · 0 regisztráció
+
+KEZDÉSNEK
+3 dolog, amit érdemes kipróbálni
+  - Szűrj a saját életedre. Lakás, kisgyerek, vékony falak? Három koppintás, és a 124 fajtából csak azok maradnak, amelyek tényleg illenek hozzád. Kipróbálom (https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l1&utm_content=szures#f=lakas;gyerek;csendes&m=s)
+  - Töltsd ki a Párkereső kvízt. 10 gyors kérdés, a végén megtudod, milyen gazdi vagy, és melyik 5 fajta illik hozzád a legjobban. Indulhat a kvíz (https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l1&utm_content=kviz#kviz)
+  - Ismerd meg a 9 magyar fajtát. Puli, pumi, mudi, komondor, kuvasz, erdélyi kopó, két vizsla és a magyar agár – egy koppintás a Magyar szűrőre. Megnézem őket (https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l1&utm_content=magyar#f=magyar&m=s)
+
+A HÉTEN A KÖZÖSSÉGIN
+  - TikTok · Reels: Melyik kutya illik hozzád?
+  - Instagram · Facebook: Adj egy pacsit!
+  - Videó: Zsebrakéta vagy kanapé-óriás?
+
+Ismersz valakit, aki kutyát szeretne?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Válaszolj erre a levélre, és írd meg: van már kutyád, vagy most választasz? Szívesen olvasunk minden választ.
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

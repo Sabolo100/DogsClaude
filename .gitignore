@@ -24,3 +24,17 @@ marketing/email/state/
 
 # Forward Email alias-jelszó (hello@pacsit.hu) – soha ne kerüljön verziókezelésbe
 ForwardEmail_hello.txt
+
+# Facebook-oldaltoken (facebook.py setup) és a posztolási napló – soha ne kerüljön verziókezelésbe
+Facebook_API.json
+marketing/social/state/
+
+# YouTube OAuth-kulcsok (youtube.py setup) és a Google Cloudból letöltött kliensfájl – soha ne kerüljön verziókezelésbe
+YouTube_API.json*
+client_secret*.json
+
+# Marketing build-kimenetek, amelyekben benne van a teljes kapcsolati adatbázis (e-mail-címek) – a nyilvános repóba nem kerülhetnek.
+# Újragenerálás: python marketing/tools/build.py --no-render
+marketing/content/content.json
+marketing/cms/index.html
+marketing/cms/artifact.html

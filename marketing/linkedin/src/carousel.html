@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Pacsi – Vibe Coding use case (LinkedIn-karusszel)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..900,0..100;1,9..144,400..900,0..100&family=Manrope:wght@400..800&family=JetBrains+Mono:wght@400;500;700&display=block" rel="stylesheet">
+<style>
+/* LinkedIn-karusszel – 1080×1350 (4:5). Sötét „esettanulmány” keret, a Pacsi korall/krém színeivel.
+   Minden oldal egy .pg szekció; a linkedin_carousel.mjs egyenként fotózza le őket. */
+:root {
+  --bg: #14110E; --bg2: #1C1814;
+  --panel: rgba(255, 248, 240, .045); --panel2: rgba(255, 248, 240, .08); --line: rgba(255, 248, 240, .11);
+  --cream: #FBF6EE; --t2: rgba(251, 246, 238, .74); --t3: rgba(251, 246, 238, .50);
+  --coral: #FF6B3D; --coral2: #FF8F66; --amber: #FFC845; --lav: #A9A6FF; --mint: #7FD8BE; --rose: #F48FB1;
+  --d: 'Fraunces', Georgia, serif; --u: 'Manrope', 'Segoe UI', sans-serif; --m: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  --pad: 76px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; background: #0B0907; }
+body { font: 500 30px/1.42 var(--u); color: var(--cream); -webkit-font-smoothing: antialiased; }
+img { display: block; }
+
+/* előnézet: minden oldal egymás alatt; render módban egyszerre csak egy látszik */
+.pages { display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px 0; }
+html.render .pages { padding: 0; gap: 0; display: block; }
+
+.pg { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: var(--bg); isolation: isolate; flex: none; }
+.pg[hidden] { display: none; }
+/* háttér: finom rács, fények, szemcse */
+.pg::before { content: ""; position: absolute; inset: 0; z-index: -2;
+  background:
+    radial-gradient(760px 620px at 100% -4%, rgba(255, 107, 61, .30), transparent 62%),
+    radial-gradient(700px 640px at -8% 104%, rgba(143, 132, 255, .20), transparent 60%),
+    radial-gradient(520px 420px at 96% 96%, rgba(127, 216, 190, .09), transparent 70%),
+    linear-gradient(rgba(255, 248, 240, .028) 1px, transparent 1px) 0 0 / 54px 54px,
+    linear-gradient(90deg, rgba(255, 248, 240, .028) 1px, transparent 1px) 0 0 / 54px 54px,
+    var(--bg); }
+.pg::after { content: ""; position: absolute; inset: 0; z-index: 60; pointer-events: none; opacity: .22; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* fejléc és lábléc */
+.top { position: absolute; left: var(--pad); right: var(--pad); top: 58px; display: flex; align-items: center; justify-content: space-between; z-index: 20; }
+.mark { display: flex; align-items: center; gap: 16px; font: 500 20px/1 var(--m); letter-spacing: .14em; text-transform: uppercase; color: var(--t3); }
+.logo { font: 800 38px/1 var(--d); font-variation-settings: "SOFT" 100, "opsz" 72; letter-spacing: -.02em; color: var(--cream); text-transform: none; display: inline-flex; align-items: baseline; }
+.logo .i { position: relative; display: inline-block; }
+.logo .i svg { position: absolute; width: .5em; height: .5em; left: 50%; top: -.3em; transform: translateX(-50%) rotate(-12deg); color: var(--coral); }
+.mark .x { color: var(--coral); }
+.pno { font: 500 20px/1 var(--m); letter-spacing: .1em; color: var(--t3); }
+.pno b { color: var(--cream); font-weight: 700; }
+.foot { position: absolute; left: var(--pad); right: var(--pad); bottom: 52px; display: flex; align-items: center; justify-content: space-between; z-index: 20; }
+.track { display: flex; gap: 10px; }
+.track span { font: 500 18px/1 var(--m); letter-spacing: .06em; padding: 11px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--t3); }
+.track span.on { background: var(--coral); border-color: var(--coral); color: #fff; font-weight: 700; }
+.swipe { font: 700 20px/1 var(--m); letter-spacing: .08em; color: var(--coral2); display: flex; align-items: center; gap: 10px; }
+.swipe svg { width: 28px; height: 28px; }
+.url { font: 500 20px/1 var(--m); color: var(--t3); letter-spacing: .04em; }
+
+/* szöveg */
+.body { position: absolute; left: var(--pad); right: var(--pad); top: 150px; z-index: 10; }
+.kick { font: 700 21px/1 var(--m); letter-spacing: .16em; text-transform: uppercase; color: var(--coral); display: flex; align-items: center; gap: 14px; }
+.kick::before { content: ""; width: 34px; height: 3px; border-radius: 2px; background: var(--coral); }
+.h { margin: 22px 0 0; font: 800 76px/1.0 var(--d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.028em; color: var(--cream); text-wrap: balance; }
+.h em { font-style: italic; color: var(--coral); font-variation-settings: "SOFT" 100, "opsz" 144; }
+.lead { margin: 24px 0 0; font: 500 30px/1.42 var(--u); color: var(--t2); max-width: 900px; text-wrap: pretty; }
+.lead b { color: var(--cream); font-weight: 750; }
+.small { font: 500 24px/1.4 var(--u); color: var(--t2); }
+.mono { font-family: var(--m); }
+
+/* keretek */
+.frame { position: absolute; z-index: 5; }
+.browser { border-radius: 22px; background: #2A241F; padding: 44px 10px 10px; box-shadow: 0 0 0 1px rgba(255, 248, 240, .10) inset, 0 40px 90px rgba(0, 0, 0, .55), 0 10px 30px rgba(0, 0, 0, .35); }
+.browser::before { content: ""; position: absolute; left: 22px; top: 17px; width: 12px; height: 12px; border-radius: 50%; background: #FF6B3D; box-shadow: 20px 0 0 #FFC845, 40px 0 0 #7FD8BE; }
+.browser .addr { position: absolute; left: 50%; top: 11px; transform: translateX(-50%); min-width: 240px; max-width: 62%; padding: 5px 18px; border-radius: 999px; background: rgba(255, 248, 240, .07);
+  font: 500 15px/1.2 var(--m); color: var(--t3); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.browser .scr { border-radius: 13px; overflow: hidden; background: #FBF6EE; }
+.browser .scr img { width: 100%; }
+.phone { border-radius: 46px; background: linear-gradient(145deg, #3a332d, #0f0d0b 60%, #2b2520); padding: 9px; box-shadow: 0 0 0 1.5px #4a433d inset, 0 36px 80px rgba(0, 0, 0, .6), 0 8px 24px rgba(0, 0, 0, .35); }
+.phone .scr { border-radius: 38px; overflow: hidden; background: #FBF6EE; aspect-ratio: 1170 / 2532; }
+.phone .scr img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.card { position: absolute; border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255, 248, 240, .10), 0 30px 70px rgba(0, 0, 0, .5); background: #FBF6EE; }
+.card img { width: 100%; height: 100%; object-fit: cover; }
+.glow { position: absolute; border-radius: 50%; filter: blur(60px); z-index: 1; pointer-events: none; }
+
+/* „prompt” idézet */
+.quote { position: relative; border-radius: 20px; background: var(--panel); border: 1px solid var(--line); padding: 26px 30px 28px 34px; }
+.quote::before { content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 4px; border-radius: 0 3px 3px 0; background: var(--coral); }
+.quote .ql { font: 700 17px/1 var(--m); letter-spacing: .14em; text-transform: uppercase; color: var(--coral2); display: flex; align-items: center; gap: 10px; }
+.quote .ql i { font-style: normal; color: var(--t3); font-weight: 500; letter-spacing: .06em; text-transform: none; }
+.quote p { margin: 14px 0 0; font: italic 500 29px/1.36 var(--d); font-variation-settings: "SOFT" 60, "opsz" 36; color: var(--cream); }
+.quote p s { text-decoration: none; color: var(--t3); }
+
+/* címkék, számok */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { font: 600 21px/1 var(--u); padding: 12px 18px; border-radius: 999px; background: var(--panel2); border: 1px solid var(--line); color: var(--cream); white-space: nowrap; }
+.chip.c { background: rgba(255, 107, 61, .16); border-color: rgba(255, 107, 61, .45); color: #FFD9CB; }
+.chip.m { font-family: var(--m); font-weight: 500; font-size: 19px; }
+.tag { position: absolute; z-index: 12; font: 700 18px/1 var(--m); letter-spacing: .08em; text-transform: uppercase; padding: 11px 16px; border-radius: 999px; background: var(--coral); color: #fff; box-shadow: 0 10px 30px rgba(255, 107, 61, .35); white-space: nowrap; }
+.tag.d { background: #FBF6EE; color: #1E1B18; box-shadow: 0 10px 30px rgba(0, 0, 0, .35); }
+.stats { display: grid; gap: 14px; }
+.stat { border-radius: 20px; background: var(--panel); border: 1px solid var(--line); padding: 22px 24px 20px; }
+.stat b { display: block; font: 800 60px/1 var(--d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.02em; color: var(--coral); }
+.stat span { display: block; margin-top: 10px; font: 500 19px/1.3 var(--m); color: var(--t2); }
+.feat { display: grid; gap: 14px; }
+.feat div { border-radius: 18px; background: var(--panel); border: 1px solid var(--line); padding: 20px 22px; }
+.feat h4 { margin: 0; font: 800 26px/1.15 var(--u); color: var(--cream); display: flex; align-items: center; gap: 12px; }
+.feat h4 i { font-style: normal; width: 34px; height: 34px; flex: none; border-radius: 10px; display: grid; place-items: center; font: 700 17px/1 var(--m); background: rgba(255, 107, 61, .18); color: var(--coral2); }
+.feat p { margin: 8px 0 0; font: 500 22px/1.38 var(--u); color: var(--t2); }
+.feat.f3 div { padding: 16px 18px; } .feat.f3 h4 { font-size: 23px; } .feat.f3 p { font-size: 19.5px; margin-top: 6px; }
+.list { margin: 0; padding: 0; list-style: none; display: grid; gap: 16px; }
+.list li { position: relative; padding-left: 40px; font: 500 27px/1.38 var(--u); color: var(--t2); }
+.list li b { color: var(--cream); font-weight: 750; }
+.list li::before { content: ""; position: absolute; left: 4px; top: 13px; width: 16px; height: 16px; border-radius: 5px; background: var(--coral); transform: rotate(45deg); }
+.note { font: 500 21px/1.45 var(--m); color: var(--t3); }
+.note b { color: var(--t2); font-weight: 700; }
+.linkpill { display: inline-flex; align-items: center; gap: 14px; padding: 18px 26px; border-radius: 999px; background: var(--cream); color: #1E1B18; font: 700 26px/1 var(--m); box-shadow: 0 16px 40px rgba(0, 0, 0, .4); }
+.linkpill svg { width: 26px; height: 26px; color: var(--coral); }
+
+/* ---------- oldalankénti elrendezések ---------- */
+/* 1 – borító */
+.p1 .body { top: 168px; }
+.p1 .h { font-size: 96px; line-height: .97; margin-top: 28px; }
+.p1 .lead { font-size: 32px; margin-top: 30px; max-width: 860px; }
+.fan { position: absolute; left: 0; right: 0; top: 660px; height: 690px; z-index: 5; }
+.p1 .fade-b { height: 250px; background: linear-gradient(to top, var(--bg) 22%, rgba(20, 17, 14, .75) 55%, rgba(20, 17, 14, 0)); }
+
+/* 2 – áttekintés */
+.tl { position: relative; display: grid; gap: 0; margin-top: 34px; }
+.tl .r { display: grid; grid-template-columns: 250px 1fr; gap: 20px; align-items: baseline; padding: 17px 0; border-top: 1px solid var(--line); }
+.tl .r:last-child { border-bottom: 1px solid var(--line); }
+.tl .d { font: 700 20px/1.35 var(--m); color: var(--coral2); padding-top: 4px; }
+.tl .d i { font-style: normal; font-weight: 500; color: var(--t3); margin-left: 10px; }
+.tl .t { font: 500 26px/1.36 var(--u); color: var(--t2); }
+.tl .t b { color: var(--cream); font-weight: 750; }
+
+.qq { margin: 44px 0 0; font: italic 600 36px/1.25 var(--d); font-variation-settings: "SOFT" 80, "opsz" 72; color: var(--t2); max-width: 860px; }
+.qq em { color: var(--coral2); }
+
+/* 12 – terminál */
+.term { border-radius: 22px; background: #0E0C0A; border: 1px solid rgba(255, 248, 240, .12); box-shadow: 0 40px 90px rgba(0, 0, 0, .55); overflow: hidden; }
+.term .tb { height: 46px; display: flex; align-items: center; gap: 9px; padding: 0 20px; background: #1E1A16; border-bottom: 1px solid rgba(255, 248, 240, .08); }
+.term .tb i { width: 12px; height: 12px; border-radius: 50%; background: #FF6B3D; }
+.term .tb i:nth-child(2) { background: #FFC845; } .term .tb i:nth-child(3) { background: #7FD8BE; }
+.term .tb span { margin-left: 14px; font: 500 16px/1 var(--m); color: var(--t3); }
+.term pre { margin: 0; padding: 24px 28px 26px; font: 400 20.5px/1.62 var(--m); color: var(--t2); white-space: pre-wrap; }
+.term .p { color: var(--coral); font-weight: 700; }
+.term .u { color: var(--cream); }
+.term .ok { color: var(--mint); }
+.term .dim { color: var(--t3); }
+.term .hl { color: var(--amber); }
+.thumbs { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+.thumbs img { width: 100%; border-radius: 8px; box-shadow: 0 0 0 1px rgba(255, 248, 240, .12), 0 10px 24px rgba(0, 0, 0, .4); }
+.thumbs .ph { aspect-ratio: 4 / 5; border-radius: 8px; border: 1px dashed var(--line); }
+
+/* 11 – deck mozaik */
+.mosaic { position: absolute; left: 50%; top: 520px; width: 1700px; transform: translateX(-50%) perspective(2200px) rotateX(24deg) rotateZ(-9deg); transform-origin: 50% 30%;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; z-index: 5; }
+.mosaic img { width: 100%; border-radius: 12px; box-shadow: 0 0 0 1px rgba(255, 248, 240, .12), 0 24px 50px rgba(0, 0, 0, .55); }
+.fade-b { position: absolute; left: 0; right: 0; bottom: 0; height: 330px; z-index: 8; background: linear-gradient(to top, var(--bg) 26%, rgba(20, 17, 14, 0)); }
+.p11 .fade-b { height: 470px; background: linear-gradient(to top, var(--bg) 40%, rgba(20, 17, 14, .8) 70%, rgba(20, 17, 14, 0)); }
+.fade-t { position: absolute; left: 0; right: 0; top: 440px; height: 150px; z-index: 8; background: linear-gradient(to bottom, var(--bg) 10%, rgba(20, 17, 14, 0)); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="paw" viewBox="0 0 24 24"><ellipse cx="6" cy="9.5" rx="2.1" ry="2.7" fill="currentColor"/><ellipse cx="10" cy="5.6" rx="2.1" ry="2.8" fill="currentColor"/><ellipse cx="14.6" cy="5.6" rx="2.1" ry="2.8" fill="currentColor"/><ellipse cx="18.4" cy="9.6" rx="2.1" ry="2.7" fill="currentColor"/><path fill="currentColor" d="M12.3 11.2c2.6 0 5.6 3.4 5.6 6.2 0 2-1.5 2.9-3.2 2.9-1 0-1.7-.5-2.4-.5s-1.4.5-2.4.5c-1.7 0-3.2-.9-3.2-2.9 0-2.8 3-6.2 5.6-6.2z"/></symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+  <symbol id="lnk" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></symbol>
+</svg>
+
+<main class="pages">
+
+<!-- ============ 1 · BORÍTÓ ============ -->
+<section class="pg p1" data-sec="">
+  <div class="body">
+    <div class="kick">Use case · 2026. szeptember</div>
+    <h1 class="h">Amikor egy weboldal intézi a <em>saját kommuni&shy;kációját</em></h1>
+    <p class="lead">Kutyafajta-választó AI: <b>web app, B2C marketing és B2B pitch deck</b> – egyetlen projektben, egy emberrel.</p>
+  </div>
+  <div class="fan">
+    <div class="glow" style="left:260px;top:120px;width:560px;height:360px;background:rgba(255,107,61,.35)"></div>
+    <!-- Marketing Studio – bal hátul -->
+    <div class="frame browser" style="left:-40px;top:90px;width:560px;transform:rotate(-8deg)"><div class="addr">Pacsi Marketing Studio</div><div class="scr"><img src="../shots/cms_tartalmak.png" alt=""></div></div>
+    <!-- Deck – jobb hátul -->
+    <div class="frame browser" style="left:560px;top:70px;width:580px;transform:rotate(7deg)"><div class="addr">pacsi-partner</div><div class="scr"><img src="../shots/deck_01.png" alt=""></div></div>
+    <!-- App – elöl -->
+    <div class="frame browser" style="left:170px;top:170px;width:700px;z-index:7"><div class="addr">pacsit.hu</div><div class="scr"><img src="../../assets/screens/d_rank.png" alt=""></div></div>
+    <div class="frame phone" style="left:790px;top:230px;width:196px;z-index:8;transform:rotate(4deg)"><div class="scr"><img src="../../assets/screens/m_filtered.png" alt=""></div></div>
+    <span class="tag" style="left:200px;top:140px">01 · Web app</span>
+    <span class="tag d" style="left:40px;top:40px;transform:rotate(-8deg)">02 · Marketing Studio</span>
+    <span class="tag d" style="left:760px;top:30px;transform:rotate(7deg)">03 · B2B deck</span>
+  </div>
+  <div class="fade-b"></div>
+  <div class="foot"><span class="url">pacsit.hu · Claude Code · Opus 5.5</span><span class="swipe">LAPOZZ <svg><use href="#arr"/></svg></span></div>
+</section>
+
+<!-- ============ 2 · A KIINDULÁS ============ -->
+<section class="pg p2" data-sec="">
+  <div class="body">
+    <div class="kick">A kiindulás</div>
+    <h2 class="h">Egy családi kérdésből <em>három rendszer</em></h2>
+    <p class="lead">„Hogyan válasszunk kutyát?” – egy ötletvázlatból app lett. Ezt kommunikálni is akartam: <b>a gazdiknak és a leendő szponzoroknak.</b></p>
+    <div class="tl">
+      <div class="r"><div class="d">szept. 23.<i>21:25</i></div><div class="t"><b>1 prompt</b> → részletes specifikáció, koncepcióképek</div></div>
+      <div class="r"><div class="d">szept. 24.<i>06:55</i></div><div class="t"><b>Élesben a web app</b> (v1.0), telepíthető PWA-ként</div></div>
+      <div class="r"><div class="d">szept. 24.<i>16:15</i></div><div class="t"><b>1 prompt</b> → Marketing Studio és B2B pitch deck</div></div>
+      <div class="r"><div class="d">szept. 25.</div><div class="t">Saját domain, statisztika, <b>hírlevél, 887 kontakt</b></div></div>
+      <div class="r"><div class="d">szept. 28.</div><div class="t">Tesztelői visszajelzés → <b>~40 perc múlva élesben</b></div></div>
+    </div>
+    <p class="qq">Mennyire gyorsítja az AI a munkát – és mennyivel emeli az <em>egyéni teljesítőképességet?</em></p>
+  </div>
+  <div class="stats" style="position:absolute;left:var(--pad);right:var(--pad);bottom:128px;grid-template-columns:repeat(4,1fr);z-index:10">
+    <div class="stat"><b>~19</b><span>óra aktív munka</span></div>
+    <div class="stat"><b>71</b><span>prompt</span></div>
+    <div class="stat"><b>5</b><span>Claude Code-munkamenet</span></div>
+    <div class="stat"><b>1</b><span>ember</span></div>
+  </div>
+  <div class="foot"><div class="track"><span>01 App</span><span>02 Marketing Studio</span><span>03 B2B deck</span></div><span class="swipe"><svg><use href="#arr"/></svg></span></div>
+</section>
+
+<!-- ============ 3 · AZ APP I ============ -->
+<section class="pg p3" data-sec="1">
+  <div class="body">
+    <div class="kick">01 · Az app</div>
+    <h2 class="h">124 kutyafajta egy <em>élő felhőben</em></h2>
+    <div class="quote" style="margin-top:34px">
+      <div class="ql">› Az alapötlet <i>– a kiinduló promptból</i></div>
+      <p>„Ha a user kiválaszt egy filtert, az ahhoz tartozó kutyafajták körei kicsit nagyobbak lesznek, előrébb jönnek – mintha előre ugranának. <s>[…]</s> Ami nem felel meg, felfelé kirepül.”</p>
+    </div>
+  </div>
+  <div class="glow" style="left:180px;top:720px;width:700px;height:420px;background:rgba(255,107,61,.28)"></div>
+  <div class="frame browser" style="left:40px;top:640px;width:790px"><div class="addr">pacsit.hu</div><div class="scr"><img src="../../assets/screens/d_rank.png" alt=""></div></div>
+  <div class="frame phone" style="left:780px;top:600px;width:240px;z-index:7"><div class="scr"><img src="../../assets/screens/m_filtered.png" alt=""></div></div>
+  <p class="small" style="position:absolute;left:var(--pad);right:var(--pad);top:1196px;margin:0;z-index:10"><b style="color:var(--cream)">Az eredmény:</b> minden szűrő fizikailag mozgatja a buborékokat.</p>
+  <div class="foot"><div class="track"><span class="on">01 App</span><span>02 Marketing Studio</span><span>03 B2B deck</span></div><span class="url">pacsit.hu</span></div>
+</section>
+
+<!-- ============ 4 · AZ APP II ============ -->
+<section class="pg p4" data-sec="1">
+  <div class="body">
+    <div class="kick">01 · Az app</div>
+    <h2 class="h">Nem demó – <em>élő termék</em></h2>
+    <p class="lead">Keretrendszer és adatbázis nélkül, tiszta JavaScripttel. Laptopon weboldal, telefonon telepíthető app – <b>offline is</b>.</p>
+  </div>
+  <div class="glow" style="left:100px;top:500px;width:880px;height:360px;background:rgba(143,132,255,.22)"></div>
+  <div class="frame phone" style="left:64px;top:446px;width:226px;transform:rotate(-4deg)"><div class="scr"><img src="../../assets/screens/m_quiz_result.png" alt=""></div></div>
+  <div class="frame phone" style="left:302px;top:410px;width:226px;z-index:6"><div class="scr"><img src="../../assets/screens/m_card_vizsla.png" alt=""></div></div>
+  <div class="frame phone" style="left:540px;top:430px;width:226px;z-index:6"><div class="scr"><img src="../../assets/screens/m_compare.png" alt=""></div></div>
+  <div class="frame phone" style="left:780px;top:460px;width:226px;transform:rotate(4deg)"><div class="scr"><img src="../../assets/screens/m_map.png" alt=""></div></div>
+  <div class="feat" style="position:absolute;left:var(--pad);right:var(--pad);top:944px;grid-template-columns:1fr 1fr;z-index:10">
+    <div><h4><i>10</i>Párkereső kvíz</h4><p>10 kérdés, 6 gazditípus, élőben reagáló felhő</p></div>
+    <div><h4><i>9</i>Fajtakártya</h4><p>9 jellemző, egészség, kinek ajánlott – és kinek nem</p></div>
+    <div><h4><i>4</i>Nézet</h4><p>Felhő, csoportok, térkép, lista + összehasonlítás</p></div>
+    <div><h4><i>0</i>Süti, regisztráció</h4><p>Névtelen statisztika saját szerveren (Umami)</p></div>
+  </div>
+  <div class="foot"><div class="track"><span class="on">01 App</span><span>02 Marketing Studio</span><span>03 B2B deck</span></div><span class="url">v1.8.0 · pacsit.hu</span></div>
+</section>
+
+<!-- ============ 5 · STUDIO I – ÁTTEKINTÉS ============ -->
+<section class="pg p5" data-sec="2">
+  <div class="body">
+    <div class="kick">02 · Marketing Studio</div>
+    <h2 class="h">Integrált kampány&shy;menedzsment – <em>egy promptból</em></h2>
+    <div class="quote" style="margin-top:30px">
+      <div class="ql">› Prompt <i>– szept. 24., 14:26</i></div>
+      <p>„Most nem programoznod kell, hanem létrehozni a Pacsi marketinganyagait <s>[…]</s> és mellé egy belső CMS-t, ahol meg tudom nézni, le tudom tölteni, a szövegeket szerkeszteni.”</p>
+    </div>
+  </div>
+  <div class="glow" style="left:160px;top:680px;width:760px;height:380px;background:rgba(255,107,61,.24)"></div>
+  <div class="frame browser" style="left:56px;top:618px;width:968px"><div class="addr">Pacsi Marketing Studio · v1.4.1</div><div class="scr" style="height:430px"><img src="../shots/cms_tartalmak.png" alt=""></div></div>
+  <div class="chips" style="position:absolute;left:var(--pad);right:var(--pad);top:1128px;z-index:10;gap:8px">
+    <span class="chip c">Post-generálás</span><span class="chip c">Naptár</span><span class="chip c">Platformindítás</span><span class="chip c">eDM</span><span class="chip c">Kontaktadatbázis</span><span class="chip c">Status dashboard</span>
+  </div>
+  <div class="foot"><div class="track"><span>01 App</span><span class="on">02 Marketing Studio</span><span>03 B2B deck</span></div><span class="url">10 modul · ~2 óra</span></div>
+</section>
+
+<!-- ============ 6 · STUDIO II – TARTALOMGYÁRTÁS ============ -->
+<section class="pg p6" data-sec="2">
+  <div class="body">
+    <div class="kick">02 · Post-generálás</div>
+    <h2 class="h">Szöveg, fotó, videó – <em>maga gyártja</em></h2>
+  </div>
+  <!-- videók -->
+  <div class="frame phone" style="left:60px;top:436px;width:218px;transform:rotate(-3deg)"><div class="scr" style="aspect-ratio:9/16"><img src="../../out/videok/v1_melyik_kutya_illik_hozzad_borito.jpg" alt=""></div></div>
+  <div class="frame phone" style="left:290px;top:420px;width:218px;z-index:6"><div class="scr" style="aspect-ratio:9/16"><img src="../../out/videok/v3_9_magyar_kutyafajta_borito.jpg" alt=""></div></div>
+  <!-- posztképek -->
+  <div class="card" style="left:540px;top:414px;width:224px;height:280px;transform:rotate(2deg)"><img src="../../out/kepek/k_before_after.png" alt=""></div>
+  <div class="card" style="left:780px;top:406px;width:224px;height:280px;transform:rotate(-2deg)"><img src="../../out/kepek/k_quiz.png" alt=""></div>
+  <div class="card" style="left:540px;top:708px;width:224px;height:280px;transform:rotate(-2deg)"><img src="../../out/kepek/c_lakas_1.png" alt=""></div>
+  <div class="card" style="left:780px;top:698px;width:224px;height:280px;transform:rotate(2deg)"><img src="../../out/kepek/k_het_vizsla.png" alt=""></div>
+  <div class="card" style="left:60px;top:846px;width:448px;height:140px"><img src="../../assets/kv/kv_lineup.png" alt="" style="object-position:50% 60%"></div>
+  <span class="tag" style="left:66px;top:398px">4 videó · MP4</span>
+  <span class="tag d" style="left:560px;top:384px">20+ kép, karusszel, story</span>
+  <div class="feat f3" style="position:absolute;left:var(--pad);right:var(--pad);top:1024px;grid-template-columns:1fr 1fr 1fr;z-index:10">
+    <div><h4>Videó</h4><p>A valódi app fut telefonkeretben, szimulált ujj kattint, képkockánként renderelve.</p></div>
+    <div><h4>Kép</h4><p>Az app arculatából és AI-kulcsvizuálokból: posztok, hirdetések, borítók.</p></div>
+    <div><h4>Szöveg</h4><p>Platformonként (TikTok, Insta, Facebook, LinkedIn, YouTube), hashtaggel.</p></div>
+  </div>
+  <div class="foot"><div class="track"><span>01 App</span><span class="on">02 Marketing Studio</span><span>03 B2B deck</span></div><span class="url">31 kész anyag · 5 platform</span></div>
+</section>
+
+<!-- ============ 7 · STUDIO III – NAPTÁR ============ -->
+<section class="pg p7" data-sec="2">
+  <div class="body">
+    <div class="kick">02 · Naptár és tartalmak</div>
+    <h2 class="h">Naptárba rendezve, <em>platformra szabva</em></h2>
+  </div>
+  <div class="glow" style="left:120px;top:420px;width:800px;height:420px;background:rgba(143,132,255,.22)"></div>
+  <div class="frame browser" style="left:40px;top:380px;width:760px;transform:rotate(-2deg)"><div class="addr">Naptár</div><div class="scr" style="height:430px"><img src="../shots/cms_naptar.png" alt="" style="margin-top:-6%"></div></div>
+  <div class="frame browser" style="left:420px;top:470px;width:620px;z-index:7;transform:rotate(1.5deg)"><div class="addr">Melyik kutya illik hozzád? · videó</div><div class="scr" style="height:400px"><img src="../shots/cms_item_v1.png" alt="" style="width:147%;margin-left:-46.5%"></div></div>
+  <ul class="list" style="position:absolute;left:var(--pad);right:var(--pad);top:966px;z-index:10">
+    <li><b>62 idősáv szeptembertől januárig:</b> kétnaponta videó, heti 3–4 kép- vagy karusszelposzt, heti LinkedIn</li>
+    <li><b>Minden anyagnál:</b> letöltés, platformonként szerkeszthető szöveg, időzítés, „kint van” pipa</li>
+    <li><b>Mérhető:</b> rövid követő linkek (pacsit.hu/f/v1) és naptárexport (.ics)</li>
+  </ul>
+  <div class="foot"><div class="track"><span>01 App</span><span class="on">02 Marketing Studio</span><span>03 B2B deck</span></div><span class="url">5 platform</span></div>
+</section>
+
+<!-- ============ 8 · STUDIO IV – eDM + KONTAKTOK ============ -->
+<section class="pg p8" data-sec="2">
+  <div class="body">
+    <div class="kick">02 · eDM és kontaktok</div>
+    <h2 class="h">Hírlevél és <em>partner&shy;keresés</em></h2>
+  </div>
+  <div class="glow" style="left:60px;top:440px;width:600px;height:500px;background:rgba(255,107,61,.22)"></div>
+  <div class="card" style="left:66px;top:352px;width:280px;height:560px;transform:rotate(-3deg)"><img src="../shots/email_L1.png" alt="" style="object-position:top"></div>
+  <div class="card" style="left:300px;top:394px;width:280px;height:560px;z-index:6;transform:rotate(2deg)"><img src="../shots/email_P1.png" alt="" style="object-position:top"></div>
+  <div class="frame browser" style="left:610px;top:380px;width:430px;transform:rotate(1deg)"><div class="addr">Kapcsolatok</div><div class="scr" style="height:500px"><img src="../shots/cms_kapcsolatok.png" alt="" style="width:190%;margin-left:-8%;margin-top:-10%"></div></div>
+  <span class="tag" style="left:80px;top:326px">21 levél év végéig</span>
+  <span class="tag d" style="left:640px;top:350px">887 szervezet · 961 cím</span>
+  <div class="feat" style="position:absolute;left:var(--pad);right:var(--pad);top:976px;grid-template-columns:1fr 1fr;z-index:10">
+    <div><h4>eDM – Mailchimp API-n</h4><p>Induló, heti, üdvözlő és partnerlevelek, feliratkozó oldallal.</p></div>
+    <div><h4>Kontaktadatbázis</h4><p>Személyre szabott megkeresés napi adagban, visszapattanás-figyeléssel.</p></div>
+  </div>
+  <p class="note" style="position:absolute;left:var(--pad);right:var(--pad);top:1146px;margin:0;z-index:10"><b>Két külön lista:</b> a gyűjtött címekre csak egyedi levél megy, a hírlevélbe csak az kerül, aki feliratkozott.</p>
+  <div class="foot"><div class="track"><span>01 App</span><span class="on">02 Marketing Studio</span><span>03 B2B deck</span></div><span class="url">GDPR-barát</span></div>
+</section>
+
+<!-- ============ 9 · STUDIO V – INDÍTÁS + DASHBOARD ============ -->
+<section class="pg p9" data-sec="2">
+  <div class="body">
+    <div class="kick">02 · Indítás és dashboard</div>
+    <h2 class="h">Útmutató és <em>státusz&shy;dashboard</em></h2>
+  </div>
+  <div class="glow" style="left:180px;top:460px;width:760px;height:420px;background:rgba(127,216,190,.16)"></div>
+  <div class="frame browser" style="left:40px;top:376px;width:620px;transform:rotate(-2deg)"><div class="addr">Indítás · 56 lépés</div><div class="scr" style="height:430px"><img src="../shots/cms_inditas.png" alt="" style="width:140%;margin-left:-5%;margin-top:-8%"></div></div>
+  <div class="frame browser" style="left:420px;top:450px;width:620px;z-index:7;transform:rotate(1.5deg)"><div class="addr">Áttekintés</div><div class="scr" style="height:430px"><img src="../shots/cms_attekintes.png" alt="" style="width:140%;margin-left:-5%;margin-top:-8%"></div></div>
+  <ul class="list" style="position:absolute;left:var(--pad);right:var(--pad);top:966px;z-index:10">
+    <li><b>Platformindítás:</b> 56 kipipálható lépés 5 közösségi profilhoz – bio, borító, linkek másolható formában</li>
+    <li><b>Status dashboard:</b> mi esedékes ma és a héten; magától jelez lekésett posztra, kitöltendő levélre, magas visszapattanásra</li>
+    <li><b>Eredmények és arculat:</b> elérés, kattintás, szövegbank, UTM-linképítő</li>
+  </ul>
+  <div class="foot"><div class="track"><span>01 App</span><span class="on">02 Marketing Studio</span><span>03 B2B deck</span></div><span class="url">Ctrl+K kereső mindenre</span></div>
+</section>
+
+<!-- ============ 10 · DECK I – EGY TELJES DIA ============ -->
+<section class="pg p10" data-sec="3">
+  <div class="body">
+    <div class="kick">03 · B2B pitch deck</div>
+    <h2 class="h">A pitch deck – <em>magától</em></h2>
+    <p class="lead">Minden koncepció, arculati és design elem megvolt a fejlesztésből. A partneri ajánlatot <b>kutyás márkák marketingeseinek</b> maga generálta.</p>
+  </div>
+  <div class="glow" style="left:140px;top:560px;width:800px;height:420px;background:rgba(255,107,61,.30)"></div>
+  <div class="frame browser" style="left:40px;top:486px;width:1000px"><div class="addr">sabolo100.github.io/pacsi-partner</div><div class="scr"><img src="../shots/deck_01.png" alt=""></div></div>
+  <div class="chips" style="position:absolute;left:var(--pad);right:var(--pad);top:1122px;z-index:10">
+    <span class="chip m">17 dia</span><span class="chip m">forrásolt piaci számok</span><span class="chip m">3 partnercsomag</span><span class="chip m">web · telefon · PDF</span>
+  </div>
+  <div class="foot"><div class="track"><span>01 App</span><span>02 Marketing Studio</span><span class="on">03 B2B deck</span></div><span class="url">személyre szabható link</span></div>
+</section>
+
+<!-- ============ 11 · DECK II – MOZAIK ============ -->
+<section class="pg p11" data-sec="3">
+  <div class="body">
+    <div class="kick">03 · B2B pitch deck</div>
+    <h2 class="h">A problémától az <em>ütemtervig</em></h2>
+    <p class="lead">Piac, megoldás, perszónák, integrációs látványtervek, partnercsomagok, mérés, márkabiztonság, ütemterv.</p>
+  </div>
+  <div class="mosaic" id="mosaic"></div>
+  <div class="fade-t"></div>
+  <div class="fade-b"></div>
+  <div style="position:absolute;left:var(--pad);right:var(--pad);bottom:128px;z-index:12;display:flex;flex-direction:column;align-items:flex-start;gap:18px">
+    <span class="note" style="color:var(--t2)">A teljes deck megnyitható – link a posztban:</span>
+    <span class="linkpill"><svg><use href="#lnk"/></svg>sabolo100.github.io/pacsi-partner</span>
+  </div>
+  <div class="foot"><div class="track"><span>01 App</span><span>02 Marketing Studio</span><span class="on">03 B2B deck</span></div><span class="url">17 dia</span></div>
+</section>
+
+<!-- ============ 12 · +1 – A KARUSSZEL IS ============ -->
+<section class="pg p12" data-sec="">
+  <div class="body">
+    <div class="kick">+1</div>
+    <h2 class="h">Ezt a karusszelt is <em>maga csinálta</em></h2>
+  </div>
+  <div class="term" style="position:absolute;left:var(--pad);right:var(--pad);top:372px;z-index:10">
+    <div class="tb"><i></i><i></i><i></i><span>claude code · opus 5.5 · max effort</span></div>
+<pre><span class="p">›</span> <span class="u">[a LinkedIn-poszt szövege] Ehhez készítsd el a carousel­ként csatolható PDF-et… legyen látványos, szakmai</span>
+
+<span class="ok">●</span> Átnézi a repót: app, Marketing Studio, deck, kész anyagok
+<span class="ok">●</span> A munkanaplókból kiszámolja a valódi számokat
+<span class="ok">●</span> Lefotózza a CMS-t és a deck diáit <span class="dim">(headless Edge)</span>
+<span class="hl">●</span> Közben hibát talál az élő deckben – és kijavítja
+<span class="ok">●</span> 13 HTML-oldal → PNG → PDF</pre>
+  </div>
+  <div id="thumbs" class="thumbs" style="position:absolute;left:var(--pad);right:var(--pad);top:786px;z-index:10"></div>
+  <p class="note" style="position:absolute;left:var(--pad);right:var(--pad);top:1130px;margin:0;z-index:10">↑ az oldalak, ahogy a render lefotózta őket<br><b>karusszel <span data-ver>v1.0.0</span> · build <span data-build>dev</span></b></p>
+  <div class="foot"><div class="track"><span>01 App</span><span>02 Marketing Studio</span><span>03 B2B deck</span></div><span class="url">1080 × 1350 · 13 oldal</span></div>
+</section>
+
+<!-- ============ 13 · ZÁRÁS ============ -->
+<section class="pg p13" data-sec="">
+  <div class="body">
+    <div class="kick">A lényeg</div>
+    <h2 class="h">Egy ember, <em>egy teljes csapat</em> munkája</h2>
+    <p class="lead">App, marketingrendszer és pitch deck – kb. 19 óra aktív munkával, 71 promptból.</p>
+    <div class="feat" style="margin-top:36px">
+      <div><h4><i>1</i>A kód már nem szűk keresztmetszet</h4><p>Egy jó ötletből napok alatt élő termék lesz. A kérdés inkább az, mit érdemes megépíteni.</p></div>
+      <div><h4><i>2</i>A projekt hozza a saját kommunikációját</h4><p>Ha az arculat, a képernyők és a szövegek a repóban vannak, a marketing, a CRM és a pitch deck ugyanabból épül.</p></div>
+      <div><h4><i>3</i>Fejlesztő, designer, marketinges, sales – egyben</h4><p>Az AI megsokszorozza az egyéni teljesítőképességet. A döntés és az ízlés marad emberi.</p></div>
+    </div>
+  </div>
+  <div style="position:absolute;left:var(--pad);right:var(--pad);bottom:128px;z-index:10;border-radius:24px;padding:30px 32px;background:linear-gradient(120deg,rgba(255,107,61,.22),rgba(255,107,61,.08));border:1px solid rgba(255,107,61,.45)">
+    <div style="font:800 36px/1.15 var(--d);font-variation-settings:'SOFT' 100,'opsz' 72;color:var(--cream)">Szponzort keresünk a Pacsinak.</div>
+    <div class="small" style="margin-top:10px">Kutyás márka vagy, és fantáziát látsz benne? Írj üzenetet.</div>
+    <div class="chips" style="margin-top:20px"><span class="chip m">pacsit.hu</span><span class="chip m">sabolo100.github.io/pacsi-partner</span></div>
+  </div>
+  <div class="foot"><span class="url">Pacsi by DarwinAI</span><span class="url">Claude Code · Opus 5.5</span></div>
+</section>
+
+</main>
+
+<script>
+(() => {
+  const q = new URLSearchParams(location.search);
+  if (q.has('render')) document.documentElement.classList.add('render');
+  if (q.get('ver')) document.querySelectorAll('[data-ver]').forEach(e => e.textContent = 'v' + q.get('ver'));
+  if (q.get('build')) document.querySelectorAll('[data-build]').forEach(e => e.textContent = q.get('build'));
+  const pages = [...document.querySelectorAll('.pg')], N = pages.length;
+  // fejléc minden oldalra (logó + oldalszám)
+  pages.forEach((p, i) => {
+    const t = document.createElement('div');
+    t.className = 'top';
+    t.innerHTML = `<span class="mark"><span class="logo">Pacs<span class="i">ı<svg><use href="#paw"/></svg></span></span><span class="x">×</span>Vibe Coding</span><span class="pno"><b>${String(i + 1).padStart(2, '0')}</b> / ${N}</span>`;
+    p.prepend(t);
+  });
+  // deck-mozaik: mind a 17 dia
+  const m = document.getElementById('mosaic');
+  for (let i = 1; i <= 17; i++) m.insertAdjacentHTML('beforeend', `<img src="../shots/deck_${String(i).padStart(2, '0')}.png" alt="">`);
+  // +1 oldal: az előző render oldalképei (ha vannak)
+  const th = document.getElementById('thumbs');
+  for (let i = 1; i <= N; i++) {
+    const n = String(i).padStart(2, '0');
+    th.insertAdjacentHTML('beforeend', `<img src="../pages/p${n}.jpg?${Date.now()}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph'}))">`);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+Üdv a falkában · 2/3
+
+PÁRKERESŐ KVÍZ
+MILYEN GAZDI VAGY? EGY PERC, ÉS KIDERÜL.
+10 gyors kérdés az életedről – a végén megkapod a gazditípusodat és a hozzád illő 5 fajtát.
+→ Indulhat a kvíz: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc2&utm_content=hero#kviz
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Pár napja iratkoztál fel – itt az első feladat. 😉 A Párkereső kvíz 10 gyors kérdéssel megnézi, milyen az életed, és ehhez keres fajtát.
+
+A 6 GAZDITÍPUS
+Te melyik leszel?
+  - 🛋️ Kanapé-kapitány – nyugis esték, rövid séták, sok bújás.
+  - 🏃 Aktív kalandor – futás, túra, bicikli: bírja a tempót.
+  - 👨‍👩‍👧 Családi karmester – gyerekzsivaj, türelmes családtag.
+  - 🏙️ Városi flâneur – kávézóterasz, parki séta, lift.
+  - 🛡️ Tanyasi őrangyal – van udvar, kell egy hűséges őrző.
+  - 🎓 Kutyasuttogó – tapasztalt vagy, kihívásra vágysz.
+→ Kiderítem: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc2&utm_content=gazditipusok#kviz
+
+Kíváncsi vagy, a barátaid milyen gazdik?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

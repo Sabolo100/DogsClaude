@@ -1,0 +1,51 @@
+Pacsi-levél · 6. szám · 2026. november 19.
+
+PACSI-LEVÉL · 6. SZÁM
+A LEGJOBB BARÁTOD LEHET, HOGY MÁR VÁR RÁD.
+Rengeteg kutya vár új otthonra menhelyeken és állatvédő egyesületeknél. Ha kutyát szeretnél, érdemes velük kezdeni – a Pacsi ebben is segít.
+→ Milyen típus illik hozzám?: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w06&utm_content=hero#kviz
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+A Pacsi fajtákról szól, de a kérdés, amit feltesz, mindenkire igaz: milyen kutya illik az életedhez? Ha tudod, milyen típust keresel (energia, méret, ugatás, gyerekek), a menhelyen is könnyebb jól választani.
+Egy felnőtt menhelyi kutyánál ráadásul sokszor már azt is látod, milyen a természete – nem kell a kölyökből kitalálni.
+
+ÖRÖKBEFOGADÁS
+Így zajlik, lépésről lépésre
+  - Nézd át a menhelyek oldalait. A legtöbb helyen fotó és rövid leírás van minden kutyáról: kor, méret, természet, kijön-e macskával, gyerekkel.
+  - Kérdezz sokat. Az önkéntesek jól ismerik a kutyákat, és őszintén elmondják, kinek valók.
+  - Ismerkedj többször. Sétáljatok együtt, vidd el a családot is. Van, ahol ideiglenes befogadásra is van lehetőség.
+  - Készülj fel otthon. Fekhely, tál, póráz, egy csendes sarok – és türelem: az első hetekben minden új neki.
+  - Számíts szerződésre. A legtöbb szervezet örökbefogadási szerződést köt, és sokszor díjat vagy adományt kér – ez a következő kutyák ellátását segíti.
+
+A HÉT FAJTÁJA
+Spanyol galgó – Európa talán legtöbbet mentett agara – hálás, szelíd, csendes lakótárs.
+Sok galgó mentett kutyaként érkezik: nyugodtak, bújósak, és egy jó sprint után órákig alszanak. Csendes lakótárs – kisállatos háztartásban viszont egyedi mérlegelés kell.
+Kinek ajánlott? Nyugodt, csendes lakótársat keresőknek · Akik szívesen fogadnának örökbe mentett kutyát
+→ A kártyája: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w06&utm_content=het-fajtaja#b=spanyol-galgo
+
+MENHELYEKNEK, EGYESÜLETEKNEK
+Szívesen bemutatjuk a munkátokat vagy egy-egy gazdira váró kutyátokat a Pacsi-levélben és a közösségi oldalainkon. Írjatok egy válaszlevelet!
+
+A MÚLT HETI FEJTÖRŐ MEGFEJTÉSE
+A whippetet hívták a 19. századi észak-angliai bányászok „szegény ember versenylovának”: szabadidejükben versenyeken futtatták.
+
+TIPPELJ!
+Melyik fajta híres mentőkutyája mentett meg a hagyomány szerint több mint 40 embert?
+  A) Bernáthegyi: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w06&utm_content=tippelj#b=bernathegyi
+  B) Új-fundlandi: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w06&utm_content=tippelj#b=uj-fundlandi
+  C) Németjuhász: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w06&utm_content=tippelj#b=nemet-juhaszkutya
+Kattints a tippedre: a fajta kártyáján, az Érdekesség rovatban ott a válasz. A megfejtés a következő levélben is jön.
+
+Ismersz valakit, aki örökbe fogadna?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Van örökbefogadott kutyád? Meséld el a történetét válaszban – ha engeded, megosztjuk.
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

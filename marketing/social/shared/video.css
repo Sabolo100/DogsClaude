@@ -1,0 +1,32 @@
+/* Pacsi Marketing – videókompozíciók közös stílusai (1080×1920, 9:16) */
+#c { width: 1080px; height: 1920px; }
+.vblobs { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.vblobs i { position: absolute; left: 0; top: 0; border-radius: 50%; opacity: .95; }
+.layer { position: absolute; inset: 0; }
+.cap { position: absolute; left: 540px; top: 300px; transform: translate(-50%, -50%); visibility: hidden; z-index: 30; white-space: nowrap; }
+.cap .sticker { font-size: 54px; padding: 18px 32px 20px; border-radius: 26px; }
+.big { position: absolute; left: 70px; right: 70px; text-align: center; z-index: 20; }
+.big .hd { font-family: var(--font-d); font-weight: 800; font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.035em; line-height: .95; color: var(--ink); }
+.big .hd .it { font-style: italic; color: var(--primary-fill); }
+.kick { font: 800 30px/1 var(--font-u); letter-spacing: .16em; text-transform: uppercase; color: var(--primary-fill); }
+.ff { position: absolute; right: 70px; top: 190px; z-index: 31; display: flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px; background: var(--ink); color: #fff; font: 800 34px/1 var(--font-u); }
+.prog-dots { position: absolute; left: 50%; top: 210px; transform: translateX(-50%); display: flex; gap: 10px; z-index: 31; }
+.prog-dots i { width: 16px; height: 16px; border-radius: 50%; background: rgba(30, 27, 24, .15); }
+.prog-dots i.on { background: var(--primary-fill); }
+
+/* záróképernyő */
+.endcard { position: absolute; inset: 0; z-index: 60; visibility: hidden; }
+.endcard .ec-bg { position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 40%, #FFFDF9 0%, #FDF6EA 55%, #F8E6D5 100%); clip-path: circle(0 at 50% 60%); }
+.endcard .ec-ring { position: absolute; inset: 0; }
+.endcard .ec-ring .bub { box-shadow: 0 0 0 6px #fff, 0 10px 26px rgba(90, 50, 20, .18); }
+.endcard .ec-pup { position: absolute; left: 50%; top: 150px; width: 740px; height: auto; transform-origin: 50% 92%;
+  -webkit-mask-image: radial-gradient(closest-side, #000 78%, transparent 100%); mask-image: radial-gradient(closest-side, #000 78%, transparent 100%); }
+.endcard > div:not(.ec-bg):not(.ec-ring) { position: absolute; left: 50%; text-align: center; white-space: nowrap; }
+.endcard .ec-logo { top: 1150px; }
+.endcard .ec-by { top: 1318px; font: 700 32px/1 var(--font-u); color: var(--ink-2); }
+.endcard .ec-by b { color: var(--primary-fill); }
+.endcard .ec-line { top: 1392px; font: 800 58px/1.08 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.02em; color: var(--ink); white-space: normal !important; width: 900px; }
+.endcard .ec-cta { top: 1540px; }
+.endcard .ec-url { top: 1668px; font: 700 29px/1 var(--font-u); color: var(--ink-2); }
+.endcard .ec-ask { top: 120px; }
+.endcard .ec-ask .sticker { font-size: 50px; }

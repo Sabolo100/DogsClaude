@@ -1,0 +1,213 @@
+{
+ "_artifact": "https://claude.ai/artifact/2LWG8yFub1TArPhBuWERmH",
+ "out/videok/v1_melyik_kutya_illik_hozzad.mp4": {
+  "url": "/_blob/f4c2ad628e71726ec72481a8744dd697",
+  "id": "f4c2ad628e71726ec72481a8744dd697",
+  "sha1": "7966e928c20b113fd176c892e27a0db6bd984a20"
+ },
+ "out/videok/v1_melyik_kutya_illik_hozzad_borito.jpg": {
+  "url": "/_blob/7d8e2d6a4e209b733f7eb432de8e742e",
+  "id": "7d8e2d6a4e209b733f7eb432de8e742e",
+  "sha1": "e87abded38946ebaa9bd6c646b6d4496f187cb56"
+ },
+ "out/videok/v2_milyen_gazdi_vagy.mp4": {
+  "url": "/_blob/9e09bd3a38f079cc5fa3158895ba1885",
+  "id": "9e09bd3a38f079cc5fa3158895ba1885",
+  "sha1": "4247ff432f3e6f4f7ee911e4e4a7c0fe2b38834a"
+ },
+ "out/videok/v2_milyen_gazdi_vagy_borito.jpg": {
+  "url": "/_blob/57853b599d1cf473c699f49f5edbe89f",
+  "id": "57853b599d1cf473c699f49f5edbe89f",
+  "sha1": "4e11fe37d1da17c93887d93ba5f09fb9d54db677"
+ },
+ "out/videok/v3_9_magyar_kutyafajta.mp4": {
+  "url": "/_blob/7185911bf98bae6f2d66cb8c311c5abc",
+  "id": "7185911bf98bae6f2d66cb8c311c5abc",
+  "sha1": "240becd280ccfff6e4080abe4e0ce2a477716a90"
+ },
+ "out/videok/v3_9_magyar_kutyafajta_borito.jpg": {
+  "url": "/_blob/27265eb6300c851357d45d1e4ed9935f",
+  "id": "27265eb6300c851357d45d1e4ed9935f",
+  "sha1": "a2865cce31e732f1c4cdbcf22a1410ecb489e477"
+ },
+ "out/videok/v4_zsebraketa_vagy_kanape_orias.mp4": {
+  "url": "/_blob/85c36d315fdbbbadbb4dbfe7f0206b67",
+  "id": "85c36d315fdbbbadbb4dbfe7f0206b67",
+  "sha1": "3b9151ca581156e7595ac663335a0d801c133a40"
+ },
+ "out/videok/v4_zsebraketa_vagy_kanape_orias_borito.jpg": {
+  "url": "/_blob/13684e7fbf05061388ce692f86c6a6b4",
+  "id": "13684e7fbf05061388ce692f86c6a6b4",
+  "sha1": "8473712698d2802d00f711d9677e27c166ee183a"
+ },
+ "out/kepek/k_launch.png": {
+  "url": "/_blob/2f0313d91dcd36bcb7d9fabb6a7f8900",
+  "id": "2f0313d91dcd36bcb7d9fabb6a7f8900",
+  "sha1": "b985fa7110bc6a5f92dd64cc03601b3a868f45fc"
+ },
+ "out/kepek/k_before_after.png": {
+  "url": "/_blob/0faae54bd46b3177d36e4a5ab1c82b50",
+  "id": "0faae54bd46b3177d36e4a5ab1c82b50",
+  "sha1": "8369a4d687e7f15c71e689e3e162c8ecd3c15638"
+ },
+ "out/kepek/k_quiz.png": {
+  "url": "/_blob/2e8f24f4a837eab2fad7c676d5c8858d",
+  "id": "2e8f24f4a837eab2fad7c676d5c8858d",
+  "sha1": "2cf94a1cab17a29f4108ce8e90bac451cea06576"
+ },
+ "out/kepek/k_compare.png": {
+  "url": "/_blob/c983cdf97f9a98119a95815a726b56f1",
+  "id": "c983cdf97f9a98119a95815a726b56f1",
+  "sha1": "05140d72076752c410261c0bb7728a18ed49f758"
+ },
+ "out/kepek/k_card.png": {
+  "url": "/_blob/fc633c873f0ec020013a25f363d5d2e0",
+  "id": "fc633c873f0ec020013a25f363d5d2e0",
+  "sha1": "8ab9ce39cd7cc22f071a5f68478b2ae9192f28d6"
+ },
+ "out/kepek/k_hu9.png": {
+  "url": "/_blob/b4838fb2bebf7b9d8edd519e52b7a3cf",
+  "id": "b4838fb2bebf7b9d8edd519e52b7a3cf",
+  "sha1": "88280867c385a3fc7032dc6e6d62941589fbe99d"
+ },
+ "out/kepek/k_map4.png": {
+  "url": "/_blob/e7d1f67229561781d72c5fe897f18b12",
+  "id": "e7d1f67229561781d72c5fe897f18b12",
+  "sha1": "6dc910cb521c5c5587e5d96cad0b2f456dedf44b"
+ },
+ "out/kepek/c_lakas_1.png": {
+  "url": "/_blob/7b4447b0ef6ad3331c4460689b6256cc",
+  "id": "7b4447b0ef6ad3331c4460689b6256cc",
+  "sha1": "9e907f2f271e6f8d8ff575a632fb17c40932cd57"
+ },
+ "out/kepek/c_lakas_2.png": {
+  "url": "/_blob/cf2f37138d6429d281397e4d0d3d0399",
+  "id": "cf2f37138d6429d281397e4d0d3d0399",
+  "sha1": "66de5839746c47ca9f20f28793e06272295637d1"
+ },
+ "out/kepek/c_lakas_3.png": {
+  "url": "/_blob/68995f669d77d4077d4cc15e91dc35ca",
+  "id": "68995f669d77d4077d4cc15e91dc35ca",
+  "sha1": "747fd3f1052556fa3791ed8ae0c5d1ef38f77be9"
+ },
+ "out/kepek/c_lakas_4.png": {
+  "url": "/_blob/f4188e40ea2c06adbccd146a66b9b0ce",
+  "id": "f4188e40ea2c06adbccd146a66b9b0ce",
+  "sha1": "8cd8509ad00a388bef2507ca65206917757e7e19"
+ },
+ "out/kepek/c_lakas_5.png": {
+  "url": "/_blob/ff4b5b617ab18b1f4873d2a4df870fc0",
+  "id": "ff4b5b617ab18b1f4873d2a4df870fc0",
+  "sha1": "6729e39fca6da26257600cba2a986b265167733e"
+ },
+ "out/kepek/c_lakas_6.png": {
+  "url": "/_blob/c8a5baace3169eae4be745126951f705",
+  "id": "c8a5baace3169eae4be745126951f705",
+  "sha1": "82de6fd98f9f8660f52e879ad785aa893ca78c45"
+ },
+ "out/kepek/c_lakas_7.png": {
+  "url": "/_blob/36dc4682406ce432ee281040305b3364",
+  "id": "36dc4682406ce432ee281040305b3364",
+  "sha1": "6f74b54ae3eead9e3e9268b3ba87453978442071"
+ },
+ "out/kepek/c_lakas.pdf": {
+  "url": "/_blob/523dc8e0db6844cb663c3f8f9719f637",
+  "id": "523dc8e0db6844cb663c3f8f9719f637",
+  "sha1": "912074f2f7600486f7bbf432320ba81f86118f2b"
+ },
+ "out/kepek/k_tudtad_basenji.png": {
+  "url": "/_blob/1d8a1e079ca8deaf9f8951eef808c901",
+  "id": "1d8a1e079ca8deaf9f8951eef808c901",
+  "sha1": "b64d9d59df9de5ac9063296b96b0047ad4fdafa1"
+ },
+ "out/kepek/k_tudtad_agar.png": {
+  "url": "/_blob/81bb9d9ed662a3c47f12871bacedbdcf",
+  "id": "81bb9d9ed662a3c47f12871bacedbdcf",
+  "sha1": "252d9ec4f0c3d2babc36b8a9e7610d5989d70322"
+ },
+ "out/kepek/k_tudtad_border.png": {
+  "url": "/_blob/bf86248e5f4c43d151fcdc593e41480f",
+  "id": "bf86248e5f4c43d151fcdc593e41480f",
+  "sha1": "07ef4d998f5b311b5751cb38e4692a1578feaa9c"
+ },
+ "out/kepek/k_het_vizsla.png": {
+  "url": "/_blob/56d036f2bc159284c39e1018b61e4a29",
+  "id": "56d036f2bc159284c39e1018b61e4a29",
+  "sha1": "5c78129593bff0287485da5e50d145fefe348b98"
+ },
+ "out/kepek/k_het_mudi.png": {
+  "url": "/_blob/05bd7f1996468704fff69abd64c3734c",
+  "id": "05bd7f1996468704fff69abd64c3734c",
+  "sha1": "7f279c3477caec387e4624e6f68e8786ed4a8399"
+ },
+ "out/kepek/s_hello.png": {
+  "url": "/_blob/5e26764ed97551aa1975c72ee97d4d7f",
+  "id": "5e26764ed97551aa1975c72ee97d4d7f",
+  "sha1": "7f490c171c7fead6fed3d368ccc71f7d1a4c3ee2"
+ },
+ "out/kepek/s_quiz.png": {
+  "url": "/_blob/7351b0caae371df15918371ffb2cc5b5",
+  "id": "7351b0caae371df15918371ffb2cc5b5",
+  "sha1": "d9495e0f9ca4e2d823cdefbf4cba4d84ec7669ed"
+ },
+ "out/kepek/h_sq.png": {
+  "url": "/_blob/250d8f438f08abca081a8331c0e34554",
+  "id": "250d8f438f08abca081a8331c0e34554",
+  "sha1": "ec983fa1d59d97a402803feebd2bfccaef221268"
+ },
+ "out/kepek/h_cloud.png": {
+  "url": "/_blob/8633051d7955f183b0b11967c1a1cdc7",
+  "id": "8633051d7955f183b0b11967c1a1cdc7",
+  "sha1": "29b879c00d29e13437ef4881ed51b0c9a94f4a70"
+ },
+ "out/kepek/h_cuki.png": {
+  "url": "/_blob/076ad178424740ac55682ddb97d97d30",
+  "id": "076ad178424740ac55682ddb97d97d30",
+  "sha1": "ccbcdc3fc803f038af28b687144a9bfcd1cc6a2a"
+ },
+ "out/kepek/h_story.png": {
+  "url": "/_blob/3cbf04b076127b473fc690fc746ef6eb",
+  "id": "3cbf04b076127b473fc690fc746ef6eb",
+  "sha1": "ce398feedb461a37315250bc79c5e79ad236d4bc"
+ },
+ "out/kepek/l_ux.png": {
+  "url": "/_blob/4d639cd6fbfe3c4700427aaf53288e8f",
+  "id": "4d639cd6fbfe3c4700427aaf53288e8f",
+  "sha1": "9062af4423f7166268e67cc89233923f9fc8f94e"
+ },
+ "out/kepek/l_partner.png": {
+  "url": "/_blob/115ed47e639c199e7bcde80bc55ca637",
+  "id": "115ed47e639c199e7bcde80bc55ca637",
+  "sha1": "0280b83ab3cc2bcdcbc071a630aadf99f3c9b381"
+ },
+ "out/kepek/p_avatar.png": {
+  "url": "/_blob/f7bcac644fc3d2656da8e2f86ffebece",
+  "id": "f7bcac644fc3d2656da8e2f86ffebece",
+  "sha1": "3fda90fb4c442c4a41f0f3cad060efa3569cbeb6"
+ },
+ "out/kepek/p_fb_cover.png": {
+  "url": "/_blob/b618db3334b20c4b0cd8a7a65c4579eb",
+  "id": "b618db3334b20c4b0cd8a7a65c4579eb",
+  "sha1": "242830b9605ba8457feeb950f47d021c5e64a424"
+ },
+ "out/kepek/p_li_banner.png": {
+  "url": "/_blob/70c014559d9a530f63879e4ca51c5046",
+  "id": "70c014559d9a530f63879e4ca51c5046",
+  "sha1": "310a422761f433ab393a33e720b65878790bc649"
+ },
+ "out/kepek/p_og.png": {
+  "url": "/_blob/2381d439bc76926e28e07b81ad27a48b",
+  "id": "2381d439bc76926e28e07b81ad27a48b",
+  "sha1": "c97d99d53ac394da9dc8c9bafa327ab4b584fcde"
+ },
+ "out/kepek/p_li_cover.png": {
+  "url": "/_blob/5ff3419a9a5b9cd5ef30b9a408d63743",
+  "id": "5ff3419a9a5b9cd5ef30b9a408d63743",
+  "sha1": "b57caa71dea78b4990832a7e53f9fc55db74e17d"
+ },
+ "out/kepek/p_yt_banner.png": {
+  "url": "/_blob/d394fc7630549e49f5f6ca52f7142c79",
+  "id": "d394fc7630549e49f5f6ca52f7142c79",
+  "sha1": "5024ed1fb406da932f0d7cd26dca30567ee6fa00"
+ }
+}

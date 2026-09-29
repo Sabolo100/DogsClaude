@@ -1,0 +1,54 @@
+Pacsi-levél · 2. szám · 2026. október 22.
+
+PACSI-LEVÉL · 2. SZÁM
+HOSSZÚ HÉTVÉGE: IRÁNY AZ ERDŐ!
+Pénteken ünnepnap, az erdők pedig most a legszebbek. Összeszedtük, mire figyelj, ha a kutyád is jön.
+→ Túrabírók a Pacsiban: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w02&utm_content=hero#f=energia:sportos&m=s
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Az ősz a kutyások kedvenc évszaka: nincs kánikula, és minden levélkupac egy új szagtérkép. Ha a hosszú hétvégén túrázni mentek, ez a lista jól jöhet.
+
+TÚRACSEKKLISTA
+Ez legyen a hátizsákban
+  - Víz és összecsukható tál – a kutya is megszomjazik, a patakvíz nem mindig tiszta.
+  - Póráz és jól illeszkedő hám – erdőben vadra futhat, és sok helyen kötelező is a póráz.
+  - Kullancsvédelem – ősszel is aktívak. Túra után nézd át a fülét, a hónalját és az ujjai közét.
+  - Rövidebb táv, mint gondolnád – a kölyök, az idős és a lapos orrú kutya hamarabb elfárad.
+  - Telefonszámos biléta a nyakörvön – a chip mellett ez a leggyorsabb segítség, ha elkóborol.
+  - Jutalomfalat és egy törölköző – az egyik a visszahíváshoz, a másik az autóhoz.
+Nem minden kutya túrakutya – és ez így van rendjén. A Pacsiban az Energia szűrővel megnézheted, kinek mennyi mozgás kell.
+
+A HÉT FAJTÁJA
+Border collie – A kutyavilág zsenije: ha nem adsz neki munkát, keres magának.
+Túrán, terelésben, agilityben verhetetlen: napi két óra mozgás és sok szellemi feladat kell neki. Egy kényelmes, otthonülő életben viszont boldogtalan lenne.
+Kinek ajánlott? Aktív, sportos gazdiknak · Agility- és kutyasport-rajongóknak
+→ A kártyája: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w02&utm_content=het-fajtaja#b=border-collie
+
+A MÚLT HETI FEJTÖRŐ MEGFEJTÉSE
+Az első hivatalos olimpiai kabala egy tacskó volt: a csíkos Waldi, az 1972-es müncheni olimpián.
+
+TIPPELJ!
+Melyik fajta szukái tüzelnek évente csak egyszer, mint a farkasok?
+  A) Basenji: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w02&utm_content=tippelj#b=basenji
+  B) Szibériai husky: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w02&utm_content=tippelj#b=sziberiai-husky
+  C) Akita inu: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w02&utm_content=tippelj#b=akita-inu
+Kattints a tippedre: a fajta kártyáján, az Érdekesség rovatban ott a válasz. A megfejtés a következő levélben is jön.
+
+A HÉTEN A KÖZÖSSÉGIN
+  - Instagram · Facebook: Minden, ami számít – egy kártyán
+  - Instagram · Facebook: Ne a legcukibbat válaszd
+  - Tudtad?: Chaser, a zseni border collie
+
+Ismersz valakit, aki kutyát szeretne?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Küldj egy fotót a túráról válaszlevélben! A kedvenceinket – a te engedélyeddel – megmutatjuk a közösségi oldalainkon.
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

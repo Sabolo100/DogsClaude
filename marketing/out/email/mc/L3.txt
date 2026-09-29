@@ -1,0 +1,51 @@
+Pacsi · indulás · 2026. október 8.
+
+PÁRKERESŐ KVÍZ
+MILYEN GAZDI VAGY? 10 KÉRDÉS, 1 PERC.
+Kanapé-kapitány, Aktív kalandor, Családi karmester, Városi flâneur, Tanyasi őrangyal vagy Kutyasuttogó? A végén azt is megmutatjuk, melyik 5 fajta illik hozzád a legjobban.
+→ Indulhat a kvíz: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l3&utm_content=hero#kviz
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Van, aki hajnalban fut, és van, aki a kanapén olvas. A kutyák is ilyenek – ezért nem mindegy, ki kivel kerül egy fedél alá. A kvíz 10 gyors kérdéssel feltérképezi a napjaidat, és ehhez keres fajtát.
+
+A 6 GAZDITÍPUS
+Te melyik vagy?
+  - 🛋️ Kanapé-kapitány – nyugis esték, rövid séták, sok bújás.
+  - 🏃 Aktív kalandor – futás, túra, bicikli: bírja a tempót.
+  - 👨‍👩‍👧 Családi karmester – gyerekzsivaj, türelmes családtag.
+  - 🏙️ Városi flâneur – kávézóterasz, parki séta, lift.
+  - 🛡️ Tanyasi őrangyal – van udvar, kell egy hűséges őrző.
+  - 🎓 Kutyasuttogó – tapasztalt vagy, kihívásra vágysz.
+A kvíz végén egy gombbal a barátaidnak is elküldheted az eredményed.
+
+A HÉT FAJTÁJA
+Rövidszőrű magyar vizsla – Aranybarna tépőzár-kutya: mindig a gazdája mellett.
+Ahová te mész, oda ő is. Imádja a családját, a gyerekeket és a hosszú, pórázon kívüli futásokat. Napi 8–10 óra egyedüllét viszont nem neki való.
+Kinek ajánlott? Aktív családoknak, futóknak, kerékpárosoknak · Akik sok időt töltenek otthon
+→ A kártyája: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l3&utm_content=het-fajtaja#b=magyar-vizsla
+
+TIPPELJ!
+Melyik fajta kölykei születnek hófehéren, pöttyök nélkül?
+  A) Dalmata: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l3&utm_content=tippelj#b=dalmata
+  B) Border collie: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l3&utm_content=tippelj#b=border-collie
+  C) Beagle: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l3&utm_content=tippelj#b=beagle
+Kattints a tippedre: a fajta kártyáján, az Érdekesség rovatban ott a válasz. A megfejtés a következő levélben is jön.
+
+A HÉTEN A KÖZÖSSÉGIN
+  - TikTok · Reels: Milyen gazdi vagy?
+  - Karusszel: 5 kutya, amiért a szomszéd is hálás lesz
+  - Tudtad?: A basenji jódlizik
+
+Kíváncsi vagy, a barátaid milyen gazdik?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Te mi lettél? Írd meg válaszban – kíváncsiak vagyunk, melyik gazditípusból van a legtöbb.
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

@@ -1,0 +1,93 @@
+/* Pacsi Marketing – közös arculati stílusok (az app design tokenjeivel azonos értékek). */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..900,0..100;1,9..144,400..900,0..100&family=Manrope:wght@400..800&display=block');
+
+:root {
+  --bg: #FBF6EE;
+  --blob1: #FFD2B8; --blob2: #E2D6FF; --blob3: #C9EEDC;
+  --solid: #FFFDF9;
+  --ink: #1E1B18; --ink-2: #6B625A; --ink-3: #9A9088;
+  --primary: #FF6B3D; --primary-fill: #EE5A2C; --primary-2: #FFC845; --primary-deep: #C8431C;
+  --teal: #17756E; --lav: #5B5BD6; --rose: #E86A92; --sky: #2FA3D6; --ok: #2E9E6A;
+  --line: rgba(30, 27, 24, .10);
+  --shadow: 0 1px 2px rgba(90, 50, 20, .05), 0 8px 24px rgba(90, 50, 20, .08), 0 24px 60px rgba(90, 50, 20, .07);
+  --shadow-lg: 0 2px 6px rgba(90, 50, 20, .06), 0 20px 50px rgba(90, 50, 20, .14), 0 50px 120px rgba(90, 50, 20, .12);
+  --font-d: 'Fraunces', ui-serif, Georgia, serif;
+  --font-u: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 500 16px/1.4 var(--font-u); -webkit-font-smoothing: antialiased; overflow: hidden; }
+
+/* ---------- Vászon (egy kép vagy egy videó képkockája) ---------- */
+.canvas { position: relative; overflow: hidden; background: var(--bg); isolation: isolate; }
+.canvas .bgl { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.canvas .bgl i { position: absolute; border-radius: 50%; filter: blur(0); opacity: .95; }
+.canvas .bgl .g1 { background: radial-gradient(closest-side, var(--blob1), rgba(255, 210, 184, 0)); }
+.canvas .bgl .g2 { background: radial-gradient(closest-side, var(--blob2), rgba(226, 214, 255, 0)); }
+.canvas .bgl .g3 { background: radial-gradient(closest-side, var(--blob3), rgba(201, 238, 220, 0)); }
+.grain::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 50; opacity: .16; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .25 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Logó: Pacsı + korall mancs az i pontja helyén ---------- */
+.logo { display: inline-flex; align-items: baseline; font: 800 1em/1 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 72; letter-spacing: -.02em; color: var(--ink); white-space: nowrap; }
+.logo .i { position: relative; display: inline-block; }
+.logo .i svg { position: absolute; width: .5em; height: .5em; left: 50%; top: -.28em; transform: translateX(-50%) rotate(-12deg); color: var(--primary); fill: currentColor; }
+.brand { display: inline-flex; align-items: baseline; white-space: nowrap; line-height: 1; }
+.brand .byline { font: 700 .27em/1 var(--font-u); letter-spacing: .02em; color: var(--ink-2); margin-left: .55em; }
+.brand .byline b { color: var(--primary-fill); font-weight: 800; }
+.brand.inv .logo { color: #fff; }
+.brand.inv .byline { color: rgba(255, 255, 255, .75); }
+.brand.inv .byline b { color: #fff; }
+
+/* ---------- Portré-buborék ---------- */
+.bub { position: absolute; border-radius: 50%; background: #fff center/cover no-repeat; box-shadow: 0 0 0 calc(var(--d, 100px) * .045) #fff, 0 calc(var(--d, 100px) * .06) calc(var(--d, 100px) * .18) rgba(90, 50, 20, .18); }
+.bub.ring::before { content: ""; position: absolute; inset: calc(var(--d, 100px) * -.085); border-radius: 50%; border: calc(var(--d, 100px) * .03) solid var(--primary); opacity: .9; }
+
+/* ---------- Telefonkeret ---------- */
+.phone { position: absolute; left: 0; top: 0; width: calc(var(--pw) + 28px); height: calc(var(--ph) + 28px); padding: 14px; border-radius: 64px;
+  background: linear-gradient(145deg, #2a2622, #0f0d0c 60%, #25211e); transform-origin: 50% 50%;
+  box-shadow: 0 0 0 2px #4a433d inset, 0 0 0 1px #000, 0 40px 80px rgba(60, 30, 10, .30), 0 90px 160px rgba(60, 30, 10, .22); }
+.phone-screen { position: relative; width: var(--pw); height: var(--ph); border-radius: 50px; overflow: hidden; background: var(--bg); }
+.phone iframe { position: absolute; left: 0; top: 0; border: 0; display: block; background: var(--bg); }
+.statusbar { position: absolute; left: 0; right: 0; top: 0; height: 47px; display: flex; align-items: center; justify-content: space-between; padding: 4px 28px 0 44px; pointer-events: none; z-index: 5; color: #111; }
+.sb-time { font: 700 16.5px/1 -apple-system, 'Segoe UI', var(--font-u); letter-spacing: -.01em; }
+.sb-island { position: absolute; left: 50%; top: 11px; width: 122px; height: 35px; border-radius: 20px; background: #000; transform: translateX(-50%); }
+.sb-icons { display: flex; gap: 6px; align-items: center; }
+.sb-icons svg { fill: currentColor; color: #111; }
+.homebar { position: absolute; left: 50%; bottom: 8px; width: 134px; height: 5px; border-radius: 3px; background: #111; transform: translateX(-50%); z-index: 5; pointer-events: none; }
+
+/* ---------- Szimulált ujj ---------- */
+.finger { position: absolute; left: 0; top: 0; z-index: 40; pointer-events: none; opacity: 0; }
+.finger .dot { position: absolute; left: 0; top: 0; width: 92px; height: 92px; border-radius: 50%; background: rgba(255, 255, 255, .55); border: 4px solid rgba(255, 255, 255, .95);
+  box-shadow: 0 6px 22px rgba(60, 30, 10, .30), inset 0 0 18px rgba(255, 255, 255, .6); backdrop-filter: blur(2px); }
+.finger .ring { position: absolute; left: 0; top: 0; width: 120px; height: 120px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, .95); box-shadow: 0 0 20px rgba(255, 107, 61, .5); opacity: 0; }
+
+/* ---------- Feliratok ---------- */
+.kicker { font: 800 26px/1 var(--font-u); letter-spacing: .14em; text-transform: uppercase; color: var(--primary-fill); }
+.h-xl { font: 800 132px/.94 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.035em; }
+.h-l { font: 800 96px/.98 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.03em; }
+.h-m { font: 800 68px/1.02 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.025em; }
+.it { font-style: italic; color: var(--primary-fill); font-variation-settings: "SOFT" 100, "opsz" 144; }
+.sticker { display: inline-block; padding: 14px 26px 16px; border-radius: 22px; background: #fff; color: var(--ink); font: 800 48px/1.1 var(--font-u); letter-spacing: -.01em; box-shadow: 0 10px 30px rgba(90, 50, 20, .18); }
+.sticker.hot { background: var(--primary-fill); color: #fff; }
+.sticker.ink { background: var(--ink); color: #fff; }
+.w { display: inline-block; will-change: transform, opacity; }
+.pill { display: inline-flex; align-items: center; gap: 12px; padding: 14px 26px; border-radius: 999px; background: var(--solid); box-shadow: var(--shadow); font: 800 30px/1 var(--font-u); }
+.cta { display: inline-flex; align-items: center; gap: 16px; padding: 26px 44px; border-radius: 999px; color: #fff; font: 800 40px/1 var(--font-u);
+  background: linear-gradient(100deg, var(--primary-fill), #FF8A3D 55%, var(--primary-2)); box-shadow: 0 16px 40px rgba(238, 90, 44, .38); }
+.url { font: 700 30px/1 var(--font-u); color: var(--ink-2); letter-spacing: .01em; }
+
+/* ---------- Szűrőchip matrica ---------- */
+.mchip { position: relative; display: inline-flex; align-items: center; gap: .45em; padding: .32em .9em .32em .36em; border-radius: 999px; background: #fff; color: var(--ink);
+  font-family: var(--font-u); font-weight: 800; line-height: 1; box-shadow: 0 .3em .9em rgba(90, 50, 20, .16), 0 0 0 1px rgba(30, 27, 24, .06); white-space: nowrap; }
+.mchip .o { display: grid; place-items: center; width: 1.7em; height: 1.7em; border-radius: 50%; background: var(--bg); color: var(--ink); }
+.mchip .o .ic { width: 1em; height: 1em; }
+.mchip.on { background: var(--primary-fill); color: #fff; box-shadow: 0 .35em 1em rgba(238, 90, 44, .38); }
+.mchip.on .o { background: rgba(255, 255, 255, .22); color: #fff; }
+.mchip .ck { position: absolute; top: -.35em; right: -.25em; width: 1.05em; height: 1.05em; border-radius: 50%; background: #fff; color: var(--primary-fill); display: grid; place-items: center; box-shadow: 0 2px 6px rgba(90, 50, 20, .2); }
+.mchip .ck .ic { width: .6em; height: .6em; }
+i.dot { position: absolute; border-radius: 50%; }
+.meter { display: inline-flex; align-items: center; }
+.meter i { display: inline-block; border-radius: 50%; }

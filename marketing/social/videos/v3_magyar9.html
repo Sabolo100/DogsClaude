@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><title>V3 – A 9 magyar kutyafajta</title>
+<link rel="stylesheet" href="../shared/brand.css">
+<link rel="stylesheet" href="../shared/video.css">
+<style>
+  #head { top: 470px; }
+  #head .hd { font-size: 148px; }
+  #kick { position: absolute; left: 0; right: 0; top: 360px; display: flex; justify-content: center; align-items: center; gap: 18px; z-index: 21; }
+  .tri { display: inline-flex; width: 96px; height: 16px; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+  .tri i { flex: 1; } .tri i:nth-child(1) { background: #CE2939; } .tri i:nth-child(2) { background: #fff; } .tri i:nth-child(3) { background: #477050; }
+  .tint { position: absolute; inset: 0; z-index: 1; }
+  .slide { position: absolute; inset: 0; z-index: 12; visibility: hidden; }
+  .slide .pic { position: absolute; left: 540px; top: 845px; width: 640px; height: 640px; margin: -320px 0 0 -320px; border-radius: 50%; background: #fff center/cover;
+    box-shadow: 0 0 0 16px #fff, 0 0 0 26px var(--primary), 0 40px 90px rgba(90, 50, 20, .25); }
+  .slide .nm { position: absolute; left: 60px; right: 60px; top: 1235px; text-align: center; font: 800 104px/1 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.03em; color: var(--ink); }
+  .slide .tg { position: absolute; left: 90px; right: 90px; top: 1360px; text-align: center; font: italic 700 46px/1.25 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 72; color: var(--primary-fill); text-wrap: balance; }
+  .ctr { position: absolute; left: 540px; top: 250px; transform: translateX(-50%); z-index: 30; font: 800 40px/1 var(--font-u); letter-spacing: .1em; color: var(--ink); display: flex; gap: 18px; align-items: center; }
+  .dots9 { position: absolute; left: 540px; top: 320px; transform: translateX(-50%); display: flex; gap: 12px; z-index: 30; }
+  .dots9 i { width: 18px; height: 18px; border-radius: 50%; background: rgba(30,27,24,.14); }
+  .dots9 i.on { background: var(--primary-fill); }
+</style></head>
+<body>
+<div id="c" class="canvas grain">
+  <div class="tint" id="tint"></div>
+  <div id="kick"><span class="tri"><i></i><i></i><i></i></span><span class="kick">Magyar büszkeségek</span><span class="tri"><i></i><i></i><i></i></span></div>
+  <div class="big" id="head"><div class="hd">Ismered mind<br>a <span class="it">9 magyar</span><br>kutyafajtát?</div></div>
+  <div class="layer" id="tease" style="z-index:11"></div>
+  <div id="slides"></div>
+  <div class="ctr" id="ctr"><span class="tri"><i></i><i></i><i></i></span><span id="ctrN">1 / 9</span><span class="tri"><i></i><i></i><i></i></span></div>
+  <div class="dots9" id="dots"></div>
+  <div class="layer" id="stage" style="z-index:15"></div>
+  <div class="cap" id="c1"><span class="sticker">Vagy egy koppintás a <b style="color:var(--primary-fill)">Magyar</b> szűrőre 👇</span></div>
+  <div class="cap" id="c2"><span class="sticker hot">124 fajtából 9 marad ✨</span></div>
+</div>
+<script src="../shared/comp.js"></script>
+<script src="../shared/kit.js"></script>
+<script src="../shared/fx.js"></script>
+<script src="../shared/phone.js"></script>
+<script>
+const { E, prog, lerp, clamp } = Comp;
+const $ = s => document.querySelector(s);
+const HU9 = ['puli', 'pumi', 'mudi', 'komondor', 'kuvasz', 'erdelyi-kopo', 'magyar-vizsla', 'drotszoru-magyar-vizsla', 'magyar-agar'];
+const T0 = 2.25, DT = 1.42;
+let phone, finger, bg, end, words, slides = [], tease = [];
+const PW = 418, S0 = 1.62;
+const base = { x: 540 - PW * S0 / 2, y: 470, s: S0 };
+const at = (s, ax, ay, fx = 540, fy = 1000) => ({ s, x: fx - (14 + ax) * s, y: fy - (14 + ay) * s });
+const TP = T0 + 9 * DT;          // a telefonos rész kezdete (~15,0 s)
+const cam = FX.track([
+  [TP - .1, { ...base, y: 1980 }],
+  [TP + .7, base, E.outQuint],
+  [TP + 3.2, base],
+  [TP + 3.9, at(2.2, 195, 440, 540, 1060), E.ioQuint],
+  [TP + 5.2, at(2.2, 195, 440, 540, 1060)],
+]);
+const hex = h => { const n = parseInt(h.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
+
+Comp.start({ duration: TP + 8.6, preroll: 1.6 }, async () => {
+  await K.init();
+  bg = FX.blobs($('#c'), ['#FFD2B8', '#C9EEDC', '#E2D6FF']);
+  words = FX.words($('#head .hd'));
+  slides = HU9.map(id => {
+    const b = K.by[id];
+    const d = document.createElement('div');
+    d.className = 'slide';
+    d.innerHTML = `<div class="pic" style="background-image:url('${K.img(id)}')"></div><div class="nm">${K.esc(b.nev)}</div><div class="tg">${K.esc(b.tagline)}</div>`;
+    if (b.nev.length > 18) d.querySelector('.nm').style.fontSize = '80px';
+    $('#slides').appendChild(d);
+    return { d, pic: d.querySelector('.pic'), nm: d.querySelector('.nm'), tg: d.querySelector('.tg'), bg: b.bg || '#FFE6A0' };
+  });
+  $('#dots').innerHTML = HU9.map(() => '<i></i>').join('');
+  // nyitókép: a 9 portré kis rácsban, a parádé előtt kirepülnek
+  tease = HU9.map((id, i) => { const e = document.createElement('div'); e.className = 'bub'; e.style.cssText = `--d:170px;left:-85px;top:-85px;width:170px;height:170px;background-image:url('${K.img(id)}')`; $('#tease').appendChild(e); return e; });
+  phone = new Phone($('#stage'));
+  finger = new Finger($('#c'));
+  end = FX.endCard($('#c'), { t0: TP + 5.2, ask: 'Melyik a kedvenced? 👇', line: 'Mind a 9 magyar fajta a Pacsiban!', cta: 'Nézd meg őket', url: 'Link a bióban · ' + K.site });
+  await phone.load();
+  plan();
+});
+
+function plan() {
+  finger.move(0, 900, 1800, .01);
+  finger.show(TP + .75, 1).show(TP + 3.0, 0);
+  // a dokk elgörgetése balra (az ujj húz), majd koppintás a Magyar szűrőre
+  Comp.at(TP + .8, () => {
+    const p = phone.point('.dk[data-dk="energia"]');
+    finger.move(TP + .8, p.x, p.y, .35);
+    finger.move(TP + 1.2, p.x - 420, p.y, .55);
+  });
+  tapIn(phone, finger, TP + 2.35, '.dk[data-dk="magyar"]', { lead: .5 });
+}
+Comp.each(t => {
+  bg(t);
+  FX.popWords(words, t, .2, { stagger: .07, out: T0 - .35 });
+  $('#kick').style.opacity = (prog(t, .05, .35) * (1 - prog(t, T0 - .4, T0 - .1))).toFixed(3);
+  tease.forEach((e, i) => {
+    const x = 540 + (i % 3 - 1) * 230, y = 1230 + Math.floor(i / 3) * 215;
+    const p = prog(t, .45 + i * .07, 1.05 + i * .07), sp = E.spring(p, 5, 4.2);
+    const o = prog(t, T0 - .45 + i * .02, T0 - .05 + i * .02, E.inC);
+    e.style.opacity = (clamp(p * 3) * (1 - o)).toFixed(3);
+    e.style.transform = `translate(${x + o * (i % 2 ? 600 : -600)}px, ${y - o * 200}px) scale(${lerp(.3, 1, sp)}) rotate(${o * (i % 2 ? 30 : -30)}deg)`;
+  });
+  // fajtaparádé
+  let cur = -1;
+  slides.forEach((s, i) => {
+    const ti = T0 + i * DT, to = ti + DT;
+    const pin = prog(t, ti, ti + .6), sp = E.spring(pin, 5, 4.3);
+    const pout = prog(t, to - .12, to + .38, E.inC);
+    const vis = t >= ti - .01 && t < to + .4;
+    s.d.style.visibility = vis ? 'visible' : 'hidden';
+    if (!vis) return;
+    if (t < to) cur = i;
+    const dir = i % 2 ? -1 : 1;
+    s.pic.style.transform = `translateX(${(1 - sp) * 900 * dir - pout * 1100 * dir}px) rotate(${(1 - sp) * 25 * dir - pout * 20 * dir}deg) scale(${lerp(.6, 1, sp)})`;
+    const q = prog(t, ti + .18, ti + .7), sq = E.spring(q);
+    s.nm.style.opacity = (clamp(q * 3) * (1 - pout)).toFixed(3);
+    s.nm.style.transform = `translateY(${(1 - sq) * 60}px) scale(${lerp(.85, 1, sq)})`;
+    const r = prog(t, ti + .32, ti + .85), sr = E.spring(r);
+    s.tg.style.opacity = (clamp(r * 3) * (1 - pout)).toFixed(3);
+    s.tg.style.transform = `translateY(${(1 - sr) * 50}px)`;
+  });
+  // háttér színe a portréhoz igazodik
+  const inParade = t >= T0 - .2 && t < TP;
+  if (cur >= 0) { const [r, g, b] = hex(slides[cur].bg); $('#tint').style.background = `radial-gradient(70% 45% at 50% 42%, rgba(${r},${g},${b},.55), rgba(${r},${g},${b},0))`; }
+  $('#tint').style.opacity = inParade ? clamp((t - T0 + .2) * 3) : Math.max(0, 1 - (t - TP) * 3);
+  const ctrOp = clamp((t - T0) * 4) * (1 - prog(t, TP - .3, TP));
+  $('#ctr').style.opacity = ctrOp; $('#dots').style.opacity = ctrOp;
+  if (cur >= 0) { $('#ctrN').textContent = `${cur + 1} / 9`; [...$('#dots').children].forEach((d, i) => d.classList.toggle('on', i <= cur)); }
+  // telefon
+  const c = cam(t);
+  phone.el.style.transformOrigin = '0 0';
+  phone.el.style.transform = `translate(${c.x}px,${c.y}px) scale(${c.s})`;
+  const dock = phone.doc && phone.doc.querySelector('.dock');
+  if (dock && t > TP + 1.15 && t < TP + 2.1) dock.scrollLeft = 300 * E.ioC(prog(t, TP + 1.2, TP + 1.75));
+  FX.pop($('#c1'), t, TP + .6, TP + 2.7, { rot: -2 });
+  FX.pop($('#c2'), t, TP + 3.0, TP + 5.0, { rot: 2 });
+  finger.render(t);
+  end(t);
+});
+</script>
+</body></html>

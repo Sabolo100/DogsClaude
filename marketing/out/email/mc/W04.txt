@@ -1,0 +1,47 @@
+Pacsi-levél · 4. szám · 2026. november 5.
+
+PACSI-LEVÉL · 4. SZÁM
+SÖTÉTEDIK. LÁTSZIK A KUTYÁD?
+Az óraátállítás óta fél ötkor már szürkület van, a délutáni séta sokszor sötétben zajlik. Pár apróság, amitől az autósok és a biciklisek is időben észrevesznek titeket.
+→ A hét fajtája: a puli: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w04&utm_content=hero#b=puli
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Novemberben a legtöbb gazdi munka előtt és után sétál – vagyis sötétben. A kutya szőre elnyeli a fényt, a sötét bundájúakat szinte lehetetlen észrevenni.
+
+ESTI SÉTA
+5 apróság, amitől látszotok
+  - Világító vagy fényvisszaverő nyakörv, hám – a LED-es változat oldalról is jól látszik.
+  - Fényvisszaverő mellény a kutyán – főleg sötét bundánál, vidéken és út mellett.
+  - Te is légy látható – egy fényvisszaverő karszalag vagy mellény rajtad is sokat számít.
+  - Rövid póráz a forgalom mellett – a hosszú, feszes póráz sötétben szinte láthatatlan.
+  - Zseblámpa a zacskós feladathoz – mert a kupac akkor is ott van, ha nem látod. 😉
+
+A HÉT FAJTÁJA
+Puli – Élő raszta-felhő: vidám, fürge, és örök kamasz.
+A zsinórjai alig hullanak, de a bundaápolás komoly elköteleződés. Okos, figyelmes, sok játékot és feladatot kér – és sötét bundás pulival esti sétán a fényvisszaverő mellény kötelező kellék.
+Kinek ajánlott? Tapasztaltabb, aktív gazdiknak · Akik szívesen foglalkoznak a bunda ápolásával
+→ A kártyája: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w04&utm_content=het-fajtaja#b=puli
+
+A MÚLT HETI FEJTÖRŐ MEGFEJTÉSE
+A csau csau nyelve kékesfekete – és nincs egyedül: a shar pei nyelve is ilyen.
+
+TIPPELJ!
+Melyik fajta neve jelent kínaiul „oroszlánt”?
+  A) Shih tzu: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w04&utm_content=tippelj#b=shih-tzu
+  B) Csau csau: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w04&utm_content=tippelj#b=csau-csau
+  C) Pekingi palotakutya: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w04&utm_content=tippelj#b=pekingi-palotakutya
+Kattints a tippedre: a fajta kártyáján, az Érdekesség rovatban ott a válasz. A megfejtés a következő levélben is jön.
+
+Ismersz valakit, aki kutyát szeretne?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Van bevált esti sétás kütyüd? Írd meg válaszban – a legjobb tippeket továbbadjuk.
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

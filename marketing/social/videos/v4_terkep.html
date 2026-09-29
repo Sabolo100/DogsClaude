@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><title>V4 – Zsebrakéta vagy kanapé-óriás?</title>
+<link rel="stylesheet" href="../shared/brand.css">
+<link rel="stylesheet" href="../shared/video.css">
+<style>
+  #head { top: 760px; }
+  #head .hd { font-size: 150px; }
+  .hero { position: absolute; left: 0; top: 0; border-radius: 50%; background: #fff center/cover; z-index: 12; box-shadow: 0 0 0 12px #fff, 0 30px 70px rgba(90, 50, 20, .22); }
+  .emo { position: absolute; left: 0; top: 0; z-index: 13; font-size: 96px; line-height: 1; }
+  .spd { position: absolute; left: 0; top: 0; z-index: 11; height: 14px; border-radius: 7px; background: var(--primary); opacity: .7; }
+  #grid { position: absolute; inset: 0; z-index: 25; visibility: hidden; }
+  .qd { position: absolute; border-radius: 40px; transform-origin: 50% 50%; }
+  .qd .lab { position: absolute; left: 30px; top: 28px; display: flex; align-items: center; gap: 14px; }
+  .qd .num { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; background: var(--ink); color: #fff; font: 800 36px/1 var(--font-d); }
+  .qd .t { font: 800 46px/1 var(--font-d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.02em; color: var(--ink); }
+  .qd .s { position: absolute; left: 104px; top: 88px; font: 700 26px/1.2 var(--font-u); color: var(--ink-2); }
+  .qd .bub { box-shadow: 0 0 0 7px #fff, 0 12px 30px rgba(90, 50, 20, .2); }
+  .ax { position: absolute; background: #6B625A; border-radius: 3px; z-index: 26; }
+  .axl { position: absolute; z-index: 26; font: 800 26px/1 var(--font-u); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+</style></head>
+<body>
+<div id="c" class="canvas grain">
+  <div class="layer" id="heroes"></div>
+  <div class="big" id="head"><div class="hd">Zsebrakéta<br>vagy<br><span class="it">kanapé-óriás?</span></div></div>
+  <div class="layer" id="stage" style="z-index:15"></div>
+  <div id="grid"><div class="big" id="gh" style="top:300px"><div class="kick">A Pacsi térképe</div><div class="hd" style="font-size:84px;margin-top:18px">4 kutya<span class="it">típus</span></div></div></div>
+  <div class="cap" id="c1"><span class="sticker">Kapcsolj Térkép nézetre 🗺️</span></div>
+  <div class="cap" id="c2"><span class="sticker">Méret × energia, egy pillantásra</span></div>
+  <div class="cap" id="c3" style="top:1560px"><span class="sticker ink">Te melyiket választanád?<br>1, 2, 3 vagy 4? 👇</span></div>
+</div>
+<script src="../shared/comp.js"></script>
+<script src="../shared/kit.js"></script>
+<script src="../shared/fx.js"></script>
+<script src="../shared/phone.js"></script>
+<script>
+const { E, prog, lerp, clamp } = Comp;
+const $ = s => document.querySelector(s);
+let phone, finger, bg, end, words, jr, sb, eJ, eS, spd = [], quads = [], axes = [];
+const PW = 418, S0 = 1.62;
+const base = { x: 540 - PW * S0 / 2, y: 470, s: S0 };
+const at = (s, ax, ay, fx = 540, fy = 1000) => ({ s, x: fx - (14 + ax) * s, y: fy - (14 + ay) * s });
+const cam = FX.track([
+  [2.35, { ...base, y: 1980 }],
+  [3.1, base, E.outQuint],
+  [4.8, base],
+  [5.6, at(2.15, 195, 470, 540, 1040), E.ioQuint],
+  [6.15, at(2.15, 195, 470, 540, 1040)],
+  [6.7, { ...at(2.15, 195, 470, 540, 1040), y: at(2.15, 195, 470, 540, 1040).y + 2100 }, E.inC],
+]);
+const Q = [
+  { n: 1, t: 'Zsebrakéták', s: 'kicsi, de pörgős', ids: ['jack-russell-terrier', 'pumi', 'papillon'], c: 'rgba(255,210,184,.8)' },
+  { n: 2, t: 'Sportgépek', s: 'nagy és fáradhatatlan', ids: ['magyar-vizsla', 'dalmata', 'malinois'], c: 'rgba(201,238,220,.85)' },
+  { n: 3, t: 'Nyugis törpék', s: 'kicsi és kényelmes', ids: ['shih-tzu', 'mopsz', 'pekingi-palotakutya'], c: 'rgba(226,214,255,.85)' },
+  { n: 4, t: 'Kanapé-óriások', s: 'nagy, de nyugodt', ids: ['bernathegyi', 'uj-fundlandi', 'komondor'], c: 'rgba(255,230,160,.8)' },
+];
+const GL = 120, GT = 500, GS = 860, H = GS / 2, TQ = 7.2, DQ = 1.3;
+
+Comp.start({ duration: 18.4, preroll: 1.6 }, async () => {
+  await K.init();
+  bg = FX.blobs($('#c'), ['#FFD2B8', '#C9EEDC', '#FFE6A0']);
+  words = FX.words($('#head .hd'));
+  const mk = (cls, css, html = '') => { const e = document.createElement('div'); e.className = cls; e.style.cssText = css; e.innerHTML = html; $('#heroes').appendChild(e); return e; };
+  jr = mk('hero', `width:330px;height:330px;background-image:url('${K.img('jack-russell-terrier')}')`);
+  sb = mk('hero', `width:390px;height:390px;background-image:url('${K.img('bernathegyi')}')`);
+  eJ = mk('emo', '', '⚡'); eS = mk('emo', '', '💤');
+  spd = [0, 1, 2].map(i => mk('spd', `width:${[120, 170, 90][i]}px`));
+  // negyedes térkép
+  const g = $('#grid');
+  quads = Q.map((q, i) => {
+    const x = GL + (i % 2) * H, y = GT + Math.floor(i / 2) * H;
+    const d = document.createElement('div');
+    d.className = 'qd';
+    d.style.cssText = `left:${x + 10}px;top:${y + 10}px;width:${H - 20}px;height:${H - 20}px;background:${q.c}`;
+    d.innerHTML = `<div class="lab"><span class="num">${q.n}</span><span class="t">${q.t}</span></div><div class="s">${q.s}</div>` +
+      q.ids.map((id, j) => { const dd = [170, 128, 96][j]; return `<div class="bub" style="--d:${dd}px;width:${dd}px;height:${dd}px;left:${[118, 262, 250][j] - dd / 2}px;top:${[270, 240, 340][j] - dd / 2}px;background-image:url('${K.img(id)}')"></div>`; }).join('');
+    g.appendChild(d);
+    return { d, bubs: [...d.querySelectorAll('.bub')], lab: d.querySelector('.lab'), s: d.querySelector('.s') };
+  });
+  axes = [['ax', `left:${GL - 40}px;top:${GT}px;width:6px;height:${GS}px`], ['ax', `left:${GL}px;top:${GT + GS + 34}px;width:${GS}px;height:6px`]].map(([c, css]) => { const e = document.createElement('div'); e.className = c; e.style.cssText = css; g.appendChild(e); return e; });
+  const l1 = document.createElement('div'); l1.className = 'axl'; l1.textContent = 'nyugis ← energia → pörgős'; l1.style.cssText = `left:${GL - 58}px;top:${GT + GS / 2}px;transform:translate(-50%,-50%) rotate(-90deg)`; g.appendChild(l1);
+  const l2 = document.createElement('div'); l2.className = 'axl'; l2.textContent = 'kicsi ← méret → nagy'; l2.style.cssText = `left:${GL + GS / 2}px;top:${GT + GS + 64}px;transform:translateX(-50%)`; g.appendChild(l2);
+  axes.push(l1, l2);
+  phone = new Phone($('#stage'));
+  finger = new Finger($('#c'));
+  end = FX.endCard($('#c'), { t0: 14.9, ask: 'Írd meg kommentben: 1, 2, 3 vagy 4? 👇', line: 'Találd meg a hozzád illő kutyát!', cta: 'Próbáld ki ingyen', url: 'Link a bióban · ' + K.site });
+  await phone.load();
+  plan();
+});
+
+function plan() {
+  finger.move(0, 700, 1800, .01);
+  finger.show(3.15, 1).show(4.45, 0);
+  tapIn(phone, finger, 3.85, '#mobViews button[data-view="terkep"]');
+}
+Comp.each(t => {
+  bg(t);
+  FX.popWords(words, t, .15, { stagger: .08, out: 2.2 });
+  // horog: pörgő Jack Russell és álmos bernáthegyi
+  const pj = prog(t, .05, .6), ps = prog(t, .35, .95), out = prog(t, 2.15, 2.6, E.inC);
+  const jx = 290 + Math.sin(t * 42) * 7 * pj - out * 700, jy = 400 + Math.cos(t * 37) * 6 * pj;
+  jr.style.transform = `translate(${jx - 165}px,${jy - 165}px) scale(${lerp(.3, 1, E.spring(pj))}) rotate(${Math.sin(t * 30) * 3}deg)`;
+  jr.style.opacity = clamp(pj * 3) * (1 - out);
+  eJ.style.transform = `translate(${jx + 90}px,${jy - 190}px) scale(${lerp(.2, 1, E.spring(prog(t, .5, 1)))}) rotate(${Math.sin(t * 20) * 10}deg)`;
+  eJ.style.opacity = clamp((t - .5) * 4) * (1 - out);
+  spd.forEach((s, i) => { s.style.transform = `translate(${jx - 190 - [120, 170, 90][i] - Math.abs(Math.sin(t * 9 + i)) * 30}px,${jy - 60 + i * 60}px)`; s.style.opacity = (clamp((t - .4) * 3) * (1 - out) * .75).toFixed(2); });
+  const sx = 770 + out * 700, sy = 1470 + Math.sin(t * 1.6) * 8;
+  sb.style.transform = `translate(${sx - 195}px,${sy - 195}px) scale(${lerp(.3, 1, E.spring(ps))}) rotate(${Math.sin(t * 1.4) * 4}deg)`;
+  sb.style.opacity = clamp(ps * 3) * (1 - out);
+  eS.style.transform = `translate(${sx - 250 + Math.sin(t * 1.3) * 12}px,${sy - 260 - (t % 1.6) * 30}px) scale(${lerp(.2, 1, E.spring(prog(t, .8, 1.3)))})`;
+  eS.style.opacity = clamp((t - .8) * 4) * (1 - out);
+  // telefon
+  const c = cam(t);
+  phone.el.style.transformOrigin = '0 0';
+  phone.el.style.transform = `translate(${c.x}px,${c.y}px) scale(${c.s})`;
+  FX.pop($('#c1'), t, 3.0, 4.5, { rot: -2 });
+  FX.pop($('#c2'), t, 4.7, 6.1, { rot: 2 });
+  // negyedes térkép felépülése és kiemelése
+  const gOn = t >= 6.3 && t < 15.4;
+  $('#grid').style.visibility = gOn ? 'visible' : 'hidden';
+  if (gOn) {
+    const ga = prog(t, 6.35, 6.9, E.outC);
+    const gh = $('#gh'), gp = E.spring(prog(t, 6.3, 6.9)); gh.style.opacity = clamp(prog(t, 6.3, 6.9) * 3); gh.style.transform = `translateY(${(1 - gp) * 40}px)`;
+    axes[0].style.transform = `scaleY(${ga})`; axes[0].style.transformOrigin = '50% 100%';
+    axes[1].style.transform = `scaleX(${ga})`; axes[1].style.transformOrigin = '0 50%';
+    axes[2].style.opacity = axes[3].style.opacity = ga;
+    const focus = t >= TQ && t < TQ + 4 * DQ ? Math.floor((t - TQ) / DQ) : -1;
+    quads.forEach((q, i) => {
+      const p = prog(t, 6.5 + i * .09, 7.05 + i * .09), sp = E.spring(p, 5, 4.3);
+      const on = focus === i, dim = focus >= 0 && !on ? .5 : 1;
+      const f = on ? E.spring(prog(t, TQ + i * DQ, TQ + i * DQ + .45)) : 0;
+      q.d.style.opacity = (clamp(p * 3) * dim).toFixed(3);
+      q.d.style.transform = `scale(${lerp(.6, 1, sp) * (1 + f * .05)})`;
+      q.d.style.zIndex = on ? 3 : 1;
+      q.bubs.forEach((b, j) => {
+        const pb = prog(t, TQ + i * DQ + .1 + j * .1, TQ + i * DQ + .6 + j * .1), sb2 = E.spring(pb, 5, 4);
+        b.style.opacity = clamp(pb * 3).toFixed(3);
+        b.style.transform = `scale(${lerp(.2, 1, sb2)}) rotate(${(1 - sb2) * 30}deg)`;
+      });
+    });
+  }
+  FX.pop($('#c3'), t, 12.6, 14.75, { rot: -1.5 });
+  finger.render(t);
+  end(t);
+});
+</script>
+</body></html>

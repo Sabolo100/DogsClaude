@@ -1,0 +1,87 @@
+{
+  "mode": "create",
+  "title": "Pacsi – kutyafajta-választó app leendő gazdiknak",
+  "slug": "pacsi-kutyafajta-valaszto",
+  "summary": "Interaktív web- és mobilapp, amelyben 124 kutyafajta egy élő, animált felhőben rendeződik át a gazdi életmódja szerint: a nem illő fajták kirepülnek, a Párkereső kvíz pedig megmutatja a legjobb párosokat. Egy rövid ötletvázlatból kb. 17 óra munkával lett élő, telepíthető termék, marketingkészlettel együtt.",
+  "goal": "Kutyaválasztáskor az a kérdés, mennyire illik egy fajta a leendő gazdi életéhez: van-e gyerek a családban, lakásban vagy kertes házban élnek, mennyi idő jut mozgásra, zavar-e, ha a kutya hangos. A fajtaleírások ehhez többnyire hosszú listákat és táblázatokat adnak.\n\nA cél egy látványos, játékos, mégis tartalmas eszköz volt a kutyavásárlást tervezőknek: laptopon weboldalként, telefonon valódi appként (PWA) működjön, adatbázis nélkül, és néhány kattintással szűkítse a kört a hozzájuk illő fajtákra.",
+  "description": "A munka egy egyoldalas ötletvázlattal indult (lásd a kiinduló promptot). Első lépésként a Claude Code részletes termék- és UX-specifikációt írt belőle, és koncepcióképeket készített laptopra és mobilra. A specifikáció táblázatai lettek az adatok egyetlen forrása: a fajták azonosítói, jellemzőpontszámai és rövid leírásai innen kerülnek az appba egy Python build-lépéssel.\n\nAz app keretrendszer és adatbázis nélkül, tiszta JavaScripttel készült. Két formában érhető el: egyetlen önálló HTML-fájlként, amely offline is fut, és telepíthető PWA-ként (Android, iPhone, laptop). A középpontban egy élő buborékfelhő áll, benne 124 Európában tartott fajtával. Szűréskor a Rangsor módban a megfelelő fajták előre ugranak, a Csak találatok módban a nem illők felfelé kirepülnek. Négy nézet van (Felhő, Csoportok, Térkép, Lista), emellett fajtakártya leírással, egészségügyi tudnivalókkal és azzal, hogy kinek ajánlott; Párkereső kvíz gazditípussal; kedvencek; összehasonlítás pókhálódiagrammal és sötét mód. Az app állapota a webcímben tárolódik, így minden nézet linkként megosztható.\n\nA fajtaportrék az OpenAI gpt-image-2 modelljével készültek, nyolc darab 4×4-es rácsképben, amelyeket egy szkript automatikusan felismer és feldarabol.\n\nAz animációkban gazdag felületnek telefonon is folyamatosan kell futnia. A teljesítményt headless Edge-re épülő, programozott mérések ellenőrizték (Chrome DevTools Protocol). Ezekből derült ki például, hogy telefonos felbontáson a buborékok grafikus memóriája 465 MB volt, emiatt egy valódi telefonon villogott a felület; a javítás után kb. 40 MB. A gyűrűk, fények és pulzálások egyetlen vásznon rajzolódnak, a buborékok pedig csak transform/opacity animációt kapnak.\n\nÜzemeltetés: saját domain (pacsit.hu) Hetzner szerveren, Coolify-jal telepítve (Docker + nginx), GitHub Pages tükörrel. Névtelen, sütik nélküli statisztika saját Umami-szerveren, amely a böngésző „ne kövess” jelzését is tiszteletben tartja. Minden kiadásnak látható verziószáma és build-azonosítója van, a telepített appok jelzik, ha új verzió érhető el. Első látogatáskor nyitó ablak és háromlépéses bemutató vezet végig.\n\nUgyanebben a munkafolyamatban készült a kommunikációs készlet is: közösségimédia-videók, amelyek a valódi appot mutatják (HTML-kompozíciókból renderelve), posztképek és tartalomnaptár, partnereknek szóló bemutató (web + PDF), valamint a heti Pacsi-levél feliratkozó oldala (Mailchimp, dupla megerősítéssel) és e-mail-sorozata.",
+  "outcome": "Élesben fut: https://pacsit.hu. Az első kiadás (v1.0) 2026. szeptember 24-én készült el, másnap már a v1.7.1 futott saját domainen, névtelen statisztikával és hírlevél-feliratkozással.\n\nSzámokban: kb. 17 óra aktív munka négy nap alatt, 61 prompt négy Claude Code-munkamenetben, egy fő. 124 fajta, négy nézet, Párkereső kvíz, offline is működő, telepíthető app. A kommunikációs készletben négy közösségimédia-videó, partnerbemutató és 21 előkészített e-mail (induló, üdvözlő, 12 heti és partnerlevelek).\n\nTanulság: a munka a specifikációval kezdődött, és annak táblái lettek az adatforrás, így a termékleírás és az app nem csúszott szét; a fajtalista menet közbeni bővítése 60-ról 124-re is ezen keresztül ment.\n\nNyitott pont: a jellemzőpontszámok és a leírások AI-segítséggel készültek, ezért szélesebb körű népszerűsítés előtt kinológus vagy állatorvos lektorálása szükséges.",
+  "kind": "solution",
+  "category": "AI megoldás",
+  "methods": [
+    "vibe-coding"
+  ],
+  "models": [
+    "Claude Code",
+    "Opus 5.5",
+    "Sonnet 5",
+    "gpt-image-2",
+    "JavaScript",
+    "PWA",
+    "Python",
+    "Coolify",
+    "Hetzner",
+    "nginx",
+    "Umami",
+    "Mailchimp",
+    "GitHub Pages"
+  ],
+  "tags": [
+    "kutyafajta",
+    "kutyaválasztás",
+    "PWA",
+    "offline",
+    "interaktív vizualizáció",
+    "animáció",
+    "kvíz",
+    "AI-generált portrék",
+    "marketingkészlet"
+  ],
+  "industries": [],
+  "cover_url": "/media/feltoltes/pacsi-kutyafajta-valaszto/d-rank-1790516819246.webp",
+  "gallery": [
+    {
+      "url": "/media/feltoltes/pacsi-kutyafajta-valaszto/d-rank-1790516819246.webp",
+      "original": "/media/feltoltes/pacsi-kutyafajta-valaszto/d-rank-1790516819246@2x.webp",
+      "alt": "A Pacsi felhő nézete asztali gépen: 124 kutyafajta buborékokban, balra a szűrőkkel; a Kicsi, Gyerekbarát és Lakásba való szűrőnek megfelelő 19 fajta előre ugrik.",
+      "caption": "Felhő nézet, Rangsor mód: a megfelelő fajták előre ugranak"
+    },
+    {
+      "url": "/media/feltoltes/pacsi-kutyafajta-valaszto/d-card-1790516820352.webp",
+      "original": "/media/feltoltes/pacsi-kutyafajta-valaszto/d-card-1790516820352@2x.webp",
+      "alt": "A Cavalier King Charles spániel fajtakártyája: portré, 100%-os illeszkedés, pontozott jellemzők, leírás és hogy kinek ajánlott.",
+      "caption": "Fajtakártya: miért illik hozzád"
+    },
+    {
+      "url": "/media/feltoltes/pacsi-kutyafajta-valaszto/d-quiz-1790516821187.webp",
+      "original": "/media/feltoltes/pacsi-kutyafajta-valaszto/d-quiz-1790516821187@2x.webp",
+      "alt": "A Párkereső kvíz eredménye: a „Családi karmester” gazditípus és a hozzá legjobban illő öt fajta százalékos illeszkedéssel.",
+      "caption": "Párkereső kvíz: gazditípus és a top 5 fajta"
+    },
+    {
+      "url": "/media/feltoltes/pacsi-kutyafajta-valaszto/d-map-1790516822391.webp",
+      "original": "/media/feltoltes/pacsi-kutyafajta-valaszto/d-map-1790516822391@2x.webp",
+      "alt": "A Térkép nézet: a fajták méret és energiaszint szerint elrendezve, olyan zónákkal, mint a Zsebrakéták, a Nyugis törpék és a Kanapé-óriások.",
+      "caption": "Térkép: méret és energia szerint"
+    },
+    {
+      "url": "/media/feltoltes/pacsi-kutyafajta-valaszto/d-compare-1790516823500.webp",
+      "original": "/media/feltoltes/pacsi-kutyafajta-valaszto/d-compare-1790516823500@2x.webp",
+      "alt": "Az Összehasonlítás panel: a rövidszőrű magyar vizsla, a golden retriever és a border collie jellemzői pókhálódiagramon és táblázatban.",
+      "caption": "Összehasonlítás: három fajta egymás mellett"
+    }
+  ],
+  "youtube_url": null,
+  "demo_url": "https://pacsit.hu",
+  "repo_url": "https://github.com/Sabolo100/DogsClaude",
+  "embed_url": null,
+  "pdf_url": null,
+  "starter_prompt": "Alább egy kutyavásárlást tervezőknek szóló, a kutyaválasztást sehítő app vázlata. Tedd ezt telejssé, egészítsd ki bármivel, amivel kellene, hogy eyg siekres, látványos, nagyon népszerű weboldal és pwa app legyen belőle. Egy md filet várok tőled, amiben a réslzets speckó van benne - kódolni nem kell, de a UI/UX desingon agyalj, z szép legyen - ha megvan a leírás, képet kell majd generálnod a laptop és mobil képernyőre külön- külön alább a vázlat csinálj egy nagyon látványos vizulizácitót a kutyafajtákra és csoportosításukra, szűrésükre különböz szempontok szerint. Gyűjtsd össze a 40-60 legnépszerűbb, európában tartott kutyafajtát maygarul Minden kutyához találj egy fotót – vagy generálj egy rajzot A vizuéizáció egy web oldal laptopra valamint egy PWA mobilra Laptopon a képernyőn megjelennek a kutyfajták kis képei – designos kisci keretben, pl körben, véletlenszerűen elszóra, hooverre kiíródik a kutya neve. A képernyő szélén különböző szűrőket lehet beállítani (méretkategória, funkció, sima, közép hosszú ször, gyerekbarát, idomítható, hangos, stbb, stb – amiket szokta használni a kutyafajták kategorzálásánál Ha a user kiválaszt egy filtert, az ahhoz tartozó kutyafajták kör képei, kicsit nagyobbak lesznek, előrébb jönnek – mintha előre ugranának – ha még egy szűrőt kiválasztokk az még előrébb jön. Ugy kell a méreteket kitalálni, akár menet közben is változatni, hogy minden kör látható legyen. Mobilom ez így valószínűleg nem fér ki, de egy ötlet pl, hogy alul vannak a szűrők. Alap esetben nagyon kicsik a körök és minden ktyafajta kis képe felfér. Ha egy filtert kviáalsztok, akkor az annak nem megfelelő kutyák körei felfelé kirepülnek a képernyőről és a maradék körök, formák a fajtákkal nagyaobbak leszenk – ha még egy szűrűt bekapcsolok, akkor amelyik nem felel meg most már annaka szűrőnek sem, az is felfelé kirepül és az marad a képernyőn, ami mindkettőenk megfelel – ez egy ötlet, ha van jobb mondd. Nagyon fontosak a kis megejelnési, mozgási, méretnövekedés és csökkenési animációk, effektek, pulzálások – ezeketől lesz látváynos a kép, a web oldal a pwa A mobil pwas esetében oylan az egész, mintha egy valós mobil app lenne. A kis kutyaképek generálásához használhatsz generálást – de nem kell képenként egyet – generálhatsz olyan képet melyben pl rácsban van 4*4 fajta képe és szétvágod. Aképek ugye kicsik. Lap toponon hooverre kiíródik a kutyafajta neve – klikkre kis kártya jelenik meg egy nagyobb képpel és a kutyafajta leírásával Az egész egy standalon html megoldás – nem kell adatbázis. Nagyon fotnosak az effektek, pulzáslások, átmozdulások, mellyekkel a szűrés hatása látszik a fajták formáira, pöttyeire. A maguk a filterek is legyenek designosak – mobilra lehet egy ikonos változat, hogy jobban elférjen. Ha az t érzed érdemes még funkciót hozzátenni – tedd meg. A képek generálására beteszek a folderbe egy chatgpt api-t",
+  "development_time": "kb. 17 óra aktív munka, 4 nap alatt",
+  "token_cost": 812911917,
+  "iterations": 61,
+  "team_size": 1,
+  "project_date": "2026-09-24",
+  "meta_title": "Pacsi – kutyafajta-választó app 17 óra alatt, Claude Code-dal | DarwinAI",
+  "meta_description": "Egy ötletvázlatból négy nap alatt élő, telepíthető kutyafajta-választó app lett: 124 fajta animált felhőben, Párkereső kvíz, offline PWA és marketingkészlet – Claude Code-dal, egy emberrel."
+}

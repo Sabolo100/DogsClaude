@@ -1,0 +1,42 @@
+Üdv a falkában · 3/3
+
+ÜDV A FALKÁBAN · 3/3
+NE A LEGCUKIBBAT VÁLASZD – HANEM AZT, AKI ILLIK HOZZÁD.
+Öt gyakori hiba kutyaválasztáskor, és hogyan kerülheted el őket.
+→ Szűrés a saját életemre: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc3&utm_content=hero
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Az elmúlt napokban megnézhetted, milyen gazdi vagy (ha nem, itt pótolhatod (https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc3&utm_content=bevezeto#kviz)). Most jöjjön a legfontosabb rész: hogyan lesz a választásból jó döntés.
+
+FELELŐS VÁLASZTÁS
+5 gyakori hiba
+  - A külső alapján dönteni. A kölyökfotó cuki – de a felnőtt kutya igényei számítanak. Nézd meg a kártyáján az energiát és az ugatást is.
+  - Alábecsülni a mozgásigényt. Egy vizslának vagy border collie-nak napi 1,5–2 óra kell, egy mopsznak fél óra is elég.
+  - Elfelejteni a szomszédokat. Vékony falú lakásba nem jó egy sokat ugató fajta.
+  - Nem számolni a költségekkel. Táp, orvos, kozmetika: egyes fajtáknál ez jóval több.
+  - Rossz helyről hozni. A felelős tenyésztő szűrt szülőket mutat, a menhely őszintén beszél a kutyáról – a hirdetési oldalak kiskutyái mögött viszont sokszor szaporítók állnak.
+
+ISMERD MEG A HAZAI KINCSEKET
+  - Puli: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc3&utm_content=magyar-fajtak#b=puli
+  - Pumi: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc3&utm_content=magyar-fajtak#b=pumi
+  - Mudi: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc3&utm_content=magyar-fajtak#b=mudi
+  - Komondor: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc3&utm_content=magyar-fajtak#b=komondor
+  - Kuvasz: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc3&utm_content=magyar-fajtak#b=kuvasz
+  - Erdélyi kopó: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc3&utm_content=magyar-fajtak#b=erdelyi-kopo
+  - Rövidszőrű magyar vizsla: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc3&utm_content=magyar-fajtak#b=magyar-vizsla
+  - Drótszőrű magyar vizsla: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc3&utm_content=magyar-fajtak#b=drotszoru-magyar-vizsla
+  - Magyar agár: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=wlc3&utm_content=magyar-fajtak#b=magyar-agar
+
+Ismersz valakit, aki kutyát szeretne?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Mostantól csütörtökönként jövünk. Jó böngészést!
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

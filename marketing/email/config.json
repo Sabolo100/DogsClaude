@@ -1,0 +1,83 @@
+{
+  "_doc": "Pacsi eDM – beállítások. Az üres mezőket a Mailchimp-közönség létrehozása előtt ki kell tölteni (a mailchimp.py setup addig nem indul). A kulcs NEM ide kerül, hanem a repó gyökerébe: Mailchimp_API.txt.",
+  "sender": {
+    "from_name": "Pacsi",
+    "from_email": "hello@pacsit.hu",
+    "_from_email_tip": "Javaslat: hello@pacsit.hu. Ehhez a pacsit.hu-n kell egy valódi postafiók (a Mailchimp ide küld ellenőrző levelet), és a Rackhost DNS-ében be kell állítani a Mailchimp DKIM (CNAME) és a DMARC (TXT) rekordját.",
+    "reply_to": "",
+    "signature_name": "",
+    "signature_role": "a Pacsi csapata",
+    "signature_phone": ""
+  },
+  "company": {
+    "name": "DarwinAI",
+    "legal_name": "ARworks Kft.",
+    "address1": "Várfok utca 3-5.",
+    "city": "Budapest",
+    "zip": "1012",
+    "country": "HU",
+    "website": "https://www.darwinai.hu",
+    "_tip": "A Mailchimp és a jogszabályok is előírják, hogy minden hírlevél láblécében ott legyen a küldő postacíme."
+  },
+  "audience": {
+    "name": "Pacsi",
+    "permission_reminder": "Azért kapod ezt a levelet, mert feliratkoztál a Pacsi heti kutyás levelére a pacsit.hu-n, vagy partnerként kérted.",
+    "double_optin": true,
+    "marketing_permissions": true,
+    "language": "hu",
+    "interests_title": "Mi érdekel?",
+    "interests": [
+      "Fajtaajánló és kvízek",
+      "Gazdi-tippek",
+      "Partneri hírek (szervezeteknek)"
+    ],
+    "merge_fields": [
+      {
+        "tag": "ORG",
+        "name": "Szervezet",
+        "type": "text"
+      },
+      {
+        "tag": "TIPUS",
+        "name": "Kapcsolat típusa",
+        "type": "text"
+      },
+      {
+        "tag": "PID",
+        "name": "Pacsi azonosító",
+        "type": "text"
+      }
+    ]
+  },
+  "schedule": {
+    "weekday": "csütörtök",
+    "time": "10:00",
+    "timezone": "Europe/Budapest"
+  },
+  "links": {
+    "site": "https://pacsit.hu/",
+    "privacy": "",
+    "_privacy_tip": "Az adatkezelési tájékoztató webcíme (tervezet: marketing/email/adatkezelesi_tajekoztato.md). Amíg üres, a lábléc nem mutat rá linket.",
+    "signup": "https://pacsit.hu/hirlevel/",
+    "_signup_tip": "A feliratkozó oldal címe. A mailchimp.py setup kitölti a Mailchimp saját űrlapjának címével; ha kint van a pacsit.hu/hirlevel oldal, írd át arra.",
+    "pitch": "https://sabolo100.github.io/pacsi-partner/"
+  },
+  "social": {
+    "instagram": "",
+    "tiktok": "",
+    "facebook": "",
+    "linkedin": "",
+    "_tip": "A Pacsi közösségi profiljainak teljes címe (pl. https://www.instagram.com/…). Amelyik üres, annak az ikonja nem jelenik meg a levélben."
+  },
+  "utm": {
+    "source": "pacsi-level",
+    "medium": "email"
+  },
+  "mailchimp": {
+    "mode": "draft",
+    "_mode_tip": "draft = csak piszkozatot hoz létre (most ez az alapállás); schedule = a jóváhagyott leveleket be is ütemezi (fizetős csomag kell hozzá); send-due = a saját időzítőnk küldi ki a lejárt, jóváhagyott leveleket (ingyenes csomagon is működik).",
+    "folder": "Pacsi eDM",
+    "import_status": "pending",
+    "_import_tip": "pending = a partner kap egy megerősítő levelet (legbiztonságosabb); subscribed = csak akkor, ha írásos hozzájárulás van (pl. válaszlevélben kérte)."
+  }
+}

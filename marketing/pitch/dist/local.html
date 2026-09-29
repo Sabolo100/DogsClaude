@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<title>Pacsi partneri ajánlat</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Pacsi – partneri ajánlat kutyás márkáknak (DarwinAI)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..900,0..100;1,9..144,500..900,0..100&family=Manrope:wght@400..800&display=swap">
+<style>
+/* Egyetlen, szándékosan világos arculati világ (a Pacsi krém–korall palettája) – minden szín explicit. */
+:root {
+  --bg: #FBF6EE; --paper: #FFFDF9; --sand: #F4EADC; --ink: #1E1B18; --ink-2: #5F564E; --ink-3: #958A80;
+  --coral: #EE5A2C; --coral-2: #FF8A3D; --sun: #FFC845; --teal: #17756E; --lav: #5B5BD6; --rose: #E86A92; --sky: #2FA3D6;
+  --peach: #FFD2B8; --lavender: #E2D6FF; --mint: #C9EEDC; --butter: #FFE6A0;
+  --line: rgba(30, 27, 24, .10);
+  --shadow: 0 1px 2px rgba(90, 50, 20, .05), 0 10px 30px rgba(90, 50, 20, .09);
+  --shadow-lg: 0 2px 6px rgba(90, 50, 20, .07), 0 30px 70px rgba(90, 50, 20, .16);
+  --d: 'Fraunces', ui-serif, Georgia, serif;
+  --u: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; background: #EFE6D8; color: var(--ink); }
+body { font: 500 16px/1.5 var(--u); -webkit-font-smoothing: antialiased; }
+img, video { max-width: 100%; display: block; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; border-radius: 8px; }
+
+/* ---------- dia-váz ---------- */
+.stage { position: relative; }
+.slide { position: relative; overflow: hidden; background: var(--bg); container-type: inline-size; isolation: isolate; }
+.slide::before { content: ""; position: absolute; inset: -20%; z-index: -2; pointer-events: none;
+  background: radial-gradient(34% 40% at 12% 8%, rgba(255, 210, 184, .75), transparent 70%), radial-gradient(30% 36% at 92% 30%, rgba(226, 214, 255, .7), transparent 70%), radial-gradient(34% 38% at 40% 104%, rgba(201, 238, 220, .7), transparent 70%); }
+.slide::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .25 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.in { padding: clamp(22px, 5.4cqi, 88px) clamp(18px, 5.6cqi, 92px); height: 100%; display: flex; flex-direction: column; gap: clamp(14px, 1.8cqi, 30px); }
+.pnum { position: absolute; right: clamp(16px, 3cqi, 48px); top: clamp(14px, 2.6cqi, 42px); font: 700 clamp(11px, .8cqi, 13px)/1 var(--u); letter-spacing: .1em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.mini-logo { position: absolute; left: clamp(18px, 5.6cqi, 92px); top: clamp(14px, 2.6cqi, 40px); font: 800 clamp(16px, 1.4cqi, 22px)/1 var(--d); font-variation-settings: "SOFT" 100, "opsz" 72; letter-spacing: -.02em; }
+
+/* ---------- tipográfia ---------- */
+.kick { font: 800 clamp(11px, .85cqi, 14px)/1 var(--u); letter-spacing: .16em; text-transform: uppercase; color: var(--coral); }
+.h1, .h2 { font-family: var(--d); font-weight: 800; font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.035em; line-height: .98; margin: 0; text-wrap: balance; color: var(--ink); }
+.h1 { font-size: clamp(38px, 6.1cqi, 98px); }
+.h2 { font-size: clamp(28px, 3.9cqi, 62px); }
+.h1 em, .h2 em { font-style: italic; color: var(--coral); font-weight: 800; }
+.lead { font: 600 clamp(16px, 1.45cqi, 23px)/1.45 var(--u); color: var(--ink-2); margin: 0; max-width: 62ch; text-wrap: pretty; }
+.t { font: 500 clamp(14px, 1.08cqi, 17px)/1.5 var(--u); color: var(--ink-2); margin: 0; }
+.tt { font: 800 clamp(16px, 1.3cqi, 21px)/1.25 var(--u); color: var(--ink); margin: 0; }
+.src { font: 500 clamp(10.5px, .78cqi, 12.5px)/1.4 var(--u); color: var(--ink-3); margin: 0; }
+.num { font-family: var(--d); font-weight: 800; font-variation-settings: "SOFT" 60, "opsz" 144; letter-spacing: -.04em; line-height: .9; font-variant-numeric: tabular-nums; color: var(--coral); }
+
+/* ---------- elrendezések ---------- */
+.row { display: flex; gap: clamp(14px, 2cqi, 32px); align-items: center; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 3.4cqi, 56px); align-items: center; flex: 1; min-height: 0; }
+.cols.w6 { grid-template-columns: 1.15fr .85fr; } .cols.w4 { grid-template-columns: .85fr 1.15fr; }
+.g2, .g3, .g4, .g5 { display: grid; gap: clamp(12px, 1.4cqi, 22px); }
+.g2 { grid-template-columns: repeat(2, 1fr); } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); } .g5 { grid-template-columns: repeat(5, 1fr); }
+.card { background: var(--paper); border-radius: clamp(16px, 1.6cqi, 26px); padding: clamp(14px, 1.6cqi, 26px); box-shadow: var(--shadow); border: 1px solid rgba(30, 27, 24, .05); }
+.card.hot { background: linear-gradient(150deg, #FF6B3D, #EE5A2C 55%, #D9481E); color: #fff; border: 0; }
+.card.hot .tt, .card.hot .t, .card.hot .num { color: #fff; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 13px; border-radius: 999px; background: var(--paper); box-shadow: var(--shadow); font: 800 clamp(12px, .95cqi, 15px)/1.2 var(--u); color: var(--ink); white-space: nowrap; }
+.chip.c { background: var(--coral); color: #fff; }
+.ico { width: clamp(38px, 3.4cqi, 54px); height: clamp(38px, 3.4cqi, 54px); border-radius: 50%; display: grid; place-items: center; font-size: clamp(18px, 1.6cqi, 26px); flex: none; }
+.bub { border-radius: 50%; background: #fff center/cover; box-shadow: 0 0 0 clamp(3px, .35cqi, 6px) #fff, 0 10px 26px rgba(90, 50, 20, .18); }
+.flo { position: absolute; animation: flo 7s ease-in-out infinite alternate; }
+@keyframes flo { to { transform: translateY(-14px) rotate(3deg); } }
+
+/* telefonkeret (képernyőkép vagy videó) */
+.phone { position: relative; aspect-ratio: 418 / 872; width: 100%; max-width: var(--pw, 300px); border-radius: 13% / 6.3%; padding: 3.2%; background: linear-gradient(145deg, #2a2622, #0f0d0c 60%, #25211e); box-shadow: 0 0 0 2px #4a433d inset, var(--shadow-lg); }
+.phone > .scr { position: relative; width: 100%; height: 100%; border-radius: 10% / 4.9%; overflow: hidden; background: var(--bg); }
+.phone > .scr > img, .phone > .scr > video { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.phone .isl { position: absolute; left: 50%; top: 1.4%; width: 31%; height: 4.1%; border-radius: 99px; background: #000; transform: translateX(-50%); z-index: 3; }
+.vid { position: relative; border-radius: clamp(14px, 1.4cqi, 22px); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 9 / 16; background: #efe6da; }
+.vid video, .vid img { width: 100%; height: 100%; object-fit: cover; }
+.vposter { display: none; }
+
+/* partnerlogó helye */
+.plogo { display: inline-flex; align-items: center; justify-content: center; min-width: 5.5em; padding: .35em .8em; border-radius: .5em; border: 1.5px dashed rgba(30, 27, 24, .35); background: #fff; font: 800 1em/1 var(--u); color: var(--ink); letter-spacing: .01em; white-space: nowrap; }
+
+/* ---------- belépő animációk (csak prezentációs módban) ---------- */
+html.pres .slide .a { opacity: 0; transform: translateY(26px); }
+html.pres .slide.on .a { animation: rise .8s var(--ease) both; animation-delay: calc(var(--i, 0) * 85ms + 120ms); }
+html.pres .slide.cover .a { opacity: 1; transform: none; }
+html.pres .slide.cover.on .a { animation: rise-t .9s var(--ease) both; animation-delay: calc(var(--i, 0) * 70ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes rise-t { from { transform: translateY(18px); } to { transform: none; } }
+.bar i { transform-origin: 0 50%; }
+html.pres .slide.on .bar i { animation: grow 1.1s var(--ease) both; animation-delay: calc(var(--i, 0) * 110ms + 350ms); }
+@keyframes grow { from { transform: scaleX(0); } }
+
+/* ---------- prezentációs mód: fix 1600×900-as színpad, méretezve ---------- */
+html.pres, html.pres body { height: 100%; overflow: hidden; }
+html.pres .stage { position: fixed; left: 50%; top: 50%; width: 1600px; height: 900px; transform: translate(-50%, -50%) scale(var(--k, 1)); }
+html.pres .slide { position: absolute; inset: 0; width: 1600px; height: 900px; border-radius: 0; opacity: 0; visibility: hidden; transform: translateX(70px); transition: opacity .55s var(--ease), transform .7s var(--ease), visibility 0s .7s; box-shadow: 0 40px 120px rgba(60, 30, 10, .25); }
+html.pres .slide.on { opacity: 1; visibility: visible; transform: none; transition: opacity .55s var(--ease), transform .7s var(--ease); }
+html.pres .slide.past { transform: translateX(-70px); }
+/* ---------- dokumentum mód (telefon, álló ablak): egymás alatti kártyák ---------- */
+html.doc body { padding: max(12px, env(safe-area-inset-top, 0px)) 12px 90px; }
+html.doc .stage { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+html.doc .slide { border-radius: 26px; box-shadow: var(--shadow); }
+html.doc .in { height: auto; padding-top: clamp(44px, 6cqi, 70px); }
+@container (max-width: 900px) {
+  .cols, .cols.w6, .cols.w4 { grid-template-columns: 1fr; }
+  .g4, .g5 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: 1fr; }
+  .hide-n { display: none !important; }
+  .phone { margin: 0 auto; }
+}
+@container (max-width: 520px) { .g2, .g4, .g5 { grid-template-columns: 1fr; } }
+
+/* ---------- navigáció ---------- */
+.dnav { position: fixed; right: 18px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 20; display: flex; gap: 6px; align-items: center; padding: 6px; border-radius: 999px; background: rgba(255, 253, 249, .92); backdrop-filter: blur(10px); box-shadow: var(--shadow-lg); border: 1px solid var(--line); }
+.dnav { transition: opacity .5s; } html.idle .dnav, html.idle .hint { opacity: .12; } .dnav:hover { opacity: 1 !important; }
+.dnav button, .dnav .pdfl { width: 40px; height: 40px; border-radius: 50%; border: 0; background: transparent; display: grid; place-items: center; }
+.dnav .pdfl:hover { background: var(--sand); }
+.dnav button:hover { background: var(--sand); }
+.dnav .cnt { font: 800 13px/1 var(--u); font-variant-numeric: tabular-nums; min-width: 58px; text-align: center; color: var(--ink-2); }
+.dnav svg { width: 20px; height: 20px; fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.prog { position: fixed; left: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--coral), var(--sun)); z-index: 21; transition: width .5s var(--ease); }
+html.doc .dnav .pv, html.doc .dnav .nx, html.doc .dnav .fs, html.doc .prog { display: none; }
+.toc { position: fixed; right: 18px; bottom: 76px; z-index: 22; width: min(340px, calc(100vw - 36px)); max-height: 70vh; overflow: auto; border-radius: 22px; background: var(--paper); box-shadow: var(--shadow-lg); border: 1px solid var(--line); padding: 10px; }
+.toc button { display: flex; gap: 12px; width: 100%; text-align: left; border: 0; background: none; padding: 9px 12px; border-radius: 12px; font: 700 14px/1.3 var(--u); color: var(--ink-2); }
+.toc button b { font-variant-numeric: tabular-nums; color: var(--ink-3); min-width: 20px; }
+.toc button:hover, .toc button.cur { background: var(--sand); color: var(--ink); }
+.hint { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 19; font: 700 12.5px/1 var(--u); color: var(--ink-3); background: rgba(255, 253, 249, .85); padding: 8px 14px; border-radius: 999px; transition: opacity .6s; }
+html.doc .hint { display: none; }
+
+/* ---------- nyomtatás (PDF) ---------- */
+@page { size: 1600px 900px; margin: 0; }
+@media print {
+  html, body { background: #fff; height: auto; overflow: visible; }
+  html .stage { position: static; transform: none; width: 1600px; height: auto; }
+  html .slide { position: relative; opacity: 1 !important; visibility: visible !important; transform: none !important; width: 1600px; height: 900px; break-after: page; page-break-after: always; box-shadow: none; border-radius: 0; }
+  html .slide .a, html .slide .bar i { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .dnav, .prog, .toc, .hint { display: none !important; }
+  video { display: none !important; } .vposter { display: block !important; }
+  .flo { animation: none !important; }
+  .slide::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.pres .slide, html.pres .slide.on { transition: opacity .2s; transform: none !important; }
+  html.pres .slide.on .a, html.pres .slide.on .bar i { animation: none; opacity: 1; transform: none; }
+  .flo { animation: none; }
+}
+
+/* ---------- egyedi diák ---------- */
+.cover .in { justify-content: center; }
+.cover .brand { font: 800 clamp(64px, 8.6cqi, 138px)/.9 var(--d); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.03em; display: inline-flex; align-items: baseline; gap: .12em; }
+.cover .brand > span { white-space: nowrap; }
+.cover .brand small { font: 700 .2em/1 var(--u); letter-spacing: .02em; color: var(--ink-2); white-space: nowrap; }
+.cover .brand small b { color: var(--coral); }
+.logo-i { position: relative; display: inline-block; }
+.logo-i svg { position: absolute; width: .5em; height: .5em; left: 50%; top: -.28em; transform: translateX(-50%) rotate(-12deg); fill: #FF6B3D; }
+.cover .kv { position: absolute; right: -2cqi; bottom: -3cqi; width: 50cqi; aspect-ratio: 1; background: url('assets/kv_highfive.webp') center/cover; -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); z-index: -1; }
+.cover .partner { display: inline-flex; align-items: center; gap: 12px; padding: 10px 18px; border-radius: 16px; background: var(--paper); box-shadow: var(--shadow); font: 700 clamp(14px, 1.1cqi, 18px)/1.3 var(--u); width: fit-content; }
+@container (max-width: 900px) { .cover .in { max-width: none !important; } }
+@container (max-width: 900px) { .cover .kv { position: relative; right: auto; bottom: auto; width: 100%; max-width: 520px; margin: 0 auto -10px; order: 9; } }
+.steps4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.4cqi, 22px); position: relative; }
+.steps4 .card { position: relative; display: flex; flex-direction: column; gap: 10px; }
+.steps4 .card .nn { font: 800 clamp(13px, 1cqi, 16px)/1 var(--u); color: var(--ink-3); letter-spacing: .1em; }
+.steps4 .card.hot .nn { color: rgba(255, 255, 255, .8); }
+.steps4 .arrow { position: absolute; top: 50%; right: calc(clamp(12px, 1.4cqi, 22px) * -1); width: clamp(12px, 1.4cqi, 22px); height: 2px; background: var(--ink-3); }
+@container (max-width: 900px) { .steps4 { grid-template-columns: 1fr 1fr; } .steps4 .arrow { display: none; } }
+.bars { display: flex; flex-direction: column; gap: clamp(9px, 1cqi, 15px); }
+.bar { display: grid; grid-template-columns: clamp(130px, 15cqi, 250px) 1fr clamp(44px, 4cqi, 64px); gap: 12px; align-items: center; font: 700 clamp(13px, 1.05cqi, 17px)/1.2 var(--u); }
+.bar span:last-child { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink); }
+.bar div { height: clamp(14px, 1.5cqi, 24px); background: var(--sand); border-radius: 999px; overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: 999px; background: var(--ink-3); }
+.bar.hl i { background: var(--coral); } .bar.hl { color: var(--coral); }
+.lineup { position: absolute; left: 0; right: 0; bottom: -1cqi; height: 23cqi; background: url('assets/kv_lineup.webp') center bottom/auto 100% no-repeat; z-index: -1; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 25%); mask-image: linear-gradient(to bottom, transparent, #000 25%); }
+@container (max-width: 900px) { .lineup { position: relative; height: 34cqi; margin: 0 -20px -24px; background-size: cover; } }
+.pers .card { display: flex; flex-direction: column; gap: 8px; }
+.why .card { min-height: 17cqi; } .why .t { font-size: clamp(14px, 1.15cqi, 18px); }
+.pers .q { font: italic 700 clamp(14px, 1.1cqi, 17px)/1.35 var(--d); color: var(--coral); font-variation-settings: "SOFT" 100, "opsz" 36; }
+.pers .b { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); font: 700 clamp(12px, .95cqi, 14.5px)/1.35 var(--u); color: var(--teal); }
+.mock { display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center; }
+.mock .phone { --pw: 230px; }
+.over { position: absolute; left: 5%; right: 5%; z-index: 4; background: #fff; border-radius: 14px; padding: 9px 10px; box-shadow: 0 10px 26px rgba(40, 20, 5, .28); text-align: left; font: 700 11.5px/1.3 var(--u); color: var(--ink); border: 2px solid var(--coral); }
+.over small { display: block; margin-top: 6px; font: 700 10px/1 var(--u); color: var(--ink-3); }
+.over .plogo { font-size: 10.5px; min-width: 0; padding: .3em .6em; margin-left: 4px; }
+.tier { display: flex; flex-direction: column; gap: 12px; }
+.tier ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.tier li { position: relative; padding-left: 26px; font: 600 clamp(13px, 1cqi, 16px)/1.4 var(--u); color: var(--ink-2); }
+.tier li::before { content: ""; position: absolute; left: 0; top: .28em; width: 16px; height: 16px; border-radius: 50%; background: var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2 7 10.6l4.6-5' fill='none' stroke='%2317756E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100%; }
+.tier.hot li { color: rgba(255, 255, 255, .92); } .tier.hot li::before { background-color: rgba(255, 255, 255, .25); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2 7 10.6l4.6-5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.tier .dur { font: 800 clamp(12px, .95cqi, 14px)/1 var(--u); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.tier.hot .dur { color: rgba(255, 255, 255, .8); }
+.tl { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.4cqi, 22px); position: relative; }
+.tl::before { content: ""; position: absolute; left: 2%; right: 2%; top: 13px; height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--coral), var(--sun), var(--teal)); }
+.tl .m { position: relative; padding-top: 40px; display: flex; flex-direction: column; gap: 8px; }
+.tl .m::before { content: ""; position: absolute; left: 0; top: 4px; width: 22px; height: 22px; border-radius: 50%; background: var(--paper); border: 5px solid var(--coral); }
+.tl .m.now::before { background: var(--coral); box-shadow: 0 0 0 7px rgba(238, 90, 44, .18); }
+.tl .when { font: 800 clamp(12px, .95cqi, 14px)/1 var(--u); letter-spacing: .12em; text-transform: uppercase; color: var(--coral); }
+.tl ul { margin: 0; padding-left: 18px; } .tl li { font: 600 clamp(14px, 1.2cqi, 19px)/1.45 var(--u); color: var(--ink-2); margin: 5px 0; }
+.tl .tt { font-size: clamp(18px, 1.7cqi, 27px); }
+@container (max-width: 900px) { .tl { grid-template-columns: 1fr; } .tl::before { display: none; } }
+.chk li { list-style: none; position: relative; padding-left: 38px; margin: 0; font: 600 clamp(14px, 1.1cqi, 18px)/1.4 var(--u); color: var(--ink-2); }
+.chk li b { color: var(--ink); }
+.chk li::before { content: "✓"; position: absolute; left: 0; top: .05em; width: 26px; height: 26px; border-radius: 50%; background: var(--teal); color: #fff; display: grid; place-items: center; font: 800 14px/26px var(--u); text-align: center; }
+.chk { margin: 0; padding: 0; display: grid; gap: clamp(10px, 1.2cqi, 18px); }
+.qr { width: clamp(120px, 11cqi, 180px); aspect-ratio: 1; background: #fff; border-radius: 16px; padding: 10px; box-shadow: var(--shadow); }
+.qr svg, .qr img { width: 100%; height: 100%; }
+.srcs { columns: 2; column-gap: 40px; margin: 0; padding-left: 18px; }
+.srcs li { font: 500 clamp(11.5px, .9cqi, 14px)/1.45 var(--u); color: var(--ink-2); margin: 0 0 10px; break-inside: avoid; }
+.srcs a { color: var(--teal); word-break: break-all; }
+@container (max-width: 900px) { .srcs { columns: 1; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="paw" viewBox="0 0 24 24"><ellipse cx="6" cy="9.5" rx="2.1" ry="2.7"/><ellipse cx="10" cy="5.6" rx="2.1" ry="2.8"/><ellipse cx="14.6" cy="5.6" rx="2.1" ry="2.8"/><ellipse cx="18.4" cy="9.6" rx="2.1" ry="2.7"/><path d="M12.3 11.2c2.6 0 5.6 3.4 5.6 6.2 0 2-1.5 2.9-3.2 2.9-1 0-1.7-.5-2.4-.5s-1.4.5-2.4.5c-1.7 0-3.2-.9-3.2-2.9 0-2.8 3-6.2 5.6-6.2z"/></symbol>
+</defs></svg>
+
+<div class="prog" id="prog"></div>
+<main class="stage" id="stage">
+
+<!-- 1 · Nyitó -->
+<section class="slide cover" data-title="Nyitó">
+  <div class="kv"></div>
+  <div class="bub flo hide-n" style="position:absolute;left:47cqi;top:9cqi;width:7.5cqi;aspect-ratio:1;background-image:url('assets/p_cavalier-king-charles-spaniel.webp')"></div>
+  <div class="bub flo hide-n" style="position:absolute;left:58cqi;top:4cqi;width:5.4cqi;aspect-ratio:1;background-image:url('assets/p_puli.webp');animation-delay:-2s"></div>
+  <div class="bub flo hide-n" style="position:absolute;left:88cqi;top:7cqi;width:6.5cqi;aspect-ratio:1;background-image:url('assets/p_magyar-vizsla.webp');animation-delay:-4s"></div>
+  <div class="bub flo hide-n" style="position:absolute;left:71cqi;top:11cqi;width:4.6cqi;aspect-ratio:1;background-image:url('assets/p_bichon-frise.webp');animation-delay:-1s"></div>
+  <div class="in" style="max-width:56cqi">
+    <div class="kick a" style="--i:0">Partneri ajánlat kutyás márkáknak · 2026 ősz</div>
+    <div class="brand a" style="--i:1"><span>Pacs<span class="logo-i">ı<svg viewBox="0 0 24 24"><use href="#paw"/></svg></span></span><small>by <b>DarwinAI</b></small></div>
+    <h1 class="h1 a" style="--i:2">Ahol a gazdi-lét <em>elkezdődik.</em></h1>
+    <p class="lead a" style="--i:3">A Pacsi segít a leendő gazdiknak megtalálni a hozzájuk illő kutyát – egy kutyás márkának pedig ott lenni ennél a döntésnél.</p>
+    <div class="partner a" style="--i:4" data-partner-line hidden>Személyre szabott ajánlat: <span class="plogo" data-partner></span></div>
+  </div>
+</section>
+
+<!-- 2 · A pillanat -->
+<section class="slide" data-title="A döntés pillanata">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in" style="justify-content:center">
+    <div class="kick a">A pillanat</div>
+    <h2 class="h2 a" style="--i:1;max-width:30ch">Minden gazdi-történet egy <em>döntéssel</em> kezdődik.</h2>
+    <p class="lead a" style="--i:2">Mielőtt megérkezik az első zsák táp, az első póráz vagy az első oltás, a leendő gazdi eldönti, milyen kutyát választ. Ez a döntés 10–15 évre meghatározza, mire és hol költ.</p>
+    <div class="steps4" style="margin-top:1.4cqi">
+      <div class="card hot a" style="--i:3"><span class="nn">01 · ITT VAN A PACSI</span><div class="tt">Fajtaválasztás</div><p class="t">Hetekig tartó keresgélés: fórumok, listák, ismerősök tanácsai.</p><span class="arrow"></span></div>
+      <div class="card a" style="--i:4"><span class="nn">02</span><div class="tt">Megérkezik a kölyök</div><p class="t">Első táp, fekhely, póráz, első állatorvosi vizit.</p><span class="arrow"></span></div>
+      <div class="card a" style="--i:5"><span class="nn">03</span><div class="tt">Az első év</div><p class="t">Oltások, kutyaiskola, ápolás, biztosítás.</p><span class="arrow"></span></div>
+      <div class="card a" style="--i:6"><span class="nn">04</span><div class="tt">10–15 év együtt</div><p class="t">Napi etetés, egészség, kényelem, közös kalandok.</p></div>
+    </div>
+    <p class="tt a" style="--i:7;margin-top:1cqi;font-family:var(--d);font-style:italic;font-weight:700;font-size:clamp(18px,1.7cqi,27px);color:var(--ink-2)">Aki a döntésnél segít, arra a gazdi emlékszik.</p>
+  </div>
+</section>
+
+<!-- 3 · A probléma -->
+<section class="slide" data-title="A probléma">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in">
+    <div class="kick a" style="margin-top:3cqi">A probléma</div>
+    <h2 class="h2 a" style="--i:1;max-width:26ch">A legtöbben nem a hozzájuk <em>illő</em> kutyát választják.</h2>
+    <div class="cols w6" style="align-items:stretch">
+      <div class="card a" style="--i:2;display:flex;flex-direction:column;gap:1.4cqi;justify-content:center">
+        <div class="tt">Mi alapján választották a kutyájukat a magyar gazdik?</div>
+        <div class="bars">
+          <div class="bar"><span>Méret</span><div><i style="width:100%;--i:0"></i></div><span>18,0%</span></div>
+          <div class="bar"><span>A fajta imázsa</span><div><i style="width:88.9%;--i:1"></i></div><span>16,0%</span></div>
+          <div class="bar"><span>A kutya vérmérséklete</span><div><i style="width:85.6%;--i:2"></i></div><span>15,4%</span></div>
+          <div class="bar"><span>A fajta vérmérséklete</span><div><i style="width:57.2%;--i:3"></i></div><span>10,3%</span></div>
+          <div class="bar"><span>Külső megjelenés</span><div><i style="width:52.2%;--i:4"></i></div><span>9,4%</span></div>
+          <div class="bar hl"><span>Saját életkörülmények</span><div><i style="width:30%;--i:5"></i></div><span>5,4%</span></div>
+        </div>
+        <p class="src">A választási szempontok említési aránya. Vetter, Vizi, Özsvári: Magyar Állatorvosok Lapja, 2022 (reprezentatív felmérés, n = 1001, 2021).</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.4cqi">
+        <div class="card hot a" style="--i:3"><div class="num" style="font-size:clamp(46px,6cqi,96px)">5,4%</div><p class="t" style="margin-top:8px;font-weight:700">A magyar gazdik közül ennyien vették figyelembe a saját életkörülményeiket, amikor kutyát választottak.</p></div>
+        <div class="card a" style="--i:4"><div class="tt">Minden 5. leendő gazdi</div><p class="t">egyáltalán nem tájékozódik a kutya érkezése előtt, 40% pedig egy hétnél rövidebb ideig.</p><p class="src" style="margin-top:6px">Holland, Animals, 2019 (Dogs Trust, Egyesült Királyság)</p></div>
+        <div class="card a" style="--i:5"><div class="tt">Kb. 18 000 kutya</div><p class="t">került gyepmesteri telepre Magyarországon 2023-ban.</p><p class="src" style="margin-top:6px">NÉBIH-adat, Pénzcentrum, 2024</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · A piac -->
+<section class="slide" data-title="A piac">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="lineup"></div>
+  <div class="in">
+    <div class="kick a" style="margin-top:3cqi">A piac</div>
+    <h2 class="h2 a" style="--i:1;max-width:24ch">Magyarország Európa egyik <em>legkutyásabb</em> országa.</h2>
+    <div class="g3" style="margin-top:.6cqi">
+      <div class="card a" style="--i:2"><div class="num" style="font-size:clamp(44px,5.6cqi,90px)">2,8 M</div><p class="tt" style="margin-top:10px">kutya él Magyarországon</p><p class="src" style="margin-top:6px">FEDIAF Facts &amp; Figures 2025 (2023-as adat)</p></div>
+      <div class="card a" style="--i:3"><div class="num" style="font-size:clamp(44px,5.6cqi,90px)">50%</div><p class="tt" style="margin-top:10px">a háztartások fele tart kutyát – a legmagasabb arány 41 európai ország közül</p><p class="src" style="margin-top:6px">FEDIAF 2025; hasonló: Medián-felmérés 2021 (50,4%)</p></div>
+      <div class="card a" style="--i:4"><div class="num" style="font-size:clamp(44px,5.6cqi,90px)">71 Mrd Ft</div><p class="tt" style="margin-top:10px">kutyaeledelre 2025-ben – a teljes kisállateledel-piac 143 Mrd Ft</p><p class="src" style="margin-top:6px">NIQ kiskereskedelmi index, Trade magazin, 2026</p></div>
+    </div>
+    <p class="src a" style="--i:5;max-width:80ch">Más felmérés alacsonyabb arányt mér: a TÁRKI 2022-es adatai szerint a felnőttek 30%-a él kutyával (eltérő módszertan: személyek, nem háztartások).</p>
+  </div>
+</section>
+
+<!-- 5 · A megoldás -->
+<section class="slide" data-title="A megoldás">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in">
+    <div class="cols w6">
+      <div style="display:flex;flex-direction:column;gap:1.6cqi">
+        <div class="kick a">A megoldás</div>
+        <h2 class="h2 a" style="--i:1">Pacsi: a kutyafajta-választó, ami <em>élmény.</em></h2>
+        <p class="lead a" style="--i:2">124 népszerű fajta egy élő, lebegő felhőben. Minden szűrőre fizikailag reagál: a nem illő fajták kirepülnek, a legjobb találatok előrejönnek.</p>
+        <div class="g3" style="margin-top:.6cqi">
+          <div class="card a" style="--i:3"><div class="ico" style="background:var(--peach)">✨</div><p class="tt" style="margin-top:10px">Látványos</p><p class="t">A döntés nem táblázat, hanem élmény – ezért megosztják.</p></div>
+          <div class="card a" style="--i:4"><div class="ico" style="background:var(--lavender)">🎯</div><p class="tt" style="margin-top:10px">Személyre szabott</p><p class="t">Szűrők, Párkereső kvíz, illeszkedés %-ban, összehasonlítás.</p></div>
+          <div class="card a" style="--i:5"><div class="ico" style="background:var(--mint)">💚</div><p class="tt" style="margin-top:10px">Felelős</p><p class="t">Egészségi jelölések, „kinek nem ajánlott”, örökbefogadás.</p></div>
+        </div>
+      </div>
+      <div class="a" style="--i:3;display:flex;justify-content:center"><div class="phone" style="--pw:330px"><div class="scr"><span class="isl"></span><video muted loop playsinline preload="none" data-src="assets/demo_szures.mp4" poster="assets/demo_szures_poster.jpg"></video><img class="vposter" src="assets/demo_szures_poster.jpg" alt=""></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Termékbemutató -->
+<section class="slide" data-title="Hogyan működik?">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in">
+    <div class="kick a" style="margin-top:3cqi">A termék</div>
+    <h2 class="h2 a" style="--i:1">Minden, ami a jó döntéshez kell</h2>
+    <div class="g4" style="flex:1;align-items:end">
+      <div class="mock a" style="--i:2"><div class="phone" style="--pw:236px"><div class="scr"><span class="isl"></span><img loading="lazy" src="assets/m_filtered.webp" alt="Pacsi felhő szűrőkkel"></div></div><p class="tt">Élő felhő és szűrők</p><p class="t">Lakás, gyerek, csend, szőrhullás, méret, energia – élő reakcióval.</p></div>
+      <div class="mock a" style="--i:3"><div class="phone" style="--pw:236px"><div class="scr"><span class="isl"></span><img loading="lazy" src="assets/m_card_cavalier.webp" alt="Fajtakártya"></div></div><p class="tt">Fajtakártya</p><p class="t">Illeszkedés, 9 jellemző, egészség, költség, kinek ajánlott – és kinek nem.</p></div>
+      <div class="mock a" style="--i:4"><div class="phone" style="--pw:236px"><div class="scr"><span class="isl"></span><img loading="lazy" src="assets/m_quiz_result.webp" alt="Párkereső kvíz eredménye"></div></div><p class="tt">Párkereső kvíz</p><p class="t">10 kérdés, 6 gazditípus, top 5 fajta – megosztható eredmény.</p></div>
+      <div class="mock a" style="--i:5"><div class="phone" style="--pw:236px"><div class="scr"><span class="isl"></span><img loading="lazy" src="assets/m_compare.webp" alt="Összehasonlítás"></div></div><p class="tt">Összehasonlítás, térkép</p><p class="t">Három fajta egymás mellett; méret × energia térkép.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · Számokban -->
+<section class="slide" data-title="Számokban">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in">
+    <div class="cols w4">
+      <div class="a" style="--i:3"><img loading="lazy" src="assets/d_rank.webp" alt="A Pacsi asztali nézete" style="border-radius:18px;box-shadow:var(--shadow-lg);border:6px solid #1c1917"></div>
+      <div style="display:flex;flex-direction:column;gap:1.6cqi">
+        <div class="kick a">Számokban</div>
+        <h2 class="h2 a" style="--i:1">Kész, élő termék – nem ígéret.</h2>
+        <div class="g2">
+          <div class="card a" style="--i:2"><div class="num" style="font-size:clamp(34px,3.6cqi,58px)">124</div><p class="t">kutyafajta teljes tartalommal és saját portréval</p></div>
+          <div class="card a" style="--i:3"><div class="num" style="font-size:clamp(34px,3.6cqi,58px)">9</div><p class="t">jellemző fajtánként, 1–5-ös skálán</p></div>
+          <div class="card a" style="--i:4"><div class="num" style="font-size:clamp(34px,3.6cqi,58px)">10</div><p class="t">kérdéses Párkereső kvíz, 6 gazditípussal</p></div>
+          <div class="card a" style="--i:5"><div class="num" style="font-size:clamp(34px,3.6cqi,58px)">4</div><p class="t">nézet: felhő, csoportok, térkép, lista</p></div>
+          <div class="card a" style="--i:6"><div class="num" style="font-size:clamp(34px,3.6cqi,58px)">0</div><p class="t">regisztráció és süti – csak névtelen statisztika</p></div>
+          <div class="card a" style="--i:7"><div class="num" style="font-size:clamp(34px,3.6cqi,58px)">PWA</div><p class="t">telepíthető app, offline is működik</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · Kiknek szól -->
+<section class="slide" data-title="Kiknek szól?">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in">
+    <div class="kick a" style="margin-top:3cqi">A közönség</div>
+    <h2 class="h2 a" style="--i:1">Kiknek segít – és kiket ér el a partner?</h2>
+    <div class="g5 pers" style="flex:1;align-items:stretch">
+      <div class="card a" style="--i:2"><div class="bub" style="width:clamp(56px,5cqi,80px);aspect-ratio:1;background-image:url('assets/p_francia-bulldog.webp')"></div><p class="tt">Anna, 31</p><p class="t">Budapesti panellakás, home office. Az első kutyája lesz.</p><p class="q">„Melyik kutya bírja a lakást, és nem ugat egész nap?”</p><p class="b">Kölyökeledel, lakásba való felszerelés</p></div>
+      <div class="card a" style="--i:3"><div class="bub" style="width:clamp(56px,5cqi,80px);aspect-ratio:1;background-image:url('assets/p_golden-retriever.webp')"></div><p class="tt">Gábor és Eszter, 38/36</p><p class="t">Kertes ház Érden, két gyerek (5 és 9 évesek).</p><p class="q">„Melyik türelmes a gyerekekkel, és mennyi munka vele?”</p><p class="b">Családi csomagok, egészség, biztonság</p></div>
+      <div class="card a" style="--i:4"><div class="bub" style="width:clamp(56px,5cqi,80px);aspect-ratio:1;background-image:url('assets/p_magyar-vizsla.webp')"></div><p class="tt">Réka, 26</p><p class="t">Fut, túrázik, canicross-ozna.</p><p class="q">„Kivel tudnék együtt sportolni?”</p><p class="b">Aktív táplálás, sportfelszerelés</p></div>
+      <div class="card a" style="--i:5"><div class="bub" style="width:clamp(56px,5cqi,80px);aspect-ratio:1;background-image:url('assets/p_uszkar.webp')"></div><p class="tt">Péter, 64</p><p class="t">Kisebb ház, allergiás feleség.</p><p class="q">„Kevés szőrhullás, nyugodt, közepes méret?”</p><p class="b">Egészség, ápolás, kényelem</p></div>
+      <div class="card a" style="--i:6"><div class="bub" style="width:clamp(56px,5cqi,80px);aspect-ratio:1;background-image:url('assets/p_bichon-frise.webp')"></div><p class="tt">Dóra, 22</p><p class="t">Még nem vesz kutyát, de már álmodozik.</p><p class="q">„Melyik kutya illik hozzám?”</p><p class="b">A jövő vásárlója – aki megosztja</p></div>
+    </div>
+    <p class="src a" style="--i:7">A Pacsi termékspecifikációjának perszónái – tipikus felhasználói helyzetek.</p>
+  </div>
+</section>
+
+<!-- 9 · Miért érdemes -->
+<section class="slide" data-title="Miért érdemes?">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in" style="justify-content:center">
+    <div class="kick a">Miért érdemes?</div>
+    <h2 class="h2 a" style="--i:1;max-width:28ch">Egy kutyás márka számára a Pacsi a <em>legkorábbi</em> találkozási pont.</h2>
+    <div class="g5 why" style="align-items:stretch;margin-top:1cqi">
+      <div class="card hot a" style="--i:2"><div class="ico" style="background:rgba(255,255,255,.2)">⏱️</div><p class="tt" style="margin-top:12px">A döntés pillanatában</p><p class="t">Még a kölyök érkezése előtt találkozik a leendő gazdival – amikor a legnyitottabb.</p></div>
+      <div class="card a" style="--i:3"><div class="ico" style="background:var(--mint)">🤝</div><p class="tt" style="margin-top:12px">Segítőként, nem hirdetőként</p><p class="t">Kontextusba illő, hasznos tartalom a fajtakártyán és a kvízben – nem reklámzaj.</p></div>
+      <div class="card a" style="--i:4"><div class="ico" style="background:var(--peach)">💚</div><p class="tt" style="margin-top:12px">Felelős márkaérték</p><p class="t">Felelős kutyatartás, egészség, örökbefogadás: hiteles, közös történet.</p></div>
+      <div class="card a" style="--i:5"><div class="ico" style="background:var(--lavender)">📊</div><p class="tt" style="margin-top:12px">Mérhető</p><p class="t">Megjelenés, kvízkitöltés, kattintás, megosztás – sütimentes, anonim méréssel.</p></div>
+      <div class="card a" style="--i:6"><div class="ico" style="background:var(--butter)">⚡</div><p class="tt" style="margin-top:12px">Gyors fejlesztés</p><p class="t">Saját fejlesztésű magyar termék: közös funkciók hetek alatt.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · Így jelenne meg -->
+<section class="slide" data-title="Így jelenne meg a márka">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in">
+    <div class="kick a" style="margin-top:3cqi">Integráció</div>
+    <h2 class="h2 a" style="--i:1">Így jelenne meg <em data-partner-em>az Ön márkája</em> a Pacsiban</h2>
+    <div class="g4" style="flex:1;align-items:end">
+      <div class="mock a" style="--i:2"><div class="phone"><div class="scr"><span class="isl"></span><img loading="lazy" src="assets/m_card_cavalier.webp" alt=""><div class="over" style="bottom:12%">🍖 Etetési tipp kistestű, közepes energiájú kutyáknak<small>Támogatja: <span class="plogo" data-partner></span></small></div></div></div><p class="tt">Szakértői tipp a fajtakártyán</p><p class="t">Méret és életmód szerint, a fajta leírása mellett.</p></div>
+      <div class="mock a" style="--i:3"><div class="phone"><div class="scr"><span class="isl"></span><img loading="lazy" src="assets/m_quiz_result.webp" alt=""><div class="over" style="top:30%">🎁 Kölyök-kezdőcsomag a top 5 fajtádhoz<small>A kvízt támogatta: <span class="plogo" data-partner></span></small></div></div></div><p class="tt">Szponzorált Párkereső kvíz</p><p class="t">Az eredményoldalon, a legmegosztottabb képernyőn.</p></div>
+      <div class="mock a" style="--i:4"><div class="phone"><div class="scr"><span class="isl"></span><img loading="lazy" src="assets/m_tips.webp" alt=""><div class="over" style="top:52%">📘 Az első év költségei és teendői – útmutató<small>Szakértőink: <span class="plogo" data-partner></span></small></div></div></div><p class="tt">Gazdi-tudástár</p><p class="t">Szponzorált útmutatók: etetés, egészség, első év.</p></div>
+      <div class="mock a" style="--i:5"><div class="vid" style="width:100%;max-width:230px;margin:0 auto"><img loading="lazy" src="assets/v1_poster.jpg" alt=""><div class="over" style="bottom:6%">🎬 „A hét fajtája” sorozat<small>Támogató: <span class="plogo" data-partner></span></small></div></div><p class="tt">Közös videósorozat</p><p class="t">TikTok, Reels és Facebook – a partner neve a zárókockán.</p></div>
+    </div>
+    <p class="src a" style="--i:6">Látványtervek – a végleges megjelenést a partnerrel közösen alakítjuk ki.</p>
+  </div>
+</section>
+
+<!-- 11 · Csomagok -->
+<section class="slide" data-title="Partnercsomagok">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in">
+    <div class="kick a" style="margin-top:3cqi">Partnercsomagok</div>
+    <h2 class="h2 a" style="--i:1">Három út a közös munkához</h2>
+    <div class="g3" style="flex:1;align-items:stretch">
+      <div class="card hot tier a" style="--i:2"><span class="chip" style="width:fit-content;color:var(--coral)">★ Kategóriánként egy márka</span><p class="tt" style="font-family:var(--d);font-size:clamp(24px,2.2cqi,36px)">Alapító partner</p><span class="dur">12 hónap</span>
+        <ul><li>Támogatói megjelenés az appban (névjegy, kezdőképernyő)</li><li>Szakértői tippek a fajtakártyákon, méret és életmód szerint</li><li>Szponzorált Párkereső kvíz, kezdőcsomag-ajánlattal</li><li>Havi 4 közös közösségimédia-videó</li><li>Szakmai lektorálás: „Szakmailag lektorálta” jelvény</li><li>Negyedéves riport, közös PR-indulás</li></ul></div>
+      <div class="card tier a" style="--i:3"><p class="tt" style="font-family:var(--d);font-size:clamp(24px,2.2cqi,36px);margin-top:4px">Tartalompartner</p><span class="dur">6 hónap</span>
+        <ul><li>Szponzorált szekció a Gazdi-tudástárban</li><li>Egy kontextuális blokk a fajtakártyákon</li><li>Havi 2 közös poszt</li><li>Havi riport</li></ul></div>
+      <div class="card tier a" style="--i:4"><p class="tt" style="font-family:var(--d);font-size:clamp(24px,2.2cqi,36px);margin-top:4px">Kampánypartner</p><span class="dur">1–3 hónap</span>
+        <ul><li>Kampányidőszakos kvíz-szponzoráció</li><li>Közös videósorozat (4–6 videó)</li><li>Kampányzáró riport</li></ul></div>
+    </div>
+    <p class="t a" style="--i:5">Az árazás a csomagtól, az időtartamtól és a csatornáktól függ – <b style="color:var(--ink)">egyedi ajánlatot készítünk.</b></p>
+  </div>
+</section>
+
+<!-- 12 · Mérés -->
+<section class="slide" data-title="Mérés és riport">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in">
+    <div class="cols">
+      <div style="display:flex;flex-direction:column;gap:1.6cqi">
+        <div class="kick a">Mérés és riport</div>
+        <h2 class="h2 a" style="--i:1">Mérhető eredmények – <em>adatvédelmi</em> aggály nélkül.</h2>
+        <p class="lead a" style="--i:2">Sütimentes, anonim mérés a saját szerverünkön (Umami): nincs cookie-banner, nincs személyes adat. A látogatottság és a használat mérése már él – a partnerblokkok mérésével a partnerség indulásakor bővül.</p>
+      </div>
+      <ul class="chk">
+        <li class="a" style="--i:2"><b>Partnerblokk-megjelenések</b> a fajtakártyákon és a kvízeredményben</li>
+        <li class="a" style="--i:3"><b>Kvízkitöltések és megosztások</b> – a legmegosztottabb képernyő</li>
+        <li class="a" style="--i:4"><b>Átkattintások</b> a partner oldalára, UTM-címkével</li>
+        <li class="a" style="--i:5"><b>Közösségi elérés</b>: megtekintés, interakció, követők</li>
+        <li class="a" style="--i:6"><b>Havi riport</b> és negyedéves közös áttekintés</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · Közösségi média -->
+<section class="slide" data-title="Közösségi jelenlét">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in">
+    <div class="cols w4">
+      <div class="g4" style="align-items:center">
+        <div class="vid a" style="--i:2"><video muted loop playsinline preload="none" data-src="assets/v1.mp4" poster="assets/v1_poster.jpg"></video><img class="vposter" src="assets/v1_poster.jpg" alt=""></div>
+        <div class="vid a" style="--i:3;margin-top:4cqi"><video muted loop playsinline preload="none" data-src="assets/v2.mp4" poster="assets/v2_poster.jpg"></video><img class="vposter" src="assets/v2_poster.jpg" alt=""></div>
+        <div class="vid a" style="--i:4"><video muted loop playsinline preload="none" data-src="assets/v3.mp4" poster="assets/v3_poster.jpg"></video><img class="vposter" src="assets/v3_poster.jpg" alt=""></div>
+        <div class="vid a" style="--i:5;margin-top:4cqi"><video muted loop playsinline preload="none" data-src="assets/v4.mp4" poster="assets/v4_poster.jpg"></video><img class="vposter" src="assets/v4_poster.jpg" alt=""></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.6cqi">
+        <div class="kick a">Közösségi jelenlét</div>
+        <h2 class="h2 a" style="--i:1">Folyamatosan szem előtt</h2>
+        <p class="lead a" style="--i:2">Kétnaponta új TikTok/Reels videó, heti 3–4 poszt, heti LinkedIn-tartalom. A partner neve megjelenhet a sorozatokban – például „A hét fajtája”.</p>
+        <div class="g3">
+          <div class="card a" style="--i:3"><div class="num" style="font-size:clamp(28px,2.8cqi,46px)">5,55 M</div><p class="t">Facebook-felhasználó</p></div>
+          <div class="card a" style="--i:4"><div class="num" style="font-size:clamp(28px,2.8cqi,46px)">3,40 M</div><p class="t">TikTok-felhasználó (18+)</p></div>
+          <div class="card a" style="--i:5"><div class="num" style="font-size:clamp(28px,2.8cqi,46px)">2,85 M</div><p class="t">Instagram-felhasználó</p></div>
+        </div>
+        <p class="src a" style="--i:6">Magyarország, DataReportal: Digital 2026 Hungary. A videók az elkészült induló kampány részei.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 · Márkabiztonság -->
+<section class="slide" data-title="Biztonságos márkakörnyezet">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in">
+    <div class="cols w6">
+      <div style="display:flex;flex-direction:column;gap:1.8cqi">
+        <div class="kick a">Márkabiztonság</div>
+        <h2 class="h2 a" style="--i:1">Biztonságos, <em>felelős</em> márkakörnyezet</h2>
+        <ul class="chk">
+          <li class="a" style="--i:2"><b>Nincs regisztráció, nincs személyes adat</b> – GDPR-barát működés.</li>
+          <li class="a" style="--i:3"><b>Nincs felhasználói tartalom</b> – nincs moderációs kockázat.</li>
+          <li class="a" style="--i:4"><b>Felelős fajtakommunikáció</b> – nincs „veszélyes fajta” címke, egészségi jelölések vannak.</li>
+          <li class="a" style="--i:5"><b>Örökbefogadás</b> egyenrangú útként – tenyésztői reklám nélkül.</li>
+          <li class="a" style="--i:6"><b>Szakmai lektorálás</b> a partner szakértőivel, „Szakmailag lektorálta” jelvénnyel.</li>
+        </ul>
+      </div>
+      <div class="a" style="--i:3;display:flex;justify-content:center"><img loading="lazy" src="assets/kv_mascot.webp" alt="A Pacsi kabalája integet" style="width:min(100%,430px);-webkit-mask-image:radial-gradient(closest-side,#000 75%,transparent 100%);mask-image:radial-gradient(closest-side,#000 75%,transparent 100%)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 · Ütemterv -->
+<section class="slide" data-title="Ütemterv">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in" style="justify-content:center">
+    <div class="kick a">Ütemterv</div>
+    <h2 class="h2 a" style="--i:1">Közösen építhető a folytatás</h2>
+    <div class="tl" style="margin-top:2cqi">
+      <div class="m now a" style="--i:2"><span class="when">Most · 2026 ősz</span><p class="tt">Él a v1.6 – pacsit.hu</p><ul><li>124 fajta, szűrők, kvíz, összehasonlítás</li><li>Telepíthető PWA, offline működés</li><li>Sütimentes statisztika, induló közösségimédia-kampány</li></ul></div>
+      <div class="m a" style="--i:3"><span class="when">2026 IV. negyedév</span><p class="tt">Partnerintegráció</p><ul><li>Partnerblokkok, szponzorált kvíz</li><li>Partnerriportok a meglévő mérésből</li><li>Közös videósorozat</li></ul></div>
+      <div class="m a" style="--i:4"><span class="when">2027 I. félév</span><p class="tt">Növekedés</p><ul><li>Keresőbarát fajtaoldalak (SEO)</li><li>Költségbecslő – partnerrel közösen</li><li>Angol és német nyelv</li></ul></div>
+      <div class="m a" style="--i:5"><span class="when">2027 II. félév</span><p class="tt">Közösség</p><ul><li>Menhelyi és fajtaklub-kapcsolatok</li><li>Fotó mód a portrék mellé</li><li>Új közös funkciók a partnerrel</li></ul></div>
+    </div>
+    <p class="src a" style="--i:6;margin-top:1.4cqi">Javasolt ütemezés – a partner igényei szerint alakítható.</p>
+  </div>
+</section>
+
+<!-- 16 · Következő lépések -->
+<section class="slide cta" data-title="Következő lépések">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in" style="justify-content:center">
+    <div class="cols w6">
+      <div style="display:flex;flex-direction:column;gap:1.8cqi">
+        <div class="kick a">Következő lépések</div>
+        <h2 class="h2 a" style="--i:1">Legyen a Pacsi első <em>alapító partnere!</em></h2>
+        <div class="g3">
+          <div class="card a" style="--i:2"><div class="num" style="font-size:clamp(30px,3cqi,48px)">1</div><p class="tt" style="margin-top:8px">30 perces bemutató</p><p class="t">Online, élő demóval.</p></div>
+          <div class="card a" style="--i:3"><div class="num" style="font-size:clamp(30px,3cqi,48px)">2</div><p class="tt" style="margin-top:8px">3 hónapos pilot</p><p class="t">Kampánypartnerként, mérhető célokkal.</p></div>
+          <div class="card hot a" style="--i:4"><div class="num" style="font-size:clamp(30px,3cqi,48px)">3</div><p class="tt" style="margin-top:8px">Alapító partnerség</p><p class="t">Kategóriánként egyetlen márkával.</p></div>
+        </div>
+        <p class="lead a" style="--i:5">Kapcsolat: <b style="color:var(--ink)">DarwinAI</b> · <a href="https://www.darwinai.hu" target="_blank" rel="noopener" style="color:var(--teal)">www.darwinai.hu</a></p>
+      </div>
+      <div class="a" style="--i:4;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+        <div class="qr" id="qr" aria-label="QR-kód a Pacsi webes változatához"></div>
+        <p class="tt">Próbálja ki most</p>
+        <a class="t" href="https://pacsit.hu/?utm_source=partner&utm_medium=deck&utm_campaign=pacsi" target="_blank" rel="noopener" style="color:var(--teal);font-weight:700">pacsit.hu</a>
+        <p class="src">Ingyenes, regisztráció nélkül · telefonon appként is telepíthető</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17 · Források -->
+<section class="slide" data-title="Források">
+  <div class="mini-logo">Pacsi</div><div class="pnum"></div>
+  <div class="in">
+    <div class="kick" style="margin-top:3cqi">Források</div>
+    <h2 class="h2" style="font-size:clamp(24px,2.6cqi,42px)">A számok forrásai</h2>
+    <ol class="srcs">
+      <li>FEDIAF: Facts &amp; Figures 2025 (2023-as adatok) – kutyák száma, a kutyás háztartások aránya. <a href="https://europeanpetfood.org/wp-content/uploads/2025/06/FEDIAF-Facts-Figures-2025.pdf" target="_blank" rel="noopener">europeanpetfood.org</a></li>
+      <li>Vetter Sz., Vizi Zs., Özsvári L.: Magyar Állatorvosok Lapja, 2022 – reprezentatív felmérés (Medián, n = 1001, 2021): kutyás háztartások, választási szempontok. <a href="https://univet.hu/wp-content/uploads/2025/12/mal_2022_01_3-12.pdf" target="_blank" rel="noopener">univet.hu</a></li>
+      <li>Kubinyi E., Varga O.: TÁRKI-felmérés, 2023 (n = 1023, 2022) – a felnőttek 30%-a él kutyával. <a href="https://real.mtak.hu/179713/1/Kubinyi_Varga_2023_Tarsallatok.pdf" target="_blank" rel="noopener">real.mtak.hu</a></li>
+      <li>NIQ kiskereskedelmi index, Trade magazin, 2026. május 27. – kisállateledel-piac 2025. <a href="https://trademagazin.hu/hu/eltero-trendek-a-kedvencek-piacan/" target="_blank" rel="noopener">trademagazin.hu</a></li>
+      <li>Holland, K. E.: Acquiring a Pet Dog, Animals, 2019 (Dogs Trust) – tájékozódás a kutya beszerzése előtt. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6523466/" target="_blank" rel="noopener">pmc.ncbi.nlm.nih.gov</a></li>
+      <li>NÉBIH-adat, Pénzcentrum, 2024. szeptember 8. – gyepmesteri telepekre került kutyák 2023-ban. <a href="https://www.penzcentrum.hu/vasarlas/20240908/ezert-a-kutyaert-orulnek-meg-a-magyarok-2024-ben-vagyonokert-vasaroljak-1155928" target="_blank" rel="noopener">penzcentrum.hu</a></li>
+      <li>DataReportal: Digital 2026 Hungary – közösségimédia-felhasználók. <a href="https://datareportal.com/reports/digital-2026-hungary" target="_blank" rel="noopener">datareportal.com</a></li>
+    </ol>
+    <p class="src" style="margin-top:auto">Pacsi partneri ajánlat · v1.1.4 · build 3f68428 · Pacsi by DarwinAI · www.darwinai.hu</p>
+  </div>
+</section>
+
+</main>
+
+<nav class="dnav" aria-label="Diák léptetése">
+  <button class="pv" id="prev" aria-label="Előző dia"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <span class="cnt" id="cnt">1 / 17</span>
+  <button class="nx" id="next" aria-label="Következő dia"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  <button id="tocBtn" aria-label="Tartalomjegyzék" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h9"/></svg></button>
+  <button class="fs" id="fsBtn" aria-label="Teljes képernyő"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+  
+</nav>
+<div class="toc" id="toc" hidden></div>
+<div class="hint" id="hint">← → nyilak vagy lapozás · T: tartalom</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+(() => {
+'use strict';
+const root = document.documentElement;
+const slides = [...document.querySelectorAll('.slide')];
+const N = slides.length;
+let cur = 0;
+
+/* partner személyre szabása: #p-Royal-Canin (kötőjel = szóköz), opcionálisan diaszám: #p-Royal-Canin.5 vagy #5 */
+const tokens = decodeURIComponent(location.hash.slice(1)).split('.').filter(Boolean);
+let partner = '';
+for (const t of tokens) {
+  if (/^p-/i.test(t)) partner = t.slice(2).replace(/[-_]+/g, ' ').trim().slice(0, 40);
+  else if (/^\d+$/.test(t)) cur = Math.min(N - 1, Math.max(0, +t - 1));
+}
+document.querySelectorAll('[data-partner]').forEach(e => { e.textContent = partner || 'Partner logója'; });
+document.querySelectorAll('[data-partner-em]').forEach(e => { e.textContent = partner || 'az Ön márkája'; });
+document.querySelectorAll('[data-partner-line]').forEach(e => { e.hidden = !partner; });
+if (partner) document.title = `Pacsi – ajánlat: ${partner}`;
+slides.forEach((s, i) => { const p = s.querySelector('.pnum'); if (p) p.textContent = `${String(i + 1).padStart(2, '0')} / ${N}`; });
+
+/* QR-kód a Pacsi webes változatához (ha a könyvtár nem töltődik be, csak a link marad) */
+try {
+  const q = qrcode(0, 'M');
+  q.addData('https://pacsit.hu/?utm_source=partner&utm_medium=deck&utm_campaign=pacsi');   // a statisztikában „partner / deck” forrásként látszik
+  q.make(); document.getElementById('qr').innerHTML = q.createSvgTag({ cellSize: 6, margin: 0, scalable: true });
+}
+catch (e) { document.getElementById('qr').hidden = true; }
+
+/* mód: prezentáció (széles, fekvő ablak) vagy dokumentum (telefon, álló ablak) */
+function mode() {
+  const pres = innerWidth >= 900 && innerWidth / innerHeight >= 1.05;
+  root.classList.toggle('pres', pres); root.classList.toggle('doc', !pres);
+  if (pres) root.style.setProperty('--k', Math.min(innerWidth / 1600, innerHeight / 900));
+  syncVideos();
+}
+function go(i, user) {
+  cur = Math.max(0, Math.min(N - 1, i));
+  slides.forEach((s, k) => { s.classList.toggle('on', k === cur); s.classList.toggle('past', k < cur); s.setAttribute('aria-hidden', root.classList.contains('pres') && k !== cur ? 'true' : 'false'); });
+  document.getElementById('cnt').textContent = `${cur + 1} / ${N}`;
+  document.getElementById('prog').style.width = `${(cur + 1) / N * 100}%`;
+  document.querySelectorAll('.toc button').forEach((b, k) => b.classList.toggle('cur', k === cur));
+  if (user) { const h = document.getElementById('hint'); if (h) h.style.opacity = 0; }
+  syncVideos();
+}
+/* videók: prezentációban csak az aktív dián futnak, dokumentumban amikor látszanak */
+const vids = [...document.querySelectorAll('video[data-src]')];
+const vis = new Set();
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? vis.add(e.target) : vis.delete(e.target)); syncVideos(); }, { threshold: .25 }) : null;
+vids.forEach(v => io && io.observe(v));
+function syncVideos() {
+  const pres = root.classList.contains('pres');
+  vids.forEach(v => {
+    const on = pres ? slides[cur].contains(v) : vis.has(v);
+    if (on) { if (!v.src) v.src = v.dataset.src; const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+    else if (!v.paused) v.pause();
+  });
+}
+/* tartalomjegyzék */
+const toc = document.getElementById('toc');
+toc.innerHTML = slides.map((s, i) => `<button data-go="${i}"><b>${i + 1}</b><span>${s.dataset.title || ''}</span></button>`).join('');
+function tocToggle(v) {
+  toc.hidden = !(v ?? toc.hidden);
+  document.getElementById('tocBtn').setAttribute('aria-expanded', String(!toc.hidden));
+}
+toc.addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (!b) return; tocToggle(false);
+  if (root.classList.contains('pres')) go(+b.dataset.go, true); else slides[+b.dataset.go].scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+document.getElementById('tocBtn').addEventListener('click', () => tocToggle());
+document.getElementById('prev').addEventListener('click', () => go(cur - 1, true));
+document.getElementById('next').addEventListener('click', () => go(cur + 1, true));
+document.getElementById('fsBtn').addEventListener('click', () => {
+  const p = document.fullscreenElement ? document.exitFullscreen() : root.requestFullscreen && root.requestFullscreen();
+  if (p && p.catch) p.catch(() => { document.getElementById('fsBtn').hidden = true; });
+});
+addEventListener('keydown', e => {
+  if (!root.classList.contains('pres')) return;
+  if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); go(cur + 1, true); }
+  else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); go(cur - 1, true); }
+  else if (e.key === 'Home') go(0, true);
+  else if (e.key === 'End') go(N - 1, true);
+  else if (e.key === 't' || e.key === 'T') tocToggle();
+  else if (e.key === 'Escape') tocToggle(false);
+});
+let tx = null;
+addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+addEventListener('touchend', e => {
+  if (tx == null || !root.classList.contains('pres')) return;
+  const dx = e.changedTouches[0].clientX - tx; tx = null;
+  if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1), true);
+});
+let wheelT = 0;
+addEventListener('wheel', e => {
+  if (!root.classList.contains('pres') || Math.abs(e.deltaY) < 30 || Date.now() - wheelT < 700) return;
+  wheelT = Date.now(); go(cur + (e.deltaY > 0 ? 1 : -1), true);
+}, { passive: true });
+addEventListener('resize', mode);
+setTimeout(() => { const h = document.getElementById('hint'); if (h) h.style.opacity = 0; }, 6000);
+let idleT = 0;
+const wake = () => { root.classList.remove('idle'); clearTimeout(idleT); idleT = setTimeout(() => root.classList.add('idle'), 2600); };
+['mousemove', 'touchstart', 'keydown'].forEach(ev => addEventListener(ev, wake, { passive: true }));
+wake();
+mode();
+go(cur);
+})();
+</script>
+
+</html>

@@ -1,0 +1,28 @@
+Pacsi Partnerlevél · 3. · 2026. december 8.
+
+PACSI PARTNERLEVÉL · 3.
+KARÁCSONY ELŐTT: SEGÍTSETEK, HOGY JÓL DÖNTSENEK.
+December 10-én a heti levelünk arról szól, miért ne legyen a kutya meglepetésajándék. Nagy segítség lenne, ha ti is megosztanátok.
+→ A Pacsi kvíze: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=p3&utm_content=hero#kviz
+
+*|IF:FNAME|*Kedves *|FNAME|*!*|ELSE:|*Kedves Partnerünk!*|END:IF|*
+Az év utolsó partnerlevelében egy közös ügyhöz kérünk segítséget, és elmondjuk, mire készülünk jövőre.
+
+POSZTSZÖVEG DECEMBERRE
+Kutyát karácsonyra? 🎁 Csak ha az egész család készen áll – hiszen 10–15 évre szól. Mielőtt becsomagolnád, tegyétek fel együtt a legfontosabb kérdéseket: ki sétáltat, mennyibe kerül, melyik fajta illik hozzátok. Ebben segít a Pacsi ingyenes kvíze: https://pacsit.hu
+
+2027
+Mire készülünk?
+Jövőre is folytatjuk a heti leveleket, és szeretnénk még több partnert bemutatni. Ha van ötletetek közös tartalomra (fajtanap, örökbefogadási hét, kutyás rendezvény), írjátok meg – szívesen tervezünk együtt.
+
+KÖSZÖNJÜK
+Köszönjük, hogy idén velünk voltatok. Boldog ünnepeket kívánunk nektek és minden kutyának, akiért dolgoztok!
+
+Pacsi-pacsi,
+a Pacsi csapata
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

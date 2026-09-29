@@ -1,0 +1,53 @@
+Pacsi-levél · 8. szám · 2026. december 3.
+
+PACSI-LEVÉL · 8. SZÁM
+MI KERÜLHET A KUTYA CSIZMÁJÁBA?
+Vasárnap Mikulás! Ha a kutya is kap csomagot, legyen benne csupa olyan jóság, ami neki is jót tesz.
+→ A hét fajtája: a szamojéd: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w08&utm_content=hero#b=szamojed
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+December elején minden ablakban csizma, minden csizmában csoki. A kutyánál ez utóbbit érdemes kihagyni – attól még ő is lehet ünnepelt.
+
+KUTYABARÁT CSOMAG
+Ezek jöhetnek
+  - Kutyáknak készült jutalomfalat – kis darabokban, hogy tanításra is jó legyen.
+  - Répa, alma (mag nélkül), főtt tök – ropogós, egészséges nasi.
+  - Rágójáték vagy szimatszőnyeg – leköti, és a rágás megnyugtatja.
+  - Egy új játék, amit együtt használtok – a közös játék a legjobb ajándék.
+
+EZEK NEM
+Ezeket tartsd távol
+  - Csokoládé és szaloncukor – a teobromin mérgező, a csomagolás lenyelve veszélyes.
+  - Makadámdió és más diófélék – a makadámdió kifejezetten mérgező, a többi is okozhat gondot.
+  - Mazsola, szőlő – kis mennyiségben is veseelégtelenséget okozhat.
+  - Xilit (nyírfacukor) – cukormentes édességekben; életveszélyes.
+
+A HÉT FAJTÁJA
+Szamojéd – Mosolygó hófelhő, aki mindenkit barátjának tekint.
+Imádja a hideget, a gyerekeket és a társaságot – házőrzőnek viszont túl barátságos. A szőrhullásra és a porszívózásra készülj fel.
+Kinek ajánlott? Gyerekes, társasági családoknak · Hideg időt kedvelő, aktív gazdiknak
+→ A kártyája: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w08&utm_content=het-fajtaja#b=szamojed
+
+A MÚLT HETI FEJTÖRŐ MEGFEJTÉSE
+A „multum in parvo” – vagyis „sok egy kicsiben” – a mopsz régi jelmondata.
+
+TIPPELJ!
+Mit vitt 1925-ben egy husky-staféta az alaszkai Nome városába?
+  A) Karácsonyi leveleket: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w08&utm_content=tippelj#b=sziberiai-husky
+  B) Diftéria elleni szérumot: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w08&utm_content=tippelj#b=sziberiai-husky
+  C) Aranyrögöket: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w08&utm_content=tippelj#b=sziberiai-husky
+Kattints bármelyikre: a szibériai husky kártyáján, az Érdekesség rovatban ott a válasz. A megfejtés a következő levélben is jön.
+
+Ismersz valakit, aki kutyát szeretne?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Kap a kutyád Mikulás-csomagot? Mutasd meg válaszban! 🎅
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

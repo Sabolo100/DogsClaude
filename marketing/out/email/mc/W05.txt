@@ -1,0 +1,60 @@
+Pacsi-levél · 5. szám · 2026. november 12.
+
+PACSI-LEVÉL · 5. SZÁM
+ALLERGIÁS VAGY? ŐK ALIG HULLATNAK.
+Kevesebb szőr a kanapén, kevesebb tüsszentés. Hat fajta, amelyiknek alig hullik a szőre – és egy fontos igazság, mielőtt döntesz.
+→ Szűrés: Kevés szőrhullás: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w05&utm_content=hero#f=hullas&m=s
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Sokan azért nem mernek kutyát tartani, mert allergiásak. Jó hír: vannak fajták, amelyek alig hullatják a szőrüket. Kevésbé jó hír: 100%-ban allergiabarát kutya nem létezik.
+
+FONTOS
+A „hipoallergén” kutya mítosz
+Az allergiát nem maga a szőr okozza, hanem a kutya bőréből és nyálából származó fehérjék. A kevés szőrt hullató fajtáknál ezek kevésbé terjednek szét a lakásban, ezért sok allergiás jobban bírja őket – de ez kutyánként és emberenként is más.
+Tipp: mielőtt döntesz, tölts több órát a kiszemelt fajta kutyáival (például egy tenyésztőnél vagy egy barátodnál), és kérd ki az orvosod véleményét is.
+
+HAT FAJTA, AMELYIK ALIG HULLAT
+A göndör vagy selymes bunda folyamatosan nő, ezért rendszeres fésülés és kozmetikus kell – cserébe kevesebb szőr kerül a lakásba.
+  - Uszkár: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w05&utm_content=alig-hullat#b=uszkar
+  - Bichon frisé: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w05&utm_content=alig-hullat#b=bichon-frise
+  - Lagotto romagnolo: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w05&utm_content=alig-hullat#b=lagotto-romagnolo
+  - Portugál vízikutya: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w05&utm_content=alig-hullat#b=portugal-vizikutya
+  - Havanese: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w05&utm_content=alig-hullat#b=havanese
+  - Tibeti terrier: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w05&utm_content=alig-hullat#b=tibeti-terrier
+
+A HÉT FAJTÁJA
+Uszkár – Göndör zseni négy méretben – elegáns, sportos, nem hullat.
+Toy, törpe, közép és óriás méretben is létezik. Elegáns és sportos, alig hullat – és az egyik legkönnyebben tanítható fajta. A rendszeres kozmetikus viszont jár neki.
+Kinek ajánlott? Kezdő és tapasztalt gazdiknak egyaránt · Akik kevés szőrt hullató kutyát keresnek
+→ A kártyája: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w05&utm_content=het-fajtaja#b=uszkar
+
+MÁRTON-NAP UTÁN
+A libacsont nem kutyának való
+  - A főtt vagy sült szárnyascsont szilánkosan törik, és megsértheti a kutya száját, nyelőcsövét, beleit.
+  - A zsíros bőr és a töltelék hasnyálmirigy-gyulladást okozhat.
+  - Hagyma, fokhagyma – a töltelékben és a mártásban is ott lehet, és a kutyáknak ártalmas.
+Jutalomnak jobb egy kutyáknak való rágócsont vagy egy falat főtt, fűszerezetlen hús – csont nélkül.
+
+A MÚLT HETI FEJTÖRŐ MEGFEJTÉSE
+A shih tzu neve kínaiul „oroszlánt” jelent – a körben szétálló arcszőrzete miatt pedig „krizantémarcú kutyának” is becézik.
+
+TIPPELJ!
+Melyik fajtát hívták a 19. századi angol bányászok „szegény ember versenylovának”?
+  A) Whippet: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w05&utm_content=tippelj#b=whippet
+  B) Angol agár: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w05&utm_content=tippelj#b=angol-agar
+  C) Jack Russell terrier: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w05&utm_content=tippelj#b=jack-russell-terrier
+Kattints a tippedre: a fajta kártyáján, az Érdekesség rovatban ott a válasz. A megfejtés a következő levélben is jön.
+
+Ismersz valakit, aki allergia miatt nem mer kutyát tartani?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Allergiás vagy, mégis kutyád van? Írd meg, neked mi vált be – sokaknak segíthet.
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

@@ -1,0 +1,63 @@
+Pacsi-levél · 1. szám · 2026. október 15.
+
+PACSI-LEVÉL · 1. SZÁM
+ELSŐ KUTYÁD LESZ? ŐK TÜRELMESEK VELED.
+Vannak fajták, amelyek megbocsátják a kezdő hibákat, könnyen tanulnak, és nem kérnek napi két óra futást. Összeszedtük a legkezdőbarátabbakat.
+→ Mutasd a kezdőbarát fajtákat: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=hero#f=kezdo&m=s
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Az első kutya olyan, mint az első autó: sokat tanulsz vele, és jó, ha elnéző. Ez a levél azoknak szól, akik most vágnak bele.
+
+ŐK KÖNNYEN TANULNAK ÉS ALKALMAZKODNAK
+Hat fajta, amelyik a Pacsi szerint különösen jó első kutya lehet – persze csak akkor, ha az életmódodhoz is illik.
+  - Golden retriever: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=kezdobarat#b=golden-retriever
+  - Labrador retriever: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=kezdobarat#b=labrador-retriever
+  - Cavalier King Charles spániel: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=kezdobarat#b=cavalier-king-charles-spaniel
+  - Havanese: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=kezdobarat#b=havanese
+  - Uszkár: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=kezdobarat#b=uszkar
+  - Bichon frisé: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=kezdobarat#b=bichon-frise
+
+MIELŐTT DÖNTESZ
+5 kérdés, amit tegyél fel magadnak
+  - Mennyi időd van naponta? Egy kutya átlagosan napi 1–2 óra figyelmet kér: séta, játék, tanítás.
+  - Hány órát lenne egyedül? A legtöbb kutya nehezen bírja a napi 8–10 óra magányt.
+  - Hol laksz? Lakás, kert, lift, vékony falak – mind számít a fajtaválasztásnál.
+  - Mennyi pénz fér bele? Táp, állatorvos, oltások, kozmetika: a kutya havi kiadás, 10–15 évig.
+  - Ki vigyáz rá, ha elutazol? Jobb előre tudni, mint az utolsó pillanatban keresni.
+A Pacsi kvíze ezekre is rákérdez – egy perc az egész.
+→ Kitöltöm a kvízt: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=5-kerdes#kviz
+
+A HÉT FAJTÁJA
+Mudi – A magyar titkos fegyver: sokoldalú, tanulékony, agility-bajnok.
+Terel, őriz, és az agilitypályán is verhetetlen. Okos, bátor, a családjához nagyon kötődik – első kutyának viszont csak akkor jó, ha sportos életet élsz.
+Kinek ajánlott? Aktív, sportos családoknak · Agility- és kutyasport-rajongóknak
+→ A kártyája: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=het-fajtaja#b=mudi
+
+A MÚLT HETI FEJTÖRŐ MEGFEJTÉSE
+Múlt héten azt kérdeztük, melyik fajta kölykei születnek hófehéren. A válasz: a dalmata! A jellegzetes pöttyök csak az első hetekben kezdenek megjelenni.
+
+TIPPELJ!
+Melyik fajta volt az első hivatalos olimpiai kabala?
+  A) Tacskó: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=tippelj#b=tacsko
+  B) Uszkár: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=tippelj#b=uszkar
+  C) Golden retriever: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w01&utm_content=tippelj#b=golden-retriever
+Kattints a tippedre: a fajta kártyáján, az Érdekesség rovatban ott a válasz. A megfejtés a következő levélben is jön.
+
+A HÉTEN A KÖZÖSSÉGIN
+  - Instagram · Facebook: Zsebrakéta vagy kanapé-óriás?
+  - Tudtad?: 70 km/h, mégis kanapészobor
+  - A hét fajtája: Mudi
+
+Ismersz valakit, aki most választ először kutyát?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Tapasztalt gazdi vagy? Írd meg válaszban, mit tanácsolnál egy kezdőnek – a legjobb tippeket egy későbbi levélben megosztjuk (névvel vagy név nélkül, ahogy szeretnéd).
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

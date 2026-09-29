@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><title>V1 – Melyik kutya illik hozzád?</title>
+<link rel="stylesheet" href="../shared/brand.css">
+<link rel="stylesheet" href="../shared/video.css">
+<style>
+  .glow { position: absolute; left: 90px; right: 90px; top: 620px; height: 700px; border-radius: 50%; background: radial-gradient(closest-side, rgba(251,246,238,.96), rgba(251,246,238,.75) 55%, rgba(251,246,238,0)); z-index: 10; }
+  #head { top: 700px; }
+  #head .hd { font-size: 150px; }
+</style></head>
+<body>
+<div id="c" class="canvas grain">
+  <div class="layer" id="burst" style="z-index:5"></div>
+  <div class="glow" id="glow"></div>
+  <div class="big" id="head"><div class="hd">124 kutya.<br>Melyik illik<br><span class="it">hozzád?</span></div></div>
+  <div class="layer" id="stage" style="z-index:15"></div>
+  <div class="cap" id="c1"><span class="sticker">Lakásban élsz? 🏢</span></div>
+  <div class="cap" id="c2"><span class="sticker">Van kisgyerek is? 👶</span></div>
+  <div class="cap" id="c3"><span class="sticker">Vékonyak a falak? 🤫</span></div>
+  <div class="cap" id="c4"><span class="sticker hot" id="c4t">10 fajta maradt ✨</span></div>
+  <div class="cap" id="c5" style="top:250px"><span class="sticker">Meglepetés: az agár<br>lakásba is jó! 🛋️</span></div>
+</div>
+<script src="../shared/comp.js"></script>
+<script src="../shared/kit.js"></script>
+<script src="../shared/fx.js"></script>
+<script src="../shared/phone.js"></script>
+<script>
+const { E, prog, lerp, clamp } = Comp;
+const $ = s => document.querySelector(s);
+const host = $('#stage');
+let phone, finger, bg, burst, end, words;
+const AGAR = 'Angol agár (greyhound)';
+
+/* kamera: a telefon helye és nagyítása (transform-origin: bal felső sarok) */
+const PW = 418, PH = 872, S0 = 1.62;
+const base = { x: 540 - PW * S0 / 2, y: 470, s: S0 };
+const at = (s, ax, ay, fx = 540, fy = 1000) => ({ s, x: fx - (14 + ax) * s, y: fy - (14 + ay) * s }); // app-pont (ax,ay) a képkocka (fx,fy) pontjába
+const cam = FX.track([
+  [1.95, { ...base, y: 1980 }],
+  [2.75, base, E.outQuint],
+  [8.1, base],
+  [8.9, at(2.45, 195, 480, 540, 1090), E.ioQuint],
+  [9.45, at(2.45, 195, 480, 540, 1090)],
+  [10.0, base, E.ioQuint],
+  [11.05, base],
+  [11.9, at(2.05, 195, 330, 540, 1060), E.ioQuint],
+  [13.5, at(2.05, 195, 330, 540, 1060)],
+  [14.2, { ...at(2.3, 195, 330, 540, 1060), y: at(2.3, 195, 330, 540, 1060).y - 60 }, E.inC],
+]);
+
+Comp.start({ duration: 17.2, preroll: 1.6 }, async () => {
+  await K.init();
+  bg = FX.blobs($('#c'));
+  phone = new Phone(host);
+  finger = new Finger($('#c'));
+  // horog: portré-robbanás a cím körül
+  const ids = ['cavalier-king-charles-spaniel', 'magyar-vizsla', 'golden-retriever', 'puli', 'bichon-frise', 'border-collie', 'mopsz', 'havanese', 'beagle', 'shiba-inu',
+    'szamojed', 'tacsko', 'whippet', 'francia-bulldog', 'labrador-retriever', 'mudi', 'bernathegyi', 'uszkar', 'jack-russell-terrier', 'boston-terrier', 'komondor',
+    'sziberiai-husky', 'dalmata', 'pomeraniai-torpespicc', 'yorkshire-terrier', 'basenji', 'shih-tzu', 'welsh-corgi-pembroke', 'berni-pasztorkutya', 'kuvasz', 'papillon', 'akita-inu'];
+  const items = ids.map((id, i) => {
+    const a = i * 2.39996 + .4, r = 1 + (i % 4) * .13;
+    let x = 540 + Math.cos(a) * 470 * r, y = 960 + Math.sin(a) * 800 * r;
+    return { id, d: [190, 150, 130, 170, 120][i % 5], x: clamp(x, 80, 1000), y: clamp(y, 110, 1810) };
+  });
+  for (let k = 0; k < 200; k++) for (let i = 0; i < items.length; i++) for (let j = i + 1; j < items.length; j++) {
+    const a = items[i], b = items[j], dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 1, m = (a.d + b.d) / 2 + 14;
+    if (d < m) { const p = (m - d) / 2; a.x -= dx / d * p; a.y -= dy / d * p; b.x += dx / d * p; b.y += dy / d * p; }
+  }
+  burst = FX.burst($('#burst'), items, { cx: 540, cy: 960, t0: 0, dur: 1.0, stagger: .02 });
+  words = FX.words($('#head .hd'));
+  end = FX.endCard($('#c'), { t0: 13.8, line: 'Találd meg a hozzád illő kutyát!', cta: 'Próbáld ki ingyen', url: 'Link a bióban · ' + K.site });
+  await phone.load();
+  plan();
+});
+
+/* ujj és koppintások (a betöltés után, a lejátszás előtt ütemezve) */
+function plan() {
+  finger.show(2.95, 1).show(7.45, 0).show(9.85, 1).show(10.95, 0);
+  finger.move(0, 700, 1700, .01);
+  tapIn(phone, finger, 3.55, '.dk[data-dk="lakas"]');
+  tapIn(phone, finger, 5.3, '.dk[data-dk="gyerek"]');
+  tapIn(phone, finger, 7.05, '.dk[data-dk="csendes"]');
+  tapIn(phone, finger, 10.55, () => phone.bubble(AGAR), { lead: .55 });
+}
+Comp.at(8.0, () => { const n = phone.$('#mobCount b'); if (n) $('#c4t').textContent = `${n.textContent.trim()} fajta maradt ✨`; });
+
+Comp.each(t => {
+  bg(t);
+  burst && burst(t, { gather: 1.95, gx: 540, gy: 1250, gs: .15 });
+  FX.popWords(words, t, .12, { stagger: .075, out: 1.85 });
+  $('#glow').style.opacity = (clamp(t / .3) * (1 - prog(t, 1.85, 2.3))).toFixed(3);
+  const c = cam(t);
+  phone.el.style.transform = `translate(${c.x}px,${c.y}px) scale(${c.s})`;
+  phone.el.style.transformOrigin = '0 0';
+  FX.pop($('#c1'), t, 2.75, 4.35, { rot: -2 });
+  FX.pop($('#c2'), t, 4.55, 6.1, { rot: 2 });
+  FX.pop($('#c3'), t, 6.3, 7.95, { rot: -2 });
+  FX.pop($('#c4'), t, 8.15, 9.8, { rot: 1.5 });
+  FX.pop($('#c5'), t, 11.6, 13.55, { rot: -1.5 });
+  finger.render(t);
+  end(t);
+});
+</script>
+</body></html>

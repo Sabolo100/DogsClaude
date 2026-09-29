@@ -1,0 +1,30 @@
+Pacsi Partnerlevél · 2. · 2026. november 10.
+
+PACSI PARTNERLEVÉL · 2.
+MIT KERESNEK A LEENDŐ GAZDIK?
+Az első hetek névtelen statisztikája már mutatja, mire kíváncsiak az emberek, amikor kutyát választanak.
+→ Nézd meg a Pacsit: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=p2&utm_content=hero
+
+*|IF:FNAME|*Kedves *|FNAME|*!*|ELSE:|*Kedves Partnerünk!*|END:IF|*
+Rövid frissítés az első hetekről – és egy felhívás a novemberi örökbefogadás-témánkhoz.
+
+[x] látogató · [x] kitöltött kvíz · [x] kedvencnek jelölt fajta
+
+AMIT A SZÁMOK MUTATNAK
+[Frissítendő a statisztikából: a 3 legnépszerűbb szűrő, a legtöbbször megnyitott fajták és egy meglepetés.]
+
+NOVEMBER 19.
+Örökbefogadás-téma a Pacsi-levélben
+November 19-én a heti levelünk az örökbefogadásról szól. Menhelyek, egyesületek: ha szeretnétek, bemutatunk titeket vagy egy-egy gazdira váró kutyátokat – a ti fotóitokkal, a ti engedélyetekkel. Írjatok november 16-ig!
+
+POSZTSZÖVEG NOVEMBERRE
+Örökbe fogadnál, de nem tudod, milyen kutya illene hozzád? 🐾 A Pacsi 10 kérdéses Párkereső kvíze megmutatja, milyen típus (energia, méret, ugatás) illik az életedhez – így a menhelyen is könnyebb jól választani. Ingyenes: https://pacsit.hu
+
+Pacsi-pacsi,
+a Pacsi csapata
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

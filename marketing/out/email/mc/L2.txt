@@ -1,0 +1,48 @@
+Pacsi · indulás · 2026. október 3.
+
+OKTÓBER 4. · ÁLLATOK VILÁGNAPJA
+9 MAGYAR KUTYAFAJTA, AKIRE BÜSZKÉK LEHETÜNK
+Pásztorok, őrzők, vadászok és egy szélvész. Mindegyiknek megvan a maga története – és a maga gazdija.
+→ Megnézem mind a 9-et: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l2&utm_content=hero#f=magyar&m=s
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Holnap Állatok világnapja, mi pedig a hazai kedvencekkel ünneplünk. A Pacsiban egyetlen koppintás a Magyar fajta szűrő, és a 124 fajtából csak ők maradnak a felhőben.
+
+MELYIK ILLIK HOZZÁD?
+  - Puli: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l2&utm_content=magyar-fajtak#b=puli
+  - Pumi: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l2&utm_content=magyar-fajtak#b=pumi
+  - Mudi: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l2&utm_content=magyar-fajtak#b=mudi
+  - Komondor: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l2&utm_content=magyar-fajtak#b=komondor
+  - Kuvasz: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l2&utm_content=magyar-fajtak#b=kuvasz
+  - Erdélyi kopó: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l2&utm_content=magyar-fajtak#b=erdelyi-kopo
+  - Rövidszőrű magyar vizsla: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l2&utm_content=magyar-fajtak#b=magyar-vizsla
+  - Drótszőrű magyar vizsla: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l2&utm_content=magyar-fajtak#b=drotszoru-magyar-vizsla
+  - Magyar agár: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=l2&utm_content=magyar-fajtak#b=magyar-agar
+
+TUDTAD?
+A pumi Amerikában is befutott
+Az Amerikai Kennel Klub 2016-ban ismerte el hivatalosan a pumit, azóta a tengerentúlon is egyre ismertebb.
+
+MIELŐTT DÖNTESZ
+Magyar fajtát választanál? Ezt nézd meg előtte
+  - Sok magyar fajta munkakutya: napi 1,5–2 óra mozgás és feladat kell nekik.
+  - A nagy őrzőfajták (komondor, kuvasz) tapasztalt gazdit és nagy, jól bekerített udvart kívánnak.
+  - Csendes lakótársat keresel? A magyar agár keveset ugat – de futni imád.
+  - Keress szűrt szülőktől származó kölyköt (pl. csípőízületi diszplázia), és kérdezd a fajtaklubot.
+
+A HÉTEN A KÖZÖSSÉGIN
+  - Holnap jön · TikTok · Reels: A 9 magyar kutyafajta
+  - Instagram · Facebook: Ismered mind a 9-et?
+
+Ki a legnagyobb magyarkutya-rajongó az ismerőseid között?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Boldog Állatok világnapját!
+a Pacsi csapata
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

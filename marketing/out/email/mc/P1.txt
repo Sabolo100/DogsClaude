@@ -1,0 +1,31 @@
+Pacsi Partnerlevél · 1. · 2026. október 13.
+
+PACSI PARTNERLEVÉL · 1.
+KÖSZÖNJÜK, HOGY VELÜNK VAGYTOK!
+A Pacsi ingyenes, magyar kutyafajta-választó: 124 fajta, szűrők, Párkereső kvíz. Abban segít, hogy a leendő gazdik az életmódjukhoz illő kutyát válasszanak – és ebben ti vagytok a legfontosabb szövetségeseink.
+→ Nézd meg a Pacsit: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=p1&utm_content=hero
+
+*|IF:FNAME|*Kedves *|FNAME|*!*|ELSE:|*Kedves Partnerünk!*|END:IF|*
+Ebben a rövid levélben három dolgot kaptok: kész anyagot, amit megoszthattok a tagjaitokkal, egy kérést, amihez a szakértelmetekre számítunk, és egy linket, amellyel a tagjaitok is feliratkozhatnak a heti Pacsi-levélre.
+
+POSZTSZÖVEG A FACEBOOK-OLDALATOKRA VAGY A HÍRLEVÉLBE
+Kutyát szeretnél, de nem tudod, melyik fajta illik hozzád? 🐾 Próbáld ki a Pacsit: ingyenes, magyar kutyafajta-választó 124 fajtával. Szűrj a saját életedre (lakás, gyerek, mozgás, ugatás), vagy töltsd ki a 10 kérdéses Párkereső kvízt. Regisztráció nélkül: https://pacsit.hu
+
+EGY KÉRÉS
+Nézzétek át a fajtátok kártyáját!
+A fajtaleírások és a jellemző-pontszámok forrásokból, AI-segítséggel készültek – de a fajtákat ti ismeritek a legjobban. Ha nyitottak vagytok rá, nézzétek meg a számotokra fontos fajták kártyáit, és írjátok meg, ha valamit pontosítanátok. A javításokat a következő frissítésben átvezetjük.
+→ Fajták a Pacsiban: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=p1&utm_content=lektoralas
+
+A TAGJAITOKNAK
+Heti Pacsi-levél, csütörtökönként
+Fajtaajánló, gazdi-tippek és egy kis fejtörő, hetente egyszer. Ha szívesen ajánlanátok, ez a feliratkozó link: feliratkozás a Pacsi-levélre (https://pacsit.hu/hirlevel/?utm_source=pacsi-level&utm_medium=email&utm_campaign=p1&utm_content=szoveg).
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Kérdésetek vagy ötletetek van? Egyszerűen válaszoljatok erre a levélre.
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

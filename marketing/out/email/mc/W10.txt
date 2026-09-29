@@ -1,0 +1,53 @@
+Pacsi-levél · 10. szám · 2026. december 17.
+
+PACSI-LEVÉL · 10. SZÁM
+SZILVESZTER KÉT HÉT MÚLVA: KEZDD EL MOST.
+Sok kutya retteg a tűzijátéktól. A jó hír: két hét alatt is sokat tehetsz azért, hogy az év utolsó éjszakája nyugodtabb legyen.
+→ A hét fajtája: a beagle: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w10&utm_content=hero#b=beagle
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+A kutyák hallása sokkal élesebb a miénknél, ezért a durranás nekik még ijesztőbb. A félelem nem rossz nevelés és nem hiszti – valódi stressz, amin segíthetsz.
+
+KÉT HÉT ALATT
+Így készülj fel
+  - Alakíts ki búvóhelyet egy csendes szobában: letakart boksz vagy asztal alatti fekhely, a kedvenc takarójával. Hagyd, hogy már most megszokja.
+  - Szoktasd a hangokhoz fokozatosan: tűzijáték-hangot játssz nagyon halkan, közben játssz vagy etesd. Csak akkor hangosíts, ha nyugodt marad.
+  - Beszélj az állatorvossal, ha a kutyád nagyon fél: vannak nyugtató megoldások, de ezeket előre, szakemberrel kell kipróbálni.
+  - Frissítsd a chip adatait, és tegyél telefonszámos bilétát a nyakörvre – szilveszterkor sok kutya ijedtében elszökik.
+  - Tervezd meg a napot: 31-én a nagy séta délután, sötétedés előtt legyen, pórázon.
+
+ÜNNEPI ASZTAL
+Ami neked finom, neki veszélyes lehet
+  - Csont, halszálka – szilánkosan törik, sérülést okozhat.
+  - Zsíros maradék, töltelék, bejgli – hasnyálmirigy-gyulladást, gyomorrontást okozhat. A mákos és a diós bejgli sem kutyának való.
+  - Hagyma, fokhagyma, szőlő, mazsola, csoki – ezek mérgezőek a kutyának.
+
+A HÉT FAJTÁJA
+Beagle – Orrával gondolkodó vidám falkakutya – szökésre mindig kész.
+Imádja a gyerekeket és a társaságot, de hangos, és szökésre mindig kész – szilveszterkor különösen figyelj rá.
+Kinek ajánlott? Gyerekes, vidám családoknak · Akiknek van vagy lesz másik kutyájuk
+→ A kártyája: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w10&utm_content=het-fajtaja#b=beagle
+
+A MÚLT HETI FEJTÖRŐ MEGFEJTÉSE
+A tibeti terrier nagy, lapos, kerek mancsai hótalpként működnek, így könnyebben halad a havas, sziklás terepen.
+
+TIPPELJ!
+Melyik fajta sok képviselője hordoz olyan génváltozatot, ami fokozza az éhségérzetét?
+  A) Labrador retriever: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w10&utm_content=tippelj#b=labrador-retriever
+  B) Beagle: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w10&utm_content=tippelj#b=beagle
+  C) Golden retriever: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w10&utm_content=tippelj#b=golden-retriever
+Kattints a tippedre: a fajta kártyáján, az Érdekesség rovatban ott a válasz. A megfejtés a következő levélben is jön.
+
+Ismersz valakit, akinek a kutyája fél a tűzijátéktól?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Pacsi-pacsi,
+a Pacsi csapata
+U.i. Neked mi vált be szilveszterkor? Írd meg – a december 30-i levélben összegyűjtjük a legjobb tippeket.
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

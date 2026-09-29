@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><title>Pacsi – kép</title>
+<link rel="stylesheet" href="../shared/brand.css">
+<link rel="stylesheet" href="designs.css">
+</head>
+<body>
+<div id="c" class="canvas grain"></div>
+<script src="../shared/kit.js"></script>
+<script src="designs.js"></script>
+<script>
+/* Egy kép = egy „design” egy adott méretben: post.html?d=<design>&w=<szél.>&h=<mag.>[&p=<paraméter>] */
+window.__ready = (async () => {
+  const q = new URLSearchParams(location.search);
+  const w = +q.get('w') || 1080, h = +q.get('h') || 1350, d = q.get('d') || 'launch';
+  const c = document.getElementById('c');
+  c.style.width = w + 'px'; c.style.height = h + 'px';
+  c.dataset.d = d;
+  await K.init();
+  const fn = DESIGNS[d];
+  if (!fn) { c.innerHTML = `<p style="padding:40px;font-size:40px">Nincs ilyen design: ${d}</p>`; return; }
+  const out = fn({ w, h, q, p: q.get('p') });
+  c.innerHTML = (typeof out === 'string' ? out : out.html);
+  if (out && out.after) out.after(c);
+  await K.settle(c);
+  return true;
+})();
+</script>
+</body></html>

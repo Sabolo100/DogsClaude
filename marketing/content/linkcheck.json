@@ -1,0 +1,701 @@
+{
+ "checked": "2026-09-26T19:16:20",
+ "count": 78,
+ "results": {
+  "https://pacsit.hu/y/v1": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=youtube&utm_medium=social&utm_campaign=pacsi&utm_content=v1",
+   "where": [
+    "tartalom: v1"
+   ]
+  },
+  "https://pacsit.hu/f/v1": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=v1",
+   "where": [
+    "tartalom: v1"
+   ]
+  },
+  "https://pacsit.hu/y/v2": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=youtube&utm_medium=social&utm_campaign=pacsi&utm_content=v2",
+   "where": [
+    "tartalom: v2"
+   ]
+  },
+  "https://pacsit.hu/f/v2": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=v2",
+   "where": [
+    "tartalom: v2"
+   ]
+  },
+  "https://pacsit.hu/y/v3": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=youtube&utm_medium=social&utm_campaign=pacsi&utm_content=v3",
+   "where": [
+    "tartalom: v3"
+   ]
+  },
+  "https://pacsit.hu/f/v3": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=v3",
+   "where": [
+    "tartalom: v3"
+   ]
+  },
+  "https://pacsit.hu/y/v4": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=youtube&utm_medium=social&utm_campaign=pacsi&utm_content=v4",
+   "where": [
+    "tartalom: v4"
+   ]
+  },
+  "https://pacsit.hu/f/v4": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=v4",
+   "where": [
+    "tartalom: v4"
+   ]
+  },
+  "https://pacsit.hu/f/k_launch": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_launch",
+   "where": [
+    "tartalom: k_launch"
+   ]
+  },
+  "https://pacsit.hu/f/k_before_after": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_before_after",
+   "where": [
+    "tartalom: k_before_after"
+   ]
+  },
+  "https://pacsit.hu/f/k_quiz": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_quiz",
+   "where": [
+    "tartalom: k_quiz"
+   ]
+  },
+  "https://pacsit.hu/f/k_compare": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_compare",
+   "where": [
+    "tartalom: k_compare"
+   ]
+  },
+  "https://pacsit.hu/f/k_card": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_card",
+   "where": [
+    "tartalom: k_card"
+   ]
+  },
+  "https://pacsit.hu/f/k_hu9": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_hu9",
+   "where": [
+    "tartalom: k_hu9"
+   ]
+  },
+  "https://pacsit.hu/f/k_map4": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_map4",
+   "where": [
+    "tartalom: k_map4"
+   ]
+  },
+  "https://pacsit.hu/f/c_lakas": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=c_lakas",
+   "where": [
+    "tartalom: c_lakas"
+   ]
+  },
+  "https://pacsit.hu/f/k_tudtad_basenji": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_tudtad_basenji",
+   "where": [
+    "tartalom: k_tudtad_basenji"
+   ]
+  },
+  "https://pacsit.hu/f/k_tudtad_agar": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_tudtad_agar",
+   "where": [
+    "tartalom: k_tudtad_agar"
+   ]
+  },
+  "https://pacsit.hu/f/k_tudtad_border": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_tudtad_border",
+   "where": [
+    "tartalom: k_tudtad_border"
+   ]
+  },
+  "https://pacsit.hu/f/k_het_vizsla": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_het_vizsla",
+   "where": [
+    "tartalom: k_het_vizsla"
+   ]
+  },
+  "https://pacsit.hu/f/k_het_mudi": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=k_het_mudi",
+   "where": [
+    "tartalom: k_het_mudi"
+   ]
+  },
+  "https://pacsit.hu/i/s_hello": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=instagram&utm_medium=social&utm_campaign=pacsi&utm_content=s_hello",
+   "where": [
+    "tartalom: s_hello"
+   ]
+  },
+  "https://pacsit.hu/f/s_hello": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=s_hello",
+   "where": [
+    "tartalom: s_hello"
+   ]
+  },
+  "https://pacsit.hu/": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/",
+   "where": [
+    "arculat",
+    "levél: L1",
+    "levél: L2",
+    "levél: L3",
+    "levél: P1",
+    "levél: P2",
+    "levél: P3",
+    "levél: W01",
+    "levél: W02",
+    "levél: W03",
+    "levél: W04",
+    "levél: W05",
+    "levél: W06",
+    "levél: W07",
+    "levél: W08",
+    "levél: W09",
+    "levél: W10",
+    "levél: W11",
+    "levél: W12",
+    "levél: WLC1",
+    "levél: WLC2",
+    "levél: WLC3",
+    "tartalom: h_cloud",
+    "tartalom: h_cuki",
+    "tartalom: h_sq",
+    "tartalom: h_story"
+   ]
+  },
+  "https://pacsit.hu/l/l_ux": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=linkedin&utm_medium=social&utm_campaign=pacsi&utm_content=l_ux",
+   "where": [
+    "tartalom: l_ux"
+   ]
+  },
+  "https://pacsit.hu/i": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=instagram&utm_medium=social&utm_campaign=pacsi&utm_content=bio",
+   "where": [
+    "indítás: Befejezés",
+    "indítás: Instagram",
+    "tartalom: p_avatar"
+   ]
+  },
+  "https://pacsit.hu/t": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=tiktok&utm_medium=social&utm_campaign=pacsi&utm_content=bio",
+   "where": [
+    "indítás: TikTok",
+    "tartalom: p_avatar"
+   ]
+  },
+  "https://pacsit.hu/f": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=facebook&utm_medium=social&utm_campaign=pacsi&utm_content=bio",
+   "where": [
+    "indítás: Facebook-oldal",
+    "tartalom: p_avatar"
+   ]
+  },
+  "https://pacsit.hu/l": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=linkedin&utm_medium=social&utm_campaign=pacsi&utm_content=bio",
+   "where": [
+    "indítás: LinkedIn-oldal",
+    "tartalom: p_avatar"
+   ]
+  },
+  "https://pacsit.hu/og.jpg": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/og.jpg",
+   "where": [
+    "tartalom: p_og"
+   ]
+  },
+  "https://www.facebook.com/pages/create": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/pages/create",
+   "where": [
+    "indítás: Facebook-oldal"
+   ]
+  },
+  "https://pacsit.hu/hirlevel/": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/hirlevel/",
+   "where": [
+    "arculat",
+    "indítás: Facebook-oldal",
+    "indítás: YouTube (Shorts)",
+    "levél: L1",
+    "levél: L2",
+    "levél: L3",
+    "levél: P1",
+    "levél: W01",
+    "levél: W02",
+    "levél: W03",
+    "levél: W04",
+    "levél: W05",
+    "levél: W06",
+    "levél: W07",
+    "levél: W08",
+    "levél: W09",
+    "levél: W10",
+    "levél: W11",
+    "levél: W12",
+    "levél: WLC2",
+    "levél: WLC3"
+   ]
+  },
+  "https://business.facebook.com": {
+   "status": 200,
+   "ok": true,
+   "final": "https://business.facebook.com/business/loginpage/?next=https%3A%2F%2Fbusiness.facebook.com%2F%3Fnav_ref%3Dbiz_unified_f3_login_page_to_mbs&login_options%5B0%5D=FB&login_options%5B1%5D=IG&login_options%5B2%5D=SSO&config_ref=biz_login_tool_flavor_mbs",
+   "where": [
+    "indítás: Instagram"
+   ]
+  },
+  "https://www.tiktok.com/tiktokstudio": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.tiktok.com/tiktokstudio",
+   "where": [
+    "indítás: TikTok"
+   ]
+  },
+  "https://accounts.google.com/signup": {
+   "status": 200,
+   "ok": true,
+   "final": "https://accounts.google.com/lifecycle/steps/signup/unknownerror?dsh=S2130784161:1790442977113107&flowEntry=SignUp&flowName=GlifWebSignIn&TL=ADG-GRQDTrRo2GsMJAkLyGqOv4Lmgsmj-At5Yo3M0wJUa_UvsJV0HnRr-cIYPHF5&continue=https://accounts.google.com/ManageAccount?nc%3D1",
+   "where": [
+    "indítás: YouTube (Shorts)"
+   ]
+  },
+  "https://www.youtube.com": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.youtube.com",
+   "where": [
+    "indítás: YouTube (Shorts)"
+   ]
+  },
+  "https://studio.youtube.com": {
+   "status": 200,
+   "ok": true,
+   "final": "https://accounts.google.com/v3/signin/identifier?continue=https://www.youtube.com/signin?action_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Dhu%26next%3Dhttps%253A%252F%252Fstudio.youtube.com%252F%26feature%3Dredirect_login&hl=hu&passive=true&service=youtube&uilel=3&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-1625415051:1790442977302115",
+   "where": [
+    "indítás: YouTube (Shorts)"
+   ]
+  },
+  "https://pacsit.hu/y": {
+   "status": 206,
+   "ok": true,
+   "final": "https://pacsit.hu/?utm_source=youtube&utm_medium=social&utm_campaign=pacsi&utm_content=bio",
+   "where": [
+    "indítás: YouTube (Shorts)"
+   ]
+  },
+  "https://www.linkedin.com/company/setup/new/": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fsetup%2Fnew%2F",
+   "where": [
+    "indítás: LinkedIn-oldal"
+   ]
+  },
+  "https://business.facebook.com/latest/content_calendar": {
+   "status": 200,
+   "ok": true,
+   "final": "https://business.facebook.com/business/loginpage/?next=https%3A%2F%2Fbusiness.facebook.com%2Flatest%2Fcontent_calendar%3Fnav_ref%3Dbiz_unified_f3_login_page_to_mbs&login_options%5B0%5D=FB&login_options%5B1%5D=IG&login_options%5B2%5D=SSO&config_ref=biz_login_tool_flavor_mbs",
+   "where": [
+    "indítás: Befejezés"
+   ]
+  },
+  "https://stat.pacsit.hu": {
+   "status": 200,
+   "ok": true,
+   "final": "https://stat.pacsit.hu",
+   "where": [
+    "arculat",
+    "indítás: Befejezés"
+   ]
+  },
+  "https://fonts.googleapis.com/css2?family=Fraunces%3Aital%2Copsz%2Cwght%2CSOFT%400%2C9..144%2C700..800%2C100%3B1%2C9..144%2C700%2C100&family=Manrope%3Awght%40500%3B700%3B800&display=swap": {
+   "status": 200,
+   "ok": true,
+   "final": "https://fonts.googleapis.com/css2?family=Fraunces%3Aital%2Copsz%2Cwght%2CSOFT%400%2C9..144%2C700..800%2C100%3B1%2C9..144%2C700%2C100&family=Manrope%3Awght%40500%3B700%3B800&display=swap",
+   "where": [
+    "levél: L1",
+    "levél: L2",
+    "levél: L3",
+    "levél: P1",
+    "levél: P2",
+    "levél: P3",
+    "levél: W01",
+    "levél: W02",
+    "levél: W03",
+    "levél: W04",
+    "levél: W05",
+    "levél: W06",
+    "levél: W07",
+    "levél: W08",
+    "levél: W09",
+    "levél: W10",
+    "levél: W11",
+    "levél: W12",
+    "levél: WLC1",
+    "levél: WLC2",
+    "levél: WLC3"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dl1": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dl1&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: L1"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dl1": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dl1&type=custom_url&app_absent=0",
+   "where": [
+    "levél: L1"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dl2": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dl2&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: L2"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dl2": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dl2&type=custom_url&app_absent=0",
+   "where": [
+    "levél: L2"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dl3": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dl3&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: L3"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dl3": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dl3&type=custom_url&app_absent=0",
+   "where": [
+    "levél: L3"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw01": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw01&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W01"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw01": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw01&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W01"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw02": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw02&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W02"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw02": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw02&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W02"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw03": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw03&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W03"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw03": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw03&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W03"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw04": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw04&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W04"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw04": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw04&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W04"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw05": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw05&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W05"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw05": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw05&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W05"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw06": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw06&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W06"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw06": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw06&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W06"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw07": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw07&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W07"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw07": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw07&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W07"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw08": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw08&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W08"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw08": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw08&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W08"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw09": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw09&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W09"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw09": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw09&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W09"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw10": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw10&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W10"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw10": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw10&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W10"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw11": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw11&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W11"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw11": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw11&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W11"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw12": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dw12&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: W12"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw12": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dw12&type=custom_url&app_absent=0",
+   "where": [
+    "levél: W12"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dwlc2": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dwlc2&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: WLC2"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dwlc2": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dwlc2&type=custom_url&app_absent=0",
+   "where": [
+    "levél: WLC2"
+   ]
+  },
+  "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dwlc3": {
+   "status": 200,
+   "ok": true,
+   "final": "https://www.facebook.com/share_channel/?type=reshare&link=https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dfacebook-share%26utm_medium%3Dreferral%26utm_campaign%3Dwlc3&app_id=966242223397117&source_surface=external_reshare&display&hashtag",
+   "where": [
+    "levél: WLC3"
+   ]
+  },
+  "https://wa.me/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dwlc3": {
+   "status": 200,
+   "ok": true,
+   "final": "https://api.whatsapp.com/send/?text=N%C3%A9zd+meg+a+Pacsit+%E2%80%93+ingyenes+kutyafajta-v%C3%A1laszt%C3%B3%2C+124+fajt%C3%A1val.+Szerintem+neked+is+tetszeni+fog%3A+https%3A%2F%2Fpacsit.hu%2F%3Futm_source%3Dwhatsapp-share%26utm_medium%3Dreferral%26utm_campaign%3Dwlc3&type=custom_url&app_absent=0",
+   "where": [
+    "levél: WLC3"
+   ]
+  },
+  "https://sabolo100.github.io/pacsi-partner/": {
+   "status": 206,
+   "ok": true,
+   "final": "https://sabolo100.github.io/pacsi-partner/",
+   "where": [
+    "arculat"
+   ]
+  },
+  "https://claude.ai/artifact/2LWG8yFub1TArPhBuWERmH": {
+   "status": 200,
+   "ok": true,
+   "final": "https://claude.ai/artifact/2LWG8yFub1TArPhBuWERmH",
+   "where": [
+    "arculat"
+   ]
+  }
+ }
+}

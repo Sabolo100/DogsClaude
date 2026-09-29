@@ -1,0 +1,31 @@
+{
+  "mappa": "pacsi-kutyafajta-valaszto",
+  "borito": "marketing/assets/screens/d_rank.png",
+  "kepek": [
+    {
+      "file": "marketing/assets/screens/d_rank.png",
+      "alt": "A Pacsi felhő nézete asztali gépen: 124 kutyafajta buborékokban, balra a szűrőkkel; a Kicsi, Gyerekbarát és Lakásba való szűrőnek megfelelő 19 fajta előre ugrik.",
+      "caption": "Felhő nézet, Rangsor mód: a megfelelő fajták előre ugranak"
+    },
+    {
+      "file": "marketing/assets/screens/d_card.png",
+      "alt": "A Cavalier King Charles spániel fajtakártyája: portré, 100%-os illeszkedés, pontozott jellemzők, leírás és hogy kinek ajánlott.",
+      "caption": "Fajtakártya: miért illik hozzád"
+    },
+    {
+      "file": "marketing/assets/screens/d_quiz.png",
+      "alt": "A Párkereső kvíz eredménye: a „Családi karmester” gazditípus és a hozzá legjobban illő öt fajta százalékos illeszkedéssel.",
+      "caption": "Párkereső kvíz: gazditípus és a top 5 fajta"
+    },
+    {
+      "file": "marketing/assets/screens/d_map.png",
+      "alt": "A Térkép nézet: a fajták méret és energiaszint szerint elrendezve, olyan zónákkal, mint a Zsebrakéták, a Nyugis törpék és a Kanapé-óriások.",
+      "caption": "Térkép: méret és energia szerint"
+    },
+    {
+      "file": "marketing/assets/screens/d_compare.png",
+      "alt": "Az Összehasonlítás panel: a rövidszőrű magyar vizsla, a golden retriever és a border collie jellemzői pókhálódiagramon és táblázatban.",
+      "caption": "Összehasonlítás: három fajta egymás mellett"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+Pacsi-levél · 12. szám · 2026. december 30.
+
+PACSI-LEVÉL · 12. SZÁM
+HOLNAP SZILVESZTER: 8 PONTOS GYORSLISTA.
+Ha két hete elkezdtétek a készülődést, szuper. Ha nem, ez a lista még most is sokat segít.
+→ Nyisd meg a Pacsit: https://pacsit.hu/?utm_source=pacsi-level&utm_medium=email&utm_campaign=w12&utm_content=hero
+
+*|IF:FNAME|*Szia *|FNAME|*!*|ELSE:|*Szia!*|END:IF|*
+Holnap este durrognak a petárdák. Egy nyugodt este titka most a jó előkészület – és egy kis türelem.
+
+SZILVESZTERI GYORSLISTA
+8 pont holnapra
+  - Délutáni nagy séta, sötétedés előtt, pórázon – este már csak egy rövid kör.
+  - Biléta a nyakörvön, a chip adatai frissek.
+  - Ablakok, függönyök zárva, halk zene vagy tévé szól a háttérben.
+  - A búvóhely szabad: ne húzd ki onnan, ha oda bújik.
+  - Nyugodtan vigasztald: ha megnyugtatod, simogatod, azzal nem „jutalmazod” a félelmet.
+  - Kapu, erkélyajtó zárva – a vendégeknek is szólj, hogy figyeljenek az ajtóra.
+  - Rágójáték, szimatszőnyeg: a rágás és a szimatolás nyugtat.
+  - Ne vidd magaddal a tűzijátékra, és ne hagyd egyedül a kertben.
+
+OLVASÓINK TIPPJEI
+Amit ti írtatok
+[Ide kerülnek a december 17-i levélre érkezett legjobb válaszok – névvel vagy név nélkül, ahogy a beküldő kérte.]
+
+A MÚLT HETI FEJTÖRŐ MEGFEJTÉSE
+Viktória királynő 1860-ban egy pekingi palotakutyát kapott ajándékba – az elsők egyikét, amelyet a pekingi Nyári Palotából vittek Angliába.
+
+2027
+Mi jön jövőre?
+Januártól folytatjuk a csütörtöki leveleket: új fajtabemutatók, gazdi-tippek és fejtörők. Ha van ötleted, miről olvasnál szívesen, írd meg válaszban!
+
+Ismersz valakit, aki kutyát szeretne?
+Küldd el neki: https://pacsit.hu/
+Neked küldték tovább? Feliratkozás: *|LIST:SUBSCRIBE|*
+
+Nyugodt szilvesztert és boldog új évet!
+a Pacsi csapata
+U.i. Ha a kutyád mégis elszökne: azonnal jelezd a chip-nyilvántartásban (Petvetdata) és a környékbeli menhelyeken, és oszd meg a helyi kutyás csoportokban.
+
+—
+Pacsi by DarwinAI · ingyenes kutyafajta-választó · pacsit.hu
+*|LIST:DESCRIPTION|*
+Leiratkozás: *|UNSUB|*  ·  Beállítások: *|UPDATE_PROFILE|*
+*|LIST:COMPANY|* · *|LIST:ADDRESSLINE|*

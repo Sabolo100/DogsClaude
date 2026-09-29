@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><title>Pacsi eDM – fejléckép</title>
+<link rel="stylesheet" href="../../social/shared/brand.css">
+<link rel="stylesheet" href="../../social/images/designs.css">
+<style>
+/* logó külön, átlátszó háttérrel (sötét módhoz világos változat: ?d=logo&inv=1) */
+body.logo-mode, body.logo-mode .canvas { background: transparent !important; }
+</style>
+</head>
+<body>
+<div id="c" class="canvas grain"></div>
+<script src="../../social/shared/kit.js"></script>
+<script src="edesigns.js"></script>
+<script>
+/* hero.html?d=<design>&w=1200&h=600  ·  hero.html?d=logo[&inv=1] (a levél fejlécének logója) */
+window.__ready = (async () => {
+  const q = new URLSearchParams(location.search);
+  const w = +q.get('w') || 1200, h = +q.get('h') || 600, d = q.get('d') || 'e_launch';
+  const c = document.getElementById('c');
+  c.style.width = w + 'px'; c.style.height = h + 'px';
+  await K.init();
+  if (d === 'logo') {
+    document.body.classList.add('logo-mode');
+    c.classList.remove('grain');
+    c.innerHTML = `<div class="abs" style="left:0;top:0;width:${w}px;height:${h}px;display:flex;align-items:center">${K.logo(+q.get('px') || 56, { inv: q.has('inv') })}</div>`;
+  } else {
+    const fn = EDESIGNS[d];
+    if (!fn) { c.innerHTML = `<p style="padding:40px;font-size:40px">Nincs ilyen design: ${d}</p>`; return; }
+    c.innerHTML = fn({ w, h, q, p: q.get('p') });
+  }
+  await K.settle(c);
+  return true;
+})();
+</script>
+</body></html>
