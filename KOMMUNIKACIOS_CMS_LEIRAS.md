@@ -1327,14 +1327,14 @@ Az `insights.compute(data)` minden buildnél lefut. A kimenete: `insights.health
 4. **Statisztika:** csak-olvasó felhasználó a webes statisztikában (az önhosztolt statisztika megosztási linkje az API-hoz nem használható).
 5. **Kulcsok** (szolgáltatásfiók-kulcs, AI-kulcs, SMTP, statisztikai jelszó) a szerver **titkos környezeti változóiba**. A kulcsot soha nem írjuk ki, és **chatben nem kérjük el**.
 
-**Mi fut és mikor** (Pacsi: `ads-engine` 0.3.0):
+**Mi fut és mikor** (Pacsi: `ads-engine` 0.4.0):
 
 | Mikor | Mit csinál |
 |---|---|
 | naponta | tegnapi költés és keret ellenőrzése (fékek), hirdetések jóváhagyási állapota, kézi módosítás észlelése, a brief változásának figyelése |
 | óránként | a nyitóoldal elérhetősége (megmarad-e az UTM) |
 | hetente | kiértékelés (Google + webes statisztika) → javaslatok → szabályok → végrehajtás → **magyar heti levél** |
-| havonta | az API-verzió életciklusának ellenőrzése |
+| havonta | az API-verzió életciklusának ellenőrzése; **havi terv**: a hónap témája, új kulcsszavak a meglévő csoportokba (kódban szűrve), hirdetési szempontok, kísérletek, tanulságok → levél |
 
 **Biztonsági elvek** (kódban, nem promptban):
 - **A keret átlag.** A Google napi kerete átlag (egy nap a duplát is költheti), ezért a „heti keret” = 7 × napi keret, **nem kemény plafon**. A fékek a valós kockázatot figyelik: tegnapi költés > 2,1 × napi keret, havi határ, **elírás-védelem** (≥ 2 × keretemelés → szünet és megerősítés). A fékek próbaüzemben is élesek.
@@ -1356,6 +1356,8 @@ Az `insights.compute(data)` minden buildnél lefut. A kimenete: `insights.health
 - A szabályozott kategóriák szavai (Pacsi-példa: „párkereső” → társkereső-asszociáció, a Google *dating* szabálya) a briefben **tiltott szóként** szerepeljenek.
 - Az automatikus címkézés (gclid) kikapcsolása után az UTM-paraméterek az egyetlen követés. Ha a mélylinkek hash-alapúak, minden nyitóoldal-útvonalnak át kell adnia a lekérdezést.
 - Az API-leíró (discovery) alapú kérés-ellenőrzés és a `validateOnly` kiszűri a hibás kéréseket az éles írás előtt; a Google tényleges viselkedését az első éles, szüneteltetett kampány igazolja.
+- **A Search kép-eszközre a Google szabályt ír:** szöveg, felirat és logó nem lehet a képen; utólagos kollázs/keret és elmosott vagy életlen kép sem; a fióknak legalább **60 naposnak** kell lennie (jó szabályzati előzmény, aktív szöveges hirdetés, költés az elmúlt 30 napban). Ezért a képekre nem teszünk szöveget (a szövegváltozat a hirdetésszövegekben készül), új fiókon a kampány képek nélkül indul, és egy `validateOnly` próba dönt arról, hogy a képek feltölthetők-e; addig nincs AI-képre költés.
+- **Az AI-kép pénzbe kerül:** kemény heti keret (a számláló a hívás ELŐTT nő, a sikertelen kérés is számít), kötelező képnézés a feltöltés előtt, próbaüzemben (dry) nincs AI-kép. A képek nyilvántartásban vannak (forrás, ellenőrzés, állapot); a projekt saját képei védettek, a motor csak a saját képeit szünetelteti.
 
 **Később:** Demand Gen és videó (a meglévő YouTube-videókkal, elég nagy keretnél), célcsoport-tesztek, több projekt egy motorban, kérés–válasz végpont (ha a projekt saját generátort futtat), a heti jelentés beépítése az Eredmények fülbe.
 
@@ -1845,7 +1847,7 @@ brief (1–3 mondat forgatókönyv), melyik termékfunkciót mutatja, javasolt d
 
 ## D) függelék – A dokumentum változásnaplója
 
-- **1.1.0 – 2026-10-01:** új 8.9: fizetett keresőhirdetés (Google Ads) önjáró motorral. A szerződés két oldala (Ads Pack a termék oldalán, szolgáltatás a szerveren), a beállítás lépései (a developer token megszűnése, a hozzáférési szint a Cloud-projekthez kötve, a szolgáltatásfiók az MCC-hez), napirend, biztonsági elvek (a napi keret átlag, elírás-védelem, zárt műveletkészlet, „kézben van”, tények a kódban), mérés süti nélkül (költség / bevont látogatás), tanulságok. Kiegészítve: Indítás (5.3), továbbfejlesztések (14.), megfeleltetés (A). Csak hozzáadás: a meglévő fejezetek működése nem változott.
+- **1.1.0 – 2026-10-01:** új 8.9: fizetett keresőhirdetés (Google Ads) önjáró motorral. A szerződés két oldala (Ads Pack a termék oldalán, szolgáltatás a szerveren), a beállítás lépései (a developer token megszűnése, a hozzáférési szint a Cloud-projekthez kötve, a szolgáltatásfiók az MCC-hez), napirend, biztonsági elvek (a napi keret átlag, elírás-védelem, zárt műveletkészlet, „kézben van”, tények a kódban), mérés süti nélkül (költség / bevont látogatás), tanulságok. Kiegészítve: Indítás (5.3), továbbfejlesztések (14.), megfeleltetés (A). Csak hozzáadás: a meglévő fejezetek működése nem változott. A 8.9 az Ads Engine 0.4.0 szerint a havi tervvel és a kreatív-gyárral (képek: a Google Search-képszabályai, 60 napos fiók, AI-kép keret) is kiegészült.
 - **1.0.3 – 2026-09-29:** új 8.8: YouTube-csatorna feltöltése és ütemezése API-n (beállítás, OAuth, parancskészlet, folytatható feltöltés, duplikációvédelem, kézzel feltöltött videók felismerése); a **privátra zárolás** szabálya (a 2020. július 28. után létrehozott, nem auditált API-projektből feltöltött videó nem tehető nyilvánossá), az API-audit menete és az ellenőrző próba; API-s ütemezés a 6.2-ben; megfeleltetés az A) függelékben.
 - **1.0.2 – 2026-09-29:** új 8.7: Facebook-oldal posztolása API-n, a platform saját ütemezőjébe (beállítás, jogosultságok, Live mód, parancskészlet, Graph API-leképezés, duplikációvédelem); API-s ütemezés a 6.2-ben; megfeleltetés az A) függelékben.
 - **1.0.1 – 2026-09-28:** válaszpiszkozatok minden partnerválaszra (6.8); a kiküldő automatikus szünete, a CMS-ben kezelt kapcsolatok és a rossz domainek kihagyása, napló-helyreállítás a futási naplóval, piszkozatból küldött levelek (6.7).
