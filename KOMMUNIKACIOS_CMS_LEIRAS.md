@@ -1,6 +1,6 @@
 # Kommunikációs CMS – általános leírás (tervrajz)
 
-**Verzió:** 1.0.3 · 2026-09-29
+**Verzió:** 1.1.0 · 2026-10-01
 **Minta:** a Pacsi Marketing Studio 1.4.0 (build 398848a), a pacsit.hu kutyafajta-választó app kommunikációs CMS-e.
 **Kinek szól:** fejlesztőnek, AI-ügynöknek (pl. Claude) és termékgazdának, aki egy **másik** apphoz vagy weboldalhoz ugyanilyen felépítésű kommunikációs CMS-t akar.
 
@@ -597,7 +597,7 @@ Egy fül akkor is a helyén marad, ha a termékben nincs rá szükség. Ilyenkor
   - **link:** gomb, új lapon nyílik.
 - Kész lépés: halvány szöveg. Pipáláskor az oldal nem ugrik el (a görgetési helyzet megmarad).
 
-Tipikus platformok: Előkészítés (közös e-mail-cím, jelszókezelő, 2FA, felhasználónév-sorrend), Facebook-oldal, Instagram, TikTok, YouTube, LinkedIn-oldal, Befejezés (linkek ellenőrzése, a profilcímek beírása a konfigurációba, első hét ütemezése, statisztika).
+Tipikus platformok: Előkészítés (közös e-mail-cím, jelszókezelő, 2FA, felhasználónév-sorrend), Facebook-oldal, Instagram, TikTok, YouTube, LinkedIn-oldal, Google Ads (fizetett keresőhirdetés, 8.9), Befejezés (linkek ellenőrzése, a profilcímek beírása a konfigurációba, első hét ütemezése, statisztika).
 
 ### 5.4 Tartalmak és a tartalom adatlapja
 
@@ -1312,6 +1312,53 @@ Az `insights.compute(data)` minden buildnél lefut. A kimenete: `insights.health
 
 **Később:** YouTube Analytics API (benyomások, átkattintási arány, megtekintési idő; külön jog kell hozzá), kommentek összegyűjtése és válaszjavaslat.
 
+### 8.9 Fizetett keresőhirdetés (Google Ads, önjáró motor)
+
+**Opcionális, ajánlott, ha van hirdetési keret.** Ez a csatorna **más természetű, mint a 8.7 és a 8.8**: nem idősávokat tesz a platform ütemezőjébe, hanem egy **önálló szolgáltatás („Ads Engine”)** fut a szerveren, a laptop nélkül: hirdetést épít, futtat, hetente kiértékeli, és a szabályok között javítja. **A CMS nem hívja a Google-t.** A CMS dolga: az indítási lépéssor (5.3), a „Hirdetés” tartalomtípus szövegei és képei, és – később – a heti jelentés számai az Eredmények fülön. A termék saját oldala pedig **kiteszi a hirdetési csomagot** (Ads Pack), amit a motor húz.
+
+**A szerződés két oldala:**
+- **A termék oldalán (Ads Pack: statikus fájlok, szerverkód nélkül):** `/ads/brief.json` (irány, tiltások, **bizonyítható tények**, kulcsszavak, nyitóoldalak), `/ads/creatives.json` (kész hirdetésszövegek, kulcsszavak, hivatkozások, kiemelések) és `/ads/img/…` (képek 1,91:1, 1:1 és 4:5 arányban). `X-Robots-Tag: noindex`, ETag. A fájlokat a CMS tartalmából állítja elő a build vagy az AI-ügynök. **A séma és a promptként is használható leírás a motor repójában van** (`docs/ADS_ENGINE_BEKOTES.md`, `schema/`, önálló validátor), így a másik projekt AI-ügynöke ebből építi meg a saját modulját.
+- **A motor oldalán (szolgáltatás):** Dockeres Python-alkalmazás saját ütemezővel és SQLite állapottal egy tartós kötetben. Egy motor több projektet is kiszolgál (projektenként saját Google Ads ügyfélfiók és keret).
+
+**Beállítás** (egyszer, a tulajdonos; lépésenként a motor `docs/GOOGLE_ADS_BEALLITAS.md` fájljában, és a `check` parancs mindig kiírja a következő hiányzót):
+1. **Google Ads:** kezelői (MCC) fiók és ügyfélfiók a termékhez (a pénznem és az időzóna a létrehozáskor dől el, utólag nem módosítható); fizetési mód; hirdetőazonosítás, ha kéri; az automatikus ajánlás-alkalmazás és az automatikus címkézés (gclid) kikapcsolása.
+2. **Google Cloud:** projekt, éles számlázás, *Google Ads API* bekapcsolása, **hozzáférési szint kérése** (*Apply for access*, Explorer). ⚠ A *developer token* 2026. szeptember 9-én megszűnt; a hozzáférés ma a Cloud-projekthez kötött.
+3. **Szolgáltatásfiók + JSON-kulcs**, és a szolgáltatásfiók e-mail-címe az MCC felhasználói közé (nincs frissítő token, nincs OAuth-képernyő, nincs lejárat). ⚠ Céges szervezetben a kulcs létrehozását a szervezeti szabály alapból tilthatja.
+4. **Statisztika:** csak-olvasó felhasználó a webes statisztikában (az önhosztolt statisztika megosztási linkje az API-hoz nem használható).
+5. **Kulcsok** (szolgáltatásfiók-kulcs, AI-kulcs, SMTP, statisztikai jelszó) a szerver **titkos környezeti változóiba**. A kulcsot soha nem írjuk ki, és **chatben nem kérjük el**.
+
+**Mi fut és mikor** (Pacsi: `ads-engine` 0.3.0):
+
+| Mikor | Mit csinál |
+|---|---|
+| naponta | tegnapi költés és keret ellenőrzése (fékek), hirdetések jóváhagyási állapota, kézi módosítás észlelése, a brief változásának figyelése |
+| óránként | a nyitóoldal elérhetősége (megmarad-e az UTM) |
+| hetente | kiértékelés (Google + webes statisztika) → javaslatok → szabályok → végrehajtás → **magyar heti levél** |
+| havonta | az API-verzió életciklusának ellenőrzése |
+
+**Biztonsági elvek** (kódban, nem promptban):
+- **A keret átlag.** A Google napi kerete átlag (egy nap a duplát is költheti), ezért a „heti keret” = 7 × napi keret, **nem kemény plafon**. A fékek a valós kockázatot figyelik: tegnapi költés > 2,1 × napi keret, havi határ, **elírás-védelem** (≥ 2 × keretemelés → szünet és megerősítés). A fékek próbaüzemben is élesek.
+- **A keretet az ember állítja** a Google Ads-ben; a motor soha nem emeli. Az első éles indulás (go-live) a keret külön megadásával és a tulajdonos jóváhagyásával történik; az új kampány mindig szüneteltetve jön létre.
+- **Zárt műveletkészlet:** negatív kulcsszó, kulcsszó-szünet, hirdetésszöveg-csere, elutasított hirdetés javítása; minden más tiltott. Az AI csak javasol, a döntést a kódban lévő szabályok hozzák (elég adat, védett magkifejezések, heti korlátok).
+- **Tények a kódban:** a hirdetésszöveg minden száma és kényes állítása (ingyenes, garantált, ár, egészség, felsőfok) csak a brief tényeiből jöhet.
+- **Címke-alapú tulajdonjog és „kézben van”:** a motor csak a saját (címkézett) kampányaihoz nyúl; amit ember módosított vagy szüneteltetett, ahhoz 28 napig nem, és nem kapcsolja vissza.
+- **Próba az alap:** `dry` üzemmódban minden módosítás a Google `validateOnly` próbáján megy át, de nem íródik; a 14 napos megfigyelési időszak alatt a motor csak fékez és mér.
+
+**Mérés.** Ha a termék süti nélküli (nincs konverziókövetés), a minőség-őr a **költség / bevont látogatás**: a webes statisztika UTM szerint számolja a hirdetésből jövő látogatókat és egy „bevont” eseményt (oldalbetöltésenként egyszer, az első érdemi interakciónál). Az olcsó, de azonnal visszapattanó kattintást a motor nem hajszolja. Ezért a nyitóoldal-útvonalaknak meg kell tartaniuk a lekérdezést (`?utm_…`).
+
+**Leképezés a CMS-hez:**
+- **Indítás (5.3):** „Google Ads” platformkártya a fenti lépésekkel (a pipák a közös tárolóban: `setup/googleads`).
+- **Hirdetés tartalomtípus:** a keresőhirdetés szövegei (cím ≤ 30, leírás ≤ 90 karakter, kulcsszavak) és képei a `creatives.json` forrásai.
+- **Eredmények (5.7):** a heti jelentés JSON-ja (költés, kattintás, bevont látogatás) – a CMS-be kötése a motor későbbi verziójában készül.
+
+**Tanulságok** (a Pacsi építéséből):
+- A nyitóoldal-őrnek elég az **állapot és a végső cím**. Ha az oldal teljes tartalmát is letöltené, és méretkorlátot ellenőrizne, a nagy (egyfájlos PWA, ~460 KB) oldalon hamis „nem elérhető” riasztást adna, és leállítaná a hirdetést.
+- A szabályozott kategóriák szavai (Pacsi-példa: „párkereső” → társkereső-asszociáció, a Google *dating* szabálya) a briefben **tiltott szóként** szerepeljenek.
+- Az automatikus címkézés (gclid) kikapcsolása után az UTM-paraméterek az egyetlen követés. Ha a mélylinkek hash-alapúak, minden nyitóoldal-útvonalnak át kell adnia a lekérdezést.
+- Az API-leíró (discovery) alapú kérés-ellenőrzés és a `validateOnly` kiszűri a hibás kéréseket az éles írás előtt; a Google tényleges viselkedését az első éles, szüneteltetett kampány igazolja.
+
+**Később:** Demand Gen és videó (a meglévő YouTube-videókkal, elég nagy keretnél), célcsoport-tesztek, több projekt egy motorban, kérés–válasz végpont (ha a projekt saját generátort futtat), a heti jelentés beépítése az Eredmények fülbe.
+
 ---
 
 ## 9. Jog, adatvédelem, kézbesíthetőség
@@ -1599,7 +1646,7 @@ A Pacsiban még nincsenek meg, de általános rendszerben hasznosak (ajánlott s
 6. **Hivatalos API-s posztolás** ott, ahol megbízható (LinkedIn-oldal, Instagram), a kézi mód megtartásával. A Facebook-oldal a Pacsi 1.5.0 óta (8.7), a YouTube-csatorna az 1.6.0 óta kész (8.8).
 7. **Tárgysor A/B teszt** az ESP-ben, az eredmény visszaírása.
 8. **Visszatérő sorozatsablonok** (pl. „a hét X-e”) egy kattintással a következő hónapra.
-9. **Hirdetési költség** és kattintásonkénti ár az Eredmények fülön.
+9. **Hirdetési költség** és kattintásonkénti ár az Eredmények fülön (a Google Ads motor heti jelentése a forrás, 8.9).
 10. **Tiltólista szinkronja** az ESP és a megkereső között (egy „Nem kér” mindkét helyen érvényes).
 11. **Többnyelvűség:** tartalmak nyelvenként, a naptárban nyelvi szűrővel.
 
@@ -1642,6 +1689,7 @@ A Pacsiban még nincsenek meg, de általános rendszerben hasznosak (ajánlott s
 | `mailchimp.py`, `mailchimpben` | `esp.py`, `listan` | ESP-független nevek |
 | `facebook.py`, `Facebook_API.json` | `social_<platform>.py`, `<Platform>_API.json` | közösségi API-eszköz és kulcsfájl (8.7) |
 | `youtube.py`, `YouTube_API.json`, `tools/tests/` | `social_<platform>.py`, `<Platform>_API.json` | videómegosztó API-eszköz, kulcsfájl és automatikus próbák (8.8) |
+| `ads-engine`, `pacsit.hu/ads/` | `ads-engine`, `<domain>/ads/` | az önjáró Google Ads szolgáltatás és a termék hirdetési csomagja (8.9) |
 | `hello@pacsit.hu` (Forward Email) | `<cím>@<domain>` | a megkeresések feladója |
 | `pacsit.hu/f/<id>` | `<domain>/<p>/<id>` | rövid linkek |
 | `stat.pacsit.hu` (Umami) | süti nélküli statisztika | |
@@ -1797,6 +1845,7 @@ brief (1–3 mondat forgatókönyv), melyik termékfunkciót mutatja, javasolt d
 
 ## D) függelék – A dokumentum változásnaplója
 
+- **1.1.0 – 2026-10-01:** új 8.9: fizetett keresőhirdetés (Google Ads) önjáró motorral. A szerződés két oldala (Ads Pack a termék oldalán, szolgáltatás a szerveren), a beállítás lépései (a developer token megszűnése, a hozzáférési szint a Cloud-projekthez kötve, a szolgáltatásfiók az MCC-hez), napirend, biztonsági elvek (a napi keret átlag, elírás-védelem, zárt műveletkészlet, „kézben van”, tények a kódban), mérés süti nélkül (költség / bevont látogatás), tanulságok. Kiegészítve: Indítás (5.3), továbbfejlesztések (14.), megfeleltetés (A). Csak hozzáadás: a meglévő fejezetek működése nem változott.
 - **1.0.3 – 2026-09-29:** új 8.8: YouTube-csatorna feltöltése és ütemezése API-n (beállítás, OAuth, parancskészlet, folytatható feltöltés, duplikációvédelem, kézzel feltöltött videók felismerése); a **privátra zárolás** szabálya (a 2020. július 28. után létrehozott, nem auditált API-projektből feltöltött videó nem tehető nyilvánossá), az API-audit menete és az ellenőrző próba; API-s ütemezés a 6.2-ben; megfeleltetés az A) függelékben.
 - **1.0.2 – 2026-09-29:** új 8.7: Facebook-oldal posztolása API-n, a platform saját ütemezőjébe (beállítás, jogosultságok, Live mód, parancskészlet, Graph API-leképezés, duplikációvédelem); API-s ütemezés a 6.2-ben; megfeleltetés az A) függelékben.
 - **1.0.1 – 2026-09-28:** válaszpiszkozatok minden partnerválaszra (6.8); a kiküldő automatikus szünete, a CMS-ben kezelt kapcsolatok és a rossz domainek kihagyása, napló-helyreállítás a futási naplóval, piszkozatból küldött levelek (6.7).

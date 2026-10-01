@@ -2,6 +2,12 @@
 
 A verziószám a `marketing/VERSION` fájlban van (FŐ.MELLÉK.JAVÍTÁS). A build-azonosító a tartalom és a CMS forrásának rövid hash-e, és a CMS-ben is látszik.
 
+## 1.7.0 – 2026-10-01
+- **Új: „Google Ads (fizetett)” kártya az Indítás fülön** (9 lépés): MCC és „Pacsit” ügyfélfiók (HUF, Budapest), automatikus ajánlás-alkalmazás és gclid kikapcsolása, Google Cloud projekt + Google Ads API + *Apply for access* (Explorer; a developer token 2026. szept. 9-én megszűnt), szolgáltatásfiók és JSON-kulcs (a céges szervezeti szabály figyelmeztetésével), hozzáadás az MCC-hez, csak-olvasó Umami-felhasználó, kulcsok a szerver titkos változóiba, majd „kész”. A részletes leírás az Ads Engine repójában van (`docs/GOOGLE_ADS_BEALLITAS.md`).
+- A fizetett csatornát egy **önálló szolgáltatás (Ads Engine)** kezeli a szerveren; a CMS nem hívja a Google-t. A keretet és a szünetet az ember állítja a Google Ads-ben. A kommunikációs CMS tervrajza új **8.9** fejezetet kapott (`KOMMUNIKACIOS_CMS_LEIRAS.md` 1.1.0).
+- Csak hozzáadás: a meglévő fülek, adatok és állapotok működése nem változott. Az Indítás haladásjelzője az új lépéseket is számolja.
+- A `.gitignore` a Google-szolgáltatásfiók kulcsfájljait is kizárja.
+
 ## 1.6.0 – 2026-09-29
 - **Új: YouTube Shorts feltöltése és ütemezése** (`tools/youtube.py`, YouTube Data API v3, csak szabványos Python).
   - A naptár YouTube-idősávjai privát feltöltésként, `publishAt` időponttal kerülnek a **YouTube saját ütemezőjébe**: a videó a megadott időpontban maga válik nyilvánossá, a laptop nélkül is.

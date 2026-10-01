@@ -831,7 +831,7 @@ function vSetup() {
         ${st.copy || st.file || st.link ? `<div class="sc">${st.copy ? `<pre>${esc(st.copy)}</pre><div class="row2"><button class="btn sm" data-copytext="${esc(st.copy)}">${ic('copy')} Másolás</button>${st.limit ? `<span class="muted small">${[...st.copy].length} / ${st.limit} karakter</span>` : ''}</div>` : ''}
           ${st.file ? fileBtn(st.file) : ''}${st.link ? `<div class="row2"><a class="btn sm ghost" href="${esc(st.link)}" target="_blank" rel="noopener">${ic('open')} ${esc(st.link.replace(/^https?:\/\//, ''))}</a></div>` : ''}</div>` : ''}</div></li>`; }).join('')}</ol></section>`).join('');
   return `<div class="kicker">Indítás</div><h1 style="margin-top:8px">Közösségi profilok – lépésről lépésre</h1>
-    <p class="lead">Két nap alatt végig lehet menni rajta: az 1. napon Facebook, Instagram, TikTok, a 2. napon YouTube és LinkedIn. Minden kép letölthető, minden szöveg egy kattintással másolható. Pipáld ki, amit megcsináltál; a pipák elmentődnek, és Claude is látja.</p>
+    <p class="lead">Két nap alatt végig lehet menni rajta: az 1. napon Facebook, Instagram, TikTok, a 2. napon YouTube és LinkedIn. A Google Ads kártya külön áll: a fizetett csatornát egy önálló szolgáltatás kezeli, és akkor kell, ha lesz hirdetési keret. Minden kép letölthető, minden szöveg egy kattintással másolható. Pipáld ki, amit megcsináltál; a pipák elmentődnek, és Claude is látja.</p>
     <div class="prog" aria-label="Haladás"><i style="width:${Math.round(done / tot * 100)}%"></i></div><p class="muted small">${done} / ${tot} lépés kész</p>
     <section class="sec"><div class="pgrid">${nav}</div></section>
     <section class="sec">${cards}</section>`;

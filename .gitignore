@@ -38,3 +38,9 @@ client_secret*.json
 marketing/content/content.json
 marketing/cms/index.html
 marketing/cms/artifact.html
+
+# Google Ads / Google Cloud szolgáltatásfiók JSON-kulcsa (az Ads Engine-hez) – soha ne kerüljön verziókezelésbe, a Coolify titkos változóiba való
+service_account*.json
+*-sa-key*.json
+ads-engine*.json
+GoogleAds_API*
