@@ -154,6 +154,9 @@ def main():
             (hl / p.name).write_text(t, encoding="utf-8")
         else:
             shutil.copy(p, hl / p.name)
+    # Hirdetés-csomag (Ads Engine): pacsit.hu/ads/ – brief, kész hirdetések, képek; statikus, nincs a precache-ben, nincs indexelve
+    if (SRC / "ads").is_dir():
+        shutil.copytree(SRC / "ads", pwa / "ads")
 
     # 3) claude.ai artifact: a publikáló maga adja a doctype/head/body vázat, ezért csak a törzs kell,
     #    a <title> legelöl; a keret :root-padding-je miatt az app 100% magas, a safe-area-t nem duplázzuk

@@ -4,6 +4,13 @@ A verziószám a `VERSION` fájlban van, szemantikus verziózással (FŐ.MELLÉK
 - **Mobilon:** a Tippek panel névjegykártyáján.
 - **Asztalon:** a bal oldali panel alján.
 
+## 1.9.0 – 2026-10-01
+A Google Ads csatornához (Ads Engine) szükséges mérés és landing-útvonalak. Az app felülete és működése nem változik.
+- **Új statisztikai esemény: `bevont`.** Oldalbetöltésenként egyszer megy, az első érdemi interakciónál (kvíz indítása vagy befejezése, kártya, szűrő, keresés, összevetés, meglepetés, megosztás). Az Umamiban így egy számmal látszik, hány látogatás volt „bevont”: az `inditas` minden megnyitáskor tüzel, ezért a visszapattanás nem mérhető vele.
+- **Új landing-útvonalak** (nginx): `/kviz`, `/fajtak`, `/gyerekbarat`, `/lakas`, `/kezdo`, `/csendes`, `/hullas`, `/magyar`, `/terkep`. Ugyanazt az appot nyitják meg a megfelelő kezdőállapottal (a kvíz azonnal indul, vagy lista nézet jön bekapcsolt szűrővel, vagy a térkép). A lekérdezés (pl. `utm_*`) megmarad, így a hirdetések követhetők.
+- **Javítva: a `/hirlevel` és az ismeretlen útvonalak átirányítása már nem dobja el a lekérdezést.** Az UTM-követés ezeken sem vész el.
+- **Új: `pacsit.hu/ads/`.** Az Ads Engine hirdetési csomagja (brief, kész hirdetések, képek). Statikus, nincs indexelve (`X-Robots-Tag: noindex`), nincs a service worker gyorsítótárában.
+
 ## 1.8.0 – 2026-09-28
 Egy androidos teszt visszajelzése alapján.
 - **Új: a Párkereső kvíz válaszai a végén is módosíthatók.** Eddig csak elölről lehetett kezdeni.

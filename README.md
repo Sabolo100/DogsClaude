@@ -48,6 +48,8 @@ A service worker verziója a tartalomból számolódik, ezért a már telepítet
 
 **Rövid, követhető linkek** (nginx): `pacsit.hu/f/<poszt>` Facebook, `/i` Instagram, `/t` TikTok, `/l/<poszt>` LinkedIn, `/y` YouTube. Mind a `/?utm_source=<platform>&utm_medium=social&utm_campaign=pacsi&utm_content=<poszt vagy bio>` címre irányít.
 
+**Landing-útvonalak a hirdetésekhez** (nginx): `/kviz` (a kvíz azonnal indul), `/fajtak` (lista nézet), `/gyerekbarat`, `/lakas`, `/kezdo`, `/csendes`, `/hullas`, `/magyar` (lista bekapcsolt szűrővel), `/terkep`. A lekérdezés (utm_*) megmarad. **Hirdetési csomag:** `src/ads/` → `pacsit.hu/ads/` (brief, kész hirdetések, képek) – az Ads Engine (Google Ads) innen húzza.
+
 ## Statisztika (névtelen, sütik nélkül)
 
 - **Eszköz:** Umami a saját szerveren (Coolify, „Pacsi” projekt, `pacsi-stat` szolgáltatás), a felülete: <https://stat.pacsit.hu>.
@@ -59,6 +61,7 @@ A service worker verziója a tartalomból számolódik, ezért a már telepítet
 |---|---|---|
 | (megtekintés) | forrás, UTM | honnan jönnek |
 | `inditas` | mod (telepített app / böngésző), eszkoz, tema | megnyitás módja |
+| `bevont` | elso (melyik interakció) | „bevont látogatás”: oldalbetöltésenként egyszer, az első érdemi interakciónál (hirdetések minőségmérése) |
 | `kedvenc`, `kedvenc-torles` | fajta | a legkedveltebb fajták |
 | `kartya` | fajta | mely fajták érdeklik az embereket |
 | `szuro` | szuro (pl. „Méret: Kicsi”, „Gyerekbarát”) | milyen jellemzőkre szűrnek |

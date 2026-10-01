@@ -14,10 +14,17 @@ const statAllowed = () => !!STAT.website && !ARTIFACT && (STAT.hosts || []).incl
 const STAT_REF = (() => { try { const r = document.referrer; return r && new URL(r).origin !== location.origin ? r : ''; } catch (e) { return ''; } })();
 let statCache = '', statOff = false;
 
+/* „Bevont látogatás”: oldalbetöltésenként egyszer, az első érdemi interakciónál egy külön `bevont` esemény is megy.
+   Az Umami szűrői eseményszintűek, és az `inditas` minden látogatáskor tüzel – így a hirdetések minősége (hány kattintásból lett
+   bevont látogatás) egyetlen számmal mérhető. */
+const STAT_ENGAGE = new Set(['kviz-indul', 'kviz-kesz', 'kartya', 'szuro', 'kereses', 'osszevetes', 'meglepetes', 'megosztas']);
+let statEngaged = false;
+
 /* stat() = oldalmegtekintés (az UTM-paraméterek innen látszanak); stat('név', { tulajdonság: érték }) = esemény */
 function stat(name, data) {
   if (store.get('statlog', false)) console.info('[stat]', name || 'oldalmegtekintés', data || '');
-  if (statOff || !statAllowed()) return;
+  const engage = () => { if (name && !statEngaged && STAT_ENGAGE.has(name)) { statEngaged = true; stat('bevont', { elso: name }); } };
+  if (statOff || !statAllowed()) return engage();      // nem mérünk, de a fejlesztői napló (statlog) így is mutatja a bevont eseményt
   const payload = {
     website: STAT.website, hostname: location.hostname, url: location.origin + location.pathname + location.search,   // a # utáni rész (szűrők) nem kell
     referrer: STAT_REF, title: document.title, language: navigator.language, screen: `${screen.width}x${screen.height}`, tag: `v${APP_VERSION}`,
@@ -29,6 +36,7 @@ function stat(name, data) {
       headers: { 'Content-Type': 'application/json', ...(statCache ? { 'x-umami-cache': statCache } : {}) },
     }).then(r => (r.ok ? r.json() : null)).then(r => { if (r) { statOff = !!r.disabled; statCache = r.cache || statCache; } }).catch(() => {});
   } catch (e) { /* offline vagy tiltott: a statisztika nem fontosabb az appnál */ }
+  engage();
 }
 
 /* Olvasható szűrőnév a kimutatásokhoz (pl. „Méret: Kicsi”, „Gyerekbarát”) */
