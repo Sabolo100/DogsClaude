@@ -1,0 +1,186 @@
+{
+ "nemet-juhaszkutya": [
+  "GSD",
+  "German Shepherd Dog",
+  "Alsatian"
+ ],
+ "malinois": [
+  "Belgian Shepherd",
+  "Malinois"
+ ],
+ "dobermann": [
+  "Doberman",
+  "Doberman Pinscher"
+ ],
+ "nemet-boxer": [
+  "German Boxer"
+ ],
+ "torpe-schnauzer": [
+  "Mini Schnauzer"
+ ],
+ "cane-corso": [
+  "Italian Mastiff"
+ ],
+ "berni-pasztorkutya": [
+  "Bernese"
+ ],
+ "bernathegyi": [
+  "St. Bernard",
+  "St Bernard"
+ ],
+ "uj-fundlandi": [
+  "Newfie"
+ ],
+ "angol-bulldog": [
+  "Bulldog",
+  "British Bulldog"
+ ],
+ "jack-russell-terrier": [
+  "JRT"
+ ],
+ "tacsko": [
+  "Wiener dog",
+  "sausage dog",
+  "doxie"
+ ],
+ "szamojed": [
+  "Sammy"
+ ],
+ "pomeraniai-torpespicc": [
+  "Pom"
+ ],
+ "akita-inu": [
+  "Akita Inu",
+  "Japanese Akita"
+ ],
+ "dalmata": [
+  "Dalmation"
+ ],
+ "erdelyi-kopo": [
+  "Erdélyi kopó",
+  "Hungarian Hound"
+ ],
+ "rhodesiai-ridgeback": [
+  "Ridgeback"
+ ],
+ "magyar-vizsla": [
+  "Magyar Vizsla",
+  "Hungarian Pointer",
+  "Hungarian Short-haired Pointer"
+ ],
+ "drotszoru-magyar-vizsla": [
+  "Wirehaired Vizsla",
+  "Hungarian Wire-haired Pointer"
+ ],
+ "weimari-vizsla": [
+  "Weim"
+ ],
+ "ir-szetter": [
+  "Irish Red Setter",
+  "Red Setter"
+ ],
+ "olasz-agar": [
+  "Italian Sighthound",
+  "Iggy"
+ ],
+ "pireneusi-hegyi-kutya": [
+  "Great Pyrenees",
+  "Pyrenean"
+ ],
+ "bordeaux-i-dog": [
+  "French Mastiff",
+  "Bordeaux Mastiff"
+ ],
+ "napolyi-masztiff": [
+  "Mastino"
+ ],
+ "shar-pei": [
+  "Chinese Shar-Pei"
+ ],
+ "kaukazusi-juhaszkutya": [
+  "Caucasian Ovcharka"
+ ],
+ "kozep-azsiai-juhaszkutya": [
+  "Alabai"
+ ],
+ "skot-terrier": [
+  "Scottie"
+ ],
+ "bullterrier": [
+  "English Bull Terrier"
+ ],
+ "parson-russell-terrier": [
+  "Parson"
+ ],
+ "csau-csau": [
+  "Chow"
+ ],
+ "bloodhound": [
+  "St. Hubert Hound"
+ ],
+ "bajor-hegyi-vereb": [
+  "Bavarian Hound"
+ ],
+ "angol-pointer": [
+  "Pointer"
+ ],
+ "bretagne-i-spaniel": [
+  "Brittany Spaniel",
+  "Épagneul Breton",
+  "Epagneul Breton"
+ ],
+ "nova-scotia-retriever": [
+  "Duck Tolling Retriever"
+ ],
+ "coton-de-tulear": [
+  "Coton"
+ ],
+ "kinai-meztelen-kutya": [
+  "Chinese Crested Dog"
+ ],
+ "afgan-agar": [
+  "Afghan"
+ ],
+ "barzoj": [
+  "Russian Wolfhound"
+ ],
+ "spanyol-galgo": [
+  "Spanish Greyhound",
+  "Spanish Galgo"
+ ],
+ "magyar-agar": [
+  "Magyar Agár",
+  "Hungarian Sighthound"
+ ],
+ "shetlandi-juhaszkutya": [
+  "Sheltie"
+ ],
+ "welsh-corgi-pembroke": [
+  "Corgi"
+ ],
+ "tervueren": [
+  "Belgian Tervueren",
+  "Tervuren",
+  "Tervueren"
+ ],
+ "groenendael": [
+  "Belgian Sheepdog"
+ ],
+ "feher-svajci-juhaszkutya": [
+  "Berger Blanc Suisse"
+ ],
+ "csehszlovak-farkaskutya": [
+  "Czechoslovakian Vlcak",
+  "Vlcak"
+ ],
+ "bobtail": [
+  "OES"
+ ],
+ "ausztral-pasztorkutya": [
+  "Blue Heeler",
+  "Red Heeler"
+ ],
+ "keeshond": [
+  "Wolfspitz"
+ ]
+}

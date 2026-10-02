@@ -174,7 +174,7 @@ footer a { color: var(--ink-2); }
   </section>
 </main>
 
-<footer class="wrap"><span>Pacsi by DarwinAI · <a href="../?utm_source=hirlevel-oldal">pacsit.hu</a></span><span>v1.9.0 · build a3d1289</span></footer>
+<footer class="wrap"><span>Pacsi by DarwinAI · <a href="../?utm_source=hirlevel-oldal">pacsit.hu</a></span><span>v1.10.0 · build ef95112</span></footer>
 
 <script>
 (() => {
@@ -190,7 +190,7 @@ footer a { color: var(--ink-2); }
   function stat(name, data) {
     if (!statOk()) return;
     const payload = { website: STAT.website, hostname: location.hostname, url: location.origin + location.pathname + location.search,
-      referrer: document.referrer, title: document.title, language: navigator.language, screen: `${screen.width}x${screen.height}`, tag: 'v1.9.0' };
+      referrer: document.referrer, title: document.title, language: navigator.language, screen: `${screen.width}x${screen.height}`, tag: 'v1.10.0' };
     if (name) { payload.name = name; if (data) payload.data = data; }
     try { fetch(STAT.endpoint, { method: 'POST', keepalive: true, credentials: 'omit', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'event', payload }) }).catch(() => {}); } catch (e) { /* nem fontos */ }
   }

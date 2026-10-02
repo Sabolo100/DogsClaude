@@ -2,8 +2,9 @@
    Fajtakártya: morph a buborékból, lapozás, kedvenc, összehasonlítás
    ========================================================================== */
 const cardEl = $('#card'), scrimEl = $('#scrim');
-const STATS = [['E', 'Energia', 'bolt'], ['Gy', 'Gyerekbarát', 'kid'], ['I', 'Idomíthatóság', 'cap'], ['U', 'Ugatás', 'quiet'], ['H', 'Szőrhullás', 'feather'], ['A', 'Ápolásigény', 'comb'], ['L', 'Lakásba való', 'home'], ['O', 'Őrzőösztön', 'shield']];
-const COST = ['', '€ – alacsony', '€€ – közepes', '€€€ – magas'];
+const STATS = [['E', '', 'bolt'], ['Gy', '', 'kid'], ['I', '', 'cap'], ['U', '', 'quiet'], ['H', '', 'feather'], ['A', '', 'comb'], ['L', '', 'home'], ['O', '', 'shield']];
+const COST = ['', '', '', ''];
+labels(() => { STATS.forEach(r => { r[1] = t(`stat.${r[0]}`); }); for (let i = 1; i <= 3; i++) COST[i] = t(`cost.${i}`); });
 let cardOrder = [], cardBusy = false;
 
 function orderList() {
@@ -11,7 +12,7 @@ function orderList() {
   const active = S.crit.length > 0;
   return vis.sort((a, b) => active ? (b.m - a.m) || COLL.compare(a.nev, b.nev) : COLL.compare(a.nev, b.nev)).map(b => b.id);
 }
-const dots = (v, d0 = 0) => `<span class="dots" aria-label="${v} az 5-ből">${[1, 2, 3, 4, 5].map(i => `<i class="${i <= v ? 'on' : ''}" style="--d:${d0 + i * 45}ms"></i>`).join('')}</span>`;
+const dots = (v, d0 = 0) => `<span class="dots" aria-label="${esc(t('card.dots', { v }))}">${[1, 2, 3, 4, 5].map(i => `<i class="${i <= v ? 'on' : ''}" style="--d:${d0 + i * 45}ms"></i>`).join('')}</span>`;
 
 function cardHTML(b) {
   const active = S.crit.length > 0;
@@ -19,56 +20,58 @@ function cardHTML(b) {
   const size = b.meret.map(v => SIZE_L[v]).join('–');
   const rs = active ? reasons(b) : [];
   const warns = [];
-  if (b.brachy) warns.push(`<span class="ichip warn">${ic('warn')}Lapos orrú – légzési kockázat</span>`);
-  if (b.korl) warns.push(`<span class="ichip warn">${ic('warn')}Egyes országokban engedélyköteles</span>`);
-  if (b.vonyit) warns.push(`<span class="ichip">${ic('quiet')}Ritkán ugat, de vonyít</span>`);
+  if (b.brachy) warns.push(`<span class="ichip warn">${ic('warn')}${t('card.warn.brachy')}</span>`);
+  if (b.korl) warns.push(`<span class="ichip warn">${ic('warn')}${t('card.warn.restricted')}</span>`);
+  if (b.vonyit) warns.push(`<span class="ichip">${ic('quiet')}${t('card.warn.howl')}</span>`);
   const fav = S.fav.has(b.id), cmp = S.cmp.includes(b.id);
+  // a hivatalos angol (FCI) név: magyarul mindig, angolul csak ha eltér a megjelenített névtől
+  const alt = LANG === 'en' && norm(b.en) === norm(b.nev) ? '' : b.en;
   let i = 0;
   const rv = () => `rv" style="--i:${i++}`;
   return `
   <div class="handle" aria-hidden="true"></div>
-  <button class="close" data-act="close" aria-label="Bezárás">${ic('x')}</button>
+  <button class="close" data-act="close" aria-label="${esc(t('common.close'))}">${ic('x')}</button>
   <div class="card-scroll">
     <div class="c-head">
       <div class="c-pic" id="cPic" style="--bgc:${b.bg};background-image:url('${portrait(b.id)}')"></div>
       <div class="c-title">
         <h2 id="cardTitle" class="${rv()}">${esc(b.nev)}</h2>
-        <div class="c-sub ${rv()}">${esc(b.en)} · FCI ${b.fci}. csoport · ${b.hu ? ic('flag') : ''}${esc(b.orszag)}</div>
+        <div class="c-sub ${rv()}">${[alt && esc(alt), t('card.fci', { n: b.fci }), `${b.hu ? ic('flag') : ''}${esc(b.orszag)}`].filter(Boolean).join(' · ')}</div>
         <p class="c-tag ${rv()}">${esc(b.tagline)}</p>
-        ${active ? `<div class="c-match ${rv()}"><div class="mring"><svg viewBox="0 0 80 80"><circle class="bgc" cx="40" cy="40" r="34"/><circle class="fg" cx="40" cy="40" r="34" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" data-pct="${pct}"/></svg><b data-count="${pct}">0%</b></div><small>${b.ok ? 'Minden szempontodnak megfelel' : 'ennyire illik<br>a szempontjaidhoz'}</small></div>` : ''}
+        ${active ? `<div class="c-match ${rv()}"><div class="mring"><svg viewBox="0 0 80 80"><circle class="bgc" cx="40" cy="40" r="34"/><circle class="fg" cx="40" cy="40" r="34" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" data-pct="${pct}"/></svg><b data-count="${pct}">0%</b></div><small>${b.ok ? t('card.match.ok') : t('card.match.part')}</small></div>` : ''}
       </div>
     </div>
     <div class="c-chips ${rv()}">
       <span class="ichip">${ic('ruler')}${size}</span>
-      <span class="ichip">⚖︎ ${range(b.suly)} kg</span>
-      ${b.marmagassag ? `<span class="ichip">↕ ${range(b.marmagassag)} cm</span>` : ''}
-      <span class="ichip">${ic('pulse')}${range(b.elet)} év</span>
+      <span class="ichip">⚖︎ ${t('unit.kg', { v: range(b.suly) })}</span>
+      ${b.marmagassag ? `<span class="ichip">↕ ${t('unit.cm', { v: range(b.marmagassag) })}</span>` : ''}
+      <span class="ichip">${ic('pulse')}${t('unit.years', { v: range(b.elet) })}</span>
       <span class="ichip">${ic('coat')}${b.szor.map(v => COAT_L[v]).join(' / ')}</span>
       ${warns.join('')}
     </div>
     <div class="c-grid">
       <div class="stats ${rv()}">${STATS.map(([k, l, icn], j) => `<div class="stat">${ic(icn)}<span>${l}</span>${dots(b.t[k], j * 60)}</div>`).join('')}</div>
-      <div class="why ${rv()}"><h4>${active ? 'Miért illik hozzád?' : 'Röviden'}</h4>
+      <div class="why ${rv()}"><h4>${active ? t('card.why') : t('card.brief')}</h4>
         ${active ? `<ul>${rs.slice(0, 6).map(r => `<li class="${r.cls}">${ic(r.cls === 'y' ? 'check' : r.cls === 'h' ? 'warn' : 'x')}${esc(r.text)}</li>`).join('')}</ul>`
           : `<ul>${(b.kinekIgen || []).map(t => `<li class="y">${ic('check')}${esc(t)}</li>`).join('')}</ul>`}
-        ${b.mozgas ? `<p class="c-note" style="font-size:13px;margin-top:10px">${ic('bolt')} <b>Mozgás:</b> ${esc(b.mozgas)}</p>` : ''}
+        ${b.mozgas ? `<p class="c-note" style="font-size:13px;margin-top:10px">${ic('bolt')} <b>${t('card.exercise')}</b> ${esc(b.mozgas)}</p>` : ''}
       </div>
     </div>
     <div class="c-actions ${rv()}">
-      <button class="btn fill ${fav ? 'on' : ''}" data-act="fav">${ic(fav ? 'heart-f' : 'heart')}<span>${fav ? 'Kedvenc' : 'Kedvencekhez'}</span></button>
-      <button class="btn ${cmp ? 'on' : ''}" data-act="cmp">${ic('compare')}<span>${cmp ? 'Összevetésben' : 'Összehasonlít'}</span></button>
-      <button class="btn round" data-act="share" aria-label="Megosztás">${ic('share')}</button>
+      <button class="btn fill ${fav ? 'on' : ''}" data-act="fav">${ic(fav ? 'heart-f' : 'heart')}<span>${fav ? t('card.fav.on') : t('card.fav.off')}</span></button>
+      <button class="btn ${cmp ? 'on' : ''}" data-act="cmp">${ic('compare')}<span>${cmp ? t('card.cmp.on') : t('card.cmp.off')}</span></button>
+      <button class="btn round" data-act="share" aria-label="${esc(t('card.share'))}">${ic('share')}</button>
     </div>
     ${b.leiras ? `<p class="c-desc ${rv()}">${esc(b.leiras)}</p>` : ''}
     <div class="c-cols ${rv()}">
-      ${b.kinekIgen ? `<div class="c-sec"><h4>Kinek ajánlott?</h4><ul>${b.kinekIgen.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
-      ${b.kinekNem ? `<div class="c-sec no"><h4>Kinek nem?</h4><ul>${b.kinekNem.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
-      ${b.egeszseg ? `<div class="c-sec"><h4>Egészség – figyelj rá</h4><ul>${b.egeszseg.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
-      ${b.koltseg ? `<div class="c-sec"><h4>Fenntartás</h4><ul><li>${COST[b.koltseg]} havi költség</li><li>Ápolásigény: ${['', 'minimális', 'kevés', 'közepes', 'jelentős', 'nagy'][b.t.A]}</li></ul></div>` : ''}
+      ${b.kinekIgen ? `<div class="c-sec"><h4>${t('card.who.yes')}</h4><ul>${b.kinekIgen.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
+      ${b.kinekNem ? `<div class="c-sec no"><h4>${t('card.who.no')}</h4><ul>${b.kinekNem.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
+      ${b.egeszseg ? `<div class="c-sec"><h4>${t('card.health')}</h4><ul>${b.egeszseg.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
+      ${b.koltseg ? `<div class="c-sec"><h4>${t('card.upkeep')}</h4><ul><li>${t('card.cost', { v: COST[b.koltseg] })}</li><li>${t('card.care', { v: t(`care.${b.t.A}`) })}</li></ul></div>` : ''}
     </div>
-    ${b.erdekesseg ? `<div class="c-fun ${rv()}"><b>Tudtad?</b> ${esc(b.erdekesseg)}</div>` : ''}
-    ${b.hasonlo && b.hasonlo.length ? `<div class="${rv()}"><h4 style="font:700 18px var(--font-d);margin:6px 0 10px">Hasonló fajták</h4><div class="c-sim">${b.hasonlo.map(id => { const s = BY_ID.get(id); return s ? `<button class="sim" data-sim="${id}"><i style="${picStyle(s)}"></i>${esc(s.nev)}</button>` : ''; }).join('')}</div></div>` : ''}
-    <p class="c-note">A jellemzők a fajtára jellemző átlagot mutatják – az egyedi kutya ettől eltérhet. Nem helyettesíti az állatorvosi vagy tenyésztői tanácsot.</p>
+    ${b.erdekesseg ? `<div class="c-fun ${rv()}"><b>${t('card.fun')}</b> ${esc(b.erdekesseg)}</div>` : ''}
+    ${b.hasonlo && b.hasonlo.length ? `<div class="${rv()}"><h4 style="font:700 18px var(--font-d);margin:6px 0 10px">${t('card.similar')}</h4><div class="c-sim">${b.hasonlo.map(id => { const s = BY_ID.get(id); return s ? `<button class="sim" data-sim="${id}"><i style="${picStyle(s)}"></i>${esc(s.nev)}</button>` : ''; }).join('')}</div></div>` : ''}
+    <p class="c-note">${t('card.note')}</p>
   </div>`;
 }
 
@@ -95,7 +98,7 @@ function openCard(id, { push = true, dir = 0 } = {}) {
   if (!b) return;
   setHover(null);
   const already = !cardEl.hidden;
-  if (S.card !== id) stat('kartya', { fajta: b.nev });   // melyik fajták érdeklik az embereket
+  if (S.card !== id) stat('kartya', { fajta: b.nev0 });   // melyik fajták érdeklik az embereket
   S.card = id;
   cardOrder = orderList();
   if (!cardOrder.includes(id)) cardOrder.unshift(id);
@@ -286,18 +289,18 @@ function toggleFav(id, srcEl) {
   updateBadges(on ? 'fav' : null);
   if (on) { burstAt(srcEl, true); haptic([8, 30, 8]); }
   const b = BY_ID.get(id);
-  stat(on ? 'kedvenc' : 'kedvenc-torles', { fajta: b.nev });
+  stat(on ? 'kedvenc' : 'kedvenc-torles', { fajta: b.nev0 });
   if (S.card === id) {
     const btn = $('[data-act="fav"]', cardEl);
-    if (btn) { btn.classList.toggle('on', on); btn.innerHTML = `${ic(on ? 'heart-f' : 'heart')}<span>${on ? 'Kedvenc' : 'Kedvencekhez'}</span>`; }
-  } else toast(on ? `♥ ${esc(b.nev)} a kedvencek közé került` : `${esc(b.nev)} kikerült a kedvencek közül`);
+    if (btn) { btn.classList.toggle('on', on); btn.innerHTML = `${ic(on ? 'heart-f' : 'heart')}<span>${on ? t('card.fav.on') : t('card.fav.off')}</span>`; }
+  } else toast(t(on ? 'toast.favOn' : 'toast.favOff', { v: esc(b.nev) }));
   if (S.drawer === 'kedvencek') renderDrawer();
 }
 function toggleCmp(id, srcEl) {
   const i = S.cmp.indexOf(id);
   if (i >= 0) S.cmp.splice(i, 1);
   else {
-    if (S.cmp.length >= 3) { toast('Egyszerre 3 fajtát hasonlíthatsz össze – vegyél ki egyet.'); return; }
+    if (S.cmp.length >= 3) { toast(t('toast.cmpMax')); return; }
     S.cmp.push(id);
     flyToTray(id, srcEl);
   }
@@ -307,7 +310,7 @@ function toggleCmp(id, srcEl) {
   renderTray();
   if (S.card === id) {
     const btn = $('[data-act="cmp"]', cardEl), on = S.cmp.includes(id);
-    if (btn) { btn.classList.toggle('on', on); btn.innerHTML = `${ic('compare')}<span>${on ? 'Összevetésben' : 'Összehasonlít'}</span>`; }
+    if (btn) { btn.classList.toggle('on', on); btn.innerHTML = `${ic('compare')}<span>${on ? t('card.cmp.on') : t('card.cmp.off')}</span>`; }
   }
   if (S.drawer === 'osszevet') renderDrawer();
 }
@@ -335,18 +338,18 @@ function flyToTray(id, srcEl) {
 /* ---------- Megosztás ---------- */
 async function shareBreed(id) {
   const b = BY_ID.get(id);
-  stat('megosztas', { mit: b.nev });
+  stat('megosztas', { mit: b.nev0 });
   // mindig a saját domainre mutat (helyi fájlból, tükörről vagy artifactból megosztva is)
-  const url = `${SITE.url}/#b=${id}`;
+  const url = `${siteUrl()}#b=${id}`;
   const text = `${b.nev} – ${b.tagline}`;
   if (ARTIFACT) {
-    try { await navigator.clipboard.writeText(`${text} 🐾 ${url}`); toast('A fajta leírása a vágólapra került 📋'); }
+    try { await navigator.clipboard.writeText(`${text} 🐾 ${url}`); toast(t('toast.copiedDesc')); }
     catch (e) { toast(esc(text)); }
     return;
   }
   try {
     if (navigator.share && location.protocol.startsWith('http')) { await navigator.share({ title: 'Pacsi by DarwinAI', text, url }); return; }
   } catch (e) { if (e.name === 'AbortError') return; }
-  try { await navigator.clipboard.writeText(`${text}\n${url}`); toast('Link a vágólapra másolva 🔗'); }
-  catch (e) { toast('A megosztás itt nem érhető el'); }
+  try { await navigator.clipboard.writeText(`${text}\n${url}`); toast(t('toast.copiedLink')); }
+  catch (e) { toast(t('toast.noShare')); }
 }

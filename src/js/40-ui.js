@@ -22,17 +22,17 @@ const fsec = (id, title, body, more = '') => `<section class="fsec" data-sec="${
 function renderFilters() {
   const tg = g => TOGGLES.filter(t => t.g === g).map(tog).join('');
   $('#filters').innerHTML =
-    fsec('meret', 'Méret', `<div class="chips sizes">${SIZES.map(([k, l], i) =>
+    fsec('meret', t('filters.size'), `<div class="chips sizes">${SIZES.map(([k, l], i) =>
       `<button class="chip size" data-k="meret" data-v="${k}" aria-pressed="false"><svg viewBox="0 0 64 44" style="height:${10 + i * 3}px;width:${(10 + i * 3) * 64 / 44}px" aria-hidden="true"><use href="#i-dog"/></svg>${l}<span class="ck">${ic('check')}</span><span class="n"></span></button>`).join('')}</div>`) +
-    fsec('energia', 'Energia', `<div class="chips">${ENERGY.map(([k, l]) => chip('energia', k, l)).join('')}</div>`) +
-    fsec('eletmod', 'Életmód', tg('eletmod')) +
-    fsec('szor', 'Szőrzet', `<div class="chips">${COATS.map(([k, l]) => chip('szor', k, l)).join('')}</div>`) +
-    fsec('gondozas', 'Gondozás', tg('gondozas')) +
-    fsec('egeszseg', 'Egészség', tg('egeszseg')) +
-    fsec('szerep', 'Szerep', `<div class="chips">${ROLES.map(([k, l]) => chip('szerep', k, l)).join('')}</div>`) +
-    fsec('kulonleges', 'Különleges', `<div class="chips">${chip('t', 'magyar', 'Magyar fajta', ic('flag'))}</div>`) +
-    fsec('fci', 'FCI-csoport', `<div class="chips" id="fciChips" hidden>${Object.entries(FCI).map(([k, l]) => chip('fci', k, `${k}. ${l}`)).join('')}</div>`,
-      `<button class="more" id="fciMore" aria-expanded="false">Mutasd</button>`);
+    fsec('energia', t('filters.energy'), `<div class="chips">${ENERGY.map(([k, l]) => chip('energia', k, l)).join('')}</div>`) +
+    fsec('eletmod', t('filters.lifestyle'), tg('eletmod')) +
+    fsec('szor', t('filters.coat'), `<div class="chips">${COATS.map(([k, l]) => chip('szor', k, l)).join('')}</div>`) +
+    fsec('gondozas', t('filters.care'), tg('gondozas')) +
+    fsec('egeszseg', t('filters.health'), tg('egeszseg')) +
+    fsec('szerep', t('filters.role'), `<div class="chips">${ROLES.map(([k, l]) => chip('szerep', k, l)).join('')}</div>`) +
+    fsec('kulonleges', t('filters.special'), `<div class="chips">${chip('t', 'magyar', TBY.magyar.l, ic('flag'))}</div>`) +
+    fsec('fci', t('filters.fci'), `<div class="chips" id="fciChips" hidden>${Object.entries(FCI).map(([k, l]) => chip('fci', k, `${k}. ${l}`)).join('')}</div>`,
+      `<button class="more" id="fciMore" aria-expanded="false">${t('filters.show')}</button>`);
 }
 const isOn = (k, v) => k === 't' ? S.f.t.has(v) : k === 'energia' ? S.f.energia === v : S.f[k].has(k === 'fci' ? +v : v);
 function mutate(f, k, v) {
@@ -65,14 +65,14 @@ function updateFilterUI() {
   }
   const k = filterCount() + (S.quiz ? 1 : 0);
   $('#activeCount').hidden = !k;
-  $('#activeCount').innerHTML = `<span>${k} aktív</span>`;
+  $('#activeCount').innerHTML = `<span>${t('filters.active', { n: k })}</span>`;
   $('#clearBtn').hidden = !k;
 }
 $('#filters').addEventListener('click', e => {
   const more = e.target.closest('#fciMore');
   if (more) {
     const box = $('#fciChips'), open = box.hidden;
-    box.hidden = !open; more.textContent = open ? 'Elrejt' : 'Mutasd'; more.setAttribute('aria-expanded', open);
+    box.hidden = !open; more.textContent = open ? t('filters.hide') : t('filters.show'); more.setAttribute('aria-expanded', open);
     return;
   }
   const el = e.target.closest('[data-k]');
@@ -88,20 +88,21 @@ $('#clearBtn').addEventListener('click', e => clearAll(srcPoint(e.currentTarget)
 $('#quizBtn').addEventListener('click', () => openDrawer('kviz'));
 
 /* ---------- Mobil szűrődokk ---------- */
-const DOCK = [
-  { id: 'meret', l: 'Méret', i: 'ruler', sec: 'meret' },
-  { id: 'gyerek', l: 'Gyerek', i: 'kid', t: 'gyerek' },
-  { id: 'lakas', l: 'Lakás', i: 'home', t: 'lakas' },
-  { id: 'csendes', l: 'Csendes', i: 'quiet', t: 'csendes' },
-  { id: 'szor', l: 'Szőr', i: 'coat', sec: 'szor' },
-  { id: 'energia', l: 'Energia', i: 'bolt', sec: 'energia' },
-  { id: 'hullas', l: 'Hullás', i: 'feather', t: 'hullas' },
-  { id: 'kezdo', l: 'Kezdő', i: 'sprout', t: 'kezdo' },
-  { id: 'magyar', l: 'Magyar', i: 'flag', t: 'magyar' },
-  { id: 'szerep', l: 'Szerep', i: 'star', sec: 'szerep' },
-  { id: 'mind', l: 'Mind', i: 'sliders', sec: 'all' },
+const DOCK = [   // a felirat a szótárból: dock.<azonosító>
+  { id: 'meret', i: 'ruler', sec: 'meret' },
+  { id: 'gyerek', i: 'kid', t: 'gyerek' },
+  { id: 'lakas', i: 'home', t: 'lakas' },
+  { id: 'csendes', i: 'quiet', t: 'csendes' },
+  { id: 'szor', i: 'coat', sec: 'szor' },
+  { id: 'energia', i: 'bolt', sec: 'energia' },
+  { id: 'hullas', i: 'feather', t: 'hullas' },
+  { id: 'kezdo', i: 'sprout', t: 'kezdo' },
+  { id: 'magyar', i: 'flag', t: 'magyar' },
+  { id: 'szerep', i: 'star', sec: 'szerep' },
+  { id: 'mind', i: 'sliders', sec: 'all' },
 ];
-$('#dock').innerHTML = DOCK.map(d => `<button class="dk" data-dk="${d.id}" aria-pressed="false"><span class="o">${ic(d.i)}</span><span>${d.l}</span><b class="cb">${ic('check')}</b></button>`).join('');
+const renderDock = () => { $('#dock').innerHTML = DOCK.map(d => `<button class="dk" data-dk="${d.id}" aria-pressed="false"><span class="o">${ic(d.i)}</span><span>${t(`dock.${d.id}`)}</span><b class="cb">${ic('check')}</b></button>`).join(''); };
+renderDock();
 $('#dock').addEventListener('click', e => {
   const el = e.target.closest('.dk');
   if (!el) return;
@@ -189,8 +190,8 @@ function removeCrit(key) {
 }
 function renderActiveChips() {
   const box = $('#activeChips');
-  const chips = S.crit.filter(c => c.src !== 'quiz').map(c => `<span class="achip">${esc(c.label)}<button data-rm="${c.key}" aria-label="${esc(c.label)} törlése">${ic('x')}</button></span>`);
-  if (S.quiz) chips.push(`<span class="achip quiz">${ic('sparkle')} Kvíz-eredmény<button data-rm="quiz" aria-label="Kvíz törlése">${ic('x')}</button></span>`);
+  const chips = S.crit.filter(c => c.src !== 'quiz').map(c => `<span class="achip">${esc(c.label)}<button data-rm="${c.key}" aria-label="${esc(t('chip.remove', { v: c.label }))}">${ic('x')}</button></span>`);
+  if (S.quiz) chips.push(`<span class="achip quiz">${ic('sparkle')} ${t('chip.quiz')}<button data-rm="quiz" aria-label="${esc(t('chip.quizRemove'))}">${ic('x')}</button></span>`);
   box.innerHTML = chips.join('');
 }
 $('#activeChips').addEventListener('click', e => {
@@ -205,7 +206,8 @@ function updateHud() {
   const count = active ? BREEDS.filter(fits).length : TOTAL;
   setOdo(count);
   $('#ofTotal').textContent = `/ ${TOTAL}`;
-  $('#ofLabel').textContent = active ? 'illik hozzád' : 'vár rád';
+  $('#ofUnit').textContent = t('hud.unit');
+  $('#ofLabel').textContent = active ? t('hud.fit') : t('hud.wait');
   renderActiveChips();
   for (const b of $$('#modeSeg button')) b.setAttribute('aria-checked', b.dataset.mode === modeOf());
   const gs = $('#groupSeg');
@@ -215,18 +217,18 @@ function updateHud() {
   // mobil
   const mc = $('#mobCount');
   const visCount = active && modeOf() === 'strict' ? BREEDS.filter(b => b.ok).length : count;
-  mc.innerHTML = `<b>${visCount}</b> fajta`;
+  mc.innerHTML = tn('hud.breeds', visCount, { n: `<b>${visCount}</b>` });
   if (visCount !== lastCount) { mc.classList.remove('bump'); void mc.offsetWidth; mc.classList.add('bump'); }
   // a kiértékelt állapotból számolva (a buborékok célállapota itt még a régi)
   const hidden = S.view !== 'lista' && active && modeOf() === 'strict' ? BREEDS.filter(b => !b.ok).length : 0;
   $('#flyCloud').hidden = !(S.mobile && (hidden > 0 || flownShown > 0));
-  $('#mobMode').innerHTML = modeOf() === 'strict' ? `${ic('sliders')}Csak találatok` : `${ic('cloud')}Rangsor`;
+  $('#mobMode').innerHTML = modeOf() === 'strict' ? `${ic('sliders')}${t('mode.strict')}` : `${ic('cloud')}${t('mode.rank')}`;
   const fc = filterCount() + (S.quiz ? 1 : 0);
   $('#mobClear').hidden = !fc;
-  $('#mobClear').innerHTML = `${fc} szűrő · Törlés`;
+  $('#mobClear').innerHTML = tn('hud.clear', fc);
   lastCount = visCount;
   clearTimeout(liveTimer);
-  liveTimer = setTimeout(() => { $('#live').textContent = active ? `${count} fajta felel meg a szűrőknek.` : `${TOTAL} fajta látható.`; }, 700);
+  liveTimer = setTimeout(() => { $('#live').textContent = active ? tn('live.fit', count) : tn('live.all', TOTAL); }, 700);
   requestAnimationFrame(segAll);
 }
 function updateCloud(bumpIt) {
@@ -237,14 +239,18 @@ function updateCloud(bumpIt) {
 bus.on('cloud', updateCloud);
 
 /* Nézet- és módváltók */
-$('#groupSeg').innerHTML = Object.entries(GROUPERS).map(([k, g]) => `<button role="radio" data-g="${k}">${g.l}</button>`).join('');
-$('#mobViews').innerHTML = [['felho', 'cloud', 'Felhő'], ['csoport', 'groups', 'Csoport'], ['terkep', 'map', 'Térkép'], ['lista', 'list', 'Lista']]
-  .map(([v, i, l]) => `<button data-view="${v}" aria-label="${l}">${ic(i)}<span>${l}</span></button>`).join('');
+const renderGroupSeg = () => { $('#groupSeg').innerHTML = Object.entries(GROUPERS).map(([k, g]) => `<button role="radio" data-g="${k}">${t(g.l)}</button>`).join(''); };
+const renderMobViews = () => {
+  $('#mobViews').innerHTML = [['felho', 'cloud'], ['csoport', 'groups'], ['terkep', 'map'], ['lista', 'list']]
+    .map(([v, i]) => `<button data-view="${v}" aria-label="${esc(t(`mview.${v}`))}">${ic(i)}<span>${t(`mview.${v}`)}</span></button>`).join('');
+};
+renderGroupSeg();
+renderMobViews();
 function setView(v) {
   if (S.view === v) return;
   const wasList = S.view === 'lista';
   S.view = v;
-  stat('nezet', { nezet: { felho: 'Felhő', csoport: 'Csoportok', terkep: 'Térkép', lista: 'Lista' }[v] || v });
+  stat('nezet', { nezet: tH(`view.${v}`) });
   $('#listView').hidden = v !== 'lista';
   bubblesEl.style.visibility = v === 'lista' ? 'hidden' : '';
   stage.classList.toggle('list', v === 'lista');
@@ -259,7 +265,7 @@ $('#groupSeg').addEventListener('click', e => { const b = e.target.closest('[dat
 function setMode(m) {
   S.mode = m;
   store.set('mode2', m);
-  stat('mod', { mod: m === 'strict' ? 'Csak találatok' : 'Rangsor' });
+  stat('mod', { mod: tH(`mode.${m}`) });
   refresh({ x: LR.cx, y: LR.t });
 }
 $('#modeSeg').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) setMode(b.dataset.mode); });
@@ -290,7 +296,7 @@ function renderList({ typing = false } = {}) {
   if (!arr.length) {
     const kk = SPARES['kerdo-kutya'];
     box.innerHTML = `<div class="dempty lempty"><div class="pic" style="background-image:url('${portrait(kk.id)}');background-color:${kk.bg}"></div>
-      <h3>Nincs ilyen nevű fajta</h3><p>Erre nincs találat: „${esc(S.q.trim())}”. Próbáld másképp, pl. <b>vizsla</b>, <b>terrier</b> vagy <b>juhász</b>.</p></div>`;
+      <h3>${t('list.empty.h')}</h3><p>${t('list.empty.p', { q: esc(S.q.trim()) })}</p></div>`;
     return;
   }
   box.innerHTML = arr.map((b, i) => `<button class="lcard${active && !b.ok ? ' out' : ''}" data-id="${b.id}" style="${picStyle(b)};animation-delay:${Math.min(i, 30) * 18}ms">
@@ -309,10 +315,10 @@ function renderEmpty() {
     .filter(s => s.n > 0).sort((a, b) => b.n - a.n).slice(0, 3);
   const kk = SPARES['kerdo-kutya'];
   box.innerHTML = `<div class="pic" style="background-image:url('${portrait(kk.id)}');background-color:${kk.bg}"></div>
-    <h3>Nincs ilyen kutya… még.</h3>
-    <p>${sugg.length ? 'Engedj el egy szűrőt, és visszajönnek:' : 'Próbálj kevesebb szűrőt, vagy válts Rangsor módra.'}</p>
-    <div class="chips">${sugg.map(s => `<button class="chip" data-rm="${s.c.key}"><b>${esc(s.c.label)}</b> nélkül → +${s.n} fajta</button>`).join('')}
-    ${sugg.length ? '' : '<button class="chip" data-mode="rank">Rangsor mód</button>'}</div>`;
+    <h3>${t('empty.h')}</h3>
+    <p>${sugg.length ? t('empty.p1') : t('empty.p0')}</p>
+    <div class="chips">${sugg.map(s => `<button class="chip" data-rm="${s.c.key}">${tn('empty.without', s.n, { v: `<b>${esc(s.c.label)}</b>` })}</button>`).join('')}
+    ${sugg.length ? '' : `<button class="chip" data-mode="rank">${t('empty.rank')}</button>`}</div>`;
 }
 $('#empty').addEventListener('click', e => {
   const b = e.target.closest('[data-rm],[data-mode]');
@@ -324,12 +330,12 @@ $('#empty').addEventListener('click', e => {
 
 /* ---------- Összehasonlító tálca és jelvények ---------- */
 function renderTray() {
-  const t = $('#tray');
-  const was = !t.hidden;
-  t.hidden = !S.cmp.length || S.mobile;
-  if (t.hidden) return;
-  t.innerHTML = S.cmp.map(id => { const b = BY_ID.get(id); return `<button class="mini" data-id="${id}" style="${picStyle(b)}" title="${esc(b.nev)}"><span class="x" data-x="${id}">${ic('x')}</span></button>`; }).join('') +
-    `<button class="btn fill" id="trayGo">${ic('compare')}Összehasonlítás (${S.cmp.length})</button>`;
+  const tray = $('#tray');
+  const was = !tray.hidden;
+  tray.hidden = !S.cmp.length || S.mobile;
+  if (tray.hidden) return;
+  tray.innerHTML = S.cmp.map(id => { const b = BY_ID.get(id); return `<button class="mini" data-id="${id}" style="${picStyle(b)}" title="${esc(b.nev)}"><span class="x" data-x="${id}">${ic('x')}</span></button>`; }).join('') +
+    `<button class="btn fill" id="trayGo">${ic('compare')}${t('tray.go', { n: S.cmp.length })}</button>`;
   if (!was) relayout();
 }
 $('#tray').addEventListener('click', e => {
@@ -388,7 +394,7 @@ mqDark.addEventListener('change', applyTheme);
 function openMobSearch() {
   const box = $('#mobSearch');
   box.hidden = false;
-  box.innerHTML = `${ic('search')}<input type="search" placeholder="Keress fajtát… pl. vizsla" aria-label="Fajta keresése" value="${esc(S.q)}"><button class="icbtn" aria-label="Bezárás">${ic('x')}</button>`;
+  box.innerHTML = `${ic('search')}<input type="search" placeholder="${esc(t('search.ph'))}" aria-label="${esc(t('search.aria'))}" value="${esc(S.q)}"><button class="icbtn" aria-label="${esc(t('common.close'))}">${ic('x')}</button>`;
   const inp = $('input', box);
   inp.focus();
   inp.addEventListener('input', () => applySearch(inp.value));
@@ -420,13 +426,13 @@ function maybeInstall(reason, tries = 0) {
   const visits = store.get('visits', 0);
   if (reason !== 'quiz' && visits < 2) return;
   if (installEvt) {
-    toast('Tedd ki a kezdőképernyőre – offline is működik!', { action: 'Telepítés', ms: 5000, onAction: () => {
+    toast(t('install.msg'), { action: t('install.btn'), ms: 5000, onAction: () => {
       installEvt.prompt();
       if (installEvt.userChoice) installEvt.userChoice.then(c => stat('telepites-ajanlat', { valasz: c.outcome === 'accepted' ? 'elfogadta' : 'elutasította' })).catch(() => {});
     } });
     store.set('installAsked', store.get('installAsked', 0) + 1);
   } else if (/iPhone|iPad|iPod/.test(navigator.userAgent) && location.protocol.startsWith('http')) {
-    toast('Tipp: Megosztás → „Főképernyőhöz adás” – és a Pacsi appként fut.', { ms: 6000 });
+    toast(t('install.ios'), { ms: 6000 });
     store.set('installAsked', store.get('installAsked', 0) + 1);
   }
 }

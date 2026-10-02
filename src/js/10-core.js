@@ -10,7 +10,7 @@ const rand = (a = 0, b = 1) => a + Math.random() * (b - a);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const norm = s => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const ic = (id, cls = 'ic') => `<svg class="${cls}" aria-hidden="true"><use href="#i-${id}"/></svg>`;
-const num = n => String(n).replace('.', ',');
+const num = n => String(n).replace('.', t('fmt.dec'));   // tizedesjel: nyelvfüggő (magyar vessző, angol pont)
 const range = a => a[0] === a[1] ? num(a[0]) : `${num(a[0])}–${num(a[1])}`;
 const haptic = ms => { try { navigator.vibrate && navigator.vibrate(ms); } catch (e) { /* nem támogatott */ } };
 
@@ -20,7 +20,7 @@ const SPARES = Object.fromEntries(DATA.spares.map(s => [s.id, s]));
 const BY_ID = new Map(BREEDS.map(b => [b.id, b]));
 const IMG = window.PACSI_IMG || {};
 const ARTIFACT = !!window.PACSI_ARTIFACT;   // claude.ai artifact-néző: nincs hash-állapot, letöltés, Web Share
-const COLL = new Intl.Collator('hu');
+let COLL = new Intl.Collator('hu');   // nyelvváltáskor cserélődik (12-i18n.js)
 
 /* A beágyazott (base64) képeket rövid blob:-hivatkozássá alakítjuk. Egy 1,6 MB-os data URI
    egy CSS-változóban minden buborék minden stílus-újraszámolásakor újra feldolgozódna –

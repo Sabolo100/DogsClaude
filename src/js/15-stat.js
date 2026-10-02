@@ -40,13 +40,14 @@ function stat(name, data) {
 }
 
 /* Olvasható szűrőnév a kimutatásokhoz (pl. „Méret: Kicsi”, „Gyerekbarát”) */
+/* A statisztika nyelvfüggetlen: az értékek mindig magyarul (tH), akármilyen nyelven használja az app a látogató */
 function statFilter(k, v) {
-  if (k === 't') return (TBY[v] && TBY[v].l) || v;
-  if (k === 'meret') return 'Méret: ' + (SIZE_L[v] || v);
-  if (k === 'energia') return 'Energia: ' + ((ENERGY.find(e => e[0] === v) || [])[1] || v);
-  if (k === 'szor') return 'Szőr: ' + (COAT_L[v] || v);
-  if (k === 'szerep') return 'Szerep: ' + (ROLE_L[v] || v);
-  if (k === 'fci') return `FCI ${v}. ${FCI[v] || ''}`.trim();
+  if (k === 't') return TBY[v] ? tH(`tog.${v}.l`) : v;
+  if (k === 'meret') return 'Méret: ' + tH(`size.${v}`);
+  if (k === 'energia') return 'Energia: ' + tH(`energy.${v}`);
+  if (k === 'szor') return 'Szőr: ' + tH(`coat.${v}`);
+  if (k === 'szerep') return 'Szerep: ' + tH(`role.${v}`);
+  if (k === 'fci') return `FCI ${v}. ${tH(`fci.${v}`)}`.trim();
   return `${k}: ${v}`;
 }
 
@@ -58,7 +59,7 @@ function statSearch(q, hits) {
   clearTimeout(statQTimer);
   statQTimer = setTimeout(() => {
     statQLast = nq;
-    stat('kereses', { kifejezes: nq, talalat: hits[0] ? hits[0].b.nev : '–', db: hits.length });
+    stat('kereses', { kifejezes: nq, talalat: hits[0] ? hits[0].b.nev0 : '–', db: hits.length });
   }, 1500);
 }
 
@@ -66,6 +67,6 @@ function statSearch(q, hits) {
 function statStart() {
   stat();
   const app = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-  stat('inditas', { mod: app ? 'telepített app' : 'böngésző', eszkoz: S.mobile ? 'mobil' : 'asztali', tema: isDark() ? 'sötét' : 'világos' });
+  stat('inditas', { mod: app ? 'telepített app' : 'böngésző', eszkoz: S.mobile ? 'mobil' : 'asztali', tema: isDark() ? 'sötét' : 'világos', nyelv: LANG });
 }
 addEventListener('appinstalled', () => stat('telepites', { mod: 'app' }));

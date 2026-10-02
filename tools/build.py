@@ -6,7 +6,7 @@ Kimenet:
   dist/pwa/              index.html + manifest + service worker + ikonok + képek – statikus tárhelyre
   dist/pacsi-artifact.html  claude.ai artifact-változat (keret nélküli törzs, artifact-mód jelzővel)
 """
-import base64, hashlib, io, json, pathlib, re, shutil, sys
+import argparse, base64, hashlib, io, json, pathlib, re, shutil, sys
 
 from PIL import Image, ImageDraw
 
@@ -14,6 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC, DIST = ROOT / "src", ROOT / "dist"
 sys.path.insert(0, str(ROOT / "tools"))
 import build_data  # noqa: E402
+import i18n  # noqa: E402
 
 
 def b64(path, mime):
@@ -49,12 +50,18 @@ def png_bytes(im):
 
 def main():
     build_data.main()
+    if i18n.cmd_check(argparse.Namespace(lang=None)):   # nyelvi hiba (pl. hiányzó kulcs, hibás helyőrző) esetén nem építünk
+        sys.exit("A nyelvi ellenőrzés hibát talált – lásd fent (python tools/i18n.py check).")
     data = json.loads((ROOT / "data" / "fajtak.json").read_text(encoding="utf-8"))
     ids = [b["id"] for b in data["breeds"]] + [s["id"] for s in data["spares"]]
     html = (SRC / "index.html").read_text(encoding="utf-8")
     css = (SRC / "app.css").read_text(encoding="utf-8")
     js_src = "\n".join(p.read_text(encoding="utf-8") for p in sorted((SRC / "js").glob("*.js")))
     data_json = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    # Nyelvek: a felület szövegei és a fajtaszövegek minden nyelven egy csomagban (data/i18n/, lásd tools/i18n.py);
+    # a zászlók a src/flags/ mappából jönnek, a languages.json-ban szereplő nyelvekhez
+    i18n_json = json.dumps(i18n.bundle(strict=True), ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    flags = "\n    ".join((SRC / "flags" / f"{l['flag']}.svg").read_text(encoding="utf-8").strip() for l in i18n.languages())
     # Verzió: szemantikus verziószám a VERSION fájlból + build-azonosító (a forrás tartalmának rövid hash-e).
     # Mindkettő látszik az appban (Tippek → névjegy, asztali panel lábléce), így ellenőrizhető, melyik verzió fut.
     app_ver = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
@@ -63,7 +70,7 @@ def main():
     site_raw = (ROOT / "deploy" / "site.json").read_text(encoding="utf-8")
     site = json.loads(site_raw)
     site_url = site["url"].rstrip("/")
-    build_id = hashlib.sha1((css + js_src + data_json + site_raw).encode("utf-8") + hero.read_bytes()).hexdigest()[:7]
+    build_id = hashlib.sha1((css + js_src + data_json + i18n_json + site_raw).encode("utf-8") + hero.read_bytes()).hexdigest()[:7]
     site_js = json.dumps({"url": site_url, "stat": site.get("stat", {})}, ensure_ascii=False)
     js = ("(() => {\n'use strict';\n" + f"const APP_VERSION = {json.dumps(app_ver)}, APP_BUILD = {json.dumps(build_id)};\n"
           + f"const SITE = {site_js};\n" + js_src + "\n})();")
@@ -83,7 +90,8 @@ def main():
 
     def assemble(img_script, head, favicon):
         out = html.replace("/*INLINE_CSS*/", css).replace("/*INLINE_JS*/", js.replace("</script", "<\\/script"))
-        out = out.replace("/*INLINE_DATA*/", data_json).replace("<!--INLINE_IMG-->", img_script)
+        out = out.replace("/*INLINE_DATA*/", data_json).replace("/*INLINE_I18N*/", i18n_json).replace("<!--INLINE_IMG-->", img_script)
+        out = out.replace("<!--FLAG_SYMBOLS-->", flags)
         out = out.replace("<!--SITE_HEAD-->", site_head)
         return out.replace("<!--PWA_HEAD-->", head).replace("/*FAVICON*/", favicon)
 
@@ -166,7 +174,8 @@ def main():
                ".topbar { padding-top: 0; } .tabbar { padding-bottom: 6px; } }")
     art_img = ("<script>window.PACSI_ARTIFACT=true;window.PACSI_SPRITE=" + json.dumps(b64(ROOT / "img" / "sprite-thumbs.webp", "image/webp")) +
                ";window.PACSI_IMG=" + json.dumps(imgs) + hero_js + ";</script>")
-    body = body.replace("/*INLINE_JS*/", js.replace("</script", "<\\/script")).replace("/*INLINE_DATA*/", data_json).replace("<!--INLINE_IMG-->", art_img)
+    body = body.replace("/*INLINE_JS*/", js.replace("</script", "<\\/script")).replace("/*INLINE_DATA*/", data_json).replace("/*INLINE_I18N*/", i18n_json)
+    body = body.replace("<!--INLINE_IMG-->", art_img).replace("<!--FLAG_SYMBOLS-->", flags)
     artifact = f"<title>Pacsi by DarwinAI</title>\n{fonts}\n<style>{css}\n{art_css}</style>\n{body}"
     (DIST / "pacsi-artifact.html").write_text(artifact, encoding="utf-8")
 

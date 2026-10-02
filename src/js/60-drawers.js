@@ -3,7 +3,7 @@
    ========================================================================== */
 const drawerEl = $('#drawer');
 let Q = { i: 0, answers: [] };
-const TITLES = { kviz: 'Párkereső kvíz', kedvencek: 'Kedvenceim', osszevet: 'Összehasonlítás', tippek: 'Gazdi-tudástár', kirepultek: 'Kirepült fajták' };
+const drawerTitle = name => t(`drawer.${name}`);   // kviz, kedvencek, osszevet, tippek, kirepultek
 
 function openDrawer(name) {
   if (S.drawer === name) return;
@@ -12,11 +12,11 @@ function openDrawer(name) {
   if (name === 'kviz' && !(S.quiz && !S.quiz.done)) Q = { i: 0, answers: [] };
   if (name === 'kviz' && S.quiz && S.quiz.done) Q = { i: QUIZ.length, answers: S.quiz.answers.slice() };
   S.drawer = name;
-  if (name === 'osszevet' && S.cmp.length > 1) stat('osszevetes', { fajtak: S.cmp.map(id => BY_ID.get(id).nev).join(' · ') });
+  if (name === 'osszevet' && S.cmp.length > 1) stat('osszevetes', { fajtak: S.cmp.map(id => BY_ID.get(id).nev0).join(' · ') });
   drawerEl.hidden = false;
   drawerEl.classList.remove('out');
   drawerEl.classList.toggle('short', name === 'kviz');
-  drawerEl.setAttribute('aria-label', TITLES[name]);
+  drawerEl.setAttribute('aria-label', drawerTitle(name));
   renderDrawer();
   const needScrim = S.mobile && name !== 'kviz';
   if (needScrim) { scrimEl.hidden = false; scrimEl.classList.remove('out'); }
@@ -47,7 +47,7 @@ function renderDrawer() {
   else if (name === 'tippek') [body, foot] = tipsView();
   else if (name === 'kirepultek') [body, foot] = flownView();
   drawerEl.innerHTML = `<div class="handle" aria-hidden="true"></div>
-    <div class="d-head"><h2>${TITLES[name]}</h2><button class="icbtn" data-dclose aria-label="Bezárás">${ic('x')}</button></div>
+    <div class="d-head"><h2>${drawerTitle(name)}</h2><button class="icbtn" data-dclose aria-label="${esc(t('common.close'))}">${ic('x')}</button></div>
     <div class="d-body">${body}</div>${foot ? `<div class="d-foot">${foot}</div>` : ''}`;
   if (name === 'kviz' && Q.i >= QUIZ.length && !Q.prev && !RM()) {   // egy válasz módosítása után nincs újabb tűzijáték
     const q = drawerEl.getBoundingClientRect();
@@ -103,11 +103,11 @@ function quizView() {
   const q = QUIZ[Q.i], ed = Q.edit;
   const fitting = S.quiz ? BREEDS.filter(b => b.ok && b.m >= .55).length : TOTAL;
   return [`<div class="qprog">${QUIZ.map((_, j) => `<i class="${ed || j < Q.i || (j === Q.i && Q.answers[j] != null) ? 'on' : ''}"></i>`).join('')}</div>
-    <div class="qnum">${Q.i + 1}. kérdés / ${QUIZ.length}${ed ? ' · módosítás' : ''}</div>
+    <div class="qnum">${t('quiz.num', { i: Q.i + 1, n: QUIZ.length })}${ed ? t('quiz.editSuffix') : ''}</div>
     <div class="qtext">${q.q}</div>
     <div class="qopts">${q.a.map((a, j) => `<button class="qopt${Q.answers[Q.i] === j ? ' sel' : ''}" data-a="${j}" style="--i:${j}"><span class="em">${a.e}</span><span>${a.t}</span></button>`).join('')}</div>
-    <div class="qnav">${ed ? '<button class="link" data-qresult>← Vissza az eredményhez</button>'
-      : `<button class="link" data-qback ${Q.i ? '' : 'style="visibility:hidden"'}>← Vissza</button><span class="qnum">${S.quiz ? `${fitting} fajta illik eddig` : 'A felhő élőben reagál'}</span>`}</div>`, ''];
+    <div class="qnav">${ed ? `<button class="link" data-qresult>${t('quiz.toResult')}</button>`
+      : `<button class="link" data-qback ${Q.i ? '' : 'style="visibility:hidden"'}>${t('quiz.back')}</button><span class="qnum">${S.quiz ? tn('quiz.fitSoFar', fitting) : t('quiz.live')}</span>`}</div>`, ''];
 }
 function answer(j, el) {
   if (Q.i === 0 && Q.answers[0] == null) stat('kviz-indul');   // elkezdte (az első válasszal) – a befejezési arányhoz
@@ -125,7 +125,7 @@ function answer(j, el) {
     if (Q.i >= QUIZ.length) {
       S.quiz.done = true; syncHash(); setTimeout(() => maybeInstall('quiz'), 2500);
       const top = topBreeds(1)[0];
-      stat('kviz-kesz', { tipus: OWNER_TYPES[ownerType(Q.answers)].n, elso: top ? top.nev : '–' });
+      stat('kviz-kesz', { tipus: tH(`owner.${ownerType(Q.answers)}.n`), elso: top ? top.nev0 : '–' });
     }
     renderDrawer();
   }, 420);
@@ -143,7 +143,7 @@ function quizBack() {
   Q.i = QUIZ.length;
   if (ed && Q.answers[ed.qi] !== ed.was) {
     Q.prev = ed;
-    stat('kviz-modositas', { kerdes: `${ed.qi + 1}. ${QUIZ[ed.qi].q}`, valasz: QUIZ[ed.qi].a[Q.answers[ed.qi]].t });
+    stat('kviz-modositas', { kerdes: `${ed.qi + 1}. ${quizTH(ed.qi)}`, valasz: quizTH(ed.qi, Q.answers[ed.qi]) });
   }
   renderDrawer();
   if (ed) focusIn(`[data-qedit="${ed.qi}"]`);
@@ -157,28 +157,28 @@ function quizResult() {
     let tag = '', dp = '';
     if (P) {
       const r0 = P.top.indexOf(b.id), d = mPct(b) - P.pct.get(b.id);
-      tag = r0 < 0 ? '<span class="qd new">új</span>' : r0 > i ? `<span class="qd up">▲ ${r0 - i}</span>` : r0 < i ? `<span class="qd down">▼ ${i - r0}</span>` : '';
+      tag = r0 < 0 ? `<span class="qd new">${t('quiz.new')}</span>` : r0 > i ? `<span class="qd up">▲ ${r0 - i}</span>` : r0 < i ? `<span class="qd down">▼ ${i - r0}</span>` : '';
       if (d) dp = `<small class="${d > 0 ? 'up' : 'down'}">${d > 0 ? '+' : '−'}${Math.abs(d)}</small>`;
     }
     return `<button class="qrow" data-open="${b.id}" style="${picStyle(b)};--i:${i}"><span class="rk">${i + 1}</span><i class="pic"></i><span><h4>${esc(b.nev)}${tag}</h4><p>${esc(b.tagline)}</p></span><span class="pc">${mPct(b)}%${dp}</span></button>`;
   }).join('');
   let chg = '';
   if (P) {
-    const q = QUIZ[P.qi], a0 = q.a[P.was], a1 = q.a[Q.answers[P.qi]];
+    const q = QUIZ[P.qi], a0 = q.a[P.was], a1 = q.a[Q.answers[P.qi]];   // q.q, a.t: a szótárból, lásd labels() a 20-score.js-ben
     const out = P.top.filter(id => !top.some(b => b.id === id)).map(id => esc(BY_ID.get(id).nev));
     const same = !newType && !out.length && top.every((b, i) => P.top[i] === b.id && mPct(b) === P.pct.get(b.id));
     chg = `<div class="qchg"><b>✏️ ${P.qi + 1}. ${esc(q.q)}</b><span><s>${a0.e} ${esc(a0.t)}</s> → <b>${a1.e} ${esc(a1.t)}</b></span>
-      ${same ? '<small>A gazditípusod és a top 5 nem változott.</small>' : out.length ? `<small>Kiesett a top 5-ből: ${out.join(', ')}.</small>` : ''}</div>`;
+      ${same ? `<small>${t('quiz.unchanged')}</small>` : out.length ? `<small>${t('quiz.dropped', { v: out.join(', ') })}</small>` : ''}</div>`;
   }
-  return [`${chg}<div class="qres-type"><span class="emo">${type.e}</span><div class="qnum" style="margin-top:6px">A gazditípusod</div><h3>${type.n}${newType ? '<span class="qnew">új</span>' : ''}</h3>
-    ${newType ? `<p class="qwas">Eddig: ${OWNER_TYPES[P.type].e} ${OWNER_TYPES[P.type].n}</p>` : ''}<p>${type.d}</p></div>
-    <h4 class="qh">A te top 5 fajtád</h4>
+  return [`${chg}<div class="qres-type"><span class="emo">${type.e}</span><div class="qnum" style="margin-top:6px">${t('quiz.yourType')}</div><h3>${type.n}${newType ? `<span class="qnew">${t('quiz.new')}</span>` : ''}</h3>
+    ${newType ? `<p class="qwas">${t('quiz.was', { v: `${OWNER_TYPES[P.type].e} ${OWNER_TYPES[P.type].n}` })}</p>` : ''}<p>${type.d}</p></div>
+    <h4 class="qh">${t('quiz.top5')}</h4>
     <div class="qtop">${rows}</div>
-    <h4 class="qh">A válaszaid</h4>
-    <p class="qhint">${S.mobile ? 'Koppints' : 'Kattints'} egy válaszra, és módosítsd: a toplista és a felhő azonnal követi.</p>
+    <h4 class="qh">${t('quiz.answers')}</h4>
+    <p class="qhint">${t(S.mobile ? 'quiz.hint.mobile' : 'quiz.hint.desktop')}</p>
     <div class="qans">${QUIZ.map((q, qi) => { const a = q.a[Q.answers[qi]]; return a ? `<button class="qa${P && P.qi === qi ? ' just' : ''}" data-qedit="${qi}"><span class="qn">${qi + 1}</span><span><small>${esc(q.q)}</small><b>${a.e} ${esc(a.t)}</b></span>${ic('chev-r')}</button>` : ''; }).join('')}</div>
-    <p class="c-note" style="margin-top:14px">A kvíz a válaszaidból súlyozott szempontokat képez – a felhőben is így rangsorolja a fajtákat.</p>`,
-  `<button class="btn fill" data-qcloud style="flex:1">${ic('cloud')}Megnézem a felhőben</button><button class="btn round" data-qshare aria-label="Eredmény megosztása">${ic('share')}</button><button class="btn round ghost" data-qrestart aria-label="Újrakezdés" title="Újrakezdés">↺</button>`];
+    <p class="c-note" style="margin-top:14px">${t('quiz.note')}</p>`,
+  `<button class="btn fill" data-qcloud style="flex:1">${ic('cloud')}${t('quiz.toCloud')}</button><button class="btn round" data-qshare aria-label="${esc(t('quiz.share'))}">${ic('share')}</button><button class="btn round ghost" data-qrestart aria-label="${esc(t('quiz.restart'))}" title="${esc(t('quiz.restart'))}">↺</button>`];
 }
 
 /* Megosztható eredménykép (vászon) */
@@ -203,9 +203,9 @@ async function shareQuiz() {
   x.font = '800 64px Fraunces, Georgia, serif'; x.fillText('Pacsi', W / 2, 110);
   x.fillStyle = ink2; x.font = '600 24px Manrope, system-ui, sans-serif'; x.fillText('by DarwinAI', W / 2, 146);
   x.fillStyle = '#FF6B3D'; x.beginPath(); x.arc(W / 2 + 62, 58, 9, 0, 6.283); x.fill();
-  x.fillStyle = ink2; x.font = '600 30px Manrope, system-ui, sans-serif'; x.fillText('A gazditípusom:', W / 2, 205);
+  x.fillStyle = ink2; x.font = '600 30px Manrope, system-ui, sans-serif'; x.fillText(t('shareimg.type'), W / 2, 205);
   x.fillStyle = ink; x.font = '800 76px Fraunces, Georgia, serif'; x.fillText(`${type.e} ${type.n}`, W / 2, 295);
-  x.fillStyle = ink2; x.font = '600 30px Manrope, system-ui, sans-serif'; x.fillText('…és a hozzám illő kutyák:', W / 2, 380);
+  x.fillStyle = ink2; x.font = '600 30px Manrope, system-ui, sans-serif'; x.fillText(t('shareimg.dogs'), W / 2, 380);
   const imgs = await Promise.all(top.map(b => loadImg(portrait(b.id)).catch(() => null)));
   const pos = [[W / 2, 610, 170], [250, 960, 130], [W - 250, 960, 130]];
   top.forEach((b, i) => {
@@ -222,27 +222,27 @@ async function shareQuiz() {
     x.fillText(b.nev.length > 22 ? b.nev.slice(0, 21) + '…' : b.nev, cx, cy + r + (i ? 62 : 74));
   });
   // a képet látók ide találnak el: a saját domain nagyobb és hangsúlyos, a fejlesztő alatta
-  x.fillStyle = ink2; x.font = '600 28px Manrope, sans-serif'; x.fillText('Találd meg te is a hozzád illő kutyát:', W / 2, H - 112);
+  x.fillStyle = ink2; x.font = '600 28px Manrope, sans-serif'; x.fillText(t('shareimg.cta'), W / 2, H - 112);
   x.font = '800 40px Manrope, sans-serif'; x.fillStyle = '#EE5A2C'; x.fillText(SITE.url.replace(/^https?:\/\//, ''), W / 2, H - 62);
   x.font = '600 20px Manrope, sans-serif'; x.fillStyle = ink2; x.fillText('Pacsi by DarwinAI 🐾', W / 2, H - 26);
   const blob = await new Promise(r => c.toBlob(r, 'image/png'));
   if (ARTIFACT) {
     // az artifact-keret letiltja a letöltést és a Web Share-t: a képet itt mutatjuk meg, innen menthető
     const src = URL.createObjectURL(blob);
-    $('.d-body', drawerEl).innerHTML = `<p style="margin:0 0 12px;color:var(--ink-2)">Kattints jobb gombbal (mobilon tartsd hosszan nyomva) a képre, és mentsd el vagy oszd meg.</p>
-      <img src="${src}" alt="A pacsi-kvíz eredménye: ${esc(type.n)}" style="width:100%;border-radius:20px;box-shadow:var(--shadow)">`;
-    $('.d-foot', drawerEl).innerHTML = `<button class="btn fill" data-qresult style="flex:1">← Vissza az eredményhez</button>`;
+    $('.d-body', drawerEl).innerHTML = `<p style="margin:0 0 12px;color:var(--ink-2)">${t('share.artifactHint')}</p>
+      <img src="${src}" alt="${esc(t('share.alt', { v: type.n }))}" style="width:100%;border-radius:20px;box-shadow:var(--shadow)">`;
+    $('.d-foot', drawerEl).innerHTML = `<button class="btn fill" data-qresult style="flex:1">${t('quiz.toResult')}</button>`;
     return;
   }
-  const file = new File([blob], 'pacsi-eredmenyem.png', { type: 'image/png' });
+  const file = new File([blob], t('share.file'), { type: 'image/png' });
   try {
-    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'Pacsi by DarwinAI', text: `${type.n} vagyok a Pacsin! 🐾 Te milyen gazdi vagy? ${SITE.url}` }); return; }
+    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'Pacsi by DarwinAI', text: t('share.text', { v: type.n, url: siteUrl() }) }); return; }
   } catch (e) { if (e.name === 'AbortError') return; }
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob); a.download = 'pacsi-eredmenyem.png';
+  a.href = URL.createObjectURL(blob); a.download = t('share.file');
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-  toast('Kép letöltve – oszd meg bátran! 📸');
+  toast(t('toast.imgSaved'));
 }
 
 /* ---------- Kedvencek ---------- */
@@ -250,38 +250,39 @@ function favView() {
   const ids = [...S.fav].filter(id => BY_ID.has(id));
   if (!ids.length) {
     const s = SPARES['kabala-pacsi'];
-    return [`<div class="dempty"><div class="pic" style="background-image:url('${portrait(s.id)}');background-color:${s.bg}"></div><h3>Még nincs kedvenced</h3><p>Egy fajtakártyán a ♥ gombbal (mobilon a buborékot hosszan nyomva) jelölheted meg.</p></div>`, ''];
+    return [`<div class="dempty"><div class="pic" style="background-image:url('${portrait(s.id)}');background-color:${s.bg}"></div><h3>${t('fav.empty.h')}</h3><p>${t('fav.empty.p')}</p></div>`, ''];
   }
   return [`<div class="favs">${ids.map((id, i) => { const b = BY_ID.get(id); const on = S.cmp.includes(id); return `<div class="favrow" style="--i:${i}">
-      <button class="pic" data-open="${id}" style="${picStyle(b)}" aria-label="${esc(b.nev)} megnyitása"></button>
+      <button class="pic" data-open="${id}" style="${picStyle(b)}" aria-label="${esc(t('fav.open', { v: b.nev }))}"></button>
       <div><h4>${esc(b.nev)}</h4><p>${esc(b.tagline)}</p></div>
-      <button class="icbtn" data-tcmp="${id}" title="${on ? 'Kivétel az összevetésből' : 'Összehasonlításba'}" style="${on ? 'color:var(--teal)' : ''}">${ic('compare')}</button>
-      <button class="icbtn" data-unfav="${id}" title="Törlés a kedvencek közül" style="color:var(--primary-fill)">${ic('heart-f')}</button></div>`; }).join('')}</div>`,
-  `<button class="btn fill" data-favshare style="flex:1">${ic('share')}Kedvenceim megosztása</button>`];
+      <button class="icbtn" data-tcmp="${id}" title="${esc(t(on ? 'fav.cmpOff' : 'fav.cmpOn'))}" style="${on ? 'color:var(--teal)' : ''}">${ic('compare')}</button>
+      <button class="icbtn" data-unfav="${id}" title="${esc(t('fav.remove'))}" style="color:var(--primary-fill)">${ic('heart-f')}</button></div>`; }).join('')}</div>`,
+  `<button class="btn fill" data-favshare style="flex:1">${ic('share')}${t('fav.share')}</button>`];
 }
 async function shareFavs() {
   const names = [...S.fav].map(id => BY_ID.get(id)?.nev).filter(Boolean);
   stat('megosztas', { mit: 'kedvencek', db: names.length });
-  const text = `A kedvenc kutyafajtáim a Pacsin: ${names.join(', ')} 🐾 Neked melyik illik? – Pacsi by DarwinAI`;
-  const url = `${SITE.url}/`;
+  const text = t('fav.text', { v: names.join(', ') });
+  const url = siteUrl();
   if (!ARTIFACT) try { if (navigator.share && location.protocol.startsWith('http')) { await navigator.share({ title: 'Pacsi by DarwinAI', text, url }); return; } } catch (e) { if (e.name === 'AbortError') return; }
-  try { await navigator.clipboard.writeText(url ? `${text}\n${url}` : text); toast('Lista a vágólapra másolva'); } catch (e) { toast(esc(text)); }
+  try { await navigator.clipboard.writeText(url ? `${text}\n${url}` : text); toast(t('toast.copiedList')); } catch (e) { toast(esc(text)); }
 }
 
 /* ---------- Összehasonlítás (radar + táblázat) ---------- */
-const RADAR = [['E', 'Energia'], ['Gy', 'Gyerekbarát'], ['I', 'Tanulékony'], ['U', 'Csendes', 1], ['H', 'Kevés hullás', 1], ['A', 'Kevés ápolás', 1]];
+const RADAR = [['E', ''], ['Gy', ''], ['I', ''], ['U', '', 1], ['H', '', 1], ['A', '', 1]];   // [mutató, felirat (labels), fordított skála?]
+labels(() => RADAR.forEach(r => { r[1] = t(`radar.${r[0]}`); }));
 const CMP_C = ['#FF6B3D', '#17756E', '#8A63D2'];
 /* Kivétel az összevetésből (a fiók alján) – mindig a benne lévő összes fajtára, akkor is, ha már csak egy maradt.
    A gombon portré a fajta színével és a teljes név: az első szó („Rövidszőrű”, „Törpe”) nem volt egyértelmű,
    és jellemzőnek tűnt. */
 const cmpOut = list => `<div class="cmp-xs" data-n="${list.length}">${list.map((b, j) =>
-  `<button class="cmp-x" data-tcmp="${b.id}" style="${picStyle(b)};--cc:${CMP_C[j]}" aria-label="${esc(b.nev)} kivétele az összevetésből"><i class="pic"><b class="x">${ic('x')}</b></i><span>${esc(b.nev)}</span></button>`).join('')}</div>`;
+  `<button class="cmp-x" data-tcmp="${b.id}" style="${picStyle(b)};--cc:${CMP_C[j]}" aria-label="${esc(t('cmp.remove', { v: b.nev }))}"><i class="pic"><b class="x">${ic('x')}</b></i><span>${esc(b.nev)}</span></button>`).join('')}</div>`;
 function cmpView() {
   const list = S.cmp.map(id => BY_ID.get(id)).filter(Boolean);
   if (list.length < 2) {
     const s = SPARES['kerdo-kutya'];
-    return [`<div class="dempty"><div class="pic" style="background-image:url('${portrait(s.id)}');background-color:${s.bg}"></div><h3>Kit hasonlítsunk össze?</h3>
-      <p>Tegyél legalább 2 fajtát az összevetésbe a kártyájukon az <b>Összehasonlít</b> gombbal (max. 3).${list.length ? `<br>Eddig: <b>${esc(list[0].nev)}</b>` : ''}</p></div>`, list.length ? cmpOut(list) : ''];
+    return [`<div class="dempty"><div class="pic" style="background-image:url('${portrait(s.id)}');background-color:${s.bg}"></div><h3>${t('cmp.empty.h')}</h3>
+      <p>${t('cmp.empty.p')}${list.length ? t('cmp.empty.sofar', { v: esc(list[0].nev) }) : ''}</p></div>`, list.length ? cmpOut(list) : ''];
   }
   const cx = 190, cy = 170, R = 118, n = RADAR.length;
   const pt = (i, v) => { const a = -Math.PI / 2 + i / n * Math.PI * 2; return [cx + Math.cos(a) * R * v, cy + Math.sin(a) * R * v]; };
@@ -290,16 +291,16 @@ function cmpView() {
   const labels = RADAR.map(([, l], i) => { const [x, y] = pt(i, 1.2); return `<text class="lab" x="${x}" y="${y + 4}" text-anchor="middle">${l}</text>`; }).join('');
   const polys = list.map((b, j) => `<polygon class="poly" style="fill:${CMP_C[j]};stroke:${CMP_C[j]};animation-delay:${j * 150}ms" points="${RADAR.map(([k, , inv], i) => pt(i, (inv ? 6 - b.t[k] : b.t[k]) / 5).join(',')).join(' ')}"/>`).join('');
   const rows = [
-    ['Méret', b => b.meret.map(v => SIZE_L[v]).join('–')],
-    ['Súly', b => range(b.suly) + ' kg'],
-    ['Marmagasság', b => b.marmagassag ? range(b.marmagassag) + ' cm' : '–'],
-    ['Élettartam', b => range(b.elet) + ' év', b => b.elet[1]],
-    ['Szőr', b => b.szor.map(v => COAT_L[v]).join(' / ')],
-    ['Gyerekbarát', b => b.t.Gy + '/5', b => b.t.Gy],
-    ['Lakásba való', b => b.t.L + '/5', b => b.t.L],
-    ['Kezdőknek', b => b.t.K + '/5', b => b.t.K],
-    ['Költség', b => COST[b.koltseg || 2].split(' ')[0], b => -(b.koltseg || 2)],
-    ['Származás', b => b.orszag],
+    [t('cmp.row.size'), b => b.meret.map(v => SIZE_L[v]).join('–')],
+    [t('cmp.row.weight'), b => t('unit.kg', { v: range(b.suly) })],
+    [t('cmp.row.height'), b => b.marmagassag ? t('unit.cm', { v: range(b.marmagassag) }) : '–'],
+    [t('cmp.row.life'), b => t('unit.years', { v: range(b.elet) }), b => b.elet[1]],
+    [t('cmp.row.coat'), b => b.szor.map(v => COAT_L[v]).join(' / ')],
+    [t('cmp.row.kids'), b => b.t.Gy + '/5', b => b.t.Gy],
+    [t('cmp.row.flat'), b => b.t.L + '/5', b => b.t.L],
+    [t('cmp.row.novice'), b => b.t.K + '/5', b => b.t.K],
+    [t('cmp.row.cost'), b => COST[b.koltseg || 2].split(' ')[0], b => -(b.koltseg || 2)],
+    [t('cmp.row.origin'), b => b.orszag],
   ];
   const table = `<table class="ctable"><tbody>${rows.map(([l, f, score]) => {
     const best = score ? Math.max(...list.map(score)) : null;
@@ -311,53 +312,30 @@ function cmpView() {
 
 /* ---------- Tippek / Gazdi-tudástár + beállítások ---------- */
 function tipsView() {
-  const dark = isDark();
+  const dark = isDark(), host = SITE.url.replace(/^https?:\/\//, '');
+  const card = k => `<div class="tipcard"><h4>${t(`tips.${k}.h`)}</h4>${t(`tips.${k}.body`)}</div>`;
+  const newsletter = LANG_BY[LANG].newsletter   // a hírlevél magyar nyelvű: csak a magyar felületen ajánljuk
+    ? `<div class="tipcard"><h4>${t('tips.newsletter.h')}</h4><p>${t('tips.newsletter.body')}</p>
+      <p style="margin-top:8px"><a href="${esc(SITE.url || 'https://pacsit.hu')}/hirlevel/?utm_source=app&utm_medium=tippek" target="_blank" rel="noopener">${t('tips.newsletter.link')}</a></p></div>` : '';
   return [`<div class="tips">
-    <div class="tipcard"><h4>❤️ Válassz felelősen</h4>
-      <p>Hosszú évekre, sokszor 10–15 évre veszel magad mellé valakit, aki a családod tagja lesz. Ezért ne csak a külseje alapján dönts: nézd meg, illik-e az életmódodhoz, az otthonodhoz és a családodhoz. Ebben segít a Pacsi is, a szűrőkkel, a Párkereső kvízzel és az összehasonlítással.</p>
-      <p><button class="link" data-tquiz>Kitöltöm a Párkereső kvízt →</button></p></div>
-    <div class="tipcard"><h4>🧬 Mire tenyésztették?</h4>
-      <p>Nézd meg, mire tenyésztették és mire használták eredetileg a fajtát, amelyik tetszik, és gondold végig, ki tudod-e szolgálni az ösztöneit. A vadászkutya szimatolna és futna, a terelőkutya terelne, az őrzőkutya őrizne – akkor is, ha nálad nincs rá feladata.</p>
-      <p>Például a dalmata, a <i>101 kiskutya</i> sztárja, eredetileg lovas kocsik mellett futó kísérő- és őrzőkutya volt. Ma is rengeteg futás kell neki, megvan benne az őrző ösztön, és heves természete miatt kisgyerek mellé nem kifejezetten ajánlott.</p>
-      <small>A fajtakártyák leírásában is utánanézhetsz, honnan jön és mire használták a fajtát.</small></div>
-    <div class="tipcard"><h4>✅ Mielőtt kutyát veszel</h4><ul>
-      <li>Nézd meg a kölyök szüleit és a tartási körülményeket.</li>
-      <li>Kérj törzskönyvet (FCI/MEOESZ) és a szülők egészségügyi szűréseit (pl. csípő, szem, szív).</li>
-      <li>A kölyök legalább 8 hetes legyen, mikrochippel és oltási könyvvel.</li>
-      <li>Kerüld az „olcsó, azonnal elvihető” hirdetéseket – gyakran szaporítótól származnak.</li>
-      <li>Kérj írásos adásvételi szerződést.</li></ul></div>
-    <div class="tipcard"><h4>🐶 Kölyökteszt: melyik kölyök illik hozzád?</h4>
-      <p>A fajtán belül is sokat számít, hogy az alomból melyik kölyök kerül hozzád: így kerülhet jó kutya jó helyre. A tenyésztők ezt kölyöktesztnek hívják. Már 6 hetes korban sokat elárul a kiskutya egyéniségéről, például:</p>
-      <ul><li>mennyire szereti az embereket,</li><li>fél-e a zajoktól,</li><li>könnyen vagy nehezen motiválható-e, és mivel (étel, játék, dicséret),</li><li>mennyire önálló és mennyire tanulékony.</li></ul>
-      <small>Kérdezd meg a tenyésztőt, végzett-e kölyöktesztet, és melyik kölyköt ajánlja a családodhoz.</small></div>
-    <div class="tipcard"><h4>🏡 Gondolj az örökbefogadásra</h4><p>Rengeteg fajtatiszta kutya és keverék vár menhelyen vagy fajtamentő szervezetnél. Egy felnőtt kutya jellemét ráadásul már ismerni lehet.</p>
-      <p><b>Mentett kutyánál még fontosabb egy szakértő, például egy kutyakiképző segítsége.</b> Laikus gazdaként nem mindig látod, milyen fizikai adottságai vagy betegségei vannak, és érte-e testi vagy lelki trauma. Pedig ezekkel számolnod kell a befogadás utáni szocializációban. Előfordulhat például, hogy a kutya:</p>
-      <ul><li>antiszociális más kutyákkal, háziállatokkal vagy emberekkel,</li><li>retteg az emberektől vagy más állatoktól,</li><li>nehezen motiválható, így nehezen képezhető.</li></ul></div>
-    <div class="tipcard"><h4>📋 Kötelezettségek Magyarországon</h4><ul>
-      <li>Mikrochip és nyilvántartásba vétel.</li><li>Évenkénti veszettség elleni oltás.</li><li>Az önkormányzati ebösszeírás.</li></ul>
-      <small>Tájékoztató jellegű – ellenőrizd a hatályos jogszabályokat és a helyi rendeleteket.</small></div>
-    <div class="tipcard"><h4>😮‍💨 Lapos orrú fajták</h4><p>A francia bulldog, a mopsz vagy az angol bulldog cuki, de gyakoriak náluk a légzési, szem- és gerincproblémák. Ha ilyet választasz, csak egészségügyileg szűrt, nyitott orrlyukú szülőktől.</p></div>
-    <div class="tipcard"><h4>💶 Mire számíts az első évben?</h4><ul>
-      <li>Eledel (a mérettől függően ez a legnagyobb tétel)</li><li>Oltások, féreghajtás, parazita elleni védelem</li>
-      <li>Kutyaiskola, felszerelés, fekhely</li><li>Kozmetikus a sokat ápolandó fajtáknál</li><li>Tartalék váratlan állatorvosi költségekre, vagy biztosítás</li></ul>
-      <small>A fajtakártyák €–€€€ jelölése a relatív havi fenntartási költséget mutatja.</small></div>
-    <div class="tipcard"><h4>✉️ Heti kutyás levél</h4><p>Csütörtökönként a hét fajtája, gazdi-tippek és egy kis fejtörő – ingyen, bármikor leiratkozhatsz.</p>
-      <p style="margin-top:8px"><a href="${esc(SITE.url || 'https://pacsit.hu')}/hirlevel/?utm_source=app&utm_medium=tippek" target="_blank" rel="noopener">Feliratkozom ↗</a></p></div>
-    <div class="tipcard"><h4>⚙️ Beállítások</h4>
-      <div class="setrow">Sötét téma <button class="tog" data-set="theme" aria-pressed="${dark}" style="width:auto;padding:0"><span class="sw"></span></button></div>
-      <div class="setrow">Kevesebb mozgás <button class="tog" data-set="rm" aria-pressed="${S.rmUser}" style="width:auto;padding:0"><span class="sw"></span></button></div>
-      <div class="setrow">Névtelen statisztika <button class="tog" data-set="stat" aria-pressed="${!store.get('nostat', false)}" style="width:auto;padding:0"><span class="sw"></span></button></div>
-      <div class="setrow">Alapértelmezett mód: ${modeOf() === 'strict' ? 'Csak találatok' : 'Rangsor'} <button class="link" data-set="mode">Váltás</button></div>
-      <div class="setrow">Bemutató újra <button class="link" data-set="coach">Indítás</button></div></div>
-    <div class="tipcard"><h4>ℹ️ A Pacsiról</h4><p>A jellemzők a fajtákra jellemző átlagot írják le; az egyes kutyák ettől eltérhetnek. A portrék saját, mesterséges intelligenciával készült illusztrációk.</p>
-      <p style="margin-top:8px"><b>Adatvédelem:</b> nincs regisztráció, és nem gyűjtünk személyes adatot; a kedvencek csak ezen az eszközön tárolódnak. A ${esc(SITE.url.replace(/^https?:\/\//, ''))} névtelen, sütik nélküli látogatottsági statisztikát készít a saját szerverén (pl. mely fajták és szűrők a legnépszerűbbek) – ezt fent, a Beállításokban kikapcsolhatod.</p></div>
-    <div class="tipcard credit-card"><span class="mark">D</span><div><h4 style="margin:0 0 2px">Pacsi by DarwinAI</h4><p>A Pacsit a <b>DarwinAI</b> tervezte és fejlesztette.<br><a href="https://www.darwinai.hu" target="_blank" rel="noopener">www.darwinai.hu ↗</a></p><p class="ver">Verzió: v${APP_VERSION} · build ${APP_BUILD}</p></div></div>
+    ${['responsible', 'bred', 'checklist', 'puppytest', 'adopt', 'legal', 'flat', 'cost'].map(card).join('')}
+    ${newsletter}
+    <div class="tipcard"><h4>${t('set.title')}</h4>
+      <div class="setrow">${t('set.theme')} <button class="tog" data-set="theme" aria-pressed="${dark}" style="width:auto;padding:0"><span class="sw"></span></button></div>
+      <div class="setrow">${t('set.rm')} <button class="tog" data-set="rm" aria-pressed="${S.rmUser}" style="width:auto;padding:0"><span class="sw"></span></button></div>
+      <div class="setrow">${t('set.stat')} <button class="tog" data-set="stat" aria-pressed="${!store.get('nostat', false)}" style="width:auto;padding:0"><span class="sw"></span></button></div>
+      <div class="setrow">${t('set.mode', { v: t(modeOf() === 'strict' ? 'mode.strict' : 'mode.rank') })} <button class="link" data-set="mode">${t('set.switch')}</button></div>
+      <div class="setrow">${t('set.coach')} <button class="link" data-set="coach">${t('set.start')}</button></div>
+      <div class="setrow">${t('set.lang')} ${langPills()}</div></div>
+    <div class="tipcard"><h4>${t('tips.about.h')}</h4><p>${t('tips.about.p1')}</p>
+      <p style="margin-top:8px">${t('tips.about.p2', { host: esc(host) })}</p></div>
+    <div class="tipcard credit-card"><span class="mark">D</span><div><h4 style="margin:0 0 2px">Pacsi by DarwinAI</h4><p>${t('tips.credit')}<br><a href="https://www.darwinai.hu" target="_blank" rel="noopener">www.darwinai.hu ↗</a></p><p class="ver">${t('tips.version', { v: `v${APP_VERSION} · build ${APP_BUILD}` })}</p></div></div>
   </div>`, ''];
 }
 function setting(k, el) {
   if (k === 'theme') { toggleTheme(); el.setAttribute('aria-pressed', S.theme === 'dark'); }
   else if (k === 'rm') { S.rmUser = !S.rmUser; store.set('rm', S.rmUser); document.documentElement.classList.toggle('rm', RM()); el.setAttribute('aria-pressed', S.rmUser); }
-  else if (k === 'stat') { const off = !store.get('nostat', false); store.set('nostat', off); el.setAttribute('aria-pressed', !off); toast(off ? 'A névtelen statisztika kikapcsolva' : 'Köszönjük! A névtelen statisztika bekapcsolva'); }
+  else if (k === 'stat') { const off = !store.get('nostat', false); store.set('nostat', off); el.setAttribute('aria-pressed', !off); toast(t(off ? 'toast.statOff' : 'toast.statOn')); }
   else if (k === 'mode') { setMode(modeOf() === 'strict' ? 'rank' : 'strict'); renderDrawer(); }
   else if (k === 'coach') { closeDrawer(); preloadHero(); setTimeout(startOnboarding, 400); }
 }
@@ -365,12 +343,12 @@ function setting(k, el) {
 /* ---------- Kirepült fajták (mobil) ---------- */
 function flownView() {
   const out = BREEDS.filter(b => !b.ok);
-  if (!out.length) return ['<div class="dempty"><h3>Senki sem repült ki</h3><p>Minden fajta a felhőben van.</p></div>', ''];
-  return [`<p style="margin:0 0 12px;color:var(--ink-2)">Ők most kirepültek – de bármikor visszahívhatod őket egy szűrő elengedésével.</p>
+  if (!out.length) return [`<div class="dempty"><h3>${t('flown.none.h')}</h3><p>${t('flown.none.p')}</p></div>`, ''];
+  return [`<p style="margin:0 0 12px;color:var(--ink-2)">${t('flown.intro')}</p>
     <div class="favs">${out.slice(0, 80).map((b, i) => { const why = reasons(b).find(r => r.cls !== 'y'); return `<div class="favrow" style="--i:${Math.min(i, 20)};grid-template-columns:58px 1fr">
       <button class="pic" data-open="${b.id}" style="${picStyle(b)}" aria-label="${esc(b.nev)}"></button>
       <div><h4>${esc(b.nev)}</h4><p style="color:#D9483B">✗ ${esc(why ? why.text : '')}</p></div></div>`; }).join('')}</div>`,
-  `<button class="btn fill" data-clearall style="flex:1">Mindenkit vissza a felhőbe</button>`];
+  `<button class="btn fill" data-clearall style="flex:1">${t('flown.all')}</button>`];
 }
 
 /* Fülsáv (mobil) és felső gombok (desktop) */

@@ -1,0 +1,4 @@
+[
+ {"code": "hu", "name": "Magyar", "flag": "flag-hu", "locale": "hu", "newsletter": true},
+ {"code": "en", "name": "English", "flag": "flag-gb", "locale": "en-GB", "newsletter": false}
+]

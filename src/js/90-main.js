@@ -13,6 +13,7 @@ function init() {
   if (h.quiz) S.quiz = { answers: h.quiz, crit: quizCrit(h.quiz), done: true };
   stage.classList.toggle('mobile', S.mobile);
   renderFilters();
+  renderLangUI();
   $('#listView').hidden = S.view !== 'lista';
   bubblesEl.style.visibility = S.view === 'lista' ? 'hidden' : '';
   stage.classList.toggle('list', S.view === 'lista');
@@ -41,7 +42,7 @@ function init() {
       reg.addEventListener('updatefound', () => {
         const nw = reg.installing;
         nw && nw.addEventListener('statechange', () => {
-          if (nw.state === 'installed' && navigator.serviceWorker.controller) toast('Új verzió érhető el', { action: 'Frissítés', onAction: () => location.reload(), ms: 6000 });
+          if (nw.state === 'installed' && navigator.serviceWorker.controller) toast(t('update.msg'), { action: t('update.btn'), onAction: () => location.reload(), ms: 6000 });
         });
       });
     }).catch(() => {});

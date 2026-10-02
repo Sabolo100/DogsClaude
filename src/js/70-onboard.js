@@ -14,6 +14,18 @@ const WL_BUBBLES = [
   ['magyar-vizsla', -9, 4, 18], ['golden-retriever', 83, -9, 15], ['francia-bulldog', 101, 30, 19],
   ['puli', 91, 79, 14], ['border-collie', -14, 31, 12], ['beagle', 37, 97, 13], ['szamojed', 64, 101, 10],
 ];
+// a nyitó ablak szövege külön, hogy nyelvváltáskor a kép és a körülötte lebegő buborékok megmaradjanak (lásd renderWelcomeText)
+function welcomeTextHTML() {
+  const swash = '<svg class="wl-swash" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M5 14C70 6 170 3 295 9"/></svg>';
+  // a főcím három része (a középső kiemelt); üres rész kimarad
+  const h1 = [[t('welcome.h1a'), 0], [t('welcome.h1b'), 1, true], [t('welcome.h1c'), 2]].filter(x => x[0])
+    .map(([txt, i, em]) => `<span style="--i:${i}">${em ? `<em>${txt}${swash}</em>` : txt}</span>`).join(' ');
+  return `<p class="wl-eyebrow">${ic('paw')}${t('welcome.eyebrow', { n: TOTAL })}</p>
+      <h1 id="wlTitle">${h1}</h1>
+      <p class="wl-lead">${t('welcome.lead')}</p>
+      <p class="wl-body" id="wlDesc">${t('welcome.body')}</p>
+      <div class="wl-cta"><button class="cta wl-go" data-go>${t('welcome.go')}${ic('paw')}</button><small>${ic('sparkle')}${t('welcome.next')}</small></div>`;
+}
 function welcomeHTML() {
   const bubbles = WL_BUBBLES.map(([id, x, y, w], i) => {
     const b = BY_ID.get(id);
@@ -21,21 +33,28 @@ function welcomeHTML() {
   }).join('');
   return `<div class="wl-scrim"></div>
   <section class="wl" role="dialog" aria-modal="true" aria-labelledby="wlTitle" aria-describedby="wlDesc">
+    <div class="wl-lang">${langPills()}</div>
     <div class="wl-art" aria-hidden="true">
       <i class="wl-glow"></i>
       <div class="wl-hero" style="background-image:url('${HERO}')"></div>
       <svg class="wl-ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48.6"/></svg>
       ${bubbles}
-      <span class="wl-match">${ic('heart-f')}<b>100%</b> illik hozzád</span>
+      <span class="wl-match">${ic('heart-f')}${t('welcome.match')}</span>
     </div>
-    <div class="wl-text">
-      <p class="wl-eyebrow">${ic('paw')}${TOTAL} kutyafajta · egy élő felhőben</p>
-      <h1 id="wlTitle"><span style="--i:0">Válaszd ki a</span> <span style="--i:1"><em>neked való<svg class="wl-swash" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M5 14C70 6 170 3 295 9"/></svg></em></span> <span style="--i:2">kutyafajtát,</span></h1>
-      <p class="wl-lead">hogy mindketten azt kapjátok, amire vágytok.</p>
-      <p class="wl-body" id="wlDesc">Állítsd be a szűrőket, és nézd meg, melyik fajta illik hozzád.</p>
-      <div class="wl-cta"><button class="cta wl-go" data-go>Kezdjük!${ic('paw')}</button><small>${ic('sparkle')}Utána 3 gyors tipp következik</small></div>
-    </div>
+    <div class="wl-text">${welcomeTextHTML()}</div>
   </section>`;
+}
+function bindWelcome() {
+  const go = $('[data-go]', welcomeEl);
+  go.addEventListener('click', closeWelcome);
+  return go;
+}
+// nyelvváltás a nyitó ablakban: csak a szöveg és a váltó rajzolódik újra
+function renderWelcomeText() {
+  $('.wl-text', welcomeEl).innerHTML = welcomeTextHTML();
+  $('.wl-match', welcomeEl).innerHTML = `${ic('heart-f')}${t('welcome.match')}`;
+  $('.wl-lang', welcomeEl).innerHTML = langPills();
+  bindWelcome();
 }
 function openWelcome(then) {
   if (WL.open) return;
@@ -45,8 +64,7 @@ function openWelcome(then) {
   welcomeEl.classList.remove('out');
   welcomeEl.hidden = false;
   $('#app').inert = true;
-  const go = $('[data-go]', welcomeEl);
-  go.addEventListener('click', closeWelcome);
+  const go = bindWelcome();
   $('.wl-scrim', welcomeEl).addEventListener('click', () => {   // mellékattintásra a gomb jelez: innen indulunk
     go.classList.remove('nudge'); void go.offsetWidth; go.classList.add('nudge');
   });
@@ -77,7 +95,10 @@ function closeWelcome() {
   }, RM() ? 60 : 380);
 }
 welcomeEl.addEventListener('keydown', e => {
-  if (e.key === 'Tab') { e.preventDefault(); $('[data-go]', welcomeEl).focus(); }   // egyetlen gomb: a fókusz itt marad
+  if (e.key !== 'Tab') return;   // a fókus az ablakon belül marad: a „Kezdjük!” és a nyelvváltó gombjai között körbejár
+  e.preventDefault();
+  const f = $$('button', welcomeEl), i = f.indexOf(document.activeElement);
+  f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
 });
 
 /* Teljes bevezetés: nyitó ablak → bemutató (első látogatáskor és a Tippek → „Bemutató újra” gombbal) */
@@ -91,15 +112,14 @@ function startOnboarding() {
    körül lüktető gyűrű; a buborékban a Pacsi kabala „mondja” a tippet. Ha a lépés kérését a látogató
    megteszi (buborékot nyit, szűrőt kapcsol, kvízt indít), a bemutató magától továbblép. */
 const COACH = [
-  { t: () => stage, pad: -8, r: 30, h: 'Ez itt a fajtafelhő',
-    p: () => `${TOTAL} kutyafajta, mind egy helyen. ${S.mobile ? 'Koppints' : 'Vidd az egeret'} egy buborékra, és megtudod, ki az.`,
+  { t: () => stage, pad: -8, r: 30, h: 'coach.1.h',
+    p: () => t(S.mobile ? 'coach.1.p.mobile' : 'coach.1.p.desktop', { n: TOTAL }),
     did: () => !!S.card },
-  { t: () => S.mobile ? $('#dock') : $('#panel'), pad: 6, r: S.mobile ? 30 : 34, h: 'Szűrj, és figyeld!',
-    p: () => modeOf() === 'rank' ? 'Kapcsolj be egy szűrőt, és nézd, ki ugrik előre!'
-      : S.mobile ? 'Kapcsolj be egy szűrőt: ami nem illik hozzád, kirepül.' : 'Kapcsolj be egy szűrőt: ami nem illik hozzád, eltűnik, a többi megnő.',
+  { t: () => S.mobile ? $('#dock') : $('#panel'), pad: 6, r: S.mobile ? 30 : 34, h: 'coach.2.h',
+    p: () => modeOf() === 'rank' ? t('coach.2.p.rank') : t(S.mobile ? 'coach.2.p.mobile' : 'coach.2.p.desktop'),
     did: () => filterSig() !== CO.sig },
-  { t: () => S.mobile ? $('[data-tab="kviz"]') : $('#quizBtn'), pad: 6, r: S.mobile ? 20 : 40, h: 'Nem tudod, hol kezdd?',
-    p: () => 'A Párkereső kvíz 10 kérdés, kb. 1 perc – és élőben formálja a felhőt.',
+  { t: () => S.mobile ? $('[data-tab="kviz"]') : $('#quizBtn'), pad: 6, r: S.mobile ? 20 : 40, h: 'coach.3.h',
+    p: () => t('coach.3.p'),
     did: () => S.drawer === 'kviz' },
 ];
 const filterSig = () => S.crit.map(c => c.label).join('|');
@@ -119,9 +139,9 @@ function coach(i = 0) {
 function showCoach(i) {
   const c = COACH[i];
   coachEl.innerHTML = `<i class="co-pic" style="background-image:url('${portrait('kabala-pacsi')}')" aria-hidden="true"></i>
-    <span class="co-step">Tipp ${i + 1}/${COACH.length}</span><h4>${c.h}</h4><p>${c.p()}</p>
+    <span class="co-step">${t('coach.step', { i: i + 1, n: COACH.length })}</span><h4>${t(c.h)}</h4><p>${c.p()}</p>
     <div class="row"><span class="dots3">${COACH.map((_, j) => `<i class="${j === i ? 'on' : j < i ? 'was' : ''}"></i>`).join('')}</span>
-    <span><button class="link" data-skip>Kihagyom</button> <button class="btn fill" data-next>${i === COACH.length - 1 ? 'Kezdjük!' : 'Tovább'}</button></span></div>`;
+    <span><button class="link" data-skip>${t('coach.skip')}</button> <button class="btn fill" data-next>${i === COACH.length - 1 ? t('welcome.go') : t('coach.next')}</button></span></div>`;
   coachEl.hidden = false;
   coachEl.style.animation = 'none'; void coachEl.offsetWidth; coachEl.style.animation = '';   // minden lépés újra „beugrik”
   $('[data-next]', coachEl).onclick = () => coach(i + 1);

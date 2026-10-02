@@ -4,6 +4,16 @@ A verziószám a `VERSION` fájlban van, szemantikus verziózással (FŐ.MELLÉK
 - **Mobilon:** a Tippek panel névjegykártyáján.
 - **Asztalon:** a bal oldali panel alján.
 
+## 1.10.0 – 2026-10-02
+**Angol nyelvű változat, és az app többnyelvűvé vált.** A magyar felület és a magyar szövegek betűre ugyanazok maradtak.
+- **Nyelvváltó zászló** a főoldalon (felső sáv, mobilon is), az első nyitó ablakban és a Tippek → Beállítások alatt. A váltás azonnal érvényes, újratöltés nélkül: a nyitott kártya, a kvíz, a fiókok és a szűrők is átváltanak. A választás megmarad. Linkkel: `pacsit.hu/en`, `pacsit.hu/hu` (nginx), vagy `/?lang=en`. Az alapnyelv a magyar.
+- **Angol szövegek:** a teljes felület, mind a 124 fajtakártya (leírás, tagline, kinek ajánlott/nem, egészség, mozgás, érdekesség), a kvíz, a gazdi-tudástár és a bemutató. A fajtanevek kézzel gondozottak (pl. German Shepherd, Hungarian Vizsla, Italian Greyhound), a hivatalos FCI-név a kártyán a név alatt látszik. Az egészségügyi tételek egységes szakkifejezésekkel (pl. „Patellar luxation”, „Gastric dilatation-volvulus (bloat)”). Brit angol.
+- **Kereső:** bármelyik nyelven beírható a fajta neve vagy beceneve (angol felületen is megtalálja a „vizsla”-t, magyaron a „german shepherd”-et).
+- **Statisztika:** továbbra is magyar, nyelvtől független értékekkel, így a fajták és a szűrők statisztikája nem esik szét nyelvek szerint. Új: `nyelv` tulajdonság az `inditas` eseményen és egy `nyelv` esemény a váltásról.
+- **Új, bővíthető fordítási rendszer** (`tools/i18n.py`, `data/i18n/`): szövegkinyerés munkacsomagokba, fordítás beolvasása, ellenőrzés (hiányzó kulcs, helyőrző, HTML, elavult fordítás, szószedet), opcionális API-s fordítás. Új nyelv: nyelvlista-sor + zászló + fordítás, a kódban nincs teendő. A build lefuttatja az ellenőrzést.
+- **Hírlevél:** a heti levél magyar, ezért az angol felületen a Tippek közt nem jelenik meg.
+- **Belső:** a méretek, szőrzetek és szerepek címkéi nyelvfüggő táblákból épülnek (`labels()`); a földrajzi csoportosítás a magyar származásadatot használja, így nyelvtől független.
+
 ## 1.9.0 – 2026-10-01
 A Google Ads csatornához (Ads Engine) szükséges mérés és landing-útvonalak. Az app felülete és működése nem változik.
 - **Új statisztikai esemény: `bevont`.** Oldalbetöltésenként egyszer megy, az első érdemi interakciónál (kvíz indítása vagy befejezése, kártya, szűrő, keresés, összevetés, meglepetés, megosztás). Az Umamiban így egy számmal látszik, hány látogatás volt „bevont”: az `inditas` minden megnyitáskor tüzel, ezért a visszapattanás nem mérhető vele.

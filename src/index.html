@@ -30,62 +30,63 @@
   <!-- Felső sáv (desktop) / app bar (mobil) -->
   <header class="topbar">
     <div class="brand">
-      <a class="logo" href="#" id="logo" aria-label="Pacsi – kezdőlap">
+      <a class="logo" href="#" id="logo" aria-label="Pacsi – kezdőlap" data-i18n-attr="aria-label:top.home">
         <span class="logo-word">Pacs<span class="logo-i">ı<svg class="logo-paw" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-paw"/></svg></span></span>
       </a>
-      <a class="byline" href="https://www.darwinai.hu" target="_blank" rel="noopener" title="A Pacsit a DarwinAI fejlesztette – www.darwinai.hu">by <b>DarwinAI</b></a>
+      <a class="byline" href="https://www.darwinai.hu" target="_blank" rel="noopener" title="A Pacsit a DarwinAI fejlesztette – www.darwinai.hu" data-i18n-attr="title:top.byline">by <b>DarwinAI</b></a>
     </div>
     <label class="search" id="searchBox">
       <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
-      <input id="q" type="search" placeholder="Keress fajtát… pl. vizsla" autocomplete="off" aria-label="Fajta keresése">
+      <input id="q" type="search" placeholder="Keress fajtát… pl. vizsla" autocomplete="off" aria-label="Fajta keresése" data-i18n-attr="placeholder:search.ph;aria-label:search.aria">
       <kbd class="kbd">/</kbd>
     </label>
-    <nav class="seg views" id="views" role="tablist" aria-label="Nézet">
-      <button role="tab" data-view="felho"><svg class="ic"><use href="#i-cloud"/></svg><span>Felhő</span></button>
-      <button role="tab" data-view="csoport"><svg class="ic"><use href="#i-groups"/></svg><span>Csoportok</span></button>
-      <button role="tab" data-view="terkep"><svg class="ic"><use href="#i-map"/></svg><span>Térkép</span></button>
-      <button role="tab" data-view="lista"><svg class="ic"><use href="#i-list"/></svg><span>Lista</span></button>
+    <nav class="seg views" id="views" role="tablist" aria-label="Nézet" data-i18n-attr="aria-label:view.aria">
+      <button role="tab" data-view="felho"><svg class="ic"><use href="#i-cloud"/></svg><span data-i18n="view.felho">Felhő</span></button>
+      <button role="tab" data-view="csoport"><svg class="ic"><use href="#i-groups"/></svg><span data-i18n="view.csoport">Csoportok</span></button>
+      <button role="tab" data-view="terkep"><svg class="ic"><use href="#i-map"/></svg><span data-i18n="view.terkep">Térkép</span></button>
+      <button role="tab" data-view="lista"><svg class="ic"><use href="#i-list"/></svg><span data-i18n="view.lista">Lista</span></button>
     </nav>
     <div class="tb-actions">
       <span class="pill-count mob" id="mobCount" aria-hidden="true"><b>…</b> fajta</span>
-      <button class="flycloud mob" id="flyCloud" aria-label="Kirepült fajták" hidden><svg class="ic"><use href="#i-arrow-up"/></svg><b>0</b></button>
-      <button class="icbtn mob" id="mobSearchBtn" aria-label="Keresés"><svg class="ic"><use href="#i-search"/></svg></button>
-      <button class="icbtn desk" id="surpriseBtn" title="Meglepetés!" aria-label="Meglepetés fajta"><svg class="ic"><use href="#i-dice"/></svg></button>
-      <button class="icbtn desk" data-drawer="tippek" title="Gazdi-tudástár" aria-label="Gazdi-tudástár"><svg class="ic"><use href="#i-book"/></svg></button>
-      <button class="icbtn desk" data-drawer="osszevet" title="Összehasonlítás" aria-label="Összehasonlítás"><svg class="ic"><use href="#i-compare"/></svg><b class="badge" data-badge="cmp" hidden>0</b></button>
-      <button class="icbtn desk" data-drawer="kedvencek" title="Kedvencek" aria-label="Kedvencek"><svg class="ic"><use href="#i-heart"/></svg><b class="badge" data-badge="fav" hidden>0</b></button>
-      <button class="icbtn desk" id="themeBtn" title="Téma váltása" aria-label="Világos/sötét téma"><svg class="ic"><use href="#i-moon"/></svg></button>
+      <button class="flycloud mob" id="flyCloud" aria-label="Kirepült fajták" data-i18n-attr="aria-label:drawer.kirepultek" hidden><svg class="ic"><use href="#i-arrow-up"/></svg><b>0</b></button>
+      <button class="icbtn mob" id="mobSearchBtn" aria-label="Keresés" data-i18n-attr="aria-label:top.search"><svg class="ic"><use href="#i-search"/></svg></button>
+      <button class="icbtn desk" id="surpriseBtn" title="Meglepetés!" aria-label="Meglepetés fajta" data-i18n-attr="title:top.surprise;aria-label:top.surpriseAria"><svg class="ic"><use href="#i-dice"/></svg></button>
+      <button class="icbtn desk" data-drawer="tippek" title="Gazdi-tudástár" aria-label="Gazdi-tudástár" data-i18n-attr="title:drawer.tippek;aria-label:drawer.tippek"><svg class="ic"><use href="#i-book"/></svg></button>
+      <button class="icbtn desk" data-drawer="osszevet" title="Összehasonlítás" aria-label="Összehasonlítás" data-i18n-attr="title:drawer.osszevet;aria-label:drawer.osszevet"><svg class="ic"><use href="#i-compare"/></svg><b class="badge" data-badge="cmp" hidden>0</b></button>
+      <button class="icbtn desk" data-drawer="kedvencek" title="Kedvencek" aria-label="Kedvencek" data-i18n-attr="title:top.favs;aria-label:top.favs"><svg class="ic"><use href="#i-heart"/></svg><b class="badge" data-badge="fav" hidden>0</b></button>
+      <button class="icbtn" id="langBtn" aria-haspopup="menu" aria-expanded="false" aria-controls="langMenu"></button>
+      <button class="icbtn desk" id="themeBtn" title="Téma váltása" aria-label="Világos/sötét téma" data-i18n-attr="title:top.theme;aria-label:top.themeAria"><svg class="ic"><use href="#i-moon"/></svg></button>
     </div>
   </header>
 
   <!-- Szűrőpanel (desktop oldalsáv, mobilon bottom sheet) -->
-  <aside class="panel" id="panel" aria-label="Szűrők">
+  <aside class="panel" id="panel" aria-label="Szűrők" data-i18n-attr="aria-label:panel.aria">
     <div class="sheet-handle" aria-hidden="true"></div>
     <div class="panel-head">
-      <h2>Mit keresel?</h2>
+      <h2 data-i18n="panel.title">Mit keresel?</h2>
       <span class="badge-active" id="activeCount" hidden>0 aktív</span>
-      <button class="link" id="clearBtn" hidden>Törlés</button>
-      <button class="icbtn mob" id="panelClose" aria-label="Bezárás"><svg class="ic"><use href="#i-x"/></svg></button>
+      <button class="link" id="clearBtn" data-i18n="panel.clear" hidden>Törlés</button>
+      <button class="icbtn mob" id="panelClose" aria-label="Bezárás" data-i18n-attr="aria-label:common.close"><svg class="ic"><use href="#i-x"/></svg></button>
     </div>
     <div class="panel-body" id="filters"></div>
     <div class="panel-foot">
-      <button class="cta" id="quizBtn"><svg class="ic"><use href="#i-sparkle"/></svg>Párkereső kvíz</button>
-      <a class="credit" href="https://www.darwinai.hu" target="_blank" rel="noopener">Fejlesztette: <b>DarwinAI</b> · www.darwinai.hu ↗</a>
+      <button class="cta" id="quizBtn"><svg class="ic"><use href="#i-sparkle"/></svg><span data-i18n="quiz.cta">Párkereső kvíz</span></button>
+      <a class="credit" href="https://www.darwinai.hu" target="_blank" rel="noopener" data-i18n-html="panel.credit">Fejlesztette: <b>DarwinAI</b> · www.darwinai.hu ↗</a>
       <span class="ver" data-ver></span>
     </div>
   </aside>
 
   <!-- Színpad -->
-  <main class="stage" id="stage" aria-label="Fajtafelhő">
+  <main class="stage" id="stage" aria-label="Fajtafelhő" data-i18n-attr="aria-label:stage.aria">
     <div class="hud" id="hud">
       <div class="counter" aria-hidden="true">
         <span class="odo" id="odo"></span>
-        <span class="of"><span id="ofTotal"></span> fajta <em id="ofLabel">vár rád</em></span>
+        <span class="of"><span id="ofTotal"></span> <span id="ofUnit">fajta</span> <em id="ofLabel">vár rád</em></span>
       </div>
       <div class="hud-row">
-        <div class="seg small mode" id="modeSeg" role="radiogroup" aria-label="Szűrési mód">
-          <button role="radio" data-mode="rank">Rangsor</button>
-          <button role="radio" data-mode="strict">Csak találatok</button>
+        <div class="seg small mode" id="modeSeg" role="radiogroup" aria-label="Szűrési mód" data-i18n-attr="aria-label:hud.modeAria">
+          <button role="radio" data-mode="rank" data-i18n="mode.rank">Rangsor</button>
+          <button role="radio" data-mode="strict" data-i18n="mode.strict">Csak találatok</button>
         </div>
         <div class="seg small groupby" id="groupSeg" hidden></div>
       </div>
@@ -109,26 +110,27 @@
   <div class="tray" id="tray" hidden></div>
 
   <!-- Mobil szűrődokk + tab bar -->
-  <div class="dock" id="dock" role="toolbar" aria-label="Gyorsszűrők"></div>
-  <nav class="tabbar" id="tabbar" aria-label="Fő navigáció">
-    <button data-tab="felfedez" class="on"><svg class="ic"><use href="#i-paw"/></svg><span>Felfedez</span></button>
-    <button data-tab="kviz"><svg class="ic"><use href="#i-sparkle"/></svg><span>Kvíz</span></button>
-    <button data-tab="kedvencek"><svg class="ic"><use href="#i-heart"/></svg><span>Kedvencek</span><b class="badge" data-badge="fav" hidden>0</b></button>
-    <button data-tab="osszevet"><svg class="ic"><use href="#i-compare"/></svg><span>Összevet</span><b class="badge" data-badge="cmp" hidden>0</b></button>
-    <button data-tab="tippek"><svg class="ic"><use href="#i-book"/></svg><span>Tippek</span></button>
+  <div class="dock" id="dock" role="toolbar" aria-label="Gyorsszűrők" data-i18n-attr="aria-label:dock.aria"></div>
+  <nav class="tabbar" id="tabbar" aria-label="Fő navigáció" data-i18n-attr="aria-label:tabbar.aria">
+    <button data-tab="felfedez" class="on"><svg class="ic"><use href="#i-paw"/></svg><span data-i18n="tab.felfedez">Felfedez</span></button>
+    <button data-tab="kviz"><svg class="ic"><use href="#i-sparkle"/></svg><span data-i18n="tab.kviz">Kvíz</span></button>
+    <button data-tab="kedvencek"><svg class="ic"><use href="#i-heart"/></svg><span data-i18n="tab.kedvencek">Kedvencek</span><b class="badge" data-badge="fav" hidden>0</b></button>
+    <button data-tab="osszevet"><svg class="ic"><use href="#i-compare"/></svg><span data-i18n="tab.osszevet">Összevet</span><b class="badge" data-badge="cmp" hidden>0</b></button>
+    <button data-tab="tippek"><svg class="ic"><use href="#i-book"/></svg><span data-i18n="tab.tippek">Tippek</span></button>
   </nav>
 </div>
 
 <!-- Rétegek -->
 <div class="scrim" id="scrim" hidden></div>
 <article class="card" id="card" role="dialog" aria-modal="true" aria-labelledby="cardTitle" hidden></article>
-<button class="card-nav prev" id="cardPrev" aria-label="Előző fajta" hidden><svg class="ic"><use href="#i-chev-l"/></svg></button>
-<button class="card-nav next" id="cardNext" aria-label="Következő fajta" hidden><svg class="ic"><use href="#i-chev-r"/></svg></button>
+<button class="card-nav prev" id="cardPrev" aria-label="Előző fajta" data-i18n-attr="aria-label:card.prev" hidden><svg class="ic"><use href="#i-chev-l"/></svg></button>
+<button class="card-nav next" id="cardNext" aria-label="Következő fajta" data-i18n-attr="aria-label:card.next" hidden><svg class="ic"><use href="#i-chev-r"/></svg></button>
 <aside class="drawer" id="drawer" role="dialog" aria-modal="false" hidden></aside>
 <div class="mob-search" id="mobSearch" hidden></div>
 <div class="coach-dim" aria-hidden="true"><div class="coach-spot" id="coachSpot" hidden></div></div>
-<div class="coach" id="coach" role="dialog" aria-label="Bemutató" hidden></div>
+<div class="coach" id="coach" role="dialog" aria-label="Bemutató" data-i18n-attr="aria-label:coach.aria" hidden></div>
 <div class="welcome" id="welcome" hidden></div>
+<div class="langmenu" id="langMenu" role="menu" hidden></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="sr-only" id="live" aria-live="polite"></div>
 <canvas class="fx" id="fx" aria-hidden="true"></canvas>
@@ -136,6 +138,7 @@
 <!-- Ikonkészlet -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    <!--FLAG_SYMBOLS-->
     <symbol id="i-paw" viewBox="0 0 24 24"><ellipse cx="6" cy="9.5" rx="2.1" ry="2.7" fill="currentColor"/><ellipse cx="10" cy="5.6" rx="2.1" ry="2.8" fill="currentColor"/><ellipse cx="14.6" cy="5.6" rx="2.1" ry="2.8" fill="currentColor"/><ellipse cx="18.4" cy="9.6" rx="2.1" ry="2.7" fill="currentColor"/><path fill="currentColor" d="M12.3 11.2c2.6 0 5.6 3.4 5.6 6.2 0 2-1.5 2.9-3.2 2.9-1 0-1.7-.5-2.4-.5s-1.4.5-2.4.5c-1.7 0-3.2-.9-3.2-2.9 0-2.8 3-6.2 5.6-6.2z"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></g></symbol>
     <symbol id="i-cloud" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="14" r="3.2"/><circle cx="14.5" cy="9" r="4.3"/><circle cx="16.5" cy="17" r="2.6"/><circle cx="5.5" cy="6.5" r="1.8"/></g></symbol>
@@ -184,6 +187,7 @@
 </svg>
 
 <script type="application/json" id="pacsi-data">/*INLINE_DATA*/</script>
+<script type="application/json" id="pacsi-i18n">/*INLINE_I18N*/</script>
 <!--INLINE_IMG-->
 <script>/*INLINE_JS*/</script>
 </body>

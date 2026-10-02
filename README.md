@@ -50,6 +50,22 @@ A service worker verziója a tartalomból számolódik, ezért a már telepítet
 
 **Landing-útvonalak a hirdetésekhez** (nginx): `/kviz` (a kvíz azonnal indul), `/fajtak` (lista nézet), `/gyerekbarat`, `/lakas`, `/kezdo`, `/csendes`, `/hullas`, `/magyar` (lista bekapcsolt szűrővel), `/terkep`. A lekérdezés (utm_*) megmarad. **Hirdetési csomag:** `src/ads/` → `pacsit.hu/ads/` (brief, kész hirdetések, képek) – az Ads Engine (Google Ads) innen húzza.
 
+## Nyelvek
+
+Az app magyarul és angolul érhető el. A nyelvet a főoldalon a zászló gombbal (felül, a téma-váltó mellett), az első nyitó ablakban és a Tippek → Beállítások alatt lehet váltani; a választás megmarad. Linkkel: `pacsit.hu/en` és `pacsit.hu/hu` (vagy `/?lang=en`), a megosztott linkek viszik a nyelvet. Alapértelmezés a magyar: a böngésző nyelvét szándékosan nem figyeli (a bevált magyar élmény nem változik).
+
+- **Szövegek:** `data/i18n/<nyelv>/`
+  - `ui.json`: a felület szövegei (a magyar, `hu/ui.json`, a forrás: kulcs → szöveg);
+  - `content.json`: a fajtaszövegek (a magyar a `data/fajtak.json`-ból jön);
+  - `aliases.json`: további keresőszavak fajtánként;
+  - `glossary.json`: stílus és szakszavak a fordítóknak;
+  - `_src.json`: melyik magyar szövegből készült a fordítás (hash). Ebből látszik, ha a magyar azóta megváltozott.
+- **Kódban:** `t('kulcs', { n: 3 })`, `tn('kulcs', n)` (többes szám), `tH('kulcs')` (mindig magyar: a statisztika nyelvfüggetlen), a HTML-ben `data-i18n="kulcs"`. Új felületi szöveg = új kulcs a `hu/ui.json`-ban + fordítása.
+- **Fajtanevek:** nyelvenként kézzel gondozott név (`<id>.nev` a `content.json`-ban); a hivatalos (FCI) angol név a kártyán a név alatt marad. A keresés minden nyelvű nevet és becenevet ismer.
+- **Új nyelv hozzáadása** (pl. német): új sor a `data/i18n/languages.json`-ban + zászló a `src/flags/<flag-id>.svg`-ben, majd `python tools/i18n.py extract de` (munkacsomagok + `PROMPT.md`), fordítás (Claude Code-dal, vagy `python tools/i18n.py translate de --provider anthropic` API-kulccsal), `python tools/i18n.py merge de <fájlok>`, `python tools/i18n.py check de`. A részletes leírás a `tools/i18n.py` fejlécében van.
+- **Ellenőrzés:** `python tools/i18n.py status` (lefedettség), `check` (hiányzó kulcs, hibás helyőrző/HTML, elavult fordítás). A build is lefuttatja, hibánál megáll; a hiányzó fordítás magyarul jelenik meg.
+- **Hírlevél:** a heti levél magyar nyelvű, ezért az angol felületen nem ajánljuk (`newsletter` jelző a `languages.json`-ban). A `src/hirlevel/` és a `src/ads/` oldalak magyarok maradnak.
+
 ## Statisztika (névtelen, sütik nélkül)
 
 - **Eszköz:** Umami a saját szerveren (Coolify, „Pacsi” projekt, `pacsi-stat` szolgáltatás), a felülete: <https://stat.pacsit.hu>.
@@ -60,7 +76,8 @@ A service worker verziója a tartalomból számolódik, ezért a már telepítet
 | Esemény | Tulajdonságok | Mit mutat |
 |---|---|---|
 | (megtekintés) | forrás, UTM | honnan jönnek |
-| `inditas` | mod (telepített app / böngésző), eszkoz, tema | megnyitás módja |
+| `inditas` | mod (telepített app / böngésző), eszkoz, tema, nyelv | megnyitás módja, felületi nyelv |
+| `nyelv` | nyelv | nyelvváltás menet közben |
 | `bevont` | elso (melyik interakció) | „bevont látogatás”: oldalbetöltésenként egyszer, az első érdemi interakciónál (hirdetések minőségmérése) |
 | `kedvenc`, `kedvenc-torles` | fajta | a legkedveltebb fajták |
 | `kartya` | fajta | mely fajták érdeklik az embereket |
@@ -95,9 +112,11 @@ A service worker verziója a tartalomból számolódik, ezért a már telepítet
 Pacsi_kutyavalaszto_specifikacio.md   termék- és UX-specifikáció (a fajtatáblák forrása is!)
 data/fajtak_kep.json                  fajta-id, név, képleírás, háttérszín, sprite-pozíció
 data/content/part_1…8.json            kártyaszövegek (leírás, kinek ajánlott, egészség, érdekesség …)
+data/i18n/                            nyelvek: felület (ui.json) és fajtaszövegek (content.json) nyelvenként, szószedet, languages.json
 data/fajtak.json                      generált, egyesített adatbázis (ne szerkeszd kézzel)
 src/index.html, src/app.css           felület
 src/js/10-core … 90-main.js           alkalmazáslogika (vanilla JS, keretrendszer nélkül)
+src/flags/                            nyelvváltó zászlók (SVG symbol)
 src/sw.js                             service worker sablon
 img/sheets/                           a 8 generált 4×4-es portré-rácskép + promptjaik
 img/portrek/, img/thumbs/             szeletelt portrék (kártya / buborék)
@@ -109,6 +128,7 @@ deploy/nginx.conf, Dockerfile         a pacsit.hu kiszolgálása (Coolify, Hetzn
 tools/generate_sheets.py              portrégenerálás (OpenAI gpt-image-2)
 tools/slice_sheets.py                 rácsfelismerés + szeletelés
 tools/build_data.py, tools/build.py   adat- és alkalmazás-build
+tools/i18n.py                         fordítások: kinyerés, beolvasás, ellenőrzés, nyelvi csomag (lásd „Nyelvek”)
 mockups/                              a specifikáció koncepcióképei
 screenshots/                          képernyőképek a kész appról
 ```
@@ -119,7 +139,8 @@ screenshots/                          képernyőképek a kész appról
 2. `data/fajtak_kep.json`: új elem (`n`, `slot`, `id`, `nev`, `en`, `bg`, `desc`).
 3. Portré: `python tools/generate_sheets.py egyedi <id>`, majd `python tools/slice_sheets.py`.
 4. Kártyaszöveg: új bejegyzés egy `data/content/part_*.json` fájlban.
-5. `python tools/build.py`
+5. Fordítás: `python tools/i18n.py status` megmutatja a hiányzó angol szövegeket; a fajtanevet kézzel add meg (`<id>.nev` az `data/i18n/en/content.json`-ban, keresőszavak: `aliases.json`), a többit `extract` + `merge` (vagy `translate`) pótolja.
+6. `python tools/build.py`
 
 ## Fontos
 

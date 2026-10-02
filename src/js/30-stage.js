@@ -136,27 +136,27 @@ function computeTargets() {
 }
 
 /* ---------- Csoportosítás ---------- */
-const REGIONS = [
-  ['Magyar', ['Magyarország', 'Erdély']],
-  ['Brit-szigetek', ['Egyesült Királyság', 'Írország']],
-  ['Német nyelvterület', ['Németország', 'Svájc', 'Ausztria']],
-  ['Nyugat-Európa', ['Franciaország', 'Belgium', 'Hollandia']],
-  ['Dél-Európa', ['Olaszország', 'Spanyolország', 'Portugália', 'Horvátország', 'Földközi', 'Málta']],
-  ['Kelet-Európa', ['Oroszország', 'Szibéria', 'Kaukázus', 'Csehország', 'Lengyelország']],
-  ['Ázsia', ['Japán', 'Kína', 'Tibet', 'Közép-Ázsia', 'Afganisztán', 'Közel-Kelet']],
-  ['Amerika', ['USA', 'Kanada', 'Mexikó', 'Kuba']],
-  ['Afrika, Óceánia', ['Afrika', 'Zimbabwe', 'Kongó', 'Madagaszkár', 'Ausztrália']],
+const REGIONS = [   // [azonosító, a magyar származás-szövegben keresett szavak] – a címke: region.<azonosító>
+  ['magyar', ['Magyarország', 'Erdély']],
+  ['brit', ['Egyesült Királyság', 'Írország']],
+  ['nemet', ['Németország', 'Svájc', 'Ausztria']],
+  ['nyugat', ['Franciaország', 'Belgium', 'Hollandia']],
+  ['del', ['Olaszország', 'Spanyolország', 'Portugália', 'Horvátország', 'Földközi', 'Málta']],
+  ['kelet', ['Oroszország', 'Szibéria', 'Kaukázus', 'Csehország', 'Lengyelország']],
+  ['azsia', ['Japán', 'Kína', 'Tibet', 'Közép-Ázsia', 'Afganisztán', 'Közel-Kelet']],
+  ['amerika', ['USA', 'Kanada', 'Mexikó', 'Kuba']],
+  ['afrika', ['Afrika', 'Zimbabwe', 'Kongó', 'Madagaszkár', 'Ausztrália']],
 ];
-const region = s => (REGIONS.find(([, keys]) => keys.some(k => s.includes(k))) || ['Egyéb'])[0];
+const region = s => (REGIONS.find(([, keys]) => keys.some(k => s.includes(k))) || ['egyeb'])[0];
 const GPAL = ['#FF6B3D', '#17756E', '#5B5BD6', '#E86A92', '#C7772B', '#2FA3D6', '#8A63D2', '#2E9E6A', '#E0A21B', '#6E7B8B'];
 const GROUPERS = {
   // ha méretszűrő aktív, a fajta a kiválasztott méretcsoportba kerül (pl. „Óriás” szűrésnél a nagy–óriás cane corso az Óriásba)
-  meret: { l: 'Méret', key: b => b.meret.find(v => S.f.meret.has(v)) || b.meret[Math.floor((b.meret.length - 1) / 2)], order: SIZES.map(s => s[0]), label: k => SIZE_L[k], color: k => ['#E86A92', '#FF8A5B', '#E0A21B', '#17756E', '#5B5BD6'][SIZE_I[k]] },
-  fci: { l: 'FCI', key: b => b.fci, order: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], label: k => `${k}. ${FCI[k]}`, color: k => GPAL[(k - 1) % GPAL.length] },
-  szerep: { l: 'Szerep', key: b => b.szerep[0], order: ROLES.map(r => r[0]), label: k => ROLE_L[k], color: k => ROLE_C[k] },
-  szor: { l: 'Szőr', key: b => b.szor[0], order: COATS.map(c => c[0]), label: k => COAT_L[k], color: k => GPAL[COATS.findIndex(c => c[0] === k) % GPAL.length] },
-  orszag: { l: 'Származás', key: b => region(b.orszag), order: REGIONS.map(r => r[0]).concat('Egyéb'), label: k => k, color: k => GPAL[Math.max(0, REGIONS.findIndex(r => r[0] === k)) % GPAL.length] },
-  energia: { l: 'Energia', key: b => b.t.E <= 2 ? 'nyugis' : b.t.E === 3 ? 'mersekelt' : 'sportos', order: ['nyugis', 'mersekelt', 'sportos'], label: k => ({ nyugis: 'Nyugis', mersekelt: 'Mérsékelt', sportos: 'Sportos' })[k], color: k => ({ nyugis: '#5B5BD6', mersekelt: '#E0A21B', sportos: '#FF6B3D' })[k] },
+  meret: { l: 'group.meret', key: b => b.meret.find(v => S.f.meret.has(v)) || b.meret[Math.floor((b.meret.length - 1) / 2)], order: SIZES.map(s => s[0]), label: k => SIZE_L[k], color: k => ['#E86A92', '#FF8A5B', '#E0A21B', '#17756E', '#5B5BD6'][SIZE_I[k]] },
+  fci: { l: 'group.fci', key: b => b.fci, order: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], label: k => `${k}. ${FCI[k]}`, color: k => GPAL[(k - 1) % GPAL.length] },
+  szerep: { l: 'group.szerep', key: b => b.szerep[0], order: ROLES.map(r => r[0]), label: k => ROLE_L[k], color: k => ROLE_C[k] },
+  szor: { l: 'group.szor', key: b => b.szor[0], order: COATS.map(c => c[0]), label: k => COAT_L[k], color: k => GPAL[COATS.findIndex(c => c[0] === k) % GPAL.length] },
+  orszag: { l: 'group.orszag', key: b => region(b.orszag0), order: REGIONS.map(r => r[0]).concat('egyeb'), label: k => t(`region.${k}`), color: k => GPAL[Math.max(0, REGIONS.findIndex(r => r[0] === k)) % GPAL.length] },
+  energia: { l: 'group.energia', key: b => b.t.E <= 2 ? 'nyugis' : b.t.E === 3 ? 'mersekelt' : 'sportos', order: ['nyugis', 'mersekelt', 'sportos'], label: k => t(`energy.${k}`), color: k => ({ nyugis: '#5B5BD6', mersekelt: '#E0A21B', sportos: '#FF6B3D' })[k] },
 };
 function layoutGroups(vis) {
   const G = GROUPERS[S.groupBy] || GROUPERS.meret;
@@ -295,13 +295,13 @@ function drawMap() {
     <path class="axis" d="M${x0} ${y0} L${x0} ${y1} L${x1} ${y1}"/>
     <path class="axis" d="M${x0 - 6} ${y0 + 10} L${x0} ${y0} L${x0 + 6} ${y0 + 10} M${x1 - 10} ${y1 - 6} L${x1} ${y1} L${x1 - 10} ${y1 + 6}"/>
     <g style="font-size:${fs}px">
-      <text class="quad" x="${x0 + 18}" y="${y0 + fs + 6}">Zsebrakéták</text>
-      <text class="quad" x="${x1 - 14}" y="${y0 + fs + 6}" text-anchor="end">Sportgépek</text>
-      <text class="quad" x="${x0 + 18}" y="${y1 - 16}">Nyugis törpék</text>
-      <text class="quad" x="${x1 - 14}" y="${y1 - 16}" text-anchor="end">Kanapé-óriások</text>
+      <text class="quad" x="${x0 + 18}" y="${y0 + fs + 6}">${esc(t('map.tl'))}</text>
+      <text class="quad" x="${x1 - 14}" y="${y0 + fs + 6}" text-anchor="end">${esc(t('map.tr'))}</text>
+      <text class="quad" x="${x0 + 18}" y="${y1 - 16}">${esc(t('map.bl'))}</text>
+      <text class="quad" x="${x1 - 14}" y="${y1 - 16}" text-anchor="end">${esc(t('map.br'))}</text>
     </g>
-    <text class="axl" x="${mx}" y="${y1 + 15}" text-anchor="middle">kicsi  ←  MÉRET  →  nagy</text>
-    <text class="axl" transform="translate(${x0 - 9} ${my}) rotate(-90)" text-anchor="middle">nyugis  ←  ENERGIA  →  pörgős</text>`;
+    <text class="axl" x="${mx}" y="${y1 + 15}" text-anchor="middle">${esc(t('map.axisX'))}</text>
+    <text class="axl" transform="translate(${x0 - 9} ${my}) rotate(-90)" text-anchor="middle">${esc(t('map.axisY'))}</text>`;
   svg.classList.remove('on');
   requestAnimationFrame(() => svg.classList.add('on'));
 }
@@ -728,8 +728,8 @@ function fxStep() {
 }
 
 /* ---------- Kereső-reflektor ---------- */
-// név, angol név vagy ismert másik név szerint, ékezet nélkül (nq: norm-olt keresőszó)
-const nameHit = (b, nq) => norm(b.nev).includes(nq) || norm(b.en).includes(nq) || (b.syn || []).some(s => norm(s).includes(nq));
+// név (bármelyik nyelven), angol név vagy ismert másik név szerint, ékezet nélkül (nq: norm-olt keresőszó)
+const nameHit = (b, nq) => b.names.some(n => norm(n).includes(nq)) || (b.syn || []).some(s => norm(s).includes(nq));
 function applySearch(q) {
   const changed = q !== S.q;
   S.q = q;
@@ -756,7 +756,7 @@ function surprise() {
   const pool = B.filter(o => o.vis && o.st === 'in' && (o.b.m == null || o.b.m >= .6));
   if (!pool.length) return;
   const pick = pool[Math.floor(Math.random() * pool.length)];
-  stat('meglepetes', { fajta: pick.b.nev });
+  stat('meglepetes', { fajta: pick.b.nev0 });
   if (!RM()) for (const o of B) if (o.st === 'in') { o.vx += rand(-10, 10); o.vy += rand(-10, 10); }
   haptic(20);
   setTimeout(() => { pulse(pick); pick.jv = -9; }, 380);
